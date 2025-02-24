@@ -1,0 +1,131 @@
+<section class="oe_container">
+  <div class="oe_row oe_spaced">
+    <div class="oe_span12">
+      <h2 class="oe_slogan" style="color:#2C0091;">Popup Message</h2>
+      <h3 class="oe_slogan">
+This module is useful to create a custom popup message Wasting your important time to make popup message wizard-like Alert, Success, Warnings? We will help you to make this procedure quick, just add a few lines of code in your project to open the popup message wizard.
+
+</h3>
+ 
+
+    </div>
+  </div>
+</section>
+
+<section class="oe_container">
+  <div class="oe_row oe_spaced">
+    <div class="oe_span12">
+      <p class="oe_mt32">
+		</p><div class="alert alert-info" style="padding:8px;font-weight: 300; font-size: 20px;">
+		  <i class="fa fa-hand-o-right"></i><b> Key features: </b>
+			<ul class="list-unstyled">
+			  <li>
+				<i class="fa fa-check-square-o text-primary"></i>
+				Easy to use and flexible.
+			  </li>	
+		
+			  <li>
+				<i class="fa fa-check-square-o text-primary"></i>
+				you can create alerts, warnings, success messages by just few line of code.
+			  </li>
+             <li>
+                <i class="fa fa-check-square-o text-primary"></i>
+                This module fluently work with multiple company.
+
+              </li>
+			  <li>
+				<i class="fa fa-check-square-o text-primary"></i>
+				Time saving.
+
+			  </li>
+
+			</ul>
+
+		</div>
+      		
+    </div>
+  </div>
+</section>
+<section class="sh_bg_cover" style="padding:1px 0em;margin-bottom: 2em;margin-top: 2em;padding: 40px;">
+   <div class="container">
+      <div class="sh_spaced">
+         <div class="sh_span12 " style="padding: 0px!important;">
+            <h2 class="sh_display" style="text-align: center;font-size: 2em;margin-top: 0px;"><b style="font-weight: bold;font-family: "open="" sans="" sans-serif="">Version</b>
+            </h2>
+            <hr style="border: 1px solid #96969a;position:relative;width:40px;top:0px;padding:0px;margin-bottom:15px;">
+            <div class="sh_mb32" align="center" style="font-family: sans-serif!important;padding-top: 10px;margin-bottom:0px !important;text-align: justify;padding: 7px 0px;font-weight: 600;margin:0px;">
+               <i class="fa fa-hand-o-right"  style="margin-right: 1em;font-size: 1.4em;"></i>
+               v14.0.1 (13<sup>th</sup> October 2020)
+               <ul>
+                  <li style="list-style:none;font-weight: normal;">
+                     Initial Release
+                  </li>
+               </ul>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+<section class="oe_container">
+    <div class="oe_row oe_spaced">
+        <h4 class="oe_slogan">Popup message looks like below image</h4>
+        <div>
+            <img class="img-responsive" src="1.png">
+        </div>
+    </div>
+</section>
+
+<section class="oe_container">
+    <div class="oe_row oe_spaced">
+        <h4 class="oe_slogan">Put the below code where you want to open the popup message. you can give 'title/name' and 'message' as you want. </h4>
+        <div>
+            <img class="img-responsive" src="2.png">
+        </div>
+    </div>
+</section>
+
+<section class="oe_container oe_dark" style="background: #efefef00;"> 
+   <div class="oe_row oe_spaced"> 
+      <h2 class="display-3" style="color:#1578b9;text-align: center;font-size: 3.2rem;">You May <b style="font-weight: bold;font-family: " open="" sans",="" sans-serif;"=""> Also Like!</b></h2>
+      <hr style="border: 1px solid #96969a;position: relative; width: 40px;top: -10px;padding: 0px;    margin-bottom: 10px;">
+        
+
+    <div class="row" style="margin-right: 0px; margin-left: 0px;">
+
+          <div class="col-md-4" align="center"  style="margin-top: 1rem;"> 
+            <a href="https://apps.odoo.com/apps/modules/12.0/sh_product_profitability_report/">
+                <img src="sh_product_profitability_report.png" alt="Sales Product Profitability Analysis Report" style="width: 100%;">
+            </a>
+         </div> 
+
+        <div class="col-md-4" align="center"  style="margin-top: 1rem;"> 
+            <a href="https://apps.odoo.com/apps/modules/12.0/sh_pricelist_export/">
+              <img src="sh_pricelist_export.png" alt="Export Pricelist" style="width: 100%;">
+            </a>
+         </div>
+          <div class="col-md-4" align="center"  style="margin-top: 1rem;"> 
+            <a href="https://apps.odoo.com/apps/modules/12.0/sh_call_for_price/">
+              <img src="sh_call_for_price.png" alt="Call For Price" style="width: 100%;">
+            </a>
+         </div>          
+    </div>
+
+   </div> 
+</section>
+
+
+
+
+
+<!-- end you may also like-->
+
+<section class="oe_container oe_dark">
+  <div class="oe_row oe_spaced">
+    <h2 class="oe_slogan" style="color:#2C0091;">Help & Support</h2>
+    <h3 class="oe_slogan">You will get free 90 days support and assistance in case of any issues</h3>
+    <br/>
+    <div class="text-center">   
+            <a style="background: none 0% 0% repeat scroll #1A8CD9; padding: 10px 60px; color: white; border-color: rgb(3, 174, 228); position: relative; overflow: hidden;" class="btn btn-success btn-lg" rel="nofollow" href="mailto:support@softhealer.com"><span class="" style="height: 188px; width: 188px; top: -78.9844px; left: 11.6562px;" title="support[at]softhealer.com">Email</span></a>
+    </div>  
+  </div>
+</section>  

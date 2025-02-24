@@ -1,0 +1,38 @@
+<odoo>
+    <data>
+        <record id="sale_order_import_json_files_view_form" model="ir.ui.view">
+            <field name="name">sale.order.import.json.files.form</field>
+            <field name="model">sale.order.json.importer</field>
+            <field name="arch" type="xml">
+                <form string="Import Sale Orders From Json">
+                    <group col="6">
+                        <field name="json_file_data" filename="json_file_name"/>
+                        <field name="json_file_name" invisible="1"/>
+                    </group>
+                    <footer>
+                        <button class="btn btn-sm btn-primary"
+                            name="action_import" string="Submit" type="object"/>
+                        <button class="btn btn-sm btn-default"
+                            special="cancel" string="Cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record id="sale_order_import_json_action" model="ir.actions.act_window">
+            <field name="name">Sale Orders Imported From JSON</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.order.json.importer</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="sale_order_import_json_files_view_form"/>
+            <field name="target">new</field>
+        </record>
+
+      <!-- Top menu item -->
+      <menuitem action="sale_order_import_json_action"
+          name="Sale Order Import From JSON"
+          id="sale_order_json_importer"
+          parent="sale.sale_order_menu"
+          sequence="20"
+          groups="sales_team.group_sale_salesman"/>
+    </data>
+</odoo>

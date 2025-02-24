@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+	<data>
+		<!-- template for stock report -->
+		<template id="report_stockreport">
+			<t t-foreach="docs" t-as="o">
+				<t t-call="itmcs_statistical_reports.custom_layout">
+					<div class="page">
+						<div class="oe_structure" />
+						<div class="row">
+							<div class="col-xs-12">
+								<div class="text-center" t-attf-style="background-color:{{color['report_header_bgcolor1']}}!important;color:{{color['report_header_fontcolor1']}}!important;">
+									<h3>
+										
+										<u>Stock Analysis - Sales by Warehouse</u>
+										
+									</h3>
+									<t t-if="data['form']['start_date']">
+										<strong>Date from :</strong>
+										<sapn t-esc="datetime.datetime.strptime(data['form']['start_date'], '%Y-%m-%d').strftime('%d/%m/%y')"/>
+										<br />
+									</t>
+									
+									<t t-if="data['form']['filter_date'] == 'duration'">
+										<strong>Date to :</strong>
+										<sapn t-esc="datetime.datetime.strptime(data['form']['end_date'], '%Y-%m-%d').strftime('%d/%m/%y')"/>
+										
+										
+									</t>
+								</div>
+								<br />
+								<t t-foreach="data['form']['reports']" t-as="d">
+									<t t-if="d.get('warehouse')">
+										<h4>
+											<u>
+												<b>
+													<span t-attf-style="background-color:{{color['title_bgcolor1']}}!important;color:{{color['title_fontcolor1']}}!important;">
+														Warehouse  :
+														<span t-esc="d.get('warehouse')" />
+													</span>
+												</b>
+											</u>
+										</h4>
+									</t>
+									
+									<table class="table table-condensed">
+										<thead>
+											<tr class="text-center" t-attf-style="background-color:{{color['subtitle_bgcolor1']}}!important;color:{{color['subtitle_fontcolor1']}}!important;">
+												<th class="text-center">No</th>
+												<th class="text-center" >Product Code</th>
+												<th class="text-center" >Product Name</th>
+												<th class="text-center">Unit</th>
+												<t t-if="data['form']['choose_report'] == True">
+													<th class="text-center">Opening Quantity</th>
+													<th class="text-center" >Quantity In</th>
+													<th class="text-center" >Quantity Out</th>
+												</t>
+												<th class="text-center" >Closing Quantity</th>
+												<th class="text-center" >Weighted Avg cost</th>
+												<th class="text-center" >Stock value</th>
+											</tr>
+										</thead>
+										
+										<tbody class="invoice_tbody">
+											<t t-set="i" t-value="1" />
+											<t t-set="total" t-value="0.0" />
+											<t t-foreach="d.get('product_data')" t-as="p">
+												<tr class="text-center" t-attf-style="background-color:{{color['text_bgcolor1']}}!important;color:{{color['text_fontcolor1']}}!important;">
+													<td>
+														<span t-esc="i" />
+														<t t-set="i" t-value="i+1" />
+													</td>
+													<td>
+														<span t-esc="p.get('product_code')" />
+													</td>
+													<td>
+														<span t-esc="p.get('product')" />
+													</td>
+													<td>
+														<span t-esc="p.get('unit')" />
+													</td>
+													<t t-if="data['form']['choose_report'] == True">
+														<td>
+															<span t-esc="p.get('open_qty')" />
+														</td>
+														<td>
+															<span t-esc="p.get('in_qty')" />
+														</td>
+														<td>
+															<span t-esc="p.get('out_qty')" />
+														</td>
+													</t>
+													<td>
+														<span t-esc="p.get('close_qty')" />
+													</td>
+													<td>
+														<span t-esc="'{0:,.2f}'.format(p.get('avg_cost'))" />
+													</td>
+													<td>
+														<span t-esc="'{0:,.2f}'.format(p.get('stock_value'))" />
+													</td>
+													<t t-set="total" t-value="total+(p.get('stock_value'))" />
+												</tr>
+											</t>
+										</tbody>
+										
+									</table>
+									<br/>
+									<h5 class="text-right">
+										<b>
+											<u>
+												<span t-attf-style="background-color:{{color['subtitle_bgcolor1']}}!important;color:{{color['subtitle_fontcolor1']}}!important;">
+													Total Stock Value:
+													<span t-esc="'{0:,.2f}'.format(total)" />
+												</span>
+											</u>
+										</b>
+									</h5>
+								</t>
+							</div>
+							
+						</div>
+					</div>
+				</t>
+			</t>
+		</template>
+	</data>
+</odoo>
+

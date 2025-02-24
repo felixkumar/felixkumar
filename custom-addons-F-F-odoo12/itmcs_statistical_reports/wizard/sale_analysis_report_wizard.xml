@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		
+		
+		<!--<record id="view_order_product_pivot" model="ir.ui.view">
+			<field name="name">sale.report.pivot</field>
+			<field name="model">sale.report</field>
+			<field name="arch" type="xml">
+				<pivot string="Sales Analysis" disable_linking="True">
+					<field name="team_id" type="col"/>
+					<field name="date" interval="month" type="row"/>
+					<field name="price_subtotal" type="measure"/>
+				</pivot>
+			</field>
+		</record>-->
+		
+		<!-- form view of customer or warehouse both report wizard -->
+		<record model="ir.ui.view" id="report_wizard_view">
+			<field name="name">report wizard form</field>
+			<field name="model">custom.wizard</field>
+			<field name="arch" type="xml">
+				<form string="Add information">
+						<group>
+							<group>
+								<field name="start_date" />
+								<field name="partner_ids" domain="[('customer','=',True), ('parent_id', '=', False)]" widget="many2many_tags"/>
+								<field name="product_ids" widget="many2many_tags"/>
+								<field name="salesperson_ids" widget="many2many_tags"/>
+							</group>
+							<group>
+								<field name="end_date" />
+								<field name="company_ids" widget="many2many_tags"/>
+								<field name="stock_warehouse_ids" widget="many2many_tags"/>
+								<field name="team_ids" widget="many2many_tags"/>
+							</group>
+						</group>
+					<footer>
+						<!--<button name="submit_information" type="object" string="Display Chart" class="btn-primary"
+							/>-->
+						<button name="submit_information_list" type="object" string="View Report" class="btn-primary"
+							/>
+						<!--<button name="submit_graph" type="object" string="Display Graph"
+							class="btn-primary" icon="fa-signal"/>-->
+						<button name="print_report" string="Print Pdf" type="object" class="btn-primary" />
+						<button name="export_xls" type="object" default_focus="1" string="Download Xlsx" class="oe_highlight"
+							context="{'xls_export':1}" icon="fa-download"/>
+						or
+						<button special="cancel" string="Cancel" />
+					</footer>
+				</form>
+			</field>
+		</record>
+		
+		<!-- action of customer or warehouse both report wizard -->
+		<record id="launch_info_wizard" model="ir.actions.act_window">
+			<field name="name">Sale Margin Report</field>
+			<field name="res_model">custom.wizard</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">form</field>
+			<field name="target">new</field>
+		</record>
+		
+		<!-- form view of warehouse report wizard -->
+		<!--<record model="ir.ui.view" id="report_wizard_view_warehouse">
+			<field name="name">report wizard form warehouse</field>
+			<field name="model">custom.wizard</field>
+			<field name="arch" type="xml">
+				<form string=" Add Warehouse Information">
+					<group>
+						<field name="stock_warehouse_id" />
+						<field name="start_date" />
+						<field name="end_date" />
+					</group>
+					<footer>
+						&lt;!&ndash;<button name="submit_information" type="object" string="Display Chart" class="btn-primary"
+							/>
+						<button name="submit_graph" type="object" string="Display Graph"
+							class="btn-primary" icon="fa-signal"/>	&ndash;&gt;
+						<button name="print_report" string="Print Pdf" type="object" class="btn-primary" />
+						<button name="export_xls" type="object" default_focus="1" string="Download Xlsx" class="oe_highlight"
+							context="{'xls_export':1}" icon="fa-download"/>
+						or
+						<button special="cancel" string="Cancel" />
+					</footer>
+				</form>
+			</field>
+		</record>-->
+		
+		<!-- action of warehouse report wizard -->
+<!--
+		<record id="launch_info_wizard_warehouse" model="ir.actions.act_window">
+			<field name="name">Warehouse Sales Report</field>
+			<field name="res_model">custom.wizard</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">form</field>
+			<field name="view_id" ref="report_wizard_view_warehouse">
+			</field>
+			<field name="target">new</field>
+		</record>
+-->
+
+		
+		<!-- menu of Customer report wizard -->
+		<menuitem name="Sale Margin Report" parent="sale.menu_sale_report" action="launch_info_wizard"
+			id="menu_itmcs_statistical_reports" groups="itmcs_statistical_reports.sale_margin_report_owner"/>
+		<!-- menu of warehouse report wizard -->
+		<!--<menuitem name="Warehouse Sales Report" parent="sale.menu_sale_report" action="launch_info_wizard_warehouse"
+			id="warehouse_menu_itmcs_statistical_reports" />-->
+		
+		
+	</data>
+</odoo>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+		
+		<record id="res_company_view" model="ir.ui.view">
+			<field name="name">inherit.res_company.view</field>
+			<field name="model">res.company</field>
+			<field name="inherit_id" ref="base.view_company_form" />
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<notebook position="inside">
+					<page string="Configuration for XLS">
+						<group String ="Select Template">
+							<group >
+								<field name="company_header_bgcolor" widget="color"/>
+								<field name="company_header_fontcolor" widget="color"/>
+								<field name="report_header_bgcolor" widget="color"/>
+								<field name="report_header_fontcolor" widget="color"/>
+								<field name="title_bgcolor" widget="color"/>
+								<field name="title_fontcolor" widget="color"/>
+							</group>
+							<group >
+								<field name="subtitle_bgcolor" widget="color"/>
+								<field name="subtitle_fontcolor" widget="color"/>
+								<field name="text_bgcolor" widget="color"/>
+								<field name="text_fontcolor" widget="color"/>
+							</group>
+						</group>
+					</page>
+					<page string="Configuration for PDF">
+						<group String ="Select Template">
+							<group >
+								<field name="company_header_bgcolor1" widget="color"/>
+								<field name="company_header_fontcolor1" widget="color"/>
+								<field name="report_header_bgcolor1" widget="color"/>
+								<field name="report_header_fontcolor1" widget="color"/>
+								<field name="title_bgcolor1" widget="color"/>
+								<field name="title_fontcolor1" widget="color"/>
+							</group>
+							<group >
+								<field name="subtitle_bgcolor1" widget="color"/>
+								<field name="subtitle_fontcolor1" widget="color"/>
+								<field name="text_bgcolor1" widget="color"/>
+								<field name="text_fontcolor1" widget="color"/>
+							</group>
+						</group>
+					</page>
+				</notebook>
+			</field>
+		</record>
+		
+	</data>
+</openerp>

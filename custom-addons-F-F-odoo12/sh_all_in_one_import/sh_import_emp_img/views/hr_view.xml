@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- SALE ORDER SIDE MENU -->
+    <menuitem name="Import Employee Image" action="sh_import_emp_img_action" id="sh_import_emp_img_menu" parent="hr.menu_human_resources_configuration" groups="sh_all_in_one_import.sh_import_emp_img_group" />
+</odoo>

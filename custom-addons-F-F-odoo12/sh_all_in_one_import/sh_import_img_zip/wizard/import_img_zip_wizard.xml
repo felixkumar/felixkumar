@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="sh_iiz_import_img_zip_wizard_form" model="ir.ui.view">
+        <field name="name">sh.iiz.import.img.zip.wizard.form</field>
+        <field name="model">sh.iiz.import.img.zip.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Import Image Form Zip File">
+                <group>
+                    <field name="img_for" widget="radio" />
+
+                    <field name="product_by" widget="radio" attrs="{'invisible':[('img_for','!=','product')], 'required':[('img_for','=','product')]}" />
+                    <field name="product_model" widget="radio" attrs="{'invisible':[('img_for','!=','product')], 'required':[('img_for','=','product')]}" />
+
+                    <field name="partner_by" widget="radio" attrs="{'invisible':[('img_for','!=','partner')], 'required':[('img_for','=','partner')]}" />
+
+                    <field name="employee_by" widget="radio" attrs="{'invisible':[('img_for','!=','employee')], 'required':[('img_for','=','employee')]}" />
+
+                    <field name="zip_file" />
+                </group>
+                <footer>
+                    <button name="button_import" string="Import" type="object" class="btn-primary" />
+                    <button string="Cancel" class="btn-default" special="cancel" />
+
+                    <div style="float: right;">
+                        <strong>Download Sample:</strong>
+                        <a role="button" href="/sh_all_in_one_import/static/download/product_by_name.zip" class="btn-primary" style="margin: 0 10px; font-size: 12px; line-height: 1.5; border-radius: 3px; padding: 8px 10px; color: #ffffff;">
+                            <i class="fa fa-download" /> Zip file
+                        </a>
+                    </div>
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record id="sh_iiz_import_img_zip_action" model="ir.actions.act_window">
+        <field name="name">Import Images From Zip File</field>
+        <field name="res_model">sh.iiz.import.img.zip.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="sh_iiz_import_img_zip_wizard_form" />
+        <field name="target">new</field>
+    </record>
+</odoo>

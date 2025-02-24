@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<!-- template for customer or warehouse report -->
+		<template id="report_salereport">
+			<t t-call="web.html_container">
+				<t t-foreach="docs" t-as="o">
+					<t t-call="itmcs_statistical_reports.custom_layout">
+						<div class="page">
+							<div class="oe_structure" />
+							<div class="row">
+								<div class="col-xs-12">
+									<div class="text-center" t-attf-style="background-color:{{color['report_header_bgcolor1']}}!important;color:{{color['report_header_fontcolor1']}}!important;">
+										<h3>
+											<t>
+												<u>Sale Margin Report</u>
+											</t>
+
+										</h3>
+										<t t-if="data['form']['start_date']">
+											<strong>Date from :</strong>
+											<sapn t-esc="datetime.datetime.strptime(data['form']['start_date'], '%Y-%m-%d').strftime('%d/%m/%y')"/>
+											<br />
+										</t>
+										<t t-if="data['form']['end_date']">
+											<strong>Date to :</strong>
+											<sapn t-esc="datetime.datetime.strptime(data['form']['end_date'], '%Y-%m-%d').strftime('%d/%m/%y')"/>
+										</t>
+									</div>
+									<br />
+
+									<t t-foreach="data['form']['reports']" t-as="d">
+										<br />
+										<br />
+
+										<table class="table table-condensed">
+											<thead>
+												<tr class="text-center" t-attf-style="background-color:{{color['subtitle_bgcolor1']}}!important;color:{{color['subtitle_fontcolor1']}}!important;">
+													<th class="text-center">No</th>
+													<th class="text-center" colspan="2">Sale Order</th>
+													<th class="text-center" colspan="2">Product</th>
+														<th class="text-center" colspan="2">Order Date</th>
+													<th class="text-center">Customer</th>
+													<th class="text-center">Warehouse</th>
+													<th class="text-center">Sale Team</th>
+													<th class="text-center">Salesperson</th>
+													<th class="text-center" colspan="2">Cost</th>
+													<th class="text-center" colspan="2">Price(Tax excluded)</th>
+													<th class="text-center" colspan="2">Discount</th>
+													<th class="text-center" colspan="2">Margin</th>
+													<th class="text-center" colspan="2">Margin (%)</th>
+												</tr>
+											</thead>
+											<tbody class="invoice_tbody">
+												<t t-set="i" t-value="1" />
+												<t t-set="total" t-value="0.0" />
+												<t t-set="bill_total" t-value="0.0" />
+												<t t-foreach="d.get('product_data')" t-as="a">
+
+													<tr class="text-center" t-attf-style="background-color:{{color['text_bgcolor1']}}!important;color:{{color['text_fontcolor1']}}!important;">
+
+														<td>
+															<span t-esc="i" />
+															<t t-set="i" t-value="i+1" />
+														</td>
+														<td colspan="2">
+															<span t-esc="a.get('order')" />
+														</td>
+														<td colspan="2">
+															<span t-esc="a.get('product_name')" />
+														</td>
+														<td>
+															<span t-esc="a.get('date_order')" />
+														</td>
+														<td>
+															<span t-esc="a.get('partner')" />
+														</td>
+														<td>
+															<span t-esc="a.get('warehouse')" />
+														</td>
+														<td>
+															<span t-esc="a.get('salesteam')" />
+														</td>
+														<td>
+															<span t-esc="a.get('salesperson')" />
+														</td>
+														<td colspan="2">
+															<span t-esc="'{0:,.2f}'.format(a.get('cost_price'))" />
+														</td>
+														<td colspan="2">
+															<span t-esc="'{0:,.2f}'.format(a.get('bill_amount'))" />
+														</td>
+														<td colspan="2">
+															<span t-esc="'{0:,.2f}'.format(a.get('discount'))" />
+														</td>
+														<td colspan="2">
+															<span t-esc="'{0:,.2f}'.format(a.get('margin_amnt'))" />
+														</td>
+														<td colspan="2">
+															<span t-esc="'{0:,}'.format(a.get('margin'))" />
+														</td>
+													</tr>
+												</t>
+											</tbody>
+										</table>
+										<br/>
+
+										<!--<h5 class="text-right">
+											<span t-attf-style="background-color:{{color['subtitle_bgcolor1']}}!important;color:{{color['subtitle_fontcolor1']}}!important;">
+												<b>
+													<u>
+														Total Gross Profit :
+														<span t-esc="'{0:,.2f}'.format(total)" />
+													</u>
+												</b>
+												<br />
+												<br />
+												<b>
+													<u>
+														Total Bill Amount :
+														<span t-esc="'{0:,.2f}'.format(bill_total)" />
+													</u>
+												</b>
+											</span>
+										</h5>-->
+
+									</t>
+								</div>
+
+							</div>
+						</div>
+					</t>
+				</t>
+			</t>
+		</template>
+	</data>
+</odoo>
+

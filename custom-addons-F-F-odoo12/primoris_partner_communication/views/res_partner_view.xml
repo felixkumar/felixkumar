@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+
+        <record id="view_partner_form_field" model="ir.ui.view">
+            <field name="name">res.partner.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//form/sheet/group/group/field[@name='website']" position="after">
+                         <field name="fax"/>
+                         <field name="phone_type"/>
+                         
+                   </xpath>
+               <xpath expr="//form/sheet/group/group/field[@name='category_id']" position="after">
+                         <field name="contact_name1"/>
+                         <field name="contact_name2"/>
+                         <field name="contact_person1_phone" widget="phone"/>
+                         <field name="tel1"/>     
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_company_form_field" model="ir.ui.view">
+            <field name="name">res.company.form</field>
+            <field name="model">res.company</field>
+            <field name="inherit_id" ref="base.view_company_form"/>
+            <field name="arch" type="xml">
+                <field name="phone" position="after">
+                         <field name="fax"/>
+                         
+                   </field>
+            </field>
+        </record>
+
+    </data>
+</openerp>

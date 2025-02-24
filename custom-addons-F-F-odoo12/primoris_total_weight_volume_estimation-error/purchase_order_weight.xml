@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- add the total weight to the order form -->
+        <record model="ir.ui.view" id="purchase_order_weight_form">
+            <field name="name">purchase.order.form</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.purchase_order_form"/>
+            <field name="arch" type="xml"> 
+                 <field name="notes" position="before">
+                    <group>
+                        <group class="oe_notes_footer">
+                            <field name="po_weight_total"/>
+                            <field name="po_volume_total"/>
+                            <!--<field name="po_net_weight_total"/>-->
+                        </group>
+                        </group>
+                </field> 
+            </field> 
+        </record>   
+    </data>
+</odoo>

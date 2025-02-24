@@ -1,0 +1,49 @@
+<odoo>
+    <data>
+
+        <report
+                id="report_sale_order"
+                string="Quotation / Order No Header"
+                model="sale.order"
+                report_type="qweb-pdf"
+                file="dvit_company_header.report_saleorder_no_header"
+                name="dvit_company_header.report_saleorder_no_header"
+        />
+
+        <template id="report_saleorder_document_no_header" primary="True" inherit_id="sale.report_saleorder_document">
+          <xpath expr="//t[@t-call='report.external_layout']" position="attributes">
+            <attribute name="t-call"></attribute>
+        </xpath>
+
+        </template>
+
+
+        <template id="report_saleorder_no_header">
+            <t t-call="report.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="dvit_company_header.report_saleorder_document_no_header" t-lang="doc.partner_id.lang"/>
+                </t>
+            </t>
+        </template>
+
+        <template id="external_layout_header" inherit_id="report.external_layout_header">
+          <xpath expr="//div[@class='header']" position="replace">
+            <div class="header" style="text-align:center;">
+                <img t-if="company.header" t-att-src="'data:image/png;base64,%s' % company.header"
+                     style="max-height:4cm;width:100%;"/>
+            </div>
+          </xpath>
+        </template>
+
+        <template id="external_layout_footer" inherit_id="report.external_layout_footer">
+          <xpath expr="//div[@class='footer']" position="replace">
+            <div class="footer">
+                <div class="text-center" style="border-top: 1px solid black;">
+                    <img t-if="company.footer" t-att-src="'data:image/png;base64,%s' % company.footer"
+                         style="max-height:4cm;width:100%;"/>
+                </div>
+            </div>
+          </xpath>
+        </template>
+    </data>
+</odoo>

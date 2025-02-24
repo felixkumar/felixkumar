@@ -1,0 +1,7 @@
+<odoo>
+    <data>
+        <record id="group_for_margin" model="res.groups">
+            <field name="name">Cost And Margin Access</field>
+        </record>
+    </data>
+</odoo>

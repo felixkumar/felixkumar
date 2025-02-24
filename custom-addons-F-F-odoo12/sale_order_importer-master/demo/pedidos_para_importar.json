@@ -1,0 +1,27 @@
+{
+    "customer": {
+        "additionalStreet": "",
+        "city": "Madrid",
+        "companyName": "CLIENTE 1",
+        "country": "ES",
+        "customerType": "COMPANY",
+        "email": "cliente1@cliente1.com",
+        "mobilePhone": "123654789",
+        "phone": "987456321",
+        "postalCode": "98765",
+        "street": "Calle Inventada 1",
+        "NIF": "01234567L"
+    },
+    "orderLines": [
+        {
+            "orderProduct": {
+                "name": "Producto 1",
+                "sku": "A0123456",
+                "type": "PRODUCT"
+            },
+            "quantity": 1,
+            "unitPrice": 220.14
+        }
+    ],
+    "fiscal_position": "NATIONAL"
+}

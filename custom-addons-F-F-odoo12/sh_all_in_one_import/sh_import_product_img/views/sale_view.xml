@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- SALE ORDER SIDE MENU -->
+    <menuitem name="Import Product Image" action="sh_import_product_img_action" id="sh_import_product_img_menu" parent="sale.product_menu_catalog" groups="sh_all_in_one_import.sh_import_product_img_group" />
+</odoo>

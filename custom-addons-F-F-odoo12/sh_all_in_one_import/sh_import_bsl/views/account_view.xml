@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- ACCOUNT BANK STATEMENT FORM -->
+    <record id="sh_inherit_account_bank_statement_form" model="ir.ui.view">
+        <field name="name">sh.inherit.account.bank.statement.form</field>
+        <field name="model">account.bank.statement</field>
+        <field name="inherit_id" ref="account.view_bank_statement_form" />
+        <field name="arch" type="xml">
+            <button name="button_post" position="after">
+                <button name="sh_import_bsl" string="Import Bank Statement Lines" type="object" class="oe_highlight" groups="sh_all_in_one_import.sh_import_bsl_group" attrs="{'invisible':[('state', '!=', 'open')]}" context="{'sh_abs_id':id}" />
+            </button>
+        </field>
+    </record>
+</odoo>

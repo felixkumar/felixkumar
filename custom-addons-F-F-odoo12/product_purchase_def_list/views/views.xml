@@ -1,0 +1,9 @@
+<odoo>
+  <data>
+    <record id="purchase.product_normal_action_puchased" model="ir.actions.act_window">
+      <field name="view_mode">tree,kanban,form,activity</field>
+			<field name="name">Products</field>
+			<field name="res_model">product.template</field>
+    </record>
+  </data>
+</odoo>

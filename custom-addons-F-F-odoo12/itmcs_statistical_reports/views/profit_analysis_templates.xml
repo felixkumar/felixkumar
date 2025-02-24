@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+	<data>
+		<!-- template for profit analysis report -->
+		<template id="report_profitanalysisreport">
+			<t t-foreach="docs" t-as="o">
+				<t t-call="itmcs_statistical_reports.custom_layout">
+					<div class="page">
+						<div class="oe_structure" />
+						<div class="row">
+							<div class="col-xs-12">
+								<div class="text-center" t-attf-style="background-color:{{color['report_header_bgcolor1']}}!important;color:{{color['report_header_fontcolor1']}}!important;">
+									<h3>
+										<t t-if="data['form']['select_report'] == 'customer'">
+											<u>Profit Analysis - Sales by Customer</u>
+										</t>
+										<t t-if="data['form']['select_report'] == 'product'">
+											<u>Profit Analysis - Sales by Product</u>
+										</t>
+									</h3>
+									<t t-if="data['form']['start_date']">
+										<strong>Date from :</strong>
+										<sapn t-esc="datetime.datetime.strptime(data['form']['start_date'], '%Y-%m-%d').strftime('%d/%m/%y')"/>
+										<br />
+									</t>
+									<t t-if="data['form']['end_date']">
+										<strong>Date to :</strong>
+										<sapn t-esc="datetime.datetime.strptime(data['form']['end_date'], '%Y-%m-%d').strftime('%d/%m/%y')"/>
+										
+										
+									</t>
+								</div>
+								<br />
+								
+								<t t-foreach="data['form']['reports']" t-as="d">
+									
+									<br />
+									<br />
+									
+									<h4>
+										<u>
+											<span t-attf-style="background-color:{{color['title_bgcolor1']}}!important;color:{{color['title_fontcolor1']}}!important;">
+												<t t-if="d.get('customer')">
+													<b>Customer :</b>
+													<span t-esc="d.get('customer')" />
+												</t>
+												<t t-if="d.get('product')">
+													<b>Products :</b>
+													<span t-esc="d.get('product')"/>
+												</t>
+											</span>
+										</u>
+									</h4>
+									
+									
+									<table class="table table-condensed">
+										<thead>
+											<tr class="text-center" t-attf-style="background-color:{{color['subtitle_bgcolor1']}}!important;color:{{color['subtitle_fontcolor1']}}!important;">
+												<th class="text-center">No</th>
+												<th class="text-center" colspan="2">Product Name</th>
+												<th class="text-center">Quantity</th>
+												<th class="text-center" colspan="2">Sale Price(Unit)</th>
+												<th class="text-center" colspan="2">Cost Price(Unit)</th>
+												<th class="text-center" colspan="2">Profit</th>
+												<th class="text-center" colspan="2">Margin (%)</th>
+											</tr>
+										</thead>
+										<tbody class="invoice_tbody">
+											<t t-set="i" t-value="1" />
+											<t t-set="total" t-value="0.0" />
+											<t t-foreach="d.get('product_data')" t-as="a">
+												<tr class="text-center" t-attf-style="background-color:{{color['text_bgcolor1']}}!important;color:{{color['text_fontcolor1']}}!important;">
+													<td>
+														<span t-esc="i" />
+														<t t-set="i" t-value="i+1" />
+													</td>
+													<td colspan="2">
+														<span t-esc="a.get('product_name')" />
+													</td>
+													<td>
+														
+														<span t-esc="'{0:,}'.format(a.get('qty'))" />
+													</td>
+													<td colspan="2">
+														<span t-esc="'{0:,.2f}'.format(a.get('sale_price'))" />
+													</td>
+													<td colspan="2">
+														<span t-esc="'{0:,.2f}'.format(a.get('cost_price'))" />
+													</td>
+													<td colspan="2">
+														<span t-esc="'{0:,.2f}'.format(a.get('gross_profit'))" />
+													</td>
+													<td colspan="2">
+														<span t-esc="'{0:,}'.format(a.get('margin'))" />
+													</td>
+													<t t-set="total" t-value="total+(a.get('gross_profit'))" />
+												</tr>
+											</t>
+										</tbody>
+									</table>
+									<br />
+									<h5 class="text-right">
+										<b>
+											<u>
+												<span t-attf-style="background-color:{{color['subtitle_bgcolor1']}}!important;color:{{color['subtitle_fontcolor1']}}!important;">
+													Total Profit:
+													<span t-esc="'{0:,.2f}'.format(total)" />
+												</span>
+											</u>
+										</b>
+									</h5>
+								</t>
+							</div>
+							
+						</div>
+					</div>
+				</t>
+			</t>
+		</template>
+	</data>
+</odoo>
+
+

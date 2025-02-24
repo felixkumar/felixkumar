@@ -1,0 +1,19 @@
+1) Version: 14.0.0.1 | Date : 09/10/2020
+- Fixed the traceback, when wrong date formate given in sale_order.
+- Fixed the traceback, when wrong date formate given in purchase_order.
+- Fixed the traceback, when I select option XLS file and upload to bom.CSV file.
+- Fixed the traceback, when wrong date formate given in payment.
+
+2) Version 14.0.0.2 | Date : 22/10/2020
+	- Fixed traceback issue of wrong date format in sale order.
+	- Fixed traceback issue of wrong date format in purchase order.
+	- Fixed traceback issue of wrong date format in bank lines import.
+	- Improved code in payment for checking date to be import.
+	- Improved code in import invoice and fixed system sequence traceback issue.  
+
+3) Version 14.0.0.3 | Date : 23/10/2020	
+	- Fixed traceback issue of wrong date format in bank statement lines.
+	- Improved code in import picking to solve date format issue.
+	- Fixed traceback issue of wrong date format in import inventory.
+
+=> 14.0.0.4 : Add French, Spanish , Arabic and Dutch translation in module also improved an index.

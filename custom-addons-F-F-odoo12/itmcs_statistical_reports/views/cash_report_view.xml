@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<!-- pivot view for cash ledger report -->
+		<record id="view_cash_report_pivot_id" model="ir.ui.view">
+			<field name="name">cash.report.pivot</field>
+			<field name="model">cash.report</field>
+			<field name="arch" type="xml">
+				<pivot string="Cash Ledger Report" disable_linking="True">
+<!-- 				    <field name="date" /> -->
+					<field name="account_id" type="row" />
+					<field name="ref" />
+					<field name="amount" type="measure" />
+					<field name="balance" type="measure" />
+				</pivot>
+			</field>
+		</record>
+
+			
+		<record id="view_cash_report_graph_id" model="ir.ui.view">
+			<field name="name">cash.report.graph</field>
+			<field name="model">cash.report</field>
+			<field name="arch" type="xml">
+				<graph string="Cash Ledger Report">
+					<field name="account_id" type="row" />
+					<field name="ref" />
+					<field name="amount" type="measure" />
+					<field name="balance" type="measure" />
+				</graph>
+			</field>
+		</record>
+
+		<!-- tree view for cash ledger report -->
+		<record id="view_cash_report_tree_id" model="ir.ui.view">
+			<field name="name">cash.report.tree</field>
+			<field name="model">cash.report</field>
+			<field name="arch" type="xml">
+				<tree string="Cash Ledger Report">
+<!-- 				    <field name="date" /> -->
+					<field name="account_id" />
+					<field name="ref" />
+					<field name="amount" />
+					<field name="balance" />
+					<field name="transaction_type" invisible='1' />
+				</tree>
+			</field>
+		</record>
+
+		<!-- search view for cash ledger report -->
+		<record id="view_cash_report_search_id" model="ir.ui.view">
+			<field name="name">cash.report.search</field>
+			<field name="model">cash.report</field>
+			<field name="arch" type="xml">
+				<search string="Cash Ledger Report">
+					<field name="account_id" />
+					<group expand="0" string="Group By">
+						<filter name="group_acc" string="Account" context="{'group_by':'account_id'}" />
+						<filter name="group_type" string="Type" context="{'group_by':'transaction_type'}" />
+					</group>
+				</search>
+			</field>
+		</record>
+
+		<!-- action for cash ledger report -->
+		<record id="action_account_report" model="ir.actions.act_window">
+			<field name="name">Cash Ledger Report</field>
+			<field name="res_model">cash.report</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree</field>
+			<field name="view_id"></field>
+			<field name="search_view_id" ref="view_cash_report_search_id" />
+
+		</record>
+	</data>
+</odoo>

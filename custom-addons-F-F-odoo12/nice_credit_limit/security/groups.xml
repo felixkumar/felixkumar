@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="group_account_credit_control_user" model="res.groups">
+            <field name="name">User: For managing partner credit.</field>
+            <field name="category_id" ref="base.module_category_sales_management"/>
+            <field name="implied_ids" eval="[(4, ref('sales_team.group_sale_salesman'))]"/>
+            <field name="comment">the user will have access to all records of everyone in the sales application, and approve orders with state of account_wait when necessary.</field>
+        </record>
+        <record id="base.user_admin" model="res.users">
+            <field name="groups_id" eval="[(4, ref('group_account_credit_control_user'))]"/>
+        </record>
+
+    </data>
+
+    <data noupdate="1">
+    	<record id="base.default_user" model="res.users">
+	        <field name="groups_id" eval="[(4,ref('group_account_credit_control_user'))]"/>
+	    </record>
+    </data>
+</odoo>

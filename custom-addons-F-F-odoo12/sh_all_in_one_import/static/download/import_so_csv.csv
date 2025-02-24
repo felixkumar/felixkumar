@@ -1,0 +1,8 @@
+Sales Order,Customer,Order Date,Salesperson,Product,Description,Ordered Qty,Unit of Measure,Unit Price,Taxes
+so1,Azure Interior,2018-08-25,Marc Demo,Acoustic Bloc Screens,abs desc,10,Unit(s),5000,"IGST 1%,IGST 2%,IGST 18%"
+so1,,,,Cabinet with Doors,,20,Unit(s),,
+so1,,,,Cable Management Box,,30,,,
+so2,The Jackson Group,2018-08-22,,Conference Chair,,1,,,IGST 12%
+so2,,,,Individual Workplace,,2,,,
+so2,,,,Drawer,,3,,,
+so3,test customer 1,,,test,,10,cm,,

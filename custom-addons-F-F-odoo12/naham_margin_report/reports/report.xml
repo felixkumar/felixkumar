@@ -1,0 +1,15 @@
+<odoo>
+    <data>
+        <report
+            id="naham_margin_report"
+            model="nakham.customer.invoice.report.wizard.excel"
+            string="Margin Report Excel"
+            report_type="xlsx"
+            name="naham_margin_report.margin_excel"
+            file="naham_margin_report.margin_excel"
+            attachment_use="False"
+                              />
+
+
+    </data>
+</odoo>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<!-- form view of customer and product both report wizard -->
+		<record model="ir.ui.view" id="report_purchase_analysis_wizard_view">
+			<field name="name">report wizard form</field>
+			<field name="model">purchase.analysis.report</field>
+			<field name="arch" type="xml">
+				<form string="Add information">
+					<group>
+						<field name="select_report" />
+					</group>
+					<group>
+						<field name="partner_id" attrs="{'invisible': ['|' , ('select_report','=','product'),
+							('select_report', '=', False)]}" />
+						<field name="product_id" attrs="{'invisible': ['|' ,('select_report','=','vendor'),('select_report',
+							'=', False )]}" />
+						<field name="start_date" />
+						<field name="end_date" />
+					</group>
+					<footer>
+						<button name="submit_information" type="object" string="Display Chart" class="btn-primary"
+							/>
+						<button name="submit_graph" type="object" string="Display Graph" class="btn-primary"
+							icon="fa-signal"/>
+						<button name="print_report" string="Print Pdf" type="object" class="btn-primary" />
+						<button name="export_xls" type="object" default_focus="1" string="Download Xlsx" class="oe_highlight"
+							context="{'xls_export':1}" icon="fa-download" />
+						or
+						<button special="cancel" string="Cancel" />
+					</footer>
+				</form>
+			</field>
+		</record>
+		
+		<!-- action of profit analysis report wizard -->
+		<record id="launch_purchase_analysis_wizard" model="ir.actions.act_window">
+			<field name="name">Purchase Analysis Report</field>
+			<field name="res_model">purchase.analysis.report</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">form</field>
+			<field name="target">new</field>
+		</record>
+		
+		<!-- menu of profit analysis report wizard -->
+		<menuitem id="menu_purchase_control" name="Custom Report" parent="purchase.menu_purchase_root"
+			sequence="4" groups="purchase.group_purchase_manager"/>
+		
+		<menuitem name="Purchase Analysis Report" parent="menu_purchase_control" action="launch_purchase_analysis_wizard"
+			id="purchase_analysis_report_menu" groups="purchase.group_purchase_manager"/>
+	</data>
+</odoo>

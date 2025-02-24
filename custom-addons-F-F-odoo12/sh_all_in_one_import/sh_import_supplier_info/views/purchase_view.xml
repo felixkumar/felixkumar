@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- PURCHASE ORDER SIDE MENU -->
+    <menuitem id="sh_import_supplier_info_menu" name="Import Supplier Info" action="sh_import_supplier_info_action" groups="sh_all_in_one_import.sh_import_supplier_info_group" parent="purchase.menu_procurement_management" />
+</odoo>

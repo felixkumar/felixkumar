@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+ <template id="assets_backend" name="Statistical report assets" inherit_id="web.assets_backend">
+            <xpath expr="." position="inside">
+                <link rel="stylesheet" type="text/scss"  href="/itmcs_statistical_reports/static/src/css/list_view_footer.css"/>
+                <script type="text/javascript" src="/itmcs_statistical_reports/static/src/js/base_list_view_renderer.js"></script>
+            </xpath>
+ </template>
+</odoo>

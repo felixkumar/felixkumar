@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="custom_view_order_product_pivot" model="ir.ui.view">
+         <field name="name">sale.report.pivot</field>
+         <field name="model">sale.report</field>
+         <field name="inherit_id" ref="sale.view_order_product_pivot" />
+			<field name="arch" type="xml">
+		            <xpath expr="//field[@name='team_id']" position="replace">
+		            </xpath>
+            		<xpath expr="//field[@name='price_subtotal']" position="replace">
+		            </xpath>
+            		 <xpath expr="//field[@name='confirmation_date']" position="after">
+                 		<field name="product_uom_qty" type="measure"/>
+                 		<field name="price_unit"  type="measure"/>
+                 		<field name="purchase_price"  type="measure"/>
+                 		<field name="gross_profit"  type="measure"/>
+                 		<field name="margin"  type="measure"/>
+                 		<field name="warehouse_id"/>
+		            </xpath>
+         	</field>
+    </record>
+
+	<record id="custom_view_order_product_tree" model="ir.ui.view">
+         <field name="name">sale.report.tree</field>
+         <field name="model">sale.report</field>
+			<field name="arch" type="xml">
+		           <tree string="Sale Margin Report" edit="false">
+					   <field name="name" string="Sale Order"/>
+					   <field name="product_id" string="Product"/>
+					   <field name="date" string="Order Date"/>
+					   <field name="partner_id" string="Customer"/>
+					   <field name="warehouse_id" string="Warehouse"/>
+					   <field name="team_id" string="Sale Team"/>
+					   <field name="user_id" string="Salesperson"/>
+					   <field name="standard_price" string="Cost" avg="avg_cost"/>
+					   <field name="product_uom_qty" string="Qty Ordered" sum="Total Qty Ordered"/>
+					   <field name="qty_delivered" string="Qty Delivered" sum="Total Qty Delivered"/>
+					   <field name="qty_invoiced" string="Qty Invoiced" sum="Total Qty Invoiced"/>
+					   <field name="price_unit" string="Price Unit" avg="Avg Price"/>
+					   <field name="qty_to_invoice" string="Qty To Invoice" sum="Total Qty to Invoice"/>
+					   <field name="price_subtotal" string="Price (Tax Excluded)" sum="Total Sale"/>
+					   <field name="discount" string="Discount" sum="Total Discount"/>
+					   <field name="gross_profit" string="Margin" sum="Total Profit"/>
+					   <field name="margin" string="Margin(%)" avg="Avg Margin"/>
+					   <field name="avg_cost" string="Avg Cost" invisible="1"/>
+					   <field name="avg_margin" string="Avg Margin" invisible="1"/>
+					   <field name="avg_unit_price" string="Avg Unit Price" invisible="1"/>
+				   </tree>
+         	</field>
+    </record>
+    
+    
+    <record id="custom_view_order_purchase_pivot" model="ir.ui.view">
+         <field name="name">purchase.report.pivot</field>
+         <field name="model">purchase.report</field>
+         <field name="inherit_id" ref="purchase.view_purchase_order_pivot" />
+			<field name="arch" type="xml">
+		            <xpath expr="//field[@name='date_order']" position="replace">
+		            </xpath>
+            		<xpath expr="//field[@name='price_total']" position="replace">
+		            </xpath>
+		            <xpath expr="//field[@name='price_average']" position="replace">
+		            </xpath>
+            		 <xpath expr="//field[@name='unit_quantity']" position="after">
+                 		<field name="price_unit" type="measure"/>
+                 		<field name="amount_total"  type="measure"/>
+		            </xpath>
+         	</field>
+    </record>
+
+	<record id="custom_view_sale_order_form" model="ir.ui.view">
+         <field name="name">custom_view.sale.order.form</field>
+         <field name="model">sale.order</field>
+         <field name="inherit_id" ref="sale_margin.sale_margin_sale_order_line_form"/>
+			<field name="arch" type="xml">
+				<xpath expr="//field[@name='order_line']/tree//field[@name='purchase_price']" position="attributes">
+					<attribute name="groups">itmcs_statistical_reports.sale_cost_owner</attribute>
+				</xpath>
+			</field>
+	</record>
+	<record id="custom_view_sale_order_form1" model="ir.ui.view">
+         <field name="name">custom_view.sale.order.form1</field>
+         <field name="model">sale.order</field>
+         <field name="inherit_id" ref="sale_margin.sale_margin_sale_order_line"/>
+			<field name="arch" type="xml">
+				<xpath expr="//field[@name='order_line']/form//field[@name='purchase_price']" position="attributes">
+					<attribute name="groups">itmcs_statistical_reports.sale_cost_owner</attribute>
+				</xpath>
+			</field>
+	</record>
+
+	<record id="custom_report_view_sale_order_form1" model="ir.ui.view">
+         <field name="name">custom_report_view.sale.order.form1</field>
+         <field name="model">sale.order</field>
+         <field name="inherit_id" ref="sale_margin.sale_margin_sale_order"/>
+			<field name="arch" type="xml">
+				<xpath expr="//field[@name='margin']" position="attributes">
+					<attribute name="groups">itmcs_statistical_reports.sale_margin_owner</attribute>
+				</xpath>
+			</field>
+	</record>
+    
+</odoo>

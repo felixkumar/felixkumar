@@ -1,0 +1,4 @@
+lead name,company Name,stree1,stree2,city,state,zip,country,Email,job position,phone,mobile,website,sales person,internal note
+Lead 1,SoftHealer Technologies ,"313, Heera Panna Complex",Dr. Yagnik road,Rajkot,Gujarat,360001,India,info@softhealer.com,odoo developer,1111111111,7984575681,https://softhealer.com,Mitchell Admin,Lead 1 internal note
+Lead 2,Lead 2 company name,Lead 2 street 1,Lead 2 street 2,Lead 2 city,,,,lead2@hostname.com,,,,www.lead2.com,,Lead 2 internal note
+Lead 3,Lead 3 company name,Lead 3 street 1,Lead 3 street 2,Lead 3 city,,,,lead3@hostname.com,,,,www.lead3.com,,Lead 3 internal note

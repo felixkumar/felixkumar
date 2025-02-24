@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<!-- template for cash ledger report -->
+		<template id="report_cashreport">
+			<t t-call="web.html_container">
+				<t t-foreach="doc" t-as="o">
+					<t t-call="itmcs_statistical_reports.custom_layout">
+						<div class="page">
+							<div class="oe_structure" />
+							<div class="row">
+								<div class="col-xs-12">
+									<div class="text-center" t-attf-style="background-color:{{color['report_header_bgcolor1']}}!important;color:{{color['report_header_fontcolor1']}}!important;">
+										<h3>
+
+											<u>Cash Ledger Receipt/Payment</u>
+
+										</h3>
+										<t t-if="data['form']['start_date']">
+											<strong>Date from :</strong>
+											<sapn t-esc="data['form']['start_date']"/>
+											<br />
+										</t>
+
+										<t t-if="data['form']['end_date']">
+											<strong>Date to :</strong>
+											<sapn t-esc="data['form']['end_date']"/>
+
+
+										</t>
+									</div>
+									<br />
+
+									<h4>
+										<span t-attf-style="background-color:{{color['title_bgcolor1']}}!important;color:{{color['title_fontcolor1']}}!important;">
+											<u>Opening Balance:</u>
+											<span t-esc="'{0:,.2f}'.format(data['form']['opening_balance_receipt'])" />
+										</span>
+									</h4>
+									<h4>
+										<span t-attf-style="background-color:{{color['title_bgcolor1']}}!important;color:{{color['title_fontcolor1']}}!important;">
+											<u>Receipt</u>
+										</span>
+									</h4>
+
+
+									<table class="table table-condensed">
+										<thead>
+											<tr class="text-center" t-attf-style="background-color:{{color['subtitle_bgcolor1']}}!important;color:{{color['subtitle_fontcolor1']}}!important;">
+												<th class="text-center">Date</th>
+												<th class="text-center">Account Name</th>
+												<th class="text-center">Reference</th>
+												<th class="text-center">Amount</th>
+												<th class="text-center">Balance</th>
+
+											</tr>
+										</thead>
+										<tbody class="invoice_tbody">
+											<t t-set="total" t-value="0.0" />
+											<t t-foreach="docs" t-as="p">
+												<t t-if="p.transaction_type == 'Receipt'">
+													<tr class="text-center" t-attf-style="background-color:{{color['text_bgcolor1']}}!important;color:{{color['text_fontcolor1']}}!important;">
+														<td>
+															<span t-field="p.date" />
+														</td>
+														<td>
+															<span t-field="p.account_id.name" />
+														</td>
+														<td>
+															<span t-field="p.ref" />
+														</td>
+														<td>
+															<span t-esc="'{0:,.2f}'.format(p.amount)" />
+														</td>
+														<td>
+															<t t-set="total" t-value="total+(p.amount)" />
+															<span t-esc="'{0:,.2f}'.format(total)" />
+														</td>
+													</tr>
+												</t>
+											</t>
+
+										</tbody>
+									</table>
+
+									<h4 class="text-right">
+										<span t-attf-style="background-color:{{color['subtitle_bgcolor1']}}!important;color:{{color['subtitle_fontcolor1']}}!important;">
+											<u>Total Receipt:</u>
+											<span t-esc="'{0:,.2f}'.format(total)" />
+										</span>
+									</h4>
+
+
+									<h4>
+										<span t-attf-style="background-color:{{color['title_bgcolor1']}}!important;color:{{color['title_fontcolor1']}}!important;">
+											<u>Payment</u>
+										</span>
+									</h4>
+
+									<table class="table table-condensed">
+										<thead>
+											<tr class="text-center" t-attf-style="background-color:{{color['subtitle_bgcolor1']}}!important;color:{{color['subtitle_fontcolor1']}}!important;">
+												<th class="text-center">Date</th>
+												<th class="text-center">Account Name</th>
+												<th class="text-center">Reference</th>
+												<th class="text-center">Amount</th>
+												<th class="text-center">Balance</th>
+
+											</tr>
+
+										</thead>
+										<tbody class="invoice_tbody">
+											<t t-set="total_payment" t-value="0.0" />
+											<t t-foreach="docs" t-as="t">
+												<t t-if="t.transaction_type == 'Payment'">
+													<tr class="text-center" t-attf-style="background-color:{{color['text_bgcolor1']}}!important;color:{{color['text_fontcolor1']}}!important;">
+
+														<td>
+															<span t-field="t.date" />
+														</td>
+
+														<td>
+															<span t-field="t.account_id.name" />
+
+														</td>
+														<td>
+															<span t-field="t.ref" />
+														</td>
+														<td>
+															<span t-esc="'{0:,.2f}'.format(t.amount)" />
+														</td>
+														<td>
+															<t t-set="total_payment" t-value="total_payment+(t.amount)" />
+															<span t-esc="'{0:,.2f}'.format(total_payment)" />
+														</td>
+													</tr>
+												</t>
+											</t>
+
+										</tbody>
+									</table>
+
+									<h4 class="text-right">
+										<span t-attf-style="background-color:{{color['subtitle_bgcolor1']}}!important;color:{{color['subtitle_fontcolor1']}}!important;">
+											<u>Total Payment:</u>
+											<span t-esc="'{0:,.2f}'.format(total_payment)" />
+										</span>
+									</h4>
+
+
+									<h4 class="text-right">
+										<span t-attf-style="background-color:{{color['subtitle_bgcolor1']}}!important;color:{{color['subtitle_fontcolor1']}}!important;">
+											<u>Closing Balance:</u>
+											<span t-esc="'{0:,.2f}'.format(data['form']['closing_bal_payment'])" />
+										</span>
+									</h4>
+
+								</div>
+							</div>
+						</div>
+					</t>
+				</t>
+			</t>
+		</template>
+	</data>
+</odoo>
+
+                     

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+<record model="ir.ui.view" id="account_view_inherit"> 
+    <field name="name">account.view.inherit.name</field>
+    <field name="model">account.invoice</field>
+    <field name="inherit_id" ref="account.invoice_form"/>
+    <field name="arch" type="xml"> 
+        <xpath expr="/form/sheet/notebook/page/field[@name='invoice_line_ids']/tree/field[@name='quantity']" position="before">
+            <field name="ordered_quantity" invisible="1"/>
+        </xpath> 
+    </field> 
+ </record>
+
+ 
+</data>
+</odoo>

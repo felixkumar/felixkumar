@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- TIMESHEET SIDE MENU -->
+    <menuitem name="Import Timesheet" action="sh_import_emp_timesheet_action" id="sh_import_emp_timesheet_menu" parent="hr_timesheet.menu_hr_time_tracking" groups="sh_all_in_one_import.sh_import_emp_timesheet_group" />
+</odoo>

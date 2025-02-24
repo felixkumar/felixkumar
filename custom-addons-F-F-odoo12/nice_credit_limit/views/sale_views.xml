@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="view_partner_credit_limit_sale_order_form">
+        	<field name="name">pcl.sale.order.form.inherit</field>
+        	<field name="model">sale.order</field>
+        	<field name="inherit_id" ref="sale.view_order_form"/>
+        	<field name="arch" type="xml">
+                <button id="action_confirm" position="after">
+                    <button name="action_account_approve"
+                        string="Approve" class="btn-primary" type="object" states="account_review" groups="nice_credit_limit.group_account_credit_control_user"/>
+                    <button name="action_account_disapprove"
+                        string="Disapprove" type="object" states="account_review" groups="nice_credit_limit.group_account_credit_control_user"/>
+                </button>
+                <field name="state"  position="replace">
+                    <field name="state" widget="statusbar" statusbar_visible="draft,sent,sale,account_review"/>
+                </field>
+        	</field>
+        </record>
+
+    </data>
+    
+</odoo>

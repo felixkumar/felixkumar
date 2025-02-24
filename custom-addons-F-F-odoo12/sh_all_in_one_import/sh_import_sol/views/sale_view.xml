@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- SALE ORDER FORM VIEW -->
+    <record id="sh_inherit_view_order_form_for_import" model="ir.ui.view">
+        <field name="name">sh.inherit.view.order.form.for.import</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button name="sh_import_sol" string="Import Sale Order Lines" type="object" states="draft,sent" groups="sh_all_in_one_import.sh_import_sol_group" class="btn-primary" context="{'sh_so_id':id}" />
+            </xpath>
+        </field>
+    </record>
+</odoo>

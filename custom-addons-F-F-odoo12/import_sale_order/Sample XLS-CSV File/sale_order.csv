@@ -1,0 +1,7 @@
+ORDER,CUSTOMER,PRICELIST,PRODUCT,QUANTITY,UOM,DESCRIPTION,PRICE,SALESPERSON,TAX,DATE,DISCOUNT,CUSTOMER REFERENCE,DELIVERY DATE
+SALES-RB08,Lumber Inc,Public Pricelist,FURN_8855,4,Units,Drawer,10000,Mitchell Admin,Tax 15.00%,2020-02-25,10,Oscar Morgan,2020-02-25
+SALES/D041,Deco Addict,Public Pricelist,FURN_9001,2,Units,Flipover,50000,Mitchell Admin,Tax 15.00%,2020-02-25,20,Emily Willumson,2020-02-25
+SO052,Gemini Furniture,Public Pricelist,E-COM09,1,Units,Large Desk,2800,Mitchell Admin,,2020-02-25,35,EDSR0076,2020-02-25
+SALES-RB08,Lumber Inc,Public Pricelist,E-COM10,3,Units,Pedal Bin,100000,Mitchell Admin,Tax 15.00%,2020-02-25,18,Oscar Morgan,2020-02-25
+R08/SL/84F,Azure Interior,Public Pricelist,E-COM08,1,Units,Storage Box,16300,Mitchell Admin,,2020-12-14,22,Smith,2020-12-14
+R08/SL/84F,Azure Interior,Public Pricelist,FURN_7777,8,Units,Office Chair,1200,Mitchell Admin,Tax 15.00%,2020-05-05,15,Smith,2020-05-05

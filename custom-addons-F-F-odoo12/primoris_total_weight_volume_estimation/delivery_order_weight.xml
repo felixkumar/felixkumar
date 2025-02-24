@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+    	<record model="ir.ui.view" id="delivery_order_weight_form">
+            <field name="name">stock.picking.form</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock.view_picking_form"/>
+            <field name="arch" type="xml"> 
+                <field name="move_ids_without_package" position="after">
+                    <group>
+                            <field name="do_weight_total"/>
+                            <!--<field name="do_net_weight_total"/>-->
+                            <field name="do_volume_total"/>
+                    </group>
+                </field> 
+            </field> 
+        </record>   
+    </data>
+</odoo>

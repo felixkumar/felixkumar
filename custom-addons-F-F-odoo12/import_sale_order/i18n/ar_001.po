@@ -1,0 +1,264 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* import_sale_order
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-07-23 08:13+0000\n"
+"PO-Revision-Date: 2021-07-23 08:13+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: import_sale_order
+#: code:addons/import_sale_order/sale.py:0
+#, python-format
+msgid " \"%s\" Pricelist are not available."
+msgstr " \"%s\" قائمة الأسعار غير متوفرة."
+
+#. module: import_sale_order
+#: code:addons/import_sale_order/sale.py:0
+#, python-format
+msgid " \"%s\" Product UOM category is not available."
+msgstr " \"%s\" فئة المنتج UOM غير متوفرة."
+
+#. module: import_sale_order
+#: code:addons/import_sale_order/sale.py:0
+#, python-format
+msgid " \"%s\" User is not available."
+msgstr " \"%s\" المستخدم غير متوفر."
+
+#. module: import_sale_order
+#: code:addons/import_sale_order/sale.py:0
+#: code:addons/import_sale_order/sale.py:0
+#: code:addons/import_sale_order/sale.py:0
+#, python-format
+msgid "\"%s\" Tax not in your system"
+msgstr "\"%s\" الضريبة ليست في نظامك"
+
+#. module: import_sale_order
+#: code:addons/import_sale_order/sale.py:0
+#, python-format
+msgid ""
+"%s product is not found\" .\n"
+" If you want to create product then first select Import Product By Name option ."
+msgstr ""
+
+#. module: import_sale_order
+#: model:ir.model.fields.selection,name:import_sale_order.selection__gen_sale__import_prod_option__barcode
+msgid "Barcode"
+msgstr "الرمز الشريطي"
+
+#. module: import_sale_order
+#: model:ir.model.fields.selection,name:import_sale_order.selection__gen_sale__import_option__csv
+msgid "CSV File"
+msgstr "ملف CSV"
+
+#. module: import_sale_order
+#: model:ir.model.fields.selection,name:import_sale_order.selection__gen_sale__import_prod_option__code
+msgid "Code"
+msgstr "رمز"
+
+#. module: import_sale_order
+#: model:ir.model.fields.selection,name:import_sale_order.selection__gen_sale__stage__confirm
+msgid "Confirm Quotation Automatically With Import"
+msgstr "تأكيد الاقتباس تلقائيًا مع الاستيراد"
+
+#. module: import_sale_order
+#: model:ir.model.fields,field_description:import_sale_order.field_gen_sale__create_uid
+msgid "Created by"
+msgstr "انشأ من قبل"
+
+#. module: import_sale_order
+#: model:ir.model.fields,field_description:import_sale_order.field_gen_sale__create_date
+msgid "Created on"
+msgstr "تم إنشاؤها على"
+
+#. module: import_sale_order
+#: model:ir.model.fields,field_description:import_sale_order.field_sale_order__custom_seq
+msgid "Custom Sequence"
+msgstr "تسلسل مخصص"
+
+#. module: import_sale_order
+#: code:addons/import_sale_order/sale.py:0
+#, python-format
+msgid ""
+"Customer Reference is different for \"%s\" .\n"
+" Please define same."
+msgstr ""
+
+#. module: import_sale_order
+#: code:addons/import_sale_order/sale.py:0
+#, python-format
+msgid ""
+"Customer name is different for \"%s\" .\n"
+" Please define same."
+msgstr ""
+
+#. module: import_sale_order
+#: model:ir.model.fields,field_description:import_sale_order.field_gen_sale__display_name
+msgid "Display Name"
+msgstr "اسم العرض"
+
+#. module: import_sale_order
+#: model:ir.model.fields,field_description:import_sale_order.field_gen_sale__file
+msgid "File"
+msgstr "ملف"
+
+#. module: import_sale_order
+#: model:ir.model.fields,field_description:import_sale_order.field_gen_sale__id
+msgid "ID"
+msgstr "بطاقة تعريف"
+
+#. module: import_sale_order
+#: model_terms:ir.ui.view,arch_db:import_sale_order.gen_sale_wizard_view
+msgid "Import"
+msgstr "يستورد"
+
+#. module: import_sale_order
+#: model:ir.model.fields.selection,name:import_sale_order.selection__gen_sale__stage__draft
+msgid "Import Draft Quotation"
+msgstr "استيراد مسودة تسعير"
+
+#. module: import_sale_order
+#: model:ir.model.fields,field_description:import_sale_order.field_gen_sale__import_prod_option
+msgid "Import Product By "
+msgstr "استيراد المنتج بواسطة"
+
+#. module: import_sale_order
+#: model:ir.actions.act_window,name:import_sale_order.gen_sale_import_wizard
+#: model:ir.ui.menu,name:import_sale_order.gen_sale_wizard_import
+#: model_terms:ir.ui.view,arch_db:import_sale_order.gen_sale_wizard_view
+msgid "Import Sale Order"
+msgstr "أمر بيع استيراد"
+
+#. module: import_sale_order
+#: code:addons/import_sale_order/sale.py:0
+#: code:addons/import_sale_order/sale.py:0
+#, python-format
+msgid "Invalid file!"
+msgstr "ملف غير صالح!"
+
+#. module: import_sale_order
+#: model:ir.model.fields,field_description:import_sale_order.field_gen_sale____last_update
+msgid "Last Modified on"
+msgstr "تاريخ آخر تعديل"
+
+#. module: import_sale_order
+#: model:ir.model.fields,field_description:import_sale_order.field_gen_sale__write_uid
+msgid "Last Updated by"
+msgstr "آخر تحديث بواسطة"
+
+#. module: import_sale_order
+#: model:ir.model.fields,field_description:import_sale_order.field_gen_sale__write_date
+msgid "Last Updated on"
+msgstr "آخر تحديث في"
+
+#. module: import_sale_order
+#: model:ir.model.fields.selection,name:import_sale_order.selection__gen_sale__import_prod_option__name
+msgid "Name"
+msgstr "اسم"
+
+#. module: import_sale_order
+#: code:addons/import_sale_order/sale.py:0
+#: code:addons/import_sale_order/sale.py:0
+#, python-format
+msgid ""
+"Only draft sale orders can be imported. Sale orders %s are in canceled state"
+" in the system."
+msgstr ""
+
+#. module: import_sale_order
+#: code:addons/import_sale_order/sale.py:0
+#: code:addons/import_sale_order/sale.py:0
+#, python-format
+msgid ""
+"Only draft sale orders can be imported. Sale orders %s are in confirmed "
+"state and %s are in canceled state in the system."
+msgstr ""
+
+#. module: import_sale_order
+#: code:addons/import_sale_order/sale.py:0
+#: code:addons/import_sale_order/sale.py:0
+#, python-format
+msgid ""
+"Only draft sale orders can be imported. Sale orders %s are in confirmed "
+"state in the system."
+msgstr ""
+
+#. module: import_sale_order
+#: code:addons/import_sale_order/sale.py:0
+#: code:addons/import_sale_order/sale.py:0
+#, python-format
+msgid "Please assign a delivery date"
+msgstr "يرجى تحديد تاريخ التسليم"
+
+#. module: import_sale_order
+#: code:addons/import_sale_order/sale.py:0
+#: code:addons/import_sale_order/sale.py:0
+#, python-format
+msgid "Please assign a order date"
+msgstr "يرجى تحديد تاريخ الطلب"
+
+#. module: import_sale_order
+#: code:addons/import_sale_order/sale.py:0
+#, python-format
+msgid ""
+"Pricelist is different for \"%s\" .\n"
+" Please define same."
+msgstr ""
+
+#. module: import_sale_order
+#: model:ir.model.fields,field_description:import_sale_order.field_gen_sale__stage
+msgid "Quotation Stage Option"
+msgstr "خيار مرحلة الاقتباس"
+
+#. module: import_sale_order
+#: model:ir.model.fields,field_description:import_sale_order.field_sale_order__sale_name
+msgid "Sale Name"
+msgstr "اسم البيع"
+
+#. module: import_sale_order
+#: model:ir.model,name:import_sale_order.model_sale_order
+msgid "Sales Order"
+msgstr "طلب المبيعات"
+
+#. module: import_sale_order
+#: model:ir.model.fields,field_description:import_sale_order.field_gen_sale__import_option
+msgid "Select"
+msgstr "يختار"
+
+#. module: import_sale_order
+#: model:ir.model.fields,field_description:import_sale_order.field_gen_sale__sequence_opt
+msgid "Sequence Option"
+msgstr "خيار التسلسل"
+
+#. module: import_sale_order
+#: model:ir.model.fields,field_description:import_sale_order.field_sale_order__system_seq
+msgid "System Sequence"
+msgstr "تسلسل النظام"
+
+#. module: import_sale_order
+#: model:ir.model.fields.selection,name:import_sale_order.selection__gen_sale__sequence_opt__custom
+msgid "Use Excel/CSV Sequence Number"
+msgstr "استخدم رقم تسلسل Excel / CSV"
+
+#. module: import_sale_order
+#: model:ir.model.fields.selection,name:import_sale_order.selection__gen_sale__sequence_opt__system
+msgid "Use System Default Sequence Number"
+msgstr "استخدم رقم التسلسل الافتراضي للنظام"
+
+#. module: import_sale_order
+#: model:ir.model.fields.selection,name:import_sale_order.selection__gen_sale__import_option__xls
+msgid "XLS File"
+msgstr "ملف XLS"
+
+#. module: import_sale_order
+#: model:ir.model,name:import_sale_order.model_gen_sale
+msgid "gen.sale"
+msgstr ""

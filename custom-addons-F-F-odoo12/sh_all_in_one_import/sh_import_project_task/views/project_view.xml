@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem name="Import Task" action="sh_action_import_task" id="sh_menu_import_task" parent="project.menu_main_pm" groups="sh_all_in_one_import.sh_group_import_project_task" />
+</odoo>

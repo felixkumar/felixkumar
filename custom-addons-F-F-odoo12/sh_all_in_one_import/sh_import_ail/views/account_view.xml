@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- ACCOUNT INVOICE FORM VIEW -->
+    <record id="sh_inherit_invoice_form_for_import" model="ir.ui.view">
+        <field name="name">sh.inherit.invoice.form.for.import</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button name="sh_import_ail" string="Import Invoice/Credit note Lines" type="object" states="draft" groups="sh_all_in_one_import.sh_import_ail_group" class="btn-primary" context="{'sh_inv_id':id}" />
+            </xpath>
+        </field>
+    </record>
+</odoo>

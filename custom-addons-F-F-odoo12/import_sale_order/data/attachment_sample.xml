@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data noupdate="0">
+		<record id="sample_sale_order_xls" model="ir.attachment">
+        <field name="name">sale_order.xls</field>
+        <field name="type">binary</field>
+        <field name="datas" type="base64" file="import_sale_order/Sample XLS-CSV File/sale_order.xlsx"/>
+    </record>
+
+    <record id="sample_purchase_order_csv" model="ir.attachment">
+        <field name="name">sale_order.csv</field>
+        <field name="type">binary</field>
+        <field name="datas" type="base64" file="import_sale_order/Sample XLS-CSV File/sale_order.csv"/>
+    </record>
+    
+</data>
+</odoo>

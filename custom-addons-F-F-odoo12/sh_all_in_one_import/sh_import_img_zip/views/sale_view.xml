@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- SALE ORDER SIDE MENU -->
+    <menuitem name="Import Images from Zip File" action="sh_iiz_import_img_zip_action" id="sh_iiz_import_img_zip_menuitem" parent="sale.product_menu_catalog" groups="sh_all_in_one_import.sh_iiz_import_img_zip_group" />
+</odoo>

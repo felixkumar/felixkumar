@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="sh_import_attenance_wizard" model="ir.ui.view">
+        <field name="name">sh.import.attendance.wizard</field>
+        <field name="model">import.attendance.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Import Attendaces">
+                <group>
+                    <field name="import_type" widget="radio" />
+                    <field name="attendance_by" widget="radio" />
+                    <field name="file" />
+                </group>
+                <footer>
+                    <button name="import_attendance_apply" string="Apply" type="object" class="btn-primary" />
+                    <button string="Cancel" class="btn-default" special="cancel" />
+
+                    <div style="float: right;">
+                        <strong>Download Sample:</strong>
+                        <a
+                            role="button"
+                            href="/sh_all_in_one_import/static/download/import_attendance_csv.csv"
+                            class="btn-primary"
+                            style="margin: 0 10px; font-size: 12px; line-height: 1.5; border-radius: 3px; padding: 8px 10px; color: #ffffff;"
+                        >
+                            <i class="fa fa-download" /> CSV file
+                        </a>
+                        <a role="button" href="/sh_all_in_one_import/static/download/import_attendance_excel.xls" class="btn-primary" style="font-size: 12px; line-height: 1.5; border-radius: 3px; padding: 8px 10px; color: #ffffff;">
+                            <i class="fa fa-download" /> Excel file
+                        </a>
+                    </div>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="sh_import_attendance_action" model="ir.actions.act_window">
+        <field name="name">Import Attendances</field>
+        <field name="res_model">import.attendance.wizard</field>
+        <field name="view_id" ref="sh_import_attenance_wizard" />
+        <field name="target">new</field>
+    </record>
+    <menuitem id="sh_import_attendance_wizard_menu" name="Import Attendances" action="sh_import_attendance_action" parent="hr_attendance.menu_hr_attendance_manage_attendances" groups="sh_all_in_one_import.sh_import_attendance_group" />
+</odoo>

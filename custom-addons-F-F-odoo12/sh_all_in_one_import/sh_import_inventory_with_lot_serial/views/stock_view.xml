@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- INVENTORY SIDE MENU -->
+    <menuitem
+        id="sh_import_inventory_with_lot_serial_menu"
+        name="Import Inventory With Lot/Serial Number"
+        action="sh_import_inventory_with_lot_serial_action"
+        groups="sh_all_in_one_import.sh_import_inventory_with_lot_serial_group"
+        parent="stock.menu_stock_warehouse_mgmt"
+    />
+</odoo>

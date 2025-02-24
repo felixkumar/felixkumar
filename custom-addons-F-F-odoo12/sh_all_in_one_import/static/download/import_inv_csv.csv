@@ -1,0 +1,9 @@
+Number,Customer/Vendor,Invoice/Bill Date,Product,Description,Ordered Qty,Unit of Measure,Unit Price,Taxes
+sh1,sh customer 2,2018-03-02,Apple In-Ear Headphones,Apple 1,10,Dozen(s),5000,Standard rate sales (17.5%) 
+sh1,,,Processor Core i5 2.70 Ghz,,20,,,
+sh1,,,Computer Case,,30,,,"Standard rate sales (17.5%) , Sales to customers in EC,  Standard rate sales (20%) "
+sh2,sh customer 2,2018-03-03,iPad Retina Display,,1,,,
+sh2,,,Server,,2,,,
+sh2,,,iPod,,3,,,
+sh3,sh customer 2,2018-03-04,iMac,,33,,,
+sh3,,,sh product 11,,,,,

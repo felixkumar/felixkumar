@@ -1,0 +1,26 @@
+<odoo>
+    <data>
+
+        <report
+                id="account_invoices_header"
+                model="account.invoice"
+                string="Invoices No Header"
+                report_type="qweb-pdf"
+                name="dvit_company_header.report_invoice_no_header"
+                file="dvit_company_header.report_invoice_no_header"
+        />
+
+        <template id="report_invoice_document_no_header" inherit_id="account.report_invoice_document" primary="True">
+            <xpath expr="//t[@t-call='report.external_layout']" position="attributes">
+              <attribute name="t-call"></attribute>
+          </xpath>
+        </template>
+
+        <template id="report_invoice_no_header" inherit_id="account.report_invoice" primary="True">
+            <xpath expr="//t[@t-call='account.report_invoice_document']" position="replace">
+              <t t-call="dvit_company_header.report_invoice_document_no_header" t-lang="o.partner_id.lang"/>
+          </xpath>
+        </template>
+
+    </data>
+</odoo>

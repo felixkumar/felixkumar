@@ -1,0 +1,13 @@
+<odoo>
+    <data>
+        <record model="res.groups" id="sale_margin_report_owner">
+            <field name="name">Show Sale Margin Report</field>
+        </record>
+        <record model="res.groups" id="sale_cost_owner">
+            <field name="name">Show Sale Cost</field>
+        </record>
+        <record model="res.groups" id="sale_margin_owner">
+            <field name="name">Show Sale Margin</field>
+        </record>
+    </data>
+</odoo>

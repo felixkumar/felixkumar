@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_localproduct_uom,localproduct.uom,model_localproduct_uom,,1,1,1,1
+access_productuom_class,productuom.class,model_productuom_class,,1,1,1,1

@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+import_gen_sale,import_gen_sale,model_gen_sale,base.group_user,1,1,1,1

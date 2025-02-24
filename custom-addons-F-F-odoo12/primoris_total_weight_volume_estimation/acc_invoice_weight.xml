@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="account_order_weight_form">
+            <field name="name">account.invoice.form</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_form"/>
+            <field name="arch" type="xml"> 
+              <field name="comment" position="before">
+                    <group>
+                        <group class="oe_comment_footer">
+                            <field name="in_weight_total"/>
+                           <!--<field name="in_net_weight_total"/>-->
+                            <field name="in_volume_total"/>
+                        </group>
+                    </group>
+                </field> 
+            </field> 
+        </record>  
+
+
+
+        <record model="ir.ui.view" id="account_supplier_order_weight_form">
+            <field name="name">account.invoice.supplier.form</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_supplier_form"/>
+            <field name="arch" type="xml"> 
+                 <field name="comment" position="before">
+                    <group>
+                        <group class="oe_comment_footer">
+                            <field name="in_weight_total"/>
+                            <!--<field name="in_net_weight_total"/>-->
+                            <field name="in_volume_total"/>
+                        </group>
+                    </group>
+                </field> 
+            </field> 
+        </record> 
+
+
+    </data>
+</odoo>

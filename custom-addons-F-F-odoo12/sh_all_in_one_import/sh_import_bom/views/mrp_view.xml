@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- MAMUFACTURING SIDE MENU -->
+    <menuitem id="sh_import_bom_menu" name="Import Bill of Materials" action="sh_import_bom_action" groups="sh_all_in_one_import.sh_import_bom_group" parent="mrp.menu_mrp_bom" sequence="14" />
+</odoo>

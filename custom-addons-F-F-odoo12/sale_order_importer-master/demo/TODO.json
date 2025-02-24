@@ -1,0 +1,101 @@
+{
+    "pedido": {
+        "customer": {
+            "additionalStreet": "",
+            "city": "Madrid",
+            "companyName": "CLIENTE 1",
+            "country": "ES",
+            "customerType": "COMPANY",
+            "email": "cliente1@cliente1.com",
+            "mobilePhone": "123654789",
+            "phone": "987456321",
+            "postalCode": "98765",
+            "street": "Calle Inventada 1",
+            "NIF": "01234567L"
+        },
+        "orderLines": [
+            {
+                "orderProduct": {
+                    "name": "Producto 1",
+                    "sku": "A0123456",
+                    "type": "PRODUCT"
+                },
+                "quantity": 1,
+                "unitPrice": 220.14
+            }
+        ],
+        "fiscal_position": "NATIONAL"
+    },
+    "pedido": {
+        "customer": {
+            "additionalStreet": "",
+            "city": "Roma",
+            "companyName": "CLIENTE 2",
+            "country": "IT",
+            "customerType": "COMPANY",
+            "email": "cliente1@cliente2.com",
+            "mobilePhone": "123654789",
+            "phone": "987456321",
+            "postalCode": "12345",
+            "street": "Calle Inventada 2",
+            "NIF": "12345678Z"
+        },
+        "orderLines": [
+            {
+                "orderProduct": {
+                    "name": "Producto 1",
+                    "sku": "A0123456",
+                    "type": "PRODUCT"
+                },
+                "quantity": 2,
+                "unitPrice": 220.14
+            },
+            {
+                "orderProduct": {
+                    "name": "Producto 2",
+                    "sku": "A7654321",
+                    "type": "PRODUCT"
+                },
+                "quantity": 1,
+                "unitPrice": 50.27
+            }
+        ],
+        "fiscal_position": "INTRACOMUNITARY"
+    },
+    "pedido": {
+        "customer": {
+            "additionalStreet": "",
+            "city": "Madrid",
+            "companyName": "CLIENTE 1",
+            "country": "ES",
+            "customerType": "COMPANY",
+            "email": "cliente1@cliente1.com",
+            "mobilePhone": "123654789",
+            "phone": "987456321",
+            "postalCode": "98765",
+            "street": "Calle Inventada 1",
+            "NIF": "01234567L"
+        },
+        "orderLines": [
+            {
+                "orderProduct": {
+                    "name": "Producto 1",
+                    "sku": "A0123456",
+                    "type": "PRODUCT"
+                },
+                "quantity": 2,
+                "unitPrice": 220.14
+            },
+            {
+                "orderProduct": {
+                    "name": "Producto 2",
+                    "sku": "A7654321",
+                    "type": "PRODUCT"
+                },
+                "quantity": 1,
+                "unitPrice": 50.27
+            }
+        ],
+        "fiscal_position": "NATIONAL"
+    }
+}

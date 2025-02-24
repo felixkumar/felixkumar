@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="sh_all_in_one_import_kanban_data_1" model="sh.all.in.one.import.kanban">
+        <field name="name">All Import</field>
+    </record>
+</odoo>

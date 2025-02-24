@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_overdue_report,overdue.report,model_overdue_report,,1,1,1,1
+access_stock_report_custom_custom,stock.report.custom,model_stock_report_custom,,1,1,1,1
+access_stock_report_custom,stock.report,model_stock_report,,1,1,1,1
+access_cash_report,cash.report,model_cash_report,,1,1,1,1

@@ -1,0 +1,8 @@
+Purchase Order,Vendor,Order Date,Scheduled Date,Product,Description,Ordered Qty,Unit of Measure,Unit Price,Taxes,Scheduled Date
+po1,Azure Interior,2018-08-25,2018-12-21,Acoustic Bloc Screens,abs desc,10,Unit(s),5000,"IGST 1%,IGST 2%,IGST 18%",2018-10-21
+po1,,,,Cabinet with Doors,,20,Unit(s),,,2018-11-21
+po1,,,,Cable Management Box,,30,,,,2018-12-21
+po2,Ready Mat,2018-08-22,,Conference Chair,,1,,,IGST 12%,
+po2,,,,Individual Workplace,,2,,,,
+po2,,,,Drawer,,3,,,,
+po3,test vendor 1,,,test,,10,cm,,,

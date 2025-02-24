@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<odoo>
+	<data>
+		<!-- template for overdue report -->
+		<template id="report_overduereport">
+			<t t-call="web.html_container">
+				<t t-foreach="doc" t-as="o">
+					<t t-call="itmcs_statistical_reports.custom_layout">
+						<div class="page">
+							<div class="oe_structure" />
+							<div class="row">
+								<div class="col-xs-12">
+									<div class="text-center" t-attf-style="background-color:{{color['report_header_bgcolor1']}}!important;color:{{color['report_header_fontcolor1']}}!important;">
+										<h3 >
+											<t t-if="data['form']['select_report'] == 'total'">
+												<u>Total Due Sales Report</u>
+											</t>
+											<t t-if="data['form']['select_report'] == 'pos'">
+												<u>Pos Due Sales Report</u>
+											</t>
+											<t t-if="data['form']['select_report'] == 'general'">
+												<u>General Due Sales Report</u>
+											</t>
+
+										</h3>
+										<t t-if="data['form']['start_date']">
+											<strong>Date from :</strong>
+											<sapn t-esc="datetime.datetime.strptime(data['form']['start_date'], '%Y-%m-%d').strftime('%d/%m/%y')"/>
+											<br />
+										</t>
+										<t t-if="data['form']['end_date']">
+											<strong>Date to :</strong>
+											<sapn t-esc="datetime.datetime.strptime(data['form']['end_date'], '%Y-%m-%d').strftime('%d/%m/%y')"/>
+
+
+										</t>
+									</div>
+									<t t-foreach="docs" t-as="doc">
+										<t t-if="doc[0]">
+											<h4>
+												<u>
+													<span t-attf-style="background-color:{{color['title_bgcolor1']}}!important;color:{{color['title_fontcolor1']}}!important;">
+														Customer :
+														<span t-esc="doc[0]" />
+													</span>
+												</u>
+											</h4>
+										</t>
+										<table class="table table-condensed">
+											<thead>
+												<tr class="text-center" t-attf-style="background-color:{{color['subtitle_bgcolor1']}}!important;color:{{color['subtitle_fontcolor1']}}!important;">
+													<th class="text-center">Date</th>
+													<th class="text-center">Invoice</th>
+													<th class="text-center">Amount</th>
+													<th class="text-center">Overdue Date</th>
+												</tr>
+											</thead>
+											<tbody class="invoice_tbody">
+												<t t-set="i" t-value="1" />
+												<t t-set="total" t-value="0.0" />
+												<t t-foreach="doc[1]" t-as="overdue">
+													<tr class="text-center" t-attf-style="background-color:{{color['text_bgcolor1']}}!important;color:{{color['text_fontcolor1']}}!important;">
+														<td>
+															<span t-field="overdue.date" />
+														</td>
+														<td>
+															<span t-field="overdue.ref" />
+														</td>
+														<td>
+															<span t-esc="'{0:,.2f}'.format(overdue.residual)" />
+														</td>
+														<td>
+															<span t-field="overdue.date_maturity" />
+														</td>
+														<t t-set="total" t-value="total+(overdue.residual)" />
+													</tr>
+												</t>
+
+											</tbody>
+										</table>
+										<br/>
+										<h5 class="text-right">
+											<b>
+												<u>
+													<span t-attf-style="background-color:{{color['subtitle_bgcolor1']}}!important;color:{{color['subtitle_fontcolor1']}}!important;">
+														Total Amount:
+														<span t-esc="'{0:,.2f}'.format(total)" />
+													</span>
+												</u>
+											</b>
+										</h5>
+
+									</t>
+								</div>
+							</div>
+						</div>
+					</t>
+				</t>
+			</t>
+		</template>
+	</data>
+</odoo>

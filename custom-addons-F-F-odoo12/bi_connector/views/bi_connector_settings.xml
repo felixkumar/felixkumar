@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.bi_connector</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="5"/>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('settings')]" position="inside">
+                <div class="app_settings_block" data-string="BI Connector" string="BI Connector" data-key="bi_connector">
+                     <h2>Xetechs Bi Connector Settings</h2>
+                    <div class="row mt16 o_settings_container">
+                        <div class="col-12 col-lg-12 o_setting_box" id="ringdesk"
+                            title="Enables/Disables Oauth Login">
+                            <div class="o_setting_left_pane">
+                                 <field name="xetechs_bi_connector_enable"/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label for="xetechs_bi_connector_enable"/>
+                                <div class="text-muted">
+                                    Enable Xetechs BI Connector
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6 o_setting_box" id="bi_connector_uuid" attrs="{'invisible': [('xetechs_bi_connector_enable', '=', False)]}"
+                            title="Unique user ID" >
+                            <div class="o_setting_right_pane">
+                                <label for="xetechs_bi_uuid"/>
+                                 <field name="xetechs_bi_uuid"  style="width:100% !important"/>
+                                <div class="text-muted">
+                                    Source ID from Xetechs BI Data Source
+                                </div> 
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6 o_setting_box" id="bi_connector_secret" attrs="{'invisible': [('xetechs_bi_connector_enable', '=', False)]}"
+                            title="Secret Key" >
+                            <div class="o_setting_right_pane">
+                                <label for="xetechs_bi_secret"/>
+                                 <field name="xetechs_bi_secret"  style="width:100% !important"/>
+                                <div class="text-muted">
+                                    Secret from Xetechs BI Data Source
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+    <!--<record id="xetechs_bi_connector_config_settings_action" model="ir.actions.act_window">
+        <field name="name">Settings</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.config.settings</field>
+        <field name="view_id" ref="res_config_settings_view_form"/>
+        <field name="view_mode">form</field>
+        <field name="target">inline</field>
+        <field name="context">{'module' : 'bi_connector'}</field>
+    </record>
+    <menuitem id="xetechs_bi_connector_setting" parent="ringdesk_calldetails_menu_root" name="Settings" sequence="10"
+            action="xetechs_bi_connector_config_settings_action" />-->
+</odoo>

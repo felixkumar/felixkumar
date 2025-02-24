@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="all_import_form_view" model="ir.ui.view">
+        <field name="name">all.import.form.view</field>
+        <field name="model">sh.all.in.one.import.kanban</field>
+        <field name="arch" type="xml">
+            <form string="All Import" create="false" edit="false">
+                <sheet>
+                    <group>
+                        <field name="name" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="sh_all_in_one_import_kanban">
+        <field name="name">sh.all.in.one.import.kanban</field>
+        <field name="model">sh.all.in.one.import.kanban</field>
+        <field name="arch" type="xml">
+            <kanban create="false">
+                <field name="name" />
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click" style="width: 100%;">
+                            <br />
+                            <div class="row">
+                                <div class="col-3">
+                                    <button name="%(sh_all_in_one_import.sh_import_inv_action)d" type="action" string="Import Invoice" class="btn btn-primary">
+                                        Import Invoice
+                                    </button>
+                                </div>
+                                <div class="col-3">
+                                    <button name="%(sh_all_in_one_import.sh_import_partner_action)d" type="action" string="Import Partner" class="btn btn-primary">
+                                        Import Partner
+                                    </button>
+                                </div>
+                                <div class="col-3">
+                                    <button name="%(sh_all_in_one_import.sh_import_partner_img_action)d" type="action" string="Import Partner Image" class="btn btn-primary">
+                                        Import Partner Image
+                                    </button>
+                                </div>
+                                <div class="col-3">
+                                    <button name="%(sh_all_in_one_import.sh_import_so_action)d" type="action" string="Import SO" class="btn btn-primary">
+                                        Import SO
+                                    </button>
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row">
+                                <div class="col-3">
+                                    <button name="%(sh_all_in_one_import.sh_import_po_action)d" type="action" string="Import PO" class="btn btn-primary">
+                                        Import PO
+                                    </button>
+                                </div>
+                                <div class="col-3">
+                                    <button name="%(sh_all_in_one_import.sh_import_product_tmpl_action)d" type="action" string="Import Product" class="btn btn-primary">
+                                        Import Product
+                                    </button>
+                                </div>
+                                <div class="col-3">
+                                    <button name="%(sh_all_in_one_import.sh_import_bom_action)d" type="action" string="Import BOM" class="btn btn-primary">
+                                        Import BOM
+                                    </button>
+                                </div>
+                                <div class="col-3">
+                                    <button name="%(sh_all_in_one_import.sh_import_lead_action)d" type="action" string="Import Lead" class="btn btn-primary">
+                                        Import Lead
+                                    </button>
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row">
+                                <div class="col-3">
+                                    <button name="%(sh_all_in_one_import.sh_action_import_task)d" type="action" string="Import Task" class="btn btn-primary">
+                                        Import Task
+                                    </button>
+                                </div>
+                                <div class="col-3">
+                                    <button name="%(sh_all_in_one_import.sh_import_attendance_action)d" type="action" string="Import Attendance" class="btn btn-primary">
+                                        Import Attendance
+                                    </button>
+                                </div>
+                                <div class="col-3">
+                                    <button name="%(sh_all_in_one_import.sh_import_pos_action)d" type="action" string="Import POS" class="btn btn-primary">
+                                        Import POS
+                                    </button>
+                                </div>
+                                <div class="col-3">
+                                    <button name="%(sh_all_in_one_import.sh_import_user_action)d" type="action" string="Import Users" class="btn btn-primary">
+                                        Import Users
+                                    </button>
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row">
+                                <div class="col-3">
+                                    <button name="%(sh_all_in_one_import.sh_import_product_img_action)d" type="action" string="Import Product Image" class="btn btn-primary">
+                                        Import Product Image
+                                    </button>
+                                </div>
+                                <div class="col-3">
+                                    <button name="%(sh_all_in_one_import.sh_import_product_var_action)d" type="action" string="Import Product variant" class="btn btn-primary">
+                                        Import Product variant
+                                    </button>
+                                </div>
+                                <div class="col-3">
+                                    <button name="%(sh_all_in_one_import.sh_import_supplier_info_action)d" type="action" string="Import Supplier Info" class="btn btn-primary">
+                                        Import Supplier Info
+                                    </button>
+                                </div>
+                                <div class="col-3">
+                                    <button name="%(sh_all_in_one_import.sh_import_emp_img_action)d" type="action" string="Import Employee Image" class="btn btn-primary">
+                                        Import Employee Image
+                                    </button>
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row">
+                                <div class="col-3">
+                                    <button name="%(sh_all_in_one_import.sh_import_int_transfer_action)d" type="action" string="Import Int Transfer" class="btn btn-primary">
+                                        Import Int Transfer
+                                    </button>
+                                </div>
+                                <div class="col-3">
+                                    <button name="%(sh_all_in_one_import.sh_import_emp_timesheet_action)d" type="action" string="Import Employee Timesheet" class="btn btn-primary">
+                                        Import Employee Timesheet
+                                    </button>
+                                </div>
+                                <div class="col-3">
+                                    <button name="%(sh_all_in_one_import.sh_import_reordering_rules_action)d" type="action" string="Import Reordering Rule" class="btn btn-primary">
+                                        Import Reordering Rule
+                                    </button>
+                                </div>
+                                <div class="col-3">
+                                    <button name="%(sh_all_in_one_import.sh_import_inventory_with_lot_serial_action)d" type="action" string="Import Inventory With Lot/Serial No" class="btn btn-primary">
+                                        Import Inventory With Lot/Serial No
+                                    </button>
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row">
+                                <div class="col-3">
+                                    <button name="%(sh_all_in_one_import.sh_iiz_import_img_zip_action)d" type="action" string="Import Images From Zip File" class="btn btn-primary">
+                                        Import Images From Zip File
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+    <record id="sh_action_all_in_one_import_kanban" model="ir.actions.act_window">
+        <field name="name">All Import</field>
+        <field name="res_model">sh.all.in.one.import.kanban</field>
+        <field name="view_mode">kanban,form</field>
+        <field name="view_id" ref="sh_all_in_one_import_kanban" />
+    </record>
+    <menuitem id="sh_menu_all_import" name="All Import" action="sh_action_all_in_one_import_kanban" sequence="1" groups="sh_all_in_one_import.sh_all_in_one_import" />
+</odoo>

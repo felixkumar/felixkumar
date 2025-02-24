@@ -1,0 +1,152 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* sale_order_importer
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-09-09 03:07+0000\n"
+"PO-Revision-Date: 2022-09-09 03:07+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: sale_order_importer
+#: model:ir.model,name:sale_order_importer.model_base_import_import
+msgid "Base Import"
+msgstr "Importar Base"
+
+#. module: sale_order_importer
+#: model_terms:ir.ui.view,arch_db:sale_order_importer.sale_order_confirmation_files_view_form
+#: model_terms:ir.ui.view,arch_db:sale_order_importer.sale_order_import_json_files_view_form
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: sale_order_importer
+#: model:ir.model.fields,field_description:sale_order_importer.field_sale_order_confirmation_files__create_uid
+#: model:ir.model.fields,field_description:sale_order_importer.field_sale_order_json_importer__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: sale_order_importer
+#: model:ir.model.fields,field_description:sale_order_importer.field_sale_order_confirmation_files__create_date
+#: model:ir.model.fields,field_description:sale_order_importer.field_sale_order_json_importer__create_date
+msgid "Created on"
+msgstr "Creado el"
+
+#. module: sale_order_importer
+#: model:ir.model.fields,field_description:sale_order_importer.field_sale_order_confirmation_files__display_name
+#: model:ir.model.fields,field_description:sale_order_importer.field_sale_order_json_importer__display_name
+msgid "Display Name"
+msgstr "Nombre mostrado"
+
+#. module: sale_order_importer
+#: code:addons/sale_order_importer/wizard/sale_order_confirmation_files.py:75
+#, python-format
+msgid "Error: Invalid file format, pleas use .csv, .osd, .xls or .xlsx format"
+msgstr "Error: Formato invalido use .csv, .osd, .xls o .xlsx"
+
+#. module: sale_order_importer
+#: code:addons/sale_order_importer/wizard/sale_order_json_importer.py:35
+#, python-format
+msgid "Error: Invalid file format, pleas use .json format"
+msgstr "Error: Formato de archivo invalido, use el formato JSON"
+
+#. module: sale_order_importer
+#: code:addons/sale_order_importer/wizard/sale_order_json_importer.py:33
+#, python-format
+msgid "Error:Decoding JSON file has failed (Error: %s)"
+msgstr "Error: Ha fallado la decodificación del archivo (Error: %s)"
+
+#. module: sale_order_importer
+#: model:ir.model.fields,field_description:sale_order_importer.field_sale_order_confirmation_files__so_confirm_file_data
+#: model:ir.model.fields,field_description:sale_order_importer.field_sale_order_json_importer__json_file_data
+msgid "File"
+msgstr "Archivo"
+
+#. module: sale_order_importer
+#: model:ir.model.fields,field_description:sale_order_importer.field_sale_order_confirmation_files__id
+#: model:ir.model.fields,field_description:sale_order_importer.field_sale_order_json_importer__id
+msgid "ID"
+msgstr ""
+
+#. module: sale_order_importer
+#: model_terms:ir.ui.view,arch_db:sale_order_importer.sale_order_import_json_files_view_form
+msgid "Import Sale Orders From Json"
+msgstr "Importar pedidos de JSON"
+
+#. module: sale_order_importer
+#: model:ir.model.fields,field_description:sale_order_importer.field_sale_order_json_importer__json_file_extension
+#: model:ir.model.fields,field_description:sale_order_importer.field_sale_order_json_importer__json_file_name
+msgid "JSON File Name"
+msgstr "Nombre del archivo JSON"
+
+#. module: sale_order_importer
+#: model:ir.model.fields,field_description:sale_order_importer.field_sale_order_confirmation_files____last_update
+#: model:ir.model.fields,field_description:sale_order_importer.field_sale_order_json_importer____last_update
+msgid "Last Modified on"
+msgstr "Última modificación en"
+
+#. module: sale_order_importer
+#: model:ir.model.fields,field_description:sale_order_importer.field_sale_order_confirmation_files__write_uid
+#: model:ir.model.fields,field_description:sale_order_importer.field_sale_order_json_importer__write_uid
+msgid "Last Updated by"
+msgstr "Última actualización por"
+
+#. module: sale_order_importer
+#: model:ir.model.fields,field_description:sale_order_importer.field_sale_order_confirmation_files__write_date
+#: model:ir.model.fields,field_description:sale_order_importer.field_sale_order_json_importer__write_date
+msgid "Last Updated on"
+msgstr "Última actualización el"
+
+#. module: sale_order_importer
+#: model:ir.ui.menu,name:sale_order_importer.menu_sale_order_confirmation_files_action
+msgid "Load Confirmation Files"
+msgstr "Cargar archivo de confirmación de pedidos"
+
+#. module: sale_order_importer
+#: model:ir.model.fields,field_description:sale_order_importer.field_sale_order_confirmation_files__so_confirm_file_name
+msgid "Load File Name"
+msgstr "Nombre del archivo cargado"
+
+#. module: sale_order_importer
+#: model_terms:ir.ui.view,arch_db:sale_order_importer.sale_order_confirmation_files_view_form
+msgid "Load Sale Order Confirmation Files"
+msgstr "Cargar archivos de confirmación de pedidos"
+
+#. module: sale_order_importer
+#: model:ir.actions.act_window,name:sale_order_importer.sale_order_confirmation_files_action
+#: model:ir.model,name:sale_order_importer.model_sale_order_confirmation_files
+msgid "Sale Order Confirmation Files"
+msgstr "Archivos de confirmación de pedidos"
+
+#. module: sale_order_importer
+#: model:ir.ui.menu,name:sale_order_importer.sale_order_json_importer
+msgid "Import From JSON"
+msgstr "Importar desde JSON"
+
+#. module: sale_order_importer
+#: model:ir.model,name:sale_order_importer.model_sale_order_json_importer
+msgid "Sale Order JSON Importer"
+msgstr "Importador de pedidos en JSON"
+
+#. module: sale_order_importer
+#: model:ir.actions.act_window,name:sale_order_importer.sale_order_import_json_action
+msgid "Sale Orders Imported From JSON"
+msgstr "Pedidos Importados Desde JSON"
+
+#. module: sale_order_importer
+#: model_terms:ir.ui.view,arch_db:sale_order_importer.sale_order_confirmation_files_view_form
+#: model_terms:ir.ui.view,arch_db:sale_order_importer.sale_order_import_json_files_view_form
+msgid "Submit"
+msgstr "Enviar"
+
+#. module: sale_order_importer
+#: model:ir.model,name:sale_order_importer.model_sale_order_importer_sale_order_importer
+msgid "sale_order_importer.sale_order_importer"
+msgstr ""
+

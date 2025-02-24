@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_import_product_var_wizard_import_user,access_import_product_var_wizard_import_user,model_import_product_var_wizard,sh_all_in_one_import.sh_import_product_var_group,1,1,1,1

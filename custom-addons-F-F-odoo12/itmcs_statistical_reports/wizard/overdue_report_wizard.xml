@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<!-- form view of overdue report wizard -->
+		<record model="ir.ui.view" id="overdue_report_wizard_view">
+			<field name="name">overdue report wizard form</field>
+			<field name="model">overdue.wizard</field>
+			<field name="arch" type="xml">
+				<form string="Add Overdue Information">
+					<group>
+						<field name="select_report" />
+						<field name="partner_id" />
+						<field name="start_date" />
+						<field name="end_date" />
+					</group>
+					<footer>
+						<button name="submit_overdue" type="object" string="Display Chart" class="btn-primary"
+							/>
+						<button name="submit_graph" type="object" string="Display Graph"
+							class="btn-primary" icon="fa-signal"/>
+						<button name="print_overdue" string="Print Pdf" type="object" class="btn-primary"
+							/>
+						<button name="export_xls" type="object" default_focus="1" string= "Download Xlsx"
+							class="oe_highlight" context="{'xls_export':1}" icon="fa-download"/>
+						or
+						<button special="cancel" string="Cancel" />
+					</footer>
+				</form>
+			</field>
+		</record>
+		
+		<!-- action of overdue report wizard -->
+		<record id="launch_overdue_wizard" model="ir.actions.act_window">
+			<field name="name">Overdue Report</field>
+			<field name="res_model">overdue.wizard</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">form</field>
+			<field name="target">new</field>
+		</record>
+		
+		<!-- menu of overdue report wizard -->
+		<menuitem name="Customer Overdue Report" parent="sale.menu_sale_report" action="launch_overdue_wizard"
+			id="menu_overdue_reports" />
+		
+	</data>
+</odoo>

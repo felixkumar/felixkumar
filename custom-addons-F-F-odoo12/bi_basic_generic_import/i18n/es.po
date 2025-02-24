@@ -1,0 +1,1197 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* bi_basic_generic_import
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-03-22 08:04+0000\n"
+"PO-Revision-Date: 2021-03-22 08:04+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: bi_basic_generic_import
+#: code:addons/bi_basic_generic_import/models/account_invoice.py:0
+#, python-format
+msgid " \"%s\" Account is not available."
+msgstr " \"%s\" La cuenta no está disponible."
+
+#. module: bi_basic_generic_import
+#: code:addons/bi_basic_generic_import/models/account_invoice.py:0
+#: code:addons/bi_basic_generic_import/models/bank_statement.py:0
+#: code:addons/bi_basic_generic_import/models/purchase.py:0
+#, python-format
+msgid " \"%s\" Currency are not available."
+msgstr " \"%s\" Las divisas no están disponibles."
+
+#. module: bi_basic_generic_import
+#: code:addons/bi_basic_generic_import/models/sale.py:0
+#, python-format
+msgid " \"%s\" Pricelist are not available."
+msgstr " \"%s\" La lista de precios no está disponible."
+
+#. module: bi_basic_generic_import
+#: code:addons/bi_basic_generic_import/models/account_invoice.py:0
+#: code:addons/bi_basic_generic_import/models/mrp.py:0
+#: code:addons/bi_basic_generic_import/models/purchase.py:0
+#: code:addons/bi_basic_generic_import/models/sale.py:0
+#, python-format
+msgid " \"%s\" Product UOM category is not available."
+msgstr " \"%s\" La categoría de UOM de producto no está disponible."
+
+#. module: bi_basic_generic_import
+#: code:addons/bi_basic_generic_import/models/sale.py:0
+#, python-format
+msgid " \"%s\" User is not available."
+msgstr " \"%s\" La usuario no está disponible."
+
+#. module: bi_basic_generic_import
+#: code:addons/bi_basic_generic_import/models/account_invoice.py:0
+#, python-format
+msgid " You can not left blank Description field."
+msgstr "No puede dejar en blanco el campo Descripción."
+
+#. module: bi_basic_generic_import
+#: code:addons/bi_basic_generic_import/models/account_invoice.py:0
+#, python-format
+msgid ""
+" You can not left blank account field if you select Excel/CSV Account Option"
+msgstr ""
+
+#. module: bi_basic_generic_import
+#: code:addons/bi_basic_generic_import/models/supp_info.py:0
+#, python-format
+msgid ""
+" You have selected Link product template with existing product but %s "
+"Product template does not exist"
+msgstr ""
+
+#. module: bi_basic_generic_import
+#: code:addons/bi_basic_generic_import/models/partner.py:0
+#, python-format
+msgid "\"%s\" Customer/Vendor already exist."
+msgstr "\"%s\" El cliente / proveedor ya existe."
+
+#. module: bi_basic_generic_import
+#: code:addons/bi_basic_generic_import/models/stock.py:0
+#: code:addons/bi_basic_generic_import/models/stock.py:0
+#: code:addons/bi_basic_generic_import/models/stock.py:0
+#: code:addons/bi_basic_generic_import/models/stock.py:0
+#, python-format
+msgid "\"%s\" Location is not available."
+msgstr "\"%s\" La ubicación no está disponible."
+
+#. module: bi_basic_generic_import
+#: code:addons/bi_basic_generic_import/models/picking.py:0
+#, python-format
+msgid "\"%s\" Lot is not available for \"%s\" Product."
+msgstr "\"%s\" El lote no está disponible para \"%s\" Producto."
+
+#. module: bi_basic_generic_import
+#: code:addons/bi_basic_generic_import/models/stock.py:0
+#: code:addons/bi_basic_generic_import/models/stock.py:0
+#: code:addons/bi_basic_generic_import/models/stock.py:0
+#: code:addons/bi_basic_generic_import/models/stock.py:0
+#: code:addons/bi_basic_generic_import/models/stock.py:0
+#: code:addons/bi_basic_generic_import/models/stock.py:0
+#: code:addons/bi_basic_generic_import/models/stock.py:0
+#: code:addons/bi_basic_generic_import/models/stock.py:0
+#, python-format
+msgid "\"%s\" Product UOM category is not available."
+msgstr "\"%s\" La categoría de UOM de producto no está disponible."
+
+#. module: bi_basic_generic_import
+#: code:addons/bi_basic_generic_import/models/product.py:0
+#: code:addons/bi_basic_generic_import/models/product.py:0
+#, python-format
+msgid "\"%s\" Product not found."
+msgstr "\"%s\" Producto no encontrado."
+
+#. module: bi_basic_generic_import
+#: code:addons/bi_basic_generic_import/models/account_invoice.py:0
+#: code:addons/bi_basic_generic_import/models/account_invoice.py:0
+#: code:addons/bi_basic_generic_import/models/account_invoice.py:0
+#: code:addons/bi_basic_generic_import/models/account_invoice.py:0
+#: code:addons/bi_basic_generic_import/models/account_invoice.py:0
+#: code:addons/bi_basic_generic_import/models/account_invoice.py:0
+#: code:addons/bi_basic_generic_import/models/account_invoice.py:0
+#: code:addons/bi_basic_generic_import/models/account_invoice.py:0
+#: code:addons/bi_basic_generic_import/models/account_invoice.py:0
+#: code:addons/bi_basic_generic_import/models/account_invoice.py:0
+#: code:addons/bi_basic_generic_import/models/account_invoice.py:0
+#: code:addons/bi_basic_generic_import/models/account_invoice.py:0
+#: code:addons/bi_basic_generic_import/models/purchase.py:0
+#: code:addons/bi_basic_generic_import/models/purchase.py:0
+#: code:addons/bi_basic_generic_import/models/purchase.py:0
+#: code:addons/bi_basic_generic_import/models/sale.py:0
+#: code:addons/bi_basic_generic_import/models/sale.py:0
+#: code:addons/bi_basic_generic_import/models/sale.py:0
+#, python-format
+msgid "\"%s\" Tax not in your system"
+msgstr "\"%s\" Impuestos no en su sistema"
+
+#. module: bi_basic_generic_import
+#: code:addons/bi_basic_generic_import/models/payment.py:0
+#, python-format
+msgid "%s Customer Not Found"
+msgstr "%s Cliente no encontrada"
+
+#. module: bi_basic_generic_import
+#: code:addons/bi_basic_generic_import/models/payment.py:0
+#, python-format
+msgid "%s Journal Not Found"
+msgstr "%s Diario no encontrado"
+
+#. module: bi_basic_generic_import
+#: code:addons/bi_basic_generic_import/models/supp_info.py:0
+#, python-format
+msgid "%s Vendor Not Found"
+msgstr "%s Vendedora no encontrada"
+
+#. module: bi_basic_generic_import
+#: code:addons/bi_basic_generic_import/models/partner.py:0
+#: code:addons/bi_basic_generic_import/models/partner.py:0
+#, python-format
+msgid "%s partner not found."
+msgstr "%s socio no encontrado."
+
+#. module: bi_basic_generic_import
+#: code:addons/bi_basic_generic_import/models/account_invoice.py:0
+#: code:addons/bi_basic_generic_import/models/purchase.py:0
+#: code:addons/bi_basic_generic_import/models/sale.py:0
+#, python-format
+msgid ""
+"%s product is not found\" .\n"
+" If you want to create product then first select Import Product By Name option ."
+msgstr ""
+
+#. module: bi_basic_generic_import
+#: code:addons/bi_basic_generic_import/models/mrp.py:0
+#: code:addons/bi_basic_generic_import/models/mrp.py:0
+#, python-format
+msgid "%s product is not found."
+msgstr "%s no se encuentra el producto."
+
+#. module: bi_basic_generic_import
+#: code:addons/bi_basic_generic_import/models/product.py:0
+#: code:addons/bi_basic_generic_import/models/product.py:0
+#: code:addons/bi_basic_generic_import/models/product.py:0
+#: code:addons/bi_basic_generic_import/models/product.py:0
+#, python-format
+msgid "%s product not found."
+msgstr "%s producto no encontrado."
+
+#. module: bi_basic_generic_import
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_invoice__account_opt
+msgid "Account Option"
+msgstr "Opción de cuenta"
+
+#. module: bi_basic_generic_import
+#: model_terms:ir.ui.view,arch_db:bi_basic_generic_import.view_bank_statement_form_inherit_import_lines
+msgid "Add Lines"
+msgstr "Agregar líneas"
+
+#. module: bi_basic_generic_import
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_inv__location_id_option
+msgid "Allow to Import Location on inventory line from file"
+msgstr "Permitir importar la ubicación en la línea de inventario desde el archivo"
+
+#. module: bi_basic_generic_import
+#: model:ir.model.fields.selection,name:bi_basic_generic_import.selection__gen_inv__import_prod_option__barcode
+#: model:ir.model.fields.selection,name:bi_basic_generic_import.selection__gen_invoice__import_prod_option__barcode
+#: model:ir.model.fields.selection,name:bi_basic_generic_import.selection__gen_mrp__import_material_prod_option__barcode
+#: model:ir.model.fields.selection,name:bi_basic_generic_import.selection__gen_mrp__import_prod_option__barcode
+#: model:ir.model.fields.selection,name:bi_basic_generic_import.selection__gen_purchase__import_prod_option__barcode
+#: model:ir.model.fields.selection,name:bi_basic_generic_import.selection__gen_sale__import_prod_option__barcode
+#: model:ir.model.fields.selection,name:bi_basic_generic_import.selection__import_picking__import_prod_option__barcode
+msgid "Barcode"
+msgstr "Código de barras"
+
+#. module: bi_basic_generic_import
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_mrp__bom_type
+msgid "Bom Type"
+msgstr "Bom Tipo"
+
+#. module: bi_basic_generic_import
+#: code:addons/bi_basic_generic_import/models/product.py:0
+#: code:addons/bi_basic_generic_import/models/product.py:0
+#, python-format
+msgid "CATEGORY field can not be empty"
+msgstr "El campo CATEGORY no puede estar vacío"
+
+#. module: bi_basic_generic_import
+#: model:ir.model.fields.selection,name:bi_basic_generic_import.selection__account_bank_statement_wizard__file_opt__csv
+msgid "CSV"
+msgstr "CSV"
+
+#. module: bi_basic_generic_import
+#: model:ir.model.fields.selection,name:bi_basic_generic_import.selection__gen_inv__import_option__csv
+#: model:ir.model.fields.selection,name:bi_basic_generic_import.selection__gen_invoice__import_option__csv
+#: model:ir.model.fields.selection,name:bi_basic_generic_import.selection__gen_journal_entry__import_option__csv
+#: model:ir.model.fields.selection,name:bi_basic_generic_import.selection__gen_mrp__import_option__csv
+#: model:ir.model.fields.selection,name:bi_basic_generic_import.selection__gen_partner__import_option__csv
+#: model:ir.model.fields.selection,name:bi_basic_generic_import.selection__gen_product__import_option__csv
+#: model:ir.model.fields.selection,name:bi_basic_generic_import.selection__gen_purchase__import_option__csv
+#: model:ir.model.fields.selection,name:bi_basic_generic_import.selection__gen_sale__import_option__csv
+#: model:ir.model.fields.selection,name:bi_basic_generic_import.selection__import_picking__import_option__csv
+msgid "CSV File"
+msgstr "Archivo CSV"
+
+#. module: bi_basic_generic_import
+#: model_terms:ir.ui.view,arch_db:bi_basic_generic_import.bank_statement_import_line_wizard
+#: model_terms:ir.ui.view,arch_db:bi_basic_generic_import.import_account_move_line_view
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: bi_basic_generic_import
+#: code:addons/bi_basic_generic_import/models/picking.py:0
+#, python-format
+msgid "Cannot find file"
+msgstr "No se puede encontrar el archivo"
+
+#. module: bi_basic_generic_import
+#: model:ir.model.fields.selection,name:bi_basic_generic_import.selection__gen_inv__import_prod_option__code
+#: model:ir.model.fields.selection,name:bi_basic_generic_import.selection__gen_invoice__import_prod_option__code
+#: model:ir.model.fields.selection,name:bi_basic_generic_import.selection__gen_mrp__import_material_prod_option__code
+#: model:ir.model.fields.selection,name:bi_basic_generic_import.selection__gen_mrp__import_prod_option__code
+#: model:ir.model.fields.selection,name:bi_basic_generic_import.selection__gen_purchase__import_prod_option__code
+#: model:ir.model.fields.selection,name:bi_basic_generic_import.selection__gen_sale__import_prod_option__code
+#: model:ir.model.fields.selection,name:bi_basic_generic_import.selection__import_picking__import_prod_option__code
+msgid "Code"
+msgstr "Código"
+
+#. module: bi_basic_generic_import
+#: model:ir.model.fields.selection,name:bi_basic_generic_import.selection__gen_purchase__stage__confirm
+msgid "Confirm Purchase Automatically With Import"
+msgstr "Confirmar compra automáticamente con importación"
+
+#. module: bi_basic_generic_import
+#: model:ir.model.fields.selection,name:bi_basic_generic_import.selection__gen_sale__stage__confirm
+msgid "Confirm Quotation Automatically With Import"
+msgstr "Confirmar cotización automáticamente con importación"
+
+#. module: bi_basic_generic_import
+#: model:ir.model.fields.selection,name:bi_basic_generic_import.selection__gen_partner__partner_option__create
+msgid "Create Partner"
+msgstr "Crear socio"
+
+#. module: bi_basic_generic_import
+#: model:ir.model.fields.selection,name:bi_basic_generic_import.selection__gen_product__product_option__create
+msgid "Create Product"
+msgstr "Crear producto"
+
+#. module: bi_basic_generic_import
+#: model:ir.model.fields.selection,name:bi_basic_generic_import.selection__gen_suppinfo__create_link_option__create
+msgid "Create product template if not available"
+msgstr "Cree una plantilla de producto si no está disponible"
+
+#. module: bi_basic_generic_import
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_account_bank_statement_wizard__create_uid
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_inv__create_uid
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_invoice__create_uid
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_journal_entry__create_uid
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_mrp__create_uid
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_partner__create_uid
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_product__create_uid
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_purchase__create_uid
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_sale__create_uid
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_salepayment__create_uid
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_suppinfo__create_uid
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_import_picking__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: bi_basic_generic_import
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_account_bank_statement_wizard__create_date
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_inv__create_date
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_invoice__create_date
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_journal_entry__create_date
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_mrp__create_date
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_partner__create_date
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_product__create_date
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_purchase__create_date
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_sale__create_date
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_salepayment__create_date
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_suppinfo__create_date
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_import_picking__create_date
+msgid "Created on"
+msgstr "Creado en"
+
+#. module: bi_basic_generic_import
+#: code:addons/bi_basic_generic_import/models/account_move.py:0
+#, python-format
+msgid "Currency %s is not  in the system"
+msgstr "La moneda% s no está en el sistema"
+
+#. module: bi_basic_generic_import
+#: code:addons/bi_basic_generic_import/models/account_invoice.py:0
+#: code:addons/bi_basic_generic_import/models/purchase.py:0
+#, python-format
+msgid ""
+"Currency is different for \"%s\" .\n"
+" Please define same."
+msgstr ""
+
+#. module: bi_basic_generic_import
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_account_move__custom_seq
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_purchase_order__custom_seq
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_sale_order__custom_seq
+msgid "Custom Sequence"
+msgstr "Secuencia personalizada"
+
+#. module: bi_basic_generic_import
+#: model:ir.model.fields.selection,name:bi_basic_generic_import.selection__gen_invoice__type__in
+msgid "Customer"
+msgstr "Cliente"
+
+#. module: bi_basic_generic_import
+#: model:ir.model.fields.selection,name:bi_basic_generic_import.selection__gen_invoice__type__cus_credit_note
+msgid "Customer Credit Note"
+msgstr "Nota de crédito del cliente"
+
+#. module: bi_basic_generic_import
+#: model:ir.model.fields.selection,name:bi_basic_generic_import.selection__gen_salepayment__payment_option__customer
+msgid "Customer Payment"
+msgstr "Pago del Cliente"
+
+#. module: bi_basic_generic_import
+#: code:addons/bi_basic_generic_import/models/account_invoice.py:0
+#: code:addons/bi_basic_generic_import/models/picking.py:0
+#: code:addons/bi_basic_generic_import/models/purchase.py:0
+#: code:addons/bi_basic_generic_import/models/sale.py:0
+#, python-format
+msgid ""
+"Customer name is different for \"%s\" .\n"
+" Please define same."
+msgstr ""
+
+#. module: bi_basic_generic_import
+#: code:addons/bi_basic_generic_import/models/sale.py:0
+#, python-format
+msgid "DESCRIPTION field is not given in sheet"
+msgstr "El campo DESCRIPCIÓN no está incluido en la hoja."
+
+#. module: bi_basic_generic_import
+#: code:addons/bi_basic_generic_import/models/purchase.py:0
+#: code:addons/bi_basic_generic_import/models/purchase.py:0
+#: code:addons/bi_basic_generic_import/models/sale.py:0
+#: code:addons/bi_basic_generic_import/models/sale.py:0
+#, python-format
+msgid "Date field is blank in sheet Please add the date."
+msgstr "El campo de la fecha está en blanco en la hoja. Agregue la fecha."
+
+#. module: bi_basic_generic_import
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_import_picking__location_dest_id
+msgid "Destination Location Zone"
+msgstr "Zona de ubicación de destino"
+
+#. module: bi_basic_generic_import
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_account_bank_statement_wizard__display_name
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_inv__display_name
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_invoice__display_name
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_journal_entry__display_name
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_mrp__display_name
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_partner__display_name
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_product__display_name
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_purchase__display_name
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_sale__display_name
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_salepayment__display_name
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_suppinfo__display_name
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_import_picking__display_name
+msgid "Display Name"
+msgstr "Nombre para mostrar"
+
+#. module: bi_basic_generic_import
+#: code:addons/bi_basic_generic_import/models/stock.py:0
+#, python-format
+msgid "Don't Use Character only use numbers"
+msgstr "No use caracteres, solo use números"
+
+#. module: bi_basic_generic_import
+#: model:ir.model.fields.selection,name:bi_basic_generic_import.selection__account_bank_statement_wizard__file_opt__excel
+msgid "Excel"
+msgstr "Sobresalir"
+
+#. module: bi_basic_generic_import
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_account_bank_statement_wizard__file
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_inv__file
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_invoice__file
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_journal_entry__file_to_upload
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_mrp__file
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_partner__file
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_product__file
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_purchase__file
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_sale__file
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_salepayment__file
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_suppinfo__file
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_import_picking__file
+msgid "File"
+msgstr "Archivo"
+
+#. module: bi_basic_generic_import
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_account_bank_statement_wizard__file_name
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_inv__file_name
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_invoice__file_name
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_journal_entry__file_name
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_partner__file_name
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_product__file_name
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_purchase__file_name
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_sale__file_name
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_import_picking__file_name
+msgid "File Name"
+msgstr "Nombre del archivo"
+
+#. module: bi_basic_generic_import
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_account_bank_statement_wizard__file_opt
+msgid "File Opt"
+msgstr "Opción de archivo"
+
+#. module: bi_basic_generic_import
+#: code:addons/bi_basic_generic_import/models/mrp.py:0
+#, python-format
+msgid "Found Diffrent value of product for same BOM %s"
+msgstr "Se encontró un valor diferente del producto para la misma lista de materiales% s"
+
+#. module: bi_basic_generic_import
+#: code:addons/bi_basic_generic_import/models/mrp.py:0
+#, python-format
+msgid "Found Diffrent value same BOM %s"
+msgstr "Encontrado valor diferente misma BOM% s"
+
+#. module: bi_basic_generic_import
+#: model_terms:ir.ui.view,arch_db:bi_basic_generic_import.gen_inv_wizard_view
+msgid "Generate Inv"
+msgstr "Generar Inv"
+
+#. module: bi_basic_generic_import
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_account_bank_statement_wizard__id
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_inv__id
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_invoice__id
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_journal_entry__id
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_mrp__id
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_partner__id
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_product__id
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_purchase__id
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_sale__id
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_salepayment__id
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_suppinfo__id
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_import_picking__id
+msgid "ID"
+msgstr "IDENTIFICACIÓN"
+
+#. module: bi_basic_generic_import
+#: model:ir.ui.menu,name:bi_basic_generic_import.menu_import
+#: model_terms:ir.ui.view,arch_db:bi_basic_generic_import.bank_statement_import_line_wizard
+#: model_terms:ir.ui.view,arch_db:bi_basic_generic_import.bi_import_picking_wizard
+#: model_terms:ir.ui.view,arch_db:bi_basic_generic_import.gen_inv_wizard_view
+#: model_terms:ir.ui.view,arch_db:bi_basic_generic_import.gen_inv_wizard_view_form
+#: model_terms:ir.ui.view,arch_db:bi_basic_generic_import.gen_mrp_wizard_view_form
+#: model_terms:ir.ui.view,arch_db:bi_basic_generic_import.gen_partner_wizard_view
+#: model_terms:ir.ui.view,arch_db:bi_basic_generic_import.gen_product_wizard_view
+#: model_terms:ir.ui.view,arch_db:bi_basic_generic_import.gen_purchase_wizard_view
+#: model_terms:ir.ui.view,arch_db:bi_basic_generic_import.gen_sale_wizard_view
+#: model_terms:ir.ui.view,arch_db:bi_basic_generic_import.import_account_move_line_view
+#: model_terms:ir.ui.view,arch_db:bi_basic_generic_import.import_customer_payment_wizard
+#: model_terms:ir.ui.view,arch_db:bi_basic_generic_import.import_supplier_info_wizard
+msgid "Import"
+msgstr "Importar"
+
+#. module: bi_basic_generic_import
+#: model:ir.actions.act_window,name:bi_basic_generic_import.bi_gen_bom_wizard_action
+#: model:ir.ui.menu,name:bi_basic_generic_import.bi_gen_bom_wizard_import
+#: model_terms:ir.ui.view,arch_db:bi_basic_generic_import.gen_mrp_wizard_view_form
+msgid "Import BOM"
+msgstr "Importar lista de materiales"
+
+#. module: bi_basic_generic_import
+#: model_terms:ir.ui.view,arch_db:bi_basic_generic_import.bank_statement_import_line_wizard
+msgid "Import Bank Statement Lines"
+msgstr "Importar líneas de extracto bancario"
+
+#. module: bi_basic_generic_import
+#: model:ir.ui.menu,name:bi_basic_generic_import.gen_import_data
+msgid "Import Data"
+msgstr "Datos de importacion"
+
+#. module: bi_basic_generic_import
+#: model:ir.model.fields.selection,name:bi_basic_generic_import.selection__gen_invoice__stage__draft
+msgid "Import Draft Invoice"
+msgstr "Importar borrador de factura"
+
+#. module: bi_basic_generic_import
+#: model:ir.model.fields.selection,name:bi_basic_generic_import.selection__gen_purchase__stage__draft
+msgid "Import Draft Purchase"
+msgstr "Importar borrador de compra"
+
+#. module: bi_basic_generic_import
+#: model:ir.model.fields.selection,name:bi_basic_generic_import.selection__gen_sale__stage__draft
+msgid "Import Draft Quotation"
+msgstr "Importar borrador de cotización"
+
+#. module: bi_basic_generic_import
+#: model:ir.actions.act_window,name:bi_basic_generic_import.gen_inv_wizard
+#: model:ir.ui.menu,name:bi_basic_generic_import.gen_inv_wizard_import
+msgid "Import Inventory"
+msgstr "Importar inventario"
+
+#. module: bi_basic_generic_import
+#: model:ir.actions.act_window,name:bi_basic_generic_import.bi_gen_inv_wizard_action
+#: model:ir.ui.menu,name:bi_basic_generic_import.bi_gen_inv_wizard_import
+#: model_terms:ir.ui.view,arch_db:bi_basic_generic_import.gen_inv_wizard_view_form
+msgid "Import Invoice"
+msgstr "Importar factura"
+
+#. module: bi_basic_generic_import
+#: model:ir.actions.act_window,name:bi_basic_generic_import.action_import_account_move_line
+msgid "Import Journal Entries"
+msgstr "Importar asientos de diario"
+
+#. module: bi_basic_generic_import
+#: model_terms:ir.ui.view,arch_db:bi_basic_generic_import.button_for_import_move_line
+#: model_terms:ir.ui.view,arch_db:bi_basic_generic_import.import_account_move_line_view
+msgid "Import Journal Items"
+msgstr "Importar elementos del diario"
+
+#. module: bi_basic_generic_import
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_mrp__import_material_prod_option
+msgid "Import Material Product By "
+msgstr "Importar producto material por"
+
+#. module: bi_basic_generic_import
+#: model:ir.actions.act_window,name:bi_basic_generic_import.action_gen_partner_import_wizard
+#: model:ir.ui.menu,name:bi_basic_generic_import.gen_partner_import_menu
+#: model_terms:ir.ui.view,arch_db:bi_basic_generic_import.gen_partner_wizard_view
+msgid "Import Partner"
+msgstr "Socia de importación"
+
+#. module: bi_basic_generic_import
+#: model:ir.actions.act_window,name:bi_basic_generic_import.action_import_customer_payment
+#: model:ir.ui.menu,name:bi_basic_generic_import.menu_import_customer_payment_wizard
+#: model_terms:ir.ui.view,arch_db:bi_basic_generic_import.import_customer_payment_wizard
+msgid "Import Payment"
+msgstr "Pago de importación"
+
+#. module: bi_basic_generic_import
+#: model_terms:ir.ui.view,arch_db:bi_basic_generic_import.bi_import_picking_wizard
+msgid "Import Picking"
+msgstr "Importación de picking"
+
+#. module: bi_basic_generic_import
+#: model:ir.actions.act_window,name:bi_basic_generic_import.gen_product_import_wizard
+#: model:ir.ui.menu,name:bi_basic_generic_import.gen_product_wizard_import
+#: model_terms:ir.ui.view,arch_db:bi_basic_generic_import.gen_product_wizard_view
+msgid "Import Product"
+msgstr "Importar producto"
+
+#. module: bi_basic_generic_import
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_inv__import_prod_option
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_invoice__import_prod_option
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_mrp__import_prod_option
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_purchase__import_prod_option
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_sale__import_prod_option
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_import_picking__import_prod_option
+msgid "Import Product By "
+msgstr "Importar producto por"
+
+#. module: bi_basic_generic_import
+#: model:ir.actions.act_window,name:bi_basic_generic_import.gen_pur_wizard
+#: model:ir.ui.menu,name:bi_basic_generic_import.gen_pur_wizard_import
+#: model_terms:ir.ui.view,arch_db:bi_basic_generic_import.gen_purchase_wizard_view
+msgid "Import Purchase"
+msgstr "Importar compra"
+
+#. module: bi_basic_generic_import
+#: model:ir.actions.act_window,name:bi_basic_generic_import.gen_sale_import_wizard
+#: model:ir.ui.menu,name:bi_basic_generic_import.gen_sale_wizard_import
+#: model_terms:ir.ui.view,arch_db:bi_basic_generic_import.gen_sale_wizard_view
+msgid "Import Sale Order"
+msgstr "Orden de venta de importación"
+
+#. module: bi_basic_generic_import
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_inv__lot_option
+msgid "Import Serial/Lot number with Expiry Date"
+msgstr "Importar número de serie / lote con fecha de vencimiento"
+
+#. module: bi_basic_generic_import
+#: model:ir.actions.act_window,name:bi_basic_generic_import.bi_gen_picking_wizard_action
+#: model:ir.ui.menu,name:bi_basic_generic_import.bi_gen_picking_wizard_import
+msgid "Import Shipments And Delivery Orders"
+msgstr "Importar Envíos y Órdenes de Entrega"
+
+#. module: bi_basic_generic_import
+#: model_terms:ir.ui.view,arch_db:bi_basic_generic_import.import_supplier_info_wizard
+msgid "Import Supplierinfo"
+msgstr "Importar información del proveedor"
+
+#. module: bi_basic_generic_import
+#: code:addons/bi_basic_generic_import/models/mrp.py:0
+#, python-format
+msgid "Invalid file"
+msgstr "Archivo inválido"
+
+#. module: bi_basic_generic_import
+#: code:addons/bi_basic_generic_import/models/account_invoice.py:0
+#: code:addons/bi_basic_generic_import/models/account_move.py:0
+#: code:addons/bi_basic_generic_import/models/mrp.py:0
+#: code:addons/bi_basic_generic_import/models/partner.py:0
+#: code:addons/bi_basic_generic_import/models/product.py:0
+#: code:addons/bi_basic_generic_import/models/purchase.py:0
+#: code:addons/bi_basic_generic_import/models/sale.py:0
+#: code:addons/bi_basic_generic_import/models/stock.py:0
+#, python-format
+msgid "Invalid file!"
+msgstr "Archivo inválido!"
+
+#. module: bi_basic_generic_import
+#: model:ir.model,name:bi_basic_generic_import.model_stock_inventory
+msgid "Inventory"
+msgstr "Inventario"
+
+#. module: bi_basic_generic_import
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_inv__inv_name
+msgid "Inventory Name"
+msgstr "Nombre de inventario"
+
+#. module: bi_basic_generic_import
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_account_move__invoice_name
+msgid "Invocie Name"
+msgstr "Nombre de la factura"
+
+#. module: bi_basic_generic_import
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_invoice__stage
+msgid "Invoice Stage Option"
+msgstr "Opción de etapa de factura"
+
+#. module: bi_basic_generic_import
+#: model:ir.model,name:bi_basic_generic_import.model_account_move
+msgid "Journal Entries"
+msgstr "Entradas de diario"
+
+#. module: bi_basic_generic_import
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_account_bank_statement_wizard____last_update
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_inv____last_update
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_invoice____last_update
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_journal_entry____last_update
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_mrp____last_update
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_partner____last_update
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_product____last_update
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_purchase____last_update
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_sale____last_update
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_salepayment____last_update
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_suppinfo____last_update
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_import_picking____last_update
+msgid "Last Modified on"
+msgstr "Última modificación el"
+
+#. module: bi_basic_generic_import
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_account_bank_statement_wizard__write_uid
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_inv__write_uid
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_invoice__write_uid
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_journal_entry__write_uid
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_mrp__write_uid
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_partner__write_uid
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_product__write_uid
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_purchase__write_uid
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_sale__write_uid
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_salepayment__write_uid
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_suppinfo__write_uid
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_import_picking__write_uid
+msgid "Last Updated by"
+msgstr "Actualizado por última vez por"
+
+#. module: bi_basic_generic_import
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_account_bank_statement_wizard__write_date
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_inv__write_date
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_invoice__write_date
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_journal_entry__write_date
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_mrp__write_date
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_partner__write_date
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_product__write_date
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_purchase__write_date
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_sale__write_date
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_salepayment__write_date
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_suppinfo__write_date
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_import_picking__write_date
+msgid "Last Updated on"
+msgstr "Ultima actualización en"
+
+#. module: bi_basic_generic_import
+#: model:ir.model.fields.selection,name:bi_basic_generic_import.selection__gen_suppinfo__create_link_option__link
+msgid "Link with available product template"
+msgstr "Enlace con plantilla de producto disponible"
+
+#. module: bi_basic_generic_import
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_inv__location_ids
+msgid "Location"
+msgstr "Localización"
+
+#. module: bi_basic_generic_import
+#: model:ir.model.fields.selection,name:bi_basic_generic_import.selection__gen_inv__import_prod_option__name
+#: model:ir.model.fields.selection,name:bi_basic_generic_import.selection__gen_invoice__import_prod_option__name
+#: model:ir.model.fields.selection,name:bi_basic_generic_import.selection__gen_mrp__import_material_prod_option__name
+#: model:ir.model.fields.selection,name:bi_basic_generic_import.selection__gen_mrp__import_prod_option__name
+#: model:ir.model.fields.selection,name:bi_basic_generic_import.selection__gen_purchase__import_prod_option__name
+#: model:ir.model.fields.selection,name:bi_basic_generic_import.selection__gen_sale__import_prod_option__name
+#: model:ir.model.fields.selection,name:bi_basic_generic_import.selection__import_picking__import_prod_option__name
+msgid "Name"
+msgstr "Nombre"
+
+#. module: bi_basic_generic_import
+#: model:ir.model.fields.selection,name:bi_basic_generic_import.selection__gen_mrp__bom_type__normal
+msgid "Normal"
+msgstr "Normal"
+
+#. module: bi_basic_generic_import
+#: code:addons/bi_basic_generic_import/models/account_invoice.py:0
+#, python-format
+msgid "Not Valid Salesperson Name \"%s\""
+msgstr "Nombre de vendedor no válido \"%s\""
+
+#. module: bi_basic_generic_import
+#: code:addons/bi_basic_generic_import/models/bank_statement.py:0
+#: code:addons/bi_basic_generic_import/models/picking.py:0
+#, python-format
+msgid "Not a valid file!"
+msgstr "¡No es un archivo válido!"
+
+#. module: bi_basic_generic_import
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_partner__partner_option
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_product__product_option
+msgid "Option"
+msgstr "Opción"
+
+#. module: bi_basic_generic_import
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_salepayment__payment_option
+msgid "Payment"
+msgstr "Pago"
+
+#. module: bi_basic_generic_import
+#: model:ir.model.fields.selection,name:bi_basic_generic_import.selection__gen_mrp__bom_type__phantom
+msgid "Phantom"
+msgstr "Fantasma"
+
+#. module: bi_basic_generic_import
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_import_picking__picking_type_id
+msgid "Picking Type"
+msgstr "Tipo de selección"
+
+#. module: bi_basic_generic_import
+#: code:addons/bi_basic_generic_import/models/payment.py:0
+#: code:addons/bi_basic_generic_import/models/payment.py:0
+#, python-format
+msgid "Please add Date field in sheet."
+msgstr "Agregue el campo de fecha en la hoja."
+
+#. module: bi_basic_generic_import
+#: code:addons/bi_basic_generic_import/models/account_invoice.py:0
+#: code:addons/bi_basic_generic_import/models/account_invoice.py:0
+#, python-format
+msgid "Please define Customer account."
+msgstr "Defina la cuenta del cliente."
+
+#. module: bi_basic_generic_import
+#: code:addons/bi_basic_generic_import/models/account_invoice.py:0
+#: code:addons/bi_basic_generic_import/models/account_invoice.py:0
+#, python-format
+msgid "Please define Vendor account."
+msgstr "Defina la cuenta del proveedor."
+
+#. module: bi_basic_generic_import
+#: code:addons/bi_basic_generic_import/models/account_invoice.py:0
+#, python-format
+msgid "Please define a sequence on the journal."
+msgstr "Defina una secuencia en el diario."
+
+#. module: bi_basic_generic_import
+#: code:addons/bi_basic_generic_import/models/account_invoice.py:0
+#: code:addons/bi_basic_generic_import/models/picking.py:0
+#: code:addons/bi_basic_generic_import/models/purchase.py:0
+#: code:addons/bi_basic_generic_import/models/sale.py:0
+#, python-format
+msgid "Please give the customer name in sheet"
+msgstr "Indique el nombre del cliente en la hoja."
+
+#. module: bi_basic_generic_import
+#: code:addons/bi_basic_generic_import/models/picking.py:0
+#: code:addons/bi_basic_generic_import/models/stock.py:0
+#, python-format
+msgid "Please select a file first then proceed"
+msgstr "Primero seleccione un archivo y luego continúe"
+
+#. module: bi_basic_generic_import
+#: code:addons/bi_basic_generic_import/models/mrp.py:0
+#, python-format
+msgid "Please select file.!"
+msgstr "Seleccione el archivo.!"
+
+#. module: bi_basic_generic_import
+#: code:addons/bi_basic_generic_import/models/sale.py:0
+#, python-format
+msgid "Please select the Product in sheet."
+msgstr "Seleccione el producto en la hoja."
+
+#. module: bi_basic_generic_import
+#: code:addons/bi_basic_generic_import/models/account_invoice.py:0
+#: code:addons/bi_basic_generic_import/models/account_move.py:0
+#: code:addons/bi_basic_generic_import/models/partner.py:0
+#: code:addons/bi_basic_generic_import/models/payment.py:0
+#: code:addons/bi_basic_generic_import/models/product.py:0
+#: code:addons/bi_basic_generic_import/models/purchase.py:0
+#: code:addons/bi_basic_generic_import/models/sale.py:0
+#, python-format
+msgid "Please select the file."
+msgstr "Seleccione el archivo."
+
+#. module: bi_basic_generic_import
+#: code:addons/bi_basic_generic_import/models/account_invoice.py:0
+#: code:addons/bi_basic_generic_import/models/account_move.py:0
+#: code:addons/bi_basic_generic_import/models/bank_statement.py:0
+#: code:addons/bi_basic_generic_import/models/partner.py:0
+#: code:addons/bi_basic_generic_import/models/picking.py:0
+#: code:addons/bi_basic_generic_import/models/product.py:0
+#: code:addons/bi_basic_generic_import/models/purchase.py:0
+#: code:addons/bi_basic_generic_import/models/sale.py:0
+#: code:addons/bi_basic_generic_import/models/stock.py:0
+#, python-format
+msgid "Please upload only csv file.!"
+msgstr "Cargue solo el archivo csv.!"
+
+#. module: bi_basic_generic_import
+#: code:addons/bi_basic_generic_import/models/account_invoice.py:0
+#: code:addons/bi_basic_generic_import/models/account_move.py:0
+#: code:addons/bi_basic_generic_import/models/bank_statement.py:0
+#: code:addons/bi_basic_generic_import/models/partner.py:0
+#: code:addons/bi_basic_generic_import/models/picking.py:0
+#: code:addons/bi_basic_generic_import/models/product.py:0
+#: code:addons/bi_basic_generic_import/models/purchase.py:0
+#: code:addons/bi_basic_generic_import/models/sale.py:0
+#: code:addons/bi_basic_generic_import/models/stock.py:0
+#, python-format
+msgid "Please upload only xls file.!"
+msgstr "Cargue solo el archivo xls.!"
+
+#. module: bi_basic_generic_import
+#: code:addons/bi_basic_generic_import/models/sale.py:0
+#, python-format
+msgid ""
+"Pricelist is different for \"%s\" .\n"
+" Please define same."
+msgstr ""
+
+#. module: bi_basic_generic_import
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_suppinfo__create_link_option
+msgid "Product Option"
+msgstr "Opción de producto"
+
+#. module: bi_basic_generic_import
+#: code:addons/bi_basic_generic_import/models/picking.py:0
+#, python-format
+msgid "Product is not available \"%s\" ."
+msgstr "El producto no esta disponible \"%s\" ."
+
+#. module: bi_basic_generic_import
+#: code:addons/bi_basic_generic_import/models/sale.py:0
+#, python-format
+msgid "Product is not given in sheet"
+msgstr "El producto no se da en la hoja."
+
+#. module: bi_basic_generic_import
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_purchase_order__purchase_name
+msgid "Purchase Name"
+msgstr "Nombre de compra"
+
+#. module: bi_basic_generic_import
+#: model:ir.model,name:bi_basic_generic_import.model_purchase_order
+msgid "Purchase Order"
+msgstr "Orden de compra"
+
+#. module: bi_basic_generic_import
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_purchase__stage
+msgid "Purchase Stage Option"
+msgstr "Opción de etapa de compra"
+
+#. module: bi_basic_generic_import
+#: code:addons/bi_basic_generic_import/models/product.py:0
+#: code:addons/bi_basic_generic_import/models/product.py:0
+#, python-format
+msgid "Purchase UOM field can not be empty"
+msgstr "El campo de UOM de compra no puede estar vacío"
+
+#. module: bi_basic_generic_import
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_sale__stage
+msgid "Quotation Stage Option"
+msgstr "Opción de etapa de cotización"
+
+#. module: bi_basic_generic_import
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_sale_order__sale_name
+msgid "Sale Name"
+msgstr "Nombre de venta"
+
+#. module: bi_basic_generic_import
+#: model:ir.model,name:bi_basic_generic_import.model_sale_order
+msgid "Sales Order"
+msgstr "Órdenes de venta"
+
+#. module: bi_basic_generic_import
+#: model:ir.model.fields.selection,name:bi_basic_generic_import.selection__gen_product__product_search__by_barcode
+msgid "Search By Barcode"
+msgstr "Buscar por código de barras"
+
+#. module: bi_basic_generic_import
+#: model:ir.model.fields.selection,name:bi_basic_generic_import.selection__gen_product__product_search__by_code
+msgid "Search By Code"
+msgstr "Buscar por código"
+
+#. module: bi_basic_generic_import
+#: model:ir.model.fields.selection,name:bi_basic_generic_import.selection__gen_product__product_search__by_name
+msgid "Search By Name"
+msgstr "Buscar por nombre"
+
+#. module: bi_basic_generic_import
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_product__product_search
+msgid "Search Product"
+msgstr "Buscar producto"
+
+#. module: bi_basic_generic_import
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_inv__import_option
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_invoice__import_option
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_journal_entry__import_option
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_mrp__import_option
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_partner__import_option
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_product__import_option
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_purchase__import_option
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_sale__import_option
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_import_picking__import_option
+msgid "Select"
+msgstr "Seleccione"
+
+#. module: bi_basic_generic_import
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_invoice__sequence_opt
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_purchase__sequence_opt
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_sale__sequence_opt
+msgid "Sequence Option"
+msgstr "Opción de secuencia"
+
+#. module: bi_basic_generic_import
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_import_picking__location_id
+msgid "Source Location Zone"
+msgstr "Zona de ubicación de origen"
+
+#. module: bi_basic_generic_import
+#: model:ir.model.fields.selection,name:bi_basic_generic_import.selection__gen_invoice__type__out
+msgid "Supplier"
+msgstr "Proveedora"
+
+#. module: bi_basic_generic_import
+#: model:ir.actions.act_window,name:bi_basic_generic_import.action_import_supplier_info_wizard
+#: model:ir.ui.menu,name:bi_basic_generic_import.menu_import_supplier_info_wizard
+msgid "Supplier Information"
+msgstr "Información del proveedor"
+
+#. module: bi_basic_generic_import
+#: model:ir.model.fields.selection,name:bi_basic_generic_import.selection__gen_salepayment__payment_option__supplier
+msgid "Supplier Pament"
+msgstr "Pago del proveedor"
+
+#. module: bi_basic_generic_import
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_account_move__system_seq
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_purchase_order__system_seq
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_sale_order__system_seq
+msgid "System Sequence"
+msgstr "Secuencia del sistema"
+
+#. module: bi_basic_generic_import
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_gen_invoice__type
+msgid "Type"
+msgstr "Escribe"
+
+#. module: bi_basic_generic_import
+#: model:ir.model.fields,field_description:bi_basic_generic_import.field_import_picking__picking_type_code
+msgid "Type of Operation"
+msgstr "Tipo de operación"
+
+#. module: bi_basic_generic_import
+#: code:addons/bi_basic_generic_import/models/product.py:0
+#: code:addons/bi_basic_generic_import/models/product.py:0
+#, python-format
+msgid "UOM field can not be empty"
+msgstr "El campo UOM no puede estar vacío"
+
+#. module: bi_basic_generic_import
+#: model:ir.model.fields.selection,name:bi_basic_generic_import.selection__gen_partner__partner_option__update
+msgid "Update Partner"
+msgstr "Socio de actualización"
+
+#. module: bi_basic_generic_import
+#: model:ir.model.fields.selection,name:bi_basic_generic_import.selection__gen_product__product_option__update
+msgid "Update Product"
+msgstr "Actualizar producto"
+
+#. module: bi_basic_generic_import
+#: model:ir.model.fields.selection,name:bi_basic_generic_import.selection__gen_invoice__account_opt__default
+msgid "Use Account From Configuration product/Property"
+msgstr "Usar cuenta de producto / propiedad de configuración"
+
+#. module: bi_basic_generic_import
+#: model:ir.model.fields.selection,name:bi_basic_generic_import.selection__gen_invoice__account_opt__custom
+msgid "Use Account From Excel/CSV"
+msgstr "Usar cuenta de Excel / CSV"
+
+#. module: bi_basic_generic_import
+#: model:ir.model.fields.selection,name:bi_basic_generic_import.selection__gen_invoice__sequence_opt__custom
+#: model:ir.model.fields.selection,name:bi_basic_generic_import.selection__gen_purchase__sequence_opt__custom
+#: model:ir.model.fields.selection,name:bi_basic_generic_import.selection__gen_sale__sequence_opt__custom
+msgid "Use Excel/CSV Sequence Number"
+msgstr "Utilice el número de secuencia de Excel / CSV"
+
+#. module: bi_basic_generic_import
+#: model:ir.model.fields.selection,name:bi_basic_generic_import.selection__gen_invoice__sequence_opt__system
+#: model:ir.model.fields.selection,name:bi_basic_generic_import.selection__gen_purchase__sequence_opt__system
+#: model:ir.model.fields.selection,name:bi_basic_generic_import.selection__gen_sale__sequence_opt__system
+msgid "Use System Default Sequence Number"
+msgstr "Usar el número de secuencia predeterminado del sistema"
+
+#. module: bi_basic_generic_import
+#: code:addons/bi_basic_generic_import/models/account_invoice.py:0
+#, python-format
+msgid ""
+"User(Salesperson) is different for \"%s\" .\n"
+" Please define same."
+msgstr ""
+
+#. module: bi_basic_generic_import
+#: model:ir.model.fields.selection,name:bi_basic_generic_import.selection__gen_invoice__stage__confirm
+msgid "Validate Invoice Automatically With Import"
+msgstr "Validar factura automáticamente con importación"
+
+#. module: bi_basic_generic_import
+#: model:ir.model.fields.selection,name:bi_basic_generic_import.selection__gen_invoice__type__ven_credit_note
+msgid "Vendor Credit Note"
+msgstr "Nota de crédito del proveedor"
+
+#. module: bi_basic_generic_import
+#: code:addons/bi_basic_generic_import/models/purchase.py:0
+#, python-format
+msgid "We cannot import data in validated or confirmed order."
+msgstr "No podemos importar datos en un orden validado o confirmado."
+
+#. module: bi_basic_generic_import
+#: code:addons/bi_basic_generic_import/models/account_move.py:0
+#, python-format
+msgid "Wrong Account Code"
+msgstr "Código de cuenta incorrecto"
+
+#. module: bi_basic_generic_import
+#: code:addons/bi_basic_generic_import/models/account_move.py:0
+#: code:addons/bi_basic_generic_import/models/account_move.py:0
+#, python-format
+msgid "Wrong Account Code %s"
+msgstr "Código de cuenta incorrecto% s"
+
+#. module: bi_basic_generic_import
+#: code:addons/bi_basic_generic_import/models/account_move.py:0
+#, python-format
+msgid "Wrong Analytic Account Name %s"
+msgstr "Nombre de cuenta analítico incorrecto% s"
+
+#. module: bi_basic_generic_import
+#: model:ir.model.fields.selection,name:bi_basic_generic_import.selection__gen_inv__import_option__xls
+#: model:ir.model.fields.selection,name:bi_basic_generic_import.selection__gen_invoice__import_option__xls
+#: model:ir.model.fields.selection,name:bi_basic_generic_import.selection__gen_journal_entry__import_option__xls
+#: model:ir.model.fields.selection,name:bi_basic_generic_import.selection__gen_mrp__import_option__xls
+#: model:ir.model.fields.selection,name:bi_basic_generic_import.selection__gen_partner__import_option__xls
+#: model:ir.model.fields.selection,name:bi_basic_generic_import.selection__gen_product__import_option__xls
+#: model:ir.model.fields.selection,name:bi_basic_generic_import.selection__gen_purchase__import_option__xls
+#: model:ir.model.fields.selection,name:bi_basic_generic_import.selection__gen_sale__import_option__xls
+#: model:ir.model.fields.selection,name:bi_basic_generic_import.selection__import_picking__import_option__xls
+msgid "XLS File"
+msgstr "Archivo XLS"
+
+#. module: bi_basic_generic_import
+#: code:addons/bi_basic_generic_import/models/account_invoice.py:0
+#: code:addons/bi_basic_generic_import/models/account_invoice.py:0
+#, python-format
+msgid "Your File has extra column please refer sample file"
+msgstr "Su archivo tiene una columna adicional, consulte el archivo de muestra"
+
+#. module: bi_basic_generic_import
+#: code:addons/bi_basic_generic_import/models/account_invoice.py:0
+#: code:addons/bi_basic_generic_import/models/account_invoice.py:0
+#, python-format
+msgid "Your File has less column please refer sample file"
+msgstr "Su archivo tiene menos columnas, consulte el archivo de muestra"
+
+#. module: bi_basic_generic_import
+#: model:ir.model,name:bi_basic_generic_import.model_account_bank_statement_wizard
+msgid "account.bank.statement.wizard"
+msgstr ""
+
+#. module: bi_basic_generic_import
+#: model:ir.actions.act_window,name:bi_basic_generic_import.action_bank_statement_import_line_wizard
+msgid "action bank statement import line wizard"
+msgstr "asistente de línea de importación de extracto bancario de acción"
+
+#. module: bi_basic_generic_import
+#: model:ir.model,name:bi_basic_generic_import.model_gen_inv
+msgid "gen.inv"
+msgstr ""
+
+#. module: bi_basic_generic_import
+#: model:ir.model,name:bi_basic_generic_import.model_gen_invoice
+msgid "gen.invoice"
+msgstr ""
+
+#. module: bi_basic_generic_import
+#: model:ir.model,name:bi_basic_generic_import.model_gen_journal_entry
+msgid "gen.journal.entry"
+msgstr ""
+
+#. module: bi_basic_generic_import
+#: model:ir.model,name:bi_basic_generic_import.model_gen_mrp
+msgid "gen.mrp"
+msgstr ""
+
+#. module: bi_basic_generic_import
+#: model:ir.model,name:bi_basic_generic_import.model_gen_partner
+msgid "gen.partner"
+msgstr ""
+
+#. module: bi_basic_generic_import
+#: model:ir.model,name:bi_basic_generic_import.model_gen_product
+msgid "gen.product"
+msgstr ""
+
+#. module: bi_basic_generic_import
+#: model:ir.model,name:bi_basic_generic_import.model_gen_purchase
+msgid "gen.purchase"
+msgstr ""
+
+#. module: bi_basic_generic_import
+#: model:ir.model,name:bi_basic_generic_import.model_gen_sale
+msgid "gen.sale"
+msgstr ""
+
+#. module: bi_basic_generic_import
+#: model:ir.model,name:bi_basic_generic_import.model_gen_salepayment
+msgid "gen.salepayment"
+msgstr ""
+
+#. module: bi_basic_generic_import
+#: model:ir.model,name:bi_basic_generic_import.model_gen_suppinfo
+msgid "gen.suppinfo"
+msgstr ""
+
+#. module: bi_basic_generic_import
+#: model:ir.model,name:bi_basic_generic_import.model_import_picking
+msgid "import.picking"
+msgstr ""
+
+#. module: bi_basic_generic_import
+#: model_terms:ir.ui.view,arch_db:bi_basic_generic_import.bank_statement_import_line_wizard
+msgid "or"
+msgstr "o"

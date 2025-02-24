@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		
+		<!-- customer or warehose report -->
+		
+		<report id="report_sale" string="Sale Report"
+				model="sale.reports"
+				report_type="qweb-pdf"
+				file="itmcs_statistical_reports.report_salereport"
+				name="itmcs_statistical_reports.report_salereport"
+			/>
+		
+		<!-- overdue report -->
+		
+		<report id="report_overdue"
+				string="Overdue Report"
+				model="overdue.report"
+				report_type="qweb-pdf"
+				file="itmcs_statistical_reports.report_overduereport"
+				name="itmcs_statistical_reports.report_overduereport"
+			/>
+		
+		<!-- stock report -->
+		
+		<report id="report_stock" string="Stock Report" model="stock.report" report_type="qweb-pdf"
+			file="itmcs_statistical_reports.report_stockreport" name="itmcs_statistical_reports.report_stockreport"
+			/>
+		
+		<!-- profit analysis report -->
+		
+		<report id="report_profitanalysis" string="Profit Analysis" model="profit.analysis.report"
+			report_type="qweb-pdf" file="itmcs_statistical_reports.report_profitanalysisreport"
+			name="itmcs_statistical_reports.report_profitanalysisreport" />
+		
+		<!-- purchase analysis report -->
+		
+		<report id="report_purchaseanalysis" string="Purchase Analysis" model="purchase.analysis.report"
+			report_type="qweb-pdf" file="itmcs_statistical_reports.report_purchaseanalysisreport"
+			name="itmcs_statistical_reports.report_purchaseanalysisreport" />
+		
+		<!-- Cash Ledger report -->
+		
+		<report id="report_cashledger"
+				string="Cash Ledger"
+				model="cash.report"
+				report_type="qweb-pdf"
+				file="itmcs_statistical_reports.report_cashreport"
+				name="itmcs_statistical_reports.report_cashreport"
+			/>
+	</data>
+</odoo>

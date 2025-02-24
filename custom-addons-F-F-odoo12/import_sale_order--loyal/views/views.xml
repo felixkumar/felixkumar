@@ -1,0 +1,48 @@
+<odoo>
+    <data>
+
+
+        <record id="import_sale_order_wizard_view" model="ir.ui.view">
+            <field name="name">Import Sale Order</field>
+            <field name="model">import.sale.order</field>
+            <field name="arch" type="xml">
+                <form string="Import Sale Order">
+                    <group>
+                        <group>
+                            <field name="import_option" widget='radio' />
+                            <field name="product_selection" widget='radio' />
+
+                        </group>
+                    </group>
+                      <group>
+                    <field name="file" filename="name"/>
+                </group>
+
+<!--                    <group>-->
+<!--                    <group string="Download Sample XLS and CSV Files">-->
+<!--                        <field name="down_samp_file" widget="checkbox" />-->
+<!--                        <field name="sample_option" widget="radio" attrs="{'invisible': [('down_samp_file', '=', False)]}"/>-->
+<!--                        <button name="download_auto" string="Download Sample File" type="object" class="oe_highlight" attrs="{'invisible': [('down_samp_file', '=', False)]}"/>-->
+<!--                    </group>-->
+<!--                    </group>-->
+                    <footer>
+                        <button name="import_xls" string="Import" type="object"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="import_sale_order_wizard_action" model="ir.actions.act_window">
+            <field name="name">Import Sale Order</field>
+            <field name="res_model">import.sale.order</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem name="Import Sale Order" action="import_sale_order_wizard_action"
+                  id="import_sale_order_wizard_menu"
+                  parent="sale.sale_menu_root" sequence="30"/>
+
+    </data>
+</odoo>
+

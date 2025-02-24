@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  <data>
+
+
+      <!-- Here we inherit the sale order view so that we can force the proper category on the UOM
+           This fixes a bug within Odoo as well, which doesn't preserve the category upon editing existing records-->
+     <record id="sale_order_form_view_inherit_product_uomconv" model="ir.ui.view">
+
+            <field name="name">sale.order.form.inherit</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='order_line']/tree/field[@name='qty_to_invoice']" position="after">
+                    <field name="relcatid" invisible="1"/>
+                </xpath>
+
+                <xpath expr="//field[@name='order_line']/tree/field[@name='product_uom']" position="replace">
+                    <field name="product_uom" domain="[('category_id', '=', relcatid)]" attrs="{'readonly': [('state', 'in', ('sale','done', 'cancel'))]}" context="{'company_id': parent.company_id}" groups="uom.group_uom" options="{'no_open' : True}, {'no_create' : True},{'no_create_edit' : True}"/>
+                </xpath>
+            </field>
+     </record>
+
+
+
+ </data>
+</openerp>
