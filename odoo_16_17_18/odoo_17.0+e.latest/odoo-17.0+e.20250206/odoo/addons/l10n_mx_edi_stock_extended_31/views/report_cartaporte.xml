@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="l10n_mx_edi_stock_report_cartaporte" inherit_id="l10n_mx_edi_stock_extended_30.l10n_mx_edi_stock_report_cartaporte">
+        <xpath expr="//div[@id='mx_edi_detail_cartaporte_1']" position="inside">
+            <div name="regimenes_aduanero" t-if="cartaporte_values.get('regimenes_aduanero')" class="cp-data">Regimenes Aduanero: <t t-out="cartaporte_values['regimenes_aduanero']"/></div>
+        </xpath>
+    </template>
+</odoo>

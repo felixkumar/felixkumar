@@ -1,0 +1,74 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* account_saft
+# 
+# Translators:
+# Martin Trigaux, 2022
+# Andy Yiu, 2023
+# Junko Augias, 2023
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-02-06 13:24+0000\n"
+"PO-Revision-Date: 2022-09-22 05:45+0000\n"
+"Last-Translator: Junko Augias, 2023\n"
+"Language-Team: Japanese (https://app.transifex.com/odoo/teams/41243/ja/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Language: ja\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#. module: account_saft
+#: model:ir.model,name:account_saft.model_account_report
+msgid "Accounting Report"
+msgstr "会計レポート"
+
+#. module: account_saft
+#: model_terms:ir.ui.view,arch_db:account_saft.saft_template
+msgid "Odoo"
+msgstr "Odoo"
+
+#. module: account_saft
+#: model_terms:ir.ui.view,arch_db:account_saft.saft_template
+msgid "Odoo SA"
+msgstr "Odoo SA"
+
+#. module: account_saft
+#. odoo-python
+#: code:addons/account_saft/models/account_general_ledger.py:0
+#, python-format
+msgid "Please define `Company Registry` for your company."
+msgstr "会社の「会社登記簿」を定義して下さい。"
+
+#. module: account_saft
+#. odoo-python
+#: code:addons/account_saft/models/account_general_ledger.py:0
+#, python-format
+msgid "Please define a `Phone` or `Mobile` for your company."
+msgstr "「電話番号」または「携帯電話番号」を指定してください。"
+
+#. module: account_saft
+#. odoo-python
+#: code:addons/account_saft/models/account_general_ledger.py:0
+#, python-format
+msgid ""
+"Please define at least one address (Zip/City) for the following partners: "
+"%s."
+msgstr "以下の取引先について、少なくとも1つの住所（郵便番号/市町村）を定義して下さい：%s"
+
+#. module: account_saft
+#. odoo-python
+#: code:addons/account_saft/models/account_general_ledger.py:0
+#, python-format
+msgid "Please define one or more Contacts belonging to your company."
+msgstr "会社に属する連絡先を1つ以上定義して下さい。"
+
+#. module: account_saft
+#. odoo-python
+#: code:addons/account_saft/models/account_general_ledger.py:0
+#, python-format
+msgid "SAFT is only compatible with one column group."
+msgstr "SAFTは1つの列グループとしか互換性がありません。"

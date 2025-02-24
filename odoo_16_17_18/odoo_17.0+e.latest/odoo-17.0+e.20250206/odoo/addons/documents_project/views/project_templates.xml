@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="documents_project.portal_tasks_list" inherit_id="project.portal_tasks_list">
+        <xpath expr="//div[@name='project_name']/span" position="attributes">
+            <attribute name="class" separator=" " add="text-dark"/>
+        </xpath>
+        <xpath expr="//div[@name='project_name']" position="inside">
+            <t t-set="_project" t-value="tasks[0].project_id"/>
+            <span t-if="_project.use_documents and _project.shared_document_count and _project._check_project_read_access()" class="ms-auto">
+                <a class="btn btn-secondary px-1 py-0" target="_blank" t-attf-href="/my/projects/{{ _project.id }}/documents?{{ keep_query() }}">
+                    <t t-out="_project.shared_document_count"/> Documents
+                </a>
+            </span>
+        </xpath>
+    </template>
+</odoo>

@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="mod_349" model="account.report">
+        <field name="name">Tax Report (Mod 349)</field>
+        <field name="filter_analytic" eval="False"/>
+        <field name="filter_date_range" eval="True"/>
+        <field name="filter_period_comparison" eval="True"/>
+        <field name="filter_unfold_all" eval="True"/>
+        <field name="filter_journals" eval="False"/>
+        <field name="country_id" ref="base.es"/>
+        <field name="filter_multi_company">tax_units</field>
+        <field name="root_report_id" ref="account.generic_tax_report"/>
+        <field name="custom_handler_model_id" ref="model_l10n_es_mod349_tax_report_handler"/>
+        <field name="column_ids">
+            <record id="mod_349_column" model="account.report.column">
+                <field name="name">Balance</field>
+                <field name="expression_label">balance</field>
+            </record>
+        </field>
+        <field name="line_ids">
+            <record id="mod_349_summary_title" model="account.report.line">
+                <field name="name">Resumen</field>
+                <field name="code">aeat_mod_349_summary_title</field>
+                <field name="children_ids">
+                    <record id="mod_349_statistics_invoices_partners_count" model="account.report.line">
+                        <field name="name">Número total de operadores intracomunitarios</field>
+                        <field name="code">aeat_mod_349_statistics_invoices_partners_count</field>
+                        <field name="groupby">partner_id</field>
+                        <field name="foldable" eval="True"/>
+                        <field name="expression_ids">
+                            <record id="mod_349_statistics_invoices_partners_count_balance" model="account.report.expression">
+                                <field name="label">balance</field>
+                                <field name="engine">custom</field>
+                                <field name="formula">_report_custom_engine_modelo349_invoice_totals</field>
+                                <field name="subformula">value</field>
+                                <field name="figure_type">none</field>
+                            </record>
+                        </field>
+                    </record>
+                    <record id="mod_349_statistics_invoices_total_amount" model="account.report.line">
+                        <field name="name">Importe de las operaciones intracomunitarias</field>
+                        <field name="code">aeat_mod_349_statistics_invoices_total_amount</field>
+                        <field name="expression_ids">
+                            <record id="mod_349_statistics_invoices_total_amount_balance" model="account.report.expression">
+                                <field name="label">balance</field>
+                                <field name="engine">aggregation</field>
+                                <field name="formula">
+                                    aeat_mod_349_supplies.balance +
+                                    aeat_mod_349_acquisitions.balance +
+                                    aeat_mod_349_triangular.balance +
+                                    aeat_mod_349_services_sold.balance +
+                                    aeat_mod_349_services_acquired.balance +
+                                    aeat_mod_349_supplies_without_taxes.balance +
+                                    aeat_mod_349_supplies_without_taxes_legal_representative.balance +
+                                    aeat_mod_349_consignment_sales_agreements.balance +
+                                    aeat_mod_349_returns_goods_consignment.balance +
+                                    aeat_mod_349_substitutions.balance
+                                </field>
+                                <field name="subformula" eval="False"/>
+                            </record>
+                        </field>
+                    </record>
+                    <record id="mod_349_statistics_refunds_partners_count" model="account.report.line">
+                        <field name="name">Número total de operadores intracomunitarios con rectificaciones</field>
+                        <field name="code">aeat_mod_349_statistics_refunds_partners_count</field>
+                        <field name="groupby">partner_id</field>
+                        <field name="foldable" eval="True"/>
+                        <field name="expression_ids">
+                            <record id="mod_349_statistics_refunds_partners_count_balance" model="account.report.expression">
+                                <field name="label">balance</field>
+                                <field name="engine">custom</field>
+                                <field name="formula">_report_custom_engine_modelo349_refund_totals</field>
+                                <field name="subformula">value</field>
+                                <field name="figure_type">none</field>
+                            </record>
+                        </field>
+                    </record>
+                    <record id="mod_349_statistics_refunds_total_amount" model="account.report.line">
+                        <field name="name">Importe de las operaciones intracomunitarias con rectificaciones</field>
+                        <field name="code">aeat_mod_349_statistics_refunds_total_amount</field>
+                        <field name="expression_ids">
+                            <record id="mod_349_statistics_refunds_total_amount_balance" model="account.report.expression">
+                                <field name="label">balance</field>
+                                <field name="engine">aggregation</field>
+                                <field name="formula">
+                                    aeat_mod_349_supplies_refunds.balance +
+                                    aeat_mod_349_acquisitions_refunds.balance +
+                                    aeat_mod_349_triangular_refunds.balance +
+                                    aeat_mod_349_services_sold_refunds.balance +
+                                    aeat_mod_349_services_acquired_refunds.balance +
+                                    aeat_mod_349_supplies_without_taxes_refunds.balance +
+                                    aeat_mod_349_supplies_without_taxes_legal_representative_refunds.balance +
+                                    aeat_mod_349_consignment_sales_agreements_refunds.balance +
+                                    aeat_mod_349_returns_goods_consignment_refunds.balance +
+                                    aeat_mod_349_substitutions_refunds.balance
+                                </field>
+                                <field name="subformula" eval="False"/>
+                            </record>
+                        </field>
+                    </record>
+                </field>
+            </record>
+            <record id="mod_349_invoices_title" model="account.report.line">
+                <field name="name">Facturas</field>
+                <field name="code">aeat_mod_349_invoices_title</field>
+                <field name="children_ids">
+                    <record id="mod_349_supplies" model="account.report.line">
+                        <field name="name">E. Entregas intracomunitarias</field>
+                        <field name="code">aeat_mod_349_supplies</field>
+                        <field name="groupby">partner_id</field>
+                        <field name="foldable" eval="True"/>
+                        <field name="expression_ids">
+                            <record id="aeat_mod_349_supplies_balance" model="account.report.expression">
+                                <field name="label">balance</field>
+                                <field name="engine">custom</field>
+                                <field name="formula">_report_custom_engine_modelo349_invoice_e</field>
+                                <field name="subformula">value</field>
+                            </record>
+                        </field>
+                    </record>
+                    <record id="mod_349_acquisitions" model="account.report.line">
+                        <field name="name">A. Adquisiciones intracomunitarias sujetas</field>
+                        <field name="code">aeat_mod_349_acquisitions</field>
+                        <field name="groupby">partner_id</field>
+                        <field name="foldable" eval="True"/>
+                        <field name="expression_ids">
+                            <record id="mod_349_acquisitions_balance" model="account.report.expression">
+                                <field name="label">balance</field>
+                                <field name="engine">custom</field>
+                                <field name="formula">_report_custom_engine_modelo349_invoice_a</field>
+                                <field name="subformula">value</field>
+                            </record>
+                        </field>
+                    </record>
+                    <record id="mod_349_triangular" model="account.report.line">
+                        <field name="name">T. Entregas en otros Estados miembros subsiguientes a adquisiciones intracomunitarias exentas en el marco de operaciones triangulares</field>
+                        <field name="code">aeat_mod_349_triangular</field>
+                        <field name="groupby">partner_id</field>
+                        <field name="foldable" eval="True"/>
+                        <field name="expression_ids">
+                            <record id="mod_349_triangular_balance" model="account.report.expression">
+                                <field name="label">balance</field>
+                                <field name="engine">custom</field>
+                                <field name="formula">_report_custom_engine_modelo349_invoice_t</field>
+                                <field name="subformula">value</field>
+                            </record>
+                        </field>
+                    </record>
+                    <record id="mod_349_services_sold" model="account.report.line">
+                        <field name="name">S. Prestaciones intracomunitarias de servicios realizadas por el declarante</field>
+                        <field name="code">aeat_mod_349_services_sold</field>
+                        <field name="groupby">partner_id</field>
+                        <field name="foldable" eval="True"/>
+                        <field name="expression_ids">
+                            <record id="mod_349_services_sold_balance" model="account.report.expression">
+                                <field name="label">balance</field>
+                                <field name="engine">custom</field>
+                                <field name="formula">_report_custom_engine_modelo349_invoice_s</field>
+                                <field name="subformula">value</field>
+                            </record>
+                        </field>
+                    </record>
+                    <record id="mod_349_services_acquired" model="account.report.line">
+                        <field name="name">I. Adquisiciones intracomunitarias de servicios</field>
+                        <field name="code">aeat_mod_349_services_acquired</field>
+                        <field name="groupby">partner_id</field>
+                        <field name="foldable" eval="True"/>
+                        <field name="expression_ids">
+                            <record id="mod_349_services_acquired_balance" model="account.report.expression">
+                                <field name="label">balance</field>
+                                <field name="engine">custom</field>
+                                <field name="formula">_report_custom_engine_modelo349_invoice_i</field>
+                                <field name="subformula">value</field>
+                            </record>
+                        </field>
+                    </record>
+                    <record id="mod_349_supplies_without_taxes" model="account.report.line">
+                        <field name="name">M. Entregas intracomunitarias de bienes posteriores a una importación exenta</field>
+                        <field name="code">aeat_mod_349_supplies_without_taxes</field>
+                        <field name="groupby">partner_id</field>
+                        <field name="foldable" eval="True"/>
+                        <field name="expression_ids">
+                            <record id="mod_349_supplies_without_taxes_balance" model="account.report.expression">
+                                <field name="label">balance</field>
+                                <field name="engine">custom</field>
+                                <field name="formula">_report_custom_engine_modelo349_invoice_m</field>
+                                <field name="subformula">value</field>
+                            </record>
+                        </field>
+                    </record>
+                    <record id="mod_349_supplies_without_taxes_legal_representative" model="account.report.line">
+                        <field name="name">H. Entregas intracomunitarias de bienes posteriores a una importación exenta efectuadas por el representante fiscal</field>
+                        <field name="code">aeat_mod_349_supplies_without_taxes_legal_representative</field>
+                        <field name="groupby">partner_id</field>
+                        <field name="foldable" eval="True"/>
+                        <field name="expression_ids">
+                            <record id="mod_349_supplies_without_taxes_legal_representative_balance" model="account.report.expression">
+                                <field name="label">balance</field>
+                                <field name="engine">custom</field>
+                                <field name="formula">_report_custom_engine_modelo349_invoice_h</field>
+                                <field name="subformula">value</field>
+                            </record>
+                        </field>
+                    </record>
+                    <record id="mod_349_consignment_sales_agreements" model="account.report.line">
+                        <field name="name">R. Transferencias de bienes realizadas en virtud de contratos de venta en consignación</field>
+                        <field name="code">aeat_mod_349_consignment_sales_agreements</field>
+                        <field name="groupby">partner_id</field>
+                        <field name="foldable" eval="True"/>
+                        <field name="expression_ids">
+                            <record id="mod_349_consignment_sales_agreements_balance" model="account.report.expression">
+                                <field name="label">balance</field>
+                                <field name="engine">custom</field>
+                                <field name="formula">_report_custom_engine_modelo349_invoice_r</field>
+                                <field name="subformula">value</field>
+                            </record>
+                        </field>
+                    </record>
+                    <record id="mod_349_returns_goods_consignment" model="account.report.line">
+                        <field name="name">D. Devoluciones de mercancías previamente enviadas desde el TAI</field>
+                        <field name="code">aeat_mod_349_returns_goods_consignment</field>
+                        <field name="groupby">partner_id</field>
+                        <field name="foldable" eval="True"/>
+                        <field name="expression_ids">
+                            <record id="mod_349_returns_goods_consignment_balance" model="account.report.expression">
+                                <field name="label">balance</field>
+                                <field name="engine">custom</field>
+                                <field name="formula">_report_custom_engine_modelo349_invoice_d</field>
+                                <field name="subformula">value</field>
+                            </record>
+                        </field>
+                    </record>
+                    <record id="mod_349_substitutions" model="account.report.line">
+                        <field name="name">C. Sustitución de bienes</field>
+                        <field name="code">aeat_mod_349_substitutions</field>
+                        <field name="groupby">partner_id</field>
+                        <field name="foldable" eval="True"/>
+                        <field name="expression_ids">
+                            <record id="mod_349_substitutions_balance" model="account.report.expression">
+                                <field name="label">balance</field>
+                                <field name="engine">custom</field>
+                                <field name="formula">_report_custom_engine_modelo349_invoice_c</field>
+                                <field name="subformula">value</field>
+                            </record>
+                        </field>
+                    </record>
+                </field>
+            </record>
+            <record id="mod_349_refunds_title" model="account.report.line">
+                <field name="name">Rectificaciones</field>
+                <field name="code">aeat_mod_349_refunds_title</field>
+                <field name="children_ids">
+                    <record id="mod_349_supplies_refunds" model="account.report.line">
+                        <field name="name">E. Entregas intracomunitarias exentas</field>
+                        <field name="code">aeat_mod_349_supplies_refunds</field>
+                        <field name="groupby">partner_id</field>
+                        <field name="foldable" eval="True"/>
+                        <field name="expression_ids">
+                            <record id="mod_349_supplies_refunds_balance" model="account.report.expression">
+                                <field name="label">balance</field>
+                                <field name="engine">custom</field>
+                                <field name="formula">_report_custom_engine_modelo349_refund_e</field>
+                                <field name="subformula">value</field>
+                            </record>
+                        </field>
+                    </record>
+                    <record id="mod_349_acquisitions_refunds" model="account.report.line">
+                        <field name="name">A. Adquisiciones intracomunitarias sujetas</field>
+                        <field name="code">aeat_mod_349_acquisitions_refunds</field>
+                        <field name="groupby">partner_id</field>
+                        <field name="foldable" eval="True"/>
+                        <field name="expression_ids">
+                            <record id="mod_349_acquisitions_refunds_balance" model="account.report.expression">
+                                <field name="label">balance</field>
+                                <field name="engine">custom</field>
+                                <field name="formula">_report_custom_engine_modelo349_refund_a</field>
+                                <field name="subformula">value</field>
+                            </record>
+                        </field>
+                    </record>
+                    <record id="mod_349_triangular_refunds" model="account.report.line">
+                        <field name="name">T. Entregas en otros Estados miembros subsiguientes a adquisiciones intracomunitarias exentas en el marco de operaciones triangulares</field>
+                        <field name="code">aeat_mod_349_triangular_refunds</field>
+                        <field name="groupby">partner_id</field>
+                        <field name="foldable" eval="True"/>
+                        <field name="expression_ids">
+                            <record id="mod_349_triangular_refunds_balance" model="account.report.expression">
+                                <field name="label">balance</field>
+                                <field name="engine">custom</field>
+                                <field name="formula">_report_custom_engine_modelo349_refund_t</field>
+                                <field name="subformula">value</field>
+                            </record>
+                        </field>
+                    </record>
+                    <record id="mod_349_services_sold_refunds" model="account.report.line">
+                        <field name="name">S. Prestaciones intracomunitarias de servicios realizadas por el declarante</field>
+                        <field name="code">aeat_mod_349_services_sold_refunds</field>
+                        <field name="groupby">partner_id</field>
+                        <field name="foldable" eval="True"/>
+                        <field name="expression_ids">
+                            <record id="mod_349_services_sold_refunds_balance" model="account.report.expression">
+                                <field name="label">balance</field>
+                                <field name="engine">custom</field>
+                                <field name="formula">_report_custom_engine_modelo349_refund_s</field>
+                                <field name="subformula">value</field>
+                            </record>
+                        </field>
+                    </record>
+                    <record id="mod_349_services_acquired_refunds" model="account.report.line">
+                        <field name="name">I. Adquisiciones intracomunitarias de servicios</field>
+                        <field name="code">aeat_mod_349_services_acquired_refunds</field>
+                        <field name="groupby">partner_id</field>
+                        <field name="foldable" eval="True"/>
+                        <field name="expression_ids">
+                            <record id="mod_349_services_acquired_refunds_balance" model="account.report.expression">
+                                <field name="label">balance</field>
+                                <field name="engine">custom</field>
+                                <field name="formula">_report_custom_engine_modelo349_refund_i</field>
+                                <field name="subformula">value</field>
+                            </record>
+                        </field>
+                    </record>
+                    <record id="mod_349_supplies_without_taxes_refunds" model="account.report.line">
+                        <field name="name">M. Entregas intracomunitarias de bienes posteriores a una importación exenta</field>
+                        <field name="code">aeat_mod_349_supplies_without_taxes_refunds</field>
+                        <field name="groupby">partner_id</field>
+                        <field name="foldable" eval="True"/>
+                        <field name="expression_ids">
+                            <record id="mod_349_supplies_without_taxes_refunds_balance" model="account.report.expression">
+                                <field name="label">balance</field>
+                                <field name="engine">custom</field>
+                                <field name="formula">_report_custom_engine_modelo349_refund_m</field>
+                                <field name="subformula">value</field>
+                            </record>
+                        </field>
+                    </record>
+                    <record id="mod_349_supplies_without_taxes_legal_representative_refunds" model="account.report.line">
+                        <field name="name">H. Entregas intracomunitarias de bienes posteriores a una importación exenta efectuadas por el representante fiscal</field>
+                        <field name="code">aeat_mod_349_supplies_without_taxes_legal_representative_refunds</field>
+                        <field name="groupby">partner_id</field>
+                        <field name="foldable" eval="True"/>
+                        <field name="expression_ids">
+                            <record id="mod_349_supplies_without_taxes_legal_representative_refunds_balance" model="account.report.expression">
+                                <field name="label">balance</field>
+                                <field name="engine">custom</field>
+                                <field name="formula">_report_custom_engine_modelo349_refund_h</field>
+                                <field name="subformula">value</field>
+                            </record>
+                        </field>
+                    </record>
+                    <record id="mod_349_consignment_sales_agreements_refunds" model="account.report.line">
+                        <field name="name">R. Rectificaciones de las transferencias de bienes realizadas en virtud de contratos de venta en consignación</field>
+                        <field name="code">aeat_mod_349_consignment_sales_agreements_refunds</field>
+                        <field name="groupby">partner_id</field>
+                        <field name="foldable" eval="True"/>
+                        <field name="expression_ids">
+                            <record id="mod_349_consignment_sales_agreements_refunds_balance" model="account.report.expression">
+                                <field name="label">balance</field>
+                                <field name="engine">custom</field>
+                                <field name="formula">_report_custom_engine_modelo349_refund_r</field>
+                                <field name="subformula">value</field>
+                            </record>
+                        </field>
+                    </record>
+                    <record id="mod_349_returns_goods_consignment_refunds" model="account.report.line">
+                        <field name="name">D. Rectificaciones de devoluciones de mercancías previamente enviadas desde el TAI</field>
+                        <field name="code">aeat_mod_349_returns_goods_consignment_refunds</field>
+                        <field name="groupby">partner_id</field>
+                        <field name="foldable" eval="True"/>
+                        <field name="expression_ids">
+                            <record id="mod_349_returns_goods_consignment_refunds_balance" model="account.report.expression">
+                                <field name="label">balance</field>
+                                <field name="engine">custom</field>
+                                <field name="formula">_report_custom_engine_modelo349_refund_d</field>
+                                <field name="subformula">value</field>
+                            </record>
+                        </field>
+                    </record>
+                    <record id="mod_349_substitutions_refunds" model="account.report.line">
+                        <field name="name">C. Rectificaciones por sustitución de bienes</field>
+                        <field name="code">aeat_mod_349_substitutions_refunds</field>
+                        <field name="groupby">partner_id</field>
+                        <field name="foldable" eval="True"/>
+                        <field name="expression_ids">
+                            <record id="mod_349_substitutions_refunds_balance" model="account.report.expression">
+                                <field name="label">balance</field>
+                                <field name="engine">custom</field>
+                                <field name="formula">_report_custom_engine_modelo349_refund_c</field>
+                                <field name="subformula">value</field>
+                            </record>
+                        </field>
+                    </record>
+                </field>
+            </record>
+        </field>
+    </record>
+</odoo>

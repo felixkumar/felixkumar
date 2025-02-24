@@ -1,0 +1,685 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* l10n_de_reports
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-02-13 22:06+0000\n"
+"PO-Revision-Date: 2024-02-13 22:06+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: l10n_de_reports
+#: model:account.report.line,name:l10n_de_reports.skr_bs_liabilities_2023_c_1
+msgid "1. Anleihen, davon konvertibeln"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:account.report.line,name:l10n_de_reports.skr_bs_asset_a_iii_1
+#: model:account.report.line,name:l10n_de_reports.skr_bs_asset_b_iii_1
+msgid "1. Anteile an verbundenen Unternehmen"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:account.report.line,name:l10n_de_reports.skr_bs_asset_b_ii_1
+msgid "1. Forderungen aus Lieferungen und Leistungen"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:account.report.line,name:l10n_de_reports.skr_bs_liabilities_a_iii_1
+msgid "1. Gesetzliche Rücklage"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:account.report.line,name:l10n_de_reports.skr_bs_asset_a_ii_1
+msgid "1. Grundstücke. grundstücksgleiche Rechte und Bauten"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:account.report.line,name:l10n_de_reports.skr_bs_asset_b_i_1
+msgid "1. Roh-, Hilfs- und Betriebsstoffe"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:account.report.line,name:l10n_de_reports.skr_bs_liabilities_2023_b_1
+msgid "1. Rückstellungen für Pensionen und ähnliche Verpflichtungen"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:account.report.line,name:l10n_de_reports.skr_bs_asset_a_i_1
+msgid ""
+"1. Selbst geschaffene gewerbliche Schutzrechte und ähnliche Rechte und Werte"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:account.report.line,name:l10n_de_reports.skr_pl_line_income_1
+msgid "1. Umsatzerlöse"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:account.report.line,name:l10n_de_reports.skr_pl_line_business_operation_2
+msgid ""
+"10. Erträge aus anderen Wertpapieren und Ausleihungen des "
+"Finanzanlagevermögens"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:account.report.line,name:l10n_de_reports.skr_pl_line_business_operation_3
+msgid "11. Sonstige Zinsen und ähnliche Erträge"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:account.report.line,name:l10n_de_reports.skr_pl_line_business_operation_4
+msgid ""
+"12. Abschreibungen auf Finanzanlagen und auf Wertpapiere des Umlaufvermögens"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:account.report.line,name:l10n_de_reports.skr_pl_line_business_operation_5
+msgid "13. Zinsen und ähnliche Aufwendungen"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:account.report.line,name:l10n_de_reports.skr_pl_line_taxes_1
+msgid "14. Steuern vom Einkommen und Ertrag"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:account.report.line,name:l10n_de_reports.skr_pl_line_taxes_2
+msgid "15. Sonstige Steuern"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:account.report.line,name:l10n_de_reports.skr_bs_asset_a_iii_2
+msgid "2. Ausleihungen an verbundene Unternehmen"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:account.report.line,name:l10n_de_reports.skr_pl_line_income_2
+msgid ""
+"2. Erhöhung oder Verminderung des Bestands an fertigen und unfertigen "
+"Erzeugnissen"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:account.report.line,name:l10n_de_reports.skr_bs_asset_b_ii_2
+msgid "2. Forderungen gegen verbundene Unternehmen"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:account.report.line,name:l10n_de_reports.skr_bs_asset_a_i_2
+msgid "2. Konzessionen, Lizenzen und ähnliche Rechte und Werte"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:account.report.line,name:l10n_de_reports.skr_bs_liabilities_a_iii_2
+msgid ""
+"2. Rücklage für Anteile an einem herrschenden oder mehrheitlich beteiligten "
+"Unternehmen"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:account.report.line,name:l10n_de_reports.skr_bs_liabilities_2023_b_2
+msgid "2. Steuerrückstellungen"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:account.report.line,name:l10n_de_reports.skr_bs_asset_a_ii_2
+msgid "2. Technische  Anlagen und Maschinen"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:account.report.line,name:l10n_de_reports.skr_bs_asset_b_i_2
+msgid "2. Unfertige Erzeugnisse, unfertige Leistungen"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:account.report.line,name:l10n_de_reports.skr_bs_liabilities_2023_c_2
+msgid "2. Verbindlichkeiten gegenüber Kreditinstituten"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:account.report.line,name:l10n_de_reports.skr_bs_asset_b_iii_2
+msgid "2. sonstige Wertpapiere"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:account.report.line,name:l10n_de_reports.skr_bs_asset_a_ii_3
+msgid "3. Andere Anlagen. Betriebs- und Geschäftsausstattung"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:account.report.line,name:l10n_de_reports.skr_pl_line_income_3
+msgid "3. Andere aktivierte Eigenleistungen"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:account.report.line,name:l10n_de_reports.skr_bs_asset_a_iii_3
+msgid "3. Beteiligungen"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:account.report.line,name:l10n_de_reports.skr_bs_liabilities_2023_c_3
+msgid "3. Erhaltene Anzahlungen auf Bestellungen"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:account.report.line,name:l10n_de_reports.skr_bs_asset_b_i_3
+msgid "3. Fertige Erzeugnisse und Waren"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:account.report.line,name:l10n_de_reports.skr_bs_asset_b_ii_3
+msgid ""
+"3. Forderungen gegen Unternehmen, mit denen ein Beteiligungsverhältnis "
+"besteht"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:account.report.line,name:l10n_de_reports.skr_bs_asset_a_i_3
+msgid "3. Geschäfts- oder Firmenwert"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:account.report.line,name:l10n_de_reports.skr_bs_liabilities_a_iii_3
+msgid "3. Satzungsmäßige Rücklagen"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:account.report.line,name:l10n_de_reports.skr_bs_liabilities_2023_b_3
+msgid "3. Sonstige Rückstellungen"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:account.report.line,name:l10n_de_reports.skr_bs_liabilities_a_iii_4
+msgid "4. Andere Gewinnrücklagen"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:account.report.line,name:l10n_de_reports.skr_bs_asset_a_iii_4
+msgid ""
+"4. Ausleihungen an Unternehmen, mit denen ein Beteiligungsverhältnis besteht"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:account.report.line,name:l10n_de_reports.skr_bs_asset_b_i_4
+msgid "4. Geleistete Anzahlungen"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:account.report.line,name:l10n_de_reports.skr_bs_asset_a_ii_4
+msgid "4. Geleistete Anzahlungen und Anlagen im Bau"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:account.report.line,name:l10n_de_reports.skr_bs_asset_b_ii_4
+msgid "4. Sonstige Vermögensgegenstände"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:account.report.line,name:l10n_de_reports.skr_pl_line_income_4
+msgid "4. Sonstige betriebliche Erträge"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:account.report.line,name:l10n_de_reports.skr_bs_liabilities_2023_c_4
+msgid "4. Verbindlichkeiten aus Lieferungen und Leistungen"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:account.report.line,name:l10n_de_reports.skr_bs_asset_a_i_4
+msgid "4. geleistete Anzahlungen"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:account.report.line,name:l10n_de_reports.skr_pl_line_expense_1
+msgid "5. Materialaufwand"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:account.report.line,name:l10n_de_reports.skr_bs_liabilities_2023_c_5
+msgid ""
+"5. Verbindlichkeiten aus der Annahme gezogener Wechsel und der Ausstellung "
+"eigener Wechsel"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:account.report.line,name:l10n_de_reports.skr_bs_asset_a_iii_5
+msgid "5. Wertpapiere des Anlagevermögens"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:account.report.line,name:l10n_de_reports.skr_pl_line_expense_2
+msgid "6. Personalaufwand"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:account.report.line,name:l10n_de_reports.skr_bs_liabilities_2023_c_6
+msgid "6. Verbindlichkeiten gegenüber verbundenen Unternehmen"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:account.report.line,name:l10n_de_reports.skr_bs_asset_a_iii_6
+msgid "6. sonstige Ausleihungen"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:account.report.line,name:l10n_de_reports.skr_pl_line_expense_3
+msgid "7. Abschreibungen"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:account.report.line,name:l10n_de_reports.skr_bs_liabilities_2023_c_7
+msgid ""
+"7. Verbindlichkeiten gegenüber Unternehmen, mit denen ein "
+"Beteiligungsverhältnis besteht"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:account.report.line,name:l10n_de_reports.skr_bs_liabilities_2023_c_8
+msgid ""
+"8. Sonstige Verbindlichkeiten, davon aus Steuern, davon im Rahmen der "
+"sozialen Sicherheit"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:account.report.line,name:l10n_de_reports.skr_pl_line_expense_4
+msgid "8. Sonstige betriebliche Aufwendungen"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:account.report.line,name:l10n_de_reports.skr_pl_line_business_operation_1
+msgid "9. Erträge aus Beteiligungen"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:account.report.line,name:l10n_de_reports.skr_bs_asset_a
+msgid "A. Anlagevermögen"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:account.report.line,name:l10n_de_reports.skr_bs_liabilities_a
+msgid "A. Eigenkapital"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:account.report.line,name:l10n_de_reports.skr_asset_total
+msgid "Aktivseite"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:account.report.column,name:l10n_de_reports.account_financial_report_ec_sales_amount
+msgid "Amount"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:account.report.line,name:l10n_de_reports.skr_bs_liabilities_2023_b
+msgid "B. Rückstellungen"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:account.report.line,name:l10n_de_reports.skr_bs_asset_b
+msgid "B. Umlaufvermögen"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:account.report.column,name:l10n_de_reports.balance_sheet_l10n_de_column
+#: model:account.report.column,name:l10n_de_reports.p_and_l_l10n_de_column
+msgid "Balance"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:account.report,name:l10n_de_reports.balance_sheet_l10n_de
+msgid "Balance Sheet"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:account.report.line,name:l10n_de_reports.skr_pl_line_income
+msgid "Betriebliche Erlöse"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:account.report.line,name:l10n_de_reports.skr_pl_line_expense
+msgid "Betriebsergebnis"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:account.report.line,name:l10n_de_reports.skr_bs_asset_c
+msgid "C. Rechnungsabgrenzungsposten"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:account.report.line,name:l10n_de_reports.skr_bs_liabilities_2023_c
+msgid "C. Verbindlichkeiten"
+msgstr ""
+
+#. module: l10n_de_reports
+#. odoo-python
+#: code:addons/l10n_de_reports/models/account_sales_report.py:0
+#, python-format
+msgid "CSV"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:ir.model,name:l10n_de_reports.model_res_company
+msgid "Companies"
+msgstr ""
+
+#. module: l10n_de_reports
+#. odoo-python
+#: code:addons/l10n_de_reports/models/account_generic_tax_report.py:0
+#, python-format
+msgid "Configure your company"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:ir.model,name:l10n_de_reports.model_res_partner
+msgid "Contact"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:account.report.column,name:l10n_de_reports.account_financial_report_ec_sales_country
+msgid "Country Code"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:account.report.line,name:l10n_de_reports.skr_bs_asset_d
+msgid "D. Aktive latente Steuern"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:account.report.line,name:l10n_de_reports.skr_bs_liabilities_2023_d
+msgid "D. Rechnungsabgrenzungsposten"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:ir.model.fields,field_description:l10n_de_reports.field_res_partner__l10n_de_datev_identifier
+#: model:ir.model.fields,field_description:l10n_de_reports.field_res_users__l10n_de_datev_identifier
+msgid "DateV Vendor"
+msgstr ""
+
+#. module: l10n_de_reports
+#. odoo-python
+#: code:addons/l10n_de_reports/models/datev_export_csv.py:0
+#, python-format
+msgid "Datev (zip)"
+msgstr ""
+
+#. module: l10n_de_reports
+#. odoo-python
+#: code:addons/l10n_de_reports/models/datev_export_csv.py:0
+#, python-format
+msgid "Datev + batch zip"
+msgstr ""
+
+#. module: l10n_de_reports
+#. odoo-python
+#: code:addons/l10n_de_reports/models/datev_export_csv.py:0
+#, python-format
+msgid "Datev ATCH (zip)"
+msgstr ""
+
+#. module: l10n_de_reports
+#. odoo-python
+#: code:addons/l10n_de_reports/models/datev_export_csv.py:0
+#, python-format
+msgid "Datev DATA (zip)"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:account.report.line,name:l10n_de_reports.skr_bs_asset_e
+msgid "E. Aktiver Unterschiedsbetrag aus der Vermögensverrechnung"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:account.report.line,name:l10n_de_reports.skr_bs_liabilities_2023_e
+msgid "E. Passive latente Steuern"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:account.report,name:l10n_de_reports.german_ec_sales_report
+msgid "EC sales Report"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:account.report.line,name:l10n_de_reports.skr_pl_line_business_operation
+msgid "Ergebnis der gewöhnlichen Geschäftstätigkeit"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:account.report.line,name:l10n_de_reports.skr_pl_line_taxes
+msgid "Ergebnis nach Steuern"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:account.report.line,name:l10n_de_reports.skr_pl_line_expense_4_4
+msgid "Fahrzeugkosten"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:account.report.line,name:l10n_de_reports.skr_pl_line_finance_operation
+msgid "Finanzergebnis"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:ir.model,name:l10n_de_reports.model_account_general_ledger_report_handler
+msgid "General Ledger Custom Handler"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:ir.model,name:l10n_de_reports.model_l10n_de_ec_sales_report_handler
+msgid "German EC Sales Report Custom Handler"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:ir.model,name:l10n_de_reports.model_l10n_de_tax_report_handler
+msgid "German Tax Report Custom Handler"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:account.report.line,name:l10n_de_reports.skr_bs_liabilities_a_i
+msgid "I. Gezeichnetes Kapital"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:account.report.line,name:l10n_de_reports.skr_bs_asset_a_i
+msgid "I. Immaterielle Vermögensgegenstände"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:account.report.line,name:l10n_de_reports.skr_bs_asset_b_i
+msgid "I. Vorräte"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:account.report.line,name:l10n_de_reports.skr_bs_asset_b_ii
+msgid "II. Forderungen und sonstige Vermögensgegenstände"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:account.report.line,name:l10n_de_reports.skr_bs_liabilities_a_ii
+msgid "II. Kapitalrücklage"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:account.report.line,name:l10n_de_reports.skr_bs_asset_a_ii
+msgid "II. Sachanlagen"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:account.report.line,name:l10n_de_reports.skr_bs_asset_a_iii
+msgid "III. Finanzanlagen"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:account.report.line,name:l10n_de_reports.skr_bs_liabilities_a_iii
+msgid "III. Gewinnrücklagen"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:account.report.line,name:l10n_de_reports.skr_bs_asset_b_iii
+msgid "III. Wertpapiere"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:account.report.line,name:l10n_de_reports.skr_bs_liabilities_a_iv
+msgid "IV. Gewinnvortrag/Verlustvortrag"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:account.report.line,name:l10n_de_reports.skr_bs_asset_b_iv
+msgid ""
+"IV. Kassenbestand, Bundesbankguthaben, Guthaben bei Kreditinstituten und "
+"Schecks"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:ir.model.fields,help:l10n_de_reports.field_res_partner__l10n_de_datev_identifier
+#: model:ir.model.fields,help:l10n_de_reports.field_res_users__l10n_de_datev_identifier
+msgid ""
+"In the DateV export of the General Ledger, each vendor will be identified by"
+" this identifier. If this identifier is not set, the database id of the "
+"partner will be added to a multiple of ten starting by the number 7.The "
+"account code's length can be specified in the company settings."
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:account.report.line,name:l10n_de_reports.skr_pl_line_total
+msgid "Jahresüberschuss (Gewinn oder Verlust)"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:ir.model,name:l10n_de_reports.model_account_move
+msgid "Journal Entry"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:account.report.line,name:l10n_de_reports.skr_pl_line_expense_4_6
+msgid "Kosten der Warenabgabe"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:ir.model.fields,field_description:l10n_de_reports.field_res_company__l10n_de_datev_client_number
+msgid "L10N De Datev Client Number"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:ir.model.fields,field_description:l10n_de_reports.field_res_company__l10n_de_datev_consultant_number
+msgid "L10N De Datev Consultant Number"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:ir.model.fields,field_description:l10n_de_reports.field_account_bank_statement_line__l10n_de_datev_main_account_id
+#: model:ir.model.fields,field_description:l10n_de_reports.field_account_move__l10n_de_datev_main_account_id
+#: model:ir.model.fields,field_description:l10n_de_reports.field_account_payment__l10n_de_datev_main_account_id
+msgid "L10N De Datev Main Account"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:account.report.line,name:l10n_de_reports.account_financial_report_de_off_sheet
+msgid "OFF BALANCE SHEET ACCOUNTS"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:account.report.line,name:l10n_de_reports.skr_liabilities_total
+msgid "Passivseite"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:account.report,name:l10n_de_reports.p_and_l_l10n_de
+msgid "Profit and Loss"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:account.report.line,name:l10n_de_reports.skr_pl_line_expense_4_1
+msgid "Raumkosten"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:account.report.line,name:l10n_de_reports.skr_pl_line_expense_4_3
+msgid "Reparaturen und Instandhaltungen"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:account.report.line,name:l10n_de_reports.skr_pl_line_expense_mat
+msgid "Rohergebnis"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:account.report.column,name:l10n_de_reports.account_financial_report_ec_sales_tax
+msgid "Tax Code"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:account.report.line,name:l10n_de_reports.skr_bs_liabilities_a_v
+msgid "V. Jahresüberschuß/Jahresfehlbetrag"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:account.report.column,name:l10n_de_reports.account_financial_report_ec_sales_vat
+msgid "VAT Number"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:account.report.line,name:l10n_de_reports.skr_pl_line_expense_4_2
+msgid "Versicherungen, Beiträge und Abgaben"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:account.report.line,name:l10n_de_reports.skr_pl_line_expense_4_5
+msgid "Werbe- und Reisekosten"
+msgstr ""
+
+#. module: l10n_de_reports
+#. odoo-python
+#: code:addons/l10n_de_reports/models/account_generic_tax_report.py:0
+#: code:addons/l10n_de_reports/models/account_generic_tax_report.py:0
+#, python-format
+msgid "XML"
+msgstr ""
+
+#. module: l10n_de_reports
+#. odoo-python
+#: code:addons/l10n_de_reports/models/datev_export_csv.py:0
+#, python-format
+msgid "You have already defined a partner with the same Datev identifier. "
+msgstr ""
+
+#. module: l10n_de_reports
+#. odoo-python
+#: code:addons/l10n_de_reports/models/account_generic_tax_report.py:0
+#, python-format
+msgid "Your company's SteuerNummer field should be filled"
+msgstr ""
+
+#. module: l10n_de_reports
+#. odoo-python
+#: code:addons/l10n_de_reports/models/account_generic_tax_report.py:0
+#, python-format
+msgid "Your company's SteuerNummer is not compatible with your state"
+msgstr ""
+
+#. module: l10n_de_reports
+#. odoo-python
+#: code:addons/l10n_de_reports/models/account_generic_tax_report.py:0
+#, python-format
+msgid "Your company's SteuerNummer is not valid"
+msgstr ""
+
+#. module: l10n_de_reports
+#. odoo-python
+#: code:addons/l10n_de_reports/models/account_sales_report.py:0
+#, python-format
+msgid "ZIP"
+msgstr ""
+
+#. module: l10n_de_reports
+#: model:account.report.line,name:l10n_de_reports.skr_pl_line_expense_4_7
+msgid "verschiedene betriebliche Kosten"
+msgstr ""

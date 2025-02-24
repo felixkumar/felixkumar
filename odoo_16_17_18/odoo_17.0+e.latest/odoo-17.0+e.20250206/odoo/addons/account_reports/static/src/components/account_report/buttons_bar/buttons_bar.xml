@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates>
+    <t t-name="account_reports.AccountReportButtonsBar">
+        <t t-if="controller.buttons.length">
+            <!-- Single buttons -->
+            <t t-foreach="buttons.single" t-as="singleButton" t-key="singleButton_index">
+                <button
+                    t-att-class="'btn text-nowrap' + (singleButton.disabled ? ' disabled' : '') + (singleButton_first ? ' btn-primary' : ' btn-secondary')"
+                    t-on-click="(ev) => controller.reportAction(ev, singleButton.action, singleButton.action_param, true)"
+                >
+                    <t t-out="singleButton.name"/>
+                </button>
+            </t>
+
+            <!-- Grouped buttons -->
+            <t t-if="buttons.grouped.length">
+                <Dropdown togglerClass="'btn btn-secondary'" showCaret="true" class="'btn-group'">
+                    <t t-foreach="buttons.grouped" t-as="groupedButton" t-key="groupedButton_index">
+                        <DropdownItem>
+                            <button
+                                t-att-class="'btn btn-link text-nowrap' + (groupedButton.disabled ? ' disabled' : '')"
+                                t-on-click="(ev) => controller.reportAction(ev, groupedButton.action, groupedButton.action_param, true)"
+                            >
+                                <t t-out="groupedButton.name"/>
+                            </button>
+                        </DropdownItem>
+                    </t>
+                </Dropdown>
+            </t>
+        </t>
+    </t>
+</templates>

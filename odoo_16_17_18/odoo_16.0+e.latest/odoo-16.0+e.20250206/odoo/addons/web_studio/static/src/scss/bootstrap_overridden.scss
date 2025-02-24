@@ -1,0 +1,12 @@
+///
+/// This file is a copy of the bootstrap _variables.scss file where all the
+/// left-untouched variables definition have been removed.
+///
+
+// Prefix for :root CSS variables
+$variable-prefix: '' !default;
+
+// FIXME: this is a copy of web/../bootstrap_overriden
+// As a fix, we can't afford to put that file in the manifest
+// So, we do a manual copy
+$modal-inner-padding: 16px;

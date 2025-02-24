@@ -1,0 +1,3052 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* knowledge
+# 
+# Translators:
+# Bohdan Lisnenko, 2022
+# Martin Trigaux, 2023
+# Alina Lisnenko <alina.lisnenko@erp.co.ua>, 2024
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-02-06 13:23+0000\n"
+"PO-Revision-Date: 2022-09-22 05:47+0000\n"
+"Last-Translator: Alina Lisnenko <alina.lisnenko@erp.co.ua>, 2024\n"
+"Language-Team: Ukrainian (https://app.transifex.com/odoo/teams/41243/uk/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Language: uk\n"
+"Plural-Forms: nplurals=4; plural=(n % 1 == 0 && n % 10 == 1 && n % 100 != 11 ? 0 : n % 1 == 0 && n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14) ? 1 : n % 1 == 0 && (n % 10 ==0 || (n % 10 >=5 && n % 10 <=9) || (n % 100 >=11 && n % 100 <=14 )) ? 2: 3);\n"
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/models/knowledge_article.py:0
+#, python-format
+msgid ""
+"\n"
+"            Deleted articles are stored in Trash an extra\n"
+"            <b>%(threshold)s</b> days\n"
+"            before being permanently removed for your database"
+msgstr ""
+"\n"
+"            Видалені статті додатково зберігаються у кошику\n"
+"            <b>%(threshold)s</b> днів\n"
+"            перед остаточним видаленням для вашої бази даних"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/move_article_dialog/move_article_dialog.xml:0
+#, python-format
+msgid "\" under:"
+msgstr "\" під:"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__favorite_count
+msgid "#Is Favorite"
+msgstr "К-сть улюблених"
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/models/knowledge_article.py:0
+#: code:addons/knowledge/models/knowledge_article.py:0
+#: code:addons/knowledge/models/knowledge_article.py:0
+#, python-format
+msgid "%s (copy)"
+msgstr "%s (копія)"
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/models/knowledge_article.py:0
+#, python-format
+msgid "%s has been sent to Trash"
+msgstr "%s надіслано до смітника"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_mail_invite
+msgid ".<br/><br/>"
+msgstr ".<br/><br/>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_frontend
+msgid "<i class=\"fa fa-circle-o-notch fa-2x fa-spin\" title=\"loader\" role=\"img\"/>"
+msgstr "<i class=\"fa fa-circle-o-notch fa-2x fa-spin\" title=\"loader\" role=\"img\"/>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid "<i class=\"fa fa-fw fa-ellipsis-v\" title=\"Open kebab menu\"/>"
+msgstr "<i class=\"fa fa-fw fa-ellipsis-v\" title=\"Open kebab menu\"/>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid "<i class=\"fa fa-fw fa-lg fa-angle-double-right\"/> Move To"
+msgstr "<i class=\"fa fa-fw fa-lg fa-angle-double-right\"/> Перемістити до"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid "<i class=\"fa fa-fw fa-lg fa-archive\"/> Unarchive"
+msgstr "<i class=\"fa fa-fw fa-lg fa-archive\"/> Розархівувати"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid "<i class=\"fa fa-fw fa-lg fa-arrows-h\"/> Full Width"
+msgstr "<i class=\"fa fa-fw fa-lg fa-arrows-h\"/> На всю ширину"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid "<i class=\"fa fa-fw fa-lg fa-cog\" title=\"Add properties\"/> Add Properties"
+msgstr ""
+"<i class=\"fa fa-fw fa-lg fa-cog\" title=\"Add properties\"/> Додати "
+"властивості"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid "<i class=\"fa fa-fw fa-lg fa-copy\"/> Create a Copy"
+msgstr "<i class=\"fa fa-fw fa-lg fa-copy\"/> Створити копію"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid "<i class=\"fa fa-fw fa-lg fa-lock\"/> Lock"
+msgstr "<i class=\"fa fa-fw fa-lg fa-lock\"/> Заблокувати"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid "<i class=\"fa fa-fw fa-lg fa-picture-o\" title=\"Add cover\"/> Add cover"
+msgstr ""
+"<i class=\"fa fa-fw fa-lg fa-picture-o\" title=\"Add cover\"/> Додати "
+"обкладинку"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid "<i class=\"fa fa-fw fa-lg fa-picture-o\" title=\"Change cover\"/> Change cover"
+msgstr ""
+"<i class=\"fa fa-fw fa-lg fa-picture-o\" title=\"Change cover\"/> Змінити "
+"обкладинку"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid "<i class=\"fa fa-fw fa-lg fa-smile-o\" title=\"Add icon\"/> Add icon"
+msgstr "<i class=\"fa fa-fw fa-lg fa-smile-o\" title=\"Add icon\"/> Додати іконку"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid "<i class=\"fa fa-fw fa-lg fa-trash\"/> Delete"
+msgstr "<i class=\"fa fa-fw fa-lg fa-trash\"/> Видалити"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid "<i class=\"fa fa-fw fa-lg fa-trash-o\" title=\"Remove cover\"/> Remove cover"
+msgstr ""
+"<i class=\"fa fa-fw fa-lg fa-trash-o\" title=\"Remove cover\"/> Вилучити "
+"обкладинку"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid "<i class=\"fa fa-fw fa-lg fa-trash-o\"/> Restore from Trash"
+msgstr "<i class=\"fa fa-fw fa-lg fa-trash-o\"/> Відновити з кошика"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid "<i class=\"fa fa-fw fa-lg fa-unlock\"/> Unlock"
+msgstr "<i class=\"fa fa-fw fa-lg fa-unlock\"/> Розблокувати"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid ""
+"<i class=\"fa fa-fw fa-lock\" title=\"This article is locked\" "
+"attrs=\"{'invisible': ['|', '|', ('is_locked', '=', False), "
+"('user_can_write', '=', False), ('active', '=', False)]}\"/>"
+msgstr ""
+"<i class=\"fa fa-fw fa-lock\" title=\"This article is locked\" "
+"attrs=\"{'invisible': ['|', '|', ('is_locked', '=', False), "
+"('user_can_write', '=', False), ('active', '=', False)]}\"/>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.articles_template_name
+msgid "<i class=\"fa fa-fw fa-plus\" title=\"Create a nested article\"/>"
+msgstr "<i class=\"fa fa-fw fa-plus\" title=\"Create a nested article\"/>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_tree
+msgid "<i class=\"fa fa-fw fa-plus\" title=\"Create a new article in workspace\"/>"
+msgstr "<i class=\"fa fa-fw fa-plus\" title=\"Create a new article in workspace\"/>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_tree
+msgid "<i class=\"fa fa-fw fa-plus\" title=\"Create a new private article\"/>"
+msgstr "<i class=\"fa fa-fw fa-plus\" title=\"Create a new private article\"/>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid ""
+"<i class=\"fa fa-lg fa-star\" title=\"Remove from favorites\" attrs=\"{'invisible': [('is_user_favorite', '=', False)]}\"/>\n"
+"                                        <i class=\"fa fa-lg fa-star-o\" title=\"Add to favorites\" attrs=\"{'invisible': [('is_user_favorite', '=', True)]}\"/>"
+msgstr ""
+"<i class=\"fa fa-lg fa-star\" title=\"Remove from favorites\" attrs=\"{'invisible': [('is_user_favorite', '=', False)]}\"/>\n"
+"                                        <i class=\"fa fa-lg fa-star-o\" title=\"Add to favorites\" attrs=\"{'invisible': [('is_user_favorite', '=', True)]}\"/>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid "<i class=\"fa fa-plus-circle me-1\"/>New"
+msgstr "<i class=\"fa fa-plus-circle me-1\"/>Новий"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid "<i class=\"fa fa-share-alt me-1\"/>Share"
+msgstr "<i class=\"fa fa-share-alt me-1\"/>Поділитися"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_kanban
+msgid "<i class=\"fa fa-star\" title=\"Remove from favorites\"/>"
+msgstr "<i class=\"fa fa-star\" title=\"Remove from favorites\"/>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_kanban
+msgid "<i class=\"fa fa-star-o\" title=\"Add to favorites\"/>"
+msgstr "<i class=\"fa fa-star-o\" title=\"Add to favorites\"/>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid ""
+"<i class=\"fa fa-trash\"/>\n"
+"                                            <span class=\"ps-2 flex-grow-1 text-truncate\">\n"
+"                                                Open the Trash\n"
+"                                            </span>"
+msgstr ""
+"<i class=\"fa fa-trash\"/>\n"
+"                                            <span class=\"ps-2 flex-grow-1 text-truncate\">\n"
+"                                                Відкрити смітник\n"
+"                                            </span>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid "<i class=\"fa fa-user-plus fs-3\" title=\"Invite People\"/>"
+msgstr "<i class=\"fa fa-user-plus fs-3\" title=\"Invite People\"/>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_invite_view_form
+msgid ""
+"<i class=\"fa fa-w fa-info-circle\"/> All external users you selected won't "
+"be added to the members."
+msgstr ""
+"<i class=\"fa fa-w fa-info-circle\"/> Усі зовнішні користувачі, яких ви "
+"вибрали, не будуть додані до учасників."
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_invite_view_form
+msgid ""
+"<i class=\"fa fa-w fa-info-circle\"/> External users cannot write on "
+"Articles and will be granted read access instead."
+msgstr ""
+"<i class=\"fa fa-w fa-info-circle\"/> Зовнішні користувачі не можуть писати "
+"в статтях, натомість їм буде надано доступ для читання."
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid "<i class=\"oi oi-search pe-2\" title=\"search\"/>"
+msgstr "<i class=\"oi oi-search pe-2\" title=\"search\"/>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid "<i class=\"rounded-circle text-center fa fa-cog\" title=\"Show Properties\"/>"
+msgstr "<i class=\"rounded-circle text-center fa fa-cog\" title=\"Show Properties\"/>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid ""
+"<i class=\"rounded-circle text-center fa fa-fw fa-comments\" title=\"Open "
+"chatter\"/>"
+msgstr ""
+"<i class=\"rounded-circle text-center fa fa-fw fa-comments\" title=\"Open "
+"chatter\"/>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_tree
+msgid "<i>There are no Articles in your Workspace.</i>"
+msgstr "<i>У вашій папці немає статей.</i>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_tree
+msgid "<i>You do not have any private Articles.</i>"
+msgstr "<i>У вас немає приватних статей.</i>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid "<span class=\"mx-1\">-</span>"
+msgstr "<span class=\"mx-1\">-</span>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid ""
+"<span style=\"font-size: 14px;\">\n"
+"                    Add a checklist\n"
+"                    (/<span style=\"font-style: italic;\">checklist</span>)\n"
+"                </span>"
+msgstr ""
+"<span style=\"font-size: 14px;\">\n"
+"                    Додайте чекліст\n"
+"                    (/<span style=\"font-style: italic;\">checklist</span>)\n"
+"                </span>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid ""
+"<span style=\"font-size: 14px;\">\n"
+"                    Add a separator\n"
+"                    (/<span style=\"font-style: italic;\">separator</span>)\n"
+"                </span>"
+msgstr ""
+"<span style=\"font-size: 14px;\">\n"
+"                    Додайте роздільник\n"
+"                    (/<span style=\"font-style: italic;\">separator</span>)\n"
+"                </span>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid ""
+"<span style=\"font-size: 14px;\">\n"
+"                    Use\n"
+"                    /<span style=\"font-style: italic;\">heading</span>\n"
+"                    to convert a text into a title\n"
+"                </span>"
+msgstr ""
+"<span style=\"font-size: 14px;\">\n"
+"                    Використовуйте\n"
+"                    /<span style=\"font-style: italic;\">heading</span>\n"
+"                    щоб конвертувати текст у заголовок\n"
+"                </span>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid ""
+"<span style=\"font-size: 14px;\">\n"
+"            <span style=\"font-weight: bolder;\">\n"
+"                <font class=\"text-o-color-2\">Favorites</font>\n"
+"            </span>\n"
+"            — Those are\n"
+"            <span style=\"font-weight: bolder;\">\n"
+"                <font class=\"text-o-color-2\">shortcuts</font>\n"
+"            </span>\n"
+"            you create for yourself.\n"
+"            Unstar this page at the top to remove it from your favorites.\n"
+"        </span>"
+msgstr ""
+"<span style=\"font-size: 14px;\">\n"
+"            <span style=\"font-weight: bolder;\">\n"
+"                <font class=\"text-o-color-2\">Збережені</font>\n"
+"            </span>\n"
+"            — Це\n"
+"            <span style=\"font-weight: bolder;\">\n"
+"                <font class=\"text-o-color-2\">ярлики</font>\n"
+"            </span>\n"
+"            які ви створили для себе.\n"
+"            Зніміть зірочку з цієї сторінки вгорі, щоб видалити її з вибраного.\n"
+"        </span>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid ""
+"<span style=\"font-size: 14px;\">\n"
+"            <span style=\"font-weight: bolder;\">\n"
+"                <font class=\"text-o-color-2\">Private</font>\n"
+"            </span>\n"
+"        </span>\n"
+"        <span style=\"font-size: 14px;\">\n"
+"            — This is\n"
+"            <span style=\"font-weight: bolder;\"><font class=\"text-o-color-2\">your stuff</font></span>,\n"
+"            the things you keep for yourself\n"
+"            (<span style=\"font-style: italic;\">Drafts, Todo lists, ...</span>)\n"
+"        </span>"
+msgstr ""
+"<span style=\"font-size: 14px;\">\n"
+"            <span style=\"font-weight: bolder;\">\n"
+"                <font class=\"text-o-color-2\">Приватний</font>\n"
+"            </span>\n"
+"        </span>\n"
+"        <span style=\"font-size: 14px;\">\n"
+"            — Це\n"
+"            <span style=\"font-weight: bolder;\"><font class=\"text-o-color-2\">ваша річ</font></span>,\n"
+"            яку ви тримаєте для себе\n"
+"            (<span style=\"font-style: italic;\">Чернетка, Список Зробити, ...</span>)\n"
+"        </span>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid ""
+"<span style=\"font-size: 14px;\">\n"
+"            <span style=\"font-weight: bolder;\">\n"
+"                <font class=\"text-o-color-2\">Shared</font>\n"
+"            </span>\n"
+"        </span>\n"
+"        <span style=\"font-size: 14px;\">\n"
+"            — Those are the ones you\n"
+"            <span style=\"font-weight: bolder;\">\n"
+"                <font class=\"text-o-color-2\">have invited someone or been invited to</font>\n"
+"            </span>\n"
+"        </span>"
+msgstr ""
+"<span style=\"font-size: 14px;\">\n"
+"            <span style=\"font-weight: bolder;\">\n"
+"                <font class=\"text-o-color-2\">Зі спільним доступом</font>\n"
+"            </span>\n"
+"        </span>\n"
+"        <span style=\"font-size: 14px;\">\n"
+"            — Це ті, до яких ви\n"
+"            <span style=\"font-weight: bolder;\">\n"
+"                <font class=\"text-o-color-2\">запросили когось або були запрошені</font>\n"
+"            </span>\n"
+"        </span>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid ""
+"<span style=\"font-size: 14px;\">\n"
+"            <span style=\"font-weight: bolder;\">\n"
+"                <font class=\"text-o-color-2\">Workspace</font>\n"
+"            </span>\n"
+"        </span>\n"
+"        <span style=\"font-size: 14px;\">\n"
+"            — Articles there can be accessed by\n"
+"        <span style=\"font-weight: bolder;\">\n"
+"            <font class=\"text-o-color-2\">your team</font>\n"
+"        </span>\n"
+"    </span>"
+msgstr ""
+"<span style=\"font-size: 14px;\">\n"
+"            <span style=\"font-weight: bolder;\">\n"
+"                <font class=\"text-o-color-2\">Папка</font>\n"
+"            </span>\n"
+"        </span>\n"
+"        <span style=\"font-size: 14px;\">\n"
+"            — Доступ до статей\n"
+"        <span style=\"font-weight: bolder;\">\n"
+"            <font class=\"text-o-color-2\">вашою командою</font>\n"
+"        </span>\n"
+"    </span>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid ""
+"<span style=\"font-size: 14px;\">\n"
+"            Below this list, try\n"
+"            <span style=\"font-weight: bolder;\">commands</span>\n"
+"            by\n"
+"            <span style=\"font-weight: bolder;\">\n"
+"                <font class=\"text-o-color-2\">typing</font>\n"
+"            </span>\n"
+"            \"<span style=\"font-weight: bolder;\">/</span>\"\n"
+"        </span>"
+msgstr ""
+"<span style=\"font-size: 14px;\">\n"
+"            Під цим списком, спробуйте\n"
+"            <span style=\"font-weight: bolder;\">команди</span>\n"
+"            \n"
+"            <span style=\"font-weight: bolder;\">\n"
+"                <font class=\"text-o-color-2\">ввівши</font>\n"
+"            </span>\n"
+"            \"<span style=\"font-weight: bolder;\">/</span>\"\n"
+"        </span>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid ""
+"<span style=\"font-size: 14px;\">\n"
+"            Content — Just click and\n"
+"            <span style=\"font-weight: bolder;\">\n"
+"                <font class=\"text-o-color-2\">start typing</font>\n"
+"            </span>\n"
+"            (<span style=\"font-style: italic;\">documentation, tips, reports, ...</span>)\n"
+"        </span>"
+msgstr ""
+"<span style=\"font-size: 14px;\">\n"
+"            Вміст — Просто натисніть і\n"
+"            <span style=\"font-weight: bolder;\">\n"
+"                <font class=\"text-o-color-2\">і почніть писати</font>\n"
+"            </span>\n"
+"            (<span style=\"font-style: italic;\">документація, примітки, звіти, ...</span>)\n"
+"        </span>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid ""
+"<span style=\"font-size: 14px;\">\n"
+"            Folders —\n"
+"        </span>\n"
+"        <span style=\"font-size: 14px;\">\n"
+"            <span style=\"font-weight: bolder;\">\n"
+"                <font class=\"text-o-color-2\">Nest other Articles</font>\n"
+"            </span>\n"
+"            under it to regroup them\n"
+"            (<span style=\"font-style: italic;\">per team, topic, project, ...</span>)\n"
+"        </span>"
+msgstr ""
+"<span style=\"font-size: 14px;\">\n"
+"            Папки —\n"
+"        </span>\n"
+"        <span style=\"font-size: 14px;\">\n"
+"            <span style=\"font-weight: bolder;\">\n"
+"                <font class=\"text-o-color-2\">Розмістіть інші статті</font>\n"
+"            </span>\n"
+"            під нею для групування\n"
+"            (<span style=\"font-style: italic;\">за командою, темою, проектом, ...</span>)\n"
+"        </span>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid ""
+"<span style=\"font-size: 14px;\">\n"
+"            Select text to\n"
+"            <font class=\"bg-o-color-2\">Highlight</font>,\n"
+"            <span style=\"text-decoration-line: line-through;\">strikethrough</span>\n"
+"            or\n"
+"            <span style=\"font-weight: bolder;\">style</span>\n"
+"            <span style=\"font-style: italic; text-decoration-line: underline;\">it</span>\n"
+"        </span>"
+msgstr ""
+"<span style=\"font-size: 14px;\">\n"
+"            Оберіть текст для\n"
+"            <font class=\"bg-o-color-2\">виділення</font>,\n"
+"            <span style=\"text-decoration-line: line-through;\">закреслення</span>\n"
+"            або\n"
+"            <span style=\"font-weight: bolder;\">стилізації</span>\n"
+"            <span style=\"font-style: italic; text-decoration-line: underline;\">тексту</span>\n"
+"        </span>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid ""
+"<span style=\"font-size: 14px;\">\n"
+"            Use\n"
+"            /<span style=\"font-weight: bolder;\"><font class=\"text-o-color-2\">file</font></span>\n"
+"            to share documents that are frequently needed\n"
+"        </span>"
+msgstr ""
+"<span style=\"font-size: 14px;\">\n"
+"            Викорисовуйте\n"
+"            /<span style=\"font-weight: bolder;\"><font class=\"text-o-color-2\">file</font></span>\n"
+"            щоби поділитися документами, які необхідні\n"
+"        </span>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid ""
+"<span style=\"font-size: 14px;\">\n"
+"            Use\n"
+"            /<span style=\"font-weight: bolder;\"><font class=\"text-o-color-2\">template</font></span>\n"
+"            to insert a\n"
+"            <span style=\"font-weight: bolder;\">\n"
+"                <font class=\"text-o-color-2\">template</font>\n"
+"            </span>\n"
+"            box. Need to re-use its content?\n"
+"        </span>"
+msgstr ""
+"<span style=\"font-size: 14px;\">\n"
+"            Використовуйте\n"
+"            /<span style=\"font-weight: bolder;\"><font class=\"text-o-color-2\">template</font></span>\n"
+"           щоби вставити \n"
+"            <span style=\"font-weight: bolder;\">\n"
+"                <font class=\"text-o-color-2\">шаблон</font>\n"
+"            </span>\n"
+"            . Потрібно використати ще раз цей вміст?\n"
+"        </span>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid ""
+"<span style=\"font-size: 14px;\">\n"
+"        <span style=\"font-weight: bolder;\">\n"
+"            <font class=\"text-o-color-2\">Articles</font>\n"
+"        </span>\n"
+"        are stored into different\n"
+"        <span style=\"font-weight: bolder;\"><font class=\"text-o-color-2\">Sections</font></span>:\n"
+"    </span>"
+msgstr ""
+"<span style=\"font-size: 14px;\">\n"
+"        <span style=\"font-weight: bolder;\">\n"
+"            <font class=\"text-o-color-2\">Статті</font>\n"
+"        </span>\n"
+"        поділені на різні\n"
+"        <span style=\"font-weight: bolder;\"><font class=\"text-o-color-2\">Розділи</font></span>:\n"
+"    </span>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid ""
+"<span style=\"font-size: 14px;\">\n"
+"        A good workflow is to write your drafts in\n"
+"        <span style=\"font-weight: bolder;\">\n"
+"            <font class=\"text-o-color-2\">Private</font>\n"
+"        </span>\n"
+"        and, once done, move it from\n"
+"        <span style=\"font-weight: bolder;\">\n"
+"            <font class=\"text-o-color-2\">Private</font>\n"
+"        </span>\n"
+"        to\n"
+"        <span style=\"font-weight: bolder;\">\n"
+"            <font class=\"text-o-color-2\">Workspace</font>\n"
+"        </span>\n"
+"        to share it with everyone.\n"
+"    </span>"
+msgstr ""
+"<span style=\"font-size: 14px;\">\n"
+"        Хороший процес це писати ваші чернетки\n"
+"        <span style=\"font-weight: bolder;\">\n"
+"            <font class=\"text-o-color-2\">Приватній</font>папці\n"
+"        </span>\n"
+"        і після цього перемістити з\n"
+"        <span style=\"font-weight: bolder;\">\n"
+"            <font class=\"text-o-color-2\">Приватної</font> папки\n"
+"        </span>\n"
+"        в\n"
+"        <span style=\"font-weight: bolder;\">\n"
+"            <font class=\"text-o-color-2\">Робочу</font>\n"
+"        </span>\n"
+"        щоби поділитися з усіма.\n"
+"    </span>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid ""
+"<span style=\"font-size: 14px;\">\n"
+"        And again, to move an\n"
+"        <span style=\"font-weight: bolder;\">\n"
+"            <font class=\"text-o-color-2\">Article</font>\n"
+"        </span>\n"
+"        from a\n"
+"        <span style=\"font-weight: bolder;\">\n"
+"            <font class=\"text-o-color-2\">Section</font>\n"
+"        </span>\n"
+"        to another, just\n"
+"        <span style=\"font-weight: bolder;\">\n"
+"            <font class=\"text-o-color-2\">Drag &amp; Drop</font>\n"
+"        </span>\n"
+"        it.\n"
+"    </span>"
+msgstr ""
+"<span style=\"font-size: 14px;\">\n"
+"        І знову, щоби перемістити\n"
+"        <span style=\"font-weight: bolder;\">\n"
+"            <font class=\"text-o-color-2\">Статтю</font>\n"
+"        </span>\n"
+"        з одного\n"
+"        <span style=\"font-weight: bolder;\">\n"
+"            <font class=\"text-o-color-2\">Розділу</font>\n"
+"        </span>\n"
+"        в інший, просто\n"
+"        <span style=\"font-weight: bolder;\">\n"
+"            <font class=\"text-o-color-2\">перетягніть</font>\n"
+"        </span>\n"
+"        її.\n"
+"    </span>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid ""
+"<span style=\"font-size: 14px;\">\n"
+"        See the\n"
+"        <span style=\"font-weight: bolder;\">\n"
+"            <font class=\"text-o-color-2\">Menu</font>\n"
+"        </span>\n"
+"        there, on the left?\n"
+"    </span>"
+msgstr ""
+"<span style=\"font-size: 14px;\">\n"
+"        Бачите\n"
+"        <span style=\"font-weight: bolder;\">\n"
+"            <font class=\"text-o-color-2\">Меню</font>\n"
+"        </span>\n"
+"        зліва?\n"
+"    </span>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid ""
+"<span style=\"font-size: 14px;\">\n"
+"        This is where you and your team can centralize your\n"
+"        <font class=\"text-o-color-2\" style=\"font-weight: bolder;\">Knowledge</font>\n"
+"        and best practices!\n"
+"    </span>"
+msgstr ""
+"<span style=\"font-size: 14px;\">\n"
+"        Це там, де ви можете з командою централізувати вашу\n"
+"        <font class=\"text-o-color-2\" style=\"font-weight: bolder;\">Базу знань</font>\n"
+"        та кращі практики!\n"
+"    </span>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid ""
+"<span style=\"font-size: 14px;\">\n"
+"        Those are your\n"
+"        <span style=\"font-weight: bolder;\"><font class=\"text-o-color-2\">Articles</font></span>.\n"
+"    </span>"
+msgstr ""
+"<span style=\"font-size: 14px;\">\n"
+"        Це ваші\n"
+"        <span style=\"font-weight: bolder;\"><font class=\"text-o-color-2\">статті</font></span>.\n"
+"    </span>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid ""
+"<span style=\"font-size: 14px;\">\n"
+"        To change the way\n"
+"        <span style=\"font-weight: bolder;\">\n"
+"            <font class=\"text-o-color-2\">Articles</font>\n"
+"        </span>\n"
+"        are organized, you can simply\n"
+"        <span style=\"font-weight: bolder;\">\n"
+"            <font class=\"text-o-color-2\">Drag &amp; Drop</font>\n"
+"        </span>\n"
+"        them\n"
+"    </span>"
+msgstr ""
+"<span style=\"font-size: 14px;\">\n"
+"        Для зміни організації\n"
+"        <span style=\"font-weight: bolder;\">\n"
+"            <font class=\"text-o-color-2\">Статей</font>\n"
+"        </span>\n"
+"        ви можете просто\n"
+"        <span style=\"font-weight: bolder;\">\n"
+"            <font class=\"text-o-color-2\">перетягувати</font>\n"
+"        </span>\n"
+"        їх\n"
+"    </span>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid ""
+"<span style=\"font-size: 14px;\">\n"
+"        Want to go\n"
+"        <span style=\"font-style: italic;\">even</span>\n"
+"        faster?\n"
+"    </span>\n"
+"    <br/>\n"
+"    <span style=\"font-size: 14px;\">\n"
+"        Access\n"
+"        <span style=\"font-weight: bolder;\">\n"
+"            <font class=\"text-o-color-2\">Articles</font>\n"
+"        </span>\n"
+"        by opening the\n"
+"        <span style=\"font-weight: bolder;\">\n"
+"            <font class=\"text-o-color-2\">Command Palette</font>\n"
+"        </span>\n"
+"        (Ctrl + k/⌘ + k) then search through articles by starting your query with\n"
+"        \"<span style=\"font-weight: bolder;\">?</span>\".\n"
+"    </span>"
+msgstr ""
+"<span style=\"font-size: 14px;\">\n"
+"        Хочете рухатися\n"
+"        <span style=\"font-style: italic;\">навіть</span>\n"
+"        швидше?\n"
+"    </span>\n"
+"    <br/>\n"
+"    <span style=\"font-size: 14px;\">\n"
+"        отримайте доступ до\n"
+"        <span style=\"font-weight: bolder;\">\n"
+"            <font class=\"text-o-color-2\">статей</font>\n"
+"        </span>\n"
+"        відкриваючи\n"
+"        <span style=\"font-weight: bolder;\">\n"
+"            <font class=\"text-o-color-2\">Панель команд</font>\n"
+"        </span>\n"
+"        (Ctrl + k/⌘ + k) потім шукайте статті, починаючи свій запит із\n"
+"        \"<span style=\"font-weight: bolder;\">?</span>\".\n"
+"    </span>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid "<span style=\"font-size: 14px;\">And voilà, it is that simple.</span>"
+msgstr "<span style=\"font-size: 14px;\">І вуаля, це так просто.</span>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid ""
+"<span style=\"font-size: 14px;\">Check this box to indicate it's done</span>"
+msgstr ""
+"<span style=\"font-size: 14px;\">Позначте це, щоби визначити як "
+"виконано</span>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid ""
+"<span style=\"font-size: 14px;\">Click anywhere, and just start "
+"typing</span>"
+msgstr ""
+"<span style=\"font-size: 14px;\">Клікніть будь-де і просто почніть "
+"писати</span>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid "<span style=\"font-size: 14px;\">Each of them can be used both as:</span>"
+msgstr ""
+"<span style=\"font-size: 14px;\">Кожен з них може використовуватися "
+"як:</span>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid ""
+"<span style=\"font-size: 14px;\">From this box, files can be previewed, "
+"forwarded and downloaded.</span>"
+msgstr ""
+"<span style=\"font-size: 14px;\">У цьому вікні файли можна переглядати, "
+"пересилати та завантажувати.</span>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid ""
+"<span style=\"font-size: 14px;\">From your document, find this article by "
+"clicking on the book icon in the chatter.</span>"
+msgstr ""
+"<span style=\"font-size: 14px;\">У своєму документі знайдіть цю статтю, "
+"натиснувши значок книги в чаті.</span>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid ""
+"<span style=\"font-size: 14px;\">Got it? Now let's try advanced "
+"features</span>"
+msgstr ""
+"<span style=\"font-size: 14px;\">Зрозуміло? Тепер спробуйте розширені "
+"функції</span>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid ""
+"<span style=\"font-size: 14px;\">Need this document somewhere? Come back "
+"here by clicking on the book icon in the chatter.</span>"
+msgstr ""
+"<span style=\"font-size: 14px;\">Десь потрібен цей документ? Поверніться "
+"сюди, натиснувши значок книги в чаті.</span>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid "<span style=\"font-size: 14px;\">Press Ctrl-Z to undo any change</span>"
+msgstr ""
+"<span style=\"font-size: 14px;\">Затисніть Ctrl-Z щоб скасувати будь-які "
+"зміни</span>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid ""
+"<span style=\"font-size: 14px;\">This private page is for you to play around with.</span>\n"
+"    <br/>\n"
+"    <span style=\"font-size: 14px;\">Ready to give it a spin?</span>"
+msgstr ""
+"<span style=\"font-size: 14px;\">Ця приватна сторінка для вас.</span>\n"
+"    <br/>\n"
+"    <span style=\"font-size: 14px;\">Готові спробувати?</span>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid "<span style=\"font-size: 14px;\">Try the following</span>"
+msgstr "<span style=\"font-size: 14px;\">Спробуйте наступні</span>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid ""
+"<span style=\"font-size: 14px;\">You can use the template as a description, "
+"a message or simply copy it to your clipboard!</span>"
+msgstr ""
+"<span style=\"font-size: 14px;\">Ви можете використовувати шаблон як опис, "
+"повідомлення або просто скопіювати його в буфер обміну!</span>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid ""
+"<span style=\"font-weight: bolder;\">\n"
+"            <font class=\"text-o-color-1\">YouTube</font>\n"
+"        </span>"
+msgstr ""
+"<span style=\"font-weight: bolder;\">\n"
+"            <font class=\"text-o-color-1\">YouTube</font>\n"
+"        </span>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid ""
+"<span style=\"font-weight: bolder;\"><font class=\"text-o-"
+"color-1\">Facebook</font></span>"
+msgstr ""
+"<span style=\"font-weight: bolder;\"><font class=\"text-o-"
+"color-1\">Facebook</font></span>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid ""
+"<span style=\"font-weight: bolder;\"><font class=\"text-o-"
+"color-1\">Twitter</font></span>"
+msgstr ""
+"<span style=\"font-weight: bolder;\"><font class=\"text-o-"
+"color-1\">Twitter</font></span>"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/permission_panel/permission_panel.xml:0
+#, python-format
+msgid "Access Restricted. May not be shared with everyone from"
+msgstr "Доступ обмежено. Не можна поділитися з усіма з"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__message_needaction
+msgid "Action Needed"
+msgstr "Необхідна дія"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__active
+msgid "Active"
+msgstr "Активно"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__activity_ids
+msgid "Activities"
+msgstr "Дії"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr "Оформлення виключення дії"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__activity_state
+msgid "Activity State"
+msgstr "Стан дії"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__activity_type_icon
+msgid "Activity Type Icon"
+msgstr "Іконка типу дії"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/js/wysiwyg.js:0
+#, python-format
+msgid "Add a table of content."
+msgstr "Додати таблицю вмісту."
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/js/wysiwyg.js:0
+#, python-format
+msgid "Add a template section."
+msgstr "Спробуйте розділ шаблону."
+
+#. module: knowledge
+#: model_terms:ir.actions.act_window,help:knowledge.knowledge_article_favorite_action
+msgid ""
+"Add articles in your list of favorites by clicking on the <i class=\"fa fa-"
+"star-o\"></i> next to the article name."
+msgstr ""
+"Додайте статті у свій список вибраного, натиснувши на <i class=\"fa fa-"
+"star-o\"></i> назву наступної статті."
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/behaviors/table_of_content_behavior/table_of_content_behavior.xml:0
+#, python-format
+msgid "Add headings in this Article to create a Table of Content"
+msgstr "Додайте заголовки до цієї статті, щоб створити зміст"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_invite_view_form
+msgid "Add people or email addresses"
+msgstr "Додайте людей чи email адреси"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid "Add people or email addresses..."
+msgstr "Додайте людей чи email адреси..."
+
+#. module: knowledge
+#: model_terms:ir.actions.act_window,help:knowledge.knowledge_article_member_action
+msgid ""
+"Adding members allows you to share Articles while granting specific access "
+"rights<br>(can write, can read, ...)."
+msgstr ""
+"Додавання учасників дозволяє вам ділитися статтями, надаючи певні права "
+"доступу<br>(може писати, може читати, ...)."
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/permission_panel/permission_panel.xml:0
+#, python-format
+msgid "Admin"
+msgstr "Адміністратор"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/permission_panel/permission_panel.xml:0
+#, python-format
+msgid "Administrator"
+msgstr "Адміністратор"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/webclient/commands/knowledge_providers.js:0
+#, python-format
+msgid "Advanced Search"
+msgstr "Розширений пошук"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/permission_panel/permission_panel.js:0
+#, python-format
+msgid "Archive Article"
+msgstr "Архівувати статтю"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_search_items
+msgid "Archived"
+msgstr "Заархівовано"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/cover_selector/knowledge_cover_dialog.js:0
+#, python-format
+msgid ""
+"Are you sure you want to delete this cover ? It will be removed from every "
+"article it is used in."
+msgstr ""
+"Ви впевнені, що хочете видалити цю обкладинку? Вона буде вилучена з усіх "
+"статей, де використовується."
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/permission_panel/permission_panel.js:0
+#, python-format
+msgid ""
+"Are you sure you want to leave this private article? By doing so, the "
+"article and all its descendants will be archived."
+msgstr ""
+"Ви впевнені, що бажаєте залишити цю приватну статтю? При цьому стаття та всі"
+" її дочірні статті будуть заархівовані."
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/js/knowledge_renderers.js:0
+#, python-format
+msgid ""
+"Are you sure you want to move \"%s\" to private? Only you will be able to "
+"access it."
+msgstr ""
+"Ви впевнені, що хочете перемістити \"%s\" до приватних? Лише у вас буде "
+"доступ до цієї статті."
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/js/knowledge_renderers.js:0
+#, python-format
+msgid ""
+"Are you sure you want to move \"%s\" to the Workspace? It will be shared "
+"with all internal users."
+msgstr ""
+"Ви впевнені, що хочете перемістити \"%s\" до Робочої папки? Її побачать всі "
+"внутрішні користувачі."
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/js/knowledge_renderers.js:0
+#, python-format
+msgid ""
+"Are you sure you want to move \"%s\" under \"%s%s\"? It will be shared with "
+"the same persons."
+msgstr "Ви впевнені, що хочете пермістити \"%s\" під \"%s%s\"? Її побачать ті ж люди."
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/permission_panel/permission_panel.js:0
+#, python-format
+msgid ""
+"Are you sure you want to remove your member? By leaving an article, you may "
+"lose access to it."
+msgstr ""
+"Ви впевнені, що хочете видалити свого учасника? Залишивши статтю, ви можете "
+"втратити до неї доступ."
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/permission_panel/permission_panel.js:0
+#, python-format
+msgid "Are you sure you want to remove your own \"Write\" access ?"
+msgstr "Ви впевнені, що хочете видалити власні права доступу \"Писати\"?"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/permission_panel/permission_panel.js:0
+#, python-format
+msgid ""
+"Are you sure you want to restore access? This means this article will now "
+"inherit any access set on its parent articles."
+msgstr ""
+"Ви впевнені, що бажаєте відновити доступ? Це означає, що тепер ця стаття "
+"успадкує будь-який доступ, набір батьківських статей."
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/permission_panel/permission_panel.js:0
+#, python-format
+msgid ""
+"Are you sure you want to restrict this role and restrict access ? This "
+"article will no longer inherit access settings from the parent page."
+msgstr ""
+"Ви впевнені, що бажаєте обмежити цю роль і доступ? Ця стаття більше не "
+"успадковуватиме налаштування доступу від батьківської сторінки."
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/permission_panel/permission_panel.js:0
+#, python-format
+msgid ""
+"Are you sure you want to set the internal permission to \"none\" ? If you "
+"do, you will no longer have access to the article."
+msgstr ""
+"Ви впевнені, що бажаєте встановити внутрішній дозвіл на \"немає\"? Якщо ви "
+"це зробите, ви більше не матимете доступу до статті."
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/permission_panel/permission_panel.js:0
+#, python-format
+msgid ""
+"Are you sure you want to set your permission to \"none\"? If you do, you "
+"will no longer have access to the article."
+msgstr ""
+"Ви впевнені, що бажаєте встановити дозвіл на \"немає\"? Якщо ви це зробите, "
+"ви більше не матимете доступу до статті."
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/js/wysiwyg.js:0
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article_favorite__article_id
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article_member__article_id
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_invite__article_id
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_favorite_view_search
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_member_view_search
+#, python-format
+msgid "Article"
+msgstr "Стаття"
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/models/knowledge_article_member.py:0
+#, python-format
+msgid ""
+"Article '%s' should always have a writer: inherit write permission, or have "
+"a member with write access"
+msgstr ""
+"Статті '%s' слід завжди мати автора: успадкувати дозвіл на запис або мати "
+"учасника з доступом на запис"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__article_properties_definition
+msgid "Article Item Properties"
+msgstr "Властивості елемента статті"
+
+#. module: knowledge
+#: model:ir.actions.act_window,name:knowledge.knowledge_article_item_action
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_search
+msgid "Article Items"
+msgstr "Елементи статті"
+
+#. module: knowledge
+#: model:ir.model,name:knowledge.model_knowledge_article_member
+msgid "Article Member"
+msgstr "Член статті"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/js/wysiwyg.js:0
+#, python-format
+msgid "Article Structure"
+msgstr "Структура статті"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__article_url
+msgid "Article URL"
+msgstr "URL статті"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__cover_image_id
+msgid "Article cover"
+msgstr "Обкладинка статті"
+
+#. module: knowledge
+#: model:ir.model.constraint,message:knowledge.constraint_knowledge_article_check_article_item_parent
+msgid "Article items must have a parent."
+msgstr "Елементи статті повинні мати батьківську."
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_frontend
+msgid "Article not found"
+msgstr "Стаття не знайдена"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/move_article_dialog/move_article_dialog.js:0
+#: model:ir.actions.act_window,name:knowledge.knowledge_article_action
+#: model:ir.actions.act_window,name:knowledge.knowledge_article_action_form
+#: model:ir.actions.server,name:knowledge.ir_actions_server_knowledge_home_page
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_search
+#, python-format
+msgid "Articles"
+msgstr "Статті"
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/models/knowledge_article.py:0
+#: code:addons/knowledge/models/knowledge_article.py:0
+#: code:addons/knowledge/models/knowledge_article.py:0
+#, python-format
+msgid ""
+"Articles %s cannot be updated as this would create a recursive hierarchy."
+msgstr "Статті %s не можна оновити, оскільки це створить рекурсивну ієрархію."
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_cover__article_ids
+msgid "Articles using cover"
+msgstr "Статті з обкладинками"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/permission_panel/permission_panel.xml:0
+#, python-format
+msgid "As a reader, you can't leave a Workspace article"
+msgstr "Як читач ви не можете залишити статтю папки"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/permission_panel/permission_panel.xml:0
+#, python-format
+msgid ""
+"As an administrator, you can always modify this article and its members."
+msgstr "Як адміністратор ви завжди можете змінити цю статтю і її членів."
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__message_attachment_count
+msgid "Attachment Count"
+msgstr "Підрахунок прикріплення"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/permission_panel/permission_panel.xml:0
+#: code:addons/knowledge/static/src/components/permission_panel/permission_panel.xml:0
+#, python-format
+msgid "Based on"
+msgstr "Базується на"
+
+#. module: knowledge
+#: model_terms:ir.actions.act_window,help:knowledge.knowledge_article_action
+msgid "Be the first one to unleash the power of Knowledge !"
+msgstr "Будьте першим, хто розкриє силу Бази знань!"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__body
+msgid "Body"
+msgstr "Тіло листа"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__user_can_read
+msgid "Can Read"
+msgstr "Можна читати"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__user_can_write
+msgid "Can Write"
+msgstr "Може писати"
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/models/knowledge_article_member.py:0
+#, python-format
+msgid "Can not update the article or partner of a member."
+msgstr "Неможливо оновити статтю або партнера учасника."
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/models/knowledge_article_favorite.py:0
+#, python-format
+msgid "Can not update the article or user of a favorite."
+msgstr "Неможливо оновити статтю або користувача до вибраної."
+
+#. module: knowledge
+#: model:ir.model.fields.selection,name:knowledge.selection__knowledge_article__inherited_permission__read
+#: model:ir.model.fields.selection,name:knowledge.selection__knowledge_article__internal_permission__read
+#: model:ir.model.fields.selection,name:knowledge.selection__knowledge_article_member__permission__read
+#: model:ir.model.fields.selection,name:knowledge.selection__knowledge_invite__permission__read
+msgid "Can read"
+msgstr "Можна читати"
+
+#. module: knowledge
+#: model:ir.model.fields.selection,name:knowledge.selection__knowledge_article__inherited_permission__write
+#: model:ir.model.fields.selection,name:knowledge.selection__knowledge_article__internal_permission__write
+#: model:ir.model.fields.selection,name:knowledge.selection__knowledge_article_member__permission__write
+#: model:ir.model.fields.selection,name:knowledge.selection__knowledge_invite__permission__write
+msgid "Can write"
+msgstr "Можна писати"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/move_article_dialog/move_article_dialog.xml:0
+#: code:addons/knowledge/static/src/js/wysiwyg/knowledge_article_link.js:0
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_invite_view_form
+#, python-format
+msgid "Cancel"
+msgstr "Скасувати"
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/models/knowledge_article.py:0
+#, python-format
+msgid ""
+"Cannot create an article under article %(parent_name)s which is a non-"
+"private parent"
+msgstr ""
+"Неможливо створити статтю під статтею %(parent_name)s яка є неприватною "
+"батьківською"
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/models/knowledge_article.py:0
+#, python-format
+msgid ""
+"Cannot move %(article_name)s as a root of the 'shared' section since access "
+"rights can not be inferred without a parent."
+msgstr ""
+"Неможливо перемістити %(article_name)s як корінь розділу 'shared', оскільки "
+"права доступу не можуть бути визначені без батьківського елемента."
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/move_article_dialog/move_article_dialog.js:0
+#, python-format
+msgid "Categories"
+msgstr "Категорії"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/permission_panel/permission_panel.js:0
+#, python-format
+msgid "Change Permission"
+msgstr "Змінити дозвіл"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__child_ids
+msgid "Child Articles and Items"
+msgstr "Дочірні статті та елементи"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/xml/knowledge_editor.xml:0
+#, python-format
+msgid "Choose an Article"
+msgstr "Оберіть статтю"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/macros/abstract_macro.js:0
+#, python-format
+msgid "Close"
+msgstr "Закрити"
+
+#. module: knowledge
+#: model:ir.ui.menu,name:knowledge.knowledge_menu_configuration
+msgid "Configuration"
+msgstr "Налаштування"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/permission_panel/permission_panel.js:0
+#, python-format
+msgid "Confirmation"
+msgstr "Підтвердження"
+
+#. module: knowledge
+#: model:ir.model,name:knowledge.model_res_partner
+msgid "Contact"
+msgstr "Контакт"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/behaviors/template_behavior/template_behavior.xml:0
+#: code:addons/knowledge/static/src/components/behaviors/template_behavior/template_behavior.xml:0
+#, python-format
+msgid "Copy to Clipboard"
+msgstr "Копіювати у буфер обміну"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_cover__attachment_url
+msgid "Cover URL"
+msgstr "URL обкладинки"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_cover__attachment_id
+msgid "Cover attachment"
+msgstr "Прикріплення обкладинки"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__cover_image_url
+msgid "Cover url"
+msgstr "url обкладинки"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/xml/knowledge_command_palette.xml:0
+#, python-format
+msgid "Create \""
+msgstr "Створити \""
+
+#. module: knowledge
+#: model_terms:ir.actions.act_window,help:knowledge.knowledge_article_item_action
+msgid "Create a new article item"
+msgstr "Сворити новий елемент статті"
+
+#. module: knowledge
+#: model_terms:ir.actions.act_window,help:knowledge.knowledge_article_action
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid "Create an article"
+msgstr "Створити статтю"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_frontend
+msgid "Create my own Workspace <i class=\"fa fa-book\"/>"
+msgstr "Створити свою папку <i class=\"fa fa-book\"/>"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__create_uid
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article_favorite__create_uid
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article_member__create_uid
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_cover__create_uid
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_invite__create_uid
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_tree
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_tree_items
+msgid "Created by"
+msgstr "Створив"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid "Created by:"
+msgstr "Створено:"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__create_date
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article_favorite__create_date
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article_member__create_date
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_cover__create_date
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_invite__create_date
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_tree
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_tree_items
+msgid "Created on"
+msgstr "Створено"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_mail_invite
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_trash_notification
+msgid "Dear"
+msgstr "Шановний"
+
+#. module: knowledge
+#: model:ir.model.fields,help:knowledge.field_knowledge_article__internal_permission
+msgid ""
+"Default permission for all internal users. (External users can still have "
+"access to this article if they are added to its members)"
+msgstr ""
+"Дозвіл за замовчуванням для всіх внутрішніх користувачів. (Зовнішні "
+"користувачі можуть мати доступ до цієї статті, якщо їх додати до її "
+"учасників)"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__deletion_date
+msgid "Deletion Date"
+msgstr "Дата видалення"
+
+#. module: knowledge
+#: model:ir.model.constraint,message:knowledge.constraint_knowledge_article_check_permission_on_desync
+msgid "Desynchronized articles must have internal permission."
+msgstr "Десинхронізовані статті повинні мати внутрішній дозвіл."
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__is_desynchronized
+msgid "Desyncronized with parents"
+msgstr "Десинхронізувати з батьківськими"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/cover_selector/knowledge_cover_dialog.xml:0
+#: code:addons/knowledge/static/src/components/prompt_embedded_view_name_dialog/prompt_embedded_view_name_dialog.xml:0
+#, python-format
+msgid "Discard"
+msgstr "Відмінити"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__display_name
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article_favorite__display_name
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article_member__display_name
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_cover__display_name
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_invite__display_name
+msgid "Display Name"
+msgstr "Назва для відображення"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid "Diving in"
+msgstr "Дайвінг"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/behaviors/file_behavior/file_behavior.xml:0
+#: code:addons/knowledge/static/src/components/behaviors/file_behavior/file_behavior.xml:0
+#, python-format
+msgid "Download"
+msgstr "Завантажити"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/views/list_view.js:0
+#, python-format
+msgid "Duplicate"
+msgstr "Дублювати"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/prompt_embedded_view_name_dialog/prompt_embedded_view_name_dialog.js:0
+#, python-format
+msgid "Embed a View"
+msgstr "Вставити перегляд"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/js/wysiwyg.js:0
+#, python-format
+msgid "Embed a file."
+msgstr "Вставити файл."
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__icon
+msgid "Emoji"
+msgstr "Смайл"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/behaviors/article_behavior/article_behavior.js:0
+#: code:addons/knowledge/static/src/components/permission_panel/permission_panel.js:0
+#: code:addons/knowledge/static/src/macros/abstract_macro.js:0
+#, python-format
+msgid "Error"
+msgstr "Помилка"
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/models/knowledge_article.py:0
+#, python-format
+msgid ""
+"Error: The given action is not an act_window. This action can not be used to"
+" create an embedded view or a view link"
+msgstr ""
+"Помилка: Дана дія не є act_window. Цю дію не можна використовувати для "
+"створення вбудованого перегляду або посилання на перегляд"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/permission_panel/permission_panel.xml:0
+#, python-format
+msgid "External Guest"
+msgstr "Зовнішній гість"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_favorite_view_form
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_search
+msgid "Favorite"
+msgstr "Закладка"
+
+#. module: knowledge
+#: model:ir.model,name:knowledge.model_knowledge_article_favorite
+msgid "Favorite Article"
+msgstr "Улюблена стаття"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__favorite_ids
+msgid "Favorite Articles"
+msgstr "Улюблені статті"
+
+#. module: knowledge
+#: model:ir.actions.act_window,name:knowledge.knowledge_article_favorite_action
+#: model:ir.ui.menu,name:knowledge.knowledge_article_favorite_menu
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_favorite_view_tree
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_tree_favorites
+msgid "Favorites"
+msgstr "Закладки"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/js/wysiwyg.js:0
+#, python-format
+msgid "File"
+msgstr "Файл"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__message_follower_ids
+msgid "Followers"
+msgstr "Підписники"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__message_partner_ids
+msgid "Followers (Partners)"
+msgstr "Підписники (Партнери)"
+
+#. module: knowledge
+#: model:ir.model.fields,help:knowledge.field_knowledge_article__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr "Іконка з чудовим шрифтом, напр. fa-tasks"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__full_width
+msgid "Full width"
+msgstr "На всю ширину"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_mail_invite
+msgid "Go to Article"
+msgstr "Перейти до статті"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_favorite_view_search
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_member_view_search
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_search
+msgid "Group By"
+msgstr "Групувати за"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/permission_panel/permission_panel.xml:0
+#, python-format
+msgid "Guest"
+msgstr "Гість"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__user_has_access
+msgid "Has Access"
+msgstr "Є доступ"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__has_message
+msgid "Has Message"
+msgstr "Є повідомлення"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__user_has_write_access
+msgid "Has Write Access"
+msgstr "Є доступ до написання"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__has_item_children
+msgid "Has article item children?"
+msgstr "Є дочірній елемент статті?"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__has_article_children
+msgid "Has normal article children?"
+msgstr "Є нормальна дочірня стаття?"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_invite__have_share_partners
+msgid "Have Share Partners"
+msgstr "Є спільні партнери"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid "Hello there"
+msgstr "Вітаємо"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid ""
+"Hello there, I am a template\n"
+"            <br/>\n"
+"            Use the buttons at the top-right of this box to re-use my content.\n"
+"            <br/>\n"
+"            No more time wasted!"
+msgstr ""
+"Привіт, я шаблон\n"
+"            <br/>\n"
+"            Використовуйте кнопки у верхньому правому куті цього поля, щоб повторно використовувати мій вміст.\n"
+"            <br/>\n"
+"            Більше не витрачайте час даремно!"
+
+#. module: knowledge
+#: model:ir.ui.menu,name:knowledge.knowledge_menu_home
+msgid "Home"
+msgstr "Головна"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__id
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article_favorite__id
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article_member__id
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_cover__id
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_invite__id
+msgid "ID"
+msgstr "ID"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__activity_exception_icon
+msgid "Icon"
+msgstr "Значок"
+
+#. module: knowledge
+#: model:ir.model.fields,help:knowledge.field_knowledge_article__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr "Іконка для визначення виключення дії."
+
+#. module: knowledge
+#: model:ir.model.fields,help:knowledge.field_knowledge_article__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr "Якщо позначено, то нові повідомлення будуть потребувати вашої уваги."
+
+#. module: knowledge
+#: model:ir.model.fields,help:knowledge.field_knowledge_article__message_has_error
+#: model:ir.model.fields,help:knowledge.field_knowledge_article__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr "Якщо позначено, деякі повідомлення мають помилку доставки."
+
+#. module: knowledge
+#: model:ir.model.fields,help:knowledge.field_knowledge_article__is_desynchronized
+msgid ""
+"If set, this article won't inherit access rules from its parents anymore."
+msgstr ""
+"Якщо встановлено, ця стаття більше не успадковуватиме правила доступу від "
+"батьківської."
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/js/wysiwyg.js:0
+#, python-format
+msgid "Index"
+msgstr "Індекс"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__inherited_permission
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article_member__article_permission
+msgid "Inherited Permission"
+msgstr "Успадкований дозвіл"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__inherited_permission_parent_id
+msgid "Inherited Permission Parent Article"
+msgstr "Успадкований дозвіл батьківської статті"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/prompt_embedded_view_name_dialog/prompt_embedded_view_name_dialog.xml:0
+#, python-format
+msgid "Insert"
+msgstr "Вставити"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/js/wysiwyg/knowledge_article_link.js:0
+#, python-format
+msgid "Insert Link"
+msgstr "Вставити посилання"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/prompt_embedded_view_name_dialog/prompt_embedded_view_name_dialog.js:0
+#, python-format
+msgid "Insert a Kanban View"
+msgstr "Вставити перегляд Канбану"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/js/wysiwyg.js:0
+#, python-format
+msgid "Insert a Kanban view of article items"
+msgstr "Вставити перегляд Канбану елементів статті"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/prompt_embedded_view_name_dialog/prompt_embedded_view_name_dialog.js:0
+#, python-format
+msgid "Insert a List View"
+msgstr "Вставити перегляд списку"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/js/wysiwyg.js:0
+#, python-format
+msgid "Insert a List view of article items"
+msgstr "Вставити перегляд списку елементів статті"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/external_embedded_view_favorite_menu/insert_embedded_view.xml:0
+#, python-format
+msgid "Insert link in article"
+msgstr "Вставити посилання у статтю"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/external_embedded_view_favorite_menu/insert_embedded_view.xml:0
+#, python-format
+msgid "Insert view in article"
+msgstr "Вставити перегляд у статтю"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/permission_panel/permission_panel.xml:0
+#, python-format
+msgid "Internal Members"
+msgstr "Внутрішні члени"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/permission_panel/permission_panel.xml:0
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__internal_permission
+#, python-format
+msgid "Internal Permission"
+msgstr "Внутрішній дозвіл"
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/models/knowledge_article.py:0
+#, python-format
+msgid "Invitation to access %s"
+msgstr "Запрошення на отримання доступу до%s"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_invite_view_form
+msgid "Invite"
+msgstr "Запросити"
+
+#. module: knowledge
+#: model:ir.actions.act_window,name:knowledge.knowledge_invite_action_from_article
+msgid "Invite people"
+msgstr "Тільки запрошені люди"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article_favorite__is_article_active
+msgid "Is Article Active"
+msgstr "Чи заархівована стаття"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__is_user_favorite
+msgid "Is Favorited"
+msgstr "У закладках"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__message_is_follower
+msgid "Is Follower"
+msgstr "Стежить"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__is_article_item
+msgid "Is Item?"
+msgstr "Є елементом?"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__article_properties_is_empty
+msgid "Is Property Field Empty?"
+msgstr "Поле властивості пусте?"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/js/wysiwyg.js:0
+#, python-format
+msgid "Item Kanban"
+msgstr "Елемент Канбану"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/js/wysiwyg.js:0
+#, python-format
+msgid "Item List"
+msgstr "Список елементів"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/js/wysiwyg.js:0
+#: code:addons/knowledge/static/src/js/wysiwyg.js:0
+#: code:addons/knowledge/static/src/js/wysiwyg.js:0
+#: code:addons/knowledge/static/src/js/wysiwyg.js:0
+#: code:addons/knowledge/static/src/js/wysiwyg.js:0
+#: code:addons/knowledge/static/src/js/wysiwyg.js:0
+#: code:addons/knowledge/static/src/js/wysiwyg.js:0
+#: code:addons/knowledge/static/src/js/wysiwyg.js:0
+#: model:ir.ui.menu,name:knowledge.knowledge_menu_root
+#, python-format
+msgid "Knowledge"
+msgstr "Знання"
+
+#. module: knowledge
+#: model:ir.model,name:knowledge.model_knowledge_article
+msgid "Knowledge Article"
+msgstr "Стаття бази знань"
+
+#. module: knowledge
+#: model:ir.model,name:knowledge.model_knowledge_cover
+msgid "Knowledge Cover"
+msgstr "Обкладинка бази знань"
+
+#. module: knowledge
+#: model:ir.model,name:knowledge.model_knowledge_invite
+msgid "Knowledge Invite Wizard"
+msgstr "Помічник запрошення у Базу знань"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_tree
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_tree_items
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_tree_trash
+msgid "Last Edit Date"
+msgstr "Дата останнього редагування"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__last_edition_uid
+msgid "Last Edited by"
+msgstr "Востаннє відредагував"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid "Last Edited by:"
+msgstr "Востаннє відредагував:"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__last_edition_date
+msgid "Last Edited on"
+msgstr "Останнє редагування"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article____last_update
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article_favorite____last_update
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article_member____last_update
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_cover____last_update
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_invite____last_update
+msgid "Last Modified on"
+msgstr "Остання модифікація"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__write_uid
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article_favorite__write_uid
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article_member__write_uid
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_cover__write_uid
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_invite__write_uid
+msgid "Last Updated by"
+msgstr "Востаннє оновив"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__write_date
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article_favorite__write_date
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article_member__write_date
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_cover__write_date
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_invite__write_date
+msgid "Last Updated on"
+msgstr "Останнє оновлення"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/permission_panel/permission_panel.js:0
+#: code:addons/knowledge/static/src/components/permission_panel/permission_panel.js:0
+#: code:addons/knowledge/static/src/components/permission_panel/permission_panel.xml:0
+#, python-format
+msgid "Leave Article"
+msgstr "Залишити статтю"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/js/wysiwyg/knowledge_article_link.js:0
+#, python-format
+msgid "Link an Article"
+msgstr "Лінк на статтю"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/js/wysiwyg.js:0
+#, python-format
+msgid "Link an article."
+msgstr "Дайте лінк на статтю."
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.articles_template
+msgid "Load more"
+msgstr "Завантажити більше"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__is_locked
+msgid "Locked"
+msgstr "Заблокований"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/xml/knowledge_frontend.xml:0
+#, python-format
+msgid "Log in"
+msgstr "Вхід"
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/models/knowledge_article.py:0
+#, python-format
+msgid ""
+"Logging changes from %(partner_name)s without write access on article "
+"%(article_name)s due to hierarchy tree update"
+msgstr ""
+"Запис змін з %(partner_name)s без прав доступу до написання статті "
+"%(article_name)s через оновлення дерева ієрархії"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__message_main_attachment_id
+msgid "Main Attachment"
+msgstr "Основне прикріплення"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/js/wysiwyg.js:0
+#: code:addons/knowledge/static/src/js/wysiwyg.js:0
+#, python-format
+msgid "Media"
+msgstr "Медіа"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_member_view_form
+msgid "Member"
+msgstr "Учасник"
+
+#. module: knowledge
+#: model:ir.actions.act_window,name:knowledge.knowledge_article_member_action
+#: model:ir.ui.menu,name:knowledge.knowledge_article_member_menu
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_member_view_tree
+msgid "Members"
+msgstr "Учасники"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__article_member_ids
+msgid "Members Information"
+msgstr "Інформація про членів"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__root_article_id
+msgid "Menu Article"
+msgstr "Стаття меню"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__message_has_error
+msgid "Message Delivery error"
+msgstr "Помилка доставлення повідомлення"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__message_ids
+msgid "Messages"
+msgstr "Повідомлення"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/behaviors/file_behavior/file_behavior.js:0
+#, python-format
+msgid "Missing File"
+msgstr "Відсутній файл"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/move_article_dialog/move_article_dialog.xml:0
+#, python-format
+msgid "Move \""
+msgstr "Перемістити \""
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/move_article_dialog/move_article_dialog.xml:0
+#, python-format
+msgid "Move Article"
+msgstr "Перемістити статтю"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/move_article_dialog/move_article_dialog.js:0
+#, python-format
+msgid "Move an Article"
+msgstr "Перемістити статтю"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr "Дедлайн моєї дії"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_search_items
+msgid "My Favorites"
+msgstr "Мої закладки"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_tree
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_tree_items
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_tree_trash
+msgid "Name"
+msgstr "Назва"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid "Navigation Basics"
+msgstr "Базова навігація"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/xml/knowledge_editor.xml:0
+#, python-format
+msgid "Nest articles under this one to generate a structure"
+msgstr "Вкладіть статті під цю, щоб створити структуру"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__activity_calendar_event_id
+msgid "Next Activity Calendar Event"
+msgstr "Наступна подія календаря дій"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr "Дедлайн наступної дії"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__activity_summary
+msgid "Next Activity Summary"
+msgstr "Підсумок наступної дії"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__activity_type_id
+msgid "Next Activity Type"
+msgstr "Тип наступної дії"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/xml/knowledge_command_palette.xml:0
+#, python-format
+msgid "No Article found."
+msgstr "Статті не знайдено."
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/webclient/commands/knowledge_providers.js:0
+#, python-format
+msgid "No Article found. Create \"%s\""
+msgstr "Статті не знайдено. Створити \"%s\""
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/models/knowledge_article.py:0
+#, python-format
+msgid "No Article in Trash"
+msgstr "Жодної статті у смітнику"
+
+#. module: knowledge
+#: model_terms:ir.actions.act_window,help:knowledge.knowledge_article_favorite_action
+msgid "No Favorites yet!"
+msgstr "Ще немає улюблених!"
+
+#. module: knowledge
+#: model_terms:ir.actions.act_window,help:knowledge.knowledge_article_member_action
+msgid "No Members yet!"
+msgstr "Ще немає членів!"
+
+#. module: knowledge
+#: model:ir.model.fields.selection,name:knowledge.selection__knowledge_article__inherited_permission__none
+#: model:ir.model.fields.selection,name:knowledge.selection__knowledge_article__internal_permission__none
+#: model:ir.model.fields.selection,name:knowledge.selection__knowledge_article_member__permission__none
+#: model:ir.model.fields.selection,name:knowledge.selection__knowledge_invite__permission__none
+msgid "No access"
+msgstr "Немає доступу"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_tree_frontend
+msgid "No article found"
+msgstr "Статті не зайдено"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/webclient/commands/knowledge_providers.js:0
+#, python-format
+msgid "No article found."
+msgstr "Не знайдено статті."
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid "No article yet."
+msgstr "Ще немає статей."
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__message_needaction_counter
+msgid "Number of Actions"
+msgstr "Кількість дій"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__message_has_error_counter
+msgid "Number of errors"
+msgstr "Кількість помилок"
+
+#. module: knowledge
+#: model:ir.model.fields,help:knowledge.field_knowledge_article__message_needaction_counter
+msgid "Number of messages requiring action"
+msgstr "Кількість повідомлень, які вимагають дії"
+
+#. module: knowledge
+#: model:ir.model.fields,help:knowledge.field_knowledge_article__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr "Кількість повідомлень з помилковою дставкою"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid "Odoo Survival Guide"
+msgstr "Керівництво з виживання Odoo"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/behaviors/article_behavior/article_behavior.js:0
+#: code:addons/knowledge/static/src/components/behaviors/file_behavior/file_behavior.js:0
+#, python-format
+msgid "Ok"
+msgstr "Гаразд"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid "Onboarding.pdf"
+msgstr "Onboarding.pdf"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/behaviors/file_behavior/file_behavior.js:0
+#, python-format
+msgid ""
+"Oops, the file %s could not be found. Please replace this file box by a new "
+"one to re-upload the file."
+msgstr ""
+"Упс, файл %s не можливо знайти. Будь ласка, замініть це вікно файлу на нове,"
+" щоб повторно завантажити файл."
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/behaviors/embedded_view_behavior/embedded_view_manager.xml:0
+#: code:addons/knowledge/static/src/components/behaviors/embedded_view_behavior/embedded_view_manager.xml:0
+#, python-format
+msgid "Open"
+msgstr "Відкрито"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__parent_id
+msgid "Parent Article"
+msgstr "Батьківська стаття"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__parent_path
+msgid "Parent Path"
+msgstr "Батьківський шлях"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article_member__partner_id
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_member_view_search
+msgid "Partner"
+msgstr "Партнер"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article_member__permission
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_invite__permission
+msgid "Permission"
+msgstr "Дозвіл"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/move_article_dialog/move_article_dialog.js:0
+#: model:ir.model.fields.selection,name:knowledge.selection__knowledge_article__category__private
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_tree
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_search
+#, python-format
+msgid "Private"
+msgstr "Приватний"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__article_properties
+msgid "Properties"
+msgstr "Властивості"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid "Property Fields"
+msgstr "Поля властивостей"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_invite__partner_ids
+msgid "Recipients"
+msgstr "Одержувачі"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/behaviors/articles_structure_behavior/articles_structure_behavior.xml:0
+#, python-format
+msgid "Refresh"
+msgstr "Оновити"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/knowledge_emoji_picker_remove_action_view/knowledge_emoji_picker_remove_action_view.xml:0
+#, python-format
+msgid "Remove Icon"
+msgstr "Іконка вилучення"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/permission_panel/permission_panel.xml:0
+#, python-format
+msgid "Remove Member"
+msgstr "Вилучити учасника"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/behaviors/embedded_view_behavior/embedded_view_manager.xml:0
+#: code:addons/knowledge/static/src/components/behaviors/embedded_view_behavior/embedded_view_manager.xml:0
+#: code:addons/knowledge/static/src/components/prompt_embedded_view_name_dialog/prompt_embedded_view_name_dialog.xml:0
+#, python-format
+msgid "Rename"
+msgstr "Перейменувати"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__activity_user_id
+msgid "Responsible User"
+msgstr "Відповідальний користувач"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/permission_panel/permission_panel.xml:0
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+#, python-format
+msgid "Restore"
+msgstr "Відновлення"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/permission_panel/permission_panel.js:0
+#, python-format
+msgid "Restore Access"
+msgstr "Відновити доступ"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/permission_panel/permission_panel.js:0
+#, python-format
+msgid "Restrict Access"
+msgstr "Обмежити доступ"
+
+#. module: knowledge
+#: model:ir.model.constraint,message:knowledge.constraint_knowledge_article_check_desync_on_root
+msgid "Root articles cannot be desynchronized."
+msgstr "Кореневі статті неможливо десинхронізувати."
+
+#. module: knowledge
+#: model:ir.model.constraint,message:knowledge.constraint_knowledge_article_check_permission_on_root
+msgid "Root articles must have internal permission."
+msgstr "Кореневі статті повинні мати внутрішній дозвіл."
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr "Помилка доставки SMS"
+
+#. module: knowledge
+#: model:ir.ui.menu,name:knowledge.knowledge_menu_article
+msgid "Search"
+msgstr "Пошук"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_favorite_view_search
+msgid "Search Favorites"
+msgstr "Пошук збережених"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/xml/chatter_topbar.xml:0
+#, python-format
+msgid "Search Knowledge Articles"
+msgstr "Пошук статей бази знань"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_member_view_search
+msgid "Search Members"
+msgstr "Пошук учасників"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/move_article_dialog/move_article_dialog.xml:0
+#, python-format
+msgid "Search an Article to use as Parent"
+msgstr "Пошук статті, щоб використовувати як батьківську"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_frontend
+msgid "Search an article..."
+msgstr "Пошук статті..."
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/webclient/commands/knowledge_providers.js:0
+#, python-format
+msgid "Search for an article..."
+msgstr "Пошук статті..."
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__category
+msgid "Section"
+msgstr "Розділ"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/cover_selector/knowledge_cover_dialog.js:0
+#, python-format
+msgid "Select a cover"
+msgstr "Оберіть обкладинку"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/external_embedded_view_insertion/views_renderers_patches.js:0
+#, python-format
+msgid "Select an article"
+msgstr "Оберіть статтю"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/behaviors/file_behavior/file_behavior.xml:0
+#: code:addons/knowledge/static/src/components/behaviors/file_behavior/file_behavior.xml:0
+#: code:addons/knowledge/static/src/components/behaviors/template_behavior/template_behavior.xml:0
+#: code:addons/knowledge/static/src/components/behaviors/template_behavior/template_behavior.xml:0
+#, python-format
+msgid "Send as Message"
+msgstr "Надіслати повідомлення"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__sequence
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article_favorite__sequence
+msgid "Sequence"
+msgstr "Послідовність"
+
+#. module: knowledge
+#: model:ir.model.fields.selection,name:knowledge.selection__knowledge_article__category__shared
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_tree
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_search
+msgid "Shared"
+msgstr "Поділилися"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_tree_frontend
+msgid "Shared with you"
+msgstr "Поділилися з вами"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/js/wysiwyg.js:0
+#, python-format
+msgid "Show all nested articles."
+msgstr "Показати всі вкладені статті."
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/js/wysiwyg.js:0
+#, python-format
+msgid "Show the first level of nested articles."
+msgstr "Показати перший рівень вкладених статей."
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/models/knowledge_article.py:0
+#, python-format
+msgid "Some articles have been sent to Trash"
+msgstr "Деякі статті відправлено в кошик"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/behaviors/embedded_view_behavior/embedded_view_behavior.xml:0
+#, python-format
+msgid "Something went wrong!"
+msgstr "Щось пішло не так!"
+
+#. module: knowledge
+#: model:ir.model.fields,help:knowledge.field_knowledge_article__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+"Етап заснований на діях\n"
+"Протерміновано: термін виконання вже минув\n"
+"Сьогодні: дата дії сьогодні\n"
+"Заплановано: майбутні дії."
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/js/wysiwyg.js:0
+#, python-format
+msgid "Table Of Content"
+msgstr "Зміст"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/behaviors/template_behavior/template_behavior.xml:0
+#: code:addons/knowledge/static/src/js/wysiwyg.js:0
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+#, python-format
+msgid "Template"
+msgstr "Шаблон "
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/behaviors/template_behavior/template_behavior.js:0
+#, python-format
+msgid "Template copied to clipboard."
+msgstr "Шаблон скопійовано в буфер обміну."
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/models/knowledge_article.py:0
+#, python-format
+msgid "The Article you are trying to access has been deleted"
+msgstr "Статтю, до якої ви намагаєтеся отримати доступ, видалено"
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/models/knowledge_article.py:0
+#, python-format
+msgid "The article '%s' needs at least one member with 'Write' access."
+msgstr "Статті '%s' потрібен принаймні один учасник із правами запису."
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_frontend
+msgid ""
+"The article you are trying the read has either been removed or you do not "
+"have access to it."
+msgstr ""
+"Статтю, яку ви намагаєтеся прочитати, видалено, або ви не маєте до неї "
+"доступу."
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/models/knowledge_article.py:0
+#, python-format
+msgid ""
+"The destination placement of %(article_name)s is ambiguous, you should "
+"specify the category."
+msgstr ""
+"Цільове розміщення %(article_name)s є неоднозначним, слід вказати категорію."
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/models/knowledge_article_member.py:0
+#, python-format
+msgid ""
+"The external user %(user_name)s cannot have a 'write' permission on article "
+"%(article_name)s"
+msgstr ""
+"Зовнішній користувач %(user_name)s не може мати дозвіл на запис до статті "
+"%(article_name)s"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/macros/abstract_macro.js:0
+#, python-format
+msgid ""
+"The operation was interrupted because the page or the record changed. Please"
+" try again later."
+msgstr ""
+"Операцію було перервано через зміну сторінки або запису. Будь-ласка "
+"спробуйте пізніше."
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/controllers/main.py:0
+#: code:addons/knowledge/controllers/main.py:0
+#, python-format
+msgid "The selected member does not exists or has been already deleted."
+msgstr "Вибраний учасник не існує або вже видалений."
+
+#. module: knowledge
+#: model:ir.model.fields,help:knowledge.field_knowledge_article__sequence
+msgid ""
+"The sequence is computed only among the articles that have the same parent."
+msgstr ""
+"Послідовність обчислюється лише серед статей, які мають ту ж батьківську "
+"статтю."
+
+#. module: knowledge
+#: model:ir.model.fields,help:knowledge.field_knowledge_article__root_article_id
+msgid ""
+"The subject is the title of the highest parent in the article hierarchy."
+msgstr "Тема — це назва найвищої батьківської в ієрархії статті."
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/behaviors/embedded_view_behavior/embedded_view_behavior.xml:0
+#, python-format
+msgid "The view does not exist or you are not allowed to access to it."
+msgstr "Перегляд не існує або у вас немає доступу до нього."
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/controllers/main.py:0
+#, python-format
+msgid ""
+"This Article cannot be unfolded. Either you lost access to it or it has been"
+" deleted."
+msgstr ""
+"Цю статтю неможливо розгорнути. Або ви втратили доступ до неї, або її було "
+"видалено."
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid "This Article is in Trash and will be deleted on the"
+msgstr "Ця стаття у смітнику і буде видалена на"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid "This article is archived."
+msgstr "Ця стаття заархівована."
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/behaviors/article_behavior/article_behavior.js:0
+#, python-format
+msgid "This article was deleted or you don't have the rights to access it."
+msgstr "Ця стаття була видалена, або у вас немає прав доступу до неї."
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/xml/knowledge_frontend.xml:0
+#, python-format
+msgid "This view is only available for internal users"
+msgstr "Цей перегляд доступний лише для внутрішніх користувачів"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__name
+msgid "Title"
+msgstr "Заголовок"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid "To be sure to stay updated, follow us on"
+msgstr "Щоб завжди бути в курсі новин, слідкуйте за нами"
+
+#. module: knowledge
+#: model:ir.actions.act_window,name:knowledge.knowledge_article_action_trashed
+msgid "Trash"
+msgstr "Смітник"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__to_delete
+#: model:ir.ui.menu,name:knowledge.knowledge_article_menu_trashed
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_search
+msgid "Trashed"
+msgstr "У смітнику"
+
+#. module: knowledge
+#: model:ir.model.constraint,message:knowledge.constraint_knowledge_article_check_trash
+msgid "Trashed articles must be archived."
+msgstr "Статті у смітнику потрібно архівувати."
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_frontend
+msgid "Try Odoo"
+msgstr "Спробуйте Odoo"
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/models/knowledge_article.py:0
+#, python-format
+msgid "Trying to remove wrong member."
+msgstr "Спробуйте вилучити невірний номер."
+
+#. module: knowledge
+#: model:ir.model.fields,help:knowledge.field_knowledge_article__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr "Тип дії виключення на записі."
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid "Unarchive"
+msgstr "Розархівувати"
+
+#. module: knowledge
+#. odoo-javascript
+#. odoo-python
+#: code:addons/knowledge/models/knowledge_article.py:0
+#: code:addons/knowledge/static/src/js/knowledge_renderers.js:0
+#: code:addons/knowledge/static/src/js/knowledge_renderers.js:0
+#: code:addons/knowledge/static/src/js/knowledge_renderers.js:0
+#: code:addons/knowledge/static/src/js/knowledge_renderers.js:0
+#: code:addons/knowledge/static/src/js/knowledge_renderers.js:0
+#: code:addons/knowledge/static/src/js/knowledge_renderers.js:0
+#: code:addons/knowledge/static/src/js/knowledge_renderers.js:0
+#, python-format
+msgid "Untitled"
+msgstr "Без назви"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/behaviors/articles_structure_behavior/articles_structure_behavior.xml:0
+#, python-format
+msgid "Update"
+msgstr "Оновити"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/behaviors/template_behavior/template_behavior.xml:0
+#, python-format
+msgid "Use as"
+msgstr "Використовувати як"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/behaviors/file_behavior/file_behavior.xml:0
+#: code:addons/knowledge/static/src/components/behaviors/file_behavior/file_behavior.xml:0
+#, python-format
+msgid "Use as Attachment"
+msgstr "Використовувати як прикріплення"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/behaviors/template_behavior/template_behavior.xml:0
+#, python-format
+msgid "Use as Description"
+msgstr "Використовувати як опис"
+
+#. module: knowledge
+#: model:ir.model.fields,help:knowledge.field_knowledge_article__category
+msgid ""
+"Used to categozie articles in UI, depending on their main permission "
+"definitions."
+msgstr ""
+"Використовується для категоризації статей в інтерфейсі користувача залежно "
+"від їхніх основних визначень дозволів."
+
+#. module: knowledge
+#: model:ir.model,name:knowledge.model_res_users
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article_favorite__user_id
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_favorite_view_search
+msgid "User"
+msgstr "Користувач"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__user_favorite_sequence
+msgid "User Favorite Sequence"
+msgstr "Збережена послідовність користувача"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/permission_panel/permission_panel.xml:0
+#, python-format
+msgid "User Permission"
+msgstr "Користувацький дозвіл"
+
+#. module: knowledge
+#: model:ir.model.constraint,message:knowledge.constraint_knowledge_article_favorite_unique_article_user
+msgid "User already has this article in favorites."
+msgstr "У користувача вже є ця стаття у збереженнях."
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__user_permission
+msgid "User permission"
+msgstr "Користувацький дозвіл"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__website_message_ids
+msgid "Website Messages"
+msgstr "Повідомлення з веб-сайту"
+
+#. module: knowledge
+#: model:ir.model.fields,help:knowledge.field_knowledge_article__website_message_ids
+msgid "Website communication history"
+msgstr "Історія бесіди на сайті"
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/models/res_users.py:0
+#, python-format
+msgid "Welcome %s"
+msgstr "Вітаємо %s"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/prompt_embedded_view_name_dialog/prompt_embedded_view_name_dialog.xml:0
+#, python-format
+msgid "What do you want to manage?"
+msgstr "Що ви хочете керувати?"
+
+#. module: knowledge
+#: model:ir.model.fields,help:knowledge.field_knowledge_article__is_locked
+msgid ""
+"When locked, users cannot write on the body or change the title, even if "
+"they have write access on the article."
+msgstr ""
+"Якщо заблоковано, користувачі не можуть писати в тілі або змінювати "
+"заголовок, навіть якщо вони мають право на запис у статті."
+
+#. module: knowledge
+#: model:ir.model.fields,help:knowledge.field_knowledge_article__to_delete
+msgid ""
+"When sent to trash, articles are flagged to be deleted\n"
+"                days after last edit. knowledge_article_trash_limit_days config\n"
+"                parameter can be used to modify the number of days. \n"
+"                (default is 30)"
+msgstr ""
+"Після відправлення в кошик статті позначаються як видалені \n"
+"через кілька днів після останнього редагування. Параметр конфігурації knowledge_article_trash_limit_days \n"
+"можна використовувати для зміни кількості днів. \n"
+"(за замовчуванням 30)"
+
+#. module: knowledge
+#: model:ir.model.fields,help:knowledge.field_knowledge_article__full_width
+msgid ""
+"When set, the article body will take the full width available on the article"
+" page. Otherwise, the body will have large horizontal margins."
+msgstr ""
+"Якщо встановлено, текст статті займатиме всю ширину, доступну на сторінці "
+"статті. Інакше тіло матиме великі горизонтальні поля."
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid "Who has access to what?"
+msgstr "Хто і куди має доступ?"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/move_article_dialog/move_article_dialog.js:0
+#: model:ir.model.fields.selection,name:knowledge.selection__knowledge_article__category__workspace
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_tree
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_search
+#, python-format
+msgid "Workspace"
+msgstr "Папка"
+
+#. module: knowledge
+#: model:ir.model.constraint,message:knowledge.constraint_knowledge_article_member_unique_article_partner
+msgid "You already added this partner on this article."
+msgstr "Ви вже додали цього партнера до статті."
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_frontend
+msgid "You are currently visiting as a Guest User"
+msgstr "Ви зараз є гостьовим користувачем"
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/models/knowledge_article.py:0
+#, python-format
+msgid "You are not allowed to make '%(article_name)s' private."
+msgstr "Вам не дозволено робити приватні '%(article_name)s'."
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/models/knowledge_article.py:0
+#, python-format
+msgid ""
+"You are not allowed to move '%(article_name)s' under '%(parent_name)s'."
+msgstr "Вам не дозволено переміщати '%(article_name)s' під '%(parent_name)s'."
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/permission_panel/permission_panel.xml:0
+#, python-format
+msgid "You can't leave an article for which you are the last writer"
+msgstr "Ви не можете залишити статтю, для якої ви останній автор"
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/models/knowledge_article.py:0
+#, python-format
+msgid ""
+"You can't move %(article_name)s under %(item_name)s, as %(item_name)s is an "
+"Article Item. Convert %(item_name)s into an Article first."
+msgstr ""
+"Ви не можете премеістити %(article_name)s над %(item_name)s, оскільки "
+"%(item_name)s є елементом статті. Конвертуйте %(item_name)s спершу у статтю."
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/permission_panel/permission_panel.xml:0
+#, python-format
+msgid "You can't remove the last writer of the article"
+msgstr "Ви не можете видалити останнього автора статті"
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/models/knowledge_article.py:0
+#, python-format
+msgid "You cannot add or remove this article to your favorites"
+msgstr "Ви не можете додати чи вилучити статтю зі збережених "
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/controllers/main.py:0
+#, python-format
+msgid "You cannot change the internal permission of this article."
+msgstr "Ви не можете змінити внутрішні дозволи цієї статті."
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/controllers/main.py:0
+#, python-format
+msgid "You cannot change the permission of this member."
+msgstr "Ви не можете змінити дозволи цього члена."
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/models/knowledge_cover.py:0
+#, python-format
+msgid "You cannot create a new Knowledge Cover from here."
+msgstr "Ви не можете створити нову обкладинку бази знань звідси."
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/models/knowledge_article.py:0
+#, python-format
+msgid "You cannot create an article under articles on which you cannot write"
+msgstr ""
+"Ви не можете створити статтю під статтями, про які ви не можете писати"
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/models/knowledge_article.py:0
+#, python-format
+msgid ""
+"You cannot move an article under %(parent_name)s as you cannot write on it"
+msgstr ""
+"Ви не можете перемістити статтю під %(parent_name)s оскільки на ньому не "
+"можна писати"
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/models/knowledge_article.py:0
+#, python-format
+msgid "You have to be editor on %(article_name)s to add members."
+msgstr "Ви повинні бути редактором  %(article_name)s щоб додати членів."
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/models/knowledge_article.py:0
+#, python-format
+msgid ""
+"You have to be editor on %(article_name)s to change its internal permission."
+msgstr ""
+"Ви повинні бути редактором %(article_name)s змінити її внутрішній дозвіл."
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/models/knowledge_article.py:0
+#, python-format
+msgid ""
+"You have to be editor on %(article_name)s to modify members permissions."
+msgstr ""
+"Ви повинні бути редактором %(article_name)s щоб змінити дозвола членів."
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/models/knowledge_article.py:0
+#, python-format
+msgid ""
+"You have to be editor on %(article_name)s to remove or exclude member "
+"%(member_name)s."
+msgstr ""
+"Ви повинні бути редактором %(article_name)s щоби видалити чи виключити члена"
+" %(member_name)s."
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/models/knowledge_article.py:0
+#, python-format
+msgid "You have to be editor on %(article_name)s to restore it."
+msgstr "Ви повинні бути редактором %(article_name)s щоби перезапустити її."
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_trash_notification
+msgid "and the following child article(s) have"
+msgstr "і наступні дочірні статті мають"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/webclient/commands/knowledge_providers.js:0
+#, python-format
+msgid "articles"
+msgstr "статті"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_trash_notification
+msgid "been sent to Trash.<br/><br/>"
+msgstr "відправлено у смітник.<br/><br/>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid "cover"
+msgstr "обкладинка"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/prompt_embedded_view_name_dialog/prompt_embedded_view_name_dialog.js:0
+#, python-format
+msgid "e.g. Buildings"
+msgstr "напр., Будівлі"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/prompt_embedded_view_name_dialog/prompt_embedded_view_name_dialog.js:0
+#, python-format
+msgid "e.g. Todos"
+msgstr "напр. Todos"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_trash_notification
+msgid "has"
+msgstr "має"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_trash_notification
+msgid "have"
+msgstr "мають"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_mail_invite
+msgid "invited you to access"
+msgstr "запрошено вас отримати доступ до"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/behaviors/abstract_behavior/abstract_behavior.xml:0
+#: code:addons/knowledge/static/src/components/behaviors/articles_structure_behavior/articles_structure_behavior.xml:0
+#: code:addons/knowledge/static/src/components/behaviors/embedded_view_behavior/embedded_view_behavior.xml:0
+#: code:addons/knowledge/static/src/components/permission_panel/permission_panel.xml:0
+#, python-format
+msgid "loader"
+msgstr "навантажувач"
+
+#. module: knowledge
+#: model:ir.model.fields.selection,name:knowledge.selection__knowledge_article__user_permission__none
+msgid "none"
+msgstr "жоден"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid "or"
+msgstr "або"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid "pdf"
+msgstr "pdf"
+
+#. module: knowledge
+#: model:ir.model.fields.selection,name:knowledge.selection__knowledge_article__user_permission__read
+msgid "read"
+msgstr "читати"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid "to unleash the power of Knowledge !"
+msgstr "щоб розв'язати силу Бази знань!"
+
+#. module: knowledge
+#: model:ir.model.fields.selection,name:knowledge.selection__knowledge_article__user_permission__write
+msgid "write"
+msgstr "писати"

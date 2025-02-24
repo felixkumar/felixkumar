@@ -1,0 +1,11 @@
+// = VOIP
+// ============================================================================
+// No CSS hacks, variables overrides only
+
+.o_dial_window_title {
+    --voip__windowTitle-bg: #{$o-gray-100};
+}
+
+.o_dial .o_dial_panel .blockMsg {
+    color:  #FFFFFF !important;
+}

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="hr_contract_view_form" model="ir.ui.view">
+        <field name="name">hr.contract.view.form.inherit.l10n.ke.hr.payroll</field>
+        <field name="model">hr.contract</field>
+        <field name="inherit_id" ref="hr_payroll.hr_contract_form_inherit"/>
+        <field name="arch" type="xml">
+            <group name="l10n_ke_tax_deduction" position="after">
+                <group string="Benefits" class="o_form_fw_labels">
+                    <label for="l10n_ke_food_allowance" attrs="{'invisible': [('country_code', '!=', 'KE')]}"/>
+                    <div class="o_row" attrs="{'invisible': [('country_code', '!=', 'KE')]}">
+                        <field name="l10n_ke_food_allowance" class="o_hr_narrow_field" nolabel="1"/>
+                        <span>/ month</span>
+                    </div>
+                    <label for="l10n_ke_airtime_allowance" attrs="{'invisible': [('country_code', '!=', 'KE')]}"/>
+                    <div class="o_row" attrs="{'invisible': [('country_code', '!=', 'KE')]}">
+                        <field name="l10n_ke_airtime_allowance" class="o_hr_narrow_field" nolabel="1"/>
+                        <span>/ month</span>
+                    </div>
+                    <label for="l10n_ke_pension_allowance" attrs="{'invisible': [('country_code', '!=', 'KE')]}"/>
+                    <div class="o_row" attrs="{'invisible': [('country_code', '!=', 'KE')]}">
+                        <field name="l10n_ke_pension_allowance" class="o_hr_narrow_field" nolabel="1"/>
+                        <span>/ month</span>
+                    </div>
+                </group>
+                <group string="Insurance" class="o_form_fw_labels">
+                    <label for="l10n_ke_volontary_medical_insurance" attrs="{'invisible': [('country_code', '!=', 'KE')]}"/>
+                    <div class="o_row" attrs="{'invisible': [('country_code', '!=', 'KE')]}">
+                        <field name="l10n_ke_volontary_medical_insurance" class="o_hr_narrow_field" nolabel="1"/>
+                        <span>/ month</span>
+                    </div>
+                    <label for="l10n_ke_life_insurance" attrs="{'invisible': [('country_code', '!=', 'KE')]}"/>
+                    <div class="o_row" attrs="{'invisible': [('country_code', '!=', 'KE')]}">
+                        <field name="l10n_ke_life_insurance" class="o_hr_narrow_field" nolabel="1"/>
+                        <span>/ month</span>
+                    </div>
+                    <label for="l10n_ke_education" attrs="{'invisible': [('country_code', '!=', 'KE')]}"/>
+                    <div class="o_row" attrs="{'invisible': [('country_code', '!=', 'KE')]}">
+                        <field name="l10n_ke_education" class="o_hr_narrow_field" nolabel="1"/>
+                        <span>/ month</span>
+                    </div>
+                </group>
+            </group>
+        </field>
+    </record>
+</odoo>

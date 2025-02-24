@@ -1,0 +1,110 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* website_delivery_fedex
+# 
+# Translators:
+# Chrille Hedberg <hedberg.chrille@gmail.com>, 2022
+# Martin Trigaux, 2022
+# Lasse L, 2023
+# Levi Siuzdak (sile), 2023
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-04-14 06:19+0000\n"
+"PO-Revision-Date: 2022-09-22 05:49+0000\n"
+"Last-Translator: Levi Siuzdak (sile), 2023\n"
+"Language-Team: Swedish (https://app.transifex.com/odoo/teams/41243/sv/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Language: sv\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: website_delivery_fedex
+#: model_terms:ir.ui.view,arch_db:website_delivery_fedex.payment_delivery_methods_inherit_website_sale_delivery
+msgid ""
+"<b class=\"o_fedex_order_location\"/>\n"
+"                    <span class=\"fa fa-trash-o ms-2 o_remove_fedex_order_location\" aria-label=\"Remove this location\" title=\"Remove this location\"/>"
+msgstr ""
+"<b class=\"o_fedex_order_location\"/>\n"
+"                    <span class=\"fa fa-trash-o ms-2 o_remove_fedex_order_location\" aria-label=\"Ta bort denna plats\" title=\"Ta bort denna plats\"/>"
+
+#. module: website_delivery_fedex
+#: model:ir.model.fields,help:website_delivery_fedex.field_delivery_carrier__fedex_use_locations
+msgid ""
+"Allows the ecommerce user to choose a pick-up point as delivery address."
+msgstr ""
+"Gör det möjligt för Webshopanvändare att välja en upphämtningsplats som "
+"leveransadress."
+
+#. module: website_delivery_fedex
+#: model:ir.model.fields,field_description:website_delivery_fedex.field_sale_order__fedex_access_point_address
+msgid "Fedex Address"
+msgstr "Fedex-adress"
+
+#. module: website_delivery_fedex
+#. odoo-python
+#: code:addons/website_delivery_fedex/models/fedex_locations_request.py:0
+#, python-format
+msgid "Fedex Server Not Found"
+msgstr "Fedex Server hittades inte"
+
+#. module: website_delivery_fedex
+#: model:ir.model.fields,field_description:website_delivery_fedex.field_delivery_carrier__fedex_locations_radius_unit
+msgid "Locations Distance Unit"
+msgstr "Plats Avstånd Enhet"
+
+#. module: website_delivery_fedex
+#: model:ir.model.fields,field_description:website_delivery_fedex.field_delivery_carrier__fedex_locations_radius_value
+msgid "Locations Radius"
+msgstr "Placering Radie"
+
+#. module: website_delivery_fedex
+#: model:ir.model.fields,help:website_delivery_fedex.field_delivery_carrier__fedex_locations_radius_value
+msgid "Maximum locations distance radius."
+msgstr "Maximalt antal platser avstånd radie."
+
+#. module: website_delivery_fedex
+#: model:ir.model,name:website_delivery_fedex.model_sale_order
+msgid "Sales Order"
+msgstr "Order"
+
+#. module: website_delivery_fedex
+#. odoo-javascript
+#: code:addons/website_delivery_fedex/static/src/xml/fedex_pickup_locations.xml:0
+#, python-format
+msgid "Select this location"
+msgstr "Välj denna plats"
+
+#. module: website_delivery_fedex
+#: model:ir.model,name:website_delivery_fedex.model_delivery_carrier
+msgid "Shipping Methods"
+msgstr "Leveranssätt"
+
+#. module: website_delivery_fedex
+#. odoo-python
+#: code:addons/website_delivery_fedex/models/fedex_locations_request.py:0
+#, python-format
+msgid ""
+"There was an error retrieving Fedex localisations:\n"
+"%s"
+msgstr ""
+"Det uppstod ett fel vid hämtningen av Fedex-lokaliseringar:\n"
+"%s"
+
+#. module: website_delivery_fedex
+#: model:ir.model.fields,field_description:website_delivery_fedex.field_delivery_carrier__fedex_use_locations
+msgid "Use Fedex Locations"
+msgstr "Använd Fedex platser"
+
+#. module: website_delivery_fedex
+#: model:ir.model.fields.selection,name:website_delivery_fedex.selection__delivery_carrier__fedex_locations_radius_unit__km
+msgid "km"
+msgstr "km"
+
+#. module: website_delivery_fedex
+#: model:ir.model.fields.selection,name:website_delivery_fedex.selection__delivery_carrier__fedex_locations_radius_unit__mi
+msgid "mi"
+msgstr "mile"

@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="l10n_ke_employees_salary_untaxed_food_allowance" model="hr.salary.rule">
+        <field name="category_id" ref="l10n_ke_hr_payroll.KE_UT_ALW"/>
+        <field name="name">Food Allowance</field>
+        <field name="code">UNTAXED_FOOD_ALLOWANCE</field>
+        <field name="sequence">11</field>
+        <field name="condition_select">python</field>
+        <field name="condition_python">
+result = 0 &lt; contract.l10n_ke_food_allowance &lt;= payslip.rule_parameter('l10n_ke_food_alw_max')
+        </field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = contract.l10n_ke_food_allowance
+        </field>
+        <field name="struct_id" ref="l10n_ke_hr_payroll.hr_payroll_structure_ken_employee_salary"/>
+    </record>
+
+    <record id="l10n_ke_employees_salary_untaxed_airtime_allowance" model="hr.salary.rule">
+        <field name="category_id" ref="l10n_ke_hr_payroll.KE_UT_ALW"/>
+        <field name="name">Airtime Allowance</field>
+        <field name="code">UNTAXED_AIRTIME_ALLOWANCE</field>
+        <field name="sequence">13</field>
+        <field name="condition_select">python</field>
+        <field name="condition_python">
+result = 0 &lt; contract.l10n_ke_airtime_allowance &lt;= payslip.rule_parameter('l10n_ke_airtime_alw_max')
+        </field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = contract.l10n_ke_airtime_allowance
+        </field>
+        <field name="struct_id" ref="l10n_ke_hr_payroll.hr_payroll_structure_ken_employee_salary"/>
+    </record>
+
+    <record id="l10n_ke_employees_salary_untaxed_pension_allowance" model="hr.salary.rule">
+        <field name="category_id" ref="l10n_ke_hr_payroll.KE_UT_ALW"/>
+        <field name="name">Pension Allowance</field>
+        <field name="code">UNTAXED_PENSION_ALLOWANCE</field>
+        <field name="sequence">14</field>
+        <field name="condition_select">python</field>
+        <field name="condition_python">
+result = 0 &lt; contract.l10n_ke_pension_allowance &lt;= payslip.rule_parameter('l10n_ke_pension_alw_max')
+        </field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = contract.l10n_ke_pension_allowance
+        </field>
+        <field name="struct_id" ref="l10n_ke_hr_payroll.hr_payroll_structure_ken_employee_salary"/>
+    </record>
+
+    <record id="l10n_ke_employees_salary_untaxed_allowance_total" model="hr.salary.rule">
+        <field name="category_id" ref="hr_payroll.ALW"/>
+        <field name="name">Untaxed Allowance</field>
+        <field name="code">UNTAXED_ALLOWANCE</field>
+        <field name="sequence">20</field>
+        <field name="condition_select">python</field>
+        <field name="condition_python">result = categories.KE_UT_ALW</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">result = categories.KE_UT_ALW</field>
+        <field name="struct_id" ref="l10n_ke_hr_payroll.hr_payroll_structure_ken_employee_salary"/>
+        <field name="appears_on_payroll_report" eval="True"/>
+    </record>
+
+    <record id="l10n_ke_employees_salary_taxed_food_allowance" model="hr.salary.rule">
+        <field name="category_id" ref="l10n_ke_hr_payroll.KE_T_ALW"/>
+        <field name="name">Food Allowance</field>
+        <field name="code">TAXED_FOOD_ALLOWANCE</field>
+        <field name="sequence">21</field>
+        <field name="condition_select">python</field>
+        <field name="condition_python">
+result = contract.l10n_ke_food_allowance &gt; payslip.rule_parameter('l10n_ke_food_alw_max')
+        </field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = contract.l10n_ke_food_allowance
+        </field>
+        <field name="struct_id" ref="l10n_ke_hr_payroll.hr_payroll_structure_ken_employee_salary"/>
+    </record>
+
+    <record id="l10n_ke_employees_salary_taxed_airtime_allowance" model="hr.salary.rule">
+        <field name="category_id" ref="l10n_ke_hr_payroll.KE_T_ALW"/>
+        <field name="name">Airtime Allowance</field>
+        <field name="code">TAXED_AIRTIME_ALLOWANCE</field>
+        <field name="sequence">23</field>
+        <field name="condition_select">python</field>
+        <field name="condition_python">
+result = contract.l10n_ke_airtime_allowance &gt; payslip.rule_parameter('l10n_ke_airtime_alw_max')
+        </field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = contract.l10n_ke_airtime_allowance
+        </field>
+        <field name="struct_id" ref="l10n_ke_hr_payroll.hr_payroll_structure_ken_employee_salary"/>
+    </record>
+
+    <record id="l10n_ke_employees_salary_taxed_pension_allowance" model="hr.salary.rule">
+        <field name="category_id" ref="l10n_ke_hr_payroll.KE_T_ALW"/>
+        <field name="name">Pension Allowance</field>
+        <field name="code">TAXED_PENSION_ALLOWANCE</field>
+        <field name="sequence">24</field>
+        <field name="condition_select">python</field>
+        <field name="condition_python">
+result = contract.l10n_ke_pension_allowance &gt;= payslip.rule_parameter('l10n_ke_pension_alw_max')
+        </field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = contract.l10n_ke_pension_allowance
+        </field>
+        <field name="struct_id" ref="l10n_ke_hr_payroll.hr_payroll_structure_ken_employee_salary"/>
+    </record>
+
+    <record id="l10n_ke_employees_salary_taxed_allowance_total" model="hr.salary.rule">
+        <field name="category_id" ref="hr_payroll.ALW"/>
+        <field name="name">Taxed Allowance</field>
+        <field name="code">TAXED_ALLOWANCE</field>
+        <field name="sequence">30</field>
+        <field name="condition_select">python</field>
+        <field name="condition_python">result = categories.KE_T_ALW</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">result = categories.KE_T_ALW</field>
+        <field name="struct_id" ref="l10n_ke_hr_payroll.hr_payroll_structure_ken_employee_salary"/>
+        <field name="appears_on_payroll_report" eval="True"/>
+    </record>
+
+    <record id="l10n_ke_employees_salary_gross_taxable" model="hr.salary.rule">
+        <field name="category_id" ref="hr_payroll.DED"/>
+        <field name="name">Mortgage Interest</field>
+        <field name="code">MORTGAGE</field>
+        <field name="sequence">33</field>
+        <field name="condition_select">python</field>
+        <field name="condition_python">result = employee.l10n_ke_mortgage</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = employee.l10n_ke_mortgage
+        </field>
+        <field name="struct_id" ref="l10n_ke_hr_payroll.hr_payroll_structure_ken_employee_salary"/>
+        <field name="appears_on_payroll_report" eval="False"/>
+    </record>
+
+    <record id="l10n_ke_employees_med_insurance_relief" model="hr.salary.rule">
+        <field name="category_id" ref="l10n_ke_hr_payroll.INS_RELIEF"/>
+        <field name="name">Medical Insurance Relief</field>
+        <field name="code">MED_INSURANCE_RELIEF</field>
+        <field name="sequence">42</field>
+        <field name="condition_select">python</field>
+        <field name="condition_python">result = contract.l10n_ke_volontary_medical_insurance</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = - 0.15 * contract.l10n_ke_volontary_medical_insurance
+        </field>
+        <field name="struct_id" ref="l10n_ke_hr_payroll.hr_payroll_structure_ken_employee_salary"/>
+        <field name="appears_on_payroll_report" eval="True"/>
+    </record>
+
+    <record id="l10n_ke_employees_life_insurance_relief" model="hr.salary.rule">
+        <field name="category_id" ref="l10n_ke_hr_payroll.INS_RELIEF"/>
+        <field name="name">Life Insurance Relief</field>
+        <field name="code">LIFE_INSURANCE_RELIEF</field>
+        <field name="sequence">43</field>
+        <field name="condition_select">python</field>
+        <field name="condition_python">result = contract.l10n_ke_life_insurance</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = - 0.15 * contract.l10n_ke_life_insurance
+        </field>
+        <field name="struct_id" ref="l10n_ke_hr_payroll.hr_payroll_structure_ken_employee_salary"/>
+        <field name="appears_on_payroll_report" eval="True"/>
+    </record>
+
+    <record id="l10n_ke_employees_education_relief" model="hr.salary.rule">
+        <field name="category_id" ref="l10n_ke_hr_payroll.INS_RELIEF"/>
+        <field name="name">Education Relief</field>
+        <field name="code">EDUCATION_RELIEF</field>
+        <field name="sequence">44</field>
+        <field name="condition_select">python</field>
+        <field name="condition_python">result = contract.l10n_ke_education</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = - 0.15 * contract.l10n_ke_education
+        </field>
+        <field name="struct_id" ref="l10n_ke_hr_payroll.hr_payroll_structure_ken_employee_salary"/>
+        <field name="appears_on_payroll_report" eval="True"/>
+    </record>
+
+    <record id="l10n_ke_employees_volontary_medical_insurance" model="hr.salary.rule">
+        <field name="category_id" ref="l10n_ke_hr_payroll.OTHER_DED"/>
+        <field name="name">Voluntary Medical Insurance</field>
+        <field name="code">MED_INSURANCE</field>
+        <field name="sequence">62</field>
+        <field name="condition_select">python</field>
+        <field name="condition_python">result = contract.l10n_ke_volontary_medical_insurance</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = contract.l10n_ke_volontary_medical_insurance
+        </field>
+        <field name="struct_id" ref="l10n_ke_hr_payroll.hr_payroll_structure_ken_employee_salary"/>
+        <field name="appears_on_payroll_report" eval="True"/>
+    </record>
+
+    <record id="l10n_ke_employees_life_insurance" model="hr.salary.rule">
+        <field name="category_id" ref="l10n_ke_hr_payroll.OTHER_DED"/>
+        <field name="name">Life Insurance</field>
+        <field name="code">LIFE_INSURANCE</field>
+        <field name="sequence">63</field>
+        <field name="condition_select">python</field>
+        <field name="condition_python">result = contract.l10n_ke_life_insurance</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = contract.l10n_ke_life_insurance
+        </field>
+        <field name="struct_id" ref="l10n_ke_hr_payroll.hr_payroll_structure_ken_employee_salary"/>
+        <field name="appears_on_payroll_report" eval="True"/>
+    </record>
+
+    <record id="l10n_ke_employees_education" model="hr.salary.rule">
+        <field name="category_id" ref="l10n_ke_hr_payroll.OTHER_DED"/>
+        <field name="name">Education</field>
+        <field name="code">EDUCATION</field>
+        <field name="sequence">64</field>
+        <field name="condition_select">python</field>
+        <field name="condition_python">result = contract.l10n_ke_education</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = contract.l10n_ke_education
+        </field>
+        <field name="struct_id" ref="l10n_ke_hr_payroll.hr_payroll_structure_ken_employee_salary"/>
+        <field name="appears_on_payroll_report" eval="True"/>
+    </record>
+
+    <function model="hr.salary.rule" name="write">
+        <value model="hr.salary.rule" search="[
+            ('struct_id', '=', ref('l10n_ke_hr_payroll.hr_payroll_structure_ken_employee_salary')),
+            ('code', '=', 'GROSS_TAXABLE')]"/>
+        <value eval="{
+            'amount_python_compute': &quot;result = result_rules['GROSS']['total'] - categories.KE_UT_ALW - categories.RELIEF - employee.l10n_ke_mortgage  - result_rules['NSSF_EMPLOYEE_TIER_1']['total'] - result_rules['NSSF_EMPLOYEE_TIER_2']['total']&quot;
+        }"/>
+    </function>
+</odoo>

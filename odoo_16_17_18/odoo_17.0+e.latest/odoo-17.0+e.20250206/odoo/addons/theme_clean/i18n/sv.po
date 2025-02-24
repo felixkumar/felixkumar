@@ -1,0 +1,173 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* theme_clean
+# 
+# Translators:
+# Lasse L, 2023
+# Anders Wallenquist <anders.wallenquist@vertel.se>, 2024
+# Jakob Krabbe <jakob.krabbe@vertel.se>, 2024
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-09-28 12:21+0000\n"
+"PO-Revision-Date: 2023-10-27 15:39+0000\n"
+"Last-Translator: Jakob Krabbe <jakob.krabbe@vertel.se>, 2024\n"
+"Language-Team: Swedish (https://app.transifex.com/odoo/teams/41243/sv/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Language: sv\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: theme_clean
+#: model_terms:theme.ir.ui.view,arch:theme_clean.s_call_to_action
+msgid "<b>50,000 people</b>, run Clean to grow their financial wealth."
+msgstr ""
+"<b>50.000 personer</b>, run Clean för att öka sin finansiella förmögenhet."
+
+#. module: theme_clean
+#: model_terms:theme.ir.ui.view,arch:theme_clean.s_cover
+msgid "<b>Sell from your couch</b>"
+msgstr ""
+
+#. module: theme_clean
+#: model_terms:theme.ir.ui.view,arch:theme_clean.s_title
+msgid "<b>We create the perfect <br/>tailored solution for you</b>"
+msgstr ""
+
+#. module: theme_clean
+#: model_terms:theme.ir.ui.view,arch:theme_clean.s_carousel
+msgid ""
+"<br/>At any moment, you may contact our advisor through the in-app video "
+"meeting system."
+msgstr ""
+
+#. module: theme_clean
+#: model_terms:theme.ir.ui.view,arch:theme_clean.s_carousel
+msgid ""
+"<br/>We integrate digital tools and solutions for better insights, enabling "
+"data-driven planning."
+msgstr ""
+
+#. module: theme_clean
+#: model_terms:theme.ir.ui.view,arch:theme_clean.s_carousel
+msgid ""
+"<br/>We invest in strategic advice tailored to your<br/>\n"
+"                            business problems and needs."
+msgstr ""
+
+#. module: theme_clean
+#: model_terms:theme.ir.ui.view,arch:theme_clean.s_features
+msgid "All in one"
+msgstr "Allt i ett"
+
+#. module: theme_clean
+#: model_terms:theme.ir.ui.view,arch:theme_clean.s_three_columns
+msgid ""
+"Composed of 25 people from 25 to 66 years, we’re a young and dynamic "
+"company. We have open positions, do not hesitate to contact us."
+msgstr ""
+"Vi består av 25 personer mellan 25 och 66 år och är ett ungt och dynamiskt "
+"företag. Vi har lediga tjänster, tveka inte att kontakta oss."
+
+#. module: theme_clean
+#: model_terms:theme.ir.ui.view,arch:theme_clean.s_features
+msgid "Easy to use"
+msgstr "Lätt att använda"
+
+#. module: theme_clean
+#: model_terms:theme.ir.ui.view,arch:theme_clean.s_carousel
+msgid "Efficient team processes"
+msgstr "Effektiva team-processer"
+
+#. module: theme_clean
+#: model_terms:theme.ir.ui.view,arch:theme_clean.s_text_image
+msgid "Everything you need, <br/>totally free"
+msgstr "Allt du behöver, <br/>helt gratis"
+
+#. module: theme_clean
+#: model_terms:theme.ir.ui.view,arch:theme_clean.s_call_to_action
+msgid "Join them and make the right money move."
+msgstr "Anslut dig till dem och gör rätt pengagrepp."
+
+#. module: theme_clean
+#: model_terms:theme.ir.ui.view,arch:theme_clean.s_cover
+msgid ""
+"Make your finances reach a new level with our online management system. "
+"<br/>Track every penny, directly from the comfort of your home."
+msgstr ""
+"Få din ekonomi att nå en ny nivå med vårt online-hanteringssystem. <br/> "
+"Spåra varje krona, direkt från bekvämligheten av ditt hem."
+
+#. module: theme_clean
+#: model_terms:theme.ir.ui.view,arch:theme_clean.s_three_columns
+msgid "Our mission"
+msgstr "Vårt uppdrag"
+
+#. module: theme_clean
+#: model_terms:theme.ir.ui.view,arch:theme_clean.s_three_columns
+msgid "Our team"
+msgstr "Vårt team"
+
+#. module: theme_clean
+#: model_terms:theme.ir.ui.view,arch:theme_clean.s_three_columns
+msgid "Our values"
+msgstr "Våra värderingar"
+
+#. module: theme_clean
+#: model_terms:theme.ir.ui.view,arch:theme_clean.s_carousel
+msgid "Personal adviser"
+msgstr "Personlig rådgivare"
+
+#. module: theme_clean
+#: model_terms:theme.ir.ui.view,arch:theme_clean.s_three_columns
+msgid ""
+"Provide clear and concise financial advices to make your financial wealth "
+"grow. And this, completely free of charge."
+msgstr ""
+"Ge tydliga och koncisa finansiella råd för att få din finansiella "
+"förmögenhet att växa. Och detta helt kostnadsfritt."
+
+#. module: theme_clean
+#: model_terms:theme.ir.ui.view,arch:theme_clean.s_features
+msgid "Secured"
+msgstr "Säkrad"
+
+#. module: theme_clean
+#: model_terms:theme.ir.ui.view,arch:theme_clean.s_carousel
+msgid "Simplify things"
+msgstr "Förenkla saker och ting"
+
+#. module: theme_clean
+#: model:ir.model,name:theme_clean.model_theme_utils
+msgid "Theme Utils"
+msgstr "Verktyg för teman"
+
+#. module: theme_clean
+#: model_terms:theme.ir.ui.view,arch:theme_clean.s_text_image
+msgid ""
+"Track every expenses, uncover new ways to save, choose the right credit "
+"cards. <br/>All those advices and much more are included and totally free of"
+" charge."
+msgstr ""
+"Spåra alla utgifter, upptäck nya sätt att spara, välj rätt kreditkort. <br/>"
+" Alla dessa råd och mycket mer ingår och är helt kostnadsfria."
+
+#. module: theme_clean
+#: model_terms:theme.ir.ui.view,arch:theme_clean.s_three_columns
+msgid ""
+"We created our company to improve the work-life balance. We believe that we "
+"need to focus on our family more than our work and finances."
+msgstr ""
+"Vi skapade vårt företag för att förbättra balansen mellan arbete och fritid."
+" Vi anser att vi måste fokusera på vår familj mer än på vårt arbete och vår "
+"ekonomi."
+
+#. module: theme_clean
+#. odoo-javascript
+#: code:addons/theme_clean/static/src/js/tour.js:0
+#, python-format
+msgid "width"
+msgstr "bredd"

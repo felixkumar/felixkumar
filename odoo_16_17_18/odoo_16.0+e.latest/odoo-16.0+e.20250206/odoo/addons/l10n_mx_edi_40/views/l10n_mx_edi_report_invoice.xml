@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <template id="l10n_mx_fiscal_regime_receptor">
+      <t t-if="o.partner_id.l10n_mx_edi_fiscal_regime">
+          <p name="l10n_mx_fiscal_regime_receptor">
+              Fiscal Regime: <span t-field="o.partner_id.l10n_mx_edi_fiscal_regime"/>
+          </p>
+      </t>
+    </template>
+    <template id="report_invoice_document_mx_40" inherit_id="account.report_invoice_document">
+        <xpath expr="//span[@t-field='o.partner_id.vat'][1]" position="after">
+            <t t-call="l10n_mx_edi_40.l10n_mx_fiscal_regime_receptor"/>
+        </xpath>
+        <xpath expr="(//span[@t-field='o.partner_id.vat'])[2]" position="after">
+            <t t-call="l10n_mx_edi_40.l10n_mx_fiscal_regime_receptor"/>
+        </xpath>
+        <xpath expr="(//span[@t-field='o.partner_id.vat'])[3]" position="after">
+            <t t-call="l10n_mx_edi_40.l10n_mx_fiscal_regime_receptor"/>
+        </xpath>
+    </template>
+</odoo>

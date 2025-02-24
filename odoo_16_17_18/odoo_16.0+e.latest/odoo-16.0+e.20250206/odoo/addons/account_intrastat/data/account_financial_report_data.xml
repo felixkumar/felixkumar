@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+         <template id="search_template_intrastat_extra_options" inherit_id="account_reports.search_template_extra_options" primary="True">
+            <xpath expr="//button" position="inside">
+                <t t-if="any(opt['selected'] for opt in options.get('intrastat_type'))">
+                    <t t-if="all(opt['selected'] for opt in options.get('intrastat_type'))">
+                        All Types
+                    </t>
+                    <t t-else="">
+                        <t t-if="options.get('intrastat_type')[0]['selected']">
+                            <t t-out="options.get('intrastat_type')[0].get('name')"/>
+                        </t>
+                        <t t-else="">
+                            <t t-out="options.get('intrastat_type')[1].get('name')"/>
+                        </t>
+                    </t>
+                </t>
+                <t t-if="options.get('intrastat_extended')">
+                    <t t-if="any(opt['selected'] for opt in options.get('intrastat_type'))">,</t>
+                    Extended
+                </t>
+                <t t-if="options.get('intrastat_with_vat')">
+                    <t t-if="any(opt['selected'] for opt in options.get('intrastat_type')) or options.get('intrastat_extended')">,</t>
+                    With VAT
+                </t>
+            </xpath>
+            <xpath expr="//div[@role='menu']" position="inside">
+                <div role="separator" class="dropdown-divider"/>
+                    <!-- Type -->
+                <t t-foreach="options['intrastat_type']" t-as="c">
+                    <a t-att-title="c.get('name')"
+                        data-filter="intrastat_type"
+                        t-att-data-id="c.get('id')"
+                        class="dropdown-item js_account_report_choice_filter">
+                        <t t-out="c.get('name')"/>
+                    </a>
+                </t>
+                <div role="separator" class="dropdown-divider"/>
+                <!-- Mode -->
+                <a role="menuitem" title="Extended" data-filter="intrastat_extended"
+                    class="dropdown-item js_account_report_bool_filter">
+                    Extended Mode
+                </a>
+                <div role="separator" class="dropdown-divider"/>
+                <!-- VAT -->
+                <a role="menuitem" title="Include VAT" data-filter="intrastat_with_vat"
+                    class="dropdown-item js_account_report_bool_filter">
+                    Only with VAT numbers
+                </a>
+            </xpath>
+        </template>
+
+        <template id="search_template_intrastat" inherit_id="account_reports.search_template" primary="True">
+            <xpath expr="//div[@id='extra_options_dropdown']/t" position="replace">
+                <t t-call="account_intrastat.search_template_intrastat_extra_options"/>
+            </xpath>
+        </template>
+
+        <record id="intrastat_report" model="account.report">
+            <field name="name">Intrastat Report</field>
+            <field name="filter_show_draft" eval="False"/>
+            <field name="filter_unreconciled" eval="False"/>
+            <field name="filter_unfold_all"/>
+            <field name="filter_period_comparison" eval="True"/>
+            <field name="filter_growth_comparison" eval="False"/>
+            <field name="filter_journals" eval="True"/>
+            <field name="custom_handler_model_id" ref="model_account_intrastat_report_handler"/>
+            <field name="search_template">account_intrastat.search_template_intrastat</field>
+            <field name="main_template">account_intrastat.account_intrastat_main_template</field>
+            <field name="load_more_limit" eval="80"/>
+            <field name="column_ids">
+                <record id="intrastat_report_column_system" model="account.report.column">
+                    <field name="name">System</field>
+                    <field name="expression_label">system</field>
+                    <field name="figure_type">none</field>
+                </record>
+                <record id="intrastat_report_column_country_code" model="account.report.column">
+                    <field name="name">Country</field>
+                    <field name="expression_label">country_name</field>
+                    <field name="figure_type">none</field>
+                </record>
+                <record id="intrastat_report_column_transaction_code" model="account.report.column">
+                    <field name="name">Transaction</field>
+                    <field name="expression_label">transaction_code</field>
+                    <field name="figure_type">none</field>
+                </record>
+                <record id="intrastat_report_column_region_code" model="account.report.column">
+                    <field name="name">Region</field>
+                    <field name="expression_label">region_code</field>
+                    <field name="figure_type">none</field>
+                </record>
+                <record id="intrastat_report_column_commodity_code" model="account.report.column">
+                    <field name="name">Commodity</field>
+                    <field name="expression_label">commodity_code</field>
+                    <field name="figure_type">none</field>
+                </record>
+                <record id="intrastat_report_column_product_origin_country" model="account.report.column">
+                    <field name="name">Origin Country</field>
+                    <field name="expression_label">intrastat_product_origin_country_code</field>
+                    <field name="figure_type">none</field>
+                </record>
+                <record id="intrastat_report_column_partner_vat" model="account.report.column">
+                    <field name="name">Partner VAT</field>
+                    <field name="expression_label">partner_vat</field>
+                    <field name="figure_type">none</field>
+                </record>
+                <record id="intrastat_report_column_transport_code" model="account.report.column">
+                    <field name="name">Transport</field>
+                    <field name="expression_label">transport_code</field>
+                    <field name="figure_type">none</field>
+                </record>
+                <record id="intrastat_report_column_incoterm_code" model="account.report.column">
+                    <field name="name">Incoterm</field>
+                    <field name="expression_label">incoterm_code</field>
+                    <field name="figure_type">none</field>
+                </record>
+                <record id="intrastat_report_column_weight" model="account.report.column">
+                    <field name="name">Weight</field>
+                    <field name="expression_label">weight</field>
+                    <field name="figure_type">none</field>
+                </record>
+                <record id="intrastat_report_column_supplementary_units" model="account.report.column">
+                    <field name="name">Supplementary Units</field>
+                    <field name="expression_label">supplementary_units</field>
+                    <field name="figure_type">none</field>
+                </record>
+                <record id="intrastat_report_column_value" model="account.report.column">
+                    <field name="name">Value</field>
+                    <field name="expression_label">value</field>
+                    <field name="figure_type">monetary</field>
+                </record>
+            </field>
+        </record>
+
+        <!-- Intrastat Report -->
+        <record id="action_account_report_intrastat" model="ir.actions.client">
+            <field name="name">Intrastat Report</field>
+            <field name="tag">account_report</field>
+            <field name="context" eval="{'report_id': ref('account_intrastat.intrastat_report')}"/>
+        </record>
+
+        <menuitem id="menu_action_account_report_intrastat"
+                  action="action_account_report_intrastat"
+                  parent="account_reports.account_reports_audit_reports_menu"
+                  groups="account.group_account_readonly"/>
+
+        <!-- display ec sales list report menu item -->
+        <record model="ir.ui.menu" id="account_reports.menu_action_account_report_sales">
+            <field name="active" eval="True"/>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<template id="print_batch_payment">
+    <t t-call="web.basic_layout">
+        <t t-foreach="docs" t-as="o">
+            <div class="page page_batch_payment">
+                <div class="row batch_details">
+                    <div class="col-6"><t t-esc="o.journal_id.company_id.name"/></div>
+                    <div class="col-6 text-end"><t t-esc="o.journal_id.name"/> : <t t-esc="o.name"/></div>
+                </div>
+                <div class="row batch_details">
+                    <div class="col-6"><t t-esc="o.date"/></div>
+                </div>
+                <div class="row batch_details">
+                    <div t-if="o.journal_id.bank_acc_number" class="col-6" style="font-size:18px;">Issuing bank account : <t t-esc="o.journal_id.bank_acc_number"/></div>
+                </div>
+                <table class="table table-bordered table-sm">
+                    <thead><tr>
+                        <th class="text-start">Customer</th>
+                        <th class="text-start">Date</th>
+                        <th class="text-start">Memo</th>
+                        <th class="text-start">Recipient Bank Account</th>
+                        <th class="text-end">Amount</th>
+                    </tr></thead>
+                    <tr t-foreach="o.payment_ids" t-as="payment">
+                        <td class="text-start"><t t-esc="payment.partner_id.name"/></td>
+                        <td class="text-start"><t t-esc="payment.date" t-options='{"widget": "date"}'/></td>
+                        <td class="text-start"><t t-esc="payment.ref"/></td>
+                        <td class="text-start"><t t-esc="payment.partner_bank_id.acc_number"/></td>
+                        <td class="text-end"><t t-esc="payment.amount" t-options="{'widget': 'monetary', 'display_currency': payment.currency_id}"/></td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: bold;">TOTAL</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="text-end" style="font-weight: bold;"><t t-esc="o.amount" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/></td>
+                    </tr>
+                </table>
+            </div>
+        </t>
+    </t>
+</template>
+</odoo>

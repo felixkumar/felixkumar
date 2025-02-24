@@ -1,0 +1,79 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* appointment_crm
+# 
+# Translators:
+# Erno Iipponen <erno.iipponen@web-veistamo.fi>, 2022
+# Jarmo Kortetjärvi <jarmo.kortetjarvi@gmail.com>, 2022
+# Martin Trigaux, 2022
+# Kari Lindgren <kari.lindgren@emsystems.fi>, 2022
+# Ossi Mantylahti <ossi.mantylahti@obs-solutions.fi>, 2023
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-04-14 06:19+0000\n"
+"PO-Revision-Date: 2022-09-22 05:45+0000\n"
+"Last-Translator: Ossi Mantylahti <ossi.mantylahti@obs-solutions.fi>, 2023\n"
+"Language-Team: Finnish (https://app.transifex.com/odoo/teams/41243/fi/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Language: fi\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: appointment_crm
+#: model:ir.model,name:appointment_crm.model_appointment_type
+msgid "Appointment Type"
+msgstr "Tapaamisen tyyppi"
+
+#. module: appointment_crm
+#: model:ir.model,name:appointment_crm.model_calendar_event
+msgid "Calendar Event"
+msgstr "Kalenteritapahtuma"
+
+#. module: appointment_crm
+#. odoo-javascript
+#: code:addons/appointment_crm/static/src/views/appointment_calendar/appointment_crm_calendar_controller.xml:0
+#, python-format
+msgid "Click in your calendar to pick meeting time proposals for"
+msgstr "Valitse kalenteristasi kokousaikaehdotuksia varten"
+
+#. module: appointment_crm
+#: model:ir.model.fields,field_description:appointment_crm.field_appointment_type__lead_create
+msgid "Create Opportunities"
+msgstr "Luo myyntimahdollisuuksia"
+
+#. module: appointment_crm
+#: model:ir.model.fields,help:appointment_crm.field_appointment_type__lead_create
+msgid ""
+"For each scheduled appointment, create a new opportunity and assign it to "
+"the responsible user."
+msgstr ""
+"Luo jokaiselle suunnitellulle tapaamiselle uusi myyntimahdollisuus ja "
+"vastuuta se."
+
+#. module: appointment_crm
+#: model:ir.model.fields,help:appointment_crm.field_appointment_type__opportunity_id
+msgid ""
+"Link an opportunity/lead to the appointment type created.\n"
+"Used when creating a custom appointment type from the Meeting action in the crm form view."
+msgstr ""
+"Linkitä myyntimahdollisuus tai liidi luotuun tapaamistyyppiin.\n"
+"Käytetään luotaessa mukautettua tapaamistyyppiä crm-lomakkeen näkymän tapaamistoiminnolla."
+
+#. module: appointment_crm
+#: model:crm.tag,name:appointment_crm.appointment_crm_tag
+msgid "Online Appointment"
+msgstr "Verkkotapaaminen"
+
+#. module: appointment_crm
+#: model:ir.model.fields,field_description:appointment_crm.field_calendar_event__opportunity_id
+msgid "Opportunity"
+msgstr "Mahdollisuus"
+
+#. module: appointment_crm
+#: model:ir.model.fields,field_description:appointment_crm.field_appointment_type__opportunity_id
+msgid "Opportunity/Lead"
+msgstr "Mahdollisuus/Liidi"

@@ -1,0 +1,137 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* approvals_purchase
+# 
+# Translators:
+# Niyas Raphy, 2023
+# Nikhil Krishnan, 2023
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server saas~14.4+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-07-12 07:57+0000\n"
+"PO-Revision-Date: 2022-09-22 05:45+0000\n"
+"Last-Translator: Nikhil Krishnan, 2023\n"
+"Language-Team: Malayalam (https://app.transifex.com/odoo/teams/41243/ml/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Language: ml\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: approvals_purchase
+#: model:ir.model.fields,help:approvals_purchase.field_approval_category__approval_type
+msgid ""
+"Allows you to define which documents you would like to create once the "
+"request has been approved"
+msgstr ""
+"അഭ്യർത്ഥന അംഗീകരിച്ചുകഴിഞ്ഞാൽ ഏതൊക്കെ ഡോക്യുമെന്റുകളാണ് നിങ്ങൾ സൃഷ്ടിക്കാൻ "
+"ആഗ്രഹിക്കുന്നതെന്ന് നിർവ്വചിക്കാൻ നിങ്ങളെ അനുവദിക്കുന്നു"
+
+#. module: approvals_purchase
+#: model:ir.model,name:approvals_purchase.model_approval_category
+msgid "Approval Category"
+msgstr "അംഗീകാര വിഭാഗം"
+
+#. module: approvals_purchase
+#: model:ir.model,name:approvals_purchase.model_approval_request
+msgid "Approval Request"
+msgstr "അംഗീകാര അഭ്യർത്ഥന"
+
+#. module: approvals_purchase
+#: model:ir.model.fields,field_description:approvals_purchase.field_approval_category__approval_type
+msgid "Approval Type"
+msgstr "അംഗീകാര തരം"
+
+#. module: approvals_purchase
+#: model:approval.category,name:approvals_purchase.approval_category_data_rfq
+#: model:ir.model.fields.selection,name:approvals_purchase.selection__approval_category__approval_type__purchase
+#: model_terms:ir.ui.view,arch_db:approvals_purchase.approval_purchase_request_view_form_inherit
+msgid "Create RFQ's"
+msgstr ""
+
+#. module: approvals_purchase
+#: model_terms:ir.ui.view,arch_db:approvals_purchase.exception_approval_request_canceled
+msgid "Exception occurred: the Approval Request"
+msgstr "ഒഴിവാക്കൽ സംഭവിച്ചു: അംഗീകാര അഭ്യർത്ഥന"
+
+#. module: approvals_purchase
+#: model_terms:ir.ui.view,arch_db:approvals_purchase.exception_approval_request_canceled
+msgid "Exception(s):"
+msgstr "ഒഴിവാക്കൽ(കൾ):"
+
+#. module: approvals_purchase
+#: code:addons/approvals_purchase/models/approval_product_line.py:0
+#, python-format
+msgid "Please set a vendor on product(s) %s."
+msgstr "ഉൽപ്പന്നം(കളിൽ) ഒരു വെണ്ടറെ സജ്ജമാക്കുക %s."
+
+#. module: approvals_purchase
+#: model:ir.model,name:approvals_purchase.model_approval_product_line
+msgid "Product Line"
+msgstr "പ്രോഡക്റ്റ്  നിര"
+
+#. module: approvals_purchase
+#: model:ir.model.fields,field_description:approvals_purchase.field_approval_product_line__product_id
+msgid "Products"
+msgstr "പ്രോഡക്ടസ് "
+
+#. module: approvals_purchase
+#: model:ir.model.fields,field_description:approvals_purchase.field_approval_request__purchase_order_count
+msgid "Purchase Order Count"
+msgstr "പർച്ചേസ് ഓർഡർ കൗണ്ട്"
+
+#. module: approvals_purchase
+#: model:ir.model.fields,field_description:approvals_purchase.field_approval_product_line__purchase_order_line_id
+msgid "Purchase Order Line"
+msgstr "പർച്ചേസ് ഓർഡർ ലൈൻ"
+
+#. module: approvals_purchase
+#: code:addons/approvals_purchase/models/approval_request.py:0
+#: model_terms:ir.ui.view,arch_db:approvals_purchase.approval_purchase_request_view_form_inherit
+#, python-format
+msgid "Purchase Orders"
+msgstr "പർച്ചേസ് ഓർഡർ"
+
+#. module: approvals_purchase
+#: model:ir.model.fields,field_description:approvals_purchase.field_approval_product_line__po_uom_qty
+msgid "Purchase UoM Quantity"
+msgstr ""
+
+#. module: approvals_purchase
+#: model:ir.model.fields,help:approvals_purchase.field_approval_product_line__po_uom_qty
+msgid ""
+"The quantity converted into the UoM used by the product in Purchase Order."
+msgstr ""
+
+#. module: approvals_purchase
+#: code:addons/approvals_purchase/models/approval_request.py:0
+#, python-format
+msgid "You cannot create an empty purchase request."
+msgstr "നിങ്ങൾക്ക് ഒരു ശൂന്യമായ വാങ്ങൽ അഭ്യർത്ഥന സൃഷ്ടിക്കാൻ കഴിയില്ല."
+
+#. module: approvals_purchase
+#: code:addons/approvals_purchase/models/approval_request.py:0
+#, python-format
+msgid "You must select a product for each line of requested products."
+msgstr ""
+"അഭ്യർത്ഥിച്ച ഉൽപ്പന്നങ്ങളുടെ ഓരോ നിരയ്ക്കും നിങ്ങൾ ഒരു ഉൽപ്പന്നം "
+"തിരഞ്ഞെടുക്കണം."
+
+#. module: approvals_purchase
+#: model_terms:ir.ui.view,arch_db:approvals_purchase.exception_approval_request_canceled
+msgid "cancelled"
+msgstr "റദ്ദാക്കി"
+
+#. module: approvals_purchase
+#: model_terms:ir.ui.view,arch_db:approvals_purchase.exception_approval_request_canceled
+msgid ""
+"has been canceled.\n"
+"            Manual actions may be needed."
+msgstr ""
+
+#. module: approvals_purchase
+#: model_terms:ir.ui.view,arch_db:approvals_purchase.exception_approval_request_canceled
+msgid "of"
+msgstr ""

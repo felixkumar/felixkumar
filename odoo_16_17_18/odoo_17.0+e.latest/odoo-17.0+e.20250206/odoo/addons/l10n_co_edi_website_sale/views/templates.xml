@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="partner_info" name="Colombian partner">
+        <!-- show identification type -->
+        <div t-attf-class="mb-3 #{error.get('l10n_latam_identification_type_id') and 'o_has_error' or ''} col-xl-6">
+            <label class="col-form-label" for="l10n_latam_identification_type_id">Identification Type</label>
+            <t t-if="partner.can_edit_vat()">
+                <select name="l10n_latam_identification_type_id" t-attf-class="form-select #{error.get('l10n_latam_identification_type_id') and 'is-invalid' or ''}">
+                    <option value="">Identification Type...</option>
+                    <t t-foreach="identification_types or []" t-as="id_type">
+                        <option t-att-value="id_type.id" t-att-selected="id_type.id == int(identification) if identification else id_type.id == partner.l10n_latam_identification_type_id.id">
+                            <t t-out="id_type.name"/>
+                        </option>
+                    </t>
+                </select>
+            </t>
+            <t t-else="">
+                <p class="form-control" t-out="partner.l10n_latam_identification_type_id.name" readonly="1" title="Changing identification type is not allowed once document(s) have been issued for your account. Please contact us directly for this operation."/>
+                <input name="l10n_latam_identification_type_id" class="form-control" t-att-value="partner.l10n_latam_identification_type_id.id" type='hidden'/>
+            </t>
+        </div>
+
+    </template>
+
+    <template id="address" inherit_id="website_sale.address">
+
+        <xpath expr="//t[@t-if='website._display_partner_b2b_fields()']" position="replace">
+            <t t-if="website._display_partner_b2b_fields()">
+                <div class="w-100"/>
+                <div t-attf-class="#{error.get('company_name') and 'o_has_error'} col-lg-6 mb-2">
+                    <label class="col-form-label fw-normal label-optional" for="company_name">Company Name</label>
+                    <input type="text" name="company_name" t-attf-class="form-control #{error.get('company_name') and 'is-invalid' or ''}" t-att-value="'commercial_company_name' in checkout and checkout['commercial_company_name'] or 'company_name' in checkout and checkout['company_name']" t-att-readonly="'1' if vat_warning else None" />
+                    <small t-if="vat_warning" class="form-text text-muted d-block d-lg-none">Changing company name is not allowed once document(s) have been issued for your account. Please contact us directly for this operation.</small>
+                </div>
+                <div t-attf-class="#{error.get('vat') and 'o_has_error'} div_vat col-lg-6 mb-2">
+                    <label class="col-form-label fw-normal label-optional" for="vat">VAT</label>
+                    <input type="text" name="vat" t-attf-class="form-control #{error.get('vat') and 'is-invalid' or ''}" t-att-value="'vat' in checkout and checkout['vat']" t-att-readonly="'1' if vat_warning else None"/>
+                    <small t-if="vat_warning" class="form-text text-muted d-block d-lg-none">Changing VAT number is not allowed once document(s) have been issued for your account. Please contact us directly for this operation.</small>
+                </div>
+                <div t-if="vat_warning" class="col-12 d-none d-lg-block mb-1">
+                    <small class="form-text text-muted">Changing company name or VAT number is not allowed once document(s) have been issued for your account. Please contact us directly for this operation.</small>
+                </div>
+            </t>
+        </xpath>
+
+        <xpath expr="//input[@name='vat']/.." position="before">
+            <t t-if="mode[1] == 'billing'">
+                <t t-if="res_company.account_fiscal_country_id.code == 'CO'">
+                    <t t-set="partner" t-value="website_sale_order.partner_id"/>
+                    <div class="w-100" />
+                    <t t-call="l10n_co_edi_website_sale.partner_info"/>
+                </t>
+            </t>
+        </xpath>
+
+        <xpath expr="//input[@name='vat']/.." position="after">
+            <t t-if="mode[1] == 'billing'">
+                <!-- Show fiscal regimen and obligation types-->
+                <div t-attf-class="mb-3 #{error.get('l10n_co_edi_obligation_type_ids') and 'o_has_error' or ''} d-none col-xl-6 div_obligation_types">
+                    <label class="col-form-label" for="l10n_co_edi_obligation_type_ids">Obligation Types</label>
+                    <select multiple="multiple" name="l10n_co_edi_obligation_type_ids" t-attf-class="form-control #{error.get('l10n_co_edi_obligation_type_ids') and 'is-invalid' or ''}">
+                        <t t-foreach="obligation_types or []" t-as="ob_type">
+                            <option t-att-value="ob_type.id" t-att-selected="ob_type.id in selected_obligation_types_ids">
+                                <t t-out="ob_type.name"/>
+                            </option>
+                        </t>
+                    </select>
+                </div>
+
+                <div t-attf-class="mb-3 #{error.get('l10n_co_edi_fiscal_regimen') and 'o_has_error' or ''} d-none col-xl-6 div_fiscal_regimen">
+                    <label class="col-form-label" for="l10n_co_edi_fiscal_regimen">Fiscal Regime</label>
+                    <select name="l10n_co_edi_fiscal_regimen" t-attf-class="form-select #{error.get('l10n_co_edi_fiscal_regimen') and 'is-invalid' or ''}">
+                        <t t-foreach="fiscal_regimen_selection or []" t-as="regimen">
+                            <option t-att-value="regimen[0]" t-att-selected="regimen[0] == fiscal_regimen">
+                                <t t-out="regimen[1]"/>
+                            </option>
+                        </t>
+                    </select>
+                </div>
+            </t>
+        </xpath>
+
+        <xpath expr="//input[@name='city']/.." position="before">
+            <t t-if="res_company.account_fiscal_country_id.code == 'CO'">
+                <div t-attf-class="mb-3 #{error.get('city_id') and 'o_has_error' or ''} col-lg-6 div_city_id"
+                t-attf-style="#{(country and country.code != 'CO') and 'd-none' or ''}">
+                <label class="col-form-label" for="city_id">City</label>
+                <select id="city_id" name="city_id" t-attf-class="form-select #{error.get('city_id') and 'is-invalid' or ''}" data-init="1">
+                    <t t-foreach="state_cities" t-as="city">
+                        <option t-att-value="city.id"
+                            t-att-selected="city.id == ('city_id' in checkout and checkout['city_id'] != '' and int(checkout['city_id']))">
+                            <t t-out="city.name" />
+                        </option>
+                    </t>
+                </select>
+                </div>
+            </t>
+        </xpath>
+
+        <label for="vat" position="replace">
+            <t t-if="res_company.account_fiscal_country_id.code != 'CO'">$0</t>
+            <t t-else="">
+                <label class="col-form-label label-optional" for="vat">
+                    Identification Number
+                </label>
+            </t>
+        </label>
+
+        <xpath expr="//select[@name='country_id']" position="attributes">
+            <attribute name="t-att-data-company_country_code">res_company.account_fiscal_country_id.code</attribute>
+        </xpath>
+
+        <!-- Sets the country code for every country option -->
+        <xpath expr="//t[@t-foreach='countries']//option" position="attributes">
+            <attribute name="t-att-code">c.code</attribute>
+        </xpath>
+    </template>
+</odoo>

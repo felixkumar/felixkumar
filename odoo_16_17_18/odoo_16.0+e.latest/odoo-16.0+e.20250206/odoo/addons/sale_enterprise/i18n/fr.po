@@ -1,0 +1,77 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* sale_enterprise
+# 
+# Translators:
+# Martin Trigaux, 2022
+# Cécile Collart <cco@odoo.com>, 2022
+# Jolien De Paepe, 2023
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-04-14 06:18+0000\n"
+"PO-Revision-Date: 2022-09-22 05:48+0000\n"
+"Last-Translator: Jolien De Paepe, 2023\n"
+"Language-Team: French (https://app.transifex.com/odoo/teams/41243/fr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Language: fr\n"
+"Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
+
+#. module: sale_enterprise
+#: model:ir.model.fields,field_description:sale_enterprise.field_sale_report__avg_days_to_confirm
+msgid "Average Days To Confirm"
+msgstr "Nombre moyen de jours pour confirmer"
+
+#. module: sale_enterprise
+#: model:ir.model.fields,help:sale_enterprise.field_sale_report__avg_days_to_confirm
+msgid ""
+"Average days to confirm a sales order after its creation. Due to a hack "
+"needed to calculate this,               every record will show the same "
+"average value, therefore only use this as an aggregated value with "
+"group_operator=avg"
+msgstr ""
+"Nombre moyen de jours pour valider un bon de commande après sa création. En "
+"raison d'une astuce nécessaire pour calculer cela, chaque enregistrement "
+"affichera la même valeur moyenne, donc utilisez-la uniquement comme valeur "
+"agrégée avec group_operator=avg"
+
+#. module: sale_enterprise
+#: model:ir.model.fields.selection,name:sale_enterprise.selection__sale_report__invoice_status__invoiced
+#: model_terms:ir.ui.view,arch_db:sale_enterprise.view_order_product_search_inherit
+msgid "Fully Invoiced"
+msgstr "Entièrement facturé"
+
+#. module: sale_enterprise
+#: model:ir.model.fields,field_description:sale_enterprise.field_sale_report__invoice_status
+msgid "Invoice Status"
+msgstr "Statut de la facture"
+
+#. module: sale_enterprise
+#: model:ir.model.fields.selection,name:sale_enterprise.selection__sale_report__invoice_status__no
+msgid "Nothing to Invoice"
+msgstr "Rien à facturer"
+
+#. module: sale_enterprise
+#: model_terms:ir.ui.view,arch_db:sale_enterprise.sale_report_view_pivot
+msgid "Sales Analysis"
+msgstr "Analyse des ventes"
+
+#. module: sale_enterprise
+#: model:ir.model,name:sale_enterprise.model_sale_report
+msgid "Sales Analysis Report"
+msgstr "Rapport d'analyse des ventes"
+
+#. module: sale_enterprise
+#: model:ir.model.fields.selection,name:sale_enterprise.selection__sale_report__invoice_status__to_invoice
+#: model_terms:ir.ui.view,arch_db:sale_enterprise.view_order_product_search_inherit
+msgid "To Invoice"
+msgstr "À facturer"
+
+#. module: sale_enterprise
+#: model:ir.model.fields.selection,name:sale_enterprise.selection__sale_report__invoice_status__upselling
+msgid "Upselling Opportunity"
+msgstr "Opportunité de vente incitative"

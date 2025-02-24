@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="hr_salary_rule_category_vpa" model="hr.salary.rule.category">
+        <field name="name">Vehicle Package Allowance</field>
+        <field name="code">VPA</field>
+        <field name="parent_id" ref="hr_payroll.ALW"/>
+    </record>
+
+    <record id="hr_salary_rule_category_total_deduction" model="hr.salary.rule.category">
+        <field name="name">Total Deduction</field>
+        <field name="code">DED_TOTAL</field>
+    </record>
+
+    <record id="hr_salary_rule_category_taxes" model="hr.salary.rule.category">
+        <field name="name">Taxes</field>
+        <field name="code">TAXES</field>
+        <field name="parent_id" ref="hr_payroll.DED"/>
+    </record>
+
+    <record id="hr_salary_rule_category_insurance" model="hr.salary.rule.category">
+        <field name="name">Insurance</field>
+        <field name="code">INSURANCE</field>
+        <field name="parent_id" ref="hr_payroll.DED"/>
+    </record>
+
+    <record id="hr_salary_rule_category_tax_credit" model="hr.salary.rule.category">
+        <field name="name">Tax Credit</field>
+        <field name="code">TAX_CREDIT</field>
+    </record>
+
+    <record id="hr_salary_rule_category_total_tax_credit" model="hr.salary.rule.category">
+        <field name="name">Total Tax Credit</field>
+        <field name="code">TOTAL_TAX_CREDIT</field>
+        <field name="parent_id" ref="hr_payroll.ALW"/>
+    </record>
+
+    <record id="hr_salary_rule_category_cotisation_base" model="hr.salary.rule.category">
+        <field name="name">Cotisation Base</field>
+        <field name="code">COTISATION_BASE</field>
+    </record>
+
+    <record id="hr_salary_rule_category_taxable_amount" model="hr.salary.rule.category">
+        <field name="name">Taxable Salary</field>
+        <field name="code">TAXABLE</field>
+    </record>
+
+    <record id="hr_salary_rule_category_ded_net" model="hr.salary.rule.category">
+        <field name="name">Net Deductions</field>
+        <field name="code">DED_NET</field>
+        <field name="parent_id" ref="hr_payroll.DED"/>
+    </record>
+
+    <record id="hr_salary_rule_category_net_to_pay" model="hr.salary.rule.category">
+        <field name="name">Net To Pay</field>
+        <field name="code">NET_TO_PAY</field>
+    </record>
+
+    <record id="hr_salary_rule_category_bik" model="hr.salary.rule.category">
+        <field name="name">Benefit in Kind</field>
+        <field name="code">BIK</field>
+    </record>
+
+    <record id="hr_salary_rule_category_gratification" model="hr.salary.rule.category">
+        <field name="name">Gratification</field>
+        <field name="code">GRAT</field>
+    </record>
+
+    <record id="hr_salary_rule_category_net_gratification" model="hr.salary.rule.category">
+        <field name="name">Net Gratification</field>
+        <field name="code">NET_GRAT</field>
+        <field name="parent_id" ref="hr_payroll.ALW"/>
+    </record>
+</odoo>

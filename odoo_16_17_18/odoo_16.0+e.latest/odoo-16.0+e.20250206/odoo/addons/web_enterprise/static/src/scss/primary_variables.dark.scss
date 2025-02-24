@@ -1,0 +1,82 @@
+///
+/// Odoo Dark-Mode
+///
+///
+
+// = Colors
+// ============================================================================
+
+$o-white: #000 !default;
+$o-black: #FFF !default;
+
+$o-gray-100: #191c24 !default;
+$o-gray-200: #242733 !default;
+$o-gray-300: #3C3F4C !default;
+$o-gray-400: #595E6D !default;
+$o-gray-500: #737586 !default;
+$o-gray-600: #91939D !default;
+$o-gray-700: #AFAFB5 !default;
+$o-gray-800: #CDCDCE !default;
+$o-gray-900: #EAEAEA !default;
+
+$o-enterprise-color: #BB86FC !default;
+$o-brand-primary: #00DAC5 !default;
+
+$o-success: #6AFB81 !default;
+$o-info: #6AB5FB !default;
+$o-warning: #FBB56A !default;
+$o-danger: #FB6A6A !default;
+
+
+// = Text
+// ============================================================================
+
+$o-main-text-color: $o-gray-800 !default;
+$o-main-link-color: $o-brand-primary !default;
+$o-enterprise-color: $o-brand-odoo !default;
+$o-main-favorite-color: #FBF46A !default;
+$o-main-code-color: #F46AFB !default;
+
+// = Fine-tune contextual text colors.
+$o-theme-text-colors: (
+    "success": #6AFB81,
+    "info": #6AB5FB,
+    "warning": #FBB56A,
+    "danger": #FB6A6A,
+    "odoo": #BB86FC,
+) !default;
+
+
+// = Webclient
+// ============================================================================
+$o-webclient-color-scheme: dark !default;
+$o-webclient-background-color: $o-gray-100 !default;
+$o-view-background-color: $o-gray-200 !default;
+
+// = Inputs
+$o-input-border-required: $o-black !default;
+
+// = Button Secondary
+$o-btn-secondary-bg: $o-view-background-color !default;
+$o-btn-secondary-hover-bg: $o-gray-100 !default;
+$o-btn-secondary-hover-border: $o-btn-secondary-hover-bg !default;
+
+// = Button Light
+$o-btn-light-bg: $o-gray-200 !default;
+$o-btn-light-background-hover: $o-gray-300 !default;
+
+
+// = Components
+// ============================================================================
+
+// = List-group
+$o-list-group-active-color: $o-gray-900 !default;
+$o-list-group-active-bg: rgba(saturate(adjust-hue($o-info, 15), 1.8), .5) !default;
+
+// = Navbar
+$o-navbar-bg: $o-gray-200 !default;
+$-backend-entry-hover-bg: $o-gray-100 !default; // <- TO DO: use a general variable rather than a scoped one
+
+// = Modal
+$modal-content-bg: $o-view-background-color !default;
+$modal-backdrop-bg: $o-white !default;

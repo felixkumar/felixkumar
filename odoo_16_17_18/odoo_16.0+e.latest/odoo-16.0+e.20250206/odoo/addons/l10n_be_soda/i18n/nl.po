@@ -1,0 +1,62 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* l10n_be_soda
+# 
+# Translators:
+# Martin Trigaux, 2023
+# Jolien De Paepe, 2023
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-02-03 07:14+0000\n"
+"PO-Revision-Date: 2023-02-03 07:15+0000\n"
+"Last-Translator: Jolien De Paepe, 2023\n"
+"Language-Team: Dutch (https://app.transifex.com/odoo/teams/41243/nl/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Language: nl\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: l10n_be_soda
+#: model:ir.model,name:l10n_be_soda.model_account_journal
+msgid "Journal"
+msgstr "Dagboek"
+
+#. module: l10n_be_soda
+#. odoo-python
+#: code:addons/l10n_be_soda/models/account_journal.py:0
+#, python-format
+msgid "No attachment was provided"
+msgstr "Er was geen bijlage aangeleverd"
+
+#. module: l10n_be_soda
+#. odoo-python
+#: code:addons/l10n_be_soda/models/account_journal.py:0
+#, python-format
+msgid ""
+"The SODA Entry could not be created: \n"
+"The company VAT number found in at least one document doesn't seem to correspond to this company's VAT number nor company id"
+msgstr ""
+"De SODA boeking kon niet worden gemaakt:\n"
+"Het btw-nummer van het bedrijf dat in ten minste één document voorkomt, komt niet overeen met het btw-nummer van het bedrijf of met het bedrijfs-id"
+
+#. module: l10n_be_soda
+#. odoo-python
+#: code:addons/l10n_be_soda/models/account_journal.py:0
+#, python-format
+msgid ""
+"The Soda Entry could not be created: \n"
+"The imported document doesn't seem to correspond to this company's VAT number nor company id"
+msgstr ""
+"De Soda boeking kon niet worden gemaakt:\n"
+"Het geïmporteerde document komt niet overeen met dit btw-nummer van het bedrijfs of met het bedrijfs-id"
+
+#. module: l10n_be_soda
+#. odoo-python
+#: code:addons/l10n_be_soda/models/account_journal.py:0
+#, python-format
+msgid "The entry %s has already been uploaded (%s)."
+msgstr "De boeking %s werd al geüpload (%s)."

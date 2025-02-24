@@ -1,0 +1,54 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* spreadsheet_dashboard_edition
+# 
+# Translators:
+# Martin Trigaux, 2022
+# Sarah Park, 2023
+# Daye Jeong, 2023
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-02-06 13:25+0000\n"
+"PO-Revision-Date: 2022-09-22 05:49+0000\n"
+"Last-Translator: Daye Jeong, 2023\n"
+"Language-Team: Korean (https://app.transifex.com/odoo/teams/41243/ko/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Language: ko\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#. module: spreadsheet_dashboard_edition
+#: model_terms:ir.ui.view,arch_db:spreadsheet_dashboard_edition.spreadsheet_dashboard_view_list
+msgid "Edit"
+msgstr "편집하기"
+
+#. module: spreadsheet_dashboard_edition
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_edition/static/src/bundle/action/dashboard_edit_action.js:0
+#, python-format
+msgid "New dashboard created"
+msgstr "새 대시보드 생성"
+
+#. module: spreadsheet_dashboard_edition
+#: model:ir.model.fields,field_description:spreadsheet_dashboard_edition.field_spreadsheet_dashboard__raw
+msgid "Raw"
+msgstr ""
+
+#. module: spreadsheet_dashboard_edition
+#: model:ir.model,name:spreadsheet_dashboard_edition.model_spreadsheet_dashboard
+msgid "Spreadsheet Dashboard"
+msgstr "스프레드시트 현황판"
+
+#. module: spreadsheet_dashboard_edition
+#: model:ir.model.fields,field_description:spreadsheet_dashboard_edition.field_spreadsheet_dashboard__spreadsheet_revision_ids
+msgid "Spreadsheet Revision"
+msgstr "스프레드시트 수정"
+
+#. module: spreadsheet_dashboard_edition
+#: model:ir.model.fields,field_description:spreadsheet_dashboard_edition.field_spreadsheet_dashboard__spreadsheet_snapshot
+msgid "Spreadsheet Snapshot"
+msgstr "스프레드시트 스냅샷"

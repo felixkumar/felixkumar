@@ -1,0 +1,246 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* spreadsheet_dashboard_helpdesk
+# 
+# Translators:
+# Nikhil Krishnan, 2023
+# Niyas Raphy, 2023
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-04-14 06:19+0000\n"
+"PO-Revision-Date: 2022-09-29 09:37+0000\n"
+"Last-Translator: Niyas Raphy, 2023\n"
+"Language-Team: Malayalam (https://app.transifex.com/odoo/teams/41243/ml/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Language: ml\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: spreadsheet_dashboard_helpdesk
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_helpdesk/data/files/helpdesk_dashboard.json:0
+#: code:addons/spreadsheet_dashboard_helpdesk/data/files/helpdesk_dashboard.json:0
+#, python-format
+msgid "Agent"
+msgstr ""
+
+#. module: spreadsheet_dashboard_helpdesk
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_helpdesk/data/files/helpdesk_dashboard.json:0
+#: code:addons/spreadsheet_dashboard_helpdesk/data/files/helpdesk_dashboard.json:0
+#, python-format
+msgid "Current"
+msgstr ""
+
+#. module: spreadsheet_dashboard_helpdesk
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_helpdesk/data/files/helpdesk_dashboard.json:0
+#: code:addons/spreadsheet_dashboard_helpdesk/data/files/helpdesk_dashboard.json:0
+#, python-format
+msgid "Customer"
+msgstr "കസ്റ്റമർ"
+
+#. module: spreadsheet_dashboard_helpdesk
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_helpdesk/data/files/helpdesk_dashboard.json:0
+#, python-format
+msgid "Hours to assign"
+msgstr ""
+
+#. module: spreadsheet_dashboard_helpdesk
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_helpdesk/data/files/helpdesk_dashboard.json:0
+#, python-format
+msgid "Hours to close"
+msgstr ""
+
+#. module: spreadsheet_dashboard_helpdesk
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_helpdesk/data/files/helpdesk_dashboard.json:0
+#, python-format
+msgid "Hours to respond"
+msgstr ""
+
+#. module: spreadsheet_dashboard_helpdesk
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_helpdesk/data/files/helpdesk_dashboard.json:0
+#, python-format
+msgid "KPI"
+msgstr ""
+
+#. module: spreadsheet_dashboard_helpdesk
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_helpdesk/data/files/helpdesk_dashboard.json:0
+#, python-format
+msgid "Period"
+msgstr "പീരീഡ്"
+
+#. module: spreadsheet_dashboard_helpdesk
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_helpdesk/data/files/helpdesk_dashboard.json:0
+#: code:addons/spreadsheet_dashboard_helpdesk/data/files/helpdesk_dashboard.json:0
+#, python-format
+msgid "Previous"
+msgstr ""
+
+#. module: spreadsheet_dashboard_helpdesk
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_helpdesk/data/files/helpdesk_dashboard.json:0
+#: code:addons/spreadsheet_dashboard_helpdesk/data/files/helpdesk_dashboard.json:0
+#, python-format
+msgid "Rating"
+msgstr "റേറ്റിംഗ്"
+
+#. module: spreadsheet_dashboard_helpdesk
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_helpdesk/data/files/helpdesk_dashboard.json:0
+#: code:addons/spreadsheet_dashboard_helpdesk/data/files/helpdesk_dashboard.json:0
+#, python-format
+msgid "Team"
+msgstr "ടീം"
+
+#. module: spreadsheet_dashboard_helpdesk
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_helpdesk/data/files/helpdesk_dashboard.json:0
+#, python-format
+msgid "Ticket Analysis by Assigned To"
+msgstr ""
+
+#. module: spreadsheet_dashboard_helpdesk
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_helpdesk/data/files/helpdesk_dashboard.json:0
+#, python-format
+msgid "Ticket Analysis by Customer"
+msgstr ""
+
+#. module: spreadsheet_dashboard_helpdesk
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_helpdesk/data/files/helpdesk_dashboard.json:0
+#, python-format
+msgid "Ticket Analysis by Team"
+msgstr ""
+
+#. module: spreadsheet_dashboard_helpdesk
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_helpdesk/data/files/helpdesk_dashboard.json:0
+#, python-format
+msgid "Ticket Analysis by Ticket Type"
+msgstr ""
+
+#. module: spreadsheet_dashboard_helpdesk
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_helpdesk/data/files/helpdesk_dashboard.json:0
+#: code:addons/spreadsheet_dashboard_helpdesk/data/files/helpdesk_dashboard.json:0
+#, python-format
+msgid "Ticket Type"
+msgstr "ടിക്കറ്റ് ടൈപ്പ്‌ "
+
+#. module: spreadsheet_dashboard_helpdesk
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_helpdesk/data/files/helpdesk_dashboard.json:0
+#: code:addons/spreadsheet_dashboard_helpdesk/data/files/helpdesk_dashboard.json:0
+#: code:addons/spreadsheet_dashboard_helpdesk/data/files/helpdesk_dashboard.json:0
+#: code:addons/spreadsheet_dashboard_helpdesk/data/files/helpdesk_dashboard.json:0
+#: code:addons/spreadsheet_dashboard_helpdesk/data/files/helpdesk_dashboard.json:0
+#: code:addons/spreadsheet_dashboard_helpdesk/data/files/helpdesk_dashboard.json:0
+#, python-format
+msgid "Tickets"
+msgstr "ടിക്കറ്റുകൾ"
+
+#. module: spreadsheet_dashboard_helpdesk
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_helpdesk/data/files/helpdesk_dashboard.json:0
+#, python-format
+msgid "Tickets by Stage"
+msgstr ""
+
+#. module: spreadsheet_dashboard_helpdesk
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_helpdesk/data/files/helpdesk_dashboard.json:0
+#, python-format
+msgid "Tickets by Type"
+msgstr ""
+
+#. module: spreadsheet_dashboard_helpdesk
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_helpdesk/data/files/helpdesk_dashboard.json:0
+#, python-format
+msgid "Time to Assign"
+msgstr ""
+
+#. module: spreadsheet_dashboard_helpdesk
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_helpdesk/data/files/helpdesk_dashboard.json:0
+#, python-format
+msgid "Time to Close"
+msgstr ""
+
+#. module: spreadsheet_dashboard_helpdesk
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_helpdesk/data/files/helpdesk_dashboard.json:0
+#, python-format
+msgid "Time to Respond"
+msgstr ""
+
+#. module: spreadsheet_dashboard_helpdesk
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_helpdesk/data/files/helpdesk_dashboard.json:0
+#, python-format
+msgid "Top Agents"
+msgstr ""
+
+#. module: spreadsheet_dashboard_helpdesk
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_helpdesk/data/files/helpdesk_dashboard.json:0
+#, python-format
+msgid "Top Customers"
+msgstr "ടോപ് കസ്റ്റമർ "
+
+#. module: spreadsheet_dashboard_helpdesk
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_helpdesk/data/files/helpdesk_dashboard.json:0
+#, python-format
+msgid "Top Teams"
+msgstr ""
+
+#. module: spreadsheet_dashboard_helpdesk
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_helpdesk/data/files/helpdesk_dashboard.json:0
+#, python-format
+msgid "Top Ticket Types"
+msgstr ""
+
+#. module: spreadsheet_dashboard_helpdesk
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_helpdesk/data/files/helpdesk_dashboard.json:0
+#: code:addons/spreadsheet_dashboard_helpdesk/data/files/helpdesk_dashboard.json:0
+#: code:addons/spreadsheet_dashboard_helpdesk/data/files/helpdesk_dashboard.json:0
+#, python-format
+msgid "last period"
+msgstr "അവസാന പീരീഡ്"
+
+#. module: spreadsheet_dashboard_helpdesk
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_helpdesk/data/files/helpdesk_dashboard.json:0
+#: code:addons/spreadsheet_dashboard_helpdesk/data/files/helpdesk_dashboard.json:0
+#, python-format
+msgid "since last period"
+msgstr ""
+
+#. module: spreadsheet_dashboard_helpdesk
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_helpdesk/data/files/helpdesk_dashboard.json:0
+#, python-format
+msgid "stats - current"
+msgstr ""
+
+#. module: spreadsheet_dashboard_helpdesk
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_helpdesk/data/files/helpdesk_dashboard.json:0
+#, python-format
+msgid "stats - previous"
+msgstr ""

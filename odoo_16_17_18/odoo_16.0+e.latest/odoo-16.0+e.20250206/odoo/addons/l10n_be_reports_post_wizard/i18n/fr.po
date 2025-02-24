@@ -1,0 +1,50 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* l10n_be_reports_post_wizard
+# 
+# Translators:
+# Jolien De Paepe, 2023
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-02-02 17:09+0000\n"
+"PO-Revision-Date: 2023-02-03 07:08+0000\n"
+"Last-Translator: Jolien De Paepe, 2023\n"
+"Language-Team: French (https://app.transifex.com/odoo/teams/41243/fr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Language: fr\n"
+"Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
+
+#. module: l10n_be_reports_post_wizard
+#: model:ir.model,name:l10n_be_reports_post_wizard.model_l10n_be_reports_periodic_vat_xml_export
+msgid "Belgian Periodic VAT Report Export Wizard"
+msgstr ""
+"Assistant d'exportation de déclarations périodiques à la TVA en Belgique"
+
+#. module: l10n_be_reports_post_wizard
+#: model:ir.model,name:l10n_be_reports_post_wizard.model_account_move
+msgid "Journal Entry"
+msgstr "Écriture comptable"
+
+#. module: l10n_be_reports_post_wizard
+#: model_terms:ir.ui.view,arch_db:l10n_be_reports_post_wizard.view_account_financial_report_export
+msgid "Post Tax Entry"
+msgstr "Poster une écriture fiscale"
+
+#. module: l10n_be_reports_post_wizard
+#. odoo-python
+#: code:addons/l10n_be_reports_post_wizard/models/account_move.py:0
+#, python-format
+msgid "Post a tax report entry"
+msgstr "Poster une écriture fiscale"
+
+#. module: l10n_be_reports_post_wizard
+#: model_terms:ir.ui.view,arch_db:l10n_be_reports_post_wizard.view_account_financial_report_export
+msgid ""
+"Posting this entry will generate an XML export; please choose option(s)"
+msgstr ""
+"Poster cette écriture générera un export XML ; veuillez choisir une option"

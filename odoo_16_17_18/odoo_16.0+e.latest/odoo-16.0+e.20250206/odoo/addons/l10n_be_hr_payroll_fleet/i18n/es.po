@@ -1,0 +1,364 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* l10n_be_hr_payroll_fleet
+# 
+# Translators:
+# Martin Trigaux, 2024
+# Wil Odoo, 2024
+# Leonardo J. Caballero G. <leonardocaballero@gmail.com>, 2025
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-02-02 17:09+0000\n"
+"PO-Revision-Date: 2023-02-03 07:08+0000\n"
+"Last-Translator: Leonardo J. Caballero G. <leonardocaballero@gmail.com>, 2025\n"
+"Language-Team: Spanish (https://app.transifex.com/odoo/teams/41243/es/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Language: es\n"
+"Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
+
+#. module: l10n_be_hr_payroll_fleet
+#: model_terms:ir.ui.view,arch_db:l10n_be_hr_payroll_fleet.dmfa_xml_report
+msgid "862"
+msgstr "862"
+
+#. module: l10n_be_hr_payroll_fleet
+#: model_terms:ir.ui.view,arch_db:l10n_be_hr_payroll_fleet.res_config_settings_view_form
+msgid "<span class=\"o_form_label\">New Vehicle Request</span>"
+msgstr "<span class=\"o_form_label\">Solicitud de vehículo nuevo</span>"
+
+#. module: l10n_be_hr_payroll_fleet
+#: model_terms:ir.ui.view,arch_db:l10n_be_hr_payroll_fleet.fleet_vehicle_model_view_form
+#: model_terms:ir.ui.view,arch_db:l10n_be_hr_payroll_fleet.fleet_vehicle_view_form
+msgid "<span> / month</span>"
+msgstr "<span>/ mes</span>"
+
+#. module: l10n_be_hr_payroll_fleet
+#: model_terms:ir.ui.view,arch_db:l10n_be_hr_payroll_fleet.res_config_settings_view_form
+msgid "<span> existing cars availables.</span>"
+msgstr "<span> coches existentes disponibles.</span>"
+
+#. module: l10n_be_hr_payroll_fleet
+#: model_terms:ir.ui.view,arch_db:l10n_be_hr_payroll_fleet.fleet_vehicle_view_form
+msgid "<span>/ month</span>"
+msgstr "<span>/ mes</span>"
+
+#. module: l10n_be_hr_payroll_fleet
+#: model_terms:ir.ui.view,arch_db:l10n_be_hr_payroll_fleet.res_config_settings_view_form
+msgid ""
+"<span>An employee cannot request a new car if there are more than </span>"
+msgstr ""
+"<span>Un empleado no puede solicitar un automóvil nuevo si hay más de "
+"</span>"
+
+#. module: l10n_be_hr_payroll_fleet
+#: model_terms:ir.ui.view,arch_db:l10n_be_hr_payroll_fleet.report_belgium_payslip
+msgid "<strong>Company Car</strong>"
+msgstr "<strong>Coche de empresa</strong>"
+
+#. module: l10n_be_hr_payroll_fleet
+#: model:hr.salary.rule,name:l10n_be_hr_payroll_fleet.cp200_employees_salary_co2_fee
+msgid "Accounting: CO2 Fee (Employer)"
+msgstr "Contabilidad: Tarifa de CO2 (empleador)"
+
+#. module: l10n_be_hr_payroll_fleet
+#: model:ir.model.fields,field_description:l10n_be_hr_payroll_fleet.field_fleet_vehicle__atn
+#: model:ir.model.fields,field_description:l10n_be_hr_payroll_fleet.field_fleet_vehicle_model__default_atn
+msgid "BIK"
+msgstr "BIK"
+
+#. module: l10n_be_hr_payroll_fleet
+#: model:ir.model.fields,help:l10n_be_hr_payroll_fleet.field_hr_contract__car_atn
+msgid "Benefit in Kind (Company Car)"
+msgstr "Beneficio en especie (coche de empresa)"
+
+#. module: l10n_be_hr_payroll_fleet
+#: model:ir.model.fields,field_description:l10n_be_hr_payroll_fleet.field_fleet_vehicle_model__default_co2
+#: model:ir.model.fields,field_description:l10n_be_hr_payroll_fleet.field_hr_contract__co2
+msgid "CO2 Emissions"
+msgstr "Emisiones de CO2"
+
+#. module: l10n_be_hr_payroll_fleet
+#: model:hr.salary.rule.category,name:l10n_be_hr_payroll_fleet.hr_salary_rule_category_co2_fee
+#: model:ir.model.fields,field_description:l10n_be_hr_payroll_fleet.field_fleet_vehicle__co2_fee
+msgid "CO2 Fee"
+msgstr "Tarifa de CO2"
+
+#. module: l10n_be_hr_payroll_fleet
+#: model:ir.model.fields,help:l10n_be_hr_payroll_fleet.field_hr_contract__co2
+msgid "CO2 emissions of the vehicle"
+msgstr "Emisiones de CO2 del vehículo"
+
+#. module: l10n_be_hr_payroll_fleet
+#: model:ir.model.fields,field_description:l10n_be_hr_payroll_fleet.field_fleet_vehicle_model__co2_fee
+msgid "CO2 fee"
+msgstr "tarifa de CO2"
+
+#. module: l10n_be_hr_payroll_fleet
+#: model_terms:ir.ui.view,arch_db:l10n_be_hr_payroll_fleet.fleet_vehicle_model_view_search
+msgid "Can Be Requested"
+msgstr "Se puede solicitar"
+
+#. module: l10n_be_hr_payroll_fleet
+#: model:ir.model.fields,field_description:l10n_be_hr_payroll_fleet.field_fleet_vehicle_model__can_be_requested
+msgid "Can be requested"
+msgstr "Se puede solicitar"
+
+#. module: l10n_be_hr_payroll_fleet
+#: model:ir.model.fields,help:l10n_be_hr_payroll_fleet.field_fleet_vehicle_model__can_be_requested
+msgid "Can be requested on a contract as a new vehicle"
+msgstr "Se puede solicitar en un contrato como un vehículo nuevo"
+
+#. module: l10n_be_hr_payroll_fleet
+#: model:ir.model.fields,field_description:l10n_be_hr_payroll_fleet.field_hr_contract__car_atn
+msgid "Car BIK"
+msgstr "BIK de coche"
+
+#. module: l10n_be_hr_payroll_fleet
+#: model:ir.model.fields,field_description:l10n_be_hr_payroll_fleet.field_hr_contract__car_model_name
+msgid "Car Model Name"
+msgstr "Nombre del modelo de coche"
+
+#. module: l10n_be_hr_payroll_fleet
+#: model:ir.model.fields,field_description:l10n_be_hr_payroll_fleet.field_hr_contract__car_open_contracts_count
+msgid "Car Open Contracts Count"
+msgstr "Recuento de contratos abiertos de coches"
+
+#. module: l10n_be_hr_payroll_fleet
+#: model_terms:ir.ui.view,arch_db:l10n_be_hr_payroll_fleet.hr_contract_view_form
+msgid "Catalog Company Bike"
+msgstr "Catálogo de Bicicleta de Empresa"
+
+#. module: l10n_be_hr_payroll_fleet
+#: model_terms:ir.ui.view,arch_db:l10n_be_hr_payroll_fleet.hr_contract_view_form
+msgid "Catalog Company Car"
+msgstr "Catálogo Coche de Empresa"
+
+#. module: l10n_be_hr_payroll_fleet
+#: model:ir.model.fields,field_description:l10n_be_hr_payroll_fleet.field_fleet_vehicle_model__default_car_value
+#: model:ir.model.fields,field_description:l10n_be_hr_payroll_fleet.field_hr_contract__car_value
+msgid "Catalog Value (VAT Incl.)"
+msgstr "Valor de catálogo (IVA incluido)"
+
+#. module: l10n_be_hr_payroll_fleet
+#: model:ir.model.fields,field_description:l10n_be_hr_payroll_fleet.field_hr_contract__bike_id
+msgid "Company Bike"
+msgstr "Bicicleta de empresa"
+
+#. module: l10n_be_hr_payroll_fleet
+#: model:ir.model.fields,field_description:l10n_be_hr_payroll_fleet.field_hr_contract__company_bike_depreciated_cost
+msgid "Company Bike Depreciated Cost"
+msgstr "Costo depreciado de la bicicleta de la empresa"
+
+#. module: l10n_be_hr_payroll_fleet
+#: model:ir.model.fields,field_description:l10n_be_hr_payroll_fleet.field_hr_contract__car_id
+#: model:ir.model.fields,field_description:l10n_be_hr_payroll_fleet.field_hr_payslip__vehicle_id
+msgid "Company Car"
+msgstr "Coche de la compañía"
+
+#. module: l10n_be_hr_payroll_fleet
+#: model:ir.model.fields,field_description:l10n_be_hr_payroll_fleet.field_hr_contract__company_car_total_depreciated_cost
+msgid "Company Car Total Depreciated Cost"
+msgstr "Costo total depreciado del automóvil de la empresa"
+
+#. module: l10n_be_hr_payroll_fleet
+#: model_terms:ir.ui.view,arch_db:l10n_be_hr_payroll_fleet.dmfa_pdf_report
+msgid "Company Cars Global Contributions:"
+msgstr "Contribuciones globales de los Coches de empresa:"
+
+#. module: l10n_be_hr_payroll_fleet
+#: model_terms:ir.ui.view,arch_db:l10n_be_hr_payroll_fleet.dmfa_pdf_report
+msgid "Company Cars List"
+msgstr "Lista de coches de la empresa"
+
+#. module: l10n_be_hr_payroll_fleet
+#: model:ir.model,name:l10n_be_hr_payroll_fleet.model_res_config_settings
+msgid "Config Settings"
+msgstr "Ajustes de configuración"
+
+#. module: l10n_be_hr_payroll_fleet
+#: model:ir.model.fields,field_description:l10n_be_hr_payroll_fleet.field_fleet_vehicle_model__default_recurring_cost_amount_depreciated
+msgid "Cost (Depreciated)"
+msgstr "Costo (depreciado)"
+
+#. module: l10n_be_hr_payroll_fleet
+#: model:ir.model.fields,field_description:l10n_be_hr_payroll_fleet.field_fleet_vehicle_model__current_country_code
+msgid "Current Country Code"
+msgstr "Código de país actual"
+
+#. module: l10n_be_hr_payroll_fleet
+#: model:ir.model,name:l10n_be_hr_payroll_fleet.model_l10n_be_dmfa
+msgid "DMFA xml report"
+msgstr "Informe xml de DMFA"
+
+#. module: l10n_be_hr_payroll_fleet
+#: model:ir.model.fields,help:l10n_be_hr_payroll_fleet.field_fleet_vehicle__acquisition_date
+#: model:ir.model.fields,help:l10n_be_hr_payroll_fleet.field_hr_contract__acquisition_date
+msgid "Date when the vehicle has been immatriculated"
+msgstr "Fecha en la que el vehículo ha sido registrado"
+
+#. module: l10n_be_hr_payroll_fleet
+#: model:ir.model.fields,help:l10n_be_hr_payroll_fleet.field_fleet_vehicle_model__default_recurring_cost_amount_depreciated
+msgid ""
+"Default recurring cost amount that should be applied to a new vehicle from "
+"this model"
+msgstr ""
+"Importe de coste recurrente predeterminado que se debe aplicar a un vehículo"
+" nuevo de este modelo"
+
+#. module: l10n_be_hr_payroll_fleet
+#: model:ir.model.fields,field_description:l10n_be_hr_payroll_fleet.field_fleet_vehicle_log_contract__recurring_cost_amount_depreciated
+msgid "Depreciated Cost Amount"
+msgstr "Importe del coste depreciado"
+
+#. module: l10n_be_hr_payroll_fleet
+#: model:ir.model.fields,field_description:l10n_be_hr_payroll_fleet.field_hr_contract__driver_id
+msgid "Driver"
+msgstr "Conductor"
+
+#. module: l10n_be_hr_payroll_fleet
+#: model:ir.model.fields,help:l10n_be_hr_payroll_fleet.field_hr_contract__driver_id
+msgid "Driver address of the vehicle"
+msgstr "Dirección del conductor del vehículo"
+
+#. module: l10n_be_hr_payroll_fleet
+#: model:ir.model,name:l10n_be_hr_payroll_fleet.model_hr_contract
+msgid "Employee Contract"
+msgstr "Contrato del empleado"
+
+#. module: l10n_be_hr_payroll_fleet
+#: model:ir.model.fields,field_description:l10n_be_hr_payroll_fleet.field_fleet_vehicle__fuel_type
+#: model:ir.model.fields,field_description:l10n_be_hr_payroll_fleet.field_hr_contract__fuel_type
+msgid "Fuel Type"
+msgstr "Tipo de combustible"
+
+#. module: l10n_be_hr_payroll_fleet
+#: model:ir.model.fields,field_description:l10n_be_hr_payroll_fleet.field_fleet_vehicle__acquisition_date
+#: model:ir.model.fields,field_description:l10n_be_hr_payroll_fleet.field_hr_contract__acquisition_date
+msgid "Immatriculation Date"
+msgstr "Fecha de registro"
+
+#. module: l10n_be_hr_payroll_fleet
+#: model:ir.model.fields,field_description:l10n_be_hr_payroll_fleet.field_hr_contract__max_unused_cars
+msgid "Max Unused Cars"
+msgstr "Máximo de coches sin usar"
+
+#. module: l10n_be_hr_payroll_fleet
+#: model:ir.model.fields,field_description:l10n_be_hr_payroll_fleet.field_res_config_settings__max_unused_cars
+msgid "Maximum unused cars"
+msgstr "Máximo de coches sin usar"
+
+#. module: l10n_be_hr_payroll_fleet
+#: model:ir.model,name:l10n_be_hr_payroll_fleet.model_fleet_vehicle_model
+msgid "Model of a vehicle"
+msgstr "Modelo de un vehículo"
+
+#. module: l10n_be_hr_payroll_fleet
+#: model:ir.model.fields,field_description:l10n_be_hr_payroll_fleet.field_hr_contract__new_bike_model_id
+#: model_terms:ir.ui.view,arch_db:l10n_be_hr_payroll_fleet.hr_contract_view_form
+msgid "New Company Bike"
+msgstr "Nueva bicicleta de empresa"
+
+#. module: l10n_be_hr_payroll_fleet
+#: model:ir.model.fields,field_description:l10n_be_hr_payroll_fleet.field_hr_contract__new_car_model_id
+#: model_terms:ir.ui.view,arch_db:l10n_be_hr_payroll_fleet.hr_contract_view_form
+msgid "New Company Car"
+msgstr "Nuevo coche de empresa"
+
+#. module: l10n_be_hr_payroll_fleet
+#: model:ir.model.fields,field_description:l10n_be_hr_payroll_fleet.field_hr_contract__available_cars_amount
+msgid "Number of available cars"
+msgstr "Número de coches disponibles"
+
+#. module: l10n_be_hr_payroll_fleet
+#: model:ir.model,name:l10n_be_hr_payroll_fleet.model_hr_payslip
+msgid "Pay Slip"
+msgstr "Recibo de nómina"
+
+#. module: l10n_be_hr_payroll_fleet
+#: model:ir.model.fields,field_description:l10n_be_hr_payroll_fleet.field_hr_contract__recurring_cost_amount_depreciated
+msgid "Recurring Cost Amount Depreciated"
+msgstr "Importe del coste recurrente depreciado"
+
+#. module: l10n_be_hr_payroll_fleet
+#: model:ir.model.fields,field_description:l10n_be_hr_payroll_fleet.field_hr_contract__new_bike
+msgid "Requested a new bike"
+msgstr "Solicité una bicicleta nueva"
+
+#. module: l10n_be_hr_payroll_fleet
+#: model:ir.model.fields,field_description:l10n_be_hr_payroll_fleet.field_hr_contract__new_car
+msgid "Requested a new car"
+msgstr "Solicitaste un coche nuevo"
+
+#. module: l10n_be_hr_payroll_fleet
+#: model_terms:ir.ui.view,arch_db:l10n_be_hr_payroll_fleet.fleet_vehicle_model_view_form
+msgid "Salary"
+msgstr "Salario"
+
+#. module: l10n_be_hr_payroll_fleet
+#: model:ir.model.fields,field_description:l10n_be_hr_payroll_fleet.field_fleet_vehicle__tax_deduction
+#: model:ir.model.fields,field_description:l10n_be_hr_payroll_fleet.field_fleet_vehicle_model__tax_deduction
+msgid "Tax Deduction"
+msgstr "Deducción imponible"
+
+#. module: l10n_be_hr_payroll_fleet
+#. odoo-python
+#: code:addons/l10n_be_hr_payroll_fleet/models/hr_dmfa.py:0
+#, python-format
+msgid ""
+"The following license plates are invalid:\n"
+"%s"
+msgstr ""
+"Las siguientes placas de matrícula no son válidas:\n"
+"%s"
+
+#. module: l10n_be_hr_payroll_fleet
+#: model:ir.model.fields,help:l10n_be_hr_payroll_fleet.field_fleet_vehicle__total_cost
+msgid "This include all the costs and the CO2 fee"
+msgstr "Esto incluye todos los costos y la tarifa de CO2"
+
+#. module: l10n_be_hr_payroll_fleet
+#: model:ir.model.fields,help:l10n_be_hr_payroll_fleet.field_fleet_vehicle__total_depreciated_cost
+msgid "This includes all the depreciated costs and the CO2 fee"
+msgstr "Esto incluye todos los costes depreciados y la tasa de CO2"
+
+#. module: l10n_be_hr_payroll_fleet
+#: model:ir.model.fields,field_description:l10n_be_hr_payroll_fleet.field_fleet_vehicle__total_cost
+msgid "Total Cost"
+msgstr "Coste total"
+
+#. module: l10n_be_hr_payroll_fleet
+#: model:ir.model.fields,field_description:l10n_be_hr_payroll_fleet.field_fleet_vehicle__total_depreciated_cost
+#: model:ir.model.fields,field_description:l10n_be_hr_payroll_fleet.field_fleet_vehicle_model__default_total_depreciated_cost
+msgid "Total Cost (Depreciated)"
+msgstr "Costo total (depreciado)"
+
+#. module: l10n_be_hr_payroll_fleet
+#: model:ir.model.fields,field_description:l10n_be_hr_payroll_fleet.field_hr_contract__transport_mode_bike
+msgid "Uses Bike"
+msgstr "Usos Bicicleta"
+
+#. module: l10n_be_hr_payroll_fleet
+#: model:ir.model.fields,field_description:l10n_be_hr_payroll_fleet.field_hr_contract__transport_mode_private_car
+msgid "Uses private car"
+msgstr "Utiliza coche privado"
+
+#. module: l10n_be_hr_payroll_fleet
+#: model:ir.model,name:l10n_be_hr_payroll_fleet.model_fleet_vehicle
+#: model:ir.model.fields,field_description:l10n_be_hr_payroll_fleet.field_l10n_be_dmfa__vehicle_ids
+msgid "Vehicle"
+msgstr "Vehículo"
+
+#. module: l10n_be_hr_payroll_fleet
+#: model:ir.model,name:l10n_be_hr_payroll_fleet.model_fleet_vehicle_log_contract
+msgid "Vehicle Contract"
+msgstr "Contrato del vehículo"
+
+#. module: l10n_be_hr_payroll_fleet
+#: model:ir.model.fields,field_description:l10n_be_hr_payroll_fleet.field_hr_contract__wishlist_car_total_depreciated_cost
+msgid "Wishlist Car Total Depreciated Cost"
+msgstr "Lista de deseos Costo total depreciado del coche"

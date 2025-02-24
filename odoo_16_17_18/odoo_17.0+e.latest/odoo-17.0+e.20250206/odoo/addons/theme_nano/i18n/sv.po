@@ -1,0 +1,122 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* theme_nano
+# 
+# Translators:
+# Kim Asplund <kim.asplund@gmail.com>, 2023
+# Martin Trigaux, 2023
+# Lasse L, 2023
+# Jakob Krabbe <jakob.krabbe@vertel.se>, 2024
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-09-28 12:23+0000\n"
+"PO-Revision-Date: 2023-10-27 15:39+0000\n"
+"Last-Translator: Jakob Krabbe <jakob.krabbe@vertel.se>, 2024\n"
+"Language-Team: Swedish (https://app.transifex.com/odoo/teams/41243/sv/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Language: sv\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: theme_nano
+#: model_terms:theme.ir.ui.view,arch:theme_nano.s_parallax
+msgid ""
+"<font class=\"bg-o-color-5\">Feel free to come up with your big idea. <br/> "
+"We take care of the rest.</font>"
+msgstr ""
+
+#. module: theme_nano
+#: model_terms:theme.ir.ui.view,arch:theme_nano.new_page_template_about_map_s_text_block_h1
+msgid "About Us"
+msgstr "Om Oss"
+
+#. module: theme_nano
+#: model_terms:theme.ir.ui.view,arch:theme_nano.s_features
+msgid "Adaptable"
+msgstr "Anpassningsbar"
+
+#. module: theme_nano
+#: model_terms:theme.ir.ui.view,arch:theme_nano.s_cover
+msgid "Creative Studio"
+msgstr "Kreativ studio"
+
+#. module: theme_nano
+#: model_terms:theme.ir.ui.view,arch:theme_nano.s_three_columns
+msgid "Details"
+msgstr "Detaljer"
+
+#. module: theme_nano
+#: model_terms:theme.ir.ui.view,arch:theme_nano.s_features
+msgid "Durable"
+msgstr "Hållbar"
+
+#. module: theme_nano
+#: model_terms:theme.ir.ui.view,arch:theme_nano.s_three_columns
+msgid "Handcrafted"
+msgstr "Handgjord"
+
+#. module: theme_nano
+#: model_terms:theme.ir.ui.view,arch:theme_nano.s_three_columns
+msgid "Innovative"
+msgstr "Innovativ"
+
+#. module: theme_nano
+#: model_terms:theme.ir.ui.view,arch:theme_nano.s_features
+msgid "Intuitive"
+msgstr "Intuitiv"
+
+#. module: theme_nano
+#: model_terms:theme.ir.ui.view,arch:theme_nano.s_three_columns
+msgid "Made in Santa's Workshop. High quality fabric &amp; exclusive designs."
+msgstr ""
+"Tillverkad i tomtens verkstad. Högkvalitativt tyg och exklusiv design."
+
+#. module: theme_nano
+#: model_terms:theme.ir.ui.view,arch:theme_nano.s_three_columns
+msgid ""
+"People should love the things they own. Things should be built to last."
+msgstr ""
+"Människor ska älska de saker de äger. Saker ska vara byggda för att hålla."
+
+#. module: theme_nano
+#: model_terms:theme.ir.ui.view,arch:theme_nano.s_three_columns
+msgid "Tailored"
+msgstr "Skräddarsydd"
+
+#. module: theme_nano
+#: model:ir.model,name:theme_nano.model_theme_utils
+msgid "Theme Utils"
+msgstr "Verktyg för teman"
+
+#. module: theme_nano
+#: model_terms:theme.ir.ui.view,arch:theme_nano.s_three_columns
+msgid "Transforming traditional crafts — with a shot of modern savvy!"
+msgstr "Förvandling av traditionella hantverk - med en gnutta modern kunskap!"
+
+#. module: theme_nano
+#: model_terms:theme.ir.ui.view,arch:theme_nano.s_features
+msgid "We build modular solutions."
+msgstr "Vi bygger modulära lösningar."
+
+#. module: theme_nano
+#: model_terms:theme.ir.ui.view,arch:theme_nano.s_cover
+msgid ""
+"We combine smart design with rich technology <br/>to craft innovative "
+"products."
+msgstr ""
+"Vi kombinerar smart design med rik teknik <br/>för att skapa innovativa "
+"produkter."
+
+#. module: theme_nano
+#: model_terms:theme.ir.ui.view,arch:theme_nano.s_features
+msgid "We craft long-lasting goods."
+msgstr "Vi tillverkar varor med lång livslängd."
+
+#. module: theme_nano
+#: model_terms:theme.ir.ui.view,arch:theme_nano.s_features
+msgid "We create easy-to-use products."
+msgstr "Vi skapar lättanvända produkter."

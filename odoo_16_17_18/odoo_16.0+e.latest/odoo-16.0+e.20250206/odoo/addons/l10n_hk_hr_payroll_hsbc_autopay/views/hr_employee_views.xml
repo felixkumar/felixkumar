@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_employee_form" model="ir.ui.view">
+        <field name="name">hr.employee.form.inherit.l10n_hk_hr_payroll_hsbc_autopay</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='personal_information']/group" position="inside">
+                <group string='Autopay' attrs="{'invisible': [('company_country_code', '!=', 'HK')]}">
+                    <field name="l10n_hk_autopay_account_type" />
+                    <field name="l10n_hk_autopay_svid"
+                           placeholder="0240402"
+                           attrs="{
+                            'invisible': [('l10n_hk_autopay_account_type', '!=', 'svid')],
+                            'required': [('l10n_hk_autopay_account_type', '=', 'svid')]}"/>
+                    <field name="l10n_hk_autopay_emal"
+                           placeholder="susan.wong@abc.com.hk"
+                           attrs="{
+                            'invisible': [('l10n_hk_autopay_account_type', '!=', 'emal')],
+                            'required': [('l10n_hk_autopay_account_type', '=', 'emal')]}"/>
+                    <field name="l10n_hk_autopay_mobn"
+                           placeholder="+852-92223333"
+                           attrs="{
+                            'invisible': [('l10n_hk_autopay_account_type', '!=', 'mobn')],
+                            'required': [('l10n_hk_autopay_account_type', '=', 'mobn')]}"/>
+                    <field name="l10n_hk_autopay_identifier" />
+                    <field name="l10n_hk_autopay_ref" />
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>

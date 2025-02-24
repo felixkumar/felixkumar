@@ -1,0 +1,237 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* spreadsheet_dashboard_stock
+# 
+# Translators:
+# Marius Stedjan <marius@stedjan.com>, 2024
+# Martin Trigaux, 2024
+# Rune Restad, 2025
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-26 22:21+0000\n"
+"PO-Revision-Date: 2023-10-26 23:10+0000\n"
+"Last-Translator: Rune Restad, 2025\n"
+"Language-Team: Norwegian Bokmål (https://app.transifex.com/odoo/teams/41243/nb/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Language: nb\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: spreadsheet_dashboard_stock
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_stock/data/files/inventory_flow_dashboard.json:0
+#, python-format
+msgid " days"
+msgstr "dager"
+
+#. module: spreadsheet_dashboard_stock
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_stock/data/files/inventory_flow_dashboard.json:0
+#, python-format
+msgid "Average Cycle Time"
+msgstr "Gjennomsnittlig syklustid"
+
+#. module: spreadsheet_dashboard_stock
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_stock/data/files/inventory_flow_dashboard.json:0
+#, python-format
+msgid "Average Delay"
+msgstr "Gjennomsnittlig forsinkelse"
+
+#. module: spreadsheet_dashboard_stock
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_stock/data/files/inventory_flow_dashboard.json:0
+#, python-format
+msgid "Avg cycle time"
+msgstr "Gj.snittlig syklustid"
+
+#. module: spreadsheet_dashboard_stock
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_stock/data/files/inventory_flow_dashboard.json:0
+#, python-format
+msgid "Avg delay"
+msgstr "Gj.sn forsinkelse"
+
+#. module: spreadsheet_dashboard_stock
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_stock/data/files/inventory_flow_dashboard.json:0
+#, python-format
+msgid "Current"
+msgstr "Nåværende"
+
+#. module: spreadsheet_dashboard_stock
+#: model:spreadsheet.dashboard,name:spreadsheet_dashboard_stock.spreadsheet_dashboard_inventory_flow
+msgid "Inventory Flow"
+msgstr "Lagerflyt"
+
+#. module: spreadsheet_dashboard_stock
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_stock/data/files/inventory_flow_dashboard.json:0
+#, python-format
+msgid "KPI"
+msgstr "KPI"
+
+#. module: spreadsheet_dashboard_stock
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_stock/data/files/inventory_flow_dashboard.json:0
+#, python-format
+msgid "Location"
+msgstr "Sted"
+
+#. module: spreadsheet_dashboard_stock
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_stock/data/files/inventory_flow_dashboard.json:0
+#, python-format
+msgid "Moved Quantity"
+msgstr "Flyttet antall"
+
+#. module: spreadsheet_dashboard_stock
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_stock/data/files/inventory_flow_dashboard.json:0
+#, python-format
+msgid "Moves"
+msgstr "Bevegelser"
+
+#. module: spreadsheet_dashboard_stock
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_stock/data/files/inventory_flow_dashboard.json:0
+#, python-format
+msgid "Partner"
+msgstr "Partner"
+
+#. module: spreadsheet_dashboard_stock
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_stock/data/files/inventory_flow_dashboard.json:0
+#, python-format
+msgid "Period"
+msgstr "Periode"
+
+#. module: spreadsheet_dashboard_stock
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_stock/data/files/inventory_flow_dashboard.json:0
+#, python-format
+msgid "Previous"
+msgstr "Tilbake"
+
+#. module: spreadsheet_dashboard_stock
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_stock/data/files/inventory_flow_dashboard.json:0
+#, python-format
+msgid "Product"
+msgstr "Produkt"
+
+#. module: spreadsheet_dashboard_stock
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_stock/data/files/inventory_flow_dashboard.json:0
+#, python-format
+msgid "Product quantity"
+msgstr "Produkt kvanitet"
+
+#. module: spreadsheet_dashboard_stock
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_stock/data/files/inventory_flow_dashboard.json:0
+#, python-format
+msgid "Quantity"
+msgstr "Antall"
+
+#. module: spreadsheet_dashboard_stock
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_stock/data/files/inventory_flow_dashboard.json:0
+#, python-format
+msgid "Stock Moves Analysis by Destination Address "
+msgstr "Analyse av varelagerbevegelser etter leveringsadresse"
+
+#. module: spreadsheet_dashboard_stock
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_stock/data/files/inventory_flow_dashboard.json:0
+#, python-format
+msgid "Stock Moves Analysis by Destination Location"
+msgstr "Analyse av varelagerbevegelser etter leveringssted"
+
+#. module: spreadsheet_dashboard_stock
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_stock/data/files/inventory_flow_dashboard.json:0
+#, python-format
+msgid "Stock Moves Analysis by Product"
+msgstr "Analyse av varelagerbevegelser etter produkt"
+
+#. module: spreadsheet_dashboard_stock
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_stock/data/files/inventory_flow_dashboard.json:0
+#, python-format
+msgid "Stock Moves Analysis by Warehouse"
+msgstr "Analyse av varelagerbevegelser etter lager"
+
+#. module: spreadsheet_dashboard_stock
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_stock/data/files/inventory_flow_dashboard.json:0
+#, python-format
+msgid "Top Locations"
+msgstr "Topp lokasjoner"
+
+#. module: spreadsheet_dashboard_stock
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_stock/data/files/inventory_flow_dashboard.json:0
+#, python-format
+msgid "Top Partners"
+msgstr "Topp partnere"
+
+#. module: spreadsheet_dashboard_stock
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_stock/data/files/inventory_flow_dashboard.json:0
+#, python-format
+msgid "Top Products"
+msgstr "Topp produktuer"
+
+#. module: spreadsheet_dashboard_stock
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_stock/data/files/inventory_flow_dashboard.json:0
+#, python-format
+msgid "Top Warehouses"
+msgstr "Topp varehus"
+
+#. module: spreadsheet_dashboard_stock
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_stock/data/files/inventory_flow_dashboard.json:0
+#, python-format
+msgid "Warehouse"
+msgstr "Lager"
+
+#. module: spreadsheet_dashboard_stock
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_stock/data/files/inventory_flow_dashboard.json:0
+#, python-format
+msgid "Weekly Stock Moves"
+msgstr "Ukentlige lagerforflytninger"
+
+#. module: spreadsheet_dashboard_stock
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_stock/data/files/inventory_flow_dashboard.json:0
+#, python-format
+msgid "last period"
+msgstr "siste periode"
+
+#. module: spreadsheet_dashboard_stock
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_stock/data/files/inventory_flow_dashboard.json:0
+#, python-format
+msgid "since last period"
+msgstr "siden forrige periode"
+
+#. module: spreadsheet_dashboard_stock
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_stock/data/files/inventory_flow_dashboard.json:0
+#, python-format
+msgid "stats - current"
+msgstr "statistikk - nåværende"
+
+#. module: spreadsheet_dashboard_stock
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_stock/data/files/inventory_flow_dashboard.json:0
+#, python-format
+msgid "stats - previous"
+msgstr "statistikk - forrige"

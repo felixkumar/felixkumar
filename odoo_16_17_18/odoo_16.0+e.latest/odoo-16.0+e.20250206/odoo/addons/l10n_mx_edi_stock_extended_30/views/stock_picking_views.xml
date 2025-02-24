@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="stock_picking_form_inherit_l10n_mx_edi_stock_extended_30" model="ir.ui.view">
+        <field name="name">stock.picking.form.inherit.l10n_mx_edi_stock_extended_30</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form" />
+        <field name="arch" type="xml">
+            <field name="l10n_mx_edi_customs_no" position="replace"/>
+            <field name="l10n_mx_edi_gross_vehicle_weight" position="after">
+                <field name="l10n_mx_edi_customs_document_type_code" invisible="1"/>
+                <field name="l10n_mx_edi_customs_regime_id"
+                       attrs="{'invisible': ['|', ('l10n_mx_edi_is_cfdi_needed', '=', False), ('l10n_mx_edi_is_export', '=', False)]}"
+                       domain="[('goods_direction', 'in', ('import', 'both')) if picking_type_code == 'incoming' else ('goods_direction', 'in', ('export', 'both'))]"/>
+                <field name="l10n_mx_edi_customs_document_type_id"
+                       attrs="{'invisible': ['|', ('l10n_mx_edi_is_cfdi_needed', '=', False), ('l10n_mx_edi_is_export', '=', False)]}"
+                       domain="[('goods_direction', 'in', ('import', 'both')) if picking_type_code == 'incoming' else ('goods_direction', 'in', ('export', 'both'))]"/>
+                <field name="l10n_mx_edi_pedimento_number"
+                       attrs="{'invisible': ['|', ('l10n_mx_edi_is_cfdi_needed', '=', False), '|', ('l10n_mx_edi_is_export', '=', False), '|', ('l10n_mx_edi_customs_document_type_code', '!=', '01'), ('picking_type_code', '!=', 'incoming')]}"/>
+                <field name="l10n_mx_edi_customs_doc_identification"
+                       attrs="{'invisible': ['|', ('l10n_mx_edi_is_cfdi_needed', '=', False), '|', ('l10n_mx_edi_is_export', '=', False), ('l10n_mx_edi_customs_document_type_code', '=', '01')]}"/>
+                <field name="l10n_mx_edi_importer_id"
+                       attrs="{'invisible': ['|', ('l10n_mx_edi_is_cfdi_needed', '=', False), '|', ('l10n_mx_edi_is_export', '=', False), '|', ('l10n_mx_edi_customs_document_type_code', '!=', '01'), ('picking_type_code', '!=', 'incoming')]}"/>
+            </field>
+        </field>
+    </record>
+
+</odoo>

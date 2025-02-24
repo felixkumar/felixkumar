@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.account.l10n.br.avatax</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="account.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <div id="taxcloud_settings" position="after">
+                <field name="l10n_br_avatax_api_identifier" invisible="1"/>
+                <field name="l10n_br_avatax_api_key" invisible="1"/>
+                <div class="col-12 col-lg-6 o_setting_box" id="l10n_br_avatax_settings" attrs="{'invisible': [('country_code', '!=', 'BR')]}">
+                    <div class="o_setting_left_pane">
+                    </div>
+                    <div class="o_setting_right_pane" name="l10n_br_avatax_right_pane">
+                        <span class="o_form_label">AvaTax Brazil</span>
+                        <a href="https://www.odoo.com/documentation/16.0/applications/finance/fiscal_localizations/brazil.html#configure-avatax-integration" title="Documentation" class="me-2 o_doc_link" target="_blank"></a>
+                        <span class="fa fa-lg fa-building-o" title="Values set here are company-specific." role="img" aria-label="Values set here are company-specific." groups="base.group_multi_company"/>
+                        <div class="text-muted">
+                            Automatically compute tax rates
+                        </div>
+                        <div class="content-group">
+                            <div class="row mt16">
+                                <label string="Environment" for="l10n_br_avalara_environment" class="col-lg-3 o_light_label"/>
+                                <field name="l10n_br_avalara_environment"/>
+                            </div>
+                            <div class="row">
+                                <field name="l10n_br_avatax_show_overwrite_warning" invisible="1"/>
+                                <label string="Avatax Portal Email" for="l10n_br_avatax_portal_email" class="col-lg-3 o_light_label" />
+                                <field name="l10n_br_avatax_portal_email"/>
+                                <div class="mt16">
+                                    <button name="create_account" type="object" class="btn-link" noSaveDialog="1"
+                                            attrs="{'invisible': [('l10n_br_avatax_show_overwrite_warning', '=', False)]}"
+                                            confirm="Creating a new account will permanently remove your current Avatax account from Odoo, but it won't delete the account on the Avatax side. Do you wish to proceed?">
+                                        <i title="Create a new account" role="img" aria-label="Create a new account" class="fa fa-plug fa-fw"/>
+                                        Create a new account
+                                    </button>
+                                    <button name="create_account" type="object" class="btn-link" noSaveDialog="1"
+                                            attrs="{'invisible': [('l10n_br_avatax_show_overwrite_warning', '=', True)]}">
+                                        <i title="Create account" role="img" aria-label="Create account" class="fa fa-plug fa-fw"/>
+                                        Create account
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="mt16"
+                                 attrs="{'invisible': ['!', '&amp;', ('l10n_br_avatax_api_identifier', 'not in', (False, '')), ('l10n_br_avatax_api_key', 'not in', (False, ''))]}">
+                                <button name="button_l10n_br_avatax_ping" type="object" class="btn-link">
+                                    <i title="Test connection" role="img" aria-label="Test connection" class="fa fa-plug fa-fw"/>
+                                    Test connection
+                                </button>
+                            </div>
+                            <div class="mt16">
+                                <button name="button_l10n_br_avatax_log" type="object" class="btn-link">
+                                    <i title="Start logging for 30 minutes" role="img" aria-label="Start logging for 30 minutes" class="fa fa-file-text-o"/>
+                                    Start logging for 30 minutes
+                                </button>
+                                <button name="l10n_br_avatax.ir_logging_avalara_action" type="action" class="btn-link">
+                                    <i title="Show logs" role="img" aria-label="Show logs" class="fa fa-file-text-o"/>
+                                    Show logs
+                                </button>
+                            </div>
+                            <field name="l10n_br_tax_regime" invisible="1"/>
+                            <div class="row" title="This only applies if you are a simplified tax regime company." attrs="{'invisible': [('l10n_br_tax_regime', '!=', 'simplified')]}">
+                                <label for="l10n_br_icms_rate" class="col-lg-3 o_light_label" />
+                                <field name="l10n_br_icms_rate" class="w-50"/>
+                            </div>
+                        </div>
+                        <div groups="base.group_no_one">
+                            <span class="o_form_label">Transfer API credentials</span>
+                            <div class="text-muted">
+                                Use this only when you already created an account in another Odoo instance and wish to reuse it.
+                            </div>
+                            <div class="content-group">
+                                <div class="row">
+                                    <label string="API ID" for="l10n_br_avatax_api_identifier" class="col-lg-3 o_light_label"/>
+                                    <field name="l10n_br_avatax_api_identifier"/>
+                                </div>
+                                <div class="row">
+                                    <label string="API Key" for="l10n_br_avatax_api_key" class="col-lg-3 o_light_label" />
+                                    <field name="l10n_br_avatax_api_key"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </field>
+    </record>
+</odoo>

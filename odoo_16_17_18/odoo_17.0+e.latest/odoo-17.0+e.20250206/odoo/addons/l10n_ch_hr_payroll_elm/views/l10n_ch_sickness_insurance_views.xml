@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="l10n_ch_sickness_insurance_view_form" model="ir.ui.view">
+        <field name="name">l10n.ch.sickness.insurance.view.form</field>
+        <field name="inherit_id" ref="l10n_ch_hr_payroll.l10n_ch_sickness_insurance_view_form"/>
+        <field name="model">l10n.ch.sickness.insurance</field>
+        <field name="arch" type="xml">
+            <field name="customer_number" position="before">
+                <field name="insurance_code"/>
+            </field>
+        </field>
+    </record>
+</odoo>

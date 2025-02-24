@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="search_template_date_filter_month_13" inherit_id="account_reports.search_template_date_filter">
+        <xpath expr="//a[@data-filter='this_month']" position="attributes">
+            <attribute name="t-if">not options.get('l10n_mx_month_13')</attribute>
+        </xpath>
+        <xpath expr="//a[@data-filter='this_quarter']" position="attributes">
+            <attribute name="t-if">not options.get('l10n_mx_month_13')</attribute>
+        </xpath>
+        <xpath expr="//div[hasclass('o_filter_menu')]/t[contains(@t-if, 'range')]/a[@data-filter='last_month']" position="attributes">
+            <attribute name="t-if">not options.get('l10n_mx_month_13')</attribute>
+        </xpath>
+        <xpath expr="//div[hasclass('o_filter_menu')]/t[contains(@t-if, 'range')]/a[@data-filter='last_quarter']" position="attributes">
+            <attribute name="t-if">not options.get('l10n_mx_month_13')</attribute>
+        </xpath>
+        <xpath expr="//div[hasclass('o_filter_menu')]/t[contains(@t-if, 'range')]" position="after">
+            <t t-if="'l10n_mx_month_13' in options and options.get('comparison', {}).get('filter') == 'no_comparison'">
+                <div role="separator" class="dropdown-divider"></div>
+                <a role="menuitem" class="dropdown-item js_account_report_bool_filter" title="Month 13" data-filter="l10n_mx_month_13" groups="account.group_account_user">Month 13</a>
+            </t>
+        </xpath>
+    </template>
+</odoo>

@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<data>
+    <template id="knowledge_article_tree_favorites">
+        <!-- Go through 'all_visible_articles' if available to avoid extra ACL queries -->
+        <section class="o_favorite_container" t-if="all_visible_articles.filtered(lambda article: article in favorites_sudo.article_id)">
+            <div class="o_section_header h4 mb-0">Favorites</div>
+            <ul class="o_tree_favorite">
+                <!-- We loop on favorites_sudo and not filtered visible_articles to ensure the
+                articles are shown based on knowledge.article.favorite's sequence field -->
+                <t t-foreach="favorites_sudo" t-as="favorite_sudo">
+                    <t t-call="knowledge.articles_template">
+                        <t t-set="articles" t-value="all_visible_articles.filtered(lambda article: article == favorite_sudo.article_id)"/>
+                        <t t-set="isFavoriteTree" t-value="true"/>
+                    </t>
+                </t>
+            </ul>
+        </section>
+        <section class="o_favorite_container" t-else=""/>
+    </template>
+
+    <template id="articles_template">
+        <t t-set="unfolded_articles_ids" t-value="unfolded_articles_ids or []"/>
+        <t t-set="unfolded_favorite_articles_ids" t-value="unfolded_favorite_articles_ids or []"/>
+
+        <!--
+            Limit shown articles to 'articles_displayed_limit' for every sub-tree (defaults to 50).
+            This is done here as we use a single search query to load the entire article tree and
+            sub-trees, and thus cannot use a "limit" on the base query.
+
+            Sub-sequent calls to this template using the '/knowledge/tree_panel/load_more' route
+            will however only fetch the correct amount of articles (as we are already in a sub-tree).
+            And will in addition pass the correct articles to "force_show" (see below).
+
+            In addition, as we *always* want the 'active_article_id' to be in the tree, even if it
+            is not present in the articles subset we display, we add a small trick to show it "at the end"
+            using the "force_show_active_article" variable.
+        -->
+
+        <!-- Fallback to avoid template calls not passing this variable. Could be removed in master. -->
+        <t t-set="articles_displayed_limit"
+            t-value="articles_displayed_limit or articles._KNOWLEDGE_TREE_ARTICLES_LIMIT"/>
+        <!-- When called from 'load more' route, we only pass the displayed articles and not all of them -->
+        <t t-set="articles_count" t-value="articles_count if articles_count else len(articles)"/>
+
+        <t t-if="articles_count > articles_displayed_limit">
+            <!-- Try to determine if we need to "force" the display of the active article
+                 OR one of its ancestors.
+                 If there is an ancestor to force display, there can only be one (we are in a sub-tree).
+
+                 e.g: Active article is child 153, under root 78
+                 We need to make sure root 78 and child 153 are displayed, even if outside first 50.
+                 
+                 This is only done in the template for the initial call of the tree.
+                 When called through the '/knowledge/tree_panel/load_more' route, the template already
+                 receices the correct articles to "force_show".-->
+            <t t-if="active_article_ancestor_ids" t-set="active_article_ancestor"
+                t-value="articles.filtered(lambda article: article.id in active_article_ancestor_ids)"/>
+            <t t-if="not force_show_active_article
+                    and active_article_id in articles.ids
+                    and active_article_id not in articles[:articles_displayed_limit].ids"
+                t-set="force_show_active_article"
+                t-value="articles.filtered(lambda article: article.id == active_article_id)"/>
+            <t t-elif="not force_show_active_article
+                       and active_article_ancestor
+                       and active_article_ancestor not in articles[:articles_displayed_limit]"
+                t-set="force_show_active_article" t-value="active_article_ancestor"/>
+        </t>
+
+        <t t-set="all_articles" t-value="articles"/>
+        <t t-set="articles" t-value="articles[:articles_displayed_limit]"/>
+
+        <t t-foreach="articles" t-as="article">
+            <t t-set="readonly" t-value="portal_readonly_mode or not user_write_access_by_article.get(article.id)"/>
+            <t t-set="favorite" t-value="favorites_sudo.filtered(lambda f: f.article_id == article) if favorites_sudo else False"/>
+            <t t-set="children"
+                    t-value="all_visible_articles.filtered(lambda child: child.parent_id == article and not child.is_article_item)
+                             if all_visible_articles else article.child_ids.filtered(lambda child: not child.is_article_item)"/>
+            <t t-set="unfoldChildren" t-value="bool(
+                children and (
+                    (not isFavoriteTree and article.id in unfolded_articles_ids)
+                    or (isFavoriteTree and article.id in unfolded_favorite_articles_ids)
+                ))"/>
+            <t t-set="isActive" t-value="article.id == active_article_id if active_article_id else False"/>
+            <!-- readonly is used to for the drag and drop cancel.-->
+            <li t-attf-class="o_article
+                              #{ 'o_article_tree_child' if has_parent else ''}
+                              #{ 'o_article_has_children' if children else ''}
+                              #{ 'o_knowledge_article_force_show_active_article' if is_force_show_active_article else ''}"
+                t-attf-id="article_#{article.id}"
+                t-att-data-article-id="article.id" t-att-data-parent-id="article.parent_id.id"
+                t-att-data-favorite-article-id="favorite.id if favorite else False"
+                t-att-data-category="article.category">
+                <div t-attf-class="#{ '' if not isFavoriteTree and readonly else 'o_article_handle' } #{ 'readonly' if readonly else '' } d-flex align-items-center #{ 'o_article_active fw-bold text-900' if isActive else 'text-muted' }">
+                    <button type="button"
+                            class="flex-shrink-1 o_article_caret btn text-muted p-0 border-0 invisible">
+                        <i t-att-class="'align-self-center fa fa-fw fa-caret-' + ('down' if unfoldChildren or not children else 'right')"/>
+                    </button>
+                    <t t-call="knowledge.articles_template_name"/>
+                </div>
+                <ul t-if="unfoldChildren">
+                    <t t-call="knowledge.articles_template">
+                        <t t-set="articles" t-value="children.sorted('sequence')"/>
+                        <t t-set="articles_count" t-value="len(children)"/>
+                        <t t-set="articles_displayed_offset" t-value="0"/>
+                        <t t-set="has_parent" t-value="True"/>
+                        <t t-set="is_force_show_active_article" t-value="False"/>
+                    </t>
+                </ul>
+            </li>
+        </t>
+        <t t-if="articles_count > articles_displayed_limit">
+            <t t-if="articles_category" t-set="category" t-value="articles_category"/>
+            <t t-elif="workspace_articles" t-set="category" t-value="'workspace'"/>
+            <t t-elif="shared_articles" t-set="category" t-value="'shared'"/>
+            <t t-elif="private_articles" t-set="category" t-value="'private'"/>
+            <t t-else="" t-set="category" t-value="False"/>
+            <t t-set="show_load_more_ellipsis"
+                t-value="force_show_active_article
+                         and (force_show_active_article not in all_articles
+                              or all_articles.ids.index(force_show_active_article.id) > articles_displayed_limit)"/>
+            <t t-if="force_show_active_article and not show_load_more_ellipsis"
+                t-call="knowledge.articles_template">
+                <!-- Happens when the article to "force show" (the active article) is EXACTLY
+                     the next one in line (so Article 51 and we would normally show only the first 50).
+                     In other cases, we show an "ellipsis", so a "..." link in between the displayed article
+                     and the "force shown" (active) one. -->
+                <t t-set="articles" t-value="force_show_active_article"/>
+                <t t-set="is_force_show_active_article" t-value="True"/>
+                <t t-set="force_show_active_article" t-value="False"/>
+                <t t-set="articles_count" t-value="1"/>
+            </t>
+            <a t-if="articles_count > (articles_displayed_limit + 1 if force_show_active_article else articles_displayed_limit)"
+                href="#"
+                t-attf-class="o_knowledge_article_load_more position-relative d-inline-block py-1
+                    #{'ps-4' if not has_parent else ''}
+                    #{'o_knowledge_article_load_more_ellipsis' if show_load_more_ellipsis else ''}"
+                t-att-data-parent-id="articles[0].parent_id.id if has_parent and articles else False"
+                t-att-data-category="category"
+                t-att-data-limit="articles_displayed_limit"
+                t-att-data-offset="articles_displayed_offset + articles_displayed_limit">
+                <t t-if="show_load_more_ellipsis">
+                    (...)
+                </t>
+                <t t-else="">
+                    Load more
+                </t>
+            </a>
+            <t t-if="show_load_more_ellipsis"
+                t-call="knowledge.articles_template">
+                <t t-set="articles" t-value="force_show_active_article"/>
+                <t t-set="is_force_show_active_article" t-value="True"/>
+                <t t-set="force_show_active_article" t-value="False"/>
+                <t t-set="articles_count" t-value="1"/>
+            </t>
+        </t>
+    </template>
+
+    <template id="articles_template_name">
+        <div class="w-100 min-w-0 d-flex">
+            <t t-if="not portal_readonly_mode">
+                <div class="o_article_emoji_dropdown" t-att-data-article-id="article.id">
+                    <a t-attf-class="o_article_emoji py-1 text-center {{'o_article_emoji_active text-900' if isActive else ''}}" type="button"
+                        t-if="not readonly and not article.is_locked">
+                        <t t-if="article.icon" t-out="article.icon"/>
+                        <t t-else="" t-out="article._get_no_icon_placeholder()"></t>
+                    </a>
+                    <a t-else="" class="py-1 d-inline-block text-center">
+                        <t t-if="article.icon" t-out="article.icon"/>
+                        <t t-else="" t-out="article._get_no_icon_placeholder()"></t>
+                    </a>
+                </div>
+                <div class="o_article_name p-1 flex-grow-1 text-truncate cursor-pointer" t-out="article.name"/>
+                <button t-if="not readonly" class="o_article_create btn p-1 border-0 opacity-75 opacity-100-hover" type="button">
+                    <i class="fa fa-fw fa-plus" title="Create a nested article" />
+                </button>
+            </t>
+            <div class="o_article_name p-1 flex-grow-1 text-truncate cursor-pointer" t-else="">
+                <a t-out="article.display_name" t-attf-href="/knowledge/article/{{article.id}}" class="text-decoration-none"/>
+            </div>
+        </div>
+    </template>
+
+</data>
+</odoo>

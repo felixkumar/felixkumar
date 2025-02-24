@@ -1,0 +1,2928 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* knowledge
+# 
+# Translators:
+# 敬雲 林 <chingyun@yuanchih-consult.com>, 2022
+# Martin Trigaux, 2022
+# Tony Ng, 2024
+# Wil Odoo, 2024
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-02-06 13:23+0000\n"
+"PO-Revision-Date: 2022-09-22 05:47+0000\n"
+"Last-Translator: Wil Odoo, 2024\n"
+"Language-Team: Chinese (Taiwan) (https://app.transifex.com/odoo/teams/41243/zh_TW/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Language: zh_TW\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/models/knowledge_article.py:0
+#, python-format
+msgid ""
+"\n"
+"            Deleted articles are stored in Trash an extra\n"
+"            <b>%(threshold)s</b> days\n"
+"            before being permanently removed for your database"
+msgstr ""
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/move_article_dialog/move_article_dialog.xml:0
+#, python-format
+msgid "\" under:"
+msgstr ""
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__favorite_count
+msgid "#Is Favorite"
+msgstr "#是最愛"
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/models/knowledge_article.py:0
+#: code:addons/knowledge/models/knowledge_article.py:0
+#: code:addons/knowledge/models/knowledge_article.py:0
+#, python-format
+msgid "%s (copy)"
+msgstr "%s (副本)"
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/models/knowledge_article.py:0
+#, python-format
+msgid "%s has been sent to Trash"
+msgstr "%s 已送至垃圾桶"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_mail_invite
+msgid ".<br/><br/>"
+msgstr ""
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_frontend
+msgid "<i class=\"fa fa-circle-o-notch fa-2x fa-spin\" title=\"loader\" role=\"img\"/>"
+msgstr "<i class=\"fa fa-circle-o-notch fa-2x fa-spin\" title=\"載入中\" role=\"img\"/>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid "<i class=\"fa fa-fw fa-ellipsis-v\" title=\"Open kebab menu\"/>"
+msgstr "<i class=\"fa fa-fw fa-ellipsis-v\" title=\"顯示其餘選單\"/>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid "<i class=\"fa fa-fw fa-lg fa-angle-double-right\"/> Move To"
+msgstr "<i class=\"fa fa-fw fa-lg fa-angle-double-right\"/> 移動至"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid "<i class=\"fa fa-fw fa-lg fa-archive\"/> Unarchive"
+msgstr "<i class=\"fa fa-fw fa-lg fa-archive\"/> 取消封存"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid "<i class=\"fa fa-fw fa-lg fa-arrows-h\"/> Full Width"
+msgstr "<i class=\"fa fa-fw fa-lg fa-arrows-h\"/> 全闊度"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid "<i class=\"fa fa-fw fa-lg fa-cog\" title=\"Add properties\"/> Add Properties"
+msgstr "<i class=\"fa fa-fw fa-lg fa-cog\" title=\"加入屬性\"/> 加入屬性"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid "<i class=\"fa fa-fw fa-lg fa-copy\"/> Create a Copy"
+msgstr "<i class=\"fa fa-fw fa-lg fa-copy\"/> 建立副本"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid "<i class=\"fa fa-fw fa-lg fa-lock\"/> Lock"
+msgstr "<i class=\"fa fa-fw fa-lg fa-lock\"/> 鎖定"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid "<i class=\"fa fa-fw fa-lg fa-picture-o\" title=\"Add cover\"/> Add cover"
+msgstr "<i class=\"fa fa-fw fa-lg fa-picture-o\" title=\"加入封面\"/> 加入封面"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid "<i class=\"fa fa-fw fa-lg fa-picture-o\" title=\"Change cover\"/> Change cover"
+msgstr "<i class=\"fa fa-fw fa-lg fa-picture-o\" title=\"變更封面\"/> 變更封面"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid "<i class=\"fa fa-fw fa-lg fa-smile-o\" title=\"Add icon\"/> Add icon"
+msgstr "<i class=\"fa fa-fw fa-lg fa-smile-o\" title=\"加入圖示\"/> 加入圖示"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid "<i class=\"fa fa-fw fa-lg fa-trash\"/> Delete"
+msgstr "<i class=\"fa fa-fw fa-lg fa-trash\"/> 刪除"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid "<i class=\"fa fa-fw fa-lg fa-trash-o\" title=\"Remove cover\"/> Remove cover"
+msgstr "<i class=\"fa fa-fw fa-lg fa-trash-o\" title=\"移除封面\"/> 移除封面"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid "<i class=\"fa fa-fw fa-lg fa-trash-o\"/> Restore from Trash"
+msgstr ""
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid "<i class=\"fa fa-fw fa-lg fa-unlock\"/> Unlock"
+msgstr "<i class=\"fa fa-fw fa-lg fa-unlock\"/> 解除鎖定"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid ""
+"<i class=\"fa fa-fw fa-lock\" title=\"This article is locked\" "
+"attrs=\"{'invisible': ['|', '|', ('is_locked', '=', False), "
+"('user_can_write', '=', False), ('active', '=', False)]}\"/>"
+msgstr ""
+"<i class=\"fa fa-fw fa-lock\" title=\"本篇文章已被鎖定。\" attrs=\"{'invisible': "
+"['|', '|', ('is_locked', '=', False), ('user_can_write', '=', False), "
+"('active', '=', False)]}\"/>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.articles_template_name
+msgid "<i class=\"fa fa-fw fa-plus\" title=\"Create a nested article\"/>"
+msgstr "<i class=\"fa fa-fw fa-plus\" title=\"建立巢狀結構文章\"/>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_tree
+msgid "<i class=\"fa fa-fw fa-plus\" title=\"Create a new article in workspace\"/>"
+msgstr ""
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_tree
+msgid "<i class=\"fa fa-fw fa-plus\" title=\"Create a new private article\"/>"
+msgstr ""
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid ""
+"<i class=\"fa fa-lg fa-star\" title=\"Remove from favorites\" attrs=\"{'invisible': [('is_user_favorite', '=', False)]}\"/>\n"
+"                                        <i class=\"fa fa-lg fa-star-o\" title=\"Add to favorites\" attrs=\"{'invisible': [('is_user_favorite', '=', True)]}\"/>"
+msgstr ""
+"<i class=\"fa fa-lg fa-star\" title=\"移除最愛\" attrs=\"{'invisible': [('is_user_favorite', '=', False)]}\"/>\n"
+"                                        <i class=\"fa fa-lg fa-star-o\" title=\"加至最愛\" attrs=\"{'invisible': [('is_user_favorite', '=', True)]}\"/>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid "<i class=\"fa fa-plus-circle me-1\"/>New"
+msgstr "<i class=\"fa fa-plus-circle me-1\"/> 新增"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid "<i class=\"fa fa-share-alt me-1\"/>Share"
+msgstr "<i class=\"fa fa-share-alt me-1\"/> 分享"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_kanban
+msgid "<i class=\"fa fa-star\" title=\"Remove from favorites\"/>"
+msgstr ""
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_kanban
+msgid "<i class=\"fa fa-star-o\" title=\"Add to favorites\"/>"
+msgstr ""
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid ""
+"<i class=\"fa fa-trash\"/>\n"
+"                                            <span class=\"ps-2 flex-grow-1 text-truncate\">\n"
+"                                                Open the Trash\n"
+"                                            </span>"
+msgstr ""
+"<i class=\"fa fa-trash\"/>\n"
+"                                            <span class=\"ps-2 flex-grow-1 text-truncate\">\n"
+"                                                垃圾桶\n"
+"                                            </span>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid "<i class=\"fa fa-user-plus fs-3\" title=\"Invite People\"/>"
+msgstr "<i class=\"fa fa-user-plus fs-3\" title=\"邀請人員\"/>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_invite_view_form
+msgid ""
+"<i class=\"fa fa-w fa-info-circle\"/> All external users you selected won't "
+"be added to the members."
+msgstr "<i class=\"fa fa-w fa-info-circle\"/> 選取的所有外部使用者，都不會加入至成員中。"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_invite_view_form
+msgid ""
+"<i class=\"fa fa-w fa-info-circle\"/> External users cannot write on "
+"Articles and will be granted read access instead."
+msgstr ""
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid "<i class=\"oi oi-search pe-2\" title=\"search\"/>"
+msgstr "<i class=\"oi oi-search pe-2\" title=\"搜尋\"/>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid "<i class=\"rounded-circle text-center fa fa-cog\" title=\"Show Properties\"/>"
+msgstr "<i class=\"rounded-circle text-center fa fa-cog\" title=\"顯示屬性\"/>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid ""
+"<i class=\"rounded-circle text-center fa fa-fw fa-comments\" title=\"Open "
+"chatter\"/>"
+msgstr ""
+"<i class=\"rounded-circle text-center fa fa-fw fa-comments\" "
+"title=\"開啟對話窗\"/>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_tree
+msgid "<i>There are no Articles in your Workspace.</i>"
+msgstr ""
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_tree
+msgid "<i>You do not have any private Articles.</i>"
+msgstr ""
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid "<span class=\"mx-1\">-</span>"
+msgstr "<span class=\"mx-1\">-</span>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid ""
+"<span style=\"font-size: 14px;\">\n"
+"                    Add a checklist\n"
+"                    (/<span style=\"font-style: italic;\">checklist</span>)\n"
+"                </span>"
+msgstr ""
+"<span style=\"font-size: 14px;\">\n"
+"                    新增檢查清單\n"
+"                    （/<span style=\"font-style: italic;\">checklist</span>）\n"
+"                </span>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid ""
+"<span style=\"font-size: 14px;\">\n"
+"                    Add a separator\n"
+"                    (/<span style=\"font-style: italic;\">separator</span>)\n"
+"                </span>"
+msgstr ""
+"<span style=\"font-size: 14px;\">\n"
+"                    加入分隔\n"
+"                    （/<span style=\"font-style: italic;\">separator</span>）\n"
+"                </span>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid ""
+"<span style=\"font-size: 14px;\">\n"
+"                    Use\n"
+"                    /<span style=\"font-style: italic;\">heading</span>\n"
+"                    to convert a text into a title\n"
+"                </span>"
+msgstr ""
+"<span style=\"font-size: 14px;\">\n"
+"                    使用\n"
+"                    /<span style=\"font-style: normal;\">heading</span>\n"
+"                    將文字轉換為標題\n"
+"                </span>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid ""
+"<span style=\"font-size: 14px;\">\n"
+"            <span style=\"font-weight: bolder;\">\n"
+"                <font class=\"text-o-color-2\">Favorites</font>\n"
+"            </span>\n"
+"            — Those are\n"
+"            <span style=\"font-weight: bolder;\">\n"
+"                <font class=\"text-o-color-2\">shortcuts</font>\n"
+"            </span>\n"
+"            you create for yourself.\n"
+"            Unstar this page at the top to remove it from your favorites.\n"
+"        </span>"
+msgstr ""
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid ""
+"<span style=\"font-size: 14px;\">\n"
+"            <span style=\"font-weight: bolder;\">\n"
+"                <font class=\"text-o-color-2\">Private</font>\n"
+"            </span>\n"
+"        </span>\n"
+"        <span style=\"font-size: 14px;\">\n"
+"            — This is\n"
+"            <span style=\"font-weight: bolder;\"><font class=\"text-o-color-2\">your stuff</font></span>,\n"
+"            the things you keep for yourself\n"
+"            (<span style=\"font-style: italic;\">Drafts, Todo lists, ...</span>)\n"
+"        </span>"
+msgstr ""
+"<span style=\"font-size: 14px;\">\n"
+"            <span style=\"font-weight: bolder;\">\n"
+"                <font class=\"text-o-color-2\">私人</font>\n"
+"            </span>\n"
+"        </span>\n"
+"        <span style=\"font-size: 14px;\">\n"
+"            － 是你保留給自己使用的\n"
+"            <span style=\"font-weight: bolder;\"><font class=\"text-o-color-2\">私人資料</font></span>\n"
+"            （例如：\n"
+"            <span style=\"font-style: italic;\">草稿、待辦清單</span>，等等）\n"
+"        </span>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid ""
+"<span style=\"font-size: 14px;\">\n"
+"            <span style=\"font-weight: bolder;\">\n"
+"                <font class=\"text-o-color-2\">Shared</font>\n"
+"            </span>\n"
+"        </span>\n"
+"        <span style=\"font-size: 14px;\">\n"
+"            — Those are the ones you\n"
+"            <span style=\"font-weight: bolder;\">\n"
+"                <font class=\"text-o-color-2\">have invited someone or been invited to</font>\n"
+"            </span>\n"
+"        </span>"
+msgstr ""
+"<span style=\"font-size: 14px;\">\n"
+"            <span style=\"font-weight: bolder;\">\n"
+"                <font class=\"text-o-color-2\">分享</font>\n"
+"            </span>\n"
+"        </span>\n"
+"        <span style=\"font-size: 14px;\">\n"
+"            － 是\n"
+"            <span style=\"font-weight: bolder;\">\n"
+"                <font class=\"text-o-color-2\">你已邀請某人協作，或你獲邀請參與協作的資料</font>\n"
+"            </span>\n"
+"        </span>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid ""
+"<span style=\"font-size: 14px;\">\n"
+"            <span style=\"font-weight: bolder;\">\n"
+"                <font class=\"text-o-color-2\">Workspace</font>\n"
+"            </span>\n"
+"        </span>\n"
+"        <span style=\"font-size: 14px;\">\n"
+"            — Articles there can be accessed by\n"
+"        <span style=\"font-weight: bolder;\">\n"
+"            <font class=\"text-o-color-2\">your team</font>\n"
+"        </span>\n"
+"    </span>"
+msgstr ""
+"<span style=\"font-size: 14px;\">\n"
+"            <span style=\"font-weight: bolder;\">\n"
+"                <font class=\"text-o-color-2\">工作區</font>\n"
+"            </span>\n"
+"        </span>\n"
+"        <span style=\"font-size: 14px;\">\n"
+"            － 該處的文章可由\n"
+"        <span style=\"font-weight: bolder;\">\n"
+"            <font class=\"text-o-color-2\">你的團隊存取</font>\n"
+"        </span>\n"
+"    </span>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid ""
+"<span style=\"font-size: 14px;\">\n"
+"            Below this list, try\n"
+"            <span style=\"font-weight: bolder;\">commands</span>\n"
+"            by\n"
+"            <span style=\"font-weight: bolder;\">\n"
+"                <font class=\"text-o-color-2\">typing</font>\n"
+"            </span>\n"
+"            \"<span style=\"font-weight: bolder;\">/</span>\"\n"
+"        </span>"
+msgstr ""
+"<span style=\"font-size: 14px;\">\n"
+"            在此清單下方，試試使用\n"
+"            <span style=\"font-weight: bolder;\">指令</span>\n"
+"            ，你只需\n"
+"            <span style=\"font-weight: bolder;\">\n"
+"                <font class=\"text-o-color-2\">鍵入</font>\n"
+"            </span>\n"
+"            「<span style=\"font-weight: bolder;\">/</span>」（斜線）\n"
+"        </span>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid ""
+"<span style=\"font-size: 14px;\">\n"
+"            Content — Just click and\n"
+"            <span style=\"font-weight: bolder;\">\n"
+"                <font class=\"text-o-color-2\">start typing</font>\n"
+"            </span>\n"
+"            (<span style=\"font-style: italic;\">documentation, tips, reports, ...</span>)\n"
+"        </span>"
+msgstr ""
+"<span style=\"font-size: 14px;\">\n"
+"            內容 － 點按一下並\n"
+"            <span style=\"font-weight: bolder;\">\n"
+"                <font class=\"text-o-color-2\">開始輸入</font>\n"
+"            </span>\n"
+"            （<span style=\"font-style: italic;\">使用說明、提示、報告</span>，等等）\n"
+"        </span>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid ""
+"<span style=\"font-size: 14px;\">\n"
+"            Folders —\n"
+"        </span>\n"
+"        <span style=\"font-size: 14px;\">\n"
+"            <span style=\"font-weight: bolder;\">\n"
+"                <font class=\"text-o-color-2\">Nest other Articles</font>\n"
+"            </span>\n"
+"            under it to regroup them\n"
+"            (<span style=\"font-style: italic;\">per team, topic, project, ...</span>)\n"
+"        </span>"
+msgstr ""
+"<span style=\"font-size: 14px;\">\n"
+"            資料夾 －\n"
+"        </span>\n"
+"        <span style=\"font-size: 14px;\">\n"
+"            <span style=\"font-weight: bolder;\">\n"
+"                <font class=\"text-o-color-2\">將其他文章放入欄目之下，形成巢狀結構</font>\n"
+"            </span>\n"
+"            ，以作分組\n"
+"            （可按照<span style=\"font-style: italic;\">團隊、題目、專案</span>，等等）\n"
+"        </span>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid ""
+"<span style=\"font-size: 14px;\">\n"
+"            Select text to\n"
+"            <font class=\"bg-o-color-2\">Highlight</font>,\n"
+"            <span style=\"text-decoration-line: line-through;\">strikethrough</span>\n"
+"            or\n"
+"            <span style=\"font-weight: bolder;\">style</span>\n"
+"            <span style=\"font-style: italic; text-decoration-line: underline;\">it</span>\n"
+"        </span>"
+msgstr ""
+"<span style=\"font-size: 14px;\">\n"
+"            選取文字以作\n"
+"            <font class=\"bg-o-color-2\">醒目提示</font>、\n"
+"            <span style=\"text-decoration-line: line-through;\">加上刪除線</span>\n"
+"            ，或套用\n"
+"            <span style=\"font-weight: bolder;\">不同</span>\n"
+"            <span style=\"font-style: italic; text-decoration-line: underline;\">格式</span>\n"
+"        </span>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid ""
+"<span style=\"font-size: 14px;\">\n"
+"            Use\n"
+"            /<span style=\"font-weight: bolder;\"><font class=\"text-o-color-2\">file</font></span>\n"
+"            to share documents that are frequently needed\n"
+"        </span>"
+msgstr ""
+"<span style=\"font-size: 14px;\">\n"
+"            使用「\n"
+"            /<span style=\"font-weight: bolder;\"><font class=\"text-o-color-2\">file</font></span>\n"
+"            」分享常用文件檔案\n"
+"        </span>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid ""
+"<span style=\"font-size: 14px;\">\n"
+"            Use\n"
+"            /<span style=\"font-weight: bolder;\"><font class=\"text-o-color-2\">template</font></span>\n"
+"            to insert a\n"
+"            <span style=\"font-weight: bolder;\">\n"
+"                <font class=\"text-o-color-2\">template</font>\n"
+"            </span>\n"
+"            box. Need to re-use its content?\n"
+"        </span>"
+msgstr ""
+"<span style=\"font-size: 14px;\">\n"
+"            輸入 \n"
+"            /<span style=\"font-weight: bolder;\"><font class=\"text-o-color-2\">template</font></span> \n"
+"            以插入一個\n"
+"            <span style=\"font-weight: bolder;\">\n"
+"                <font class=\"text-o-color-2\">範本</font>\n"
+"            </span>\n"
+"            區塊。需要重用當中內容？\n"
+"        </span>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid ""
+"<span style=\"font-size: 14px;\">\n"
+"        <span style=\"font-weight: bolder;\">\n"
+"            <font class=\"text-o-color-2\">Articles</font>\n"
+"        </span>\n"
+"        are stored into different\n"
+"        <span style=\"font-weight: bolder;\"><font class=\"text-o-color-2\">Sections</font></span>:\n"
+"    </span>"
+msgstr ""
+"<span style=\"font-size: 14px;\">\n"
+"        <span style=\"font-weight: bolder;\">\n"
+"            <font class=\"text-o-color-2\">文章</font>\n"
+"        </span>\n"
+"        會被儲存至不同\n"
+"        <span style=\"font-weight: bolder;\"><font class=\"text-o-color-2\">章節</font></span>中：\n"
+"    </span>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid ""
+"<span style=\"font-size: 14px;\">\n"
+"        A good workflow is to write your drafts in\n"
+"        <span style=\"font-weight: bolder;\">\n"
+"            <font class=\"text-o-color-2\">Private</font>\n"
+"        </span>\n"
+"        and, once done, move it from\n"
+"        <span style=\"font-weight: bolder;\">\n"
+"            <font class=\"text-o-color-2\">Private</font>\n"
+"        </span>\n"
+"        to\n"
+"        <span style=\"font-weight: bolder;\">\n"
+"            <font class=\"text-o-color-2\">Workspace</font>\n"
+"        </span>\n"
+"        to share it with everyone.\n"
+"    </span>"
+msgstr ""
+"<span style=\"font-size: 14px;\">\n"
+"        一個好的工作流程是，先在「\n"
+"        <span style=\"font-weight: bolder;\">\n"
+"            <font class=\"text-o-color-2\">私人</font>\n"
+"        </span>\n"
+"        」撰寫草稿，完成後將它由「\n"
+"        <span style=\"font-weight: bolder;\">\n"
+"            <font class=\"text-o-color-2\">私人</font>\n"
+"        </span>\n"
+"        」移至「\n"
+"        <span style=\"font-weight: bolder;\">\n"
+"            <font class=\"text-o-color-2\">工作區</font>\n"
+"        </span>\n"
+"        」，與所有人分享協作。\n"
+"    </span>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid ""
+"<span style=\"font-size: 14px;\">\n"
+"        And again, to move an\n"
+"        <span style=\"font-weight: bolder;\">\n"
+"            <font class=\"text-o-color-2\">Article</font>\n"
+"        </span>\n"
+"        from a\n"
+"        <span style=\"font-weight: bolder;\">\n"
+"            <font class=\"text-o-color-2\">Section</font>\n"
+"        </span>\n"
+"        to another, just\n"
+"        <span style=\"font-weight: bolder;\">\n"
+"            <font class=\"text-o-color-2\">Drag &amp; Drop</font>\n"
+"        </span>\n"
+"        it.\n"
+"    </span>"
+msgstr ""
+"<span style=\"font-size: 14px;\">\n"
+"        同樣，要將一篇\n"
+"        <span style=\"font-weight: bolder;\">\n"
+"            <font class=\"text-o-color-2\">文章</font>\n"
+"        </span>\n"
+"        移至其他\n"
+"        <span style=\"font-weight: bolder;\">\n"
+"            <font class=\"text-o-color-2\">章節</font>\n"
+"        </span>\n"
+"        ，只需簡單\n"
+"        <span style=\"font-weight: bolder;\">\n"
+"            <font class=\"text-o-color-2\">拖曳放置</font>\n"
+"        </span>\n"
+"        便可。\n"
+"    </span>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid ""
+"<span style=\"font-size: 14px;\">\n"
+"        See the\n"
+"        <span style=\"font-weight: bolder;\">\n"
+"            <font class=\"text-o-color-2\">Menu</font>\n"
+"        </span>\n"
+"        there, on the left?\n"
+"    </span>"
+msgstr ""
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid ""
+"<span style=\"font-size: 14px;\">\n"
+"        This is where you and your team can centralize your\n"
+"        <font class=\"text-o-color-2\" style=\"font-weight: bolder;\">Knowledge</font>\n"
+"        and best practices!\n"
+"    </span>"
+msgstr ""
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid ""
+"<span style=\"font-size: 14px;\">\n"
+"        Those are your\n"
+"        <span style=\"font-weight: bolder;\"><font class=\"text-o-color-2\">Articles</font></span>.\n"
+"    </span>"
+msgstr ""
+"<span style=\"font-size: 14px;\">\n"
+"        那些是你的\n"
+"        <span style=\"font-weight: bolder;\"><font class=\"text-o-color-2\">文章</font></span>。\n"
+"    </span>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid ""
+"<span style=\"font-size: 14px;\">\n"
+"        To change the way\n"
+"        <span style=\"font-weight: bolder;\">\n"
+"            <font class=\"text-o-color-2\">Articles</font>\n"
+"        </span>\n"
+"        are organized, you can simply\n"
+"        <span style=\"font-weight: bolder;\">\n"
+"            <font class=\"text-o-color-2\">Drag &amp; Drop</font>\n"
+"        </span>\n"
+"        them\n"
+"    </span>"
+msgstr ""
+"<span style=\"font-size: 14px;\">\n"
+"        要變更\n"
+"        <span style=\"font-weight: bolder;\">\n"
+"            <font class=\"text-o-color-2\">文章</font>\n"
+"        </span>\n"
+"        的排列方式，只需簡單\n"
+"        <span style=\"font-weight: bolder;\">\n"
+"            <font class=\"text-o-color-2\">拖曳放置</font>\n"
+"        </span>\n"
+"        便可。\n"
+"    </span>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid ""
+"<span style=\"font-size: 14px;\">\n"
+"        Want to go\n"
+"        <span style=\"font-style: italic;\">even</span>\n"
+"        faster?\n"
+"    </span>\n"
+"    <br/>\n"
+"    <span style=\"font-size: 14px;\">\n"
+"        Access\n"
+"        <span style=\"font-weight: bolder;\">\n"
+"            <font class=\"text-o-color-2\">Articles</font>\n"
+"        </span>\n"
+"        by opening the\n"
+"        <span style=\"font-weight: bolder;\">\n"
+"            <font class=\"text-o-color-2\">Command Palette</font>\n"
+"        </span>\n"
+"        (Ctrl + k/⌘ + k) then search through articles by starting your query with\n"
+"        \"<span style=\"font-weight: bolder;\">?</span>\".\n"
+"    </span>"
+msgstr ""
+"<span style=\"font-size: 14px;\">\n"
+"        想\n"
+"        <span style=\"font-style: italic;\">更快速</span>\n"
+"        完成工作？\n"
+"    </span>\n"
+"    <br/>\n"
+"    <span style=\"font-size: 14px;\">\n"
+"        可透過開啟\n"
+"        <span style=\"font-weight: bolder;\">\n"
+"            <font class=\"text-o-color-2\">指令面板</font>\n"
+"        </span>\n"
+"        （Ctrl + k / ⌘ + k）存取你的\n"
+"        <span style=\"font-weight: bolder;\">\n"
+"            <font class=\"text-o-color-2\">文章</font>\n"
+"        </span>\n"
+"        ，然後在文章中搜尋。搜尋時，只需在查詢字句起首輸入\n"
+"        「<span style=\"font-weight: bolder;\">?</span>」。\n"
+"    </span>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid "<span style=\"font-size: 14px;\">And voilà, it is that simple.</span>"
+msgstr "<span style=\"font-size: 14px;\">搞定！就是這麼簡單。</span>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid ""
+"<span style=\"font-size: 14px;\">Check this box to indicate it's done</span>"
+msgstr "<span style=\"font-size: 14px;\">勾選此方塊以表示完成</span>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid ""
+"<span style=\"font-size: 14px;\">Click anywhere, and just start "
+"typing</span>"
+msgstr "<span style=\"font-size: 14px;\">只需按一下任何位置，然後開始輸入</span>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid "<span style=\"font-size: 14px;\">Each of them can be used both as:</span>"
+msgstr "<span style=\"font-size: 14px;\">每個都可用作以下兩個用途：</span>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid ""
+"<span style=\"font-size: 14px;\">From this box, files can be previewed, "
+"forwarded and downloaded.</span>"
+msgstr ""
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid ""
+"<span style=\"font-size: 14px;\">From your document, find this article by "
+"clicking on the book icon in the chatter.</span>"
+msgstr ""
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid ""
+"<span style=\"font-size: 14px;\">Got it? Now let's try advanced "
+"features</span>"
+msgstr ""
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid ""
+"<span style=\"font-size: 14px;\">Need this document somewhere? Come back "
+"here by clicking on the book icon in the chatter.</span>"
+msgstr ""
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid "<span style=\"font-size: 14px;\">Press Ctrl-Z to undo any change</span>"
+msgstr "<span style=\"font-size: 14px;\">按 Ctrl-Z 以復原任何變更</span>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid ""
+"<span style=\"font-size: 14px;\">This private page is for you to play around with.</span>\n"
+"    <br/>\n"
+"    <span style=\"font-size: 14px;\">Ready to give it a spin?</span>"
+msgstr ""
+"<span style=\"font-size: 14px;\">此私人頁面供你盡情試用。</span>\n"
+"    <br/>\n"
+"    <span style=\"font-size: 14px;\">準備好嘗試了嗎？</span>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid "<span style=\"font-size: 14px;\">Try the following</span>"
+msgstr "<span style=\"font-size: 14px;\">試試以下操作</span>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid ""
+"<span style=\"font-size: 14px;\">You can use the template as a description, "
+"a message or simply copy it to your clipboard!</span>"
+msgstr ""
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid ""
+"<span style=\"font-weight: bolder;\">\n"
+"            <font class=\"text-o-color-1\">YouTube</font>\n"
+"        </span>"
+msgstr ""
+"<span style=\"font-weight: bolder;\">\n"
+"            <font class=\"text-o-color-1\">YouTube</font>\n"
+"        </span>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid ""
+"<span style=\"font-weight: bolder;\"><font class=\"text-o-"
+"color-1\">Facebook</font></span>"
+msgstr ""
+"<span style=\"font-weight: bolder;\"><font class=\"text-o-"
+"color-1\">Facebook</font></span>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid ""
+"<span style=\"font-weight: bolder;\"><font class=\"text-o-"
+"color-1\">Twitter</font></span>"
+msgstr ""
+"<span style=\"font-weight: bolder;\"><font class=\"text-o-"
+"color-1\">Twitter</font></span>"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/permission_panel/permission_panel.xml:0
+#, python-format
+msgid "Access Restricted. May not be shared with everyone from"
+msgstr "存取受限制。不可與以下群組的所有人分享："
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__message_needaction
+msgid "Action Needed"
+msgstr "需採取行動"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__active
+msgid "Active"
+msgstr "啟用"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__activity_ids
+msgid "Activities"
+msgstr "活動"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr "活動異常圖示"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__activity_state
+msgid "Activity State"
+msgstr "活動狀態"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__activity_type_icon
+msgid "Activity Type Icon"
+msgstr "活動類型圖示"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/js/wysiwyg.js:0
+#, python-format
+msgid "Add a table of content."
+msgstr "加入文章內容目錄。"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/js/wysiwyg.js:0
+#, python-format
+msgid "Add a template section."
+msgstr "加入範本文字區塊。"
+
+#. module: knowledge
+#: model_terms:ir.actions.act_window,help:knowledge.knowledge_article_favorite_action
+msgid ""
+"Add articles in your list of favorites by clicking on the <i class=\"fa fa-"
+"star-o\"></i> next to the article name."
+msgstr "按下文章名稱旁邊的 <i class=\"fa fa-star-o\"></i> 圖示，將文章加入至你的最愛清單。"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/behaviors/table_of_content_behavior/table_of_content_behavior.xml:0
+#, python-format
+msgid "Add headings in this Article to create a Table of Content"
+msgstr "為這篇文章加入標題，以建立一個內容目錄"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_invite_view_form
+msgid "Add people or email addresses"
+msgstr "加入用戶或電郵地址"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid "Add people or email addresses..."
+msgstr "加入用戶或電郵地址⋯"
+
+#. module: knowledge
+#: model_terms:ir.actions.act_window,help:knowledge.knowledge_article_member_action
+msgid ""
+"Adding members allows you to share Articles while granting specific access "
+"rights<br>(can write, can read, ...)."
+msgstr "加入成員後，你可以分享文章，以及授予特定的存取權限<br>（例如：可寫入、可讀取等）。"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/permission_panel/permission_panel.xml:0
+#, python-format
+msgid "Admin"
+msgstr "管理員"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/permission_panel/permission_panel.xml:0
+#, python-format
+msgid "Administrator"
+msgstr "管理員"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/webclient/commands/knowledge_providers.js:0
+#, python-format
+msgid "Advanced Search"
+msgstr "進階搜尋"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/permission_panel/permission_panel.js:0
+#, python-format
+msgid "Archive Article"
+msgstr ""
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_search_items
+msgid "Archived"
+msgstr "已封存"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/cover_selector/knowledge_cover_dialog.js:0
+#, python-format
+msgid ""
+"Are you sure you want to delete this cover ? It will be removed from every "
+"article it is used in."
+msgstr ""
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/permission_panel/permission_panel.js:0
+#, python-format
+msgid ""
+"Are you sure you want to leave this private article? By doing so, the "
+"article and all its descendants will be archived."
+msgstr ""
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/js/knowledge_renderers.js:0
+#, python-format
+msgid ""
+"Are you sure you want to move \"%s\" to private? Only you will be able to "
+"access it."
+msgstr ""
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/js/knowledge_renderers.js:0
+#, python-format
+msgid ""
+"Are you sure you want to move \"%s\" to the Workspace? It will be shared "
+"with all internal users."
+msgstr ""
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/js/knowledge_renderers.js:0
+#, python-format
+msgid ""
+"Are you sure you want to move \"%s\" under \"%s%s\"? It will be shared with "
+"the same persons."
+msgstr ""
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/permission_panel/permission_panel.js:0
+#, python-format
+msgid ""
+"Are you sure you want to remove your member? By leaving an article, you may "
+"lose access to it."
+msgstr "確定要移除你的會員？若留下一篇文章，你可能會失去對它的存取權限。"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/permission_panel/permission_panel.js:0
+#, python-format
+msgid "Are you sure you want to remove your own \"Write\" access ?"
+msgstr ""
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/permission_panel/permission_panel.js:0
+#, python-format
+msgid ""
+"Are you sure you want to restore access? This means this article will now "
+"inherit any access set on its parent articles."
+msgstr "確定要恢復存取權限？這表示此文章現在會繼承其母項的任何存取權限集。"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/permission_panel/permission_panel.js:0
+#, python-format
+msgid ""
+"Are you sure you want to restrict this role and restrict access ? This "
+"article will no longer inherit access settings from the parent page."
+msgstr ""
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/permission_panel/permission_panel.js:0
+#, python-format
+msgid ""
+"Are you sure you want to set the internal permission to \"none\" ? If you "
+"do, you will no longer have access to the article."
+msgstr ""
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/permission_panel/permission_panel.js:0
+#, python-format
+msgid ""
+"Are you sure you want to set your permission to \"none\"? If you do, you "
+"will no longer have access to the article."
+msgstr "確定要將權限設為「無」？如果這樣做，你也無法再存取該文章。"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/js/wysiwyg.js:0
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article_favorite__article_id
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article_member__article_id
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_invite__article_id
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_favorite_view_search
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_member_view_search
+#, python-format
+msgid "Article"
+msgstr "文章"
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/models/knowledge_article_member.py:0
+#, python-format
+msgid ""
+"Article '%s' should always have a writer: inherit write permission, or have "
+"a member with write access"
+msgstr "文章 %s 應該永遠有一名寫入者。可將文章設為繼承寫入權限，或設置一名具有寫入權限的成員。"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__article_properties_definition
+msgid "Article Item Properties"
+msgstr "文章項目屬性"
+
+#. module: knowledge
+#: model:ir.actions.act_window,name:knowledge.knowledge_article_item_action
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_search
+msgid "Article Items"
+msgstr "文章項目"
+
+#. module: knowledge
+#: model:ir.model,name:knowledge.model_knowledge_article_member
+msgid "Article Member"
+msgstr "文章成員"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/js/wysiwyg.js:0
+#, python-format
+msgid "Article Structure"
+msgstr "文章結構"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__article_url
+msgid "Article URL"
+msgstr "文章網址"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__cover_image_id
+msgid "Article cover"
+msgstr "文章封面圖片"
+
+#. module: knowledge
+#: model:ir.model.constraint,message:knowledge.constraint_knowledge_article_check_article_item_parent
+msgid "Article items must have a parent."
+msgstr "文章項目必須有一個母項。"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_frontend
+msgid "Article not found"
+msgstr "文章未找到"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/move_article_dialog/move_article_dialog.js:0
+#: model:ir.actions.act_window,name:knowledge.knowledge_article_action
+#: model:ir.actions.act_window,name:knowledge.knowledge_article_action_form
+#: model:ir.actions.server,name:knowledge.ir_actions_server_knowledge_home_page
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_search
+#, python-format
+msgid "Articles"
+msgstr "篇文章"
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/models/knowledge_article.py:0
+#: code:addons/knowledge/models/knowledge_article.py:0
+#: code:addons/knowledge/models/knowledge_article.py:0
+#, python-format
+msgid ""
+"Articles %s cannot be updated as this would create a recursive hierarchy."
+msgstr "未能更新文章 %s，因為這會引致循環的層級結構。"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_cover__article_ids
+msgid "Articles using cover"
+msgstr "使用封面圖片的文章"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/permission_panel/permission_panel.xml:0
+#, python-format
+msgid "As a reader, you can't leave a Workspace article"
+msgstr "作為讀取者，你不可離開工作區文章"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/permission_panel/permission_panel.xml:0
+#, python-format
+msgid ""
+"As an administrator, you can always modify this article and its members."
+msgstr "作為管理員，你可隨時修改這篇文章及其成員資料。"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__message_attachment_count
+msgid "Attachment Count"
+msgstr "附件數目"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/permission_panel/permission_panel.xml:0
+#: code:addons/knowledge/static/src/components/permission_panel/permission_panel.xml:0
+#, python-format
+msgid "Based on"
+msgstr "根據"
+
+#. module: knowledge
+#: model_terms:ir.actions.act_window,help:knowledge.knowledge_article_action
+msgid "Be the first one to unleash the power of Knowledge !"
+msgstr ""
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__body
+msgid "Body"
+msgstr "本文主體"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__user_can_read
+msgid "Can Read"
+msgstr "可讀取"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__user_can_write
+msgid "Can Write"
+msgstr "可以寫"
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/models/knowledge_article_member.py:0
+#, python-format
+msgid "Can not update the article or partner of a member."
+msgstr "未能更新成員的文章或合作夥伴。"
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/models/knowledge_article_favorite.py:0
+#, python-format
+msgid "Can not update the article or user of a favorite."
+msgstr "未能更新最愛文章或使用者。"
+
+#. module: knowledge
+#: model:ir.model.fields.selection,name:knowledge.selection__knowledge_article__inherited_permission__read
+#: model:ir.model.fields.selection,name:knowledge.selection__knowledge_article__internal_permission__read
+#: model:ir.model.fields.selection,name:knowledge.selection__knowledge_article_member__permission__read
+#: model:ir.model.fields.selection,name:knowledge.selection__knowledge_invite__permission__read
+msgid "Can read"
+msgstr "可讀取"
+
+#. module: knowledge
+#: model:ir.model.fields.selection,name:knowledge.selection__knowledge_article__inherited_permission__write
+#: model:ir.model.fields.selection,name:knowledge.selection__knowledge_article__internal_permission__write
+#: model:ir.model.fields.selection,name:knowledge.selection__knowledge_article_member__permission__write
+#: model:ir.model.fields.selection,name:knowledge.selection__knowledge_invite__permission__write
+msgid "Can write"
+msgstr ""
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/move_article_dialog/move_article_dialog.xml:0
+#: code:addons/knowledge/static/src/js/wysiwyg/knowledge_article_link.js:0
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_invite_view_form
+#, python-format
+msgid "Cancel"
+msgstr "取消"
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/models/knowledge_article.py:0
+#, python-format
+msgid ""
+"Cannot create an article under article %(parent_name)s which is a non-"
+"private parent"
+msgstr "未能在文章 %(parent_name)s 下建立新文章，因該文章為一個非私人的母項文章。"
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/models/knowledge_article.py:0
+#, python-format
+msgid ""
+"Cannot move %(article_name)s as a root of the 'shared' section since access "
+"rights can not be inferred without a parent."
+msgstr "未能將 %(article_name)s 作為「分享」部份的根文章移動，因為沒有了母項就不能推斷出存取權限。"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/move_article_dialog/move_article_dialog.js:0
+#, python-format
+msgid "Categories"
+msgstr "類別"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/permission_panel/permission_panel.js:0
+#, python-format
+msgid "Change Permission"
+msgstr "更改權限"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__child_ids
+msgid "Child Articles and Items"
+msgstr "子項文章及項目"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/xml/knowledge_editor.xml:0
+#, python-format
+msgid "Choose an Article"
+msgstr ""
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/macros/abstract_macro.js:0
+#, python-format
+msgid "Close"
+msgstr "關閉"
+
+#. module: knowledge
+#: model:ir.ui.menu,name:knowledge.knowledge_menu_configuration
+msgid "Configuration"
+msgstr "配置"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/permission_panel/permission_panel.js:0
+#, python-format
+msgid "Confirmation"
+msgstr "確認"
+
+#. module: knowledge
+#: model:ir.model,name:knowledge.model_res_partner
+msgid "Contact"
+msgstr "聯絡人"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/behaviors/template_behavior/template_behavior.xml:0
+#: code:addons/knowledge/static/src/components/behaviors/template_behavior/template_behavior.xml:0
+#, python-format
+msgid "Copy to Clipboard"
+msgstr "複製到剪貼簿"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_cover__attachment_url
+msgid "Cover URL"
+msgstr "封面圖片網址"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_cover__attachment_id
+msgid "Cover attachment"
+msgstr "封面圖片附件"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__cover_image_url
+msgid "Cover url"
+msgstr "封面圖片網址"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/xml/knowledge_command_palette.xml:0
+#, python-format
+msgid "Create \""
+msgstr "建立 \""
+
+#. module: knowledge
+#: model_terms:ir.actions.act_window,help:knowledge.knowledge_article_item_action
+msgid "Create a new article item"
+msgstr "建立新的文章項目"
+
+#. module: knowledge
+#: model_terms:ir.actions.act_window,help:knowledge.knowledge_article_action
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid "Create an article"
+msgstr "建立新文章"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_frontend
+msgid "Create my own Workspace <i class=\"fa fa-book\"/>"
+msgstr ""
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__create_uid
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article_favorite__create_uid
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article_member__create_uid
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_cover__create_uid
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_invite__create_uid
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_tree
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_tree_items
+msgid "Created by"
+msgstr "創立者"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid "Created by:"
+msgstr "建立人員："
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__create_date
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article_favorite__create_date
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article_member__create_date
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_cover__create_date
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_invite__create_date
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_tree
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_tree_items
+msgid "Created on"
+msgstr "建立於"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_mail_invite
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_trash_notification
+msgid "Dear"
+msgstr "親愛的"
+
+#. module: knowledge
+#: model:ir.model.fields,help:knowledge.field_knowledge_article__internal_permission
+msgid ""
+"Default permission for all internal users. (External users can still have "
+"access to this article if they are added to its members)"
+msgstr "所有內部使用者的預設權限。（至於外部使用者，如果獲加入該文章的成員中，他們也有存取該文章的權限。）"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__deletion_date
+msgid "Deletion Date"
+msgstr "刪除日期"
+
+#. module: knowledge
+#: model:ir.model.constraint,message:knowledge.constraint_knowledge_article_check_permission_on_desync
+msgid "Desynchronized articles must have internal permission."
+msgstr "已取消同步的文章，必須有內部許可權限。"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__is_desynchronized
+msgid "Desyncronized with parents"
+msgstr "已取消與母項同步"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/cover_selector/knowledge_cover_dialog.xml:0
+#: code:addons/knowledge/static/src/components/prompt_embedded_view_name_dialog/prompt_embedded_view_name_dialog.xml:0
+#, python-format
+msgid "Discard"
+msgstr "取消"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__display_name
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article_favorite__display_name
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article_member__display_name
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_cover__display_name
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_invite__display_name
+msgid "Display Name"
+msgstr "顯示名稱"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid "Diving in"
+msgstr "立即開始"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/behaviors/file_behavior/file_behavior.xml:0
+#: code:addons/knowledge/static/src/components/behaviors/file_behavior/file_behavior.xml:0
+#, python-format
+msgid "Download"
+msgstr "下載"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/views/list_view.js:0
+#, python-format
+msgid "Duplicate"
+msgstr "複製"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/prompt_embedded_view_name_dialog/prompt_embedded_view_name_dialog.js:0
+#, python-format
+msgid "Embed a View"
+msgstr "嵌入檢視畫面"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/js/wysiwyg.js:0
+#, python-format
+msgid "Embed a file."
+msgstr "嵌入檔案。"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__icon
+msgid "Emoji"
+msgstr "表情符號"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/behaviors/article_behavior/article_behavior.js:0
+#: code:addons/knowledge/static/src/components/permission_panel/permission_panel.js:0
+#: code:addons/knowledge/static/src/macros/abstract_macro.js:0
+#, python-format
+msgid "Error"
+msgstr "錯誤"
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/models/knowledge_article.py:0
+#, python-format
+msgid ""
+"Error: The given action is not an act_window. This action can not be used to"
+" create an embedded view or a view link"
+msgstr ""
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/permission_panel/permission_panel.xml:0
+#, python-format
+msgid "External Guest"
+msgstr ""
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_favorite_view_form
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_search
+msgid "Favorite"
+msgstr "喜好的"
+
+#. module: knowledge
+#: model:ir.model,name:knowledge.model_knowledge_article_favorite
+msgid "Favorite Article"
+msgstr "最愛的文章"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__favorite_ids
+msgid "Favorite Articles"
+msgstr "最愛的文章"
+
+#. module: knowledge
+#: model:ir.actions.act_window,name:knowledge.knowledge_article_favorite_action
+#: model:ir.ui.menu,name:knowledge.knowledge_article_favorite_menu
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_favorite_view_tree
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_tree_favorites
+msgid "Favorites"
+msgstr "最愛"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/js/wysiwyg.js:0
+#, python-format
+msgid "File"
+msgstr "檔案"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__message_follower_ids
+msgid "Followers"
+msgstr "關注人"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__message_partner_ids
+msgid "Followers (Partners)"
+msgstr "關注人（業務夥伴）"
+
+#. module: knowledge
+#: model:ir.model.fields,help:knowledge.field_knowledge_article__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr "Font awesome 圖示，例如，fa-task"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__full_width
+msgid "Full width"
+msgstr "全寬"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_mail_invite
+msgid "Go to Article"
+msgstr ""
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_favorite_view_search
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_member_view_search
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_search
+msgid "Group By"
+msgstr "分組方式"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/permission_panel/permission_panel.xml:0
+#, python-format
+msgid "Guest"
+msgstr "訪客"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__user_has_access
+msgid "Has Access"
+msgstr "擁有存取權限"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__has_message
+msgid "Has Message"
+msgstr "有訊息"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__user_has_write_access
+msgid "Has Write Access"
+msgstr "擁有寫入權限"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__has_item_children
+msgid "Has article item children?"
+msgstr "有文章項目子項？"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__has_article_children
+msgid "Has normal article children?"
+msgstr "有正常文章子項？"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_invite__have_share_partners
+msgid "Have Share Partners"
+msgstr "有共享合作夥伴"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid "Hello there"
+msgstr "你好"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid ""
+"Hello there, I am a template\n"
+"            <br/>\n"
+"            Use the buttons at the top-right of this box to re-use my content.\n"
+"            <br/>\n"
+"            No more time wasted!"
+msgstr ""
+
+#. module: knowledge
+#: model:ir.ui.menu,name:knowledge.knowledge_menu_home
+msgid "Home"
+msgstr "首頁"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__id
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article_favorite__id
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article_member__id
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_cover__id
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_invite__id
+msgid "ID"
+msgstr "ID"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__activity_exception_icon
+msgid "Icon"
+msgstr "圖示"
+
+#. module: knowledge
+#: model:ir.model.fields,help:knowledge.field_knowledge_article__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr "用於指示異常活動的圖示。"
+
+#. module: knowledge
+#: model:ir.model.fields,help:knowledge.field_knowledge_article__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr "勾選代表有新訊息需要您留意。"
+
+#. module: knowledge
+#: model:ir.model.fields,help:knowledge.field_knowledge_article__message_has_error
+#: model:ir.model.fields,help:knowledge.field_knowledge_article__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr "勾選代表有訊息發生傳送錯誤。"
+
+#. module: knowledge
+#: model:ir.model.fields,help:knowledge.field_knowledge_article__is_desynchronized
+msgid ""
+"If set, this article won't inherit access rules from its parents anymore."
+msgstr "若設定，這篇文章不會再從母項繼承存取規則。"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/js/wysiwyg.js:0
+#, python-format
+msgid "Index"
+msgstr "索引"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__inherited_permission
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article_member__article_permission
+msgid "Inherited Permission"
+msgstr "已繼承的權限"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__inherited_permission_parent_id
+msgid "Inherited Permission Parent Article"
+msgstr "已繼承權限的母項文章"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/prompt_embedded_view_name_dialog/prompt_embedded_view_name_dialog.xml:0
+#, python-format
+msgid "Insert"
+msgstr "插入"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/js/wysiwyg/knowledge_article_link.js:0
+#, python-format
+msgid "Insert Link"
+msgstr "插入連結"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/prompt_embedded_view_name_dialog/prompt_embedded_view_name_dialog.js:0
+#, python-format
+msgid "Insert a Kanban View"
+msgstr "加入看版檢視"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/js/wysiwyg.js:0
+#, python-format
+msgid "Insert a Kanban view of article items"
+msgstr "加入看板檢視，列出文章項目。"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/prompt_embedded_view_name_dialog/prompt_embedded_view_name_dialog.js:0
+#, python-format
+msgid "Insert a List View"
+msgstr "加入列表檢視"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/js/wysiwyg.js:0
+#, python-format
+msgid "Insert a List view of article items"
+msgstr "加入文章項目清單。"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/external_embedded_view_favorite_menu/insert_embedded_view.xml:0
+#, python-format
+msgid "Insert link in article"
+msgstr "插入連結至文章"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/external_embedded_view_favorite_menu/insert_embedded_view.xml:0
+#, python-format
+msgid "Insert view in article"
+msgstr "插入檢視畫面至文章"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/permission_panel/permission_panel.xml:0
+#, python-format
+msgid "Internal Members"
+msgstr ""
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/permission_panel/permission_panel.xml:0
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__internal_permission
+#, python-format
+msgid "Internal Permission"
+msgstr "內部權限"
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/models/knowledge_article.py:0
+#, python-format
+msgid "Invitation to access %s"
+msgstr "邀請存取 %s"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_invite_view_form
+msgid "Invite"
+msgstr "邀請"
+
+#. module: knowledge
+#: model:ir.actions.act_window,name:knowledge.knowledge_invite_action_from_article
+msgid "Invite people"
+msgstr "邀請人員"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article_favorite__is_article_active
+msgid "Is Article Active"
+msgstr "文章是否有效"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__is_user_favorite
+msgid "Is Favorited"
+msgstr "已被加入最愛"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__message_is_follower
+msgid "Is Follower"
+msgstr "是關注人"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__is_article_item
+msgid "Is Item?"
+msgstr "是項目？"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__article_properties_is_empty
+msgid "Is Property Field Empty?"
+msgstr ""
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/js/wysiwyg.js:0
+#, python-format
+msgid "Item Kanban"
+msgstr "看板檢視"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/js/wysiwyg.js:0
+#, python-format
+msgid "Item List"
+msgstr "項目清單"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/js/wysiwyg.js:0
+#: code:addons/knowledge/static/src/js/wysiwyg.js:0
+#: code:addons/knowledge/static/src/js/wysiwyg.js:0
+#: code:addons/knowledge/static/src/js/wysiwyg.js:0
+#: code:addons/knowledge/static/src/js/wysiwyg.js:0
+#: code:addons/knowledge/static/src/js/wysiwyg.js:0
+#: code:addons/knowledge/static/src/js/wysiwyg.js:0
+#: code:addons/knowledge/static/src/js/wysiwyg.js:0
+#: model:ir.ui.menu,name:knowledge.knowledge_menu_root
+#, python-format
+msgid "Knowledge"
+msgstr "知識庫"
+
+#. module: knowledge
+#: model:ir.model,name:knowledge.model_knowledge_article
+msgid "Knowledge Article"
+msgstr "知識庫文章"
+
+#. module: knowledge
+#: model:ir.model,name:knowledge.model_knowledge_cover
+msgid "Knowledge Cover"
+msgstr "知識庫封面圖片"
+
+#. module: knowledge
+#: model:ir.model,name:knowledge.model_knowledge_invite
+msgid "Knowledge Invite Wizard"
+msgstr "知識庫邀請精靈"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_tree
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_tree_items
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_tree_trash
+msgid "Last Edit Date"
+msgstr "最後編輯日期"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__last_edition_uid
+msgid "Last Edited by"
+msgstr "最後編輯人員"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid "Last Edited by:"
+msgstr "最後編輯："
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__last_edition_date
+msgid "Last Edited on"
+msgstr "最後編輯於"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article____last_update
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article_favorite____last_update
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article_member____last_update
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_cover____last_update
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_invite____last_update
+msgid "Last Modified on"
+msgstr "最後修改於"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__write_uid
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article_favorite__write_uid
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article_member__write_uid
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_cover__write_uid
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_invite__write_uid
+msgid "Last Updated by"
+msgstr "最後更新者"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__write_date
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article_favorite__write_date
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article_member__write_date
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_cover__write_date
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_invite__write_date
+msgid "Last Updated on"
+msgstr "最後更新於"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/permission_panel/permission_panel.js:0
+#: code:addons/knowledge/static/src/components/permission_panel/permission_panel.js:0
+#: code:addons/knowledge/static/src/components/permission_panel/permission_panel.xml:0
+#, python-format
+msgid "Leave Article"
+msgstr "離開文章"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/js/wysiwyg/knowledge_article_link.js:0
+#, python-format
+msgid "Link an Article"
+msgstr "插入其他文章的連結。"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/js/wysiwyg.js:0
+#, python-format
+msgid "Link an article."
+msgstr "插入其他文章的連結。"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.articles_template
+msgid "Load more"
+msgstr "載入更多"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__is_locked
+msgid "Locked"
+msgstr "已鎖定"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/xml/knowledge_frontend.xml:0
+#, python-format
+msgid "Log in"
+msgstr "登入"
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/models/knowledge_article.py:0
+#, python-format
+msgid ""
+"Logging changes from %(partner_name)s without write access on article "
+"%(article_name)s due to hierarchy tree update"
+msgstr "由於層級樹狀結構有更新，正在記錄 %(partner_name)s 提供的修訂，但對文章 %(article_name)s 沒有寫入權限"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__message_main_attachment_id
+msgid "Main Attachment"
+msgstr "主要附件"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/js/wysiwyg.js:0
+#: code:addons/knowledge/static/src/js/wysiwyg.js:0
+#, python-format
+msgid "Media"
+msgstr "媒體"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_member_view_form
+msgid "Member"
+msgstr "會員"
+
+#. module: knowledge
+#: model:ir.actions.act_window,name:knowledge.knowledge_article_member_action
+#: model:ir.ui.menu,name:knowledge.knowledge_article_member_menu
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_member_view_tree
+msgid "Members"
+msgstr "會員"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__article_member_ids
+msgid "Members Information"
+msgstr "會員資訊"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__root_article_id
+msgid "Menu Article"
+msgstr "選單文章"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__message_has_error
+msgid "Message Delivery error"
+msgstr "訊息遞送錯誤"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__message_ids
+msgid "Messages"
+msgstr "訊息"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/behaviors/file_behavior/file_behavior.js:0
+#, python-format
+msgid "Missing File"
+msgstr "缺漏檔案"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/move_article_dialog/move_article_dialog.xml:0
+#, python-format
+msgid "Move \""
+msgstr ""
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/move_article_dialog/move_article_dialog.xml:0
+#, python-format
+msgid "Move Article"
+msgstr "移動文章"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/move_article_dialog/move_article_dialog.js:0
+#, python-format
+msgid "Move an Article"
+msgstr "移動一篇文章"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr "我的活動截止時間"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_search_items
+msgid "My Favorites"
+msgstr "我的最愛"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_tree
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_tree_items
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_tree_trash
+msgid "Name"
+msgstr "名稱"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid "Navigation Basics"
+msgstr ""
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/xml/knowledge_editor.xml:0
+#, python-format
+msgid "Nest articles under this one to generate a structure"
+msgstr "在此文章下巢狀組織文章，以建立結構"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__activity_calendar_event_id
+msgid "Next Activity Calendar Event"
+msgstr "下一個活動日曆事件"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr "下一活動截止日期"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__activity_summary
+msgid "Next Activity Summary"
+msgstr "下一活動摘要"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__activity_type_id
+msgid "Next Activity Type"
+msgstr "下一活動類型"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/xml/knowledge_command_palette.xml:0
+#, python-format
+msgid "No Article found."
+msgstr "未找到文章。"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/webclient/commands/knowledge_providers.js:0
+#, python-format
+msgid "No Article found. Create \"%s\""
+msgstr "未找到文章。請建立 \"%s\""
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/models/knowledge_article.py:0
+#, python-format
+msgid "No Article in Trash"
+msgstr "垃圾桶沒有文章"
+
+#. module: knowledge
+#: model_terms:ir.actions.act_window,help:knowledge.knowledge_article_favorite_action
+msgid "No Favorites yet!"
+msgstr "未有最愛項目。"
+
+#. module: knowledge
+#: model_terms:ir.actions.act_window,help:knowledge.knowledge_article_member_action
+msgid "No Members yet!"
+msgstr "未有成員。"
+
+#. module: knowledge
+#: model:ir.model.fields.selection,name:knowledge.selection__knowledge_article__inherited_permission__none
+#: model:ir.model.fields.selection,name:knowledge.selection__knowledge_article__internal_permission__none
+#: model:ir.model.fields.selection,name:knowledge.selection__knowledge_article_member__permission__none
+#: model:ir.model.fields.selection,name:knowledge.selection__knowledge_invite__permission__none
+msgid "No access"
+msgstr "未能存取"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_tree_frontend
+msgid "No article found"
+msgstr "未找到文章"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/webclient/commands/knowledge_providers.js:0
+#, python-format
+msgid "No article found."
+msgstr "未找到文章。"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid "No article yet."
+msgstr "未有文章。"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__message_needaction_counter
+msgid "Number of Actions"
+msgstr "動作數量"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__message_has_error_counter
+msgid "Number of errors"
+msgstr "錯誤數量"
+
+#. module: knowledge
+#: model:ir.model.fields,help:knowledge.field_knowledge_article__message_needaction_counter
+msgid "Number of messages requiring action"
+msgstr "需要採取行動的訊息數目"
+
+#. module: knowledge
+#: model:ir.model.fields,help:knowledge.field_knowledge_article__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr "有發送錯誤的郵件數量"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid "Odoo Survival Guide"
+msgstr "Odoo生存指南"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/behaviors/article_behavior/article_behavior.js:0
+#: code:addons/knowledge/static/src/components/behaviors/file_behavior/file_behavior.js:0
+#, python-format
+msgid "Ok"
+msgstr "確定"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid "Onboarding.pdf"
+msgstr "Onboarding.pdf"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/behaviors/file_behavior/file_behavior.js:0
+#, python-format
+msgid ""
+"Oops, the file %s could not be found. Please replace this file box by a new "
+"one to re-upload the file."
+msgstr "哎唷，找不到檔案 %s。請選用新檔案作替換，以重新上載檔案。"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/behaviors/embedded_view_behavior/embedded_view_manager.xml:0
+#: code:addons/knowledge/static/src/components/behaviors/embedded_view_behavior/embedded_view_manager.xml:0
+#, python-format
+msgid "Open"
+msgstr "打開"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__parent_id
+msgid "Parent Article"
+msgstr "主文章"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__parent_path
+msgid "Parent Path"
+msgstr "上層路徑"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article_member__partner_id
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_member_view_search
+msgid "Partner"
+msgstr "業務夥伴"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article_member__permission
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_invite__permission
+msgid "Permission"
+msgstr "權限"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/move_article_dialog/move_article_dialog.js:0
+#: model:ir.model.fields.selection,name:knowledge.selection__knowledge_article__category__private
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_tree
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_search
+#, python-format
+msgid "Private"
+msgstr "私人"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__article_properties
+msgid "Properties"
+msgstr "屬性"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid "Property Fields"
+msgstr "屬性欄位"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_invite__partner_ids
+msgid "Recipients"
+msgstr "收件人"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/behaviors/articles_structure_behavior/articles_structure_behavior.xml:0
+#, python-format
+msgid "Refresh"
+msgstr "重新載入"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/knowledge_emoji_picker_remove_action_view/knowledge_emoji_picker_remove_action_view.xml:0
+#, python-format
+msgid "Remove Icon"
+msgstr "移除圖示"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/permission_panel/permission_panel.xml:0
+#, python-format
+msgid "Remove Member"
+msgstr "移除成員"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/behaviors/embedded_view_behavior/embedded_view_manager.xml:0
+#: code:addons/knowledge/static/src/components/behaviors/embedded_view_behavior/embedded_view_manager.xml:0
+#: code:addons/knowledge/static/src/components/prompt_embedded_view_name_dialog/prompt_embedded_view_name_dialog.xml:0
+#, python-format
+msgid "Rename"
+msgstr "重新命名"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__activity_user_id
+msgid "Responsible User"
+msgstr "責任使用者"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/permission_panel/permission_panel.xml:0
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+#, python-format
+msgid "Restore"
+msgstr "還原"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/permission_panel/permission_panel.js:0
+#, python-format
+msgid "Restore Access"
+msgstr "恢復存取權限"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/permission_panel/permission_panel.js:0
+#, python-format
+msgid "Restrict Access"
+msgstr "限制存取權限"
+
+#. module: knowledge
+#: model:ir.model.constraint,message:knowledge.constraint_knowledge_article_check_desync_on_root
+msgid "Root articles cannot be desynchronized."
+msgstr "根級文章不可取消同步。"
+
+#. module: knowledge
+#: model:ir.model.constraint,message:knowledge.constraint_knowledge_article_check_permission_on_root
+msgid "Root articles must have internal permission."
+msgstr "根級文章必須擁有內部權限。"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr "簡訊發送錯誤"
+
+#. module: knowledge
+#: model:ir.ui.menu,name:knowledge.knowledge_menu_article
+msgid "Search"
+msgstr "搜尋"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_favorite_view_search
+msgid "Search Favorites"
+msgstr "搜尋最愛"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/xml/chatter_topbar.xml:0
+#, python-format
+msgid "Search Knowledge Articles"
+msgstr "搜尋知識庫文章"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_member_view_search
+msgid "Search Members"
+msgstr "搜尋成員"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/move_article_dialog/move_article_dialog.xml:0
+#, python-format
+msgid "Search an Article to use as Parent"
+msgstr ""
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_frontend
+msgid "Search an article..."
+msgstr "搜尋文章⋯"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/webclient/commands/knowledge_providers.js:0
+#, python-format
+msgid "Search for an article..."
+msgstr "搜尋文章⋯"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__category
+msgid "Section"
+msgstr "章節"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/cover_selector/knowledge_cover_dialog.js:0
+#, python-format
+msgid "Select a cover"
+msgstr "選取封面"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/external_embedded_view_insertion/views_renderers_patches.js:0
+#, python-format
+msgid "Select an article"
+msgstr "選取文章"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/behaviors/file_behavior/file_behavior.xml:0
+#: code:addons/knowledge/static/src/components/behaviors/file_behavior/file_behavior.xml:0
+#: code:addons/knowledge/static/src/components/behaviors/template_behavior/template_behavior.xml:0
+#: code:addons/knowledge/static/src/components/behaviors/template_behavior/template_behavior.xml:0
+#, python-format
+msgid "Send as Message"
+msgstr "化為訊息傳送"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__sequence
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article_favorite__sequence
+msgid "Sequence"
+msgstr "序號"
+
+#. module: knowledge
+#: model:ir.model.fields.selection,name:knowledge.selection__knowledge_article__category__shared
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_tree
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_search
+msgid "Shared"
+msgstr "分享"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_tree_frontend
+msgid "Shared with you"
+msgstr "向你分享"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/js/wysiwyg.js:0
+#, python-format
+msgid "Show all nested articles."
+msgstr "顯示巢狀結構文章的所有層級。"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/js/wysiwyg.js:0
+#, python-format
+msgid "Show the first level of nested articles."
+msgstr "顯示巢狀結構文章的最頂層級。"
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/models/knowledge_article.py:0
+#, python-format
+msgid "Some articles have been sent to Trash"
+msgstr "部份文章已傳送至垃圾桶"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/behaviors/embedded_view_behavior/embedded_view_behavior.xml:0
+#, python-format
+msgid "Something went wrong!"
+msgstr "出現了問題！"
+
+#. module: knowledge
+#: model:ir.model.fields,help:knowledge.field_knowledge_article__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+"根據活動的狀態 \n"
+" 逾期：已經超過截止日期 \n"
+" 現今：活動日期是當天 \n"
+" 計劃：未來活動。"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/js/wysiwyg.js:0
+#, python-format
+msgid "Table Of Content"
+msgstr "目錄"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/behaviors/template_behavior/template_behavior.xml:0
+#: code:addons/knowledge/static/src/js/wysiwyg.js:0
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+#, python-format
+msgid "Template"
+msgstr "範本文字"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/behaviors/template_behavior/template_behavior.js:0
+#, python-format
+msgid "Template copied to clipboard."
+msgstr ""
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/models/knowledge_article.py:0
+#, python-format
+msgid "The Article you are trying to access has been deleted"
+msgstr "你想存取的文章已被刪除"
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/models/knowledge_article.py:0
+#, python-format
+msgid "The article '%s' needs at least one member with 'Write' access."
+msgstr "文章 \"%s\" 需要最少有一位成員擁有「寫入」權限。"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_frontend
+msgid ""
+"The article you are trying the read has either been removed or you do not "
+"have access to it."
+msgstr "你正嘗試閱讀的文章已被刪除，或你沒有存取權限。"
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/models/knowledge_article.py:0
+#, python-format
+msgid ""
+"The destination placement of %(article_name)s is ambiguous, you should "
+"specify the category."
+msgstr "%(article_name)s的目標位置不明確,應指定類別。"
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/models/knowledge_article_member.py:0
+#, python-format
+msgid ""
+"The external user %(user_name)s cannot have a 'write' permission on article "
+"%(article_name)s"
+msgstr ""
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/macros/abstract_macro.js:0
+#, python-format
+msgid ""
+"The operation was interrupted because the page or the record changed. Please"
+" try again later."
+msgstr ""
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/controllers/main.py:0
+#: code:addons/knowledge/controllers/main.py:0
+#, python-format
+msgid "The selected member does not exists or has been already deleted."
+msgstr "所選取成員不存在或已被刪除。"
+
+#. module: knowledge
+#: model:ir.model.fields,help:knowledge.field_knowledge_article__sequence
+msgid ""
+"The sequence is computed only among the articles that have the same parent."
+msgstr "序列只在擁有相同母級的項目之間計算。"
+
+#. module: knowledge
+#: model:ir.model.fields,help:knowledge.field_knowledge_article__root_article_id
+msgid ""
+"The subject is the title of the highest parent in the article hierarchy."
+msgstr "主題是文章層級結構中，最高母級項目的標題。"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/behaviors/embedded_view_behavior/embedded_view_behavior.xml:0
+#, python-format
+msgid "The view does not exist or you are not allowed to access to it."
+msgstr "該檢視畫面不存在，或你無權限存取。"
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/controllers/main.py:0
+#, python-format
+msgid ""
+"This Article cannot be unfolded. Either you lost access to it or it has been"
+" deleted."
+msgstr "這篇文章無法展開。你可能已失去存取權限，或者它已被刪除。"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid "This Article is in Trash and will be deleted on the"
+msgstr "這篇文章已放入垃圾桶，將會在此時刪除："
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid "This article is archived."
+msgstr "本篇文章已封存。"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/behaviors/article_behavior/article_behavior.js:0
+#, python-format
+msgid "This article was deleted or you don't have the rights to access it."
+msgstr "這篇文章已被刪除，或你無權限存取。"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/xml/knowledge_frontend.xml:0
+#, python-format
+msgid "This view is only available for internal users"
+msgstr "此檢視畫面只限內部使用者使用"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__name
+msgid "Title"
+msgstr "標題"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid "To be sure to stay updated, follow us on"
+msgstr "為確保隨時得知最新動態，請在以下平台關注我們："
+
+#. module: knowledge
+#: model:ir.actions.act_window,name:knowledge.knowledge_article_action_trashed
+msgid "Trash"
+msgstr "垃圾桶"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__to_delete
+#: model:ir.ui.menu,name:knowledge.knowledge_article_menu_trashed
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_search
+msgid "Trashed"
+msgstr "已丟棄"
+
+#. module: knowledge
+#: model:ir.model.constraint,message:knowledge.constraint_knowledge_article_check_trash
+msgid "Trashed articles must be archived."
+msgstr "已丟棄的文章必須封存。"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_frontend
+msgid "Try Odoo"
+msgstr ""
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/models/knowledge_article.py:0
+#, python-format
+msgid "Trying to remove wrong member."
+msgstr "正嘗試移除錯誤的成員。"
+
+#. module: knowledge
+#: model:ir.model.fields,help:knowledge.field_knowledge_article__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr "記錄的異常活動的類型。"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid "Unarchive"
+msgstr "取消封存"
+
+#. module: knowledge
+#. odoo-javascript
+#. odoo-python
+#: code:addons/knowledge/models/knowledge_article.py:0
+#: code:addons/knowledge/static/src/js/knowledge_renderers.js:0
+#: code:addons/knowledge/static/src/js/knowledge_renderers.js:0
+#: code:addons/knowledge/static/src/js/knowledge_renderers.js:0
+#: code:addons/knowledge/static/src/js/knowledge_renderers.js:0
+#: code:addons/knowledge/static/src/js/knowledge_renderers.js:0
+#: code:addons/knowledge/static/src/js/knowledge_renderers.js:0
+#: code:addons/knowledge/static/src/js/knowledge_renderers.js:0
+#, python-format
+msgid "Untitled"
+msgstr "未命名"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/behaviors/articles_structure_behavior/articles_structure_behavior.xml:0
+#, python-format
+msgid "Update"
+msgstr "更新"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/behaviors/template_behavior/template_behavior.xml:0
+#, python-format
+msgid "Use as"
+msgstr ""
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/behaviors/file_behavior/file_behavior.xml:0
+#: code:addons/knowledge/static/src/components/behaviors/file_behavior/file_behavior.xml:0
+#, python-format
+msgid "Use as Attachment"
+msgstr "用作附件"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/behaviors/template_behavior/template_behavior.xml:0
+#, python-format
+msgid "Use as Description"
+msgstr "套用至說明文字"
+
+#. module: knowledge
+#: model:ir.model.fields,help:knowledge.field_knowledge_article__category
+msgid ""
+"Used to categozie articles in UI, depending on their main permission "
+"definitions."
+msgstr "用於根據文章的主要權限定義，在操作介面中對文章分類。"
+
+#. module: knowledge
+#: model:ir.model,name:knowledge.model_res_users
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article_favorite__user_id
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_favorite_view_search
+msgid "User"
+msgstr "使用者"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__user_favorite_sequence
+msgid "User Favorite Sequence"
+msgstr "使用者最愛序列"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/permission_panel/permission_panel.xml:0
+#, python-format
+msgid "User Permission"
+msgstr "使用者權限"
+
+#. module: knowledge
+#: model:ir.model.constraint,message:knowledge.constraint_knowledge_article_favorite_unique_article_user
+msgid "User already has this article in favorites."
+msgstr "使用者已將這篇文章加至最愛。"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__user_permission
+msgid "User permission"
+msgstr "使用者權限"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__website_message_ids
+msgid "Website Messages"
+msgstr "網站訊息"
+
+#. module: knowledge
+#: model:ir.model.fields,help:knowledge.field_knowledge_article__website_message_ids
+msgid "Website communication history"
+msgstr "網站溝通記錄"
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/models/res_users.py:0
+#, python-format
+msgid "Welcome %s"
+msgstr "歡迎 %s"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/prompt_embedded_view_name_dialog/prompt_embedded_view_name_dialog.xml:0
+#, python-format
+msgid "What do you want to manage?"
+msgstr "您想管理什麼？"
+
+#. module: knowledge
+#: model:ir.model.fields,help:knowledge.field_knowledge_article__is_locked
+msgid ""
+"When locked, users cannot write on the body or change the title, even if "
+"they have write access on the article."
+msgstr "文章鎖定後，使用者將不可在正文書寫或更改標題，即使他們擁有文章的寫入權限也是如此。"
+
+#. module: knowledge
+#: model:ir.model.fields,help:knowledge.field_knowledge_article__to_delete
+msgid ""
+"When sent to trash, articles are flagged to be deleted\n"
+"                days after last edit. knowledge_article_trash_limit_days config\n"
+"                parameter can be used to modify the number of days. \n"
+"                (default is 30)"
+msgstr ""
+"文章放入垃圾桶後，會被標記在最後修改日期\n"
+"                天後自動刪除。修改設定參數 knowledge_article_trash_limit_days\n"
+"                便可改變此日數。\n"
+"                （預設值：30）"
+
+#. module: knowledge
+#: model:ir.model.fields,help:knowledge.field_knowledge_article__full_width
+msgid ""
+"When set, the article body will take the full width available on the article"
+" page. Otherwise, the body will have large horizontal margins."
+msgstr "設定後，文章正文將採用文章頁面可用的全部完整寬度。否則，正文將具有較大的水平邊距。"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid "Who has access to what?"
+msgstr "誰有權存取什麼？"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/move_article_dialog/move_article_dialog.js:0
+#: model:ir.model.fields.selection,name:knowledge.selection__knowledge_article__category__workspace
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_tree
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_search
+#, python-format
+msgid "Workspace"
+msgstr "工作空間"
+
+#. module: knowledge
+#: model:ir.model.constraint,message:knowledge.constraint_knowledge_article_member_unique_article_partner
+msgid "You already added this partner on this article."
+msgstr "此合作夥伴已經加入至這篇文章。"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_frontend
+msgid "You are currently visiting as a Guest User"
+msgstr ""
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/models/knowledge_article.py:0
+#, python-format
+msgid "You are not allowed to make '%(article_name)s' private."
+msgstr "你不被允許將 \"%(article_name)s\"設為私人。"
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/models/knowledge_article.py:0
+#, python-format
+msgid ""
+"You are not allowed to move '%(article_name)s' under '%(parent_name)s'."
+msgstr "你不被允許將 \"%(article_name)s\"移至 %(parent_name)s 之下。"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/permission_panel/permission_panel.xml:0
+#, python-format
+msgid "You can't leave an article for which you are the last writer"
+msgstr "不可離開你作為最後一名作者的文章"
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/models/knowledge_article.py:0
+#, python-format
+msgid ""
+"You can't move %(article_name)s under %(item_name)s, as %(item_name)s is an "
+"Article Item. Convert %(item_name)s into an Article first."
+msgstr ""
+"你不能將%(article_name)s移動到%(item_name)s下，因為%(item_name)s是一個文章項目。 "
+"請先將%(item_name)s轉換為文章。"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/permission_panel/permission_panel.xml:0
+#, python-format
+msgid "You can't remove the last writer of the article"
+msgstr "你不可移除這篇文章的最後作者"
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/models/knowledge_article.py:0
+#, python-format
+msgid "You cannot add or remove this article to your favorites"
+msgstr "你不可在你的最愛中，加入或移除這篇文章"
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/controllers/main.py:0
+#, python-format
+msgid "You cannot change the internal permission of this article."
+msgstr "你不可更改此文章的內部權限。"
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/controllers/main.py:0
+#, python-format
+msgid "You cannot change the permission of this member."
+msgstr "你不可變更此成員的權限。"
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/models/knowledge_cover.py:0
+#, python-format
+msgid "You cannot create a new Knowledge Cover from here."
+msgstr "你不可從此處建立新的知識庫封面。"
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/models/knowledge_article.py:0
+#, python-format
+msgid "You cannot create an article under articles on which you cannot write"
+msgstr "你不可在沒有寫入權限的文章之下建立新文章"
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/models/knowledge_article.py:0
+#, python-format
+msgid ""
+"You cannot move an article under %(parent_name)s as you cannot write on it"
+msgstr "您不能移動%(parent_name)s下的文章,因為您無法在上面寫入"
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/models/knowledge_article.py:0
+#, python-format
+msgid "You have to be editor on %(article_name)s to add members."
+msgstr "您必須是%(article_name)s的編輯, 才可加入新成員。"
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/models/knowledge_article.py:0
+#, python-format
+msgid ""
+"You have to be editor on %(article_name)s to change its internal permission."
+msgstr "要更改 %(article_name)s 的內部權限，你必須是文章的編輯者。"
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/models/knowledge_article.py:0
+#, python-format
+msgid ""
+"You have to be editor on %(article_name)s to modify members permissions."
+msgstr "您必須是%(article_name)s的編輯,才可修改成員權限。"
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/models/knowledge_article.py:0
+#, python-format
+msgid ""
+"You have to be editor on %(article_name)s to remove or exclude member "
+"%(member_name)s."
+msgstr "你必須是%(article_name)s的編輯,才可移除或排除成員%(member_name)s。"
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/models/knowledge_article.py:0
+#, python-format
+msgid "You have to be editor on %(article_name)s to restore it."
+msgstr "您必須是%(article_name)s的編輯,才可復原它。"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_trash_notification
+msgid "and the following child article(s) have"
+msgstr "及以下子項文章有"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/webclient/commands/knowledge_providers.js:0
+#, python-format
+msgid "articles"
+msgstr "文章"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_trash_notification
+msgid "been sent to Trash.<br/><br/>"
+msgstr "已傳送至垃圾桶。<br/><br/>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid "cover"
+msgstr "封面"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/prompt_embedded_view_name_dialog/prompt_embedded_view_name_dialog.js:0
+#, python-format
+msgid "e.g. Buildings"
+msgstr "例：建築物"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/prompt_embedded_view_name_dialog/prompt_embedded_view_name_dialog.js:0
+#, python-format
+msgid "e.g. Todos"
+msgstr "例：待辦事項"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_trash_notification
+msgid "has"
+msgstr "有"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_trash_notification
+msgid "have"
+msgstr "有"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_mail_invite
+msgid "invited you to access"
+msgstr ""
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/behaviors/abstract_behavior/abstract_behavior.xml:0
+#: code:addons/knowledge/static/src/components/behaviors/articles_structure_behavior/articles_structure_behavior.xml:0
+#: code:addons/knowledge/static/src/components/behaviors/embedded_view_behavior/embedded_view_behavior.xml:0
+#: code:addons/knowledge/static/src/components/permission_panel/permission_panel.xml:0
+#, python-format
+msgid "loader"
+msgstr "載入工具"
+
+#. module: knowledge
+#: model:ir.model.fields.selection,name:knowledge.selection__knowledge_article__user_permission__none
+msgid "none"
+msgstr "無"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid "or"
+msgstr "或"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid "pdf"
+msgstr "PDF"
+
+#. module: knowledge
+#: model:ir.model.fields.selection,name:knowledge.selection__knowledge_article__user_permission__read
+msgid "read"
+msgstr "讀取"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid "to unleash the power of Knowledge !"
+msgstr "以釋放知識的力量！"
+
+#. module: knowledge
+#: model:ir.model.fields.selection,name:knowledge.selection__knowledge_article__user_permission__write
+msgid "write"
+msgstr "寫入"

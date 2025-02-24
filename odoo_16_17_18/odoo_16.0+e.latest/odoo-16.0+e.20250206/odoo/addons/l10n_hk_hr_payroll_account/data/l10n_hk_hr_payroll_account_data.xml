@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="l10n_hk_hr_payroll.hr_payroll_structure_cap57_employee_salary" model="hr.payroll.structure">
+        <field name="journal_id" ref="hr_payroll_account.hr_payroll_account_journal"/>
+    </record>
+
+    <record id="l10n_hk_hr_payroll.hr_payroll_structure_cap57_payment_in_lieu_of_notice" model="hr.payroll.structure">
+        <field name="journal_id" ref="hr_payroll_account.hr_payroll_account_journal"/>
+    </record>
+
+    <record id="l10n_hk_hr_payroll.hr_payroll_structure_cap57_long_service_payment" model="hr.payroll.structure">
+        <field name="journal_id" ref="hr_payroll_account.hr_payroll_account_journal"/>
+    </record>
+
+    <record id="l10n_hk_hr_payroll.hr_payroll_structure_cap57_severance_payment" model="hr.payroll.structure">
+        <field name="journal_id" ref="hr_payroll_account.hr_payroll_account_journal"/>
+    </record>
+</odoo>

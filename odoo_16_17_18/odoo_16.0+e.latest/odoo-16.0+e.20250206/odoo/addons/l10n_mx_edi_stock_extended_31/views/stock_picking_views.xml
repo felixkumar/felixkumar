@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="stock_picking_form_inherit_l10n_mx_edi_stock_extended_31" model="ir.ui.view">
+        <field name="name">stock.picking.form.inherit.l10n_mx_edi_stock_extended_31</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form" />
+        <field name="arch" type="xml">
+            <field name="l10n_mx_edi_customs_regime_id" position="replace">
+                <field name="l10n_mx_edi_customs_regime_ids"
+                       attrs="{'invisible': ['|', ('l10n_mx_edi_is_cfdi_needed', '=', False), ('l10n_mx_edi_is_export', '=', False)]}"
+                       domain="[('goods_direction', 'in', ('import', 'both')) if picking_type_code == 'incoming' else ('goods_direction', 'in', ('export', 'both'))]"
+                       widget="many2many_tags"
+                       options="{'no_create': true}"/>
+            </field>
+        </field>
+    </record>
+
+</odoo>

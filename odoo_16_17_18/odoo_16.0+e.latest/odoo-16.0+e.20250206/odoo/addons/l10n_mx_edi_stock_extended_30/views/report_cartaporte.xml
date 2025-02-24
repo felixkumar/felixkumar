@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="l10n_mx_edi_stock_report_cartaporte" inherit_id="l10n_mx_edi_stock_30.l10n_mx_edi_stock_report_cartaporte">
+        <xpath expr="//div[@id='mx_edi_detail_cartaporte_2']" position="inside">
+            <div name="entrada_salida_merc" t-if="cartaporte_values.get('entrada_salida_merc')" class="cp-data">Entrada/Salida de Mercancia: <t t-out="cartaporte_values['entrada_salida_merc']"/></div>
+        </xpath>
+
+        <xpath expr="//div[@id='mx_edi_detail_seguros']" position="inside">
+            <div name="asegura_med_ambiente" class="cp-data">Asegura Med Ambiente: <t t-out="cartaporte_values['asegura_med_ambiente']"/></div>
+            <div name="poliza_med_ambiente" class="cp-data">Póliza Med Ambiente: <t t-out="cartaporte_values['poliza_med_ambiente']"/></div>
+        </xpath>
+    </template>
+</odoo>

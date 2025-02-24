@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="cfdi_cartaporte_comex_31" inherit_id="l10n_mx_edi_stock_30.cfdi_cartaporte_30">
+
+        <xpath expr="//*[name()='cartaporte20:CartaPorte']" position="attributes">
+            <attribute name="Version">3.1</attribute>
+        </xpath>
+
+        <xpath expr="//*[name()='cartaporte20:CartaPorte']" position="inside">
+            <t t-if="regimenes_aduanero">
+                <cartaporte20:RegimenesAduaneros xmlns:cartaporte20="http://www.sat.gob.mx/CartaPorte20">
+                    <t t-foreach="regimenes_aduanero" t-as="regimen_aduanero">
+                        <cartaporte20:RegimenAduaneroCCP t-att-RegimenAduanero="regimen_aduanero"/>
+                    </t>
+                </cartaporte20:RegimenesAduaneros>
+            </t>
+        </xpath>
+
+    </template>
+</odoo>

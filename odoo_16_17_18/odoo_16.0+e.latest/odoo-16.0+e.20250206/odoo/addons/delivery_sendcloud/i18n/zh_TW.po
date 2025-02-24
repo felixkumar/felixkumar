@@ -1,0 +1,546 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* delivery_sendcloud
+# 
+# Translators:
+# Martin Trigaux, 2022
+# Tony Ng, 2024
+# Wil Odoo, 2025
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-12-15 13:28+0000\n"
+"PO-Revision-Date: 2022-09-22 05:46+0000\n"
+"Last-Translator: Wil Odoo, 2025\n"
+"Language-Team: Chinese (Taiwan) (https://app.transifex.com/odoo/teams/41243/zh_TW/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Language: zh_TW\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#. module: delivery_sendcloud
+#. odoo-python
+#: code:addons/delivery_sendcloud/models/sendcloud_service.py:0
+#, python-format
+msgid "%(partner_name)s email required"
+msgstr "%(partner_name)s 的電子郵件為必需"
+
+#. module: delivery_sendcloud
+#. odoo-python
+#: code:addons/delivery_sendcloud/models/sendcloud_service.py:0
+#, python-format
+msgid "%(partner_name)s phone required"
+msgstr "%(partner_name)s 的電話為必需"
+
+#. module: delivery_sendcloud
+#: model_terms:ir.ui.view,arch_db:delivery_sendcloud.view_delivery_carrier_form
+msgid ""
+"<i class=\"fa fa-exclamation-triangle\"/> Do not forget to load your "
+"SendCloud shipping products for a valid configuration."
+msgstr "<i class=\"fa fa-exclamation-triangle\"/> 記得載入您的SendCloud運輸產品以獲得有效的配置。"
+
+#. module: delivery_sendcloud
+#: model_terms:ir.ui.view,arch_db:delivery_sendcloud.view_delivery_carrier_form
+msgid ""
+"<i class=\"fa fa-exclamation-triangle\"/> In test environment, to avoid "
+"charges, your shippings are automatically <b>cancelled</b> after the label "
+"creation."
+msgstr ""
+"<i class=\"fa fa-exclamation-triangle\"/> "
+"在測試環境中，為避免產生費用，您的發貨會在建立標籤後自動<b>取消</b>。"
+
+#. module: delivery_sendcloud
+#: model_terms:ir.ui.view,arch_db:delivery_sendcloud.view_shipping_method_sendcloud
+msgid ""
+"<i class=\"fa fa-info-circle\"/> Available shipping methods depend on "
+"enabled carriers in your account."
+msgstr ""
+
+#. module: delivery_sendcloud
+#: model:ir.model.fields.selection,name:delivery_sendcloud.selection__delivery_carrier__sendcloud_shipping_rules__both
+msgid "Both"
+msgstr "全部"
+
+#. module: delivery_sendcloud
+#: model_terms:ir.ui.view,arch_db:delivery_sendcloud.view_shipping_method_sendcloud
+msgid "Cancel"
+msgstr "取消"
+
+#. module: delivery_sendcloud
+#: model:ir.model.fields,field_description:delivery_sendcloud.field_sendcloud_shipping_wizard__ship_carrier
+#: model:ir.model.fields,field_description:delivery_sendcloud.field_stock_package_type__package_carrier_type
+msgid "Carrier"
+msgstr "承運商"
+
+#. module: delivery_sendcloud
+#. odoo-python
+#: code:addons/delivery_sendcloud/models/delivery_carrier.py:0
+#, python-format
+msgid "Choose Sendcloud Shipping Products"
+msgstr "選擇Sendcloud運輸產品"
+
+#. module: delivery_sendcloud
+#: model:ir.model,name:delivery_sendcloud.model_sendcloud_shipping_product
+#: model:ir.model,name:delivery_sendcloud.model_sendcloud_shipping_wizard
+msgid "Choose from the available sendcloud shipping methods"
+msgstr "從可用的sendcloud運輸方式中選擇"
+
+#. module: delivery_sendcloud
+#. odoo-python
+#: code:addons/delivery_sendcloud/models/sendcloud_service.py:0
+#, python-format
+msgid "Could not find currency %s"
+msgstr "找不到貨幣 %s"
+
+#. module: delivery_sendcloud
+#. odoo-python
+#: code:addons/delivery_sendcloud/models/sendcloud_service.py:0
+#, python-format
+msgid "Could not get document!"
+msgstr "未能獲取文件！"
+
+#. module: delivery_sendcloud
+#: model:ir.model.fields,field_description:delivery_sendcloud.field_sendcloud_shipping_wizard__ship_country_ids
+msgid "Countries"
+msgstr "國家"
+
+#. module: delivery_sendcloud
+#: model:ir.model.fields,field_description:delivery_sendcloud.field_sendcloud_shipping_product__create_uid
+#: model:ir.model.fields,field_description:delivery_sendcloud.field_sendcloud_shipping_wizard__create_uid
+msgid "Created by"
+msgstr "創立者"
+
+#. module: delivery_sendcloud
+#: model:ir.model.fields,field_description:delivery_sendcloud.field_sendcloud_shipping_product__create_date
+#: model:ir.model.fields,field_description:delivery_sendcloud.field_sendcloud_shipping_wizard__create_date
+msgid "Created on"
+msgstr "建立於"
+
+#. module: delivery_sendcloud
+#: model_terms:ir.ui.view,arch_db:delivery_sendcloud.view_delivery_carrier_form
+msgid "Default Package Type"
+msgstr "預設包裝類型"
+
+#. module: delivery_sendcloud
+#: model:ir.model.fields,field_description:delivery_sendcloud.field_delivery_carrier__sendcloud_default_package_type_id
+msgid "Default Package Type for Sendcloud"
+msgstr "Sendcloud 預設包裝類型"
+
+#. module: delivery_sendcloud
+#: model:ir.model.fields,field_description:delivery_sendcloud.field_sendcloud_shipping_wizard__carrier_id
+#: model_terms:ir.ui.view,arch_db:delivery_sendcloud.view_shipping_method_sendcloud
+msgid "Delivery"
+msgstr "送貨"
+
+#. module: delivery_sendcloud
+#: model:ir.model.fields,help:delivery_sendcloud.field_delivery_carrier__sendcloud_shipping_rules
+msgid ""
+"Depending your Sendcloud account type, through rules you can define the shipping method to use depending on different conditions like destination, weight, value, etc. \n"
+"                                                     Rules can override shipping product selected in odoo"
+msgstr ""
+
+#. module: delivery_sendcloud
+#: model:ir.model.fields,field_description:delivery_sendcloud.field_sendcloud_shipping_product__display_name
+#: model:ir.model.fields,field_description:delivery_sendcloud.field_sendcloud_shipping_wizard__display_name
+msgid "Display Name"
+msgstr "顯示名稱"
+
+#. module: delivery_sendcloud
+#. odoo-python
+#: code:addons/delivery_sendcloud/models/sendcloud_service.py:0
+#, python-format
+msgid ""
+"Each address line can only contain a maximum of 75 characters. You can split"
+" the address into multiple lines to try to avoid this limitation."
+msgstr "每行地址最多只能包含 75 個字符。你可將地址分成多行，以繞過此限制。"
+
+#. module: delivery_sendcloud
+#. odoo-python
+#: code:addons/delivery_sendcloud/models/sendcloud_service.py:0
+#, python-format
+msgid ""
+"Ensure picking has shipping weight, if using packages, each package should "
+"have a shipping weight"
+msgstr "確保提貨有運輸重量，如果使用包裹，每個包裹都應有運輸重量"
+
+#. module: delivery_sendcloud
+#: model:ir.model.fields,field_description:delivery_sendcloud.field_sendcloud_shipping_product__sendcloud_id
+msgid "External Sendcloud Id"
+msgstr ""
+
+#. module: delivery_sendcloud
+#. odoo-python
+#: code:addons/delivery_sendcloud/models/delivery_carrier.py:0
+#, python-format
+msgid "Failed to create the return label!"
+msgstr "建立退貨標籤失敗！"
+
+#. module: delivery_sendcloud
+#. odoo-python
+#: code:addons/delivery_sendcloud/models/delivery_carrier.py:0
+#, python-format
+msgid "Failed to get the actual price!"
+msgstr "未能獲取實際價格！"
+
+#. module: delivery_sendcloud
+#. odoo-python
+#: code:addons/delivery_sendcloud/models/delivery_carrier.py:0
+#, python-format
+msgid "Go to the shipping method"
+msgstr ""
+
+#. module: delivery_sendcloud
+#: model:ir.model.fields,field_description:delivery_sendcloud.field_sendcloud_shipping_product__id
+#: model:ir.model.fields,field_description:delivery_sendcloud.field_sendcloud_shipping_wizard__id
+msgid "ID"
+msgstr "ID"
+
+#. module: delivery_sendcloud
+#: model_terms:ir.ui.view,arch_db:delivery_sendcloud.view_delivery_carrier_form
+msgid "Integration"
+msgstr "整合"
+
+#. module: delivery_sendcloud
+#. odoo-python
+#: code:addons/delivery_sendcloud/models/delivery_carrier.py:0
+#, python-format
+msgid "Label not received by carrier, please try again later"
+msgstr ""
+
+#. module: delivery_sendcloud
+#: model:ir.model.fields,field_description:delivery_sendcloud.field_sendcloud_shipping_product____last_update
+#: model:ir.model.fields,field_description:delivery_sendcloud.field_sendcloud_shipping_wizard____last_update
+msgid "Last Modified on"
+msgstr "最後修改於"
+
+#. module: delivery_sendcloud
+#: model:ir.model.fields,field_description:delivery_sendcloud.field_sendcloud_shipping_product__write_uid
+#: model:ir.model.fields,field_description:delivery_sendcloud.field_sendcloud_shipping_wizard__write_uid
+msgid "Last Updated by"
+msgstr "最後更新者"
+
+#. module: delivery_sendcloud
+#: model:ir.model.fields,field_description:delivery_sendcloud.field_sendcloud_shipping_product__write_date
+#: model:ir.model.fields,field_description:delivery_sendcloud.field_sendcloud_shipping_wizard__write_date
+msgid "Last Updated on"
+msgstr "最後更新於"
+
+#. module: delivery_sendcloud
+#: model_terms:ir.ui.view,arch_db:delivery_sendcloud.view_delivery_carrier_form
+msgid "Load your SendCloud shipping products"
+msgstr ""
+
+#. module: delivery_sendcloud
+#. odoo-python
+#: code:addons/delivery_sendcloud/models/sendcloud_service.py:0
+#, python-format
+msgid ""
+"Make sure country codes are set in partner country and warehouse country"
+msgstr "確保在合作夥伴國家/地區及倉庫國家/地區設置了國家/地區代碼"
+
+#. module: delivery_sendcloud
+#: model:ir.model.fields,field_description:delivery_sendcloud.field_sendcloud_shipping_product__max_weight
+#: model:ir.model.fields,field_description:delivery_sendcloud.field_sendcloud_shipping_wizard__ship_max_weight
+msgid "Maximum Weight"
+msgstr "最大重量"
+
+#. module: delivery_sendcloud
+#: model:ir.model.fields,field_description:delivery_sendcloud.field_sendcloud_shipping_product__min_weight
+#: model:ir.model.fields,field_description:delivery_sendcloud.field_sendcloud_shipping_wizard__ship_min_weight
+msgid "Minimum Weight"
+msgstr "最小重量"
+
+#. module: delivery_sendcloud
+#. odoo-python
+#: code:addons/delivery_sendcloud/models/delivery_carrier.py:0
+#, python-format
+msgid "Must be a Sendcloud carrier!"
+msgstr "必須是Sendcloud貨運商！"
+
+#. module: delivery_sendcloud
+#. odoo-python
+#: code:addons/delivery_sendcloud/models/sendcloud_service.py:0
+#, python-format
+msgid "No address found with contact name %s on your sendcloud account."
+msgstr "你的sendcloud帳戶找不到聯絡人姓名%s的地址。"
+
+#. module: delivery_sendcloud
+#. odoo-python
+#: code:addons/delivery_sendcloud/models/sendcloud_service.py:0
+#, python-format
+msgid "No picking or order provided"
+msgstr "沒提供提貨或訂單"
+
+#. module: delivery_sendcloud
+#. odoo-python
+#: code:addons/delivery_sendcloud/models/delivery_carrier.py:0
+#, python-format
+msgid ""
+"Note that this price is for %s packages since the order weight is more than "
+"max weight of the shipping method."
+msgstr ""
+
+#. module: delivery_sendcloud
+#: model_terms:ir.ui.view,arch_db:delivery_sendcloud.view_delivery_carrier_form
+msgid "Options"
+msgstr "選項"
+
+#. module: delivery_sendcloud
+#. odoo-python
+#: code:addons/delivery_sendcloud/models/sendcloud_service.py:0
+#, python-format
+msgid "Order below minimum weight of carrier"
+msgstr "低於貨運商最低重量的訂單"
+
+#. module: delivery_sendcloud
+#: model:ir.model.fields,field_description:delivery_sendcloud.field_delivery_carrier__delivery_type
+msgid "Provider"
+msgstr "服務商"
+
+#. module: delivery_sendcloud
+#: model_terms:ir.ui.view,arch_db:delivery_sendcloud.view_shipping_method_sendcloud
+msgid "Return"
+msgstr "退回"
+
+#. module: delivery_sendcloud
+#: model:ir.model.fields,field_description:delivery_sendcloud.field_sendcloud_shipping_wizard__return_carrier
+msgid "Return Carrier"
+msgstr ""
+
+#. module: delivery_sendcloud
+#: model:ir.model.fields,field_description:delivery_sendcloud.field_sendcloud_shipping_wizard__return_country_ids
+msgid "Return Countries"
+msgstr ""
+
+#. module: delivery_sendcloud
+#: model:ir.model.fields,field_description:delivery_sendcloud.field_sendcloud_shipping_wizard__return_max_weight
+msgid "Return Maximum Weight"
+msgstr ""
+
+#. module: delivery_sendcloud
+#: model:ir.model.fields,field_description:delivery_sendcloud.field_sendcloud_shipping_wizard__return_min_weight
+msgid "Return Minimum Weight"
+msgstr ""
+
+#. module: delivery_sendcloud
+#: model:ir.model.fields,field_description:delivery_sendcloud.field_sendcloud_shipping_wizard__return_product
+msgid "Return Shipping Product"
+msgstr ""
+
+#. module: delivery_sendcloud
+#: model:ir.model.fields.selection,name:delivery_sendcloud.selection__delivery_carrier__sendcloud_shipping_rules__return
+msgid "Returns"
+msgstr "退回"
+
+#. module: delivery_sendcloud
+#: model_terms:ir.ui.view,arch_db:delivery_sendcloud.view_shipping_method_sendcloud
+msgid "Select"
+msgstr "選擇"
+
+#. module: delivery_sendcloud
+#: model_terms:ir.ui.view,arch_db:delivery_sendcloud.view_delivery_carrier_form
+msgid "SendCloud Configuration"
+msgstr "SendCloud配置"
+
+#. module: delivery_sendcloud
+#: model_terms:ir.ui.view,arch_db:delivery_sendcloud.res_config_settings_view_form_sale
+msgid "SendCloud Shipping Methods"
+msgstr "SendCloud運輸方式"
+
+#. module: delivery_sendcloud
+#: model:ir.model.fields.selection,name:delivery_sendcloud.selection__delivery_carrier__delivery_type__sendcloud
+#: model:ir.model.fields.selection,name:delivery_sendcloud.selection__stock_package_type__package_carrier_type__sendcloud
+msgid "Sendcloud"
+msgstr "Sendcloud"
+
+#. module: delivery_sendcloud
+#: model:ir.model.fields,help:delivery_sendcloud.field_delivery_carrier__sendcloud_public_key
+msgid "Sendcloud API Integration Public key"
+msgstr "Sendcloud API 整合公鑰"
+
+#. module: delivery_sendcloud
+#: model:ir.model.fields,help:delivery_sendcloud.field_delivery_carrier__sendcloud_secret_key
+msgid "Sendcloud API Integration Secret key"
+msgstr "Sendcloud API 整合秘密密鑰"
+
+#. module: delivery_sendcloud
+#: model:ir.model.fields,field_description:delivery_sendcloud.field_stock_picking__sendcloud_parcel_ref
+msgid "Sendcloud Parcel Reference"
+msgstr "Sendcloud包裹參考"
+
+#. module: delivery_sendcloud
+#: model:ir.model.fields,field_description:delivery_sendcloud.field_delivery_carrier__sendcloud_public_key
+msgid "Sendcloud Public Key"
+msgstr "Sendcloud 公鑰"
+
+#. module: delivery_sendcloud
+#: model:ir.model.fields,field_description:delivery_sendcloud.field_stock_picking__sendcloud_return_parcel_ref
+msgid "Sendcloud Return Parcel Ref"
+msgstr "Sendcloud 退貨包裹參考"
+
+#. module: delivery_sendcloud
+#: model:ir.model.fields,field_description:delivery_sendcloud.field_delivery_carrier__sendcloud_return_id
+msgid "Sendcloud Return Shipping Product"
+msgstr "Sendcloud 退貨運輸產品"
+
+#. module: delivery_sendcloud
+#: model:ir.model.fields,field_description:delivery_sendcloud.field_delivery_carrier__sendcloud_secret_key
+msgid "Sendcloud Secret Key"
+msgstr "Sendcloud 秘密密鑰"
+
+#. module: delivery_sendcloud
+#: model_terms:ir.ui.view,arch_db:delivery_sendcloud.res_config_settings_view_form_stock
+msgid "Sendcloud Shipping Methods"
+msgstr "Sendcloud運輸方式"
+
+#. module: delivery_sendcloud
+#: model:ir.model.fields,field_description:delivery_sendcloud.field_delivery_carrier__sendcloud_shipping_id
+msgid "Sendcloud Shipping Product"
+msgstr "Sendcloud運輸產品"
+
+#. module: delivery_sendcloud
+#. odoo-python
+#: code:addons/delivery_sendcloud/models/delivery_carrier.py:0
+#, python-format
+msgid "Shipment %s cancelled"
+msgstr "貨件 %s 已取消"
+
+#. module: delivery_sendcloud
+#: model:ir.model.fields.selection,name:delivery_sendcloud.selection__delivery_carrier__sendcloud_shipping_rules__ship
+msgid "Shipping"
+msgstr "送貨"
+
+#. module: delivery_sendcloud
+#: model:ir.model.fields,field_description:delivery_sendcloud.field_sendcloud_shipping_product__carrier
+msgid "Shipping Carrier"
+msgstr "運輸貨運商"
+
+#. module: delivery_sendcloud
+#: model:ir.model,name:delivery_sendcloud.model_delivery_carrier
+msgid "Shipping Methods"
+msgstr "運送方式"
+
+#. module: delivery_sendcloud
+#: model:ir.model.fields,field_description:delivery_sendcloud.field_sendcloud_shipping_product__name
+#: model:ir.model.fields,field_description:delivery_sendcloud.field_sendcloud_shipping_wizard__shipping_product
+#: model_terms:ir.ui.view,arch_db:delivery_sendcloud.view_shipping_method_sendcloud
+msgid "Shipping Product"
+msgstr "運輸產品"
+
+#. module: delivery_sendcloud
+#: model:ir.model.fields,help:delivery_sendcloud.field_delivery_carrier__sendcloud_default_package_type_id
+msgid ""
+"Some carriers require package dimensions, you can define these in a package "
+"type that you set as default"
+msgstr "部份貨運商需要包裹尺寸資料。你可在一個你設為預設選項的包裹類型內，定義這些尺寸"
+
+#. module: delivery_sendcloud
+#. odoo-python
+#: code:addons/delivery_sendcloud/models/sendcloud_service.py:0
+#, python-format
+msgid ""
+"Something went wrong, parcel not returned from Sendcloud:\n"
+" %s'."
+msgstr ""
+"出錯了，包裹未從 Sendcloud 退回：\n"
+" %s'."
+
+#. module: delivery_sendcloud
+#. odoo-python
+#: code:addons/delivery_sendcloud/models/sendcloud_service.py:0
+#: code:addons/delivery_sendcloud/models/sendcloud_service.py:0
+#, python-format
+msgid "Something went wrong, please try again later!!"
+msgstr "出錯了，請稍後再試。"
+
+#. module: delivery_sendcloud
+#: model:ir.model,name:delivery_sendcloud.model_stock_package_type
+msgid "Stock package type"
+msgstr "庫存包裝類型"
+
+#. module: delivery_sendcloud
+#. odoo-python
+#: code:addons/delivery_sendcloud/models/sendcloud_service.py:0
+#, python-format
+msgid "The %s address needs to have the street, city, zip, and country"
+msgstr "%s 地址需要有街道、城市、郵遞區號及國家/地區"
+
+#. module: delivery_sendcloud
+#. odoo-python
+#: code:addons/delivery_sendcloud/models/sendcloud_service.py:0
+#, python-format
+msgid ""
+"The estimated shipping price cannot be computed because the weight is missing for the following product(s): \n"
+" %s"
+msgstr ""
+"The estimated shipping price cannot be computed because the weight is missing for the following product(s): \n"
+" %s"
+
+#. module: delivery_sendcloud
+#. odoo-python
+#: code:addons/delivery_sendcloud/models/sendcloud_service.py:0
+#, python-format
+msgid "The selected shipping method does not ship from %s to %s"
+msgstr ""
+
+#. module: delivery_sendcloud
+#. odoo-python
+#: code:addons/delivery_sendcloud/models/sendcloud_service.py:0
+#, python-format
+msgid ""
+"The weight of some products is missing: \n"
+" %s"
+msgstr ""
+
+#. module: delivery_sendcloud
+#. odoo-python
+#: code:addons/delivery_sendcloud/models/delivery_carrier.py:0
+#, python-format
+msgid ""
+"There are no shipping products available, please activate carriers in your "
+"account"
+msgstr ""
+
+#. module: delivery_sendcloud
+#. odoo-python
+#: code:addons/delivery_sendcloud/models/sendcloud_service.py:0
+#, python-format
+msgid ""
+"There is no rate available for this order with the selected shipping method"
+msgstr ""
+
+#. module: delivery_sendcloud
+#: model:ir.model,name:delivery_sendcloud.model_stock_picking
+msgid "Transfer"
+msgstr "調撥"
+
+#. module: delivery_sendcloud
+#: model:ir.model.fields,field_description:delivery_sendcloud.field_delivery_carrier__sendcloud_shipping_rules
+msgid "Use Sendcloud shipping rules"
+msgstr "使用Sendcloud運輸規則"
+
+#. module: delivery_sendcloud
+#. odoo-python
+#: code:addons/delivery_sendcloud/models/delivery_carrier.py:0
+#, python-format
+msgid "You must add your public and secret key for sendcloud delivery type!"
+msgstr "您必須添加您的公鑰及私鑰, 以使用SendCloud的送貨方式!"
+
+#. module: delivery_sendcloud
+#. odoo-python
+#: code:addons/delivery_sendcloud/models/delivery_carrier.py:0
+#, python-format
+msgid "You must have a shipping product configured!"
+msgstr "你必須配置運輸產品！"
+
+#. module: delivery_sendcloud
+#: model_terms:ir.ui.view,arch_db:delivery_sendcloud.sendcloud_label_tracking
+msgid ""
+"created in Sendcloud. <br/>\n"
+"            <b>Tracking Numbers:</b>"
+msgstr ""
+"已在 Sendcloud 內建立。<br/>\n"
+"            <b>追蹤編號：</b>"

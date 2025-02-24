@@ -1,0 +1,554 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* hr_expense_extract
+# 
+# Translators:
+# Martin Trigaux, 2022
+# JH CHOI <hwangtog@gmail.com>, 2022
+# Daye Jeong, 2023
+# Sarah Park, 2023
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-12-15 13:29+0000\n"
+"PO-Revision-Date: 2022-09-22 05:46+0000\n"
+"Last-Translator: Sarah Park, 2023\n"
+"Language-Team: Korean (https://app.transifex.com/odoo/teams/41243/ko/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Language: ko\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#. module: hr_expense_extract
+#. odoo-javascript
+#: code:addons/hr_expense_extract/static/src/js/tours/expense_tour.js:0
+#, python-format
+msgid "<b>Congratulations</b>, you are now an expert of Expenses."
+msgstr "<b>축하합니다</b>, 비용의 전문가 레벨에 도달했습니다."
+
+#. module: hr_expense_extract
+#: model_terms:ir.ui.view,arch_db:hr_expense_extract.hr_expense_extract_view_form
+msgid ""
+"<i class=\"fa fa-fw o_button_icon fa-arrow-right\"/>\n"
+"                        Buy credits"
+msgstr ""
+"<i class=\"fa fa-fw o_button_icon fa-arrow-right\"/>\n"
+"                        크레딧 구입하기"
+
+#. module: hr_expense_extract
+#: model_terms:ir.ui.view,arch_db:hr_expense_extract.hr_expense_extract_view_form
+msgid ""
+"<i class=\"fa fa-fw o_button_icon fa-arrow-right\"/>\n"
+"                        Refresh"
+msgstr ""
+"<i class=\"fa fa-fw o_button_icon fa-arrow-right\"/>\n"
+"                        새로고침"
+
+#. module: hr_expense_extract
+#: model_terms:ir.ui.view,arch_db:hr_expense_extract.hr_expense_extract_view_form
+msgid ""
+"<i class=\"fa fa-fw o_button_icon fa-arrow-right\"/>\n"
+"                        Resend For Digitization"
+msgstr ""
+"<i class=\"fa fa-fw o_button_icon fa-arrow-right\"/>\n"
+"                        재전송하여 디지털 생성하기"
+
+#. module: hr_expense_extract
+#: model_terms:ir.ui.view,arch_db:hr_expense_extract.hr_expense_extract_view_form
+msgid ""
+"All fields will be automated by Artificial Intelligence, it might take 5 "
+"seconds."
+msgstr "모든 필드는 인공 지능을 통해 자동화되며, 약 5초 정도 소요됩니다."
+
+#. module: hr_expense_extract
+#: model:ir.model.fields,field_description:hr_expense_extract.field_expense_sample_register__amount
+msgid "Amount"
+msgstr "금액"
+
+#. module: hr_expense_extract
+#. odoo-python
+#: code:addons/hr_expense_extract/models/hr_expense.py:0
+#: model:ir.model.fields.selection,name:hr_expense_extract.selection__hr_expense__extract_state__error_status
+#, python-format
+msgid "An error occurred"
+msgstr "오류가 발생했습니다."
+
+#. module: hr_expense_extract
+#: model:ir.model,name:hr_expense_extract.model_ir_attachment
+msgid "Attachment"
+msgstr "첨부 파일"
+
+#. module: hr_expense_extract
+#: model:ir.model.fields,field_description:hr_expense_extract.field_expense_sample_register__available_payment_method_line_ids
+msgid "Available Payment Method Line"
+msgstr "사용 가능한 결제 방법 라인"
+
+#. module: hr_expense_extract
+#: model:ir.model.fields,field_description:hr_expense_extract.field_hr_expense__extract_can_show_resend_button
+msgid "Can show the ocr resend button"
+msgstr "OCR 재전송 버튼 표시 가능"
+
+#. module: hr_expense_extract
+#: model:ir.model.fields,field_description:hr_expense_extract.field_hr_expense__extract_can_show_send_button
+msgid "Can show the ocr send button"
+msgstr "OCR 전송 버튼 표시 가능"
+
+#. module: hr_expense_extract
+#: model_terms:ir.ui.view,arch_db:hr_expense_extract.expense_sample_register_view_form
+msgid "Cancel"
+msgstr "취소"
+
+#. module: hr_expense_extract
+#. odoo-javascript
+#: code:addons/hr_expense_extract/static/src/js/tours/expense_tour.js:0
+#, python-format
+msgid "Choose a receipt."
+msgstr "영수증 선택."
+
+#. module: hr_expense_extract
+#: model_terms:ir.ui.view,arch_db:hr_expense_extract.expense_sample_receipt_view_form
+msgid "Choose a receipt:"
+msgstr "영수증 선택:"
+
+#. module: hr_expense_extract
+#: model:ir.model,name:hr_expense_extract.model_res_company
+msgid "Companies"
+msgstr "회사"
+
+#. module: hr_expense_extract
+#: model:ir.model.fields,field_description:hr_expense_extract.field_expense_sample_register__company_id
+msgid "Company"
+msgstr "회사"
+
+#. module: hr_expense_extract
+#: model:ir.model.fields.selection,name:hr_expense_extract.selection__hr_expense__extract_state__done
+msgid "Completed flow"
+msgstr "과정 완료됨"
+
+#. module: hr_expense_extract
+#: model:ir.model,name:hr_expense_extract.model_res_config_settings
+msgid "Config Settings"
+msgstr "설정 구성"
+
+#. module: hr_expense_extract
+#: model_terms:ir.ui.view,arch_db:hr_expense_extract.expense_sample_register_view_form
+msgid "Create Payment"
+msgstr "결제 만들기"
+
+#. module: hr_expense_extract
+#: model:ir.model.fields,field_description:hr_expense_extract.field_expense_sample_receipt__create_uid
+#: model:ir.model.fields,field_description:hr_expense_extract.field_expense_sample_register__create_uid
+#: model:ir.model.fields,field_description:hr_expense_extract.field_hr_expense_extract_words__create_uid
+msgid "Created by"
+msgstr "작성자"
+
+#. module: hr_expense_extract
+#: model:ir.model.fields,field_description:hr_expense_extract.field_expense_sample_receipt__create_date
+#: model:ir.model.fields,field_description:hr_expense_extract.field_expense_sample_register__create_date
+#: model:ir.model.fields,field_description:hr_expense_extract.field_hr_expense_extract_words__create_date
+msgid "Created on"
+msgstr "작성일자"
+
+#. module: hr_expense_extract
+#: model:ir.model.fields,field_description:hr_expense_extract.field_expense_sample_register__currency_id
+msgid "Currency"
+msgstr "통화"
+
+#. module: hr_expense_extract
+#: model:ir.model.fields.selection,name:hr_expense_extract.selection__res_company__expense_extract_show_ocr_option_selection__auto_send
+msgid "Digitize automatically"
+msgstr "자동으로 디지털 변환"
+
+#. module: hr_expense_extract
+#: model:ir.model.fields.selection,name:hr_expense_extract.selection__res_company__expense_extract_show_ocr_option_selection__manual_send
+msgid "Digitize on demand only"
+msgstr "지정할 경우에만 디지털 변환"
+
+#. module: hr_expense_extract
+#: model:ir.model.fields,field_description:hr_expense_extract.field_expense_sample_receipt__display_name
+#: model:ir.model.fields,field_description:hr_expense_extract.field_expense_sample_register__display_name
+#: model:ir.model.fields,field_description:hr_expense_extract.field_hr_expense_extract_words__display_name
+msgid "Display Name"
+msgstr "표시명"
+
+#. module: hr_expense_extract
+#: model:ir.model.fields.selection,name:hr_expense_extract.selection__res_company__expense_extract_show_ocr_option_selection__no_send
+msgid "Do not digitize"
+msgstr "디지털 변환을 선택하지 않음"
+
+#. module: hr_expense_extract
+#: model:ir.model.fields,field_description:hr_expense_extract.field_hr_expense__extract_error_message
+msgid "Error message"
+msgstr "오류 메시지"
+
+#. module: hr_expense_extract
+#: model:ir.model,name:hr_expense_extract.model_hr_expense
+#: model:ir.model.fields,field_description:hr_expense_extract.field_expense_sample_register__sheet_id
+#: model:ir.model.fields,field_description:hr_expense_extract.field_hr_expense_extract_words__expense_id
+msgid "Expense"
+msgstr "경비"
+
+#. module: hr_expense_extract
+#: model:ir.actions.server,name:hr_expense_extract.ir_cron_ocr_parse_ir_actions_server
+#: model:ir.cron,cron_name:hr_expense_extract.ir_cron_ocr_parse
+msgid "Expense OCR: Parse Expenses"
+msgstr "비용 OCR: 비용 파싱"
+
+#. module: hr_expense_extract
+#: model:ir.actions.server,name:hr_expense_extract.ir_cron_update_ocr_status_ir_actions_server
+#: model:ir.cron,cron_name:hr_expense_extract.ir_cron_update_ocr_status
+msgid "Expense OCR: Update All Status"
+msgstr "비용 OCR: 전체 상태 업데이트"
+
+#. module: hr_expense_extract
+#: model:ir.actions.server,name:hr_expense_extract.ir_cron_ocr_validate_ir_actions_server
+#: model:ir.cron,cron_name:hr_expense_extract.ir_cron_ocr_validate
+msgid "Expense OCR: Validate Expenses"
+msgstr "비용 OCR: 비용 승인"
+
+#. module: hr_expense_extract
+#: model:ir.model,name:hr_expense_extract.model_hr_expense_sheet
+msgid "Expense Report"
+msgstr "지출 결의서"
+
+#. module: hr_expense_extract
+#. odoo-python
+#: code:addons/hr_expense_extract/models/hr_expense.py:0
+#, python-format
+msgid "Expense is being Digitized"
+msgstr "디지털 작업된 비용입니다"
+
+#. module: hr_expense_extract
+#: model:ir.model.fields,field_description:hr_expense_extract.field_res_config_settings__expense_extract_show_ocr_option_selection
+msgid "Expense processing option"
+msgstr "비용 처리 절차 옵션"
+
+#. module: hr_expense_extract
+#. odoo-python
+#: code:addons/hr_expense_extract/models/hr_expense.py:0
+#, python-format
+msgid "Expenses sent"
+msgstr "비용 송금"
+
+#. module: hr_expense_extract
+#: model:ir.model.fields,field_description:hr_expense_extract.field_hr_expense__extract_word_ids
+msgid "Extract Word"
+msgstr "단어 추출"
+
+#. module: hr_expense_extract
+#: model:ir.model.fields,field_description:hr_expense_extract.field_hr_expense__extract_state
+msgid "Extract state"
+msgstr "추출 상태"
+
+#. module: hr_expense_extract
+#: model:ir.model,name:hr_expense_extract.model_hr_expense_extract_words
+msgid "Extracted words from expense scan"
+msgstr ""
+
+#. module: hr_expense_extract
+#. odoo-python
+#: code:addons/hr_expense_extract/models/hr_expense.py:0
+#, python-format
+msgid "Generated Expense"
+msgstr "생성된 비용"
+
+#. module: hr_expense_extract
+#: model:ir.model.fields,field_description:hr_expense_extract.field_expense_sample_register__hide_partial
+msgid "Hide Partial"
+msgstr "일부 숨기기"
+
+#. module: hr_expense_extract
+#: model:ir.model.fields,field_description:hr_expense_extract.field_expense_sample_register__hide_payment_method_line
+msgid "Hide Payment Method Line"
+msgstr "결제 방법 내용 숨기기"
+
+#. module: hr_expense_extract
+#: model:ir.model.fields,field_description:hr_expense_extract.field_expense_sample_receipt__id
+#: model:ir.model.fields,field_description:hr_expense_extract.field_expense_sample_register__id
+#: model:ir.model.fields,field_description:hr_expense_extract.field_hr_expense_extract_words__id
+msgid "ID"
+msgstr "ID"
+
+#. module: hr_expense_extract
+#: model:ir.model.fields,field_description:hr_expense_extract.field_hr_expense__extract_remote_id
+msgid "Id of the request to IAP-OCR"
+msgstr "IAP-OCR 요청의 ID"
+
+#. module: hr_expense_extract
+#: model:ir.model.fields,field_description:hr_expense_extract.field_expense_sample_register__journal_id
+msgid "Journal"
+msgstr "분개장"
+
+#. module: hr_expense_extract
+#: model:ir.model.fields.selection,name:hr_expense_extract.selection__expense_sample_register__partial_mode__open
+msgid "Keep open"
+msgstr "열어두기"
+
+#. module: hr_expense_extract
+#: model:ir.model.fields,field_description:hr_expense_extract.field_expense_sample_receipt____last_update
+#: model:ir.model.fields,field_description:hr_expense_extract.field_expense_sample_register____last_update
+#: model:ir.model.fields,field_description:hr_expense_extract.field_hr_expense_extract_words____last_update
+msgid "Last Modified on"
+msgstr "최근 수정일"
+
+#. module: hr_expense_extract
+#: model:ir.model.fields,field_description:hr_expense_extract.field_expense_sample_receipt__write_uid
+#: model:ir.model.fields,field_description:hr_expense_extract.field_expense_sample_register__write_uid
+#: model:ir.model.fields,field_description:hr_expense_extract.field_hr_expense_extract_words__write_uid
+msgid "Last Updated by"
+msgstr "최근 갱신한 사람"
+
+#. module: hr_expense_extract
+#: model:ir.model.fields,field_description:hr_expense_extract.field_expense_sample_receipt__write_date
+#: model:ir.model.fields,field_description:hr_expense_extract.field_expense_sample_register__write_date
+#: model:ir.model.fields,field_description:hr_expense_extract.field_hr_expense_extract_words__write_date
+msgid "Last Updated on"
+msgstr "최근 갱신 일자"
+
+#. module: hr_expense_extract
+#: model_terms:ir.ui.view,arch_db:hr_expense_extract.expense_sample_receipt_view_form
+msgid ""
+"Let's try a sample receipt to test the automated processing of expenses with"
+" Artificial Intelligence."
+msgstr "인공지능을 통한 비용 자동 처리를 테스트하기 위해 영수증 샘플을 사용해 보겠습니다."
+
+#. module: hr_expense_extract
+#: model:ir.model.fields,help:hr_expense_extract.field_expense_sample_register__payment_method_line_id
+msgid ""
+"Manual: Pay or Get paid by any method outside of Odoo.\n"
+"Payment Providers: Each payment provider has its own Payment Method. Request a transaction on/to a card thanks to a payment token saved by the partner when buying or subscribing online.\n"
+"Check: Pay bills by check and print it from Odoo.\n"
+"Batch Deposit: Collect several customer checks at once generating and submitting a batch deposit to your bank. Module account_batch_payment is necessary.\n"
+"SEPA Credit Transfer: Pay in the SEPA zone by submitting a SEPA Credit Transfer file to your bank. Module account_sepa is necessary.\n"
+"SEPA Direct Debit: Get paid in the SEPA zone thanks to a mandate your partner will have granted to you. Module account_sepa is necessary.\n"
+msgstr ""
+"직접 결제: Odoo 외부의 결제 방법을 통해 지불하거나 받습니다.\n"
+"결제대행업체: 결제업체별로 자체 결제 방법을 사용하고 있습니다. 온라인으로 구매하거나 구독할 경우에는 협력사에 저장되어 있는 결제 토큰 덕분에 카드 거래를 요청하실 수 있습니다. \n"
+"수표: 청구 금액을 수표로 지불하고 Odoo에서 인쇄하십시오.\n"
+"일괄 입금: 여러 고객들의 수표를 수금하여 일괄 입금을 생성하고 은행에 입금합니다. 실행하려면 account_batch_payment 모듈이 필요합니다. \n"
+"SEPA 계좌이체: 은행에 SEPA 계좌이체 파일을 전송하여 SEPA 지역에서 결제할 수 있습니다. 실행하려면 account_sepa 모듈이 필요합니다.\n"
+"SEPA 자동이체: 협력사에 부여된 권한 덕분에 SEPA 지역에서 결제가 가능합니다. 실행하려면 account_sepa 모듈이 필요합니다.\n"
+
+#. module: hr_expense_extract
+#: model:ir.model.fields.selection,name:hr_expense_extract.selection__expense_sample_register__partial_mode__paid
+msgid "Mark as fully paid"
+msgstr "결제 완료로 표시"
+
+#. module: hr_expense_extract
+#: model:ir.model.fields,field_description:hr_expense_extract.field_expense_sample_register__memo
+msgid "Memo"
+msgstr "메모"
+
+#. module: hr_expense_extract
+#. odoo-python
+#: code:addons/hr_expense_extract/models/hr_expense.py:0
+#, python-format
+msgid "No document name provided"
+msgstr "문서 이름이 제공되지 않았습니다"
+
+#. module: hr_expense_extract
+#: model:ir.model.fields.selection,name:hr_expense_extract.selection__hr_expense__extract_state__no_extract_requested
+msgid "No extract requested"
+msgstr "요청한 추출 없음"
+
+#. module: hr_expense_extract
+#: model:ir.model.fields.selection,name:hr_expense_extract.selection__hr_expense__extract_state__not_enough_credit
+msgid "Not enough credit"
+msgstr "불충분한 신용 한도"
+
+#. module: hr_expense_extract
+#: model:ir.model.fields,field_description:hr_expense_extract.field_expense_sample_register__date
+msgid "Payment Date"
+msgstr "지불일"
+
+#. module: hr_expense_extract
+#: model:ir.model.fields,field_description:hr_expense_extract.field_expense_sample_register__partial_mode
+msgid "Payment Difference"
+msgstr "지불 차액"
+
+#. module: hr_expense_extract
+#: model:ir.model.fields,field_description:hr_expense_extract.field_expense_sample_register__payment_method_line_id
+msgid "Payment Method"
+msgstr "결제 방법"
+
+#. module: hr_expense_extract
+#: model_terms:ir.ui.view,arch_db:hr_expense_extract.expense_sample_register_view_form
+msgid "Register Payment"
+msgstr "결제 등록"
+
+#. module: hr_expense_extract
+#: model:ir.actions.act_window,name:hr_expense_extract.action_expense_sample_register
+msgid "Register Sample Payment"
+msgstr "샘플 결제 등록"
+
+#. module: hr_expense_extract
+#: model:ir.model,name:hr_expense_extract.model_expense_sample_register
+msgid "Register Sample Payments"
+msgstr "샘플 결제 등록"
+
+#. module: hr_expense_extract
+#. odoo-javascript
+#: code:addons/hr_expense_extract/static/src/js/tours/expense_tour.js:0
+#, python-format
+msgid "Report this expense to your manager for validation."
+msgstr "이 비용을 관리자에게 보고하고 승인을 받습니다."
+
+#. module: hr_expense_extract
+#. odoo-python
+#: code:addons/hr_expense_extract/wizard/expense_sample_receipt.py:0
+#, python-format
+msgid "Sample Employee"
+msgstr "직원 예시"
+
+#. module: hr_expense_extract
+#. odoo-python
+#: code:addons/hr_expense_extract/wizard/expense_sample_receipt.py:0
+#, python-format
+msgid "Sample Receipt: %s"
+msgstr "영수증 샘플: %s"
+
+#. module: hr_expense_extract
+#: model:ir.actions.server,name:hr_expense_extract.hr_expense_parse_action_server
+#: model_terms:ir.ui.view,arch_db:hr_expense_extract.hr_expense_extract_view_form
+msgid "Send For Digitization"
+msgstr "디지털 변환을 위해 내보내기"
+
+#. module: hr_expense_extract
+#: model:ir.model.fields,field_description:hr_expense_extract.field_res_company__expense_extract_show_ocr_option_selection
+msgid "Send mode on expense attachments"
+msgstr "비용 관련 첨부파일 전송 모드"
+
+#. module: hr_expense_extract
+#. odoo-python
+#: code:addons/hr_expense_extract/models/hr_expense.py:0
+#, python-format
+msgid "Server is currently under maintenance. Please retry later"
+msgstr "서버가 현재 유지 보수 중입니다. 나중에 다시 시도하십시오"
+
+#. module: hr_expense_extract
+#. odoo-python
+#: code:addons/hr_expense_extract/models/hr_expense.py:0
+#, python-format
+msgid "Server not available. Please retry later"
+msgstr "서버를 사용할 수 없습니다. 나중에 다시 시도하십시오"
+
+#. module: hr_expense_extract
+#: model:ir.model.fields,field_description:hr_expense_extract.field_hr_expense__extract_status_code
+msgid "Status code"
+msgstr "상태 코드"
+
+#. module: hr_expense_extract
+#: model:ir.model.fields,field_description:hr_expense_extract.field_hr_expense__state_processed
+msgid "Status regarding OCR status"
+msgstr ""
+
+#. module: hr_expense_extract
+#: model_terms:ir.ui.view,arch_db:hr_expense_extract.hr_expense_extract_view_form
+msgid ""
+"The data extraction is not finished yet. The extraction usually takes "
+"between 5 and 10 seconds."
+msgstr "데이터 추출이 아직 완료되지 않았습니다. 추출에는 보통 5 - 10초 정도가 소요됩니다. "
+
+#. module: hr_expense_extract
+#. odoo-python
+#: code:addons/hr_expense_extract/models/hr_expense.py:0
+#, python-format
+msgid "The document could not be found"
+msgstr "문서를 찾을 수 없습니다"
+
+#. module: hr_expense_extract
+#: model:ir.model.fields.selection,name:hr_expense_extract.selection__hr_expense__extract_state__to_validate
+msgid "To validate"
+msgstr "승인하기"
+
+#. module: hr_expense_extract
+#: model:ir.actions.act_window,name:hr_expense_extract.action_expense_sample_receipt
+#: model_terms:ir.ui.view,arch_db:hr_expense_extract.expense_sample_receipt_view_form
+msgid "Try Sample Receipt"
+msgstr "영수증 샘플 사용해보기"
+
+#. module: hr_expense_extract
+#: model:ir.model,name:hr_expense_extract.model_expense_sample_receipt
+msgid "Try Sample Receipts"
+msgstr "영수증 샘플 사용해보기"
+
+#. module: hr_expense_extract
+#. odoo-javascript
+#: code:addons/hr_expense_extract/static/src/js/tours/expense_tour.js:0
+#, python-format
+msgid "Try the AI with a sample receipt."
+msgstr "영수증 샘플을 사용하여 AI를 사용해보세요."
+
+#. module: hr_expense_extract
+#. odoo-python
+#: code:addons/hr_expense_extract/models/hr_expense.py:0
+#, python-format
+msgid "Unsupported image format"
+msgstr "지원되지 않는 이미지 형식"
+
+#. module: hr_expense_extract
+#: model:ir.model.fields.selection,name:hr_expense_extract.selection__hr_expense__extract_state__waiting_extraction
+msgid "Waiting extraction"
+msgstr "추출 대기중"
+
+#. module: hr_expense_extract
+#: model:ir.model.fields.selection,name:hr_expense_extract.selection__hr_expense__extract_state__waiting_upload
+msgid "Waiting upload"
+msgstr "업로드 대기 중"
+
+#. module: hr_expense_extract
+#: model:ir.model.fields.selection,name:hr_expense_extract.selection__hr_expense__extract_state__waiting_validation
+msgid "Waiting validation"
+msgstr "검증 대기중"
+
+#. module: hr_expense_extract
+#. odoo-javascript
+#: code:addons/hr_expense_extract/static/src/js/tours/expense_tour.js:0
+#, python-format
+msgid "Wasting time recording your receipts? Let’s try a better way."
+msgstr "영수증 내역을 기록하는데 시간을 낭비하고 있으신가요? 여기 훨씬 나은 방법이 있습니다."
+
+#. module: hr_expense_extract
+#: model:ir.model.fields,field_description:hr_expense_extract.field_hr_expense_extract_words__word_page
+msgid "Word Page"
+msgstr "페이지 내 단어"
+
+#. module: hr_expense_extract
+#: model:ir.model.fields,field_description:hr_expense_extract.field_hr_expense_extract_words__word_text
+msgid "Word Text"
+msgstr "단어"
+
+#. module: hr_expense_extract
+#. odoo-python
+#: code:addons/hr_expense_extract/models/hr_expense.py:0
+#, python-format
+msgid "You cannot send a expense that is not in draft state!"
+msgstr "미결 상태가 아닌 경비는 전송할 수 없습니다!"
+
+#. module: hr_expense_extract
+#: model_terms:ir.ui.view,arch_db:hr_expense_extract.hr_expense_extract_view_form
+msgid "You don't have enough credit to extract data from your expense."
+msgstr "경비에서 데이터를 추출하기에 충분한 크레딧이 없습니다."
+
+#. module: hr_expense_extract
+#. odoo-python
+#: code:addons/hr_expense_extract/models/hr_expense.py:0
+#, python-format
+msgid "You must send the same quantity of documents and file names"
+msgstr "같은 양의 문서와 파일 이름을 보내야 합니다"
+
+#. module: hr_expense_extract
+#. odoo-javascript
+#: code:addons/hr_expense_extract/static/src/js/tours/expense_tour.js:0
+#: code:addons/hr_expense_extract/static/src/js/tours/expense_tour.js:0
+#, python-format
+msgid "Your manager will have to approve (or refuse) your expense reports."
+msgstr "관리자가 해당 경비 보고서를 승인 (또는 반려)할 예정입니다."
+
+#. module: hr_expense_extract
+#: model:ir.model.fields.selection,name:hr_expense_extract.selection__hr_expense__extract_state__extract_not_ready
+msgid "waiting extraction, but it is not ready"
+msgstr "추출 대기 중, 아직 준비 중"

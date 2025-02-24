@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_l10n_lu_yearly_tax_report_manual_updated" model="ir.ui.view">
+            <field name="name">l10n_lu.yearly.tax.report.manual.view</field>
+            <field name="model">l10n_lu.yearly.tax.report.manual</field>
+            <field name="inherit_id" ref="l10n_lu_reports.view_l10n_lu_yearly_tax_report_manual"/>
+            <field name="priority" eval="20"/>
+            <field name="arch" type="xml">
+                <header position="inside">
+                    <button name="export_pdf" string="Export PDF" type="object" class="oe_highlight"/>
+                </header>
+                <xpath expr="//field[@name='report_section_771']" position="after">
+                    <label for="report_section_971" string="rate of 16 %" colspan="6" class="ms-4"/>
+                    <field name="report_section_971" string="971" colspan="6"/>
+                </xpath>
+                <xpath expr="//field[@name='report_section_772']" position="after">
+                    <label for="report_section_972" string="rate of 13 %" colspan="6" class="ms-4"/>
+                    <field name="report_section_972" string="972" colspan="6"/>
+                </xpath>
+                <xpath expr="//field[@name='report_section_773']" position="after">
+                    <label for="report_section_973" string="rate of 7 %" colspan="6" class="ms-4"/>
+                    <field name="report_section_973" string="973" colspan="6"/>
+                </xpath>
+                <xpath expr="//field[@name='report_section_776']" position="after">
+                    <label for="report_section_976" string="rate of 16 %" colspan="6" class="ms-4"/>
+                    <field name="report_section_976" string="976" colspan="6"/>
+                </xpath>
+                <xpath expr="//field[@name='report_section_777']" position="after">
+                    <label for="report_section_977" string="rate of 13 %" colspan="6" class="ms-4"/>
+                    <field name="report_section_977" string="977" colspan="6"/>
+                </xpath>
+                <xpath expr="//field[@name='report_section_778']" position="after">
+                    <label for="report_section_978" string="rate of 7 %" colspan="6" class="ms-4"/>
+                    <field name="report_section_978" string="978" colspan="6"/>
+                </xpath>
+                <xpath expr="//field[@name='report_section_781']" position="after">
+                    <label for="report_section_981" string="rate of 16 %" colspan="6" class="ms-4"/>
+                    <field name="report_section_981" string="981" colspan="6"/>
+                </xpath>
+                <xpath expr="//field[@name='report_section_782']" position="after">
+                    <label for="report_section_982" string="rate of 13 %" colspan="6" class="ms-4"/>
+                    <field name="report_section_982" string="982" colspan="6"/>
+                </xpath>
+                <xpath expr="//field[@name='report_section_783']" position="after">
+                    <label for="report_section_983" string="rate of 7 %" colspan="6" class="ms-4"/>
+                    <field name="report_section_983" string="983" colspan="6"/>
+                </xpath>
+                <xpath expr="//field[@name='report_section_792']" position="after">
+                    <label for="report_section_991" string="rate of 16%" colspan="4" class="ms-4"/>
+                    <field name="report_section_991" string="991" colspan="3"/>
+                    <field name="report_section_992" string="992" colspan="3"/>
+                </xpath>
+                <xpath expr="//field[@name='report_section_794']" position="after">
+                    <label for="report_section_993" string="rate of 13%" colspan="4" class="ms-4"/>
+                    <field name="report_section_993" string="993" colspan="3"/>
+                    <field name="report_section_994" string="994" colspan="3"/>
+                </xpath>
+                <xpath expr="//field[@name='report_section_796']" position="after">
+                    <label for="report_section_995" string="rate of 7%" colspan="4" class="ms-4"/>
+                    <field name="report_section_995" string="995" colspan="3"/>
+                    <field name="report_section_996" string="996" colspan="3"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

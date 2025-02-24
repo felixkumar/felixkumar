@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_partner_property_withhold_form" model="ir.ui.view">
+        <field name="name">view.partner.property.withhold.form</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="account.view_partner_property_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='vat']" position="after">
+                <field name="l10n_ec_taxpayer_type_id"/>
+                <field name="l10n_ec_related_party"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

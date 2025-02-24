@@ -1,0 +1,150 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* theme_orchid
+# 
+# Translators:
+# Lasse L, 2023
+# Anders Wallenquist <anders.wallenquist@vertel.se>, 2024
+# Jakob Krabbe <jakob.krabbe@vertel.se>, 2024
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-09-28 12:23+0000\n"
+"PO-Revision-Date: 2023-10-27 15:39+0000\n"
+"Last-Translator: Jakob Krabbe <jakob.krabbe@vertel.se>, 2024\n"
+"Language-Team: Swedish (https://app.transifex.com/odoo/teams/41243/sv/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Language: sv\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: theme_orchid
+#: model_terms:theme.ir.ui.view,arch:theme_orchid.s_text_image
+msgid ""
+"<br/>\n"
+"        Deliver flowers to live up to your dedication for your loved ones."
+msgstr ""
+"<br/>\n"
+"        Leverera blommor för att leva upp till din hängivenhet för dina nära och kära."
+
+#. module: theme_orchid
+#: model_terms:theme.ir.ui.view,arch:theme_orchid.s_quotes_carousel
+msgid ""
+"A small shop with a very large selection of roses. Nice prices and above all"
+" a very professional and friendly welcome."
+msgstr ""
+"En liten butik med ett mycket stort urval av rosor. Bra priser och framför "
+"allt ett mycket professionellt och vänligt bemötande."
+
+#. module: theme_orchid
+#: model_terms:theme.ir.ui.view,arch:theme_orchid.s_quotes_carousel
+msgid ""
+"A wide range of high quality products and a warm welcome! I recommend this "
+"shop 200%!"
+msgstr ""
+"Ett brett utbud av högkvalitativa produkter och ett varmt välkomnande! Jag "
+"rekommenderar den här butiken 200%!"
+
+#. module: theme_orchid
+#: model_terms:theme.ir.ui.view,arch:theme_orchid.s_three_columns
+msgid ""
+"As we use local growers, our flowers last longer and smell better. Just like"
+" the event you want to celebrate with flowers!"
+msgstr ""
+"Eftersom vi använder lokala odlare håller våra blommor längre och doftar "
+"bättre. Precis som den händelse du vill fira med blommor!"
+
+#. module: theme_orchid
+#: model_terms:theme.ir.ui.view,arch:theme_orchid.s_three_columns
+msgid "Bio Flowers"
+msgstr "Bio blommor"
+
+#. module: theme_orchid
+#: model_terms:theme.ir.ui.view,arch:theme_orchid.s_three_columns
+msgid ""
+"Don't offer pesticides to your beloved one! By choosing our flowers, we "
+"guarantee you organic flowers."
+msgstr ""
+"Erbjud inte bekämpningsmedel till din älskade! Genom att välja våra blommor "
+"garanterar vi dig ekologiska blommor."
+
+#. module: theme_orchid
+#: model_terms:theme.ir.ui.view,arch:theme_orchid.s_three_columns
+msgid "Eco-Friendly Packaging"
+msgstr "Miljövänliga förpackningar"
+
+#. module: theme_orchid
+#: model_terms:theme.ir.ui.view,arch:theme_orchid.s_image_text
+msgid ""
+"From your local producer to your door, discover how we deliver our multiple "
+"sorts of flowers and bring you happiness."
+msgstr ""
+"Från din lokala producent till din dörr, upptäck hur vi levererar våra många"
+" olika sorters blommor och ger dig lycka."
+
+#. module: theme_orchid
+#: model_terms:theme.ir.ui.view,arch:theme_orchid.s_cover
+msgid "Live life in full bloom"
+msgstr "Lev livet i full blom"
+
+#. module: theme_orchid
+#: model_terms:theme.ir.ui.view,arch:theme_orchid.s_three_columns
+msgid "Local Producers"
+msgstr "Lokala producenter"
+
+#. module: theme_orchid
+#: model_terms:theme.ir.ui.view,arch:theme_orchid.s_text_image
+msgid "Our Mission"
+msgstr "Vårt uppdrag"
+
+#. module: theme_orchid
+#: model_terms:theme.ir.ui.view,arch:theme_orchid.s_image_text
+msgid "The Orchid Concept"
+msgstr "Orkidékonceptet"
+
+#. module: theme_orchid
+#: model:ir.model,name:theme_orchid.model_theme_utils
+msgid "Theme Utils"
+msgstr "Verktyg för teman"
+
+#. module: theme_orchid
+#: model_terms:theme.ir.ui.view,arch:theme_orchid.s_call_to_action
+msgid "There are always flowers <br/>for those who want to see them."
+msgstr "Det finns alltid blommor <br/>för den som vill se dem."
+
+#. module: theme_orchid
+#: model_terms:theme.ir.ui.view,arch:theme_orchid.s_text_image
+msgid ""
+"To do so, we collaborate with local producers who care about the environment"
+" and cultivate their flowers with love."
+msgstr ""
+"För att göra det samarbetar vi med lokala producenter som bryr sig om miljön"
+" och odlar sina blommor med kärlek."
+
+#. module: theme_orchid
+#: model_terms:theme.ir.ui.view,arch:theme_orchid.s_quotes_carousel
+msgid ""
+"Very nice, colorful shop with many choices in the heart of a very pretty "
+"town."
+msgstr ""
+"Mycket trevlig, färgglad butik med många valmöjligheter i hjärtat av en "
+"mycket vacker stad."
+
+#. module: theme_orchid
+#: model_terms:theme.ir.ui.view,arch:theme_orchid.s_three_columns
+msgid ""
+"We use 100% recycled materials. We believe the best gifts should also do "
+"good for the planet."
+msgstr ""
+"Vi använder 100% återvunnet material. Vi anser att de bästa gåvorna också "
+"ska göra gott för planeten."
+
+#. module: theme_orchid
+#. odoo-javascript
+#: code:addons/theme_orchid/static/src/js/tour.js:0
+#, python-format
+msgid "width"
+msgstr "bredd"

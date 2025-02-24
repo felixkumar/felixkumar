@@ -1,0 +1,692 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* spreadsheet_dashboard_sale_subscription
+# 
+# Translators:
+# Jessica Jakara, 2025
+# Wil Odoo, 2025
+# Ossi Mantylahti <ossi.mantylahti@obs-solutions.fi>, 2025
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-26 22:21+0000\n"
+"PO-Revision-Date: 2025-01-25 23:20+0000\n"
+"Last-Translator: Ossi Mantylahti <ossi.mantylahti@obs-solutions.fi>, 2025\n"
+"Language-Team: Finnish (https://app.transifex.com/odoo/teams/41243/fi/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Language: fi\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: spreadsheet_dashboard_sale_subscription
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/subscriptions_dashboard.osheet.json:0
+#, python-format
+msgid "# Orders"
+msgstr "# Tilaukset"
+
+#. module: spreadsheet_dashboard_sale_subscription
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/salesperson_dashboard.osheet.json:0
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/subscriptions_dashboard.osheet.json:0
+#, python-format
+msgid "# Subscriptions"
+msgstr "# Tilaukset"
+
+#. module: spreadsheet_dashboard_sale_subscription
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/subscriptions_dashboard.osheet.json:0
+#, python-format
+msgid "/sub."
+msgstr "/sub."
+
+#. module: spreadsheet_dashboard_sale_subscription
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/mrr_evolution_dashboard.osheet.json:0
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/subscriptions_dashboard.osheet.json:0
+#, python-format
+msgid "ARR"
+msgstr "ARR"
+
+#. module: spreadsheet_dashboard_sale_subscription
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/retention_dashboard.osheet.json:0
+#, python-format
+msgid "Average Revenue"
+msgstr "Keskimääräinen liikevaihto"
+
+#. module: spreadsheet_dashboard_sale_subscription
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/mrr_evolution_dashboard.osheet.json:0
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/salesperson_dashboard.osheet.json:0
+#, python-format
+msgid "Churn"
+msgstr "Menetetty liikevaihto"
+
+#. module: spreadsheet_dashboard_sale_subscription
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/retention_dashboard.osheet.json:0
+#, python-format
+msgid "Churns"
+msgstr "Menetetyt tulot"
+
+#. module: spreadsheet_dashboard_sale_subscription
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/subscriptions_dashboard.osheet.json:0
+#, python-format
+msgid "Countries"
+msgstr "Maat"
+
+#. module: spreadsheet_dashboard_sale_subscription
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/mrr_evolution_dashboard.osheet.json:0
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/salesperson_dashboard.osheet.json:0
+#, python-format
+msgid "Country"
+msgstr "Maa"
+
+#. module: spreadsheet_dashboard_sale_subscription
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/retention_dashboard.osheet.json:0
+#, python-format
+msgid "Cust. Life Time Value"
+msgstr "Asiakkaan elinkaaren arvo"
+
+#. module: spreadsheet_dashboard_sale_subscription
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/subscriptions_dashboard.osheet.json:0
+#, python-format
+msgid "Cust. Lifespan"
+msgstr "Asiakassuhteen elinkaari"
+
+#. module: spreadsheet_dashboard_sale_subscription
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/subscriptions_dashboard.osheet.json:0
+#, python-format
+msgid "Cust. Lifetime Value"
+msgstr "Asiakkaan elinkaaren arvo"
+
+#. module: spreadsheet_dashboard_sale_subscription
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/mrr_evolution_dashboard.osheet.json:0
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/subscriptions_dashboard.osheet.json:0
+#, python-format
+msgid "Customer"
+msgstr "Asiakas"
+
+#. module: spreadsheet_dashboard_sale_subscription
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/retention_dashboard.osheet.json:0
+#, python-format
+msgid "Customer Churn rate"
+msgstr "Asiakkaan menetysarvo"
+
+#. module: spreadsheet_dashboard_sale_subscription
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/retention_dashboard.osheet.json:0
+#, python-format
+msgid "Customer Life Time Value"
+msgstr "Asiakkaan elinkaaren arvo"
+
+#. module: spreadsheet_dashboard_sale_subscription
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/retention_dashboard.osheet.json:0
+#, python-format
+msgid "Customer churn rate"
+msgstr "Asiakkaan menetysarvo"
+
+#. module: spreadsheet_dashboard_sale_subscription
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/mrr_evolution_dashboard.osheet.json:0
+#, python-format
+msgid "Date"
+msgstr "Päivämäärä"
+
+#. module: spreadsheet_dashboard_sale_subscription
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/mrr_evolution_dashboard.osheet.json:0
+#, python-format
+msgid "Journal Items"
+msgstr "Kirjauskansion tapahtumat"
+
+#. module: spreadsheet_dashboard_sale_subscription
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/subscriptions_dashboard.osheet.json:0
+#, python-format
+msgid "Land"
+msgstr "Maa"
+
+#. module: spreadsheet_dashboard_sale_subscription
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/retention_dashboard.osheet.json:0
+#, python-format
+msgid "Last 30 days"
+msgstr "Viimeiset 30 päivää"
+
+#. module: spreadsheet_dashboard_sale_subscription
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/mrr_evolution_dashboard.osheet.json:0
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/retention_dashboard.osheet.json:0
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/salesperson_dashboard.osheet.json:0
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/subscriptions_dashboard.osheet.json:0
+#, python-format
+msgid "MRR"
+msgstr "kuukausittain toistuva laskutus"
+
+#. module: spreadsheet_dashboard_sale_subscription
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/mrr_evolution_dashboard.osheet.json:0
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/salesperson_dashboard.osheet.json:0
+#, python-format
+msgid "MRR Analysis by Monthly Recurring Revenue"
+msgstr ""
+
+#. module: spreadsheet_dashboard_sale_subscription
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/salesperson_dashboard.osheet.json:0
+#: model:spreadsheet.dashboard,name:spreadsheet_dashboard_sale_subscription.spreadsheet_dashboard_mrr_evolution
+#, python-format
+msgid "MRR Evolution"
+msgstr "Kuukausittain toistuvan liikevaihdon (MRR) evoluutio"
+
+#. module: spreadsheet_dashboard_sale_subscription
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/salesperson_dashboard.osheet.json:0
+#, python-format
+msgid "MRR Growth by Monthly Recurring Revenue"
+msgstr ""
+
+#. module: spreadsheet_dashboard_sale_subscription
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/mrr_evolution_dashboard.osheet.json:0
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/subscriptions_dashboard.osheet.json:0
+#, python-format
+msgid "MRR by Country"
+msgstr "Kuukausittain toistuva liikevaihto (MRR) maittain"
+
+#. module: spreadsheet_dashboard_sale_subscription
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/subscriptions_dashboard.osheet.json:0
+#, python-format
+msgid "MRR by Products"
+msgstr "Kuukausittain toistuva liikevaihto (MRR) per tuote"
+
+#. module: spreadsheet_dashboard_sale_subscription
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/mrr_evolution_dashboard.osheet.json:0
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/subscriptions_dashboard.osheet.json:0
+#, python-format
+msgid "MRR by Recurrence"
+msgstr "Kuukausittain toistuva liikevaihto (MRR) per toistuvuus"
+
+#. module: spreadsheet_dashboard_sale_subscription
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/subscriptions_dashboard.osheet.json:0
+#, python-format
+msgid "MRR by Sales Team"
+msgstr "Kuukausittain toistuva liikevaihto (MRR) myyntitiimeittäin"
+
+#. module: spreadsheet_dashboard_sale_subscription
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/mrr_evolution_dashboard.osheet.json:0
+#, python-format
+msgid "MRR by Team"
+msgstr "Kuukausittain toistuva liikevaihto (MRR) tiimeittäin"
+
+#. module: spreadsheet_dashboard_sale_subscription
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/mrr_evolution_dashboard.osheet.json:0
+#, python-format
+msgid "MRR over time"
+msgstr "Kuukausittain toistuvan liikevaihdon (MRR) kehitys ajan kuluessa"
+
+#. module: spreadsheet_dashboard_sale_subscription
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/subscriptions_dashboard.osheet.json:0
+#, python-format
+msgid "Medium"
+msgstr "Media"
+
+#. module: spreadsheet_dashboard_sale_subscription
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/subscriptions_dashboard.osheet.json:0
+#, python-format
+msgid "Month(s)"
+msgstr "Kuukausi (-det)"
+
+#. module: spreadsheet_dashboard_sale_subscription
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/retention_dashboard.osheet.json:0
+#, python-format
+msgid "Monthly Growth"
+msgstr "Kuukausittainen kasvu"
+
+#. module: spreadsheet_dashboard_sale_subscription
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/subscriptions_dashboard.osheet.json:0
+#, python-format
+msgid "Monthly Rec. Rev."
+msgstr "Kuukaisittain toistuva liikevaihto"
+
+#. module: spreadsheet_dashboard_sale_subscription
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/mrr_evolution_dashboard.osheet.json:0
+#, python-format
+msgid "Net New"
+msgstr "Netto uusi"
+
+#. module: spreadsheet_dashboard_sale_subscription
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/retention_dashboard.osheet.json:0
+#, python-format
+msgid "Net Retention rate"
+msgstr ""
+"Net Retention rate (kyky säilyttää tai jopa kasvattaa toistuvaistuloa)"
+
+#. module: spreadsheet_dashboard_sale_subscription
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/mrr_evolution_dashboard.osheet.json:0
+#, python-format
+msgid "New MRR"
+msgstr "Uusi MRR"
+
+#. module: spreadsheet_dashboard_sale_subscription
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/salesperson_dashboard.osheet.json:0
+#, python-format
+msgid "New Subscriptions"
+msgstr "Uudet tilaukset"
+
+#. module: spreadsheet_dashboard_sale_subscription
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/mrr_evolution_dashboard.osheet.json:0
+#, python-format
+msgid "Non Rec. Invoiced "
+msgstr "Ei-toistuvat laskutetut"
+
+#. module: spreadsheet_dashboard_sale_subscription
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/salesperson_dashboard.osheet.json:0
+#, python-format
+msgid "Non Rec. Rev."
+msgstr "Ei-toistuva liikevaihto"
+
+#. module: spreadsheet_dashboard_sale_subscription
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/salesperson_dashboard.osheet.json:0
+#, python-format
+msgid "Period"
+msgstr "Jakso"
+
+#. module: spreadsheet_dashboard_sale_subscription
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/salesperson_dashboard.osheet.json:0
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/subscriptions_dashboard.osheet.json:0
+#, python-format
+msgid "Plans"
+msgstr "Suunnitelmat"
+
+#. module: spreadsheet_dashboard_sale_subscription
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/subscriptions_dashboard.osheet.json:0
+#, python-format
+msgid "Product"
+msgstr "Tuote"
+
+#. module: spreadsheet_dashboard_sale_subscription
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/subscriptions_dashboard.osheet.json:0
+#, python-format
+msgid "Quotations by Monthly Recurring"
+msgstr ""
+
+#. module: spreadsheet_dashboard_sale_subscription
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/subscriptions_dashboard.osheet.json:0
+#, python-format
+msgid "Quotes"
+msgstr "Sanottua"
+
+#. module: spreadsheet_dashboard_sale_subscription
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/mrr_evolution_dashboard.osheet.json:0
+#, python-format
+msgid "Rec. Invoiced"
+msgstr ""
+
+#. module: spreadsheet_dashboard_sale_subscription
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/mrr_evolution_dashboard.osheet.json:0
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/subscriptions_dashboard.osheet.json:0
+#, python-format
+msgid "Recurrence"
+msgstr "Toistuvuus"
+
+#. module: spreadsheet_dashboard_sale_subscription
+#: model:spreadsheet.dashboard,name:spreadsheet_dashboard_sale_subscription.spreadsheet_dashboard_retention
+msgid "Retention"
+msgstr "Säilyttäminen"
+
+#. module: spreadsheet_dashboard_sale_subscription
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/retention_dashboard.osheet.json:0
+#, python-format
+msgid "Revenue Churn"
+msgstr "Irtisanottu liikevaihto"
+
+#. module: spreadsheet_dashboard_sale_subscription
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/retention_dashboard.osheet.json:0
+#, python-format
+msgid "Revenue churn rate"
+msgstr "Liikevaihdon menetysarvo"
+
+#. module: spreadsheet_dashboard_sale_subscription
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/salesperson_dashboard.osheet.json:0
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/subscriptions_dashboard.osheet.json:0
+#, python-format
+msgid "Sale Order Log Analysis"
+msgstr "Myyntitilausten lokianalyysi"
+
+#. module: spreadsheet_dashboard_sale_subscription
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/mrr_evolution_dashboard.osheet.json:0
+#, python-format
+msgid "Sale Order Log Analysis by Customer Country"
+msgstr ""
+
+#. module: spreadsheet_dashboard_sale_subscription
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/retention_dashboard.osheet.json:0
+#, python-format
+msgid "Sale Order Log Analysis by Event Date (Day)"
+msgstr ""
+
+#. module: spreadsheet_dashboard_sale_subscription
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/subscriptions_dashboard.osheet.json:0
+#, python-format
+msgid "Sale Order Log Analysis by Event Date (Year)"
+msgstr ""
+
+#. module: spreadsheet_dashboard_sale_subscription
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/mrr_evolution_dashboard.osheet.json:0
+#, python-format
+msgid "Sale Order Log Analysis by Recurrence"
+msgstr ""
+
+#. module: spreadsheet_dashboard_sale_subscription
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/mrr_evolution_dashboard.osheet.json:0
+#, python-format
+msgid "Sale Order Log Analysis by Sales Team"
+msgstr ""
+
+#. module: spreadsheet_dashboard_sale_subscription
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/mrr_evolution_dashboard.osheet.json:0
+#, python-format
+msgid "Sale Order Log Analysis by Salesperson"
+msgstr ""
+
+#. module: spreadsheet_dashboard_sale_subscription
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/mrr_evolution_dashboard.osheet.json:0
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/retention_dashboard.osheet.json:0
+#, python-format
+msgid "Sale Order Log Analysis by Type of event"
+msgstr ""
+
+#. module: spreadsheet_dashboard_sale_subscription
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/salesperson_dashboard.osheet.json:0
+#, python-format
+msgid "Sales Analysis"
+msgstr "Myyntianalyysi"
+
+#. module: spreadsheet_dashboard_sale_subscription
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/mrr_evolution_dashboard.osheet.json:0
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/salesperson_dashboard.osheet.json:0
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/subscriptions_dashboard.osheet.json:0
+#, python-format
+msgid "Sales Team"
+msgstr "Myyntitiimi"
+
+#. module: spreadsheet_dashboard_sale_subscription
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/mrr_evolution_dashboard.osheet.json:0
+#, python-format
+msgid "Salesperon"
+msgstr "Myyntimies"
+
+#. module: spreadsheet_dashboard_sale_subscription
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/mrr_evolution_dashboard.osheet.json:0
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/salesperson_dashboard.osheet.json:0
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/subscriptions_dashboard.osheet.json:0
+#: model:spreadsheet.dashboard,name:spreadsheet_dashboard_sale_subscription.spreadsheet_dashboard_salesperson
+#, python-format
+msgid "Salesperson"
+msgstr "Myyjä"
+
+#. module: spreadsheet_dashboard_sale_subscription
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/subscriptions_dashboard.osheet.json:0
+#, python-format
+msgid "Source"
+msgstr "Lähde"
+
+#. module: spreadsheet_dashboard_sale_subscription
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/salesperson_dashboard.osheet.json:0
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/subscriptions_dashboard.osheet.json:0
+#, python-format
+msgid "Subscription Analysis"
+msgstr "Tilausanalyysi"
+
+#. module: spreadsheet_dashboard_sale_subscription
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/subscriptions_dashboard.osheet.json:0
+#, python-format
+msgid "Subscription Analysis by Country"
+msgstr ""
+
+#. module: spreadsheet_dashboard_sale_subscription
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/subscriptions_dashboard.osheet.json:0
+#, python-format
+msgid "Subscription Analysis by Product Variant"
+msgstr ""
+
+#. module: spreadsheet_dashboard_sale_subscription
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/subscriptions_dashboard.osheet.json:0
+#, python-format
+msgid "Subscription Analysis by Recurrence"
+msgstr ""
+
+#. module: spreadsheet_dashboard_sale_subscription
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/subscriptions_dashboard.osheet.json:0
+#, python-format
+msgid "Subscription Analysis by Sales Team"
+msgstr ""
+
+#. module: spreadsheet_dashboard_sale_subscription
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/subscriptions_dashboard.osheet.json:0
+#, python-format
+msgid "Subscription Analysis by Salesperson"
+msgstr ""
+
+#. module: spreadsheet_dashboard_sale_subscription
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/salesperson_dashboard.osheet.json:0
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/subscriptions_dashboard.osheet.json:0
+#, python-format
+msgid "Subscription Analysis by Subscription Template"
+msgstr ""
+
+#. module: spreadsheet_dashboard_sale_subscription
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/salesperson_dashboard.osheet.json:0
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/subscriptions_dashboard.osheet.json:0
+#: model:spreadsheet.dashboard,name:spreadsheet_dashboard_sale_subscription.spreadsheet_dashboard_subscriptions
+#: model:spreadsheet.dashboard.group,name:spreadsheet_dashboard_sale_subscription.spreadsheet_dashboard_group_subscriptions
+#, python-format
+msgid "Subscriptions"
+msgstr "Tilaukset"
+
+#. module: spreadsheet_dashboard_sale_subscription
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/subscriptions_dashboard.osheet.json:0
+#, python-format
+msgid "Subscriptions by Monthly Recurring"
+msgstr ""
+
+#. module: spreadsheet_dashboard_sale_subscription
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/subscriptions_dashboard.osheet.json:0
+#, python-format
+msgid "Top Countries"
+msgstr "Parhaat maat"
+
+#. module: spreadsheet_dashboard_sale_subscription
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/salesperson_dashboard.osheet.json:0
+#, python-format
+msgid "Top Expansion"
+msgstr "Suurin laajentuminen"
+
+#. module: spreadsheet_dashboard_sale_subscription
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/salesperson_dashboard.osheet.json:0
+#, python-format
+msgid "Top New"
+msgstr "Parhaimmat uudet"
+
+#. module: spreadsheet_dashboard_sale_subscription
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/subscriptions_dashboard.osheet.json:0
+#, python-format
+msgid "Top Plans"
+msgstr "Merkittävimmät suunnitelmat"
+
+#. module: spreadsheet_dashboard_sale_subscription
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/subscriptions_dashboard.osheet.json:0
+#, python-format
+msgid "Top Products"
+msgstr "Parhaat tuotteet"
+
+#. module: spreadsheet_dashboard_sale_subscription
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/subscriptions_dashboard.osheet.json:0
+#, python-format
+msgid "Top Quotations"
+msgstr "Parhaat tarjoukset"
+
+#. module: spreadsheet_dashboard_sale_subscription
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/salesperson_dashboard.osheet.json:0
+#, python-format
+msgid "Top Recurrence"
+msgstr "Suurin toistuvuus"
+
+#. module: spreadsheet_dashboard_sale_subscription
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/subscriptions_dashboard.osheet.json:0
+#, python-format
+msgid "Top Recurrences"
+msgstr "Merkittävimmät toistuvuudet"
+
+#. module: spreadsheet_dashboard_sale_subscription
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/subscriptions_dashboard.osheet.json:0
+#, python-format
+msgid "Top Sales Team"
+msgstr "Paras myyntitiimit"
+
+#. module: spreadsheet_dashboard_sale_subscription
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/subscriptions_dashboard.osheet.json:0
+#, python-format
+msgid "Top Salesman"
+msgstr "Paras myyjä"
+
+#. module: spreadsheet_dashboard_sale_subscription
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/mrr_evolution_dashboard.osheet.json:0
+#, python-format
+msgid "Top Salesperson"
+msgstr "Paras myyjä"
+
+#. module: spreadsheet_dashboard_sale_subscription
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/subscriptions_dashboard.osheet.json:0
+#, python-format
+msgid "Top Subscriptions"
+msgstr "Merkittävimmät tilaukset"
+
+#. module: spreadsheet_dashboard_sale_subscription
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/mrr_evolution_dashboard.osheet.json:0
+#, python-format
+msgid "Top upgrades"
+msgstr "Merkittävimmät päivitykset"
+
+#. module: spreadsheet_dashboard_sale_subscription
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/mrr_evolution_dashboard.osheet.json:0
+#, python-format
+msgid "Up/Downgrade"
+msgstr "Lasvu/Alennus"
+
+#. module: spreadsheet_dashboard_sale_subscription
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/salesperson_dashboard.osheet.json:0
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/subscriptions_dashboard.osheet.json:0
+#, python-format
+msgid "Value"
+msgstr "Arvo"
+
+#. module: spreadsheet_dashboard_sale_subscription
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/salesperson_dashboard.osheet.json:0
+#, python-format
+msgid "Worst Churn"
+msgstr "Suurin menetys"
+
+#. module: spreadsheet_dashboard_sale_subscription
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/salesperson_dashboard.osheet.json:0
+#, python-format
+msgid "Worst Contraction"
+msgstr "Suurin supistuminen"
+
+#. module: spreadsheet_dashboard_sale_subscription
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/mrr_evolution_dashboard.osheet.json:0
+#, python-format
+msgid "Worst Downgrades"
+msgstr "Suurin alennus"
+
+#. module: spreadsheet_dashboard_sale_subscription
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/mrr_evolution_dashboard.osheet.json:0
+#, python-format
+msgid "of total invoiced"
+msgstr "laskutussummasta"
+
+#. module: spreadsheet_dashboard_sale_subscription
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_sale_subscription/data/files/salesperson_dashboard.osheet.json:0
+#, python-format
+msgid "over the period"
+msgstr "ajanjakson aikana"

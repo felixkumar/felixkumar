@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="stock_picking_form_inherit_l10n_mx_edi_stock_30" model="ir.ui.view">
+        <field name="name">stock.picking.form.inherit.l10n_mx_edi_stock_30</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="before">
+                <field name="l10n_mx_edi_is_cfdi_needed" invisible="1"/>
+            </xpath>
+            <xpath expr="//header//button[@name='l10n_mx_edi_action_send_delivery_guide']" position="attributes">
+                <attribute name="attrs">{'invisible': ['|', '|', ('l10n_mx_edi_is_cfdi_needed', '=', False), ('state', '!=', 'done'), ('l10n_mx_edi_status', 'not in', [False, 'cancelled'])]}</attribute>
+            </xpath>
+            <xpath expr="//header//button[@name='l10n_mx_edi_action_cancel_delivery_guide']" position="after">
+                <button
+                    name="l10n_mx_edi_action_print_cartaporte"
+                    type="object"
+                    string="Print Carta Porte"
+                    attrs="{'invisible': [('l10n_mx_edi_status', '!=', 'sent')]}"/>
+            </xpath>
+            <xpath expr="//notebook/page[@name='mx_edi']" position="attributes">
+                <attribute name="attrs">{'invisible': ['|', ('l10n_mx_edi_is_cfdi_needed', '=', False), ('l10n_mx_edi_status', 'not in', [False, 'cancelled'])]}</attribute>
+            </xpath>
+            <field name="l10n_mx_edi_transport_type" position="attributes">
+                <attribute name="attrs">{'invisible': [('l10n_mx_edi_is_cfdi_needed', '=', False)], 'readonly': [('l10n_mx_edi_status', 'not in', [False, 'to_send'])]}</attribute>
+            </field>
+            <field name="l10n_mx_edi_vehicle_id" position="after">
+                <field name="l10n_mx_edi_gross_vehicle_weight" attrs="{'invisible': [('l10n_mx_edi_transport_type', '!=', '01')]}"/>
+            </field>
+        </field>
+    </record>
+
+</odoo>

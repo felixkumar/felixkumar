@@ -1,0 +1,911 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* account_online_synchronization
+# 
+# Translators:
+# Martin Trigaux, 2022
+# Tony Ng, 2024
+# Wil Odoo, 2024
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-02-06 13:24+0000\n"
+"PO-Revision-Date: 2022-09-22 05:45+0000\n"
+"Last-Translator: Wil Odoo, 2024\n"
+"Language-Team: Chinese (Taiwan) (https://app.transifex.com/odoo/teams/41243/zh_TW/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Language: zh_TW\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#. module: account_online_synchronization
+#. odoo-python
+#: code:addons/account_online_synchronization/models/account_online.py:0
+#, python-format
+msgid " If you've already opened this issue don't report it again."
+msgstr "如果您已經打開此問題, 請不要再次報告。"
+
+#. module: account_online_synchronization
+#: code:addons/account_online_synchronization/models/account_online.py:0
+#, python-format
+msgid ""
+"If you've already opened a ticket for this issue, don't report it again: a "
+"support agent will contact you shortly."
+msgstr "若已就此問題提交支援請求，請不用再次報告。支援員工將很快聯絡你。"
+
+#. module: account_online_synchronization
+#: code:addons/account_online_synchronization/models/account_online.py:0
+#, python-format
+msgid "Check the documentation."
+msgstr "請參閱使用說明。"
+
+#. module: account_online_synchronization
+#: model_terms:ir.ui.view,arch_db:account_online_synchronization.view_account_link_journal_form_wizard
+msgid "<strong>Fantastic! </strong> We've found"
+msgstr "<strong>太好了！</strong>我們找到了"
+
+#. module: account_online_synchronization
+#: model:ir.model.fields,field_description:account_online_synchronization.field_account_online_link__access_token
+msgid "Access Token"
+msgstr "存取代碼"
+
+#. module: account_online_synchronization
+#: model:ir.model.fields,field_description:account_online_synchronization.field_account_online_account__account_data
+msgid "Account Data"
+msgstr "賬戶數據"
+
+#. module: account_online_synchronization
+#: model:ir.model.fields,field_description:account_online_synchronization.field_account_online_account__name
+msgid "Account Name"
+msgstr "帳戶名稱"
+
+#. module: account_online_synchronization
+#: model:ir.model.fields,help:account_online_synchronization.field_account_link_journal_line__name
+#: model:ir.model.fields,help:account_online_synchronization.field_account_online_account__name
+msgid "Account Name as provided by third party provider"
+msgstr "第三方服務商提供的賬戶名稱"
+
+#. module: account_online_synchronization
+#: model:ir.model.fields,field_description:account_online_synchronization.field_account_link_journal_line__account_number
+#: model:ir.model.fields,field_description:account_online_synchronization.field_account_online_account__account_number
+msgid "Account Number"
+msgstr "帳戶號碼"
+
+#. module: account_online_synchronization
+#: model:ir.model.fields,field_description:account_online_synchronization.field_account_journal__account_online_account_id
+#: model:ir.model.fields,field_description:account_online_synchronization.field_account_online_link__account_online_account_ids
+msgid "Account Online Account"
+msgstr "賬戶網上賬戶"
+
+#. module: account_online_synchronization
+#: model:ir.model.fields,field_description:account_online_synchronization.field_account_bank_statement_line__online_link_id
+#: model:ir.model.fields,field_description:account_online_synchronization.field_account_journal__account_online_link_id
+#: model:ir.model.fields,field_description:account_online_synchronization.field_account_online_account__account_online_link_id
+msgid "Account Online Link"
+msgstr "賬戶網上連結"
+
+#. module: account_online_synchronization
+#: model:ir.model.fields,field_description:account_online_synchronization.field_account_link_journal_line__account_online_wizard_id
+msgid "Account Online Wizard"
+msgstr "賬戶網上同步精靈"
+
+#. module: account_online_synchronization
+#: model:ir.model.fields,field_description:account_online_synchronization.field_account_link_journal_line__name
+msgid "Account name"
+msgstr "帳戶名稱"
+
+#. module: account_online_synchronization
+#: model:ir.actions.server,name:account_online_synchronization.online_sync_cron_ir_actions_server
+#: model:ir.cron,cron_name:account_online_synchronization.online_sync_cron
+msgid "Account: Journal online sync"
+msgstr "帳號：日誌線上同步"
+
+#. module: account_online_synchronization
+#: model:ir.model.fields,field_description:account_online_synchronization.field_account_online_link__message_needaction
+msgid "Action Needed"
+msgstr "需採取行動"
+
+#. module: account_online_synchronization
+#: model:ir.model.fields,field_description:account_online_synchronization.field_account_online_link__activity_ids
+msgid "Activities"
+msgstr "活動"
+
+#. module: account_online_synchronization
+#: model:ir.model.fields,field_description:account_online_synchronization.field_account_online_link__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr "活動異常圖示"
+
+#. module: account_online_synchronization
+#: model:ir.model.fields,field_description:account_online_synchronization.field_account_online_link__activity_state
+msgid "Activity State"
+msgstr "活動狀態"
+
+#. module: account_online_synchronization
+#: model:ir.model.fields,field_description:account_online_synchronization.field_account_online_link__activity_type_icon
+msgid "Activity Type Icon"
+msgstr "活動類型圖示"
+
+#. module: account_online_synchronization
+#. odoo-javascript
+#: code:addons/account_online_synchronization/static/src/xml/online_sync_template.xml:0
+#, python-format
+msgid "Add A Bank Account"
+msgstr "加入銀行賬戶"
+
+#. module: account_online_synchronization
+#: model:ir.model.fields,field_description:account_online_synchronization.field_account_online_link__message_attachment_count
+msgid "Attachment Count"
+msgstr "附件數目"
+
+#. module: account_online_synchronization
+#. odoo-python
+#: code:addons/account_online_synchronization/models/account_journal.py:0
+#, python-format
+msgid "Automated Bank Synchronization"
+msgstr "自動同步銀行"
+
+#. module: account_online_synchronization
+#: model:ir.model.fields,field_description:account_online_synchronization.field_account_online_link__auto_sync
+msgid "Automatic synchronization"
+msgstr "自動同步"
+
+#. module: account_online_synchronization
+#: model:ir.model.fields,field_description:account_online_synchronization.field_account_link_journal_line__balance
+#: model:ir.model.fields,field_description:account_online_synchronization.field_account_online_account__balance
+msgid "Balance"
+msgstr "餘額"
+
+#. module: account_online_synchronization
+#: model:ir.model.fields,help:account_online_synchronization.field_account_link_journal_line__balance
+#: model:ir.model.fields,help:account_online_synchronization.field_account_online_account__balance
+msgid "Balance of the account sent by the third party provider"
+msgstr "第三方服務商傳來的賬戶結餘"
+
+#. module: account_online_synchronization
+#: model:ir.model,name:account_online_synchronization.model_account_online_link
+msgid "Bank Connection"
+msgstr "銀行連線"
+
+#. module: account_online_synchronization
+#: model:ir.model,name:account_online_synchronization.model_account_bank_statement_line
+msgid "Bank Statement Line"
+msgstr "銀行對帳單 明細"
+
+#. module: account_online_synchronization
+#: model:mail.activity.type,name:account_online_synchronization.bank_sync_activity_update_consent
+msgid "Bank Synchronization: Update consent"
+msgstr "銀行同步：更新同意"
+
+#. module: account_online_synchronization
+#. odoo-python
+#: code:addons/account_online_synchronization/models/account_online.py:0
+#, python-format
+msgid "Bank Synchronization: Update your consent"
+msgstr "銀行同步：更新你的同意"
+
+#. module: account_online_synchronization
+#: model:ir.model,name:account_online_synchronization.model_bank_rec_widget
+msgid "Bank reconciliation widget for a single statement line"
+msgstr "單一結單資料行的銀行對賬小工具"
+
+#. module: account_online_synchronization
+#: model_terms:ir.ui.view,arch_db:account_online_synchronization.view_account_link_journal_form_wizard
+msgid "Cancel"
+msgstr "取消"
+
+#. module: account_online_synchronization
+#: model:ir.model.fields,field_description:account_online_synchronization.field_account_online_link__client_id
+msgid "Client"
+msgstr "客戶"
+
+#. module: account_online_synchronization
+#: model_terms:ir.ui.view,arch_db:account_online_synchronization.account_online_link_view_form
+msgid "Client id"
+msgstr "客戶識別碼"
+
+#. module: account_online_synchronization
+#: model:ir.model,name:account_online_synchronization.model_res_company
+msgid "Companies"
+msgstr "公司"
+
+#. module: account_online_synchronization
+#: model:ir.model.fields,field_description:account_online_synchronization.field_account_online_account__company_id
+#: model:ir.model.fields,field_description:account_online_synchronization.field_account_online_link__company_id
+msgid "Company"
+msgstr "公司"
+
+#. module: account_online_synchronization
+#: model_terms:ir.ui.view,arch_db:account_online_synchronization.account_online_link_view_form
+msgid "Connect"
+msgstr "連接"
+
+#. module: account_online_synchronization
+#: model:ir.model.fields.selection,name:account_online_synchronization.selection__account_online_link__state__connected
+msgid "Connected"
+msgstr "已連結"
+
+#. module: account_online_synchronization
+#: model_terms:ir.ui.view,arch_db:account_online_synchronization.account_journal_dashboard_inherit_online_sync
+msgid "Consent expired"
+msgstr "同意已過期"
+
+#. module: account_online_synchronization
+#: model_terms:ir.ui.view,arch_db:account_online_synchronization.account_journal_dashboard_inherit_online_sync
+msgid "Consent expires in"
+msgstr "同意即將過期："
+
+#. module: account_online_synchronization
+#: model_terms:ir.ui.view,arch_db:account_online_synchronization.account_journal_dashboard_inherit_online_sync
+msgid "Consent expires today"
+msgstr "同意今天到期"
+
+#. module: account_online_synchronization
+#: model:ir.model,name:account_online_synchronization.model_res_partner
+msgid "Contact"
+msgstr "聯絡人"
+
+#. module: account_online_synchronization
+#. odoo-python
+#: code:addons/account_online_synchronization/models/account_online.py:0
+#, python-format
+msgid "Create a Bank Account"
+msgstr "建立銀行帳戶"
+
+#. module: account_online_synchronization
+#. odoo-python
+#: code:addons/account_online_synchronization/models/account_journal.py:0
+#, python-format
+msgid "Create bi-monthly statements"
+msgstr "建立雙月報表"
+
+#. module: account_online_synchronization
+#. odoo-python
+#: code:addons/account_online_synchronization/models/account_journal.py:0
+#, python-format
+msgid "Create daily statements"
+msgstr "建立日報表"
+
+#. module: account_online_synchronization
+#. odoo-python
+#: code:addons/account_online_synchronization/models/account_journal.py:0
+#, python-format
+msgid "Create monthly statements"
+msgstr "建立月報表"
+
+#. module: account_online_synchronization
+#. odoo-python
+#: code:addons/account_online_synchronization/models/account_journal.py:0
+#, python-format
+msgid "Create one statement per synchronization"
+msgstr "每次同步都建立一個報表"
+
+#. module: account_online_synchronization
+#. odoo-python
+#: code:addons/account_online_synchronization/models/account_journal.py:0
+#, python-format
+msgid "Create weekly statements"
+msgstr "建立週報表"
+
+#. module: account_online_synchronization
+#: model:ir.model.fields,field_description:account_online_synchronization.field_account_link_journal__create_uid
+#: model:ir.model.fields,field_description:account_online_synchronization.field_account_link_journal_line__create_uid
+#: model:ir.model.fields,field_description:account_online_synchronization.field_account_online_account__create_uid
+#: model:ir.model.fields,field_description:account_online_synchronization.field_account_online_link__create_uid
+msgid "Created by"
+msgstr "創立者"
+
+#. module: account_online_synchronization
+#: model:ir.model.fields,field_description:account_online_synchronization.field_account_link_journal__create_date
+#: model:ir.model.fields,field_description:account_online_synchronization.field_account_link_journal_line__create_date
+#: model:ir.model.fields,field_description:account_online_synchronization.field_account_online_account__create_date
+#: model:ir.model.fields,field_description:account_online_synchronization.field_account_online_link__create_date
+msgid "Created on"
+msgstr "建立於"
+
+#. module: account_online_synchronization
+#: model:ir.model.fields,field_description:account_online_synchronization.field_account_link_journal_line__currency_id
+#: model:ir.model.fields,field_description:account_online_synchronization.field_account_online_account__currency_id
+msgid "Currency"
+msgstr "幣別"
+
+#. module: account_online_synchronization
+#: model:ir.model.fields,help:account_online_synchronization.field_account_journal__expiring_synchronization_date
+#: model:ir.model.fields,help:account_online_synchronization.field_account_online_link__expiring_synchronization_date
+msgid "Date when the consent for this connection expires"
+msgstr "此連線同意的到期日"
+
+#. module: account_online_synchronization
+#: model:ir.model.fields,field_description:account_online_synchronization.field_account_link_journal__display_name
+#: model:ir.model.fields,field_description:account_online_synchronization.field_account_link_journal_line__display_name
+#: model:ir.model.fields,field_description:account_online_synchronization.field_account_online_account__display_name
+#: model:ir.model.fields,field_description:account_online_synchronization.field_account_online_link__display_name
+msgid "Display Name"
+msgstr "顯示名稱"
+
+#. module: account_online_synchronization
+#: model:ir.model.fields.selection,name:account_online_synchronization.selection__account_online_link__state__error
+msgid "Error"
+msgstr "錯誤"
+
+#. module: account_online_synchronization
+#: model:ir.model.fields,field_description:account_online_synchronization.field_account_journal__expiring_synchronization_date
+#: model:ir.model.fields,field_description:account_online_synchronization.field_account_online_link__expiring_synchronization_date
+msgid "Expiring Synchronization Date"
+msgstr "同步到期日"
+
+#. module: account_online_synchronization
+#: model:ir.model.fields,field_description:account_online_synchronization.field_account_journal__expiring_synchronization_due_day
+msgid "Expiring Synchronization Due Day"
+msgstr "同步到期日"
+
+#. module: account_online_synchronization
+#: model:ir.model.fields,help:account_online_synchronization.field_account_online_account__account_data
+msgid "Extra information needed by third party provider"
+msgstr "第三方服務商需要的額外資訊"
+
+#. module: account_online_synchronization
+#: model_terms:ir.ui.view,arch_db:account_online_synchronization.account_online_link_view_form
+msgid "Fetch Accounts"
+msgstr "讀取賬戶"
+
+#. module: account_online_synchronization
+#: model_terms:ir.ui.view,arch_db:account_online_synchronization.account_online_link_view_form
+msgid "Fetch Transactions"
+msgstr "讀取交易"
+
+#. module: account_online_synchronization
+#. odoo-python
+#: code:addons/account_online_synchronization/models/account_online.py:0
+#, python-format
+msgid "Fetched Transactions"
+msgstr "已讀取交易"
+
+#. module: account_online_synchronization
+#: model:ir.model.fields,field_description:account_online_synchronization.field_account_online_link__message_follower_ids
+msgid "Followers"
+msgstr "關注人"
+
+#. module: account_online_synchronization
+#: model:ir.model.fields,field_description:account_online_synchronization.field_account_online_link__message_partner_ids
+msgid "Followers (Partners)"
+msgstr "關注人（業務夥伴）"
+
+#. module: account_online_synchronization
+#: model:ir.model.fields,help:account_online_synchronization.field_account_online_link__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr "Font awesome 圖示，例如，fa-task"
+
+#. module: account_online_synchronization
+#: model:ir.model.fields,field_description:account_online_synchronization.field_account_link_journal__sync_date
+msgid "Get transactions since"
+msgstr "獲取交易起始日："
+
+#. module: account_online_synchronization
+#: model:ir.model.fields,field_description:account_online_synchronization.field_account_online_link__has_message
+msgid "Has Message"
+msgstr "有訊息"
+
+#. module: account_online_synchronization
+#. odoo-python
+#: code:addons/account_online_synchronization/models/account_online.py:0
+#, python-format
+msgid "Here"
+msgstr "此處"
+
+#. module: account_online_synchronization
+#: model:ir.model.fields,field_description:account_online_synchronization.field_account_link_journal__id
+#: model:ir.model.fields,field_description:account_online_synchronization.field_account_link_journal_line__id
+#: model:ir.model.fields,field_description:account_online_synchronization.field_account_online_account__id
+#: model:ir.model.fields,field_description:account_online_synchronization.field_account_online_link__id
+msgid "ID"
+msgstr "識別碼"
+
+#. module: account_online_synchronization
+#: model:ir.model.fields,field_description:account_online_synchronization.field_account_online_link__activity_exception_icon
+msgid "Icon"
+msgstr "圖示"
+
+#. module: account_online_synchronization
+#: model:ir.model.fields,help:account_online_synchronization.field_account_online_link__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr "用於指示異常活動的圖示。"
+
+#. module: account_online_synchronization
+#: model:ir.model.fields,help:account_online_synchronization.field_account_online_account__online_identifier
+msgid "Id used to identify account by third party provider"
+msgstr "第三方服務商用作識別賬戶的識別碼"
+
+#. module: account_online_synchronization
+#: model:ir.model.fields,help:account_online_synchronization.field_account_online_link__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr "勾選代表有新訊息需要您留意。"
+
+#. module: account_online_synchronization
+#: model:ir.model.fields,help:account_online_synchronization.field_account_online_link__message_has_error
+#: model:ir.model.fields,help:account_online_synchronization.field_account_online_link__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr "勾選代表有訊息發生傳送錯誤。"
+
+#. module: account_online_synchronization
+#: model:ir.model.fields,help:account_online_synchronization.field_account_online_account__inverse_balance_sign
+msgid "If checked, the balance sign will be inverted"
+msgstr "若剔選，結餘正負符號會反轉"
+
+#. module: account_online_synchronization
+#: model:ir.model.fields,help:account_online_synchronization.field_account_online_account__inverse_transaction_sign
+msgid "If checked, the transaction sign will be inverted"
+msgstr "若剔選，交易正負符號會反轉"
+
+#. module: account_online_synchronization
+#: model:ir.model.fields,help:account_online_synchronization.field_account_online_link__auto_sync
+msgid ""
+"If possible, we will try to automatically fetch new transactions for this "
+"record"
+msgstr "可以時，我們會嘗試自動讀取此記錄的新交易"
+
+#. module: account_online_synchronization
+#: model:ir.model.fields,help:account_online_synchronization.field_account_online_link__provider_data
+msgid "Information needed to interact with third party provider"
+msgstr "與第三方提供者互動所需的資訊"
+
+#. module: account_online_synchronization
+#: model:ir.model.fields,help:account_online_synchronization.field_account_online_link__name
+msgid "Institution Name"
+msgstr "機構名稱"
+
+#. module: account_online_synchronization
+#. odoo-python
+#: code:addons/account_online_synchronization/models/account_online.py:0
+#, python-format
+msgid "Internal Error"
+msgstr "內部錯誤"
+
+#. module: account_online_synchronization
+#. odoo-python
+#: code:addons/account_online_synchronization/models/account_online.py:0
+#, python-format
+msgid "Invalid URL"
+msgstr "網址無效"
+
+#. module: account_online_synchronization
+#. odoo-python
+#: code:addons/account_online_synchronization/models/account_online.py:0
+#, python-format
+msgid "Invalid value for proxy_mode config parameter."
+msgstr "「proxy_mode」配置參數的值無效。"
+
+#. module: account_online_synchronization
+#: model:ir.model.fields,field_description:account_online_synchronization.field_account_online_account__inverse_balance_sign
+msgid "Inverse Balance Sign"
+msgstr "反轉結餘正負號"
+
+#. module: account_online_synchronization
+#: model:ir.model.fields,field_description:account_online_synchronization.field_account_online_account__inverse_transaction_sign
+msgid "Inverse Transaction Sign"
+msgstr "反轉交易正負號"
+
+#. module: account_online_synchronization
+#: model:ir.model.fields,field_description:account_online_synchronization.field_account_online_link__message_is_follower
+msgid "Is Follower"
+msgstr "是關注人"
+
+#. module: account_online_synchronization
+#: model:ir.model,name:account_online_synchronization.model_account_journal
+#: model:ir.model.fields,field_description:account_online_synchronization.field_account_link_journal_line__journal_id
+#: model:ir.model.fields,field_description:account_online_synchronization.field_account_online_account__journal_ids
+msgid "Journal"
+msgstr "日記賬"
+
+#. module: account_online_synchronization
+#. odoo-python
+#: code:addons/account_online_synchronization/wizard/account_link_journal_wizard.py:0
+#, python-format
+msgid "Journals linked to a bank account must be of the bank type."
+msgstr "連結至銀行賬戶的日記賬，須為「銀行」類型。"
+
+#. module: account_online_synchronization
+#: model:ir.model.fields,field_description:account_online_synchronization.field_account_link_journal____last_update
+#: model:ir.model.fields,field_description:account_online_synchronization.field_account_link_journal_line____last_update
+#: model:ir.model.fields,field_description:account_online_synchronization.field_account_online_account____last_update
+#: model:ir.model.fields,field_description:account_online_synchronization.field_account_online_link____last_update
+msgid "Last Modified on"
+msgstr "最後修改於"
+
+#. module: account_online_synchronization
+#: model:ir.model.fields,field_description:account_online_synchronization.field_account_online_link__last_refresh
+msgid "Last Refresh"
+msgstr "上次重新載入"
+
+#. module: account_online_synchronization
+#: model:ir.model.fields,field_description:account_online_synchronization.field_account_link_journal__write_uid
+#: model:ir.model.fields,field_description:account_online_synchronization.field_account_link_journal_line__write_uid
+#: model:ir.model.fields,field_description:account_online_synchronization.field_account_online_account__write_uid
+#: model:ir.model.fields,field_description:account_online_synchronization.field_account_online_link__write_uid
+msgid "Last Updated by"
+msgstr "最後更新者"
+
+#. module: account_online_synchronization
+#: model:ir.model.fields,field_description:account_online_synchronization.field_account_link_journal__write_date
+#: model:ir.model.fields,field_description:account_online_synchronization.field_account_link_journal_line__write_date
+#: model:ir.model.fields,field_description:account_online_synchronization.field_account_online_account__write_date
+#: model:ir.model.fields,field_description:account_online_synchronization.field_account_online_link__write_date
+msgid "Last Updated on"
+msgstr "最後更新於"
+
+#. module: account_online_synchronization
+#: model_terms:ir.ui.view,arch_db:account_online_synchronization.account_online_link_view_form
+msgid "Last refresh"
+msgstr "上次重新載入"
+
+#. module: account_online_synchronization
+#: model:ir.model.fields,field_description:account_online_synchronization.field_account_online_account__last_sync
+msgid "Last synchronization"
+msgstr "最近同步"
+
+#. module: account_online_synchronization
+#. odoo-python
+#: code:addons/account_online_synchronization/models/account_online.py:0
+#, python-format
+msgid "Link Account to Journal"
+msgstr "連結賬戶至日記賬"
+
+#. module: account_online_synchronization
+#: model_terms:ir.ui.view,arch_db:account_online_synchronization.view_account_link_journal_form_wizard
+msgid "Link account to journal"
+msgstr "連結賬戶至日記賬"
+
+#. module: account_online_synchronization
+#: model:ir.model,name:account_online_synchronization.model_account_link_journal
+msgid "Link list of bank accounts to journals"
+msgstr "銀行賬戶至日記賬連結清單"
+
+#. module: account_online_synchronization
+#: model:ir.model,name:account_online_synchronization.model_account_link_journal_line
+msgid "Link one bank account to a journal"
+msgstr "連結一個銀行賬戶至一個日記賬"
+
+#. module: account_online_synchronization
+#: model:ir.model.fields,field_description:account_online_synchronization.field_account_online_link__message_main_attachment_id
+msgid "Main Attachment"
+msgstr "主要附件"
+
+#. module: account_online_synchronization
+#. odoo-python
+#: code:addons/account_online_synchronization/models/account_online.py:0
+#, python-format
+msgid "Message"
+msgstr "消息"
+
+#. module: account_online_synchronization
+#: model:ir.model.fields,field_description:account_online_synchronization.field_account_online_link__message_has_error
+msgid "Message Delivery error"
+msgstr "訊息遞送錯誤"
+
+#. module: account_online_synchronization
+#: model:ir.model.fields,field_description:account_online_synchronization.field_account_online_link__message_ids
+msgid "Messages"
+msgstr "訊息"
+
+#. module: account_online_synchronization
+#: model:ir.model.fields,field_description:account_online_synchronization.field_account_online_link__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr "我的活動截止時間"
+
+#. module: account_online_synchronization
+#: model:ir.model.fields,field_description:account_online_synchronization.field_account_online_link__name
+msgid "Name"
+msgstr "名稱"
+
+#. module: account_online_synchronization
+#: model:ir.model.fields,field_description:account_online_synchronization.field_account_online_link__activity_calendar_event_id
+msgid "Next Activity Calendar Event"
+msgstr "下一個活動日曆事件"
+
+#. module: account_online_synchronization
+#: model:ir.model.fields,field_description:account_online_synchronization.field_account_online_link__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr "下一活動截止日期"
+
+#. module: account_online_synchronization
+#: model:ir.model.fields,field_description:account_online_synchronization.field_account_online_link__activity_summary
+msgid "Next Activity Summary"
+msgstr "下一活動摘要"
+
+#. module: account_online_synchronization
+#: model:ir.model.fields,field_description:account_online_synchronization.field_account_online_link__activity_type_id
+msgid "Next Activity Type"
+msgstr "下一活動類型"
+
+#. module: account_online_synchronization
+#: model_terms:ir.ui.view,arch_db:account_online_synchronization.account_journal_dashboard_inherit_online_sync
+msgid "Next sync:"
+msgstr "下一個同步"
+
+#. module: account_online_synchronization
+#: model:ir.model.fields,field_description:account_online_synchronization.field_account_online_link__next_refresh
+msgid "Next synchronization"
+msgstr "下一個同步"
+
+#. module: account_online_synchronization
+#: model:ir.model.fields.selection,name:account_online_synchronization.selection__account_online_link__state__disconnected
+msgid "Not Connected"
+msgstr "未連線"
+
+#. module: account_online_synchronization
+#: model:ir.model.fields,field_description:account_online_synchronization.field_account_link_journal__number_added
+msgid "Number Added"
+msgstr "添加數量"
+
+#. module: account_online_synchronization
+#: model:ir.model.fields,field_description:account_online_synchronization.field_account_online_link__message_needaction_counter
+msgid "Number of Actions"
+msgstr "動作數量"
+
+#. module: account_online_synchronization
+#: model:ir.model.fields,field_description:account_online_synchronization.field_account_online_link__message_has_error_counter
+msgid "Number of errors"
+msgstr "錯誤數量"
+
+#. module: account_online_synchronization
+#: model:ir.model.fields,help:account_online_synchronization.field_account_online_link__message_needaction_counter
+msgid "Number of messages requiring action"
+msgstr "需要採取行動的訊息數目"
+
+#. module: account_online_synchronization
+#: model:ir.model.fields,help:account_online_synchronization.field_account_online_link__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr "有發送錯誤的郵件數量"
+
+#. module: account_online_synchronization
+#: model:ir.model.fields,field_description:account_online_synchronization.field_account_bank_statement_line__online_account_id
+#: model:ir.model.fields,field_description:account_online_synchronization.field_account_link_journal_line__online_account_id
+msgid "Online Account"
+msgstr "線上帳戶"
+
+#. module: account_online_synchronization
+#: model_terms:ir.ui.view,arch_db:account_online_synchronization.account_online_link_view_form
+msgid "Online Accounts"
+msgstr "線上賬戶"
+
+#. module: account_online_synchronization
+#: model:ir.model.fields,field_description:account_online_synchronization.field_account_online_account__online_identifier
+msgid "Online Identifier"
+msgstr "網上標識"
+
+#. module: account_online_synchronization
+#: model:ir.model.fields,field_description:account_online_synchronization.field_account_journal__next_link_synchronization
+msgid "Online Link Next synchronization"
+msgstr "線上連結下次同步"
+
+#. module: account_online_synchronization
+#: model:ir.model.fields,field_description:account_online_synchronization.field_account_bank_statement_line__online_partner_information
+#: model:ir.model.fields,field_description:account_online_synchronization.field_res_partner__online_partner_information
+#: model:ir.model.fields,field_description:account_online_synchronization.field_res_users__online_partner_information
+msgid "Online Partner Information"
+msgstr "線上合作夥伴資訊"
+
+#. module: account_online_synchronization
+#: model:ir.actions.act_window,name:account_online_synchronization.action_account_online_link_form
+#: model:ir.ui.menu,name:account_online_synchronization.menu_action_online_link_account
+#: model_terms:ir.actions.act_window,help:account_online_synchronization.action_account_online_link_form
+#: model_terms:ir.ui.view,arch_db:account_online_synchronization.account_journal_dashboard_inherit_online_sync
+msgid "Online Synchronization"
+msgstr "線上同步"
+
+#. module: account_online_synchronization
+#: model:ir.model.fields,field_description:account_online_synchronization.field_account_bank_statement_line__online_transaction_identifier
+msgid "Online Transaction Identifier"
+msgstr "網上交易識別代號"
+
+#. module: account_online_synchronization
+#. odoo-python
+#: code:addons/account_online_synchronization/models/account_bank_statement.py:0
+#, python-format
+msgid "Opening statement: first synchronization"
+msgstr "開場陳述：首次同步"
+
+#. module: account_online_synchronization
+#. odoo-python
+#: code:addons/account_online_synchronization/models/account_online.py:0
+#, python-format
+msgid "Please reconnect your online account."
+msgstr "請重新連線至你的線上賬戶。"
+
+#. module: account_online_synchronization
+#: model_terms:ir.ui.view,arch_db:account_online_synchronization.account_journal_dashboard_inherit_online_sync
+msgid "Problem during synchronization"
+msgstr "同步期間出現問題"
+
+#. module: account_online_synchronization
+#: model:ir.model.fields,field_description:account_online_synchronization.field_account_online_link__provider_data
+msgid "Provider Data"
+msgstr "服務商數據"
+
+#. module: account_online_synchronization
+#: model_terms:ir.ui.view,arch_db:account_online_synchronization.account_online_link_view_form
+msgid "Reconnect"
+msgstr "重新連線"
+
+#. module: account_online_synchronization
+#: model:ir.model.fields,field_description:account_online_synchronization.field_account_online_link__refresh_token
+msgid "Refresh Token"
+msgstr "更新代碼（token）"
+
+#. module: account_online_synchronization
+#. odoo-python
+#: code:addons/account_online_synchronization/models/account_online.py:0
+#, python-format
+msgid "Report issue"
+msgstr "回報問題"
+
+#. module: account_online_synchronization
+#: model:ir.model.fields,help:account_online_synchronization.field_account_online_link__client_id
+msgid "Represent a link for a given user towards a banking institution"
+msgstr "代表特定用戶連接至銀行機構的連結"
+
+#. module: account_online_synchronization
+#: model:ir.model.fields,field_description:account_online_synchronization.field_account_online_link__activity_user_id
+msgid "Responsible User"
+msgstr "責任使用者"
+
+#. module: account_online_synchronization
+#: model:ir.model.fields,field_description:account_online_synchronization.field_account_online_link__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr "簡訊發送錯誤"
+
+#. module: account_online_synchronization
+#: model:ir.model.fields,help:account_online_synchronization.field_account_link_journal_line__account_number
+#: model:ir.model.fields,help:account_online_synchronization.field_account_online_account__account_number
+msgid "Set if third party provider has the full account number"
+msgstr "第三方服務提供商有完整賬戶號碼時設置"
+
+#. module: account_online_synchronization
+#: model:ir.model.fields,field_description:account_online_synchronization.field_account_journal__account_online_link_state
+#: model:ir.model.fields,field_description:account_online_synchronization.field_account_online_link__state
+msgid "State"
+msgstr "縣市"
+
+#. module: account_online_synchronization
+#: model:ir.model.fields,help:account_online_synchronization.field_account_online_link__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+"根據活動的狀態 \n"
+" 逾期：已經超過截止日期 \n"
+" 現今：活動日期是當天 \n"
+" 計劃：未來活動。"
+
+#. module: account_online_synchronization
+#: model_terms:ir.ui.view,arch_db:account_online_synchronization.account_journal_dashboard_inherit_online_sync
+msgid "Synchronization link disconnected"
+msgstr "同步連結已斷線"
+
+#. module: account_online_synchronization
+#: model_terms:ir.ui.view,arch_db:account_online_synchronization.account_journal_dashboard_inherit_online_sync
+#: model_terms:ir.ui.view,arch_db:account_online_synchronization.view_account_link_journal_form_wizard
+msgid "Synchronize now"
+msgstr "立即同步"
+
+#. module: account_online_synchronization
+#: model:ir.model.fields,field_description:account_online_synchronization.field_account_link_journal__account_ids
+msgid "Synchronized accounts"
+msgstr "帳戶同步"
+
+#. module: account_online_synchronization
+#. odoo-python
+#: code:addons/account_online_synchronization/models/account_online.py:0
+#, python-format
+msgid ""
+"The online synchronization service is not available at the moment. Please "
+"try again later."
+msgstr "線上同步服務目前暫停。請稍後再試。"
+
+#. module: account_online_synchronization
+#: model_terms:ir.ui.view,arch_db:account_online_synchronization.view_account_link_journal_form_wizard
+msgid "There is no new bank account to link."
+msgstr "沒有新的銀行賬戶可連結。"
+
+#. module: account_online_synchronization
+#. odoo-python
+#: code:addons/account_online_synchronization/models/account_online.py:0
+#, python-format
+msgid ""
+"This version of Odoo appears to be outdated and does not support the '%s' "
+"sync mode. Installing the latest update might solve this."
+msgstr "此版本的 Odoo 似乎已過時，而且不支援「%s」同步模式。安裝最新的更新版本或會解決此問題。"
+
+#. module: account_online_synchronization
+#: model_terms:ir.actions.act_window,help:account_online_synchronization.action_account_online_link_form
+msgid ""
+"To create a synchronization with your banking institution,<br>\n"
+"                please click on <b>Add a Bank Account</b>."
+msgstr ""
+"若要與你的銀行機構建立同步，<br>\n"
+"                請按<b>加入銀行賬戶</b>。"
+
+#. module: account_online_synchronization
+#: model:ir.model.fields,help:account_online_synchronization.field_account_online_link__access_token
+msgid "Token used to access API."
+msgstr "存取 API 所用的代碼。"
+
+#. module: account_online_synchronization
+#: model:ir.model.fields,help:account_online_synchronization.field_account_online_link__refresh_token
+msgid "Token used to sign API request, Never disclose it"
+msgstr "簽署 API 請求所用的代碼，切勿洩露"
+
+#. module: account_online_synchronization
+#: model:ir.model.fields,field_description:account_online_synchronization.field_account_link_journal__transactions
+msgid "Transactions"
+msgstr "交易"
+
+#. module: account_online_synchronization
+#: model:ir.model.fields,help:account_online_synchronization.field_account_online_link__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr "記錄的異常活動的類型。"
+
+#. module: account_online_synchronization
+#: model_terms:ir.ui.view,arch_db:account_online_synchronization.account_online_link_view_form
+msgid "Update Credentials"
+msgstr "更新憑證"
+
+#. module: account_online_synchronization
+#: model_terms:ir.ui.view,arch_db:account_online_synchronization.account_journal_dashboard_inherit_online_sync
+msgid "View problem"
+msgstr "查看問題"
+
+#. module: account_online_synchronization
+#: model:ir.model.fields,field_description:account_online_synchronization.field_account_online_link__website_message_ids
+msgid "Website Messages"
+msgstr "網站訊息"
+
+#. module: account_online_synchronization
+#: model:ir.model.fields,help:account_online_synchronization.field_account_online_link__website_message_ids
+msgid "Website communication history"
+msgstr "網站溝通記錄"
+
+#. module: account_online_synchronization
+#. odoo-python
+#: code:addons/account_online_synchronization/models/account_online.py:0
+#, python-format
+msgid "You can contact Odoo support"
+msgstr "你可以聯絡 Odoo 技術支援"
+
+#. module: account_online_synchronization
+#. odoo-python
+#: code:addons/account_online_synchronization/wizard/account_link_journal_wizard.py:0
+#, python-format
+msgid "You can not link two accounts to the same journal."
+msgstr "不可將兩個賬戶連結至同一日記賬。"
+
+#. module: account_online_synchronization
+#. odoo-python
+#: code:addons/account_online_synchronization/models/account_journal.py:0
+#: code:addons/account_online_synchronization/models/account_online.py:0
+#, python-format
+msgid "You cannot have two journals associated with the same Online Account."
+msgstr "不可將兩個日記賬關聯至同一個線上賬戶。"
+
+#. module: account_online_synchronization
+#: model_terms:ir.ui.view,arch_db:account_online_synchronization.view_account_link_journal_form_wizard
+msgid ""
+"bank account(s).<br/>\n"
+"                            Let's associate each one with an accounting journal."
+msgstr ""
+"銀行賬戶。<br/>\n"
+"                            讓我們將每一個都關聯至一個會計日記賬。"
+
+#. module: account_online_synchronization
+#: model_terms:ir.ui.view,arch_db:account_online_synchronization.account_journal_dashboard_inherit_online_sync
+msgid "day"
+msgstr "日"
+
+#. module: account_online_synchronization
+#: model:ir.model,name:account_online_synchronization.model_account_online_account
+msgid "representation of an online bank account"
+msgstr "網上銀行賬戶的代表"

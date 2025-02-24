@@ -1,0 +1,2902 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* knowledge
+# 
+# Translators:
+# Linkup <link-up@naver.com>, 2022
+# JH CHOI <hwangtog@gmail.com>, 2022
+# Martin Trigaux, 2023
+# Daye Jeong, 2024
+# Sarah Park, 2024
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-02-06 13:23+0000\n"
+"PO-Revision-Date: 2022-09-22 05:47+0000\n"
+"Last-Translator: Sarah Park, 2024\n"
+"Language-Team: Korean (https://app.transifex.com/odoo/teams/41243/ko/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Language: ko\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/models/knowledge_article.py:0
+#, python-format
+msgid ""
+"\n"
+"            Deleted articles are stored in Trash an extra\n"
+"            <b>%(threshold)s</b> days\n"
+"            before being permanently removed for your database"
+msgstr ""
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/move_article_dialog/move_article_dialog.xml:0
+#, python-format
+msgid "\" under:"
+msgstr "\" 다음에 있음:"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__favorite_count
+msgid "#Is Favorite"
+msgstr "# 즐겨찾기 항목"
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/models/knowledge_article.py:0
+#: code:addons/knowledge/models/knowledge_article.py:0
+#: code:addons/knowledge/models/knowledge_article.py:0
+#, python-format
+msgid "%s (copy)"
+msgstr "%s (사본)"
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/models/knowledge_article.py:0
+#, python-format
+msgid "%s has been sent to Trash"
+msgstr "%s 항목을 휴지통으로 보냈습니다."
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_mail_invite
+msgid ".<br/><br/>"
+msgstr ""
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_frontend
+msgid "<i class=\"fa fa-circle-o-notch fa-2x fa-spin\" title=\"loader\" role=\"img\"/>"
+msgstr "<i class=\"fa fa-circle-o-notch fa-2x fa-spin\" title=\"loader\" role=\"img\"/>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid "<i class=\"fa fa-fw fa-ellipsis-v\" title=\"Open kebab menu\"/>"
+msgstr ""
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid "<i class=\"fa fa-fw fa-lg fa-angle-double-right\"/> Move To"
+msgstr ""
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid "<i class=\"fa fa-fw fa-lg fa-archive\"/> Unarchive"
+msgstr ""
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid "<i class=\"fa fa-fw fa-lg fa-arrows-h\"/> Full Width"
+msgstr ""
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid "<i class=\"fa fa-fw fa-lg fa-cog\" title=\"Add properties\"/> Add Properties"
+msgstr ""
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid "<i class=\"fa fa-fw fa-lg fa-copy\"/> Create a Copy"
+msgstr ""
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid "<i class=\"fa fa-fw fa-lg fa-lock\"/> Lock"
+msgstr ""
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid "<i class=\"fa fa-fw fa-lg fa-picture-o\" title=\"Add cover\"/> Add cover"
+msgstr ""
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid "<i class=\"fa fa-fw fa-lg fa-picture-o\" title=\"Change cover\"/> Change cover"
+msgstr ""
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid "<i class=\"fa fa-fw fa-lg fa-smile-o\" title=\"Add icon\"/> Add icon"
+msgstr ""
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid "<i class=\"fa fa-fw fa-lg fa-trash\"/> Delete"
+msgstr ""
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid "<i class=\"fa fa-fw fa-lg fa-trash-o\" title=\"Remove cover\"/> Remove cover"
+msgstr ""
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid "<i class=\"fa fa-fw fa-lg fa-trash-o\"/> Restore from Trash"
+msgstr ""
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid "<i class=\"fa fa-fw fa-lg fa-unlock\"/> Unlock"
+msgstr ""
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid ""
+"<i class=\"fa fa-fw fa-lock\" title=\"This article is locked\" "
+"attrs=\"{'invisible': ['|', '|', ('is_locked', '=', False), "
+"('user_can_write', '=', False), ('active', '=', False)]}\"/>"
+msgstr ""
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.articles_template_name
+msgid "<i class=\"fa fa-fw fa-plus\" title=\"Create a nested article\"/>"
+msgstr "<i class=\"fa fa-fw fa-plus\" title=\"Create a nested article\"/>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_tree
+msgid "<i class=\"fa fa-fw fa-plus\" title=\"Create a new article in workspace\"/>"
+msgstr "<i class=\"fa fa-fw fa-plus\" title=\"Create a new article in workspace\"/>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_tree
+msgid "<i class=\"fa fa-fw fa-plus\" title=\"Create a new private article\"/>"
+msgstr "<i class=\"fa fa-fw fa-plus\" title=\"Create a new private article\"/>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid ""
+"<i class=\"fa fa-lg fa-star\" title=\"Remove from favorites\" attrs=\"{'invisible': [('is_user_favorite', '=', False)]}\"/>\n"
+"                                        <i class=\"fa fa-lg fa-star-o\" title=\"Add to favorites\" attrs=\"{'invisible': [('is_user_favorite', '=', True)]}\"/>"
+msgstr ""
+"<i class=\"fa fa-lg fa-star\" title=\"Remove from favorites\" attrs=\"{'invisible': [('is_user_favorite', '=', False)]}\"/>\n"
+"                                        <i class=\"fa fa-lg fa-star-o\" title=\"Add to favorites\" attrs=\"{'invisible': [('is_user_favorite', '=', True)]}\"/>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid "<i class=\"fa fa-plus-circle me-1\"/>New"
+msgstr ""
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid "<i class=\"fa fa-share-alt me-1\"/>Share"
+msgstr ""
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_kanban
+msgid "<i class=\"fa fa-star\" title=\"Remove from favorites\"/>"
+msgstr "<i class=\"fa fa-star\" title=\"Remove from favorites\"/>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_kanban
+msgid "<i class=\"fa fa-star-o\" title=\"Add to favorites\"/>"
+msgstr ""
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid ""
+"<i class=\"fa fa-trash\"/>\n"
+"                                            <span class=\"ps-2 flex-grow-1 text-truncate\">\n"
+"                                                Open the Trash\n"
+"                                            </span>"
+msgstr ""
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid "<i class=\"fa fa-user-plus fs-3\" title=\"Invite People\"/>"
+msgstr ""
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_invite_view_form
+msgid ""
+"<i class=\"fa fa-w fa-info-circle\"/> All external users you selected won't "
+"be added to the members."
+msgstr "<i class=\"fa fa-w fa-info-circle\"/> 선택하신 모든 외부 사용자는 구성원에 추가되지 않습니다."
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_invite_view_form
+msgid ""
+"<i class=\"fa fa-w fa-info-circle\"/> External users cannot write on "
+"Articles and will be granted read access instead."
+msgstr ""
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid "<i class=\"oi oi-search pe-2\" title=\"search\"/>"
+msgstr "<i class=\"oi oi-search pe-2\" title=\"search\"/>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid "<i class=\"rounded-circle text-center fa fa-cog\" title=\"Show Properties\"/>"
+msgstr ""
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid ""
+"<i class=\"rounded-circle text-center fa fa-fw fa-comments\" title=\"Open "
+"chatter\"/>"
+msgstr ""
+"<i class=\"rounded-circle text-center fa fa-fw fa-comments\" title=\"Open "
+"chatter\"/>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_tree
+msgid "<i>There are no Articles in your Workspace.</i>"
+msgstr ""
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_tree
+msgid "<i>You do not have any private Articles.</i>"
+msgstr "<i>개인 작성글이 없습니다.</i>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid "<span class=\"mx-1\">-</span>"
+msgstr "<span class=\"mx-1\">-</span>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid ""
+"<span style=\"font-size: 14px;\">\n"
+"                    Add a checklist\n"
+"                    (/<span style=\"font-style: italic;\">checklist</span>)\n"
+"                </span>"
+msgstr ""
+"<span style=\"font-size: 14px;\">\n"
+"                    체크리스트 추가\n"
+"                    (/<span style=\"font-style: italic;\">체크리스트</span>)\n"
+"                </span>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid ""
+"<span style=\"font-size: 14px;\">\n"
+"                    Add a separator\n"
+"                    (/<span style=\"font-style: italic;\">separator</span>)\n"
+"                </span>"
+msgstr ""
+"<span style=\"font-size: 14px;\">\n"
+"                    구분기 추가\n"
+"                    (/<span style=\"font-style: italic;\">구분기</span>)\n"
+"                </span>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid ""
+"<span style=\"font-size: 14px;\">\n"
+"                    Use\n"
+"                    /<span style=\"font-style: italic;\">heading</span>\n"
+"                    to convert a text into a title\n"
+"                </span>"
+msgstr ""
+"<span style=\"font-size: 14px;\">\n"
+"                    /<span style=\"font-style: italic;\">머리글</span>을\n"
+"                    사용하여\n"
+"                    텍스트를 제목으로 변환\n"
+"                </span>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid ""
+"<span style=\"font-size: 14px;\">\n"
+"            <span style=\"font-weight: bolder;\">\n"
+"                <font class=\"text-o-color-2\">Favorites</font>\n"
+"            </span>\n"
+"            — Those are\n"
+"            <span style=\"font-weight: bolder;\">\n"
+"                <font class=\"text-o-color-2\">shortcuts</font>\n"
+"            </span>\n"
+"            you create for yourself.\n"
+"            Unstar this page at the top to remove it from your favorites.\n"
+"        </span>"
+msgstr ""
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid ""
+"<span style=\"font-size: 14px;\">\n"
+"            <span style=\"font-weight: bolder;\">\n"
+"                <font class=\"text-o-color-2\">Private</font>\n"
+"            </span>\n"
+"        </span>\n"
+"        <span style=\"font-size: 14px;\">\n"
+"            — This is\n"
+"            <span style=\"font-weight: bolder;\"><font class=\"text-o-color-2\">your stuff</font></span>,\n"
+"            the things you keep for yourself\n"
+"            (<span style=\"font-style: italic;\">Drafts, Todo lists, ...</span>)\n"
+"        </span>"
+msgstr ""
+"<span style=\"font-size: 14px;\">\n"
+"            <span style=\"font-weight: bolder;\">\n"
+"                <font class=\"text-o-color-2\">개인</font>\n"
+"            </span>\n"
+"        </span>\n"
+"        <span style=\"font-size: 14px;\">\n"
+"            — 여기는\n"
+"            <span style=\"font-weight: bolder;\"><font class=\"text-o-color-2\">나의 항목</font></span>,\n"
+"            나만의 항목들을 위한 장소입니다.\n"
+"            (<span style=\"font-style: italic;\">작성 초안이나 해야 할 일 목록 등</span>)\n"
+"        </span>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid ""
+"<span style=\"font-size: 14px;\">\n"
+"            <span style=\"font-weight: bolder;\">\n"
+"                <font class=\"text-o-color-2\">Shared</font>\n"
+"            </span>\n"
+"        </span>\n"
+"        <span style=\"font-size: 14px;\">\n"
+"            — Those are the ones you\n"
+"            <span style=\"font-weight: bolder;\">\n"
+"                <font class=\"text-o-color-2\">have invited someone or been invited to</font>\n"
+"            </span>\n"
+"        </span>"
+msgstr ""
+"<span style=\"font-size: 14px;\">\n"
+"            <span style=\"font-weight: bolder;\">\n"
+"                <font class=\"text-o-color-2\">공유</font>\n"
+"            </span>\n"
+"        </span>\n"
+"        <span style=\"font-size: 14px;\">\n"
+"            — 여기에는 내가\n"
+"            <span style=\"font-weight: bolder;\">\n"
+"                <font class=\"text-o-color-2\">초대하거나 초대받은 항목들이 있습니다. </font>\n"
+"            </span>\n"
+"        </span>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid ""
+"<span style=\"font-size: 14px;\">\n"
+"            <span style=\"font-weight: bolder;\">\n"
+"                <font class=\"text-o-color-2\">Workspace</font>\n"
+"            </span>\n"
+"        </span>\n"
+"        <span style=\"font-size: 14px;\">\n"
+"            — Articles there can be accessed by\n"
+"        <span style=\"font-weight: bolder;\">\n"
+"            <font class=\"text-o-color-2\">your team</font>\n"
+"        </span>\n"
+"    </span>"
+msgstr ""
+"<span style=\"font-size: 14px;\">\n"
+"            <span style=\"font-weight: bolder;\">\n"
+"                <font class=\"text-o-color-2\">작업 영역</font>\n"
+"            </span>\n"
+"        </span>\n"
+"        <span style=\"font-size: 14px;\">\n"
+"            — 팀에서 접근할 수 있는 \n"
+"        <span style=\"font-weight: bolder;\">\n"
+"            <font class=\"text-o-color-2\">작성글 공간입니다.</font>\n"
+"        </span>\n"
+"    </span>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid ""
+"<span style=\"font-size: 14px;\">\n"
+"            Below this list, try\n"
+"            <span style=\"font-weight: bolder;\">commands</span>\n"
+"            by\n"
+"            <span style=\"font-weight: bolder;\">\n"
+"                <font class=\"text-o-color-2\">typing</font>\n"
+"            </span>\n"
+"            \"<span style=\"font-weight: bolder;\">/</span>\"\n"
+"        </span>"
+msgstr ""
+"<span style=\"font-size: 14px;\">\n"
+"            아래의 목록에서\n"
+"            <span style=\"font-weight: bolder;\">명령어</span>는\n"
+"            다음과 같이\n"
+"            <span style=\"font-weight: bolder;\">\n"
+"                <font class=\"text-o-color-2\">입력</font>하시면 됩니다.\n"
+"            </span>\n"
+"            \"<span style=\"font-weight: bolder;\">/</span>\"\n"
+"        </span>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid ""
+"<span style=\"font-size: 14px;\">\n"
+"            Content — Just click and\n"
+"            <span style=\"font-weight: bolder;\">\n"
+"                <font class=\"text-o-color-2\">start typing</font>\n"
+"            </span>\n"
+"            (<span style=\"font-style: italic;\">documentation, tips, reports, ...</span>)\n"
+"        </span>"
+msgstr ""
+"<span style=\"font-size: 14px;\">\n"
+"            콘텐츠 — 클릭하고\n"
+"            <span style=\"font-weight: bolder;\">\n"
+"                <font class=\"text-o-color-2\">입력을 시작하면</font> 됩니다.\n"
+"            </span>\n"
+"            (<span style=\"font-style: italic;\">문서나 도움말, 보고서 등</span>)\n"
+"        </span>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid ""
+"<span style=\"font-size: 14px;\">\n"
+"            Folders —\n"
+"        </span>\n"
+"        <span style=\"font-size: 14px;\">\n"
+"            <span style=\"font-weight: bolder;\">\n"
+"                <font class=\"text-o-color-2\">Nest other Articles</font>\n"
+"            </span>\n"
+"            under it to regroup them\n"
+"            (<span style=\"font-style: italic;\">per team, topic, project, ...</span>)\n"
+"        </span>"
+msgstr ""
+"<span style=\"font-size: 14px;\">\n"
+"            폴더 —\n"
+"        </span>\n"
+"        <span style=\"font-size: 14px;\">\n"
+"            <span style=\"font-weight: bolder;\">\n"
+"                <font class=\"text-o-color-2\">다른 글에 중첩하여</font>\n"
+"            </span>\n"
+"            하위에 다시 그룹을 만들 수 있습니다.\n"
+"            (<span style=\"font-style: italic;\">팀별, 주제별, 프로젝트별 등</span>)\n"
+"        </span>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid ""
+"<span style=\"font-size: 14px;\">\n"
+"            Select text to\n"
+"            <font class=\"bg-o-color-2\">Highlight</font>,\n"
+"            <span style=\"text-decoration-line: line-through;\">strikethrough</span>\n"
+"            or\n"
+"            <span style=\"font-weight: bolder;\">style</span>\n"
+"            <span style=\"font-style: italic; text-decoration-line: underline;\">it</span>\n"
+"        </span>"
+msgstr ""
+"<span style=\"font-size: 14px;\">\n"
+"            텍스트를 선택하여\n"
+"            <font class=\"bg-o-color-2\">강조</font>하거나,\n"
+"            <span style=\"text-decoration-line: line-through;\">취소선</span>\n"
+"            또는\n"
+"            <span style=\"font-weight: bolder;\">스타일</span>을\n"
+"            <span style=\"font-style: italic; text-decoration-line: underline;\">넣습니다</span>.\n"
+"        </span>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid ""
+"<span style=\"font-size: 14px;\">\n"
+"            Use\n"
+"            /<span style=\"font-weight: bolder;\"><font class=\"text-o-color-2\">file</font></span>\n"
+"            to share documents that are frequently needed\n"
+"        </span>"
+msgstr ""
+"<span style=\"font-size: 14px;\">\n"
+"            \n"
+"            /<span style=\"font-weight: bolder;\"><font class=\"text-o-color-2\">file</font>을 사용하여</span>\n"
+"            자주 사용하는 문서를 공유합니다.\n"
+"        </span>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid ""
+"<span style=\"font-size: 14px;\">\n"
+"            Use\n"
+"            /<span style=\"font-weight: bolder;\"><font class=\"text-o-color-2\">template</font></span>\n"
+"            to insert a\n"
+"            <span style=\"font-weight: bolder;\">\n"
+"                <font class=\"text-o-color-2\">template</font>\n"
+"            </span>\n"
+"            box. Need to re-use its content?\n"
+"        </span>"
+msgstr ""
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid ""
+"<span style=\"font-size: 14px;\">\n"
+"        <span style=\"font-weight: bolder;\">\n"
+"            <font class=\"text-o-color-2\">Articles</font>\n"
+"        </span>\n"
+"        are stored into different\n"
+"        <span style=\"font-weight: bolder;\"><font class=\"text-o-color-2\">Sections</font></span>:\n"
+"    </span>"
+msgstr ""
+"<span style=\"font-size: 14px;\">\n"
+"        <span style=\"font-weight: bolder;\">\n"
+"            <font class=\"text-o-color-2\">작성글</font>을\n"
+"        </span>\n"
+"        다른\n"
+"        <span style=\"font-weight: bolder;\"><font class=\"text-o-color-2\">섹션</font>에 저장합니다</span>:\n"
+"    </span>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid ""
+"<span style=\"font-size: 14px;\">\n"
+"        A good workflow is to write your drafts in\n"
+"        <span style=\"font-weight: bolder;\">\n"
+"            <font class=\"text-o-color-2\">Private</font>\n"
+"        </span>\n"
+"        and, once done, move it from\n"
+"        <span style=\"font-weight: bolder;\">\n"
+"            <font class=\"text-o-color-2\">Private</font>\n"
+"        </span>\n"
+"        to\n"
+"        <span style=\"font-weight: bolder;\">\n"
+"            <font class=\"text-o-color-2\">Workspace</font>\n"
+"        </span>\n"
+"        to share it with everyone.\n"
+"    </span>"
+msgstr ""
+"<span style=\"font-size: 14px;\">\n"
+"        바람직한 작업 절차로는 작성 초안을\n"
+"        <span style=\"font-weight: bolder;\">\n"
+"            <font class=\"text-o-color-2\">개인</font> 보관 후\n"
+"        </span>\n"
+"        작성이 완료되면\n"
+"        <span style=\"font-weight: bolder;\">\n"
+"            <font class=\"text-o-color-2\">개인</font>에서부터\n"
+"        </span>\n"
+"        그 다음\n"
+"        <span style=\"font-weight: bolder;\">\n"
+"            <font class=\"text-o-color-2\">작업 영역</font>으로 이동하여\n"
+"        </span>\n"
+"        모두에게 공유하는 것입니다.\n"
+"    </span>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid ""
+"<span style=\"font-size: 14px;\">\n"
+"        And again, to move an\n"
+"        <span style=\"font-weight: bolder;\">\n"
+"            <font class=\"text-o-color-2\">Article</font>\n"
+"        </span>\n"
+"        from a\n"
+"        <span style=\"font-weight: bolder;\">\n"
+"            <font class=\"text-o-color-2\">Section</font>\n"
+"        </span>\n"
+"        to another, just\n"
+"        <span style=\"font-weight: bolder;\">\n"
+"            <font class=\"text-o-color-2\">Drag &amp; Drop</font>\n"
+"        </span>\n"
+"        it.\n"
+"    </span>"
+msgstr ""
+"<span style=\"font-size: 14px;\">\n"
+"        또한 다시 \n"
+"        <span style=\"font-weight: bolder;\">\n"
+"            <font class=\"text-o-color-2\">작성글</font>을 이동시키려면\n"
+"        </span>\n"
+"        현재\n"
+"        <span style=\"font-weight: bolder;\">\n"
+"            <font class=\"text-o-color-2\">섹션</font>에서\n"
+"        </span>\n"
+"        \n"
+"        <span style=\"font-weight: bolder;\">\n"
+"            <font class=\"text-o-color-2\">드래그앤드롭</font>하시면 됩니다.\n"
+"        </span>\n"
+"        it.\n"
+"    </span>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid ""
+"<span style=\"font-size: 14px;\">\n"
+"        See the\n"
+"        <span style=\"font-weight: bolder;\">\n"
+"            <font class=\"text-o-color-2\">Menu</font>\n"
+"        </span>\n"
+"        there, on the left?\n"
+"    </span>"
+msgstr ""
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid ""
+"<span style=\"font-size: 14px;\">\n"
+"        This is where you and your team can centralize your\n"
+"        <font class=\"text-o-color-2\" style=\"font-weight: bolder;\">Knowledge</font>\n"
+"        and best practices!\n"
+"    </span>"
+msgstr ""
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid ""
+"<span style=\"font-size: 14px;\">\n"
+"        Those are your\n"
+"        <span style=\"font-weight: bolder;\"><font class=\"text-o-color-2\">Articles</font></span>.\n"
+"    </span>"
+msgstr ""
+"<span style=\"font-size: 14px;\">\n"
+"        여기에는\n"
+"        <span style=\"font-weight: bolder;\"><font class=\"text-o-color-2\">작성글</font>이 있습니다</span>.\n"
+"    </span>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid ""
+"<span style=\"font-size: 14px;\">\n"
+"        To change the way\n"
+"        <span style=\"font-weight: bolder;\">\n"
+"            <font class=\"text-o-color-2\">Articles</font>\n"
+"        </span>\n"
+"        are organized, you can simply\n"
+"        <span style=\"font-weight: bolder;\">\n"
+"            <font class=\"text-o-color-2\">Drag &amp; Drop</font>\n"
+"        </span>\n"
+"        them\n"
+"    </span>"
+msgstr ""
+"<span style=\"font-size: 14px;\">\n"
+"        기존 방식에서\n"
+"        <span style=\"font-weight: bolder;\">\n"
+"            <font class=\"text-o-color-2\">작성글</font>정리 방식을\n"
+"        </span>\n"
+"        변경하려면, \n"
+"        <span style=\"font-weight: bolder;\">\n"
+"            <font class=\"text-o-color-2\">드래그앤드롭</font>으로\n"
+"        </span>\n"
+"        간단히 하실 수 있습니다.\n"
+"    </span>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid ""
+"<span style=\"font-size: 14px;\">\n"
+"        Want to go\n"
+"        <span style=\"font-style: italic;\">even</span>\n"
+"        faster?\n"
+"    </span>\n"
+"    <br/>\n"
+"    <span style=\"font-size: 14px;\">\n"
+"        Access\n"
+"        <span style=\"font-weight: bolder;\">\n"
+"            <font class=\"text-o-color-2\">Articles</font>\n"
+"        </span>\n"
+"        by opening the\n"
+"        <span style=\"font-weight: bolder;\">\n"
+"            <font class=\"text-o-color-2\">Command Palette</font>\n"
+"        </span>\n"
+"        (Ctrl + k/⌘ + k) then search through articles by starting your query with\n"
+"        \"<span style=\"font-weight: bolder;\">?</span>\".\n"
+"    </span>"
+msgstr ""
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid "<span style=\"font-size: 14px;\">And voilà, it is that simple.</span>"
+msgstr "<span style=\"font-size: 14px;\">이렇게도 간단하답니다.</span>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid ""
+"<span style=\"font-size: 14px;\">Check this box to indicate it's done</span>"
+msgstr "<span style=\"font-size: 14px;\">완료 표시하려면 이 선택란에 표시하십시오.</span>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid ""
+"<span style=\"font-size: 14px;\">Click anywhere, and just start "
+"typing</span>"
+msgstr "<span style=\"font-size: 14px;\">아무 곳이나 클릭 후 입력하시면 됩니다</span>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid "<span style=\"font-size: 14px;\">Each of them can be used both as:</span>"
+msgstr "<span style=\"font-size: 14px;\">양 쪽은 각각 다음과 같이 사용할 수 있습니다:</span>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid ""
+"<span style=\"font-size: 14px;\">From this box, files can be previewed, "
+"forwarded and downloaded.</span>"
+msgstr ""
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid ""
+"<span style=\"font-size: 14px;\">From your document, find this article by "
+"clicking on the book icon in the chatter.</span>"
+msgstr ""
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid ""
+"<span style=\"font-size: 14px;\">Got it? Now let's try advanced "
+"features</span>"
+msgstr ""
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid ""
+"<span style=\"font-size: 14px;\">Need this document somewhere? Come back "
+"here by clicking on the book icon in the chatter.</span>"
+msgstr ""
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid "<span style=\"font-size: 14px;\">Press Ctrl-Z to undo any change</span>"
+msgstr "<span style=\"font-size: 14px;\">컨트롤 Z 를 누르시면 변경 사항을 취소합니다.</span>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid ""
+"<span style=\"font-size: 14px;\">This private page is for you to play around with.</span>\n"
+"    <br/>\n"
+"    <span style=\"font-size: 14px;\">Ready to give it a spin?</span>"
+msgstr ""
+"<span style=\"font-size: 14px;\">이 개인 페이지는 개인이 마음껏 즐기며 놀 수 있는 장소입니다.</span>\n"
+"    <br/>\n"
+"    <span style=\"font-size: 14px;\">사용해 볼 준비가 되셨나요?</span>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid "<span style=\"font-size: 14px;\">Try the following</span>"
+msgstr "<span style=\"font-size: 14px;\">다음을 시도해보세요.</span>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid ""
+"<span style=\"font-size: 14px;\">You can use the template as a description, "
+"a message or simply copy it to your clipboard!</span>"
+msgstr ""
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid ""
+"<span style=\"font-weight: bolder;\">\n"
+"            <font class=\"text-o-color-1\">YouTube</font>\n"
+"        </span>"
+msgstr ""
+"<span style=\"font-weight: bolder;\">\n"
+"            <font class=\"text-o-color-1\">YouTube</font>\n"
+"        </span>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid ""
+"<span style=\"font-weight: bolder;\"><font class=\"text-o-"
+"color-1\">Facebook</font></span>"
+msgstr ""
+"<span style=\"font-weight: bolder;\"><font class=\"text-o-"
+"color-1\">Facebook</font></span>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid ""
+"<span style=\"font-weight: bolder;\"><font class=\"text-o-"
+"color-1\">Twitter</font></span>"
+msgstr ""
+"<span style=\"font-weight: bolder;\"><font class=\"text-o-"
+"color-1\">Twitter</font></span>"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/permission_panel/permission_panel.xml:0
+#, python-format
+msgid "Access Restricted. May not be shared with everyone from"
+msgstr "접근이 제한되었습니다. 다음의 전체 사용자와 공유되지 않을 수 있습니다."
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__message_needaction
+msgid "Action Needed"
+msgstr "조치 필요"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__active
+msgid "Active"
+msgstr "활성"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__activity_ids
+msgid "Activities"
+msgstr "활동"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr "활동 예외 장식"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__activity_state
+msgid "Activity State"
+msgstr "활동 상태"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__activity_type_icon
+msgid "Activity Type Icon"
+msgstr "활동 유형 아이콘"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/js/wysiwyg.js:0
+#, python-format
+msgid "Add a table of content."
+msgstr ""
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/js/wysiwyg.js:0
+#, python-format
+msgid "Add a template section."
+msgstr ""
+
+#. module: knowledge
+#: model_terms:ir.actions.act_window,help:knowledge.knowledge_article_favorite_action
+msgid ""
+"Add articles in your list of favorites by clicking on the <i class=\"fa fa-"
+"star-o\"></i> next to the article name."
+msgstr "작성글 이름 옆에 있는 <i class=\"fa fa-star-o\"></i>를 클릭하면 즐겨찾기 목록에 글을 추가할 수 있습니다."
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/behaviors/table_of_content_behavior/table_of_content_behavior.xml:0
+#, python-format
+msgid "Add headings in this Article to create a Table of Content"
+msgstr "목차를 생성하려면 이 작성글에 머리글을 추가하십시오"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_invite_view_form
+msgid "Add people or email addresses"
+msgstr "사람 또는 이메일 주소 추가"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid "Add people or email addresses..."
+msgstr "사람 또는 이메일 주소 추가"
+
+#. module: knowledge
+#: model_terms:ir.actions.act_window,help:knowledge.knowledge_article_member_action
+msgid ""
+"Adding members allows you to share Articles while granting specific access "
+"rights<br>(can write, can read, ...)."
+msgstr "회원을 추가하면 특정 접근 권한 (쓰기 권한이나 읽기 권한)을 부여하여 작성글을 공유할 수 있습니다.<br>"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/permission_panel/permission_panel.xml:0
+#, python-format
+msgid "Admin"
+msgstr "관리자"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/permission_panel/permission_panel.xml:0
+#, python-format
+msgid "Administrator"
+msgstr "관리자"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/webclient/commands/knowledge_providers.js:0
+#, python-format
+msgid "Advanced Search"
+msgstr "고급 검색"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/permission_panel/permission_panel.js:0
+#, python-format
+msgid "Archive Article"
+msgstr ""
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_search_items
+msgid "Archived"
+msgstr "보관됨"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/cover_selector/knowledge_cover_dialog.js:0
+#, python-format
+msgid ""
+"Are you sure you want to delete this cover ? It will be removed from every "
+"article it is used in."
+msgstr ""
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/permission_panel/permission_panel.js:0
+#, python-format
+msgid ""
+"Are you sure you want to leave this private article? By doing so, the "
+"article and all its descendants will be archived."
+msgstr ""
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/js/knowledge_renderers.js:0
+#, python-format
+msgid ""
+"Are you sure you want to move \"%s\" to private? Only you will be able to "
+"access it."
+msgstr "\"%s\" 항목을 개인 영역으로 이동하시겠습니까? 귀하만이 접근 권한이 있습니다."
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/js/knowledge_renderers.js:0
+#, python-format
+msgid ""
+"Are you sure you want to move \"%s\" to the Workspace? It will be shared "
+"with all internal users."
+msgstr "\"%s\" 항목을 작업 영역으로 이동하시겠습니까? 전체 내부 사용자와 공유됩니다."
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/js/knowledge_renderers.js:0
+#, python-format
+msgid ""
+"Are you sure you want to move \"%s\" under \"%s%s\"? It will be shared with "
+"the same persons."
+msgstr "\"%s\" 항목을 \"%s%s\" 하위로 이동하시겠습니까? 동일한 사용자들과 공유됩니다."
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/permission_panel/permission_panel.js:0
+#, python-format
+msgid ""
+"Are you sure you want to remove your member? By leaving an article, you may "
+"lose access to it."
+msgstr "작업자를 삭제하시겠습니까? 이 작성글에서 나가면 접근할 수 없게 됩니다."
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/permission_panel/permission_panel.js:0
+#, python-format
+msgid "Are you sure you want to remove your own \"Write\" access ?"
+msgstr ""
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/permission_panel/permission_panel.js:0
+#, python-format
+msgid ""
+"Are you sure you want to restore access? This means this article will now "
+"inherit any access set on its parent articles."
+msgstr ""
+"접근 권한을 복구하시겠습니까? 다시 말해 이 작성글은 이제 상위 작성글에서 설정되어 있는 전체 접근 권한을 그대로 상속하게 됩니다."
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/permission_panel/permission_panel.js:0
+#, python-format
+msgid ""
+"Are you sure you want to restrict this role and restrict access ? This "
+"article will no longer inherit access settings from the parent page."
+msgstr ""
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/permission_panel/permission_panel.js:0
+#, python-format
+msgid ""
+"Are you sure you want to set the internal permission to \"none\" ? If you "
+"do, you will no longer have access to the article."
+msgstr ""
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/permission_panel/permission_panel.js:0
+#, python-format
+msgid ""
+"Are you sure you want to set your permission to \"none\"? If you do, you "
+"will no longer have access to the article."
+msgstr "권한을 \"없음\"으로 설정하시겠습니까? 그럴 경우, 해당 작성글에 접근할 수 없게 됩니다."
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/js/wysiwyg.js:0
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article_favorite__article_id
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article_member__article_id
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_invite__article_id
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_favorite_view_search
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_member_view_search
+#, python-format
+msgid "Article"
+msgstr "기사"
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/models/knowledge_article_member.py:0
+#, python-format
+msgid ""
+"Article '%s' should always have a writer: inherit write permission, or have "
+"a member with write access"
+msgstr "'%s' 글에는 반드시 작성자가 있어야 합니다. 쓰기 권한을 상속하거나 쓰기 권한이 있는 사용자가 있어야 합니다. "
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__article_properties_definition
+msgid "Article Item Properties"
+msgstr "작성글 항목 속성"
+
+#. module: knowledge
+#: model:ir.actions.act_window,name:knowledge.knowledge_article_item_action
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_search
+msgid "Article Items"
+msgstr "작성글 항목"
+
+#. module: knowledge
+#: model:ir.model,name:knowledge.model_knowledge_article_member
+msgid "Article Member"
+msgstr "작성글 구성원"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/js/wysiwyg.js:0
+#, python-format
+msgid "Article Structure"
+msgstr ""
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__article_url
+msgid "Article URL"
+msgstr "작성글 URL"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__cover_image_id
+msgid "Article cover"
+msgstr "작성글 표지"
+
+#. module: knowledge
+#: model:ir.model.constraint,message:knowledge.constraint_knowledge_article_check_article_item_parent
+msgid "Article items must have a parent."
+msgstr "작성글 항목에는 반드시 상위 항목이 있어야 합니다."
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_frontend
+msgid "Article not found"
+msgstr "작성글을 찾을 수 없습니다."
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/move_article_dialog/move_article_dialog.js:0
+#: model:ir.actions.act_window,name:knowledge.knowledge_article_action
+#: model:ir.actions.act_window,name:knowledge.knowledge_article_action_form
+#: model:ir.actions.server,name:knowledge.ir_actions_server_knowledge_home_page
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_search
+#, python-format
+msgid "Articles"
+msgstr "기사"
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/models/knowledge_article.py:0
+#: code:addons/knowledge/models/knowledge_article.py:0
+#: code:addons/knowledge/models/knowledge_article.py:0
+#, python-format
+msgid ""
+"Articles %s cannot be updated as this would create a recursive hierarchy."
+msgstr "순환 계층이 생성되므로 %s 글을 업데이트할 수 없습니다."
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_cover__article_ids
+msgid "Articles using cover"
+msgstr "표지를 사용한 작성글"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/permission_panel/permission_panel.xml:0
+#, python-format
+msgid "As a reader, you can't leave a Workspace article"
+msgstr "읽기 권한으로는 작업 영역 작성글에서 나갈 수 없습니다."
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/permission_panel/permission_panel.xml:0
+#, python-format
+msgid ""
+"As an administrator, you can always modify this article and its members."
+msgstr "관리자로서 언제든 이 작성글 및 해당 구성원 항목을 수정할 수 있습니다."
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__message_attachment_count
+msgid "Attachment Count"
+msgstr "첨부 파일 수"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/permission_panel/permission_panel.xml:0
+#: code:addons/knowledge/static/src/components/permission_panel/permission_panel.xml:0
+#, python-format
+msgid "Based on"
+msgstr "기준"
+
+#. module: knowledge
+#: model_terms:ir.actions.act_window,help:knowledge.knowledge_article_action
+msgid "Be the first one to unleash the power of Knowledge !"
+msgstr ""
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__body
+msgid "Body"
+msgstr "본문"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__user_can_read
+msgid "Can Read"
+msgstr "읽기 가능"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__user_can_write
+msgid "Can Write"
+msgstr "쓸 수 있음"
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/models/knowledge_article_member.py:0
+#, python-format
+msgid "Can not update the article or partner of a member."
+msgstr "구성원의 게시글이나 협력사를 업데이트할 수 없습니다."
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/models/knowledge_article_favorite.py:0
+#, python-format
+msgid "Can not update the article or user of a favorite."
+msgstr "즐겨찾기의 작성글이나 사용자를 업데이트할 수 없습니다."
+
+#. module: knowledge
+#: model:ir.model.fields.selection,name:knowledge.selection__knowledge_article__inherited_permission__read
+#: model:ir.model.fields.selection,name:knowledge.selection__knowledge_article__internal_permission__read
+#: model:ir.model.fields.selection,name:knowledge.selection__knowledge_article_member__permission__read
+#: model:ir.model.fields.selection,name:knowledge.selection__knowledge_invite__permission__read
+msgid "Can read"
+msgstr "읽기 가능"
+
+#. module: knowledge
+#: model:ir.model.fields.selection,name:knowledge.selection__knowledge_article__inherited_permission__write
+#: model:ir.model.fields.selection,name:knowledge.selection__knowledge_article__internal_permission__write
+#: model:ir.model.fields.selection,name:knowledge.selection__knowledge_article_member__permission__write
+#: model:ir.model.fields.selection,name:knowledge.selection__knowledge_invite__permission__write
+msgid "Can write"
+msgstr ""
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/move_article_dialog/move_article_dialog.xml:0
+#: code:addons/knowledge/static/src/js/wysiwyg/knowledge_article_link.js:0
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_invite_view_form
+#, python-format
+msgid "Cancel"
+msgstr "취소"
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/models/knowledge_article.py:0
+#, python-format
+msgid ""
+"Cannot create an article under article %(parent_name)s which is a non-"
+"private parent"
+msgstr "개인용이 아닌 %(parent_name)s 작성글 아래에서는 글을 생성할 수 없습니다."
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/models/knowledge_article.py:0
+#, python-format
+msgid ""
+"Cannot move %(article_name)s as a root of the 'shared' section since access "
+"rights can not be inferred without a parent."
+msgstr ""
+"상위 항목이 없으면 접근 권한을 확인할 수 없으므로 %(article_name)s 글을 '공유' 섹션의 루트로 이동할 수 없습니다."
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/move_article_dialog/move_article_dialog.js:0
+#, python-format
+msgid "Categories"
+msgstr "범주"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/permission_panel/permission_panel.js:0
+#, python-format
+msgid "Change Permission"
+msgstr "권한 변경"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__child_ids
+msgid "Child Articles and Items"
+msgstr "하위 글 및 항목"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/xml/knowledge_editor.xml:0
+#, python-format
+msgid "Choose an Article"
+msgstr "작성글 선택"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/macros/abstract_macro.js:0
+#, python-format
+msgid "Close"
+msgstr "닫기"
+
+#. module: knowledge
+#: model:ir.ui.menu,name:knowledge.knowledge_menu_configuration
+msgid "Configuration"
+msgstr "구성"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/permission_panel/permission_panel.js:0
+#, python-format
+msgid "Confirmation"
+msgstr "확정"
+
+#. module: knowledge
+#: model:ir.model,name:knowledge.model_res_partner
+msgid "Contact"
+msgstr "연락처"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/behaviors/template_behavior/template_behavior.xml:0
+#: code:addons/knowledge/static/src/components/behaviors/template_behavior/template_behavior.xml:0
+#, python-format
+msgid "Copy to Clipboard"
+msgstr "클립 보드에 복사"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_cover__attachment_url
+msgid "Cover URL"
+msgstr "표지 URL"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_cover__attachment_id
+msgid "Cover attachment"
+msgstr "표지 첨부 파일"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__cover_image_url
+msgid "Cover url"
+msgstr "표지 URL"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/xml/knowledge_command_palette.xml:0
+#, python-format
+msgid "Create \""
+msgstr "생성 \""
+
+#. module: knowledge
+#: model_terms:ir.actions.act_window,help:knowledge.knowledge_article_item_action
+msgid "Create a new article item"
+msgstr "새로운 작성글 항목 생성"
+
+#. module: knowledge
+#: model_terms:ir.actions.act_window,help:knowledge.knowledge_article_action
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid "Create an article"
+msgstr "작성글 생성"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_frontend
+msgid "Create my own Workspace <i class=\"fa fa-book\"/>"
+msgstr "나만의 작업 영역 생성 <i class=\"fa fa-book\"/>"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__create_uid
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article_favorite__create_uid
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article_member__create_uid
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_cover__create_uid
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_invite__create_uid
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_tree
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_tree_items
+msgid "Created by"
+msgstr "작성자"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid "Created by:"
+msgstr ""
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__create_date
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article_favorite__create_date
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article_member__create_date
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_cover__create_date
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_invite__create_date
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_tree
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_tree_items
+msgid "Created on"
+msgstr "작성일자"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_mail_invite
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_trash_notification
+msgid "Dear"
+msgstr "친애하는"
+
+#. module: knowledge
+#: model:ir.model.fields,help:knowledge.field_knowledge_article__internal_permission
+msgid ""
+"Default permission for all internal users. (External users can still have "
+"access to this article if they are added to its members)"
+msgstr "전체 내부 사용자가 가지는 기본 권한입니다 (구성원으로 추가된 경우 외부 사용자가 계속 이 글에 접근할 수 있습니다). "
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__deletion_date
+msgid "Deletion Date"
+msgstr "삭제 날짜"
+
+#. module: knowledge
+#: model:ir.model.constraint,message:knowledge.constraint_knowledge_article_check_permission_on_desync
+msgid "Desynchronized articles must have internal permission."
+msgstr "비동기화 작성글에는 반드시 내부 권한이 필요합니다."
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__is_desynchronized
+msgid "Desyncronized with parents"
+msgstr "상위 항목과 비동기화"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/cover_selector/knowledge_cover_dialog.xml:0
+#: code:addons/knowledge/static/src/components/prompt_embedded_view_name_dialog/prompt_embedded_view_name_dialog.xml:0
+#, python-format
+msgid "Discard"
+msgstr "작성 취소"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__display_name
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article_favorite__display_name
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article_member__display_name
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_cover__display_name
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_invite__display_name
+msgid "Display Name"
+msgstr "표시명"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid "Diving in"
+msgstr "뛰어들기"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/behaviors/file_behavior/file_behavior.xml:0
+#: code:addons/knowledge/static/src/components/behaviors/file_behavior/file_behavior.xml:0
+#, python-format
+msgid "Download"
+msgstr "다운로드"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/views/list_view.js:0
+#, python-format
+msgid "Duplicate"
+msgstr "복제"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/prompt_embedded_view_name_dialog/prompt_embedded_view_name_dialog.js:0
+#, python-format
+msgid "Embed a View"
+msgstr "보기 삽입"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/js/wysiwyg.js:0
+#, python-format
+msgid "Embed a file."
+msgstr ""
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__icon
+msgid "Emoji"
+msgstr "이모티콘"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/behaviors/article_behavior/article_behavior.js:0
+#: code:addons/knowledge/static/src/components/permission_panel/permission_panel.js:0
+#: code:addons/knowledge/static/src/macros/abstract_macro.js:0
+#, python-format
+msgid "Error"
+msgstr "오류"
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/models/knowledge_article.py:0
+#, python-format
+msgid ""
+"Error: The given action is not an act_window. This action can not be used to"
+" create an embedded view or a view link"
+msgstr "오류: 해당 작업은 act_window가 아닙니다. 이 작업은 보기 또는 보기 링크를 삽입하도록 만들 수 없습니다."
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/permission_panel/permission_panel.xml:0
+#, python-format
+msgid "External Guest"
+msgstr ""
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_favorite_view_form
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_search
+msgid "Favorite"
+msgstr "즐겨찾기"
+
+#. module: knowledge
+#: model:ir.model,name:knowledge.model_knowledge_article_favorite
+msgid "Favorite Article"
+msgstr "즐겨찾기 글"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__favorite_ids
+msgid "Favorite Articles"
+msgstr "즐겨찾기 글"
+
+#. module: knowledge
+#: model:ir.actions.act_window,name:knowledge.knowledge_article_favorite_action
+#: model:ir.ui.menu,name:knowledge.knowledge_article_favorite_menu
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_favorite_view_tree
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_tree_favorites
+msgid "Favorites"
+msgstr "즐겨찾기"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/js/wysiwyg.js:0
+#, python-format
+msgid "File"
+msgstr "파일"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__message_follower_ids
+msgid "Followers"
+msgstr "팔로워"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__message_partner_ids
+msgid "Followers (Partners)"
+msgstr "팔로워 (파트너)"
+
+#. module: knowledge
+#: model:ir.model.fields,help:knowledge.field_knowledge_article__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr "멋진 아이콘 폰트 예 : fa-tasks"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__full_width
+msgid "Full width"
+msgstr "전체 너비"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_mail_invite
+msgid "Go to Article"
+msgstr ""
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_favorite_view_search
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_member_view_search
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_search
+msgid "Group By"
+msgstr "그룹별"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/permission_panel/permission_panel.xml:0
+#, python-format
+msgid "Guest"
+msgstr "손님"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__user_has_access
+msgid "Has Access"
+msgstr "접근 권한 있음"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__has_message
+msgid "Has Message"
+msgstr "메시지가 있습니다"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__user_has_write_access
+msgid "Has Write Access"
+msgstr "쓰기 권한 있음"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__has_item_children
+msgid "Has article item children?"
+msgstr "작성글 하위 항목이 있습니까?"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__has_article_children
+msgid "Has normal article children?"
+msgstr "일반적인 하위 작성글입니까?"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_invite__have_share_partners
+msgid "Have Share Partners"
+msgstr "공유하는 협력사 있음"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid "Hello there"
+msgstr "안녕하세요"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid ""
+"Hello there, I am a template\n"
+"            <br/>\n"
+"            Use the buttons at the top-right of this box to re-use my content.\n"
+"            <br/>\n"
+"            No more time wasted!"
+msgstr ""
+
+#. module: knowledge
+#: model:ir.ui.menu,name:knowledge.knowledge_menu_home
+msgid "Home"
+msgstr "홈"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__id
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article_favorite__id
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article_member__id
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_cover__id
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_invite__id
+msgid "ID"
+msgstr "ID"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__activity_exception_icon
+msgid "Icon"
+msgstr "아이콘"
+
+#. module: knowledge
+#: model:ir.model.fields,help:knowledge.field_knowledge_article__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr "예외 활동을 표시하기 위한 아이콘"
+
+#. module: knowledge
+#: model:ir.model.fields,help:knowledge.field_knowledge_article__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr "만약 선택하였으면, 신규 메시지에 주의를 기울여야 합니다."
+
+#. module: knowledge
+#: model:ir.model.fields,help:knowledge.field_knowledge_article__message_has_error
+#: model:ir.model.fields,help:knowledge.field_knowledge_article__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr "이 옵션을 선택하면 일부 정보가 전달 오류를 생성합니다."
+
+#. module: knowledge
+#: model:ir.model.fields,help:knowledge.field_knowledge_article__is_desynchronized
+msgid ""
+"If set, this article won't inherit access rules from its parents anymore."
+msgstr "설정할 경우, 이 작성글은 더 이상 상위 항목에서 접근 권한 규칙을 상속하지 않습니다."
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/js/wysiwyg.js:0
+#, python-format
+msgid "Index"
+msgstr "색인"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__inherited_permission
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article_member__article_permission
+msgid "Inherited Permission"
+msgstr "상속된 권한"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__inherited_permission_parent_id
+msgid "Inherited Permission Parent Article"
+msgstr "상속된 권한 상위 작성글"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/prompt_embedded_view_name_dialog/prompt_embedded_view_name_dialog.xml:0
+#, python-format
+msgid "Insert"
+msgstr "삽입"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/js/wysiwyg/knowledge_article_link.js:0
+#, python-format
+msgid "Insert Link"
+msgstr "링크 삽입"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/prompt_embedded_view_name_dialog/prompt_embedded_view_name_dialog.js:0
+#, python-format
+msgid "Insert a Kanban View"
+msgstr "칸반 보기 삽입"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/js/wysiwyg.js:0
+#, python-format
+msgid "Insert a Kanban view of article items"
+msgstr "작성글 항목의 칸반 보기 삽입"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/prompt_embedded_view_name_dialog/prompt_embedded_view_name_dialog.js:0
+#, python-format
+msgid "Insert a List View"
+msgstr "목록 보기 삽입"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/js/wysiwyg.js:0
+#, python-format
+msgid "Insert a List view of article items"
+msgstr "작성글 항목의 목록 보기 삽입"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/external_embedded_view_favorite_menu/insert_embedded_view.xml:0
+#, python-format
+msgid "Insert link in article"
+msgstr "관련 글 링크 삽입"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/external_embedded_view_favorite_menu/insert_embedded_view.xml:0
+#, python-format
+msgid "Insert view in article"
+msgstr "관련 글 보기 삽입"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/permission_panel/permission_panel.xml:0
+#, python-format
+msgid "Internal Members"
+msgstr ""
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/permission_panel/permission_panel.xml:0
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__internal_permission
+#, python-format
+msgid "Internal Permission"
+msgstr "내부 권한"
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/models/knowledge_article.py:0
+#, python-format
+msgid "Invitation to access %s"
+msgstr "접근 권한 초대 %s"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_invite_view_form
+msgid "Invite"
+msgstr "초대"
+
+#. module: knowledge
+#: model:ir.actions.act_window,name:knowledge.knowledge_invite_action_from_article
+msgid "Invite people"
+msgstr "사람들 초대"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article_favorite__is_article_active
+msgid "Is Article Active"
+msgstr "작성글이 활성화됨"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__is_user_favorite
+msgid "Is Favorited"
+msgstr "즐겨찾기에 포함되어 있음"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__message_is_follower
+msgid "Is Follower"
+msgstr "팔로워임"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__is_article_item
+msgid "Is Item?"
+msgstr "항목 여부?"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__article_properties_is_empty
+msgid "Is Property Field Empty?"
+msgstr ""
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/js/wysiwyg.js:0
+#, python-format
+msgid "Item Kanban"
+msgstr "항목 칸반"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/js/wysiwyg.js:0
+#, python-format
+msgid "Item List"
+msgstr "항목 목록"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/js/wysiwyg.js:0
+#: code:addons/knowledge/static/src/js/wysiwyg.js:0
+#: code:addons/knowledge/static/src/js/wysiwyg.js:0
+#: code:addons/knowledge/static/src/js/wysiwyg.js:0
+#: code:addons/knowledge/static/src/js/wysiwyg.js:0
+#: code:addons/knowledge/static/src/js/wysiwyg.js:0
+#: code:addons/knowledge/static/src/js/wysiwyg.js:0
+#: code:addons/knowledge/static/src/js/wysiwyg.js:0
+#: model:ir.ui.menu,name:knowledge.knowledge_menu_root
+#, python-format
+msgid "Knowledge"
+msgstr "지식 센터"
+
+#. module: knowledge
+#: model:ir.model,name:knowledge.model_knowledge_article
+msgid "Knowledge Article"
+msgstr "지식 자료"
+
+#. module: knowledge
+#: model:ir.model,name:knowledge.model_knowledge_cover
+msgid "Knowledge Cover"
+msgstr "지식센터 표지"
+
+#. module: knowledge
+#: model:ir.model,name:knowledge.model_knowledge_invite
+msgid "Knowledge Invite Wizard"
+msgstr "지식센터 초대 마법사"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_tree
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_tree_items
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_tree_trash
+msgid "Last Edit Date"
+msgstr "최근 편집일"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__last_edition_uid
+msgid "Last Edited by"
+msgstr "최근 편집자"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid "Last Edited by:"
+msgstr ""
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__last_edition_date
+msgid "Last Edited on"
+msgstr "최근 편집일"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article____last_update
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article_favorite____last_update
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article_member____last_update
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_cover____last_update
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_invite____last_update
+msgid "Last Modified on"
+msgstr "최근 수정일"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__write_uid
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article_favorite__write_uid
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article_member__write_uid
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_cover__write_uid
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_invite__write_uid
+msgid "Last Updated by"
+msgstr "최근 갱신한 사람"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__write_date
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article_favorite__write_date
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article_member__write_date
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_cover__write_date
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_invite__write_date
+msgid "Last Updated on"
+msgstr "최근 갱신 일자"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/permission_panel/permission_panel.js:0
+#: code:addons/knowledge/static/src/components/permission_panel/permission_panel.js:0
+#: code:addons/knowledge/static/src/components/permission_panel/permission_panel.xml:0
+#, python-format
+msgid "Leave Article"
+msgstr "작성글에서 나가기"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/js/wysiwyg/knowledge_article_link.js:0
+#, python-format
+msgid "Link an Article"
+msgstr "작성글에 연결"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/js/wysiwyg.js:0
+#, python-format
+msgid "Link an article."
+msgstr "기사에 연결합니다."
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.articles_template
+msgid "Load more"
+msgstr "추가 불러오기"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__is_locked
+msgid "Locked"
+msgstr "잠김"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/xml/knowledge_frontend.xml:0
+#, python-format
+msgid "Log in"
+msgstr "로그인"
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/models/knowledge_article.py:0
+#, python-format
+msgid ""
+"Logging changes from %(partner_name)s without write access on article "
+"%(article_name)s due to hierarchy tree update"
+msgstr ""
+"계층도 업데이트로 인해 %(article_name)s 게시물에 대한 쓰기 권한이 없는 상태에서 %(partner_name)s 변경 내용을"
+" 기록합니다.   "
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__message_main_attachment_id
+msgid "Main Attachment"
+msgstr "주요 첨부 파일"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/js/wysiwyg.js:0
+#: code:addons/knowledge/static/src/js/wysiwyg.js:0
+#, python-format
+msgid "Media"
+msgstr "매체"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_member_view_form
+msgid "Member"
+msgstr "회원"
+
+#. module: knowledge
+#: model:ir.actions.act_window,name:knowledge.knowledge_article_member_action
+#: model:ir.ui.menu,name:knowledge.knowledge_article_member_menu
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_member_view_tree
+msgid "Members"
+msgstr "회원"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__article_member_ids
+msgid "Members Information"
+msgstr "회원 정보"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__root_article_id
+msgid "Menu Article"
+msgstr "메뉴 게시물"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__message_has_error
+msgid "Message Delivery error"
+msgstr "메시지 전송 오류"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__message_ids
+msgid "Messages"
+msgstr "메시지"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/behaviors/file_behavior/file_behavior.js:0
+#, python-format
+msgid "Missing File"
+msgstr "파일 누락"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/move_article_dialog/move_article_dialog.xml:0
+#, python-format
+msgid "Move \""
+msgstr "이동 *"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/move_article_dialog/move_article_dialog.xml:0
+#, python-format
+msgid "Move Article"
+msgstr "게시물 이동"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/move_article_dialog/move_article_dialog.js:0
+#, python-format
+msgid "Move an Article"
+msgstr "게시물 이동"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr "내 활동 마감일"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_search_items
+msgid "My Favorites"
+msgstr "내 즐겨찾기"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_tree
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_tree_items
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_tree_trash
+msgid "Name"
+msgstr "이름"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid "Navigation Basics"
+msgstr ""
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/xml/knowledge_editor.xml:0
+#, python-format
+msgid "Nest articles under this one to generate a structure"
+msgstr "이 항목 아래에 게시물을 중첩시켜서 구조를 생성합니다."
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__activity_calendar_event_id
+msgid "Next Activity Calendar Event"
+msgstr "다음 활동 캘린더 행사"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr "다음 활동 마감일"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__activity_summary
+msgid "Next Activity Summary"
+msgstr "다음 활동 요약"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__activity_type_id
+msgid "Next Activity Type"
+msgstr "다음 활동 유형"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/xml/knowledge_command_palette.xml:0
+#, python-format
+msgid "No Article found."
+msgstr "게시물을 찾을 수 없습니다."
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/webclient/commands/knowledge_providers.js:0
+#, python-format
+msgid "No Article found. Create \"%s\""
+msgstr "게시물을 찾을 수 없습니다.  \"%s\" 항목을 생성하십시오."
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/models/knowledge_article.py:0
+#, python-format
+msgid "No Article in Trash"
+msgstr "휴지통에서 게시물을 찾을 수 없습니다."
+
+#. module: knowledge
+#: model_terms:ir.actions.act_window,help:knowledge.knowledge_article_favorite_action
+msgid "No Favorites yet!"
+msgstr "즐겨찾기 항목이 아직 없습니다!"
+
+#. module: knowledge
+#: model_terms:ir.actions.act_window,help:knowledge.knowledge_article_member_action
+msgid "No Members yet!"
+msgstr "아직 회원이 없습니다!"
+
+#. module: knowledge
+#: model:ir.model.fields.selection,name:knowledge.selection__knowledge_article__inherited_permission__none
+#: model:ir.model.fields.selection,name:knowledge.selection__knowledge_article__internal_permission__none
+#: model:ir.model.fields.selection,name:knowledge.selection__knowledge_article_member__permission__none
+#: model:ir.model.fields.selection,name:knowledge.selection__knowledge_invite__permission__none
+msgid "No access"
+msgstr "접근 권한 없음"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_tree_frontend
+msgid "No article found"
+msgstr "게시물을 찾을 수 없습니다"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/webclient/commands/knowledge_providers.js:0
+#, python-format
+msgid "No article found."
+msgstr "게시물을 찾을 수 없습니다."
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid "No article yet."
+msgstr "아직 게시물이 없습니다."
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__message_needaction_counter
+msgid "Number of Actions"
+msgstr "작업 수"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__message_has_error_counter
+msgid "Number of errors"
+msgstr "오류 횟수"
+
+#. module: knowledge
+#: model:ir.model.fields,help:knowledge.field_knowledge_article__message_needaction_counter
+msgid "Number of messages requiring action"
+msgstr "조치가 필요한 메시지 수"
+
+#. module: knowledge
+#: model:ir.model.fields,help:knowledge.field_knowledge_article__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr "전송 오류 메시지 수"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid "Odoo Survival Guide"
+msgstr "Odoo  서바이벌 가이드"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/behaviors/article_behavior/article_behavior.js:0
+#: code:addons/knowledge/static/src/components/behaviors/file_behavior/file_behavior.js:0
+#, python-format
+msgid "Ok"
+msgstr "확인"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid "Onboarding.pdf"
+msgstr "Onboarding.pdf"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/behaviors/file_behavior/file_behavior.js:0
+#, python-format
+msgid ""
+"Oops, the file %s could not be found. Please replace this file box by a new "
+"one to re-upload the file."
+msgstr "%s 파일을 찾을 수 없습니다. 파일을 다시 업로드하시려면 이 파일 박스를 새로운 항목으로 바꾸시기 바랍니다. "
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/behaviors/embedded_view_behavior/embedded_view_manager.xml:0
+#: code:addons/knowledge/static/src/components/behaviors/embedded_view_behavior/embedded_view_manager.xml:0
+#, python-format
+msgid "Open"
+msgstr "열기"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__parent_id
+msgid "Parent Article"
+msgstr "상위 게시물"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__parent_path
+msgid "Parent Path"
+msgstr "상위 경로"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article_member__partner_id
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_member_view_search
+msgid "Partner"
+msgstr "파트너"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article_member__permission
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_invite__permission
+msgid "Permission"
+msgstr "승인"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/move_article_dialog/move_article_dialog.js:0
+#: model:ir.model.fields.selection,name:knowledge.selection__knowledge_article__category__private
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_tree
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_search
+#, python-format
+msgid "Private"
+msgstr "비공개"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__article_properties
+msgid "Properties"
+msgstr "부동산"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid "Property Fields"
+msgstr ""
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_invite__partner_ids
+msgid "Recipients"
+msgstr "수신인"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/behaviors/articles_structure_behavior/articles_structure_behavior.xml:0
+#, python-format
+msgid "Refresh"
+msgstr "새로 고침"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/knowledge_emoji_picker_remove_action_view/knowledge_emoji_picker_remove_action_view.xml:0
+#, python-format
+msgid "Remove Icon"
+msgstr "아이콘 삭제"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/permission_panel/permission_panel.xml:0
+#, python-format
+msgid "Remove Member"
+msgstr "구성원 삭제"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/behaviors/embedded_view_behavior/embedded_view_manager.xml:0
+#: code:addons/knowledge/static/src/components/behaviors/embedded_view_behavior/embedded_view_manager.xml:0
+#: code:addons/knowledge/static/src/components/prompt_embedded_view_name_dialog/prompt_embedded_view_name_dialog.xml:0
+#, python-format
+msgid "Rename"
+msgstr "이름 바꾸기"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__activity_user_id
+msgid "Responsible User"
+msgstr "담당 사용자"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/permission_panel/permission_panel.xml:0
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+#, python-format
+msgid "Restore"
+msgstr "복원"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/permission_panel/permission_panel.js:0
+#, python-format
+msgid "Restore Access"
+msgstr "권한 복원"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/permission_panel/permission_panel.js:0
+#, python-format
+msgid "Restrict Access"
+msgstr "접근 권한 제한"
+
+#. module: knowledge
+#: model:ir.model.constraint,message:knowledge.constraint_knowledge_article_check_desync_on_root
+msgid "Root articles cannot be desynchronized."
+msgstr "루트 아티클은 비동기화할 수 없습니다."
+
+#. module: knowledge
+#: model:ir.model.constraint,message:knowledge.constraint_knowledge_article_check_permission_on_root
+msgid "Root articles must have internal permission."
+msgstr "루트 아티클은 반드시 내부 승인이 있어야 합니다."
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr "SMS 전송 에러"
+
+#. module: knowledge
+#: model:ir.ui.menu,name:knowledge.knowledge_menu_article
+msgid "Search"
+msgstr "검색"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_favorite_view_search
+msgid "Search Favorites"
+msgstr "즐겨찾기 검색"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/xml/chatter_topbar.xml:0
+#, python-format
+msgid "Search Knowledge Articles"
+msgstr "지식센터 게시물 검색"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_member_view_search
+msgid "Search Members"
+msgstr "구성원 검색"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/move_article_dialog/move_article_dialog.xml:0
+#, python-format
+msgid "Search an Article to use as Parent"
+msgstr "상위 항목으로 사용할 게시물 검색"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_frontend
+msgid "Search an article..."
+msgstr "게시물 검색"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/webclient/commands/knowledge_providers.js:0
+#, python-format
+msgid "Search for an article..."
+msgstr "게시물 검색"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__category
+msgid "Section"
+msgstr "구분"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/cover_selector/knowledge_cover_dialog.js:0
+#, python-format
+msgid "Select a cover"
+msgstr "표지 선택"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/external_embedded_view_insertion/views_renderers_patches.js:0
+#, python-format
+msgid "Select an article"
+msgstr "게시글을 선택하세요"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/behaviors/file_behavior/file_behavior.xml:0
+#: code:addons/knowledge/static/src/components/behaviors/file_behavior/file_behavior.xml:0
+#: code:addons/knowledge/static/src/components/behaviors/template_behavior/template_behavior.xml:0
+#: code:addons/knowledge/static/src/components/behaviors/template_behavior/template_behavior.xml:0
+#, python-format
+msgid "Send as Message"
+msgstr "메시지로 전송"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__sequence
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article_favorite__sequence
+msgid "Sequence"
+msgstr "순서"
+
+#. module: knowledge
+#: model:ir.model.fields.selection,name:knowledge.selection__knowledge_article__category__shared
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_tree
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_search
+msgid "Shared"
+msgstr "공유됨"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_tree_frontend
+msgid "Shared with you"
+msgstr "공유"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/js/wysiwyg.js:0
+#, python-format
+msgid "Show all nested articles."
+msgstr "모든 중첩 게시물을 표시합니다."
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/js/wysiwyg.js:0
+#, python-format
+msgid "Show the first level of nested articles."
+msgstr "중첩된 기사의 첫 번째 수준을 표시합니다."
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/models/knowledge_article.py:0
+#, python-format
+msgid "Some articles have been sent to Trash"
+msgstr "휴지통으로 이동된 게시물이 있습니다"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/behaviors/embedded_view_behavior/embedded_view_behavior.xml:0
+#, python-format
+msgid "Something went wrong!"
+msgstr "문제가 발생했습니다!"
+
+#. module: knowledge
+#: model:ir.model.fields,help:knowledge.field_knowledge_article__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+"활동 기준 상태\n"
+"기한 만료: 이미 기한이 지났습니다\n"
+"오늘: 활동 날짜가 오늘입니다\n"
+"예정: 향후 활동입니다."
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/js/wysiwyg.js:0
+#, python-format
+msgid "Table Of Content"
+msgstr "목차"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/behaviors/template_behavior/template_behavior.xml:0
+#: code:addons/knowledge/static/src/js/wysiwyg.js:0
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+#, python-format
+msgid "Template"
+msgstr "템플릿"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/behaviors/template_behavior/template_behavior.js:0
+#, python-format
+msgid "Template copied to clipboard."
+msgstr ""
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/models/knowledge_article.py:0
+#, python-format
+msgid "The Article you are trying to access has been deleted"
+msgstr "접근하려는 게시물은 삭제된 글입니다."
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/models/knowledge_article.py:0
+#, python-format
+msgid "The article '%s' needs at least one member with 'Write' access."
+msgstr " '%s' 게시물에는 '쓰기' 권한을 가진 구성원이 한 명 이상 있어야 합니다."
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_frontend
+msgid ""
+"The article you are trying the read has either been removed or you do not "
+"have access to it."
+msgstr "읽으시려는 게시물은 삭제되었거나 접근 권한이 없는 게시물입니다."
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/models/knowledge_article.py:0
+#, python-format
+msgid ""
+"The destination placement of %(article_name)s is ambiguous, you should "
+"specify the category."
+msgstr "%(article_name)s 최종 위치가 정확하지 않습니다. 카테고리를 지정하세요."
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/models/knowledge_article_member.py:0
+#, python-format
+msgid ""
+"The external user %(user_name)s cannot have a 'write' permission on article "
+"%(article_name)s"
+msgstr ""
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/macros/abstract_macro.js:0
+#, python-format
+msgid ""
+"The operation was interrupted because the page or the record changed. Please"
+" try again later."
+msgstr "페이지나 레코드가 변경되어 작업이 중단되었습니다. 나중에 다시 시도해주십시오."
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/controllers/main.py:0
+#: code:addons/knowledge/controllers/main.py:0
+#, python-format
+msgid "The selected member does not exists or has been already deleted."
+msgstr "선택하신 구성원은 존재하지 않거나 이미 삭제된 구성원입니다."
+
+#. module: knowledge
+#: model:ir.model.fields,help:knowledge.field_knowledge_article__sequence
+msgid ""
+"The sequence is computed only among the articles that have the same parent."
+msgstr "상위 항목이 동일한 게시물 사이에서만 순서를 계산할 수 있습니다."
+
+#. module: knowledge
+#: model:ir.model.fields,help:knowledge.field_knowledge_article__root_article_id
+msgid ""
+"The subject is the title of the highest parent in the article hierarchy."
+msgstr "주제는 게시물 구조 상 가장 높은 상위 제목입니다."
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/behaviors/embedded_view_behavior/embedded_view_behavior.xml:0
+#, python-format
+msgid "The view does not exist or you are not allowed to access to it."
+msgstr "화면이 존재하지 않거나 접근 권한이 없습니다. "
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/controllers/main.py:0
+#, python-format
+msgid ""
+"This Article cannot be unfolded. Either you lost access to it or it has been"
+" deleted."
+msgstr "이 게시물은 펼칠 수 없습니다. 권한이 없거나 삭제된 게시물입니다."
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid "This Article is in Trash and will be deleted on the"
+msgstr "이 게시물은 휴지통으로 이동되었으며 삭제일은 다음과 같습니다."
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid "This article is archived."
+msgstr "이 게시물은 보관 처리되었습니다."
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/behaviors/article_behavior/article_behavior.js:0
+#, python-format
+msgid "This article was deleted or you don't have the rights to access it."
+msgstr "이 게시물은 삭제되었으며 접근할 권한이 없습니다."
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/xml/knowledge_frontend.xml:0
+#, python-format
+msgid "This view is only available for internal users"
+msgstr "내부 사용자들만 확인할 수 있는 화면입니다."
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__name
+msgid "Title"
+msgstr "제목"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid "To be sure to stay updated, follow us on"
+msgstr "새로운 소식을 받아보시려면 다음에서 팔로우하세요"
+
+#. module: knowledge
+#: model:ir.actions.act_window,name:knowledge.knowledge_article_action_trashed
+msgid "Trash"
+msgstr "휴지통"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__to_delete
+#: model:ir.ui.menu,name:knowledge.knowledge_article_menu_trashed
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_search
+msgid "Trashed"
+msgstr "휴지통으로 이동"
+
+#. module: knowledge
+#: model:ir.model.constraint,message:knowledge.constraint_knowledge_article_check_trash
+msgid "Trashed articles must be archived."
+msgstr "휴지통으로 이동된 게시물은 반드시 보관 처리하십시오."
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_frontend
+msgid "Try Odoo"
+msgstr "Odoo 체험하기"
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/models/knowledge_article.py:0
+#, python-format
+msgid "Trying to remove wrong member."
+msgstr "잘못된 구성원을 삭제 중입니다."
+
+#. module: knowledge
+#: model:ir.model.fields,help:knowledge.field_knowledge_article__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr "레코드에 있는 예외 활동의 유형입니다."
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid "Unarchive"
+msgstr "보관 취소"
+
+#. module: knowledge
+#. odoo-javascript
+#. odoo-python
+#: code:addons/knowledge/models/knowledge_article.py:0
+#: code:addons/knowledge/static/src/js/knowledge_renderers.js:0
+#: code:addons/knowledge/static/src/js/knowledge_renderers.js:0
+#: code:addons/knowledge/static/src/js/knowledge_renderers.js:0
+#: code:addons/knowledge/static/src/js/knowledge_renderers.js:0
+#: code:addons/knowledge/static/src/js/knowledge_renderers.js:0
+#: code:addons/knowledge/static/src/js/knowledge_renderers.js:0
+#: code:addons/knowledge/static/src/js/knowledge_renderers.js:0
+#, python-format
+msgid "Untitled"
+msgstr "제목 없음"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/behaviors/articles_structure_behavior/articles_structure_behavior.xml:0
+#, python-format
+msgid "Update"
+msgstr "갱신"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/behaviors/template_behavior/template_behavior.xml:0
+#, python-format
+msgid "Use as"
+msgstr "다음으로 사용합니다"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/behaviors/file_behavior/file_behavior.xml:0
+#: code:addons/knowledge/static/src/components/behaviors/file_behavior/file_behavior.xml:0
+#, python-format
+msgid "Use as Attachment"
+msgstr "첨부 파일로 사용합니다"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/behaviors/template_behavior/template_behavior.xml:0
+#, python-format
+msgid "Use as Description"
+msgstr "설명으로 사용합니다"
+
+#. module: knowledge
+#: model:ir.model.fields,help:knowledge.field_knowledge_article__category
+msgid ""
+"Used to categozie articles in UI, depending on their main permission "
+"definitions."
+msgstr "주요 권한에 대한 정의에 따라 UI에서 게시물을 분류하는데 사용합니다."
+
+#. module: knowledge
+#: model:ir.model,name:knowledge.model_res_users
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article_favorite__user_id
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_favorite_view_search
+msgid "User"
+msgstr "사용자"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__user_favorite_sequence
+msgid "User Favorite Sequence"
+msgstr "사용자의 즐겨찾기 순서"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/permission_panel/permission_panel.xml:0
+#, python-format
+msgid "User Permission"
+msgstr "사용자 승인"
+
+#. module: knowledge
+#: model:ir.model.constraint,message:knowledge.constraint_knowledge_article_favorite_unique_article_user
+msgid "User already has this article in favorites."
+msgstr "이 게시물은 이미 사용자의 즐겨찾기에 있습니다."
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__user_permission
+msgid "User permission"
+msgstr "사용자 승인"
+
+#. module: knowledge
+#: model:ir.model.fields,field_description:knowledge.field_knowledge_article__website_message_ids
+msgid "Website Messages"
+msgstr "웹사이트 메시지"
+
+#. module: knowledge
+#: model:ir.model.fields,help:knowledge.field_knowledge_article__website_message_ids
+msgid "Website communication history"
+msgstr "웹사이트 대화 이력"
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/models/res_users.py:0
+#, python-format
+msgid "Welcome %s"
+msgstr "%s에 오신 것을 환영합니다"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/prompt_embedded_view_name_dialog/prompt_embedded_view_name_dialog.xml:0
+#, python-format
+msgid "What do you want to manage?"
+msgstr "관리하려는 대상이 무엇인가요?"
+
+#. module: knowledge
+#: model:ir.model.fields,help:knowledge.field_knowledge_article__is_locked
+msgid ""
+"When locked, users cannot write on the body or change the title, even if "
+"they have write access on the article."
+msgstr "잠겨 있는 경우에는 게시글에 쓰기 권한을 가진 경우라도 사용자는 본문에 글을 작성하거나 제목을 변경할 수 없습니다."
+
+#. module: knowledge
+#: model:ir.model.fields,help:knowledge.field_knowledge_article__to_delete
+msgid ""
+"When sent to trash, articles are flagged to be deleted\n"
+"                days after last edit. knowledge_article_trash_limit_days config\n"
+"                parameter can be used to modify the number of days. \n"
+"                (default is 30)"
+msgstr ""
+"휴지통으로 보내면, 게시물에는 최종 편집일 며칠 후부터\n"
+"                삭제됨 플래그가 지정됩니다. knowledge_article_trash_limit_days config\n"
+"                매개변수를 이용하여 해당 일 수를 조정할 수 있습니다. \n"
+"                (기본값은 30)"
+
+#. module: knowledge
+#: model:ir.model.fields,help:knowledge.field_knowledge_article__full_width
+msgid ""
+"When set, the article body will take the full width available on the article"
+" page. Otherwise, the body will have large horizontal margins."
+msgstr ""
+"설정할 경우, 게시물의 본문에서는 게시물 페이지에서 가능한 전체 너비를 사용합니다. 그렇지 않은 경우, 본문의 가로 여백이 커지게 "
+"됩니다."
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid "Who has access to what?"
+msgstr "누구에게 어떤 접근 권한을 주시겠습니까?"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/move_article_dialog/move_article_dialog.js:0
+#: model:ir.model.fields.selection,name:knowledge.selection__knowledge_article__category__workspace
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_tree
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_search
+#, python-format
+msgid "Workspace"
+msgstr "저장공간"
+
+#. module: knowledge
+#: model:ir.model.constraint,message:knowledge.constraint_knowledge_article_member_unique_article_partner
+msgid "You already added this partner on this article."
+msgstr "이 게시물에 이미 추가되어 있는 협력사입니다."
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_frontend
+msgid "You are currently visiting as a Guest User"
+msgstr "현재 손님 사용자로 접속 중입니다."
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/models/knowledge_article.py:0
+#, python-format
+msgid "You are not allowed to make '%(article_name)s' private."
+msgstr "'%(article_name)s' 항목을 개인 항목으로 만들 권한이 없습니다."
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/models/knowledge_article.py:0
+#, python-format
+msgid ""
+"You are not allowed to move '%(article_name)s' under '%(parent_name)s'."
+msgstr "'%(article_name)s' 항목을 '%(parent_name)s' 항목 아래로 이동할 권한이 없습니다."
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/permission_panel/permission_panel.xml:0
+#, python-format
+msgid "You can't leave an article for which you are the last writer"
+msgstr "마지막 작성자인 경우 게시물에서 나갈 수 없습니다."
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/models/knowledge_article.py:0
+#, python-format
+msgid ""
+"You can't move %(article_name)s under %(item_name)s, as %(item_name)s is an "
+"Article Item. Convert %(item_name)s into an Article first."
+msgstr ""
+"%(article_name)s를 %(item_name)s 아래로 이동할 수 없습니다. %(item_name)s는 문서 항목이므로, "
+"%(item_name)s를 먼저 문서로 변환해야 합니다."
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/permission_panel/permission_panel.xml:0
+#, python-format
+msgid "You can't remove the last writer of the article"
+msgstr "게시물의 마지막 작성자는 삭제할 수 없습니다."
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/models/knowledge_article.py:0
+#, python-format
+msgid "You cannot add or remove this article to your favorites"
+msgstr "이 게시물을 즐겨찾기에 추가하거나 삭제할 수 없습니다."
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/controllers/main.py:0
+#, python-format
+msgid "You cannot change the internal permission of this article."
+msgstr "이 게시물의 내부 승인 내용을 변경할 수 없습니다."
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/controllers/main.py:0
+#, python-format
+msgid "You cannot change the permission of this member."
+msgstr "이 구성원의 승인 내용을 변경할 수 없습니다."
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/models/knowledge_cover.py:0
+#, python-format
+msgid "You cannot create a new Knowledge Cover from here."
+msgstr "여기서는 새로운 지식창고를 만들 수 없습니다."
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/models/knowledge_article.py:0
+#, python-format
+msgid "You cannot create an article under articles on which you cannot write"
+msgstr "쓰기 권한이 없는 게시물 아래에서는 게시물을 작성할 수 없습니다."
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/models/knowledge_article.py:0
+#, python-format
+msgid ""
+"You cannot move an article under %(parent_name)s as you cannot write on it"
+msgstr "쓰기 권한이 없는 %(parent_name)s 항목 아래에서는 게시물을 이동할 수 없습니다."
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/models/knowledge_article.py:0
+#, python-format
+msgid "You have to be editor on %(article_name)s to add members."
+msgstr "%(article_name)s 항목에 구성원을 추가하려면 편집자 권한이 있어야 합니다."
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/models/knowledge_article.py:0
+#, python-format
+msgid ""
+"You have to be editor on %(article_name)s to change its internal permission."
+msgstr "내부 승인을 변경하려면 %(article_name)s 항목에 편집자 권한이 있어야 합니다."
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/models/knowledge_article.py:0
+#, python-format
+msgid ""
+"You have to be editor on %(article_name)s to modify members permissions."
+msgstr "구성원 승인을 수정하려면 %(article_name)s 항목에 편집자 권한이 있어야 합니다."
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/models/knowledge_article.py:0
+#, python-format
+msgid ""
+"You have to be editor on %(article_name)s to remove or exclude member "
+"%(member_name)s."
+msgstr ""
+"%(member_name)s 구성원을 삭제하거나 제외시키려면 %(article_name)s 항목에 편집자 권한이 있어야 합니다."
+
+#. module: knowledge
+#. odoo-python
+#: code:addons/knowledge/models/knowledge_article.py:0
+#, python-format
+msgid "You have to be editor on %(article_name)s to restore it."
+msgstr "복원하려면 %(article_name)s 항목에 편집자 권한이 있어야 합니다."
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_trash_notification
+msgid "and the following child article(s) have"
+msgstr "그리고 다음 하위 게시물에는"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/webclient/commands/knowledge_providers.js:0
+#, python-format
+msgid "articles"
+msgstr "게시물"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_trash_notification
+msgid "been sent to Trash.<br/><br/>"
+msgstr "휴지통으로 이동되었습니다.<br/><br/>"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid "cover"
+msgstr "표지"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/prompt_embedded_view_name_dialog/prompt_embedded_view_name_dialog.js:0
+#, python-format
+msgid "e.g. Buildings"
+msgstr "예: 건물"
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/prompt_embedded_view_name_dialog/prompt_embedded_view_name_dialog.js:0
+#, python-format
+msgid "e.g. Todos"
+msgstr "예: 해야 할 일"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_trash_notification
+msgid "has"
+msgstr "다음의"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_trash_notification
+msgid "have"
+msgstr "다음이 있습니다"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_mail_invite
+msgid "invited you to access"
+msgstr ""
+
+#. module: knowledge
+#. odoo-javascript
+#: code:addons/knowledge/static/src/components/behaviors/abstract_behavior/abstract_behavior.xml:0
+#: code:addons/knowledge/static/src/components/behaviors/articles_structure_behavior/articles_structure_behavior.xml:0
+#: code:addons/knowledge/static/src/components/behaviors/embedded_view_behavior/embedded_view_behavior.xml:0
+#: code:addons/knowledge/static/src/components/permission_panel/permission_panel.xml:0
+#, python-format
+msgid "loader"
+msgstr "업로드 진행자"
+
+#. module: knowledge
+#: model:ir.model.fields.selection,name:knowledge.selection__knowledge_article__user_permission__none
+msgid "none"
+msgstr "없음"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid "or"
+msgstr "및"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_user_onboarding
+msgid "pdf"
+msgstr "pdf"
+
+#. module: knowledge
+#: model:ir.model.fields.selection,name:knowledge.selection__knowledge_article__user_permission__read
+msgid "read"
+msgstr "읽기"
+
+#. module: knowledge
+#: model_terms:ir.ui.view,arch_db:knowledge.knowledge_article_view_form
+msgid "to unleash the power of Knowledge !"
+msgstr "지식센터의 힘을 확인해보세요 !"
+
+#. module: knowledge
+#: model:ir.model.fields.selection,name:knowledge.selection__knowledge_article__user_permission__write
+msgid "write"
+msgstr "쓰기"

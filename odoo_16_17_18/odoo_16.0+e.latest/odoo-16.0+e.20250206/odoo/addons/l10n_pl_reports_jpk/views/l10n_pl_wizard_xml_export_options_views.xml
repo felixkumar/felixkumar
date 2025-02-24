@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_account_financial_report_export" model="ir.ui.view">
+            <field name="name">l10n_pl_reports_jpk.periodic.vat.xml.export.form</field>
+            <field name="model">l10n_pl_reports_jpk.periodic.vat.xml.export</field>
+            <field name="arch" type="xml">
+                <form string="Export Options">
+                    <div>
+                        Choose option(s) before exporting XML
+                    </div>
+                    <group>
+                         <group>
+                             <field name="partner_is_company" invisible="True"/>
+                             <field name="l10n_pl_birthdate" attrs="{'invisible': [('partner_is_company', '=', True)],
+                                                                     'required': [('partner_is_company', '=', False)]}"/>
+                             <field name="l10n_pl_repayment_amount"/>
+                             <field name="l10n_pl_repayment_timeframe" attrs="{'invisible': [('l10n_pl_repayment_amount', '=', 0)],
+                                                                               'required': [('l10n_pl_repayment_amount', '!=', 0)]}"/>
+                             <field name="l10n_pl_repayment_future_tax"/>
+                             <field name="l10n_pl_repayment_future_tax_amount" attrs="{'invisible': [('l10n_pl_repayment_future_tax', '=', False)],
+                                                                                       'required': [('l10n_pl_repayment_future_tax', '=', True)]}"/>
+                             <field name="l10n_pl_repayment_future_tax_type" attrs="{'invisible': [('l10n_pl_repayment_future_tax', '=', False)],
+                                                                                     'required': [('l10n_pl_repayment_future_tax', '=', True)]}"/>
+                         </group>
+                         <group>
+                             <field name="l10n_pl_paid_before_deadline"/>
+                             <field name="l10n_pl_is_amendment"/>
+                             <field name="l10n_pl_reason_amendment" attrs="{'invisible': [('l10n_pl_is_amendment', '=', False)]}"/>
+                         </group>
+                    </group>
+                    <footer>
+                        <button string='Export XML' name="print_xml" type="object" class="btn-primary" data-hotkey="q"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel" data-hotkey="z"/>
+                    </footer>
+               </form>
+            </field>
+        </record>
+
+    </data>
+</odoo>

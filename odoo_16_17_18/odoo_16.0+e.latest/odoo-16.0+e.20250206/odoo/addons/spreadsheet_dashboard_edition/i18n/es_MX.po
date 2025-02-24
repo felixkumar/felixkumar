@@ -1,0 +1,55 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* spreadsheet_dashboard_edition
+# 
+# Translators:
+# Martin Trigaux, 2022
+# Braulio D. López Vázquez <bdl@odoo.com>, 2022
+# Patricia Gutiérrez Capetillo <pagc@odoo.com>, 2023
+# Iran Villalobos López, 2023
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-02-06 13:25+0000\n"
+"PO-Revision-Date: 2022-09-22 05:49+0000\n"
+"Last-Translator: Iran Villalobos López, 2023\n"
+"Language-Team: Spanish (Mexico) (https://app.transifex.com/odoo/teams/41243/es_MX/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Language: es_MX\n"
+"Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
+
+#. module: spreadsheet_dashboard_edition
+#: model_terms:ir.ui.view,arch_db:spreadsheet_dashboard_edition.spreadsheet_dashboard_view_list
+msgid "Edit"
+msgstr "Editar"
+
+#. module: spreadsheet_dashboard_edition
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_edition/static/src/bundle/action/dashboard_edit_action.js:0
+#, python-format
+msgid "New dashboard created"
+msgstr "Nuevo tablero creado"
+
+#. module: spreadsheet_dashboard_edition
+#: model:ir.model.fields,field_description:spreadsheet_dashboard_edition.field_spreadsheet_dashboard__raw
+msgid "Raw"
+msgstr "Raw"
+
+#. module: spreadsheet_dashboard_edition
+#: model:ir.model,name:spreadsheet_dashboard_edition.model_spreadsheet_dashboard
+msgid "Spreadsheet Dashboard"
+msgstr "Tablero de Hojas de cálculo"
+
+#. module: spreadsheet_dashboard_edition
+#: model:ir.model.fields,field_description:spreadsheet_dashboard_edition.field_spreadsheet_dashboard__spreadsheet_revision_ids
+msgid "Spreadsheet Revision"
+msgstr "Revisión de la hoja de cálculo"
+
+#. module: spreadsheet_dashboard_edition
+#: model:ir.model.fields,field_description:spreadsheet_dashboard_edition.field_spreadsheet_dashboard__spreadsheet_snapshot
+msgid "Spreadsheet Snapshot"
+msgstr "Panorama de la hoja de cálculo"

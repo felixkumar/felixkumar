@@ -1,0 +1,54 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* spreadsheet_dashboard_edition
+# 
+# Translators:
+# Martin Trigaux, 2022
+# Kevilyn Rosa, 2023
+# a75f12d3d37ea5bf159c4b3e85eb30e7_0fa6927, 2023
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-02-06 13:25+0000\n"
+"PO-Revision-Date: 2022-09-22 05:49+0000\n"
+"Last-Translator: a75f12d3d37ea5bf159c4b3e85eb30e7_0fa6927, 2023\n"
+"Language-Team: Portuguese (Brazil) (https://app.transifex.com/odoo/teams/41243/pt_BR/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Language: pt_BR\n"
+"Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
+
+#. module: spreadsheet_dashboard_edition
+#: model_terms:ir.ui.view,arch_db:spreadsheet_dashboard_edition.spreadsheet_dashboard_view_list
+msgid "Edit"
+msgstr "Editar"
+
+#. module: spreadsheet_dashboard_edition
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_edition/static/src/bundle/action/dashboard_edit_action.js:0
+#, python-format
+msgid "New dashboard created"
+msgstr "Novo painel criado"
+
+#. module: spreadsheet_dashboard_edition
+#: model:ir.model.fields,field_description:spreadsheet_dashboard_edition.field_spreadsheet_dashboard__raw
+msgid "Raw"
+msgstr ""
+
+#. module: spreadsheet_dashboard_edition
+#: model:ir.model,name:spreadsheet_dashboard_edition.model_spreadsheet_dashboard
+msgid "Spreadsheet Dashboard"
+msgstr "Painel de planilha"
+
+#. module: spreadsheet_dashboard_edition
+#: model:ir.model.fields,field_description:spreadsheet_dashboard_edition.field_spreadsheet_dashboard__spreadsheet_revision_ids
+msgid "Spreadsheet Revision"
+msgstr "Revisão de planilhas"
+
+#. module: spreadsheet_dashboard_edition
+#: model:ir.model.fields,field_description:spreadsheet_dashboard_edition.field_spreadsheet_dashboard__spreadsheet_snapshot
+msgid "Spreadsheet Snapshot"
+msgstr "Resumo da planilha"

@@ -1,0 +1,100 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* account_sepa_pain_001_001_09
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-02-06 13:24+0000\n"
+"PO-Revision-Date: 2024-02-06 13:24+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: account_sepa_pain_001_001_09
+#: model:ir.model,name:account_sepa_pain_001_001_09.model_account_batch_payment
+msgid "Batch Payment"
+msgstr ""
+
+#. module: account_sepa_pain_001_001_09
+#: model:ir.model,name:account_sepa_pain_001_001_09.model_res_company
+msgid "Companies"
+msgstr ""
+
+#. module: account_sepa_pain_001_001_09
+#: model:ir.model,name:account_sepa_pain_001_001_09.model_res_partner
+msgid "Contact"
+msgstr ""
+
+#. module: account_sepa_pain_001_001_09
+#: model:ir.model,name:account_sepa_pain_001_001_09.model_account_journal
+msgid "Journal"
+msgstr ""
+
+#. module: account_sepa_pain_001_001_09
+#: model:ir.model.fields,field_description:account_sepa_pain_001_001_09.field_res_company__account_sepa_lei
+#: model:ir.model.fields,field_description:account_sepa_pain_001_001_09.field_res_partner__account_sepa_lei
+#: model:ir.model.fields,field_description:account_sepa_pain_001_001_09.field_res_users__account_sepa_lei
+msgid "LEI"
+msgstr ""
+
+#. module: account_sepa_pain_001_001_09
+#: model:ir.model.fields,help:account_sepa_pain_001_001_09.field_res_company__account_sepa_lei
+#: model:ir.model.fields,help:account_sepa_pain_001_001_09.field_res_partner__account_sepa_lei
+#: model:ir.model.fields,help:account_sepa_pain_001_001_09.field_res_users__account_sepa_lei
+msgid "Legal Entity Identifier"
+msgstr ""
+
+#. module: account_sepa_pain_001_001_09
+#: model_terms:ir.ui.view,arch_db:account_sepa_pain_001_001_09.res_partner_sepa_inherit_form
+msgid "Miscellaneous"
+msgstr ""
+
+#. module: account_sepa_pain_001_001_09
+#: model:ir.model.fields.selection,name:account_sepa_pain_001_001_09.selection__account_journal__sepa_pain_version__pain_001_001_09
+msgid "New generic version (09)"
+msgstr ""
+
+#. module: account_sepa_pain_001_001_09
+#: model:ir.model,name:account_sepa_pain_001_001_09.model_account_payment
+msgid "Payments"
+msgstr ""
+
+#. module: account_sepa_pain_001_001_09
+#: model:ir.model.fields,field_description:account_sepa_pain_001_001_09.field_account_journal__sepa_pain_version
+#: model:ir.model.fields,field_description:account_sepa_pain_001_001_09.field_account_payment__sepa_pain_version
+msgid "SEPA Pain Version"
+msgstr ""
+
+#. module: account_sepa_pain_001_001_09
+#: model:ir.model.fields,help:account_sepa_pain_001_001_09.field_account_journal__sepa_pain_version
+#: model:ir.model.fields,help:account_sepa_pain_001_001_09.field_account_payment__sepa_pain_version
+msgid ""
+"SEPA may be a generic format, some countries differ from the SEPA "
+"recommendations made by the EPC (European Payment Council) and thus the XML "
+"created need some tweaking."
+msgstr ""
+
+#. module: account_sepa_pain_001_001_09
+#. odoo-python
+#: code:addons/account_sepa_pain_001_001_09/models/res_partner.py:0
+#, python-format
+msgid ""
+"The LEI number must contain 20 characters and match the following structure:\n"
+"- 18 alphanumeric characters with capital letters\n"
+"- 2 digits in the end\n"
+msgstr ""
+
+#. module: account_sepa_pain_001_001_09
+#: model:ir.model.fields,field_description:account_sepa_pain_001_001_09.field_account_payment__sepa_uetr
+msgid "UETR"
+msgstr ""
+
+#. module: account_sepa_pain_001_001_09
+#: model:ir.model.fields,help:account_sepa_pain_001_001_09.field_account_payment__sepa_uetr
+msgid "Unique end-to-end transaction reference"
+msgstr ""

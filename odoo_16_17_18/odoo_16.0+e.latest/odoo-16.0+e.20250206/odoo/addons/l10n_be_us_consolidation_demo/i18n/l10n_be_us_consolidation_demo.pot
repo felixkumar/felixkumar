@@ -1,0 +1,36 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* l10n_be_us_consolidation_demo
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-02-03 07:14+0000\n"
+"PO-Revision-Date: 2023-02-03 07:14+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: l10n_be_us_consolidation_demo
+#: model:account.account,name:l10n_be_us_consolidation_demo.main_specific_payable_account
+msgid "Account payable IC BE Company"
+msgstr ""
+
+#. module: l10n_be_us_consolidation_demo
+#: model:account.account,name:l10n_be_us_consolidation_demo.be_specific_receivable_account
+msgid "Clients IC YourCompany"
+msgstr ""
+
+#. module: l10n_be_us_consolidation_demo
+#: model:account.account,name:l10n_be_us_consolidation_demo.main_specific_expense_account
+msgid "Expenses IC"
+msgstr ""
+
+#. module: l10n_be_us_consolidation_demo
+#: model:account.account,name:l10n_be_us_consolidation_demo.be_specific_income_account
+msgid "Prestations de services IC"
+msgstr ""

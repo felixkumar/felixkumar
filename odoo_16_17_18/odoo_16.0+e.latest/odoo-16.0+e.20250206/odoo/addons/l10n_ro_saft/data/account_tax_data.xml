@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="l10n_ro.tvac_00" model="account.tax.template">
+        <!-- TVA colectat 0% Bunuri (sale) -->
+        <field name="l10n_ro_saft_tax_type_id" eval="ref('l10n_ro_saft_tax_type_300')"/>
+        <field name="l10n_ro_saft_tax_code">310314</field>
+    </record>
+    <record id="l10n_ro.tvac_05" model="account.tax.template">
+        <!-- TVA colectat 5% Bunuri (sale) -->
+        <field name="l10n_ro_saft_tax_type_id" eval="ref('l10n_ro_saft_tax_type_300')"/>
+        <field name="l10n_ro_saft_tax_code">310311</field>
+    </record>
+    <record id="l10n_ro.tvac_09" model="account.tax.template">
+        <!-- TVA colectat 9% Bunuri (sale) -->
+        <field name="l10n_ro_saft_tax_type_id" eval="ref('l10n_ro_saft_tax_type_300')"/>
+        <field name="l10n_ro_saft_tax_code">310310</field>
+    </record>
+    <record id="l10n_ro.tvac_19" model="account.tax.template">
+        <!-- TVA colectat 19% Bunuri (sale) -->
+        <field name="l10n_ro_saft_tax_type_id" eval="ref('l10n_ro_saft_tax_type_300')"/>
+        <field name="l10n_ro_saft_tax_code">310309</field>
+    </record>
+    <record id="l10n_ro.tvac_00_s" model="account.tax.template">
+        <!-- TVA colectat 0% Servicii (sale) -->
+        <field name="l10n_ro_saft_tax_type_id" eval="ref('l10n_ro_saft_tax_type_300')"/>
+        <field name="l10n_ro_saft_tax_code">310314</field>
+    </record>
+    <record id="l10n_ro.tvac_05_s" model="account.tax.template">
+        <!-- TVA colectat 5% Servicii (sale) -->
+        <field name="l10n_ro_saft_tax_type_id" eval="ref('l10n_ro_saft_tax_type_300')"/>
+        <field name="l10n_ro_saft_tax_code">310311</field>
+    </record>
+    <record id="l10n_ro.tvac_09_s" model="account.tax.template">
+        <!-- TVA colectat 9% Servicii (sale) -->
+        <field name="l10n_ro_saft_tax_type_id" eval="ref('l10n_ro_saft_tax_type_300')"/>
+        <field name="l10n_ro_saft_tax_code">310310</field>
+    </record>
+    <record id="l10n_ro.tvac_19_s" model="account.tax.template">
+        <!-- TVA colectat 19% Servicii (sale) -->
+        <field name="l10n_ro_saft_tax_type_id" eval="ref('l10n_ro_saft_tax_type_300')"/>
+        <field name="l10n_ro_saft_tax_code">310309</field>
+    </record>
+    <record id="l10n_ro.tvad_00" model="account.tax.template">
+        <!-- TVA deductibil 0% Bunuri (purchase) -->
+        <field name="l10n_ro_saft_tax_type_id" eval="ref('l10n_ro_saft_tax_type_300')"/>
+        <field name="l10n_ro_saft_tax_code">308302</field>
+    </record>
+    <record id="l10n_ro.tvad_05" model="account.tax.template">
+        <!-- TVA deductibil 5% Bunuri (purchase) -->
+        <field name="l10n_ro_saft_tax_type_id" eval="ref('l10n_ro_saft_tax_type_300')"/>
+        <field name="l10n_ro_saft_tax_code">300103</field>
+    </record>
+    <record id="l10n_ro.tvad_09" model="account.tax.template">
+        <!-- TVA deductibil 9% Bunuri (purchase) -->
+        <field name="l10n_ro_saft_tax_type_id" eval="ref('l10n_ro_saft_tax_type_300')"/>
+        <field name="l10n_ro_saft_tax_code">300102</field>
+    </record>
+    <record id="l10n_ro.tvad_19" model="account.tax.template">
+        <!-- TVA deductibil 19% Bunuri (purchase) -->
+        <field name="l10n_ro_saft_tax_type_id" eval="ref('l10n_ro_saft_tax_type_300')"/>
+        <field name="l10n_ro_saft_tax_code">300101</field>
+    </record>
+    <record id="l10n_ro.tvad_00_s" model="account.tax.template">
+        <!-- TVA deductibil 0% Servicii (purchase) -->
+        <field name="l10n_ro_saft_tax_type_id" eval="ref('l10n_ro_saft_tax_type_300')"/>
+        <field name="l10n_ro_saft_tax_code">308302</field>
+    </record>
+    <record id="l10n_ro.tvad_05_s" model="account.tax.template">
+        <!-- TVA deductibil 5% Servicii (purchase) -->
+        <field name="l10n_ro_saft_tax_type_id" eval="ref('l10n_ro_saft_tax_type_300')"/>
+        <field name="l10n_ro_saft_tax_code">300103</field>
+    </record>
+    <record id="l10n_ro.tvad_09_s" model="account.tax.template">
+        <!-- TVA deductibil 9% Servicii (purchase) -->
+        <field name="l10n_ro_saft_tax_type_id" eval="ref('l10n_ro_saft_tax_type_300')"/>
+        <field name="l10n_ro_saft_tax_code">300102</field>
+    </record>
+    <record id="l10n_ro.tvad_19_s" model="account.tax.template">
+        <!-- TVA deductibil 19% Servicii (purchase) -->
+        <field name="l10n_ro_saft_tax_type_id" eval="ref('l10n_ro_saft_tax_type_300')"/>
+        <field name="l10n_ro_saft_tax_code">300101</field>
+    </record>
+    <record id="l10n_ro.tvaic_00" model="account.tax.template">
+        <!-- TVA la Incasare - colectat 0% (sale) -->
+        <field name="l10n_ro_saft_tax_type_id" eval="ref('l10n_ro_saft_tax_type_300')"/>
+        <field name="l10n_ro_saft_tax_code">310314</field>
+    </record>
+    <record id="l10n_ro.tvaic_05" model="account.tax.template">
+        <!-- TVA la Incasare - colectat 5% (sale) -->
+        <field name="l10n_ro_saft_tax_type_id" eval="ref('l10n_ro_saft_tax_type_300')"/>
+        <field name="l10n_ro_saft_tax_code">310337</field>
+    </record>
+    <record id="l10n_ro.tvaic_09" model="account.tax.template">
+        <!-- TVA la Incasare - colectat 9% (sale) -->
+        <field name="l10n_ro_saft_tax_type_id" eval="ref('l10n_ro_saft_tax_type_300')"/>
+        <field name="l10n_ro_saft_tax_code">310336</field>
+    </record>
+    <record id="l10n_ro.tvaic_19" model="account.tax.template">
+        <!-- TVA la Incasare - colectat 19% (sale) -->
+        <field name="l10n_ro_saft_tax_type_id" eval="ref('l10n_ro_saft_tax_type_300')"/>
+        <field name="l10n_ro_saft_tax_code">310335</field>
+    </record>
+    <record id="l10n_ro.tvaid_00" model="account.tax.template">
+        <!-- TVA la Incasare - deductibil 0% (purchase) -->
+        <field name="l10n_ro_saft_tax_type_id" eval="ref('l10n_ro_saft_tax_type_300')"/>
+        <field name="l10n_ro_saft_tax_code">308302</field>
+    </record>
+    <record id="l10n_ro.tvaid_05" model="account.tax.template">
+        <!-- TVA la Incasare - deductibil 5% (purchase) -->
+        <field name="l10n_ro_saft_tax_type_id" eval="ref('l10n_ro_saft_tax_type_300')"/>
+        <field name="l10n_ro_saft_tax_code">301303</field>
+    </record>
+    <record id="l10n_ro.tvaid_09" model="account.tax.template">
+        <!-- TVA la Incasare - deductibil 9% (purchase) -->
+        <field name="l10n_ro_saft_tax_type_id" eval="ref('l10n_ro_saft_tax_type_300')"/>
+        <field name="l10n_ro_saft_tax_code">301302</field>
+    </record>
+    <record id="l10n_ro.tvaid_19" model="account.tax.template">
+        <!-- TVA la Incasare - deductibil 19% (purchase) -->
+        <field name="l10n_ro_saft_tax_type_id" eval="ref('l10n_ro_saft_tax_type_300')"/>
+        <field name="l10n_ro_saft_tax_code">301301</field>
+    </record>
+    <record id="l10n_ro.tvati" model="account.tax.template">
+        <!-- TVA Taxare Inversa (sale) -->
+        <field name="l10n_ro_saft_tax_type_id" eval="ref('l10n_ro_saft_tax_type_300')"/>
+        <field name="l10n_ro_saft_tax_code">310312</field>
+    </record>
+    <record id="l10n_ro.tvatip00" model="account.tax.template">
+        <!-- TVA Taxare Inversa 0% (purchase) -->
+        <field name="l10n_ro_saft_tax_type_id" eval="ref('l10n_ro_saft_tax_type_300')"/>
+        <field name="l10n_ro_saft_tax_code">308302</field>
+    </record>
+    <record id="l10n_ro.tvatip05" model="account.tax.template">
+        <!-- TVA Taxare Inversa 5% (purchase) -->
+        <field name="l10n_ro_saft_tax_type_id" eval="ref('l10n_ro_saft_tax_type_300')"/>
+        <field name="l10n_ro_saft_tax_code">300903</field>
+    </record>
+    <record id="l10n_ro.tvatip09" model="account.tax.template">
+        <!-- TVA Taxare Inversa 9% (purchase) -->
+        <field name="l10n_ro_saft_tax_type_id" eval="ref('l10n_ro_saft_tax_type_300')"/>
+        <field name="l10n_ro_saft_tax_code">300902</field>
+    </record>
+    <record id="l10n_ro.tvatip19" model="account.tax.template">
+        <!-- TVA Taxare Inversa 19% (purchase) -->
+        <field name="l10n_ro_saft_tax_type_id" eval="ref('l10n_ro_saft_tax_type_300')"/>
+        <field name="l10n_ro_saft_tax_code">300901</field>
+    </record>
+    <record id="l10n_ro.tvatiscded" model="account.tax.template">
+        <!-- TVA Taxare Scutita Livrari cu drept de deducere (sale) -->
+        <field name="l10n_ro_saft_tax_type_id" eval="ref('l10n_ro_saft_tax_type_300')"/>
+        <field name="l10n_ro_saft_tax_code">310314</field>
+    </record>
+    <record id="l10n_ro.tvatiscnoded" model="account.tax.template">
+        <!-- TVA Taxare Scutita Livrari fara drept de deducere (sale) -->
+        <field name="l10n_ro_saft_tax_type_id" eval="ref('l10n_ro_saft_tax_type_300')"/>
+        <field name="l10n_ro_saft_tax_code">310326</field>
+    </record>
+    <record id="l10n_ro.tvatiscdeda" model="account.tax.template">
+        <!-- TVA Taxare Scutita Achizitii (purchase) -->
+        <field name="l10n_ro_saft_tax_type_id" eval="ref('l10n_ro_saft_tax_type_300')"/>
+        <field name="l10n_ro_saft_tax_code">308302</field>
+    </record>
+    <record id="l10n_ro.tvatiscdeda_intr" model="account.tax.template">
+        <!-- TVA Taxare Scutita Achizitii Intracomunitare (purchase) -->
+        <field name="l10n_ro_saft_tax_type_id" eval="ref('l10n_ro_saft_tax_type_300')"/>
+        <field name="l10n_ro_saft_tax_code">308303</field>
+    </record>
+    <record id="l10n_ro.tvatine" model="account.tax.template">
+        <!-- TVA Taxare Neimpozabila Livrari (sale) -->
+        <field name="l10n_ro_saft_tax_type_id" eval="ref('l10n_ro_saft_tax_type_300')"/>
+        <field name="l10n_ro_saft_tax_code">308324</field>
+    </record>
+    <record id="l10n_ro.tvatinea" model="account.tax.template">
+        <!-- TVA Taxare Neimpozabila Achizitii (purchase) -->
+        <field name="l10n_ro_saft_tax_type_id" eval="ref('l10n_ro_saft_tax_type_300')"/>
+        <field name="l10n_ro_saft_tax_code">308302</field>
+    </record>
+    <record id="l10n_ro.tvati_intrab" model="account.tax.template">
+        <!-- TVA Intracomunitara Livrari Bunuri (sale) -->
+        <field name="l10n_ro_saft_tax_type_id" eval="ref('l10n_ro_saft_tax_type_300')"/>
+        <field name="l10n_ro_saft_tax_code">310301</field>
+    </record>
+    <record id="l10n_ro.tvati_intras" model="account.tax.template">
+        <!-- TVA Intracomunitara Livrari Servicii (sale) -->
+        <field name="l10n_ro_saft_tax_type_id" eval="ref('l10n_ro_saft_tax_type_300')"/>
+        <field name="l10n_ro_saft_tax_code">310307</field>
+    </record>
+    <record id="l10n_ro.tvati_extra" model="account.tax.template">
+        <!-- TVA Export Bunuri (sale) -->
+        <field name="l10n_ro_saft_tax_type_id" eval="ref('l10n_ro_saft_tax_type_300')"/>
+        <field name="l10n_ro_saft_tax_code">310304</field>
+    </record>
+    <record id="l10n_ro.tvati_extras" model="account.tax.template">
+        <!-- TVA Export Servicii (sale) -->
+        <field name="l10n_ro_saft_tax_type_id" eval="ref('l10n_ro_saft_tax_type_300')"/>
+        <field name="l10n_ro_saft_tax_code">310305</field>
+    </record>
+    <record id="l10n_ro.tvati_intrap0b" model="account.tax.template">
+        <!-- TVA Intracomunitara Achizitii 0% - Bunuri (purchase) -->
+        <field name="l10n_ro_saft_tax_type_id" eval="ref('l10n_ro_saft_tax_type_300')"/>
+        <field name="l10n_ro_saft_tax_code">308302</field>
+    </record>
+    <record id="l10n_ro.tvati_intrap5b" model="account.tax.template">
+        <!-- TVA Intracomunitara Achizitii 5% - Bunuri (purchase) -->
+        <field name="l10n_ro_saft_tax_type_id" eval="ref('l10n_ro_saft_tax_type_300')"/>
+        <field name="l10n_ro_saft_tax_code">300203</field>
+    </record>
+    <record id="l10n_ro.tvati_intrap9b" model="account.tax.template">
+        <!-- TVA Intracomunitara Achizitii 9% - Bunuri (purchase) -->
+        <field name="l10n_ro_saft_tax_type_id" eval="ref('l10n_ro_saft_tax_type_300')"/>
+        <field name="l10n_ro_saft_tax_code">300202</field>
+    </record>
+    <record id="l10n_ro.tvati_intrap19b" model="account.tax.template">
+        <!-- TVA Intracomunitara Achizitii 19% - Bunuri (purchase) -->
+        <field name="l10n_ro_saft_tax_type_id" eval="ref('l10n_ro_saft_tax_type_300')"/>
+        <field name="l10n_ro_saft_tax_code">300201</field>
+    </record>
+    <record id="l10n_ro.tvati_intrap0s" model="account.tax.template">
+        <!-- TVA Intracomunitara Achizitii 0% - Servicii (purchase) -->
+        <field name="l10n_ro_saft_tax_type_id" eval="ref('l10n_ro_saft_tax_type_300')"/>
+        <field name="l10n_ro_saft_tax_code">300303</field>
+    </record>
+    <record id="l10n_ro.tvati_intrap5s" model="account.tax.template">
+        <!-- TVA Intracomunitara Achizitii 5% - Servicii (purchase) -->
+        <field name="l10n_ro_saft_tax_type_id" eval="ref('l10n_ro_saft_tax_type_300')"/>
+        <field name="l10n_ro_saft_tax_code">300703</field>
+    </record>
+    <record id="l10n_ro.tvati_intrap9s" model="account.tax.template">
+        <!-- TVA Intracomunitara Achizitii 9% - Servicii (purchase) -->
+        <field name="l10n_ro_saft_tax_type_id" eval="ref('l10n_ro_saft_tax_type_300')"/>
+        <field name="l10n_ro_saft_tax_code">300702</field>
+    </record>
+    <record id="l10n_ro.tvati_intrap19s" model="account.tax.template">
+        <!-- TVA Intracomunitara Achizitii 19% - Servicii (purchase) -->
+        <field name="l10n_ro_saft_tax_type_id" eval="ref('l10n_ro_saft_tax_type_300')"/>
+        <field name="l10n_ro_saft_tax_code">300701</field>
+    </record>
+    <record id="l10n_ro.tvati_extrap0b" model="account.tax.template">
+        <!-- TVA Import Bunuri (purchase) -->
+        <field name="l10n_ro_saft_tax_type_id" eval="ref('l10n_ro_saft_tax_type_000')"/>
+        <field name="l10n_ro_saft_tax_code">000000</field>
+    </record>
+    <record id="l10n_ro.tvati_extrap0s" model="account.tax.template">
+        <!-- TVA Import Servicii (purchase) -->
+        <field name="l10n_ro_saft_tax_type_id" eval="ref('l10n_ro_saft_tax_type_000')"/>
+        <field name="l10n_ro_saft_tax_code">000000</field>
+    </record>
+    <record id="l10n_ro.tva_ned_5_50" model="account.tax.template">
+        <!-- TVA 5% Nedeductibil 50% (purchase) -->
+        <field name="l10n_ro_saft_tax_type_id" eval="ref('l10n_ro_saft_tax_type_300')"/>
+        <field name="l10n_ro_saft_tax_code">391103</field>
+    </record>
+    <record id="l10n_ro.tva_ned_9_50" model="account.tax.template">
+        <!-- TVA 9% Nedeductibil 50% (purchase) -->
+        <field name="l10n_ro_saft_tax_type_id" eval="ref('l10n_ro_saft_tax_type_300')"/>
+        <field name="l10n_ro_saft_tax_code">391102</field>
+    </record>
+    <record id="l10n_ro.tva_ned_19_50" model="account.tax.template">
+        <!-- TVA 19% Nedeductibil 50% (purchase) -->
+        <field name="l10n_ro_saft_tax_type_id" eval="ref('l10n_ro_saft_tax_type_300')"/>
+        <field name="l10n_ro_saft_tax_code">391101</field>
+    </record>
+</odoo>

@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_hr_payslip_run_hsbc_autopay_wizard,access.hr.payslip.run.hsbc.autopay.wizard,model_hr_payslip_run_hsbc_autopay_wizard,hr_payroll.group_hr_payroll_user,1,1,1,0

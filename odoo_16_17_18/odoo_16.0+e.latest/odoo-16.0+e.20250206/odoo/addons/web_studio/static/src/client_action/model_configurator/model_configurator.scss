@@ -1,0 +1,72 @@
+// App creator - layout
+.o_web_studio_model_configurator {
+  min-height: 350px;
+  margin: auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: white;
+  h2 {
+    padding: 0.25rem 16px;
+    background-color: #e9ecef;
+    font-size: 15px;
+    font-weight: bold;
+    margin: 16px -16px;
+  }
+  .form-check > .form-check-label {
+    padding-left: 0.6rem;
+    border-left: 1px solid $o-web-studio-text-inactive;
+  }
+  /* embedded in Dialog with in the EditMenu
+    leave the Dialog handle width and padding */
+  &:not(.embed) {
+    --modal-like--inner-padding-x: #{$modal-inner-padding};
+    width: map-get($container-max-widths, lg);
+    padding: var(--modal-like--inner-padding-x) calc(var(--modal-like--inner-padding-x) * 2);
+    box-shadow: 0 16px 13px -8px rgba($o-web-studio-bg-dark, 0.5);
+    hr {
+      width: calc(100% + var(--modal-like--inner-padding-x) * 4);
+      margin-left: calc(-2 * var(--modal-like--inner-padding-x));
+    }
+  }
+  .o_web_studio_model_configurator_buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 16px;
+
+    // common to both buttons
+    .o_web_studio_model_configurator_next,
+    .o_web_studio_model_configurator_previous {
+      border-radius: 2px;
+      padding: 7px 15px;
+    }
+
+    .o_web_studio_model_configurator_previous {
+      background-color: white;
+      border: 1px solid $o-web-studio-text-inactive;
+      color: $o-web-studio-text-inactive;
+    }
+
+    .o_web_studio_model_configurator_next {
+      background-color: $o-brand-primary;
+      border-color: darken($o-brand-primary, 3%);
+      color: white;
+      > span {
+        padding-right: 15px;
+      }
+      &:hover,
+      &:focus {
+        background-color: lighten($o-brand-primary, 2%);
+        border-color: $o-brand-primary;
+        color: white;
+      }
+    }
+  }
+}
+
+.o_web_studio_new_model_modal {
+  label.o_studio_error {
+    color: $o-web-studio-color-danger;
+  }
+}

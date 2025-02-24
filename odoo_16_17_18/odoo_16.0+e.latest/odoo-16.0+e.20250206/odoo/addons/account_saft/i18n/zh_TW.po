@@ -1,0 +1,74 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* account_saft
+# 
+# Translators:
+# Martin Trigaux, 2022
+# 敬雲 林 <chingyun@yuanchih-consult.com>, 2022
+# Tony Ng, 2024
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-02-06 13:24+0000\n"
+"PO-Revision-Date: 2022-09-22 05:45+0000\n"
+"Last-Translator: Tony Ng, 2024\n"
+"Language-Team: Chinese (Taiwan) (https://app.transifex.com/odoo/teams/41243/zh_TW/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Language: zh_TW\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#. module: account_saft
+#: model:ir.model,name:account_saft.model_account_report
+msgid "Accounting Report"
+msgstr "會計報表"
+
+#. module: account_saft
+#: model_terms:ir.ui.view,arch_db:account_saft.saft_template
+msgid "Odoo"
+msgstr "Odoo"
+
+#. module: account_saft
+#: model_terms:ir.ui.view,arch_db:account_saft.saft_template
+msgid "Odoo SA"
+msgstr "Odoo SA"
+
+#. module: account_saft
+#. odoo-python
+#: code:addons/account_saft/models/account_general_ledger.py:0
+#, python-format
+msgid "Please define `Company Registry` for your company."
+msgstr ""
+
+#. module: account_saft
+#. odoo-python
+#: code:addons/account_saft/models/account_general_ledger.py:0
+#, python-format
+msgid "Please define a `Phone` or `Mobile` for your company."
+msgstr ""
+
+#. module: account_saft
+#. odoo-python
+#: code:addons/account_saft/models/account_general_ledger.py:0
+#, python-format
+msgid ""
+"Please define at least one address (Zip/City) for the following partners: "
+"%s."
+msgstr "請為以下合作夥伴至少設定一個地址（郵政編碼 / 城市）：%s。"
+
+#. module: account_saft
+#. odoo-python
+#: code:addons/account_saft/models/account_general_ledger.py:0
+#, python-format
+msgid "Please define one or more Contacts belonging to your company."
+msgstr "請定義一個或多個屬於貴公司的聯絡人。"
+
+#. module: account_saft
+#. odoo-python
+#: code:addons/account_saft/models/account_general_ledger.py:0
+#, python-format
+msgid "SAFT is only compatible with one column group."
+msgstr ""

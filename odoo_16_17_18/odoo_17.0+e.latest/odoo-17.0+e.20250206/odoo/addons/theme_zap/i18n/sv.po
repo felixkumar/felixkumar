@@ -1,0 +1,149 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* theme_zap
+# 
+# Translators:
+# Martin Trigaux, 2023
+# Lasse L, 2023
+# Jakob Krabbe <jakob.krabbe@vertel.se>, 2024
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-09-28 12:21+0000\n"
+"PO-Revision-Date: 2023-10-27 15:39+0000\n"
+"Last-Translator: Jakob Krabbe <jakob.krabbe@vertel.se>, 2024\n"
+"Language-Team: Swedish (https://app.transifex.com/odoo/teams/41243/sv/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Language: sv\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: theme_zap
+#: model_terms:theme.ir.ui.view,arch:theme_zap.s_banner
+msgid "<b>Software innovation</b><br/> at its best."
+msgstr "<b>Mjukvaruinnovation</b><br/> när den är som bäst."
+
+#. module: theme_zap
+#: model_terms:theme.ir.ui.view,arch:theme_zap.s_masonry_block_default_template
+msgid ""
+"<em class=\"lead\">Maintain a position of constant change<br/> and "
+"evolution, while always aiming<br/> for your success.</em>"
+msgstr ""
+"<em class=\"lead\">Håll en position av ständig förändring<br/> och "
+"utveckling, samtidigt som du alltid siktar<br/> på din framgång.</em>"
+
+#. module: theme_zap
+#: model_terms:theme.ir.ui.view,arch:theme_zap.s_numbers
+msgid "<font class=\"text-o-color-1\">Customers</font>"
+msgstr ""
+
+#. module: theme_zap
+#: model_terms:theme.ir.ui.view,arch:theme_zap.s_numbers
+msgid "<font class=\"text-o-color-1\">Languages</font>"
+msgstr "<font class=\"text-o-color-1\">Språk</font>"
+
+#. module: theme_zap
+#: model_terms:theme.ir.ui.view,arch:theme_zap.s_numbers
+msgid "<font class=\"text-o-color-1\">Projects</font>"
+msgstr ""
+
+#. module: theme_zap
+#: model_terms:theme.ir.ui.view,arch:theme_zap.s_numbers
+msgid "<font class=\"text-o-color-1\">Solutions</font>"
+msgstr "<font class=\"text-o-color-1\">Lösningar</font>"
+
+#. module: theme_zap
+#: model_terms:theme.ir.ui.view,arch:theme_zap.s_features
+msgid "All our data centers <br/>are emission-free."
+msgstr "Alla våra datacenter <br/>är utsläppsfria."
+
+#. module: theme_zap
+#: model_terms:theme.ir.ui.view,arch:theme_zap.s_features
+msgid "All types of files <br/>are allowed."
+msgstr "Alla typer av filer <br/>är tillåtna."
+
+#. module: theme_zap
+#: model_terms:theme.ir.ui.view,arch:theme_zap.s_three_columns
+msgid "Benefits"
+msgstr "Fördelar"
+
+#. module: theme_zap
+#: model_terms:theme.ir.ui.view,arch:theme_zap.s_color_blocks_2
+msgid "Cloud <b>Solution</b>"
+msgstr "Moln <b>Lösning</b>"
+
+#. module: theme_zap
+#: model_terms:theme.ir.ui.view,arch:theme_zap.s_features
+msgid "Eco-Friendly"
+msgstr "Miljövänlig"
+
+#. module: theme_zap
+#: model_terms:theme.ir.ui.view,arch:theme_zap.s_three_columns
+msgid "Features"
+msgstr "Funktioner"
+
+#. module: theme_zap
+#: model_terms:theme.ir.ui.view,arch:theme_zap.s_banner
+msgid ""
+"Harness the power of disruptive technologies to increase<br/> your day-to-"
+"day business operations."
+msgstr ""
+"Utnyttja kraften i omvälvande teknik för att öka<br/> din dagliga "
+"affärsverksamhet."
+
+#. module: theme_zap
+#: model_terms:theme.ir.ui.view,arch:theme_zap.s_color_blocks_2
+msgid ""
+"Keep your files in one place. <br/>Manage documents online with an easy to "
+"use interface. <br/>Rely on an highly secure cloud storage."
+msgstr ""
+"Håll dina filer på ett ställe. <br/> Hantera dokument online med ett "
+"användarvänligt gränssnitt. <br/>Lita på en mycket säker molnlagring."
+
+#. module: theme_zap
+#: model_terms:theme.ir.ui.view,arch:theme_zap.s_references
+msgid "Our <b>References</b>"
+msgstr ""
+
+#. module: theme_zap
+#: model_terms:theme.ir.ui.view,arch:theme_zap.s_banner
+msgid "Our Solutions"
+msgstr "Våra lösningar"
+
+#. module: theme_zap
+#: model_terms:theme.ir.ui.view,arch:theme_zap.s_features
+msgid "Security"
+msgstr "Säkerhet"
+
+#. module: theme_zap
+#: model_terms:theme.ir.ui.view,arch:theme_zap.s_three_columns
+msgid "Services"
+msgstr "Tjänster"
+
+#. module: theme_zap
+#: model_terms:theme.ir.ui.view,arch:theme_zap.s_masonry_block_default_template
+msgid "Super <b>Easy</b>"
+msgstr "Super <b>enkelt</b>"
+
+#. module: theme_zap
+#: model_terms:theme.ir.ui.view,arch:theme_zap.s_masonry_block_default_template
+msgid "Super <b>Fast</b>"
+msgstr "Super <b>Snabb</b>"
+
+#. module: theme_zap
+#: model_terms:theme.ir.ui.view,arch:theme_zap.s_features
+msgid "Support"
+msgstr "Stöd"
+
+#. module: theme_zap
+#: model:ir.model,name:theme_zap.model_theme_utils
+msgid "Theme Utils"
+msgstr "Verktyg för teman"
+
+#. module: theme_zap
+#: model_terms:theme.ir.ui.view,arch:theme_zap.s_features
+msgid "We keep you safe <br/>in the cloud."
+msgstr "Vi håller dig säker <br/> i molnet."
