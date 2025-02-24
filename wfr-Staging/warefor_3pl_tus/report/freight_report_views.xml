@@ -1,0 +1,107 @@
+<odoo>
+    <data>
+
+        <record id="freight_report_pivot_view_inbound" model="ir.ui.view">
+            <field name="name">freight.report.pivot.view.inbound</field>
+            <field name="model">freight.report</field>
+            <field name="arch" type="xml">
+                <pivot string="Freight Analysis" sample="1">
+                    <field name="goods" type="row"/>
+                    <field name="name" type="col"/>
+                    <field name="transfers_count" type="measure"/>
+                    <field name="total_quantity" type="measure"/>
+                </pivot>
+            </field>
+        </record>
+
+        <record id="inbound_freight_report_view_search" model="ir.ui.view">
+            <field name="name">freight.report.search</field>
+            <field name="model">freight.report</field>
+            <field name="arch" type="xml">
+                <search string="Inbound Logistic Report">
+                    <filter string="This Month" name="current_months"
+                            domain="[('arrival_at_warefor','&lt;',(context_today()+relativedelta(months=1)).strftime('%%Y-%%m-01')), ('arrival_at_warefor','&gt;=',time.strftime('%%Y-%%m-01'))]"/>
+                    <filter string="Last Month" name="prev_months"
+                            domain="[('arrival_at_warefor','&gt;=',(context_today()-relativedelta(months=1)).strftime('%%Y-%%m-01')),('arrival_at_warefor','&lt;',time.strftime('%%Y-%%m-01'))]"/>
+                    <filter string="This Quarter" name="this_quarters"
+                            domain="[('arrival_at_warefor','&gt;=',(context_today()-relativedelta(months=3)).strftime('%%Y-%%m-01')),('arrival_at_warefor','&lt;',time.strftime('%%Y-%%m-01'))]"/>
+                    <filter string="This Year" name="this_year" date="arrival_at_warefor" default_period="this_year"/>
+                    <separator/>
+                </search>
+            </field>
+        </record>
+
+        <record id="outbound_freight_report_view_search" model="ir.ui.view">
+            <field name="name">freight.report.search</field>
+            <field name="model">freight.report</field>
+            <field name="arch" type="xml">
+                <search string="Inbound Logistic Report">
+                    <filter string="This Month" name="current_months"
+                            domain="[('date_order','&lt;',(context_today()+relativedelta(months=1)).strftime('%%Y-%%m-01')), ('date_order','&gt;=',time.strftime('%%Y-%%m-01'))]"/>
+                    <filter string="Last Month" name="prev_months"
+                            domain="[('date_order','&gt;=',(context_today()-relativedelta(months=1)).strftime('%%Y-%%m-01')),('date_order','&lt;',time.strftime('%%Y-%%m-01'))]"/>
+                    <filter string="This Quarter" name="this_quarters"
+                            domain="[('date_order','&gt;=',(context_today()-relativedelta(months=3)).strftime('%%Y-%%m-01')),('date_order','&lt;',time.strftime('%%Y-%%m-01'))]"/>
+                    <filter string="This Year" name="this_year" date="date_order" default_period="this_year"/>
+                    <separator/>
+                </search>
+            </field>
+        </record>
+
+        <record id="inbound_freight_report_report_action" model="ir.actions.act_window">
+            <field name="name">Inbound Logistic Report</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">freight.report</field>
+            <field name="domain">[('is_outbound', '=', False)]</field>
+            <field name="view_mode">pivot</field>
+            <field name="search_view_id" ref="inbound_freight_report_view_search"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                </p>
+            </field>
+        </record>
+
+        <record id="outbound_freight_report_report_action" model="ir.actions.act_window">
+            <field name="name">Inbound Outbound Report</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">freight.report</field>
+            <field name="domain">[('is_outbound', '=', True)]</field>
+            <field name="view_mode">pivot</field>
+            <field name="search_view_id" ref="outbound_freight_report_view_search"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                </p>
+            </field>
+        </record>
+
+        <record id="freight_who_report_report_action" model="ir.actions.act_window">
+            <field name="name">Logistic Report</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">freight.report</field>
+            <field name="view_mode">pivot</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                </p>
+            </field>
+        </record>
+
+<!--        <menuitem id="sub_menu_inbound_freight_report"
+                  name="Inbound Logistics Report (Pivot)"
+                  parent="menu_freight_freights_inbound_report"
+                  action="inbound_freight_report_report_action"
+                  sequence="10"/>
+
+            <menuitem id="sub_menu_outbound_freight_report"
+                  name="Outbound Logistics Report (Pivot)"
+                  parent="menu_freight_freights_outbound_report"
+                  action="outbound_freight_report_report_action"
+                  sequence="10"/>-->
+
+        <menuitem id="sub_menu_osd_pivot_report_xlsx"
+                  name="Report (Pivot)"
+                  parent="warefor_3pl_tus.menu_osd_report_main"
+                  action="freight_who_report_report_action"
+                  sequence="15"/>
+
+    </data>
+</odoo>

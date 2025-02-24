@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Tree view of Walmart Marketplace -->
+    <record id="walmart_feed_submission_history_tree_view_ept" model="ir.ui.view">
+        <field name="name">Feed Submission History</field>
+        <field name="model">walmart.feed.history.ept</field>
+        <field name="arch" type="xml">
+            <tree string="Walmart Feed History" create="false">
+                <field name="feed_id"/>
+                <field name="marketplace_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form view of Walmart Feed Submission History -->
+    <record id="walmart_feed_submission_history_form_view_ept" model="ir.ui.view">
+        <field name="name">Feed Submission History</field>
+        <field name="model">walmart.feed.history.ept</field>
+        <field name="arch" type="xml">
+            <form string="Walmart Feed History" create="0">
+                <header>
+                    <button name="get_feed_submission_history" string="Get Feeds"
+                            class="oe_highlight" type="object"
+                            groups="walmart_ept.group_walmart_manager"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="feed_id" readonly="1"/>
+                            <field name="feed_request" readonly="1"/>
+                        </group>
+                        <group>
+                            <field name="marketplace_id" readonly="1"/>
+                            <field name="feed_response" readonly="1"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Search View For Walmart Feed Submission History -->
+    <record id="walmart_feed_submission_history_search_view_ept"
+            model="ir.ui.view">
+        <field name="name">view.walmart.feed.history.filter</field>
+        <field name="model">walmart.feed.history.ept</field>
+        <field name="type">search</field>
+        <field name="arch" type="xml">
+            <search string="Search Walmart Feed">
+                <field name="marketplace_id"/>
+                <group expand="0" string="Group By">
+                    <filter string="Walmart Marketplace" name="marketplace_id"
+                            icon="terp-personal" context="{'group_by':'marketplace_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+
+    <!-- Tree view action of Walmart Marketplace -->
+    <record id="action_walmart_feed_submission_history" model="ir.actions.act_window">
+        <field name="name">Feed Submission History</field>
+        <field name="res_model">walmart.feed.history.ept</field>
+
+        <field name="view_id" ref="walmart_feed_submission_history_tree_view_ept"/>
+    </record>
+
+    <!-- Walmart Feed Submission History Menu -->
+    <menuitem id="walmart_feed_submission_history" name="Feed Submission History"
+              parent="walmart_ept.menu_walmart_log_ept" sequence="5"
+              action="action_walmart_feed_submission_history"
+              groups="walmart_ept.group_walmart_manager"/>
+
+</odoo>

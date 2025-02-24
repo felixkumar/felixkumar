@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="business_appointment.ResourcesMany2Many" t-inherit="web.Many2ManyTagsField" t-inherit-mode="primary" owl="1">
+        <TagsList position="before">
+            <button type="button" class="btn btn-sm btn-primary business-appointment-button-any mr8" t-on-click="() => this._onClickAnyResources()">any</button>
+        </TagsList>
+    </t>
+
+</templates>

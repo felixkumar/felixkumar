@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="truck_driver_name_form_carote_inherit" model="ir.ui.view">
+            <field name="name">truck.driver.name.form.carote.inherit</field>
+            <field name="model">truck.driver.name</field>
+            <field name="inherit_id" ref="warefor_3pl_tus.truck_driver_name_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//widget[@name='signature']" position="attributes">
+                    <attribute name="groups">!user_warehouse_restriction.user_carote_restriction_group_user</attribute>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

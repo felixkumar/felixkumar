@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Tree view of Walmart Marketplace Offers -->
+    <record id="walmart_marketplace_offers_tree_view_ept" model="ir.ui.view">
+        <field name="name">Marketplace Offers</field>
+        <field name="model">walmart.offer.ept</field>
+        <field name="arch" type="xml">
+            <tree string="Walmart Marketplace Offers" create="0">
+                <field name="product_name"/>
+                <field name="product_category"/>
+                <field name="marketplace_id"/>
+                <field name="walmart_sku"/>
+                <field name="exported_in_walmart"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <!-- Form view of Walamrt Marketplace Offers -->
+    <record id="walmart_marketplace_offers_form_view_ept" model="ir.ui.view">
+        <field name="name">Marketplace Offers</field>
+        <field name="model">walmart.offer.ept</field>
+        <field name="arch" type="xml">
+            <form string="Walmart Marketplace Offers" create="0">
+                <header>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <label class="oe_edit_only" for="product_name" string="Title"/>
+                        <h1>
+                            <field name="product_name" class="oe_inline" readonly="1"/>
+                        </h1>
+                    </div>
+                    <notebook>
+                        <page string="Walmart Info">
+                            <group>
+                                <group>
+                                    <field name="marketplace_id" readonly="1"/>
+                                    <field name="product_id" readonly="1"/>
+                                    <field name="walmart_sku" readonly="1"/>
+                                    <field name="gtin" readonly="1"/>
+                                    <field name="exported_in_walmart"/>
+                                    <field name="fulfillment_by"/>
+                                </group>
+                                <group>
+                                    <field name="walmart_product_item_id" readonly="1"/>
+                                    <field name="product_category" readonly="1"/>
+                                    <field name="upc" readonly="1"/>
+                                    <field name="wpid" readonly="1"/>
+                                    <field name="offer_fix_stock_type"/>
+                                    <field name="offer_fix_stock_value"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Other Info" name="product_info">
+                            <group>
+                                <group>
+                                    <field name="walmart_product_lifecycle_status" readonly="1"/>
+                                    <field name="walmart_product_status_reason" readonly="1"/>
+                                    <field name="walmart_product_review_count" readonly="1"/>
+                                    <field name="walmart_product_avg_rating" readonly="1"/>
+                                </group>
+                                <group>
+                                    <field name="walmart_product_offer_start_date" readonly="1"/>
+                                    <field name="walmart_product_offer_end_date" readonly="1"/>
+                                    <field name="walmart_product_offer_creation_date" readonly="1"/>
+                                    <field name="walmart_product_offer_last_update_date"
+                                           readonly="1"/>
+                                </group>
+                            </group>
+                            <group>
+                                <field name="walmart_product_url" readonly="1" widget="url"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+
+            </form>
+        </field>
+    </record>
+
+    <!-- Search View For Walmart Offers -->
+    <record id="walmart_offers_search_view_ept" model="ir.ui.view">
+        <field name="name">view.walmart.offers.filter</field>
+        <field name="model">walmart.offer.ept</field>
+        <field name="type">search</field>
+        <field name="arch" type="xml">
+            <search string="Search Walmart Offers">
+                <field name="product_name"/>
+                <field name="walmart_sku"/>
+                <field name="product_category"/>
+                <field name="upc"/>
+                <field name="wpid"/>
+                <field name="gtin"/>
+                <field name="walmart_product_item_id"/>
+                <filter name="walmart_product_lifecycle_status" string="Active Product"
+                        domain="[('walmart_product_lifecycle_status','=','ACTIVE')]"/>
+                <filter name="walmart_product_lifecycle_status" string="Retired Product"
+                        domain="[('walmart_product_lifecycle_status','=','RETIRED')]"/>
+                <filter name="walmart_product_lifecycle_status" string="Archived Product"
+                        domain="[('walmart_product_lifecycle_status','=','ARCHIVED')]"/>
+                <filter name="state" string="PUBLISHED" domain="[('state','=','PUBLISHED')]"/>
+                <filter name="state" string="UNPUBLISHED" domain="[('state','=','UNPUBLISHED')]"/>
+                <group expand="0" string="Group By">
+                    <filter string="Instance" name="marketplace_id" icon="terp-personal"
+                            context="{'group_by':'marketplace_id'}"/>
+                    <filter string="Product Life Cycle" name="walmart_product_lifecycle_status"
+                            context="{'group_by':'walmart_product_lifecycle_status'}"/>
+                    <filter string="State" name="state" icon="terp-personal"
+                            context="{'group_by':'state'}"/>
+                    <filter string="Product Category" name="product_category" icon="terp-personal"
+                            context="{'group_by':'product_category'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+
+    <!-- Tree view action of Walmart Marketplace Offers -->
+    <record id="action_walmart_marketplace_offers_tree_ept" model="ir.actions.act_window">
+        <field name="name">Marketplaces Offers</field>
+        <field name="res_model">walmart.offer.ept</field>
+
+        <field name="view_id" ref="walmart_marketplace_offers_tree_view_ept"/>
+    </record>
+
+
+    <!-- Walmart Offer Menu' -->
+    <menuitem id="main_menu_walmart_offers" name="Products" parent="walmart_ept.walmart_main_menu"
+              sequence="3" groups="walmart_ept.group_walmart_user"/>
+
+    <!-- Sub Menu Offers of Walmart Offer Menu -->
+    <menuitem id="sub_menu_walmart_offers" name="Offers"
+              parent="walmart_ept.main_menu_walmart_offers" sequence="1"
+              groups="walmart_ept.group_walmart_user"
+              action="action_walmart_marketplace_offers_tree_ept"/>
+
+    <!-- Sub Menu Offers of Walmart Offer Menu -->
+    <menuitem id="sub_menu_walmart_offer_reports" name="Offer Report"
+              parent="walmart_ept.main_menu_walmart_offers" sequence="2"
+              groups="walmart_ept.group_walmart_user"
+              action="action_walmart_marketplace_offers_tree_ept"/>
+
+</odoo>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_website_form_inherited_custom" model="ir.ui.view">
+        <field name="name">website.form</field>
+        <field name="model">website</field>
+        <field name="inherit_id" ref="website.view_website_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[last()]" position="after">
+                <page name="custom_config" string="Configuration">
+                    <group>
+                        <field name="product_page_image_layout_mobile"/>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

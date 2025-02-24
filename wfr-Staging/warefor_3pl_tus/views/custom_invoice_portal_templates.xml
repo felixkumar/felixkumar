@@ -1,0 +1,198 @@
+<odoo>
+
+    <template id="portal_my_home_inbound_invoice" name="Show Inbound Invoice" customize_show="True"
+              inherit_id="portal.portal_my_home" priority="50">
+        <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+            <t t-call="portal.portal_docs_entry">
+                <t t-set="title">Inbound Invoice</t>
+                <t t-set="url" t-value="'/my/inbound/invoices'"/>
+                <t t-set="placeholder_count" t-value="'inbound_invoice_count'"/>
+            </t>
+        </xpath>
+    </template>
+
+    <template id="portal_my_home_storage_invoice" name="Show Storage Invoice" customize_show="True"
+              inherit_id="portal.portal_my_home" priority="55">
+        <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+            <t t-call="portal.portal_docs_entry">
+                <t t-set="title">Storage Invoice</t>
+                <t t-set="url" t-value="'/my/storage/invoices'"/>
+                <t t-set="placeholder_count" t-value="'storage_invoice_count'"/>
+            </t>
+        </xpath>
+    </template>
+    <template id="portal_my_home_product_availability" name="Show Product Availability" customize_show="True"
+              inherit_id="portal.portal_my_home" priority="60">
+        <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+            <t t-call="portal.portal_docs_entry">
+                <t t-set="title">Product Availability</t>
+                <t t-set="url" t-value="'/my/product_availability'"/>
+                <t t-set="placeholder_count" t-value="'product_availability_count'"/>
+            </t>
+        </xpath>
+    </template>
+
+
+
+    <template id="project.portal_my_home" name="Show Projects / Tasks" customize_show="True" inherit_id="portal.portal_my_home" priority="40">
+        <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+            <!--<t t-call="portal.portal_docs_entry">
+                <t t-set="title">Projects</t>
+                <t t-set="url" t-value="'/my/projects'"/>
+                <t t-set="placeholder_count" t-value="'project_count'"/>
+            </t>
+            <t t-call="portal.portal_docs_entry">
+                <t t-set="title">Tasks</t>
+                <t t-set="url" t-value="'/my/tasks'"/>
+                <t t-set="placeholder_count" t-value="'task_count'"/>
+            </t>-->
+        </xpath>
+    </template>
+
+    <template id="sale.portal_my_home_sale" name="Show Quotations / Sales Orders" customize_show="True" inherit_id="portal.portal_my_home" priority="20">
+        <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+            <!--<t t-call="portal.portal_docs_entry">
+                <t t-set="title">Quotations</t>
+                <t t-set="url" t-value="'/my/quotes'"/>
+                <t t-set="placeholder_count" t-value="'quotation_count'"/>
+            </t>-->
+            <t t-call="portal.portal_docs_entry">
+                <t t-set="title">Sales Orders</t>
+                <t t-set="url" t-value="'/my/orders'"/>
+                <t t-set="placeholder_count" t-value="'order_count'"/>
+            </t>
+        </xpath>
+    </template>
+    <template id="hr_timesheet.portal_my_home_timesheet" name="Show Timesheets" customize_show="True"  inherit_id="portal.portal_my_home" priority="45">
+        <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+            <!--<t t-call="portal.portal_docs_entry">
+                <t t-set="title">Timesheets</t>
+                <t t-set="url" t-value="'/my/timesheets'"/>
+                <t t-set="placeholder_count" t-value="'timesheet_count'"/>
+            </t>-->
+        </xpath>
+    </template>
+
+
+
+    <template id="portal_my_products_qty" name="My Logistic Invoices">
+        <t t-call="portal.portal_layout">
+            <t t-set="breadcrumbs_searchbar" t-value="True"/>
+
+            <t t-call="portal.portal_searchbar">
+                <t t-set="title">Products</t>
+            </t>
+            <t t-if="not available_product">
+                <p>There are currently no Available Product your account.</p>
+            </t>
+            <t t-call="portal.portal_table">
+                <thead>
+                    <tr class="active">
+                        <th>Product</th>
+                        <th>QTY</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <t t-foreach="available_product.product_line_ids" t-as="product_line">
+                        <tr>
+                            <td>
+                                <span t-field="product_line.product_id.name"/>
+                            </td>
+                            <td>
+                                <span t-esc="product_line.qty"/>
+                            </td>
+                        </tr>
+
+                    </t>
+                </tbody>
+            </t>
+        </t>
+    </template>
+
+
+
+
+    <template id="portal_my_logistic_invoices" name="My Logistic Invoices">
+        <t t-call="portal.portal_layout">
+            <t t-set="breadcrumbs_searchbar" t-value="True"/>
+
+            <t t-call="portal.portal_searchbar">
+                <t t-set="title">Invoices</t>
+            </t>
+            <t t-if="not logistic_invoices">
+                <p>There are currently no invoices for your account.</p>
+            </t>
+            <t t-if="logistic_invoices" t-call="portal.portal_table">
+                <thead>
+                    <tr class="active">
+                        <th>Customer</th>
+                        <th>Invoice #</th>
+                        <th>Invoice Date</th>
+                        <th class='d-none d-md-table-cell'>Due Date</th>
+                        <th class="text-right">Amount</th>
+                        <th>Level 1 Invoice</th>
+                        <th>Level 2 Invoice</th>
+                        <th>Level 3 Invoice</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <t t-foreach="logistic_invoices" t-as="invoice">
+                        <tr>
+                            <td>
+                                <span t-field="invoice.partner_id.name"/>
+                            </td>
+                            <td>
+                                <a href="#" t-att-title="invoice.name">
+                                    <t t-esc="invoice.name"/>
+                                </a>
+                            </td>
+                            <td>
+                                <span t-field="invoice.invoice_date"/>
+                            </td>
+                            <td class='d-none d-md-table-cell'>
+                                <span t-field="invoice.due_date"/>
+                            </td>
+                            <td class="text-right">
+                                <span t-esc="round(invoice.total_cost, 2)"/>
+                            </td>
+                            <td>
+                                <t t-if="invoice">
+                                    <a t-att-href="'/my/invoices/download/%s' % slug(invoice)">
+                                        <i class="fa fa-download mr-1"/>
+                                        <t t-esc="invoice.name"/>
+                                    </a>
+                                </t>
+                                <t t-else="">
+                                    <span>Not Available</span>
+                                </t>
+                            </td>
+                            <td>
+                                <t t-if="invoice.l2_invoice_id">
+                                    <a t-att-href="'/my/invoices/download/%s' % slug(invoice.l2_invoice_id)">
+                                        <i class="fa fa-download mr-1"/>
+                                        <t t-esc="invoice.l2_invoice_id.name"/>
+                                    </a>
+                                </t>
+                                <t t-else="">
+                                    <span>Not Available</span>
+                                </t>
+                            </td>
+                            <td>
+                                <t t-if="invoice.l3_invoice_id">
+                                    <a t-att-href="'/my/invoices/download/%s' % slug(invoice.l3_invoice_id)">
+                                        <i class="fa fa-download mr-1"/>
+                                        <t t-esc="invoice.l3_invoice_id.name"/>
+                                    </a>
+                                </t>
+                                <t t-else="">
+                                    <span>Not Available</span>
+                                </t>
+                            </td>
+                        </tr>
+                    </t>
+                </tbody>
+            </t>
+        </t>
+    </template>
+
+</odoo>

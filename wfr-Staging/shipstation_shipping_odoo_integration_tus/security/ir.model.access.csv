@@ -1,0 +1,2 @@
+"id","name","model_id/id","group_id/id","perm_read","perm_write","perm_create","perm_unlink"
+"access_website_shipstation_configuration","access website shipstation configuration","shipstation_shipping_odoo_integration_tus.model_website_shipstation_configuration","","TRUE","TRUE","TRUE","TRUE"

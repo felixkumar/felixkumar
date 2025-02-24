@@ -1,0 +1,18 @@
+.business-appointment-chosen {
+    max-width: 48%;
+    flex-grow: 1;
+    text-align: center;
+    border-radius: 10px;
+    padding: 8px;
+    margin: 3px;
+    background-color: $o-ba-secondary-color;
+    color: $o-ba-white-color;
+
+    i:hover { cursor: pointer }
+}
+.business-appointment-forward-checkout {
+    background-color: $o-ba-danger-color;
+    font-weight: bold;
+    white-space: nowrap;
+}
+.business-appointment-forward-checkout:hover { cursor: pointer }

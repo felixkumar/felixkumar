@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates>
+    <t t-name="export.tus.ListView.Buttons" t-inherit="web.ListView.Buttons" t-inherit-mode="extension" owl="1">
+        <xpath expr="//div/t/t[@t-if='nbTotal and !nbSelected and activeActions.exportXlsx and isExportEnable and !env.isSmall']"
+               position="replace">
+            <t t-if="nbTotal and activeActions.exportXlsx and isExportEnable and !env.isSmall">
+                <button type="button" class="btn btn-secondary fa fa-download o_list_export_xlsx"
+                        data-tooltip="Export All" aria-label="Export All" t-on-click="onDirectExportData"/>
+            </t>
+        </xpath>
+    </t>
+</templates>

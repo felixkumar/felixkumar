@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template inherit_id="business_appointment_website.portal_appointment_page"
+              id="portal_appointment_page_custom" 
+              name="My Appointment"
+    >
+        <xpath expr="//div[@id='main_attrs']" position="after">
+            <div class="row mt16 mb16">
+                <div id="left_panel_group" class="col-12 col-md-6 pb-2"></div>
+                <div id="right_panel_group" class="col-12 col-md-6 pb-2"></div>
+            </div>
+        </xpath>
+        <xpath expr="//div[@id='full_description']" position="after">
+            <div class="row mt16 mb16">
+                <div id="after_descri" name="after_descri" class="col-12 col-lg-12 mb-4 mb-md-0"/>
+            </div>
+        </xpath>
+    </template>
+    <template inherit_id="business_appointment_website.ba_contact_info"
+              id="ba_contact_info" 
+              name="Contact Info"
+    >
+        <xpath expr="//div[@name='extra_notes_div']" position="after">
+            <div class="clearfix col-xl-12"/>
+            <t id="group_custom_fields"/>
+        </xpath>
+    </template>
+    <template inherit_id="business_appointment_website.ba_resource_full"
+              id="ba_resource_full_custom"
+              name="Resource"
+    >
+        <xpath expr="//div[@id='ba_full_description']" position="after">
+            <div class="row col-md-12">
+                <div id="after_descri" name="after_descri" class="col-12 col-lg-12 mb-4 mb-md-0"/>
+            </div>
+        </xpath>
+        <xpath expr="//div[@id='ba_full_description']" position="before">
+            <div class="row col-md-12 mb8">
+                <div id="left_panel_group" class="col-12 col-md-6 pb-2"> </div>
+                <div id="right_panel_group" class="col-12 col-md-6 pb-2"> </div>
+            </div>
+        </xpath>
+    </template>
+    <template inherit_id="business_appointment_website.ba_resource_type_full"
+              id="ba_resource_type_full"
+              name="Resource Type"
+    >
+        <xpath expr="//div[@id='ba_full_description']" position="after">
+            <div class="row col-md-12">
+                <div id="after_descri" name="after_descri" class="col-12 col-lg-12 mb-4 mb-md-0"/>
+            </div>
+        </xpath>
+        <xpath expr="//div[@id='ba_full_description']" position="before">
+            <div class="row col-md-12 mb8">
+                <div id="left_panel_group" class="col-12 col-md-6 pb-2">
+                </div>
+                <div id="right_panel_group" class="col-12 col-md-6 pb-2">
+                </div>
+            </div>
+        </xpath>
+    </template>
+    <template inherit_id="business_appointment_website.ba_products_full" id="ba_products_full" name="Service">
+        <xpath expr="//div[@id='ba_full_description']" position="after">
+            <div class="row col-md-12">
+                <div id="after_descri"
+                     name="after_descri"
+                     class="col-12 col-lg-12 mb-4 mb-md-0"
+                />
+            </div>
+        </xpath>
+        <xpath expr="//div[@id='ba_full_description']" position="before">
+            <div class="row col-md-12 mb8">
+                <div id="left_panel_group" class="col-12 col-md-6 pb-2"> </div>
+                <div id="right_panel_group" class="col-12 col-md-6 pb-2"> </div>
+            </div>
+        </xpath>
+    </template>
+
+</odoo>

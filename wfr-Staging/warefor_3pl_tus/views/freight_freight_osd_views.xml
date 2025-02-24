@@ -1,0 +1,439 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="freight_freights_osd_main_form_view" model="ir.ui.view">
+            <field name="name">freight.freights.osd.main.form.view</field>
+            <field name="model">freight.freight</field>
+            <field name="arch" type="xml">
+<!--                <form string="Project Logistics" create="false" delete="false" button_form_enable_it="true">-->
+                <form string="Project Logistics" create="false" delete="false">
+                    <header>
+                        <field name="is_outbound" invisible="1"/>
+<!--                        <field name="is_osd_rec_auto_archive" invisible="1"/>-->
+                        <field name="purchase_orders_ids" invisible="1"/>
+                        <field name="osd_rec_stage_id" widget="statusbar" readonly="1"/>
+<!--                        <button name="generate_sscc_18" string="Generate SSCC-18 Barcode Number"-->
+<!--                                                    type="object" class="btn-primary"-->
+<!--                                                    style="font-size: 14px; padding: 10px 20px;"/>-->
+                        <button name="unlink_records" string="Rebuild" type="object" class="btn-primary" style="font-size: 14px; padding: 10px 20px;"/>
+                        <button name="calculate_pallets" string="Generate Full Pallet" type="object" class="btn-primary" style="font-size: 14px; padding: 10px 20px;"/>
+
+<!--                        <button name="generate_internal_transfer" string="Internal Transfer" type="object"-->
+<!--                                class="btn-primary"/>-->
+
+<!--                        <button name="transfer_inventory_outbound_wizard" string="Transfer Inventory" type="object"-->
+<!--                                attrs="{'invisible': [('is_outbound', '!=', True)]}"-->
+<!--                                class="btn-primary"/>-->
+
+                    </header>
+
+                    <sheet>
+                        <div>
+                            <div class="oe_button_box" name="button_box">
+                                <button name="button_freight_transfers" type="object" class="oe_stat_button"
+                                        icon="fa-truck" attrs="{'invisible': [('transfers_count', '=', 0)]}">
+                                    <field name="transfers_count" widget="statinfo" string="Transfers"
+                                           attrs="{'invisible': [('transfers_count', '=', 0)]}"/>
+                                </button>
+                                <button name="button_internal_transfers" type="object" class="oe_stat_button"
+                                        icon="fa-truck" attrs="{'invisible': [('internal_transfers_count', '=', 0)]}">
+                                    <field name="internal_transfers_count" widget="statinfo" string="Internal Transfers"
+                                           attrs="{'invisible': [('internal_transfers_count', '=', 0)]}"/>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- ========== Inbound ==========-->
+                        <div attrs="{'invisible': [('is_outbound', '=', True)]}">
+                            <div class="oe_title">
+                                <h1 style="color: red;">INBOUND</h1>
+                                <h2>
+                                    <field name="name" nolabel="1" placeholder="e.g. SHIP00001" readonly="1"/>
+                                </h2>
+                            </div>
+
+                                <!--                                <field name="is_check_in" invisible="1"/>-->
+                            <div style="color: #858585;font-size: 1.625rem;margin: 15px 0px;">Process Time Stamp</div>
+                            <div width="100%">
+                                <div>
+                                    <button name="container_checkin" string="1" type="object" class="style-1"/>
+                                    <span style="margin: 0px 25px;width: 180px;display: inline-block;">CHECK-IN - FULL</span>
+                                    <field name="check_in_truck_yard" nolabel="1" readonly="1"
+                                           attrs="{'invisible': [('check_in_truck_yard', '=', False)]}"/>
+                                </div>
+                                <br/>
+
+                                <div>
+                                    <button name="container_start_time" string="2" type="object" class="style-2"/>
+                                    <span style="margin: 0px 25px;width: 180px;display: inline-block;">UNLOADING - START</span>
+                                    <field name="unload_start_date" nolabel="1" readonly="1"/>
+                                </div>
+                                <br/>
+
+                                <div>
+                                    <button name="container_stop_time" string="3" type="object" class="style-3"/>
+                                    <span style="margin: 0px 25px;width: 180px;display: inline-block;">UNLOADING - END</span>
+                                    <field name="unload_end_date" nolabel="1" readonly="1"/>
+                                </div>
+                                <br/>
+
+                                <div>
+                                    <button name="container_checkout" string="4" type="object" class="style-4"/>
+                                    <span style="margin: 0px 25px;width: 180px;display: inline-block;">CHECK-OUT - EMPTY</span>
+                                    <field name="check_out_truck_yard" nolabel="1" readonly="1"/>
+                                </div>
+                                <br/>
+                            </div>
+                            <group>
+                                <group>
+                                    <field name="unload_time" readonly="1"/>
+                                    <field name="receiving_level_of_service" string="Receiving Level of Service" readonly="1"/>
+                                </group>
+                            </group>
+                            <br/>
+                            <br/>
+
+                            <div style="font-size: 1.675rem; color: rgb(133, 133, 133);">Receive Inbounds</div>
+                            <field name="osd_transfer_ids" nolabel="1">
+                                <tree string="Transfer Inventory" editable="bottom">
+                                    <field name="is_osd_inventory_transfered" invisible="1"/>
+                                    <field name="warehouse_id" invisible="1"/>
+                                    <field name="sku_id" required="1" options="{'no_create': True, 'no_create_edit':True}"/>
+                                    <field name="description"/>
+                                    <field name="quantity"/>
+                                    <field name="lot_id"/>
+                                    <field name="destination_location_id" domain="[('warehouse_id','=',warehouse_id)]" required="1" options="{'no_create': True, 'no_create_edit':True}"/>
+<!--                                    <field name="on_hand_qty"/>-->
+                                    <button name="osd_transfer_inventory" string="Receive" groups="!user_warehouse_restriction.user_carote_restriction_group_user"
+                                            type="object" class="btn-primary" attrs="{'invisible': [('is_osd_inventory_transfered','=',True)]}"/>
+<!--                                    <button name="open_osd_line_view" string="View" type="object" class="btn-primary" groups="base.user_admin"/>-->
+                                    <button name="open_osd_line_view" string="View" type="object" class="btn-primary"/>
+                                </tree>
+                            </field>
+
+                            <div style="font-size: 1.675rem; color: rgb(133, 133, 133);" groups="stock.group_stock_manager">Overages, Shortages &amp; Damages (OS&amp;D)</div>
+                            <field name="osd_ids" nolabel="1" groups="stock.group_stock_manager">
+                                <tree string="OS&amp;D Report" editable="bottom" create="false">
+                                    <field name="sku_id" class="o_list_record_remove"/>
+                                    <field name="description"/>
+                                    <field name="osd_total_qty"/>
+                                    <field name="overage_qty"/>
+                                    <field name="shortage_qty"/>
+                                    <field name="damaged_qty"/>
+                                    <field name="package_damaged_qty"/>
+                                </tree>
+                            </field>
+
+                            <group>
+                                <field name="freight_image" invisible="1"/>
+                                <field name="osd_remark"/>
+                            </group>
+                        </div>
+
+                        <!-- ========== Outbound ==========-->
+                        <div attrs="{'invisible': [('is_outbound', '=', False)]}">
+                            <div style="display: flex;width: 100%;">
+                                <div style="width:50% !important;" attrs="{'invisible': [('is_outbound', '=', False)]}">
+                                    <div>
+                                        <div class="oe_title">
+                                            <h1 style="color: green;">OUTBOUND</h1>
+                                            <h2>
+                                                <field name="name" nolabel="1" placeholder="e.g. SHIP00001" readonly="1"/>
+                                            </h2>
+                                        </div><br/>
+                                        <group>
+                                            <field name="customer_po" string="Customer Po :"/>
+                                            <field name="po_date" string="PO Date :"/>
+                                            <field name="load_id_number" string="Load ID # :"/>
+                                            <field name="carrier_flight" string="Carrier :"/>
+                                            <field name="trailer" string="Trailer # :"/>
+                                            <field name="truck_driver_name" string="Driver name :" readonly="0"/>
+                                            <field name="seal_number_inbound" string="Seal #:"/>
+                                        </group>
+                                    </div>
+                                </div>
+                                <div style="width:50% !important;">
+                                    <div style="color: #858585;font-size: 1.625rem;margin: 15px 0px;">Process Time Stamp</div>
+                                    <div string="Trailer Dates" width="100%">
+                                        <div>
+                                            <button name="container_checkin" string="1" type="object" class="style-1"/>
+                                            <span style="margin: 0px 25px;width: 180px;display: inline-block;">CHECK-IN - EMPTY DROP-OFF</span>
+                                            <field name="check_in_truck_yard" nolabel="1" readonly="1"/>
+                                        </div>
+                                        <br/>
+
+                                        <div>
+                                            <button name="loading_start_time" string="2" type="object" class="style-2"/>
+                                            <span style="margin: 0px 25px;width: 180px;display: inline-block;">LOADING - START</span>
+                                            <field name="loading_start_date" nolabel="1" readonly="1"/>
+                                        </div>
+                                        <br/>
+
+                                        <div>
+                                            <button name="loading_stop_time" string="3" type="object" class="style-3"/>
+                                            <span style="margin: 0px 25px;width: 180px;display: inline-block;">LOADING - END</span>
+                                            <field name="loading_end_date" nolabel="1" readonly="1"/>
+                                        </div>
+                                        <br/>
+
+                                        <div>
+                                            <button name="bol_date_update" string="4" type="object" class="style-5"/>
+                                            <span style="margin: 0px 25px;width: 180px;display: inline-block;">BOL DATE</span>
+                                            <field name="date_done" nolabel="1" readonly="1"/>
+                                        </div>
+                                        <br/>
+
+                                        <div>
+                                            <button name="container_checkout" string="5" type="object" class="style-4"/>
+                                            <span style="margin: 0px 25px;width: 180px;display: inline-block;">CHECK-OUT - FULL</span>
+                                            <field name="check_out_truck_yard" nolabel="1" readonly="1"/>
+                                        </div>
+                                        <br/>
+                                    </div>
+                            </div>
+                            </div>
+                            <br/>
+                            <group>
+<!--                                <field name="loading_time" readonly="1"/>-->
+<!--                                <field name="receiving_level_of_service" readonly="1"/>-->
+                            </group><br/><br/>
+
+                            <div>
+                                <div style="font-size: 1.675rem; color: rgb(133, 133, 133);">Ship Outbounds</div>
+                                <field name="osd_transfer_ids" nolabel="1">
+                                    <tree string="Transfer Inventory" editable="bottom">
+                                        <field name="sku_id" required="1" options="{'no_create': True, 'no_create_edit':True}" class="o_list_record_remove"/>
+                                        <field name="description"/>
+                                        <field name="is_osd_inventory_transfered" invisible="1"/>
+                                        <field name="pack_picking_state" invisible="1"/>
+                                        <field name="ship_picking_state" invisible="1"/>
+                                        <field name="pack_picking_id" invisible="1"/>
+                                        <field name="ship_picking_id" invisible="1"/>
+                                        <field name="warehouse_id" invisible="1"/>
+                                        <field name="quantity"/>
+                                        <field name="freeze" invisible="1"/>
+                                        <field name="pallet_type" attrs="{'readonly': [('freeze', '=', True)]}" force_save="1"/>
+                                        <field name="sub_pallet" attrs="{'readonly': [('freeze', '=', True)]}" force_save="1"/>
+                                        <field name="sscc_18_char" attrs="{'readonly': [('freeze', '=', True)]}" force_save="1" invisible="1"/>
+                                        <field name="sscc_barcode_id" readonly="1" force_save="1"/>
+                                        <field name="lot_id" class="o_list_record_remove"/>
+                                        <field name="freight_id" invisible="1"/>
+                                        <field name="po_number" context="{'po_number_field': True}" domain="[('freight_id.id', '=', freight_id)]"/>
+                                        <field name="is_outbound_pl" invisible="1"/>
+                                        <field name="location_id" string="Source Location" attrs="{'readonly': [('is_outbound_pl', '=', False)],'column_invisible': [('parent.is_outbound','!=', True)]}" class="o_list_record_remove" domain="[('warehouse_id','=',warehouse_id), ('is_omit_on_source_location', '=', False)]" options="{'no_create': True, 'no_create_edit':True}"/>
+                                        <field name="destination_location_id" string="Destination Location" required="1" class="o_list_record_remove" attrs="{'column_invisible': [('parent.is_outbound', '=', True)]}"
+                                               domain="[('warehouse_id','=',warehouse_id)]" options="{'no_create': True, 'no_create_edit':True}"/>
+                                        <field name="on_hand_qty"/>
+                                        <button name="osd_transfer_inventory_outbound" string="Stage" groups="!user_warehouse_restriction.user_carote_restriction_group_user"
+                                                type="object" class="btn-primary" attrs="{'invisible': ['|',('is_outbound_pl', '=', False),('is_osd_inventory_transfered','=',True)]}"/>
+                                        <button name="validate_pack_transfer" string="Load"
+                                                type="object" class="btn-primary" attrs="{'invisible': ['|',('pack_picking_id', '=', False),('pack_picking_state', '=', 'done')]}"/>
+                                        <button name="validate_ship_transfer" string="Ship"
+                                                type="object" class="btn-primary" attrs="{'invisible': ['|',('ship_picking_id', '=', False),('ship_picking_state', '=', 'done')]}"/>
+                                        <button name="osd_transfer_inventory" string="Receive" groups="!user_warehouse_restriction.user_carote_restriction_group_user"
+                                                type="object" class="btn-primary" attrs="{'invisible': ['|',('is_outbound_pl', '=', True),('is_osd_inventory_transfered','=',True)]}"/>
+                                        <button name="open_osd_line_view" string="View" type="object" class="btn-primary" />
+                                    </tree>
+                                </field>
+                            </div>
+
+                            <group>
+                                <field name="freight_image" invisible="1"/>
+                                <field name="osd_remark"/>
+                            </group>
+                        </div>
+                    </sheet>
+                    <div class="warehouse_chatter_position">
+                        <div class="oe_chatter">
+                            <field name="message_follower_ids" widget="mail_followers"/>
+                            <field name="message_ids" widget="mail_thread"/>
+                        </div>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="freight_freights_osd_kanban_view" model="ir.ui.view">
+            <field name="name">freight.freights.osd.kanban.view</field>
+            <field name="model">freight.freight</field>
+            <field name="priority" eval="1"/>
+            <field name="arch" type="xml">
+                <kanban class="o_kanban_mobile" group_edit="true" default_group_by="osd_rec_stage_id" create="false" group_create="false" button_enable_it="true" readonly="1">
+                    <field name="is_outbound"/>
+                    <field name="name"/>
+                    <field name="is_red_flag"/>
+                    <field name="warehouse_id"/>
+                    <field name="pickup_schedule_date"/>
+                    <field name="check_in_truck_yard"/>
+                    <field name="customer_po"/>
+                    <field name="po_date"/>
+                    <field name="load_id_number"/>
+                    <field name="carrier_flight"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_global_click">
+                                <div>
+                                    <div class="d-flex flex-row justify-content-between">
+                                        <div class="float-start" attrs="{'invisible': [('is_outbound', '=', True)]}">
+                                            <div style="color: red;font-size: 18px">INBOUND</div>
+                                        </div>
+                                        <div class="float-start" attrs="{'invisible': [('is_outbound', '=', False)]}">
+                                            <div style="color: green;font-size: 18px">OUTBOUND</div>
+                                        </div>
+                                         <t t-if="record.is_red_flag.raw_value">
+                                            <div class="float-end" name="red_flag">
+                                                <i class="fa fa-flag fa-2x text-color-red"/>
+                                            </div>
+
+                                        </t>
+                                    </div>
+                                    <strong class="o_kanban_record_title">
+                                        <t t-esc="record.name.value"/>
+                                    </strong>
+                                    <br/>
+                                    <strong class="o_kanban_record_title">
+                                        <t t-esc="record.warehouse_id.value"/>
+                                    </strong>
+                                    <br/>
+                                    <div>
+                                        <strong>Scheduled Date:</strong>
+                                        <t t-esc="record.pickup_schedule_date.value"/>
+                                    </div>
+                                    <div>
+                                        <strong>Check-In Date:</strong>
+                                        <t t-esc="record.check_in_truck_yard.value"/>
+                                    </div>
+                                    <div attrs="{'invisible': [('is_outbound', '=', False)]}">
+                                        <strong>Customer Po :</strong>
+                                        <t t-esc="record.customer_po.value"/>
+                                    </div>
+                                    <div attrs="{'invisible': [('is_outbound', '=', False)]}">
+                                        <strong>PO Date :</strong>
+                                        <t t-esc="record.po_date.value"/>
+                                    </div>
+                                    <div attrs="{'invisible': [('is_outbound', '=', False)]}">
+                                        <strong>Load ID # :</strong>
+                                        <t t-esc="record.load_id_number.value"/>
+                                    </div>
+                                    <div attrs="{'invisible': [('is_outbound', '=', False)]}">
+                                        <strong>Carrier :</strong>
+                                        <t t-esc="record.carrier_flight.value"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <record id="freight_freights_osd_tree_view" model="ir.ui.view">
+            <field name="name">freight.freights.osd.tree.view</field>
+            <field name="model">freight.freight</field>
+            <field name="arch" type="xml">
+<!--                <tree string="Transit" delete="false" decoration-warning="not is_remaining_qty">-->
+                <tree string="Transit" create="false" delete="false" decoration-warning="not is_remaining_qty">
+                    <field name="is_remaining_qty" invisible="1"/>
+                    <field name="name"/>
+                    <field name="sku_names"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- OS&D All Record View -->
+
+        <record model="ir.ui.view" id="view_logistic_event_calendar_osd">
+            <field name="name">freight.freight.osd.calendar</field>
+            <field name="model">freight.freight</field>
+            <field eval="2" name="priority"/>
+            <field name="arch" type="xml">
+                <calendar string="All Day"
+                          form_view_id="%(warefor_3pl_tus.freight_freights_osd_main_form_view)d" event_open_popup="true"
+                          date_start="pickup_schedule_date" mode="month" color="is_outbound_color">
+                    <field name="is_outbound" invisible="1"/>
+                    <field name="name"/>
+                    <field name="partner_id"/>
+                    <field name="drayage_id" domain="[('is_3pl_customer','=',True)]"
+                           attrs="{'invisible': [('is_outbound', '=', True)]}"/>
+                </calendar>
+            </field>
+        </record>
+
+        <record id="menu_freight_freights_osd_all_record_action" model="ir.actions.act_window">
+            <field name="name">Warehouse Ops</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">freight.freight</field>
+            <field name="domain">[('fulfillment_method','!=','e-commerce')]</field>
+            <field name="view_mode">calendar,form,search</field>
+            <field name="context">{
+                'is_ops_model': True,
+                }
+            </field>
+            <field name="view_ids"
+                   eval="[(5, 0, 0),
+                          (0, 0, {'view_mode': 'kanban', 'view_id': ref('warefor_3pl_tus.freight_freights_osd_kanban_view')}),
+                          (0, 0, {'view_mode': 'tree', 'view_id': ref('warefor_3pl_tus.freight_freights_osd_tree_view')}),
+                          (0, 0, {'view_mode': 'calendar', 'view_id': ref('warefor_3pl_tus.view_logistic_event_calendar_osd')}),
+                          (0, 0, {'view_mode': 'form', 'view_id': ref('warefor_3pl_tus.freight_freights_osd_main_form_view')}),
+                          ]"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                </p>
+                <p>
+                </p>
+            </field>
+        </record>
+
+        <!-- All OS&D View End-->
+
+        <menuitem id="menu_freight_osd_root" name="Warehouse Ops" sequence="10"
+                  web_icon="warefor_3pl_tus,static/description/icon.png"/>
+
+        <menuitem id="menu_osd_main" name="OS&amp;D" parent="warefor_3pl_tus.menu_freight_osd_root" sequence="10"/>
+        <menuitem id="menu_osd_report_main" name="Report" parent="warefor_3pl_tus.menu_freight_osd_root" sequence="10"/>
+
+        <menuitem id="menu_freight_ibl_osd"
+                  name="OS&amp;D"
+                  parent="warefor_3pl_tus.menu_osd_main"
+                  action="warefor_3pl_tus.menu_freight_freights_osd_all_record_action"
+                  sequence="12"/>
+
+<!--        <record model="ir.actions.server" id="action_generate_osd_inbound_reports">-->
+<!--            <field name="name">WFL OS&amp;D Report</field>-->
+<!--            <field name="model_id" ref="warefor_3pl_tus.model_freight_freight"/>-->
+<!--            <field name="binding_model_id" ref="warefor_3pl_tus.model_freight_freight"/>-->
+<!--            <field name="state">code</field>-->
+<!--            <field name="code">-->
+<!--domain = [('is_outbound', '=', False)]-->
+<!--inbound_logistic_ids = env["freight.freight"].search(domain)-->
+<!--action = inbound_logistic_ids.action_inbound_osd_report()-->
+<!--            </field>-->
+<!--        </record>-->
+<!--        <record model="ir.actions.server" id="action_generate_osd_outbound_reports">-->
+<!--            <field name="name">WFL OS&amp;D Report</field>-->
+<!--            <field name="model_id" ref="warefor_3pl_tus.model_freight_freight"/>-->
+<!--            <field name="binding_model_id" ref="warefor_3pl_tus.model_freight_freight"/>-->
+<!--            <field name="state">code</field>-->
+<!--            <field name="code">-->
+<!--domain = [('is_outbound', '=', True)]-->
+<!--inbound_logistic_ids = env["freight.freight"].search(domain)-->
+<!--action = inbound_logistic_ids.action_inbound_osd_report()-->
+<!--            </field>-->
+<!--        </record>-->
+
+<!--        <menuitem id="sub_menu_osd_inbound_report_xlsx"-->
+<!--                  name="Inbound OS&amp;D Report(xlsx)"-->
+<!--                  parent="warefor_3pl_tus.menu_osd_report_main"-->
+<!--                  action="action_generate_osd_inbound_reports"-->
+<!--                  sequence="15"/>-->
+
+<!--        <menuitem id="sub_menu_osd_outbound_report_xlsx"-->
+<!--                  name="Outbound OS&amp;D Report(xlsx)"-->
+<!--                  parent="warefor_3pl_tus.menu_osd_report_main"-->
+<!--                  action="action_generate_osd_outbound_reports"-->
+<!--                  sequence="15"/>-->
+
+        <!--<menuitem id="menu_action_inventory_tree_ops" name="Inventory Counting" parent="warefor_3pl_tus.menu_freight_osd_root" sequence="10" action="stock.action_view_inventory_tree" />-->
+
+    </data>
+</odoo>

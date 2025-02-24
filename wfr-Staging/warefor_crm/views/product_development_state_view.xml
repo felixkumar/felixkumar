@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="product_development_state_action" model="ir.actions.act_window">
+            <field name="name">Product Development State</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">product.development.state</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem name="Configurations" id="product_development_config"
+                  parent="product_development_root"/>
+
+        <menuitem name="Product Development State" id="product_development_state"
+                  parent="product_development_config" action="product_development_state_action"/>
+    </data>
+</odoo>

@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="dynamic_snippet_discount_products_action" model="ir.actions.server">
+        <field name="name">Discount Products</field>
+        <field name="model_id" ref="model_product_product"/>
+        <field name="state">code</field>
+        <field name="code">
+DynamicFilter = model.env['website.snippet.filter']
+model.env.context['product_template_id'] = request.params.get('productTemplateId')
+response = DynamicFilter._get_products('discount_products', model.env.context)
+        </field>
+    </record>
+
+    <record id="dynamic_filter_discount_products_products" model="website.snippet.filter">
+        <field name="action_server_id" ref="emipro_theme_base.dynamic_snippet_discount_products_action"/>
+        <field name="field_names">display_name,description_sale,image_512</field>
+        <field name="limit" eval="16"/>
+        <field name="name">Discount Products</field>
+    </record>
+
+    <record id="dynamic_snippet_discount_products_template_action" model="ir.actions.server">
+        <field name="name">Discount Products Templates</field>
+        <field name="model_id" ref="model_product_template"/>
+        <field name="state">code</field>
+        <field name="code">
+DynamicFilter = model.env['website.snippet.filter']
+model.env.context['product_template_id'] = request.params.get('productTemplateId')
+model.env.context['product_template_snippet'] = True
+response = DynamicFilter._get_products('discount_products', model.env.context)
+        </field>
+    </record>
+
+    <record id="dynamic_filter_discount_products_template" model="website.snippet.filter">
+        <field name="action_server_id" ref="emipro_theme_base.dynamic_snippet_discount_products_template_action"/>
+        <field name="field_names">display_name</field>
+        <field name="limit" eval="16"/>
+        <field name="name">Discount Products</field>
+    </record>
+
+    <record id="dynamic_snippet_all_products_filter" model="ir.filters">
+        <field name="name">All Products</field>
+        <field name="model_id">product.product</field>
+        <field name="user_id" eval="False" />
+        <field name="domain">[('website_published', '=', True)]</field>
+        <field name="context">{'display_default_code': False, 'add2cart_rerender': False}</field>
+        <field name="action_id" ref="website.action_website"/>
+    </record>
+
+    <record id="dynamic_filter_newest_products" model="website.snippet.filter">
+        <field name="filter_id" ref="emipro_theme_base.dynamic_snippet_all_products_filter"/>
+        <field name="field_names">display_name,description_sale,image_512</field>
+        <field name="limit" eval="16"/>
+        <field name="name">All Products</field>
+    </record>
+
+    <!-- Filters for Dynamic Filter -->
+    <record id="dynamic_snippet_newest_products_template_filter" model="ir.filters">
+        <field name="name">Newest Products</field>
+        <field name="model_id">product.template</field>
+        <field name="user_id" eval="False"/>
+        <field name="domain">[('website_published', '=', True)]</field>
+        <field name="context">{'display_default_code': False, 'add2cart_rerender': False}</field>
+        <field name="sort">['create_date desc']</field>
+        <field name="action_id" ref="website.action_website"/>
+    </record>
+    <record id="dynamic_filter_newest_products_template" model="website.snippet.filter">
+        <field name="filter_id" ref="emipro_theme_base.dynamic_snippet_newest_products_template_filter"/>
+        <field name="field_names">display_name,description_sale,image_512</field>
+        <field name="limit" eval="16"/>
+        <field name="name">Newest Products</field>
+    </record>
+    <!-- Filters for Dynamic Filter -->
+
+    <!-- Action Server for Dynamic Filter -->
+    <record id="dynamic_snippet_latest_sold_products_template_action" model="ir.actions.server">
+        <field name="name">Recently Sold Products</field>
+        <field name="model_id" ref="model_product_template"/>
+        <field name="state">code</field>
+        <field name="code">
+DynamicFilter = model.env['website.snippet.filter']
+response = DynamicFilter._get_products('latest_sold', model.env.context)
+        </field>
+    </record>
+
+    <record id="dynamic_filter_latest_sold_products_template" model="website.snippet.filter">
+        <field name="action_server_id" ref="emipro_theme_base.dynamic_snippet_latest_sold_products_template_action"/>
+        <field name="field_names">display_name</field>
+        <field name="limit" eval="16"/>
+        <field name="name">Recently Sold Products</field>
+    </record>
+
+    <record id="dynamic_snippet_latest_viewed_products_template_action" model="ir.actions.server">
+        <field name="name">Recently Viewed Products</field>
+        <field name="model_id" ref="model_product_template"/>
+        <field name="state">code</field>
+        <field name="code">
+DynamicFilter = model.env['website.snippet.filter']
+res_products = DynamicFilter._get_products('latest_viewed', model.env.context)
+for data in res_products:
+    data['_latest_viewed'] = True
+response = res_products
+        </field>
+    </record>
+    <record id="dynamic_filter_latest_viewed_products_template" model="website.snippet.filter">
+        <field name="action_server_id" ref="emipro_theme_base.dynamic_snippet_latest_viewed_products_template_action"/>
+        <field name="field_names">display_name</field>
+        <field name="limit" eval="16"/>
+        <field name="name">Recently Viewed Products</field>
+    </record>
+
+    <!-- Create Filter Record -->
+    <record id="dynamic_snippet_category_ext" model="ir.filters">
+        <field name="name">All Category</field>
+        <field name="model_id">product.public.category</field>
+        <field name="user_id" eval="False"/>
+        <field name="domain">[]</field>
+        <field name="sort">['create_date desc']</field>
+    </record>
+
+    <!-- Create Snippet Filter Records -->
+    <record id="dynamic_filter_category" model="website.snippet.filter">
+        <field name="filter_id" ref="emipro_theme_base.dynamic_snippet_category_ext"/>
+        <field name="field_names">name,product_tmpl_ids,image_512</field>
+        <field name="limit" eval="16"/>
+        <field name="name">All Category</field>
+    </record>
+
+    <!-- Create Filter Record -->
+    <record id="dynamic_snippet_brand_ext" model="ir.filters">
+        <field name="name">All Brands</field>
+        <field name="model_id">product.brand</field>
+        <field name="user_id" eval="False"/>
+        <field name="domain">[('website_published', '=', True)]</field>
+        <field name="sort">['name asc']</field>
+    </record>
+
+    <!-- Create Snippet Filter Records -->
+    <record id="dynamic_filter_brand" model="website.snippet.filter">
+        <field name="filter_id" ref="emipro_theme_base.dynamic_snippet_brand_ext"/>
+        <field name="field_names">name</field>
+        <field name="limit" eval="16"/>
+        <field name="name">All Brands</field>
+    </record>
+
+    <!--Dynamic Products-->
+    <!-- Create Filter Record -->
+    <record id="dynamic_snippet_product_template_ext" model="ir.filters">
+        <field name="name">All Products</field>
+        <field name="model_id">product.template</field>
+        <field name="domain">[]</field>
+        <field name="sort">['name asc']</field>
+    </record>
+
+    <!-- Create Snippet Filter Records -->
+    <record id="dynamic_filter_prod_temp" model="website.snippet.filter">
+        <field name="filter_id" ref="emipro_theme_base.dynamic_snippet_product_template_ext"/>
+        <field name="field_names">name</field>
+        <field name="limit" eval="16"/>
+        <field name="name">All Products</field>
+    </record>
+
+</odoo>

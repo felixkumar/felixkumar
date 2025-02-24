@@ -1,0 +1,136 @@
+{
+    "config": [
+        {
+            "path": "ItemRegistries/ItemRegistry",
+            "model": "res.partner"
+        },
+        {
+            "path": "ItemRegistries/ItemRegistry/Header/HeaderReport/TradingPartnerId",
+            "field": "trading_partnerid"
+        },
+        {
+            "path": "ItemRegistries/ItemRegistry/Header/HeaderReport/DocumentId",
+            "field": "edi_document_id"
+        },
+        {
+            "path": "ItemRegistries/ItemRegistry/Header/HeaderReport/TsetPurposeCode",
+            "field": "edi_tset_purpose_code"
+        },
+        {
+            "path": "ItemRegistries/ItemRegistry/Header/HeaderReport/ReportTypeCode",
+            "field": "edi_report_type_code"
+        },
+        {
+            "path": "ItemRegistries/ItemRegistry/Header/HeaderReport/InventoryDate",
+            "field": "edi_inventory_date"
+        },
+        {
+            "path": "ItemRegistries/ItemRegistry/Header/HeaderReport/InventoryTime",
+            "field": "edi_inventory_time"
+        },
+        {
+            "path": "ItemRegistries/ItemRegistry/Header/HeaderReport/Vendor",
+            "field": "edi_vendor"
+        },
+        {
+            "path": "ItemRegistries/ItemRegistry/Header/Contacts/ContactName",
+            "field": "name"
+        },
+        {
+            "path": "ItemRegistries/ItemRegistry/Header/Contacts/PrimaryPhone",
+            "field": "phone"
+        },
+        {
+            "path": "ItemRegistries/ItemRegistry/Header/Contacts/PrimaryEmail",
+            "field": "email"
+        },
+        {
+            "path": "ItemRegistries/ItemRegistry/Header/Address/AddressTypeCode",
+            "field": "edi_address_type_code"
+        },
+        {
+            "path": "ItemRegistries/ItemRegistry/Structure/LineItem",
+            "field": "edi_inventory_inquiry_product_line_ids"
+        },
+        {
+            "path": "ItemRegistries/ItemRegistry/Structure/LineItem/InventoryLine/BuyerPartNumber",
+            "field": "edi_buyer_part_number"
+        },
+        {
+            "path": "ItemRegistries/ItemRegistry/Structure/LineItem/InventoryLine/VendorPartNumber",
+            "field": "edi_vendor_part_number"
+        },
+        {
+            "path": "ItemRegistries/ItemRegistry/Structure/LineItem/InventoryLine/ConsumerPackageCode",
+            "field": "edi_consumer_package_code"
+        },
+        {
+            "path": "ItemRegistries/ItemRegistry/Structure/LineItem/InventoryLine/GTIN",
+            "field": "edi_gtin"
+        },
+        {
+            "path": "ItemRegistries/ItemRegistry/Structure/LineItem/InventoryLine/ExpirationDate",
+            "field": "edi_expiration_date"
+        },
+        {
+            "path": "ItemRegistries/ItemRegistry/Structure/LineItem/Dates",
+            "multifield": {
+                "determining_tag": "DateTimeQualifier",
+                "values": [
+                    {
+                        "value": "196",
+                        "field": "edi_inventory_start_day"
+                    },
+                    {
+                        "value": "197",
+                        "field": "edi_inventory_end_day"
+                    }
+                ]
+            }
+        },
+        {
+            "path": "ItemRegistries/ItemRegistry/Structure/LineItem/PriceDetails/PriceTypeIDCode",
+            "field": "edi_price_type_id_code"
+        },
+        {
+            "path": "ItemRegistries/ItemRegistry/Structure/LineItem/PriceDetails/UnitPrice",
+            "field": "list_price"
+        },
+        {
+            "path": "ItemRegistries/ItemRegistry/Structure/LineItem/ProductOrItemDescription/ProductCharacteristicCode",
+            "field": "edi_product_characteristic_code"
+        },
+        {
+            "path": "ItemRegistries/ItemRegistry/Structure/LineItem/ProductOrItemDescription/ProductDescription",
+            "field": "description_sale"
+        },
+        {
+            "path": "ItemRegistries/ItemRegistry/Structure/LineItem/QuantitiesSchedulesLocations/QuantityQualifier",
+            "static": "33"
+        },
+        {
+            "path": "ItemRegistries/ItemRegistry/Structure/LineItem/QuantitiesSchedulesLocations/TotalQty",
+            "field": "qty_available"
+        },
+        {
+            "path": "ItemRegistries/ItemRegistry/Structure/LineItem/QuantitiesSchedulesLocations/TotalQtyUOM",
+            "field": "uom_name"
+        },
+        {
+            "path": "ItemRegistries/ItemRegistry/Structure/LineItem/QuantitiesSchedulesLocations/LocationQuantity/Location",
+            "field": "edi_location"
+        },
+        {
+            "path": "ItemRegistries/ItemRegistry/Structure/LineItem/QuantitiesSchedulesLocations/LocationQuantity/Qty",
+            "field": "qty_available"
+        },
+        {
+            "path": "ItemRegistries/ItemRegistry/Summary/TotalAmount",
+            "field": "edi_total_amount"
+        },
+        {
+            "path": "ItemRegistries/ItemRegistry/Summary/TotalLineItemNumber",
+            "field": "edi_total_line_item_number"
+        }
+    ]
+}

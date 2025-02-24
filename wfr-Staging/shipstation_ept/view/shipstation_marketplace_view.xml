@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Form View of Shipstation Marketplace -->
+        <record id="shipstation_marketplace_form_view_ept" model="ir.ui.view">
+            <field name="name">shipstation.marketplace.form.view.ept</field>
+            <field name="model">shipstation.marketplace.ept</field>
+            <field name="arch" type="xml">
+                <form string="Shipstation Marketplace" edit="false" create="false">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="shipstation_instance_id" required="1" context="{'form_view_ref': 'shipstation_ept.shipstation_form_view'}"/>
+                            </group>
+                            <group>
+                                <field name="shipstation_identification" readonly="1"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Tree view of Shipstation Marketplaces -->
+        <record id="shipstation_marketplace_tree_view_ept" model="ir.ui.view">
+            <field name="name">Shipstation Marketplaces</field>
+            <field name="model">shipstation.marketplace.ept</field>
+            <field name="arch" type="xml">
+                <tree string="Shipstation Marketplaces" create="false">
+                    <field name="name"/>
+                    <field name="shipstation_instance_id"/>
+                    <field name="shipstation_identification"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Marketplace Tree view Action of Shipstation-->
+        <record id="action_shipstation_marketplace_ept" model="ir.actions.act_window">
+            <field name="name">Shipstation Marketplaces</field>
+            <field name="res_model">shipstation.marketplace.ept</field>
+            <field name="view_id" ref="shipstation_marketplace_tree_view_ept"/>
+        </record>
+
+        <!-- Marketplace menu in Main Configuration Menu -->
+        <menuitem id="shipstation_marketplace_menu" name="Marketplaces"
+                  parent="shipstation_ept.menu_configuration_ept" sequence="3"
+                  action="action_shipstation_marketplace_ept"/>
+    </data>
+</odoo>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="business_appointment.BusinessAppointmentFormView" t-inherit="web.FormView" t-inherit-mode="primary" owl="1">
+        <xpath expr="//button[hasclass('o_form_button_create')]" position="replace">
+            <button type="button" class="btn btn-outline-primary" t-on-click.stop.prevent="() => this.startScheduling()" t-att-disabled="state.isDisabled">
+                Schedule
+            </button>
+            <button type="button" class="btn btn-outline-primary" t-on-click.stop.prevent="() => this.startReScheduling()" t-att-disabled="state.isDisabled">
+                Reschedule
+            </button>
+        </xpath>
+    </t>
+
+</templates>

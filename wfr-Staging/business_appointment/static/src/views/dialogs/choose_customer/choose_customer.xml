@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="business_appointment.ChooseCustomerDialog" owl="1">
+        <Dialog size="props.size" title="props.title" withBodyPadding="false" modalRef="modalRef">
+            <div class="business-appointment-p-16">
+                <ChosenAppointments t-props="this.getChosenAppointmentsProps()"/>
+            </div>
+            <View t-props="viewProps"/>
+            <t t-set-slot="footer"/>
+        </Dialog>
+    </t>
+    <t t-name="business_appointment.ChooseCustomerDialog.buttons" t-inherit-mode="primary" t-inherit="web.FormView.Buttons" owl="1">
+        <xpath expr="//div[contains(@class, 'o_form_buttons_edit')]" position="replace">
+            <div t-if="model.root.isInEdition" class="o_form_buttons_edit">
+                <button class="btn btn-primary o_form_button_save" t-on-click="() => this.saveButtonClicked()">Confirm</button>
+                <button class="btn btn-secondary o_form_button_cancel" data-hotkey="j" t-on-click.stop="discard">Close</button>
+            </div>
+        </xpath>
+    </t>
+
+</templates>

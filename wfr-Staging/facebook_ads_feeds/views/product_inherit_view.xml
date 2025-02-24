@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (c) 2016-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>;) -->
+<!-- See LICENSE file for full copyright and licensing details. -->
+<!-- License URL : https://store.webkul.com/license.html/ -->
+<odoo>
+      <record model="ir.ui.view" id="facebook_product_template_form">
+          <field name="name">Facebook Product Template Form</field>
+          <field name="model">product.template</field>
+          <field name="inherit_id" ref="product.product_template_form_view"/>
+          <field name="type">form</field>
+          <field name="arch" type="xml">
+            <page name="inventory" position="after">
+              <page name="facebook_attributes" string="Facebook Attributes">
+                <group col="4">
+                <field name="google_categ_id"/>
+                <field name="brand" />
+                <field name="gtin" />
+                <field name="mpn" />
+              </group>
+              </page>
+            </page>
+        </field>
+    </record>
+
+</odoo>

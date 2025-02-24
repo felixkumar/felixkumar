@@ -1,0 +1,8 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+admin_fb_facebook_fields_manager,fb.facebook.fields Manager,facebook_ads_feeds.model_fb_facebook_fields,base.group_erp_manager,1,1,1,1
+admin_fb_facebook_shop_manager,fb.facebook.shop Manager,facebook_ads_feeds.model_fb_facebook_shop,base.group_erp_manager,1,1,1,1
+admin_fb_attachment_mapping_manager,fb.attachment.mapping Manager,facebook_ads_feeds.model_fb_attachment_mapping,base.group_erp_manager,1,1,1,1
+admin_fb_field_mappning_line_manager,fb.field.mappning.line Manager,facebook_ads_feeds.model_fb_field_mappning_line,base.group_erp_manager,1,1,1,1
+admin_fb_field_mappning_manager,fb.field.mappning Manager,facebook_ads_feeds.model_fb_field_mappning,base.group_erp_manager,1,1,1,1
+admin_google_category_manager,google.category Manager,facebook_ads_feeds.model_google_category,base.group_erp_manager,1,1,1,1
+admin_product_template_manager,product.template Manager,facebook_ads_feeds.model_product_template,base.group_erp_manager,1,1,1,1

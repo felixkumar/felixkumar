@@ -1,0 +1,14 @@
+<odoo>
+    <record id="view_edi_account_res_partner_form_inherit" model="ir.ui.view">
+            <field name="name">edi.account.view.res.partner.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//group[@name='edi_docs']" position="inside">
+                        <field name="send_edi_inv"/>
+                    </xpath>
+                </data>
+            </field>
+        </record>
+</odoo>

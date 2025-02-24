@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+        <!--Auto cron job for export orders from odoo to Shipstation.-->
+        <record id="ir_cron_shipstation_auto_export_order" model="ir.cron">
+            <field name="name">Shipstation Auto Export Orders</field>
+            <field eval="False" name="active"/>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="interval_number">1</field>
+            <field name="interval_type">minutes</field>
+            <field name="numbercall">-1</field>
+            <field name="state">code</field>
+            <field name="doall">False</field>
+            <field name="model_id" ref="model_shipstation_instance_ept"/>
+            <field name="code">model.export_to_shipstation_cron()</field>
+        </record>
+        <record id="ir_cron_shipstation_auto_validate_order" model="ir.cron">
+            <field name="name">Shipstation Auto Validate Orders</field>
+            <field eval="False" name="active"/>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="interval_number">1</field>
+            <field name="interval_type">minutes</field>
+            <field name="numbercall">-1</field>
+            <field name="state">code</field>
+            <field name="doall">False</field>
+            <field name="model_id" ref="model_shipstation_instance_ept"/>
+            <field name="code">model.auto_validate_delivery_order()</field>
+        </record>
+    </data>
+</odoo>

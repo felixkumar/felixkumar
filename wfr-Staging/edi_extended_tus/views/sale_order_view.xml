@@ -1,0 +1,46 @@
+<odoo>
+    <data>
+        <record id="EDI_izi_marketplace_form_sale_order" model="ir.ui.view">
+            <field name="name">Sale Order Form View</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="izi_marketplace.form_sale_order"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='izi_info']" position="attributes">
+                    <attribute name="attrs">{'invisible': [('edi_vendor', '!=', False)]}</attribute>
+                </xpath>
+            </field>
+
+        </record>
+
+
+        <record id="shipstation_shipping_odoo_integration_form_sale_order" model="ir.ui.view">
+            <field name="name">Sale Order Form View</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="shipstation_shipping_odoo_integration.view_shipstation_detail_sale_order_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook/page[@name='shipstation_order_detail']" position="attributes">
+                    <attribute name="attrs">{'invisible': [('edi_vendor', '!=', False)]}</attribute>
+                </xpath>
+                 <xpath expr="//notebook/page[@name='shipstation_shipping_charges']" position="attributes">
+                    <attribute name="attrs">{'invisible': [('edi_vendor', '!=', False)]}</attribute>
+                </xpath>
+            </field>
+
+        </record>
+
+
+        <record id="form_sale_order_inherit" model="ir.ui.view">
+            <field name="name">Sale Order Form View</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale_stock.view_order_form_inherit_sale_stock"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='effective_date']" position="before">
+                    <field name="ship_not_before"/>
+                    <field name="ship_not_later_than"/>
+                    <field name="must_arrive_by"/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

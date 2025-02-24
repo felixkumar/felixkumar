@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="inherit_shipstation_store_vts_form" model="ir.ui.view">
+        <field name="name">inherit.shipstation.store.vts.form</field>
+        <field name="model">shipstation.store.vts</field>
+        <field name="inherit_id" ref="shipstation_shipping_odoo_integration.view_shipstation_store_form_view_vts"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='store_id']" position="after">
+                <field name="edi_store_id"/>
+            </xpath>
+            <xpath expr="//field[@name='import_shipstation_shipment']" position="after">
+                <field name="is_locked_date" groups="base.group_erp_manager"/>
+                <field name="locked_from_date" groups="base.group_erp_manager"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

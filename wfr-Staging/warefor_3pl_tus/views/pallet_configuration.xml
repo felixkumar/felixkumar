@@ -1,0 +1,89 @@
+<odoo>
+    <data>
+        <record id="pallet_configuration_form_view" model="ir.ui.view">
+            <field name="name">pallet.configuration.form</field>
+            <field name="model">pallet.configuration</field>
+            <field name="arch" type="xml">
+                <form string="Pallet Configuration">
+                    <sheet>
+                        <div class="oe_title" width="50%">
+                            <label for="name" class="oe_edit_only"/>
+                            <h1>
+                                <field name="name" required="1"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="product_id" required="1"/>
+                            </group>
+                        </group>
+                        <group>
+                            <group>
+                                <div>
+                                    <label for="width"/><sup>in</sup>
+                                </div>
+                                <field name="width" nolabel="1"/>
+                                <div>
+                                    <label for="depth"/><sup>in</sup>
+                                </div>
+                                <field name="depth" nolabel="1"/>
+                                <div>
+                                    <label for="max_height"/><sup>in</sup>
+                                </div>
+                                <field name="max_height" nolabel="1"/>
+                                <div>
+                                    <label for="weight"/><sup>lbs</sup>
+                                </div>
+                                <field name="weight" nolabel="1"/>
+                                <div>
+                                    <label for="mx_weight"/><sup>lbs</sup>
+                                </div>
+                                <field name="mx_weight" nolabel="1"/>
+                            </group>
+                        </group>
+                        <group>
+                            <group>
+                                <field name="cube"/>
+                                <field name="mx_cube_height"/>
+                            </group>
+                        </group>
+                        <group>
+                            <field name="description"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="pallet_configuration_tree_view" model="ir.ui.view">
+            <field name="name">pallet.configuration.tree</field>
+            <field name="model">pallet.configuration</field>
+            <field name="arch" type="xml">
+                <tree string="Pallet Configuration">
+                    <field name="name"/>
+                    <field name="width"/>
+                    <field name="depth"/>
+                    <field name="max_height"/>
+                    <field name="description"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="pallet_configuration_action" model="ir.actions.act_window">
+            <field name="name">Pallet Configuration</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">pallet.configuration</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                </p>
+                <p>
+                </p>
+            </field>
+        </record>
+
+        <menuitem id="menu_pallet_configuration" name="Pallet Configuration" action="pallet_configuration_action"
+                  parent="warefor_3pl_tus.menu_pallet_mgmt_root" sequence="10"/>
+
+    </data>
+</odoo>

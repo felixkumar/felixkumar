@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--Refund wizard-->
+    <record id="view_walmart_refund_wizard" model="ir.ui.view">
+        <field name="name">Refund In walmart</field>
+        <field name="model">walmart.refund.order.wizard</field>
+        <field name="arch" type="xml">
+            <form string="walmart walmart Order">
+                <group>
+                    <group>
+                        <field name="walmart_refund_reason" required="1"/>
+                    </group>
+                </group>
+                <footer>
+                    <button name="refund_in_walmart" string="Refund In Walmart"
+                            type="object" class="oe_highlight"/>
+                    <button string="Close" class="oe_highlight" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>

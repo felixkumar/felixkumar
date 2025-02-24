@@ -1,0 +1,468 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="template_header_centered_logo_custom" inherit_id="website.layout"
+              name="Template Header Centered Logo Custom"
+              active="False">
+        <xpath expr="//header" position="attributes">
+            <attribute name="t-attf-class" add="custom-header" separator=" "/>
+        </xpath>
+        <xpath expr="//header//nav" position="replace">
+            <t t-call="website.navbar">
+                <div id="top_menu_container" class="container bg-white">
+                    <!-- Navbar Toggler -->
+                    <t t-call="website.navbar_toggler"/>
+                    <!-- Brand -->
+                    <t t-call="website.placeholder_header_brand">
+                        <t t-set="_link_class" t-valuef="m-0"/>
+                    </t>
+                    <!-- Right -->
+                    <ul class="nav navbar-nav o_header_centered_logo justify-content-end flex-row my-2 ">
+                        <!-- Sign In -->
+                        <t t-call="portal.placeholder_user_sign_in">
+                            <t t-set="_item_class" t-valuef="nav-item ms-3 d-flex align-items-center justify-content-center"/>
+                            <t t-set="_link_class" t-valuef="nav-link"/>
+                        </t>
+                        <!-- User Dropdown -->
+                        <t t-call="portal.user_dropdown">
+                            <t t-set="_icon" t-value="false"/>
+                            <t t-set="_user_name" t-value="true"/>
+                            <t t-set="_item_class"
+                               t-valuef="nav-item dropdown ms-3 user-account-custom d-lg-block d-none"/>
+                            <t t-set="_link_class" t-valuef="nav-link"/>
+                            <t t-set="_dropdown_menu_class" t-valuef="position-absolute dropdown-menu-end"/>
+                        </t>
+                        <!-- Call To Action -->
+                        <t t-call="website.placeholder_header_call_to_action">
+                            <t t-set="_div_classes" t-valuef="ms-2"/>
+                        </t>
+                    </ul>
+
+                    <!-- Navbar Collapse -->
+                    <div id="top_menu_collapse"
+                         class="collapse navbar-collapse o_header_centered_logo order-last order-lg-first align-items-center">
+                        <t t-call="website.navbar_nav">
+                            <!--                            <li class="nav-item">-->
+                            <!--                                <a role="menuitem" href="/shop" class="nav-link"-->
+                            <!--                                   style="background-color:#475656;color:#fff;border-radius:5px;">-->
+                            <!--                                    <span>SHOP ALL</span>-->
+                            <!--                                </a>-->
+                            <!--                            </li>-->
+                            <!-- Menu -->
+                            <t t-foreach="website.menu_id.child_id" t-as="submenu">
+                                <t t-call="website.submenu">
+                                    <t t-set="item_class" t-valuef="nav-item"/>
+                                    <t t-set="link_class" t-valuef="nav-link"/>
+                                </t>
+                            </t>
+                        </t>
+                        <!-- Language Selector -->
+                        <t t-call="website.placeholder_header_language_selector">
+                            <t t-set="_div_classes" t-valuef="ms-lg-1 mb-2 mb-lg-0 align-self-lg-center"/>
+                        </t>
+                    </div>
+                </div>
+            </t>
+        </xpath>
+    </template>
+
+    <template id="template_header_centered_logo_cart" inherit_id="header_layout.template_header_centered_logo_custom">
+        <xpath expr="//t[@t-call='portal.user_dropdown']" position="after">
+            <t t-call="website_sale.header_cart_link">
+                <t t-set="_icon" t-value="False"/>
+                <t t-set="_text" t-value="True"/>
+                <t t-set="_item_class" t-value="'nav-item'"/>
+                <t t-set="_link_class" t-value="'nav-link'"/>
+            </t>
+        </xpath>
+    </template>
+
+    <template id="header_cart_link_ext" inherit_id="website_sale.header_cart_link" active="False">
+        <xpath expr="//li[contains(@t-attf-class,'o_wsale_my_cart')]" position="replace">
+            <li t-attf-class="o_wsale_my_cart ms-2 d-flex align-items-center text-center #{not show_cart and 'd-none'} #{_item_class}">
+                <a href="/shop/cart"
+                   t-attf-class="#{_link_class} d-flex align-items-center text-center text-uppercase gap-1">
+                    <span t-if="_text">Cart</span>
+                    <div class="d-flex align-items-center justify-content-center my_cart_quantity cart-custom">
+                        <span class="fs-14 fw-600"
+                              t-esc="website_sale_cart_quantity"
+                              t-att-data-order-id="request.session.get('sale_order_id', '')"/>
+                    </div>
+
+                </a>
+            </li>
+        </xpath>
+    </template>
+
+    <template id="dynamic_filter_template_product_public_category_custom_styles_1" name="Oxford Layout">
+        <t t-foreach="records" t-as="data" data-number-of-elements="5" data-number-of-elements-sm="2">
+            <t t-set="category" t-value="data['_record']"/>
+            <div class="item category_item_style_1">
+                <t t-set="page_url" t-value="'/shop/category/%s' % category.id"/>
+                <a t-att-href="page_url">
+                    <t t-if="website.is_lazy_load">
+                        <div t-field="website.lazy_load_image"
+                             class="oe_unmovable position-relative overflow-hidden"
+                             t-options='{"widget": "image", "preview_image": "image_128", "class": "oe_unmovable  mh-100 oxf_category_item_style_1", "alt-field": "name"}'/>
+                    </t>
+                    <t t-else="">
+                        <div t-field="category.image_1920"
+                             class="oe_unmovable position-relative overflow-hidden"
+                             t-options='{"widget": "image", "preview_image": "image_1920", "class": "oe_unmovable  mh-100 oxf_category_item_style_1", "alt-field": "name"}'/>
+                        <!--                        <img t-att-alt="category.name"-->
+                        <!--                             t-attf-src="/web/image/product.public.category/#{category.id}/image_128"-->
+                        <!--                             class="oxf_category_item_style_1"/>-->
+                    </t>
+                    <br/>
+                    <span class="oxf_category_name fs-20 fw-500 pt-5">
+                        <t t-esc="category.name"/>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="8" viewBox="0 0 12 8" fill="none">
+                            <path d="M8.02386 0L7.36892 0.628622L10.275 3.55048H0V4.44952H10.275L7.36892 7.37138L8.02386 8L12 4L8.02386 0Z"
+                                  fill="#535353"/>
+                        </svg>
+                    </span>
+
+                </a>
+            </div>
+        </t>
+        <div class="oe_structure oe_empty oe_structure_not_nearest mt16 mb16"
+             id="oe_structure_dynamic_carousel_mega_menu_category_style_1"
+             data-editor-message="DROP BUILDING BLOCKS HERE TO MAKE THEM AVAILABLE ACROSS ALL PRODUCTS"/>
+    </template>
+
+    <template id="dynamic_filter_template_product_public_category_custom_styles_2" name="Oxford Layout: style 2">
+        <t t-foreach="records" t-as="data" data-number-of-elements="4" data-number-of-elements-sm="2">
+            <t t-set="category" t-value="data['_record']"/>
+            <div class="item category_item_style_2">
+                <t t-set="page_url" t-value="'/shop/category/%s' % category.id"/>
+                <a t-att-href="page_url">
+                    <div t-field="category.icon"
+                         class="oe_unmovable position-relative oxf_category d-flex justify-content-center overflow-hidden"
+                         t-options='{"widget": "image", "preview_image": "icon", "class": "oe_unmovable  mh-100 oxf_category_item_style_2", "alt-field": "name"}'/>
+                    <span class="col-12 fw-500 lh-3" t-esc="category.name"/>
+                </a>
+            </div>
+        </t>
+        <div class="oe_structure oe_empty oe_structure_not_nearest mt16 mb16"
+             id="oe_structure_dynamic_carousel_mega_menu_category_style_2"
+             data-editor-message="DROP BUILDING BLOCKS HERE TO MAKE THEM AVAILABLE ACROSS ALL PRODUCTS"/>
+    </template>
+
+    <template id="dynamic_filter_template_product_template_custom_style" name="oxford Product Style 1">
+        <t t-foreach="records" t-as="data" data-number-of-elements="3" data-number-of-elements-sm="1"
+           data-thumb="/website_sale/static/src/img/snippets_options/product_view_detail.svg">
+            <t t-set="product" t-value="data['_record']"/>
+            <t t-call="header_layout.product_card"/>
+        </t>
+    </template>
+
+    <template id="mega_dynamic_category_carousel" name="Oxford Mega Menu Category" groups="base.group_user">
+        <section class="pt-5 pb-5 oe_website_sale">
+            <div class="container">
+                <div class="row">
+                    <div class="d-flex flex-lg-row flex-column col-12 ">
+                        <div class="col-lg-9 col-12">
+                            <h2>You may also like</h2>
+                            <span class="text-muted mb-3">Celebrate the heart of your home–the kitchen–with
+                                dinnerware.
+                            </span>
+                        </div>
+                        <div class="d-flex text-lg-end col-lg-3 col-12 py-1 justify-content-lg-end">
+                            <a class="btn mb-3 mr-1 p-0 shadow-none" href="#mega_menu_slider"
+                               role="button"
+                               data-bs-slide="prev">
+                                <img src="/header_layout/static/src/svg/fill_vector_1.svg"
+                                     alt="Vector"/>
+                            </a>
+                            <a class="btn mb-3 p-0 shadow-none" href="#mega_menu_slider"
+                               role="button"
+                               data-bs-slide="next">
+                                <img src="/header_layout/static/src/svg/fill_vector_2.svg"
+                                     alt="Vector"/>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-12 mt-4">
+                        <div id="mega_menu_slider"
+                             class="slider_product carousel slide p-0"
+                             data-bs-ride="carousel" data-bs-interval="false">
+                            <div class="carousel-inner" role="listbox">
+                                <t t-set="item" t-value="0"/>
+                                <t t-set="categories"
+                                   t-value="request.env['product.public.category'].search([('child_id','=', False),('website_id.name', '=ilike', 'Oxf%')])"/>
+                                <div t-attf-id="slider_#{item}" t-foreach="range(0,len(categories),5)" t-as="slide"
+                                     t-att-class="item==0 and 'carousel-item active' or 'carousel-item'">
+                                    <div class="row">
+
+                                        <div class="custom-col-20" t-foreach="categories[slide : slide + 5]"
+                                             t-as="category">
+                                            <t t-set="page_url" t-value="'/shop/category/%s' % category.id"/>
+
+                                            <a t-att-href="page_url">
+                                                <div t-field="category.image_1920"
+                                                     class="oe_unmovable position-relative"
+                                                     t-options='{"widget": "image", "preview_image": "image_1920", "class": "oe_unmovable oxf_category_item_style_1 br-4", "alt-field": "name"}'/>
+                                                <br/>
+                                                <span class="fs-20 fw-500">
+                                                    <t t-esc="category.name"/>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="8"
+                                                         viewBox="0 0 12 8" fill="none">
+                                                        <path d="M8.02386 0L7.36892 0.628622L10.275 3.55048H0V4.44952H10.275L7.36892 7.37138L8.02386 8L12 4L8.02386 0Z"
+                                                              fill="#535353"/>
+                                                    </svg>
+                                                </span>
+                                            </a>
+                                        </div>
+                                        <t t-set="item" t-value="item+1"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <section class="oe_structure oe_structure_solo" t-attf-id="oe_structure_text_bottom_#{uniqueId}">
+                    <div class="container o_editable">
+                        <div class="row">
+                            <div class="col-12">
+                                <p class="text-muted mb-3">Celebrate the heart of your home–the kitchen–with
+                                    dinnerware.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </section>
+    </template>
+
+    <!--  OWL CAROUSEL -->
+
+    <template id="s_dynamic_snippet_owl_carousel" name="Dynamic Owl Carousel">
+        <t t-call="website.s_dynamic_snippet_template">
+            <t t-set="snippet_name" t-value="'s_dynamic_owl_carousel'"/>
+        </t>
+    </template>
+
+    <template id="s_dynamic_snippet_owl_carousel_options" inherit_id="website.snippet_options">
+        <xpath expr="." position="inside">
+            <t t-call="website.dynamic_snippet_carousel_options_template">
+                <t t-set="snippet_name" t-value="'dynamic_snippet'"/>
+                <t t-set="snippet_selector" t-value="'.s_dynamic_owl_carousel'"/>
+                <we-input string="Carousel Heading" class="" data-name="carousel_head_opt"
+                      data-attribute-name="carouselName" data-no-preview="true" data-select-data-attribute=""
+                      placeholder="Custom Heading"/>
+                <we-input string="Carousel Description" class="" data-name="carousel_des_opt"
+                      data-attribute-name="carouselSubName" data-no-preview="true" data-select-data-attribute=""
+                      placeholder="Custom Description"/>
+            </t>
+        </xpath>
+    </template>
+
+    <template id="s_newsletter_subscribe_button" name="Newsletter">
+        <div class="s_newsletter_subscribe_form s_newsletter_list js_subscribe" data-vxml="001" data-list-id="0"
+             data-name="Newsletter Form">
+            <div class="s_text-block">
+                <h3>Subscribe</h3>
+            </div>
+            <div class="input-group d-flex flex-column gap-3">
+                <input type="email" name="email" class="js_subscribe_value form-control w-100 br-8"
+                       placeholder="Enter Email"/>
+                <a role="button" href="#"
+                   class="btn btn-primary d-flex text-uppercase align-items-center justify-content-center js_subscribe_btn o_submit w-100">
+                    Subscribe
+                </a>
+                <a role="button" href="#" class="btn btn-success js_subscribed_btn d-none o_submit" disabled="disabled">
+                    Thanks
+                </a>
+            </div>
+        </div>
+    </template>
+
+    <template id="newsletter_subscribe_options" name="Newsletter Subscribe Options"
+              inherit_id="website_mass_mailing.newsletter_subscribe_options">
+        <xpath expr="//div[@data-js='NewsletterLayout']/we-select/we-button" position="after">
+            <we-button title="Subscribe Newsletter" string="Subscription"
+                       data-select-template="header_layout.s_newsletter_subscribe_button"
+                       data-select-data-attribute="email" data-name="email_opt"/>
+        </xpath>
+    </template>
+
+    <template id="s_newsletter_subscribe_custom_popup" name="Newsletter Popup">
+        <div class="s_popup o_newsletter_popup o_snippet_invisible" data-name="Newsletter Popup" data-vcss="001"
+             data-invisible="1">
+            <div class="modal fade s_popup_middle o_newsletter_modal"
+                 style="background-color: var(--black-50) !important;"
+                 data-show-after="5000" data-display="afterDelay" data-consents-duration="7"
+                 data-bs-focus="false" data-bs-backdrop="false" tabindex="-1" role="dialog">
+                <div class="modal-dialog d-flex">
+                    <div class="modal-content oe_structure">
+                        <div class="s_popup_close s_popup_custom_close js_close_popup o_we_no_overlay o_not_editable bg-transparent"
+                             aria-label="Close" style="background:none !important;">
+                            &#215;
+                        </div>
+                        <section class="s_text_image" data-snippet="s_image_text" data-name="Image - Text">
+                            <div class="oe_structure">
+                                <div class="row p-0">
+                                    <div class="col-6 p-0">
+                                        <img src="/web/image/website.s_image_text_default_image"
+                                             class="img img-fluid" alt=""/>
+                                    </div>
+                                    <div class="col-6 text-center d-flex flex-column justify-content-center align-items-center p-5">
+
+                                        <h2>We couldn't find the page you're looking for!</h2>
+                                        <p>
+                                            <b>Don't panic.</b>
+                                            If you think it's our mistake, please send us a message on <a
+                                                href="/contactus">this page</a>.
+                                        </p>
+                                        <div class="s_newsletter_subscribe_form s_newsletter_list js_subscribe py-1"
+                                             data-vxml="001" data-list-id="1" data-name="Newsletter Form">
+                                            <div class="input-group d-flex flex-column gap-2">
+                                                <input type="email" name="email"
+                                                       class="js_subscribe_value form-control w-100 br-8 bg-white"
+                                                       placeholder="Enter your email"/>
+                                                <a role="button" href="#"
+                                                   class="btn btn-primary js_subscribe_btn o_submit text-uppercase br-8 fs-20 fw-600"
+                                                   style="letter-spacing: 2.4px;">Subscribe
+                                                </a>
+                                                <a role="button" href="#"
+                                                   class="btn btn-success js_subscribed_btn d-none o_submit "
+                                                   disabled="disabled">Thanks
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <p class="pt-2">
+                                            If you think it's our mistake, please send us a message on <a
+                                                href="/contactus">this page</a>.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="product_static_rating">
+        <t t-set="val_integer" t-value="int(val)"/>
+        <t t-set="val_decimal" t-value="val - val_integer"/>
+        <t t-set="empty_star" t-value="5 - (val_integer+int(val_decimal))"/>
+        <div class="o_website_rating_static o_website_rating_static_custom"
+             style="display:inline"
+             t-attf-aria-label="#{int(val * 100) / 100} stars on 5"
+             t-attf-title="#{int(val * 100) / 100} stars on 5">
+            <t t-foreach="range(0, val_integer)" t-as="num">
+                <i class="fa fa-star" role="img"></i>
+            </t>
+            <t t-if="val_decimal">
+                <i class="fa fa-star-half-o" role="img"></i>
+            </t>
+            <t t-foreach="range(0, empty_star)" t-as="num">
+                <i class="fa fa-star text-black-25" role="img"></i>
+            </t>
+        </div>
+    </template>
+
+    <template id="s_product_rating" name="Product Ratings">
+        <div class="s_rating s_product_rating o_mail_snippet_general pt16 pb16 col-12 o_not_editable">
+            <t t-set="rating_reviews"
+               t-value="request.env['rating.rating'].sudo().search([('rating','>',3.0),('res_model','=','product.template')], limit=9)"/>
+            <div class="s_product_rating_container">
+                <div class="owl-carousel">
+                    <t t-foreach="rating_reviews" t-as="review">
+                        <div class="item ">
+                            <div class="product_review_card">
+                                <div t-field="review.resource_ref.image_1920"
+                                     class="oe_unmovable position-relative review_product_image"
+                                     style=""
+                                     t-options='{"widget": "image", "preview_image": "image_1024", "class": "oe_unmovable product_rating_img", "alt-field": "name", "zoom": review.resource_ref.can_image_1024_be_zoomed and "image_1920"}'/>
+                                <div class="d-flex flex-column review_body ps-lg-4 pt-lg-0 pt-3" style="">
+                                    <t t-call="header_layout.product_static_rating">
+                                        <t t-set="val" t-value="review.rating"/>
+                                    </t>
+                                    <div class="d-flex flex-column justify-content-between h-100">
+                                        <q class="review_message fw-normal" style="color:#282828;">
+                                            <t t-esc="review.message_id.body"/>
+                                        </q>
+                                        <div class="custom-text-muted review_customer fw-normal">-
+                                            <span t-field="review.partner_id.name"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </div>
+            </div>
+
+        </div>
+    </template>
+
+    <template id="snippet_options" inherit_id="website.snippet_options">
+        <xpath expr="." position="inside">
+            <div data-selector=".s_product_rating"
+                 data-drop-near="[data-oe-field='body_html']:not(:has(.o_layout)) > *, .oe_structure > *"
+                 data-drop-in="[data-oe-field='body_html']:not(:has(.o_layout)), .oe_structure"/>
+        </xpath>
+    </template>
+
+    <template id="mega_menu_snippet_options" inherit_id="website.snippet_options">
+        <xpath expr="//div[@data-js='MegaMenuLayout']/we-select" position="inside">
+            <t t-set="_label">Category Mega Menu</t>
+            <we-button t-att-data-select-label="_label"
+                       data-select-template="header_layout.mega_dynamic_category_carousel"
+                       data-img="/website/static/src/img/snippets_thumbs/s_mega_menu_odoo_menu.svg" t-out="_label"/>
+        </xpath>
+    </template>
+
+    <template id="s_website_form_options" inherit_id="website.s_website_form_options">
+        <xpath expr="//div[@data-js='WebsiteFieldEditor']" position="inside">
+            <we-colorpicker string="Label Color" data-name="label_color_picker"
+                            data-apply-to=".s_website_form_label"
+                            data-select-style="true"
+                            data-css-property="color"
+            />
+            <we-input string="Label Font Weight"
+                      data-apply-to=".s_website_form_label"
+                      data-css-property="font-weight"
+                      data-select-style=""
+            />
+            <we-input string="Font size"
+                      data-apply-to=".s_website_form_label"
+                      data-css-property="font-size"
+                      data-select-style=""
+                      data-unit="px"
+
+            />
+            <we-input string="Input Height"
+                      data-apply-to=".s_website_form_input"
+                      data-css-property="height"
+                      data-select-style=""
+                      data-unit="px"
+            />
+            <we-input string="Margin" data-apply-to=".s_website_form_input" data-select-style="" data-unit="px"
+                      data-css-property="margin"/>
+            <we-colorpicker string="Background Color" data-name="input_bg_color_picker"
+                            data-apply-to=".s_website_form_input"
+                            data-select-style="true"
+                            data-css-property="background-color"
+                            data-color-prefix="bg-"
+            />
+            <we-input string="Round Corners"
+                      data-apply-to=".s_website_form_input"
+                      t-att-data-dependencies="not so_rounded_no_dependencies and 'border_width_opt,bg_color_opt'"
+                      data-select-style="0" data-css-property="border-radius"
+                      data-unit="px" data-extra-class="rounded"
+                      t-att-data-variable="radius_variable"/>
+
+            <we-colorpicker string="Border" data-name="chart_border_color_opt"
+                            data-apply-to=".s_website_form_input"
+                            data-css-property="border-color"
+                            data-select-style="true"
+                            data-no-preview="true"/>
+
+        </xpath>
+    </template>
+
+</odoo>

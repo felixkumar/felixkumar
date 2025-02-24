@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+     <template id="clarico_snippets" inherit_id="website.snippets">
+        <!-- 3 Columans Style 1 -->
+        <xpath
+                expr="//div[@id='snippet_structure']/div[hasclass('o_panel_body')]/t[@t-snippet='website.s_three_columns']"
+                position="replace">
+        </xpath>
+     </template>
+
+    <template id="t_three_columns">
+        <t t-foreach="items" t-as="item">
+            <t t-if="item &gt; 0">
+                <div class="col-lg-4 col-md-4 s_col_no_bgcolor te_ts_img_hvr">
+                    <div class="te_3_column_center_heading card">
+                        <div class="te_img_hover_overflow te_3col_img" style="background-color:#e9e9e9;">
+                            <img class="img img-responsive te_feature_image"
+                                 src="/theme_clarico_vega/static/src/img/snippets/3_column/style_1/265_265.png"
+                                 alt="Clarico-3 Columans Style 1"/>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-title te_three_columns_heading">Lorem ipsum</p>
+                            <p class="card-text te_three_columns_para o_default_snippet_text">
+                                Lorem ipsum dolor sit amet, eam et reque justo quidam, te est audire persius.
+                                Duis meis quas vim ex, ius no oblique. Ornatus
+                                <em class="o_default_snippet_text"/>
+                                cu.
+                            </p>
+                            <div class="s_btn text-left pb0 pt16 text-center" data-name="Button">
+                                <a href="#" class="btn btn-primary te_theme_button o_default_snippet_text">Know
+                                    more
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </t>
+            <t t-set="item" t-value="item-1"/>
+        </t>
+    </template>
+    <!--==================== 3 Columns Style 2 =============================-->
+    <template id="three_columns_style_1" name="Style 2" inherit_id="website.s_three_columns">
+        <xpath expr="//section[hasclass('s_three_columns')]" position="replace">
+            <section class="s_three_columns pt32 pb32">
+                <div class="container">
+                    <div class="row d-flex align-items-stretch">
+                        <t t-call="theme_clarico_vega.t_three_columns">
+                            <t t-set="items" t-value="4"/>
+                        </t>
+                    </div>
+                </div>
+            </section>
+        </xpath>
+    </template>
+
+    <!-- Latest Blog - Big Images -->
+    <template id="clarico_snippets_blog" inherit_id="website_blog.website_blog">
+        <xpath expr="//t[@t-snippet='website_blog.s_blog_posts']" position="attributes">
+            <attribute name="t-thumbnail">/theme_clarico_vega/static/src/img/snippets/snippets_icon/blog_3_col_snippet.jpg
+            </attribute>
+        </xpath>
+    </template>
+</odoo>

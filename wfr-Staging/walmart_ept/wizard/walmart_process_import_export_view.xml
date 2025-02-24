@@ -1,0 +1,407 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <!--  Wizard For Walmart Import Export Operation  -->
+    <record id="view_walmart_process_import_export_ept" model="ir.ui.view">
+        <field name="name">Process Import/Export</field>
+        <field name="model">walmart.process.import.export</field>
+        <field name="arch" type="xml">
+            <form string="Import/Export">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="marketplace_id"
+                                   options="{'no_create':True,'no_create_edit': True}"
+                                   domain="[('active','=',True)]" required="1"
+                                   widget="selection"/>
+                        </group>
+                        <group>
+                            <field name="operations" required="1"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="filename" invisible="1"/>
+                            <field name="choose_file" filename="filename" widget="binary"
+                                   attrs="{'required':[('operations','=','map_walmart_offers')], 'invisible':[('operations', '!=', 'map_walmart_offers')]}"/>
+                            <field name="walmart_order_id"
+                                   attrs="{'invisible':[('operations', '!=', 'import_order_by_id')], 'required':[('operations','=','import_order_by_id')]}"/>
+                            <field name="import_orders_start_date"
+                                   attrs="{'invisible':[('operations', 'not in', ['import_released_orders', 'import_shipped_orders', 'import_wfs_orders'])]}"/>
+                            <field name="location_id"
+                                   string="Select Stock Location for Inventory"
+                                   attrs="{'required': [('is_update_inventory', '=', True)], 'invisible': ['|', ('operations','!=','get_item_report'), ('is_update_inventory', '=', False)]}"
+                                   invisible="1"/>
+                        </group>
+                        <group>
+                            <field name="import_orders_end_date"
+                                   attrs="{'invisible':[('operations', 'not in', ['import_released_orders', 'import_shipped_orders', 'import_wfs_orders'])]}"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="walmart_auto_create_product_not_found_in_odoo"
+                                   attrs="{'invisible':[('operations','!=','sync_walmart_offers')]}"/>
+                            <field name="is_pricelist_update" string="Update Price In Pricelist"
+                                   attrs="{'invisible':[('operations','!=','sync_walmart_offers')]}"/>
+                            <field name="skip_existing_product"
+                                   string="Do Not Update Existing Products"
+                                   attrs="{'invisible':[('operations','!=','sync_walmart_offers')]}"/>
+                        </group>
+                        <group>
+                            <field name="is_update_image" string="Update Product Image?"
+                                   attrs="{'invisible':[('operations','!=','sync_walmart_offers')]}"/>
+                            <field name="is_update_inventory" string="Create Product Inventory?"
+                                   attrs="{'invisible':[('operations','!=','sync_walmart_offers')]}"/>
+                            <field name="is_validate_inventory" string="Validate Inventory?"
+                                   attrs="{'invisible': ['|', ('operations','!=','sync_walmart_offers'), ('is_update_inventory', '=', False)]}"/>
+                        </group>
+                        <group name="import_wfs_inventory"
+                               attrs="{'invisible':[('operations','!=','import_wfs_inventory')]}">
+                            <field name="auto_apply_adjustments" widget="boolean_toggle"
+                                               string="Auto apply inventory adjustment"/>
+                         </group>
+                    </group>
+                    <group>
+                        <div name="msg_opr_main" colspan="2">
+                            <div attrs="{'invisible':[('operations','!=','sync_walmart_offers')]}">
+                                <p colspan="2" class="alert alert-warning" role="alert">
+                                    <b>
+                                        <u>
+                                            <h3 style="font-weight:bold;color:#7d5a29">Note :
+                                            </h3>
+                                        </u>
+                                        <ol>
+                                            <li>Sync product starts fetching product data from
+                                                Walmart store and will just add that data in
+                                                Product Sync for processing. (Walmart > Products
+                                                > Offer Report)
+                                            </li>
+                                        </ol>
+                                    </b>
+                                </p>
+                            </div>
+                            <div attrs="{'invisible':[('operations','!=','import_released_orders')]}">
+                                <p colspan="2" class="alert alert-warning" role="alert">
+                                    <b>
+                                        <u>
+                                            <h3 style="font-weight:bold;color:#7d5a29">Note :
+                                            </h3>
+                                        </u>
+                                        <ol>
+                                            <li>It will start fetching Order data from Walmart
+                                                store and will just add that data in Order Queue
+                                                for processing. (Walmart > Processes > Import
+                                                Release Orders)
+                                            </li>
+                                            <li>A Scheduled/Cron Job, running in background will
+                                                start processing Queues one by one.
+                                            </li>
+                                            <li>It will fetch the orders for the dates specified
+                                                in 'From Date' and 'To Date' fields below.
+                                            </li>
+                                            <li>The default value for 'From Date' will be the
+                                                last execution date - 30 days of this operation.
+                                                It will be blank if the last execution date is
+                                                not found.
+                                            </li>
+                                            <li>The default value for 'To Date' will be current
+                                                date and time.
+                                            </li>
+                                        </ol>
+                                    </b>
+                                </p>
+                            </div>
+                            <div attrs="{'invisible':[('operations','!=','import_shipped_orders')]}">
+                                <p colspan="2" class="alert alert-warning" role="alert">
+                                    <b>
+                                        <u>
+                                            <h3 style="font-weight:bold;color:#7d5a29">Note :
+                                            </h3>
+                                        </u>
+                                        <ol>
+                                            <li>It will start fetching Order data from Walmart
+                                                store and will just add that data in Order Queue
+                                                for processing. (Walmart > Processes > Import
+                                                Shipped Orders)
+                                            </li>
+                                            <li>A Scheduled/Cron Job, running in background will
+                                                start processing Queues one by one.
+                                            </li>
+                                            <li>It will fetch the orders for the dates specified
+                                                in 'From Date' and 'To Date' fields below.
+                                            </li>
+                                            <li>The default value for 'From Date' will be the
+                                                last execution date - 30 days of this operation.
+                                                It will be blank if the last execution date is
+                                                not found.
+                                            </li>
+                                            <li>The default value for 'To Date' will be current
+                                                date and time.
+                                            </li>
+                                        </ol>
+                                    </b>
+                                </p>
+                            </div>
+                            <div attrs="{'invisible':[('operations','!=','import_wfs_orders')]}">
+                                <p colspan="2" class="alert alert-warning" role="alert">
+                                    <b>
+                                        <u>
+                                            <h3 style="font-weight:bold;color:#7d5a29">Note :
+                                            </h3>
+                                        </u>
+                                        <ol>
+                                            <li>It will start fetching Order data from Walmart
+                                                store and will just add that data in Order Queue
+                                                for processing. (Walmart > Processes > Import
+                                                WFS Orders)
+                                            </li>
+                                            <li>A Scheduled/Cron Job, running in background will
+                                                start processing Queues one by one.
+                                            </li>
+                                            <li>It will fetch the orders for the dates specified
+                                                in 'From Date' and 'To Date' fields below.
+                                            </li>
+                                            <li>The default value for 'From Date' will be the
+                                                last execution date - 30 days of this operation.
+                                                It will be blank if the last execution date is
+                                                not found.
+                                            </li>
+                                            <li>The default value for 'To Date' will be current
+                                                date and time.
+                                            </li>
+                                        </ol>
+                                    </b>
+                                </p>
+                            </div>
+                            <div attrs="{'invisible':[('operations','!=','import_order_by_id')]}">
+                                <p colspan="2" class="alert alert-warning" role="alert">
+                                    <b>
+                                        <u>
+                                            <h3 style="font-weight:bold;color:#7d5a29">Note :
+                                            </h3>
+                                        </u>
+                                        <ol>
+                                            <li>It will start fetching Order data from Walmart
+                                                store and will just add that data in Create Sale
+                                                Order for processing. (Walmart > Processes >
+                                                Import Order by Remote ID)
+                                            </li>
+                                            <li>To enter Walmart Order IDs, running in
+                                                background will start processing Order one by
+                                                one.
+                                            </li>
+                                            <li>To see the output to created sale order in
+                                                (Walmart > Sales > Sale Orders)
+                                            </li>
+                                        </ol>
+                                    </b>
+                                </p>
+                            </div>
+                            <div attrs="{'invisible':[('operations','!=','import_acknowledge_orders')]}">
+                                <p colspan="2" class="alert alert-warning" role="alert">
+                                    <b>
+                                        <u>
+                                            <h3 style="font-weight:bold;color:#7d5a29">Note :
+                                            </h3>
+                                        </u>
+                                        <ol>
+                                            <li>It will start fetching Order data from Sale
+                                                Order and will send acknowledge orders. (Walmart
+                                                > Processes > Update Order Acknowledgement to Walmart)
+                                            </li>
+                                        </ol>
+                                    </b>
+                                </p>
+                            </div>
+                            <div attrs="{'invisible':[('operations','!=','get_reconciliation_report_date')]}">
+                                <p colspan="2" class="alert alert-warning" role="alert">
+                                    <b>
+                                        <u>
+                                            <h3 style="font-weight:bold;color:#7d5a29">Note :
+                                            </h3>
+                                        </u>
+                                        <ol>
+                                            <li>
+                                                This operation allows to import reconciliation
+                                                report date. It will
+                                                import the available Marketplace reconciliation
+                                                report dates.
+                                            </li>
+                                            <li>
+                                                Here you can see the reconciliation report date
+                                                record: Walmart >
+                                                Sales > Reconciliation Report
+                                            </li>
+                                        </ol>
+                                    </b>
+                                </p>
+                            </div>
+                            <div attrs="{'invisible':[('operations','!=','is_update_order_status')]}">
+                                <p colspan="2" class="alert alert-warning" role="alert">
+                                    <b>
+                                        <u>
+                                            <h3 style="font-weight:bold;color:#7d5a29">Note :
+                                            </h3>
+                                        </u>
+                                        <ol>
+                                            <li>The Update Order Status allows you to update
+                                                order fulfillment and tracking reference details
+                                                to Walmart store.
+                                            </li>
+                                            <li>An order's status gets updated only once to
+                                                Walmart store.
+                                            </li>
+                                        </ol>
+                                    </b>
+                                </p>
+                            </div>
+                            <div attrs="{'invisible':[('operations','!=','is_update_stock')]}">
+                                <p colspan="2" class="alert alert-warning" role="alert">
+                                    <b>
+                                        <u>
+                                            <h3 style="font-weight:bold;color:#7d5a29">Note :
+                                            </h3>
+                                        </u>
+                                        <ol>
+                                            <li>Update stock allows to update product stock to
+                                                Walmart store for configured Walmart warehouse,
+                                                for a given instance
+                                            </li>
+                                            <li>Stock will be updated from warehouses as per the
+                                                configuration under Walmart > Configuration >
+                                                Warehouse section.
+                                            </li>
+                                            <li>It will update stock of only those products
+                                                which are already synchronized with Walmart.
+                                            </li>
+                                            <li>It will try to update stock of those products
+                                                whose stock is updated since last execution of
+                                                this operation.
+                                            </li>
+                                            <li>If last execution details are not available, it
+                                                will consider those products whose stock is
+                                                updated since last 30 days.
+                                            </li>
+                                        </ol>
+                                    </b>
+                                </p>
+                            </div>
+                            <div attrs="{'invisible':[('operations','!=','import_wfs_inventory')]}">
+                                <p colspan="2" class="alert alert-warning" role="alert">
+                                    <b>
+                                        <u>
+                                            <h3 style="font-weight:bold;color:#7d5a29">Note :
+                                            </h3>
+                                        </u>
+                                        <ol>
+                                            <li>WFS Inventory allows to update product stock to
+                                                Walmart store for configured WFS warehouse,
+                                                for a given instance
+                                            </li>
+                                            <li>Stock will be updated from warehouses as per the
+                                                configuration under Walmart > Configuration >
+                                                Warehouse section > WFS Warehouse.
+                                            </li>
+                                            <li>It will update stock of only those products
+                                                which are already synchronized with Walmart.
+                                            </li>
+                                            <li>It will try to update stock of those products
+                                                whose stock is updated since last execution of
+                                                this operation.
+                                            </li>
+                                            <li>If last execution details are not available, it
+                                                will consider those products whose stock is
+                                                updated since last 30 days.
+                                            </li>
+                                        </ol>
+                                    </b>
+                                </p>
+                            </div>
+                            <div attrs="{'invisible':[('operations','!=','is_update_price')]}">
+                                <p colspan="2" class="alert alert-warning" role="alert">
+                                    <b>
+                                        <u>
+                                            <h3 style="font-weight:bold;color:#7d5a29">Note :
+                                            </h3>
+                                        </u>
+                                        <ol>
+                                            <li>The Update Price in Walmart Store to Update.
+                                            </li>
+                                        </ol>
+                                    </b>
+                                </p>
+                            </div>
+                            <div attrs="{'invisible':[('operations','!=','map_walmart_offers')]}">
+                                <p colspan="2" class="alert alert-warning" role="alert">
+                                    <b>
+                                        <u>
+                                            <h3 style="font-weight:bold;color:#7d5a29">Note :
+                                            </h3>
+                                        </u>
+                                        <ol>
+                                            <li>This operation allows to import Odoo Products to
+                                                Walmart layer.
+                                            </li>
+                                            <li>You can export the products into csv from Sales
+                                                > Products > Products. Select Multiple Products
+                                                or Open a product and click on the 'Walmart
+                                                -Prepare Product for Export' action from Action
+                                                menu. Select Export Method > Export in CSV file.
+                                            </li>
+                                            <li>You can export the products into xlsx from Sales
+                                                > Products > Products. Select Multiple Products
+                                                or Open a product and click on the 'Walmart
+                                                -Prepare Product for Export' action from Action
+                                                menu. Select Export Method > Export in XLSX
+                                                file.
+                                            </li>
+                                        </ol>
+                                    </b>
+                                </p>
+                            </div>
+                        </div>
+                    </group>
+                    <footer>
+                        <button name="import_export_processes" string="Execute" type="object"
+                                class="oe_highlight"/>
+                        <button string="Cancel" special="cancel"/>
+                    </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <!--  Action For Walmart Import Export Operations  -->
+    <record id="action_wizard_walmart_import_export_operations" model="ir.actions.act_window">
+        <field name="name">Walmart Operations</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">walmart.process.import.export</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+    <!--  Below action used to redirect operation wizard from the instance kanban view -->
+    <record id="action_wizard_walmart_import_export_operations_for_kanban"
+            model="ir.actions.act_window">
+        <field name="name">Walmart Operations</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">walmart.process.import.export</field>
+        <field name="view_mode">form</field>
+        <field name="context">{'default_marketplace_id':active_id}</field>
+        <field name="target">new</field>
+    </record>
+    <!--  Action For Particular Walmart Import Export Operations  -->
+    <record id="action_wizard_walmart_marketplace_import_export_operations"
+            model="ir.actions.act_window">
+        <field name="name">Walmart Operations</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">walmart.process.import.export</field>
+        <field name="view_mode">form</field>
+        <field name="context">{'default_instance_id':active_id}</field>
+        <field name="target">new</field>
+    </record>
+    <!--  Main Menu of Walmart Imort Export Operations  -->
+    <menuitem id="menu_walmart_import_export_process_ept" name="Processes"
+              parent="walmart_ept.walmart_main_menu" sequence="4"
+              action="action_wizard_walmart_import_export_operations"
+              groups="walmart_ept.group_walmart_user"/>
+</odoo>

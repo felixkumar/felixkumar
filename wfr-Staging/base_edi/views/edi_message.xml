@@ -1,0 +1,12 @@
+<odoo>
+    <record id="view_edi_log_message_list" model="ir.ui.view">
+        <field name="name">edi.log.message.list</field>
+        <field name="model">edi.log.message</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="type"/>
+                <field name="message"/>
+            </tree>
+        </field>
+    </record>
+</odoo>

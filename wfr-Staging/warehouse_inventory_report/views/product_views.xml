@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="product_category_report_form_inherit_ext" model="ir.ui.view">
+        <field name="name">product.category.report.form.inherit</field>
+        <field name="model">product.category</field>
+        <field name="inherit_id" ref="product.product_category_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='parent_id']" position="after">
+                <field name="is_used_on_report"/>
+                <field name="daily_cost"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="project_product_inherit_daily_report_view_tree" model="ir.ui.view">
+        <field name="name">project.product.view.tree.inherit.daily.report</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="stock.product_product_stock_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//tree" position="attributes">
+                <attribute name="js_class">stock_report_list_view_ext</attribute>
+            </xpath>
+        </field>
+    </record>
+</odoo>

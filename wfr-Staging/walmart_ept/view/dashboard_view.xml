@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Kanban View for Wlamart Marketplace -->
+    <record id="view_walmart_marketplace_kanban" model="ir.ui.view">
+        <field name="name">walmart.marketplace.tree.view</field>
+        <field name="model">walmart.marketplace.ept</field>
+        <field name="arch" type="xml">
+            <kanban class="oe_background_grey o_kanban_dashboard o_emphasize_colors o_walmart_kanban "
+                    sample="1"
+                    create="0" style="width:450px;"
+                    banner_route="/walmart_instances/walmart_instances_onboarding_panel"
+                    js_class="WalmartOnBoardingToggle">
+                <field name="name"/>
+                <field name="color"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="#{kanban_color(record.color.raw_value)} record_dashboard_ept">
+                            <div class="o_kanban_card_header">
+                                <div class="o_kanban_card_header_title">
+                                    <div class="o_primary">
+                                        <t t-esc="record.name.value"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <field name="walmart_order_data"
+                                       graph_type="line" widget="dashboard_graph_ept"/>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <!-- Action for Kanban view of Walmart Dashboard-->
+    <record id="walmart_kanban_action_ept" model="ir.actions.act_window">
+        <field name="name">Dashboard</field>
+        <field name="res_model">walmart.marketplace.ept</field>
+        <field name="view_mode">kanban</field>
+        <field name="view_id" ref="view_walmart_marketplace_kanban"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                There is no any Walmart Marketplace configured yet.
+            </p>
+            <p>
+                To add your first Walmart Marketplace, go to Configuration menu and
+                then open Settings, you can create new Marketplace from there. At there
+                you can define one or more Marketplace and configure extended
+                options per Marketplace.
+            </p>
+        </field>
+    </record>
+
+    <!-- Dashboard menu -->
+    <menuitem id="main_menu_walmart_dashboard" name="Dashboard"
+              parent="walmart_ept.walmart_main_menu" sequence="1"
+              groups="walmart_ept.group_walmart_user" action="walmart_kanban_action_ept"/>
+</odoo>

@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<odoo>
+
+    <record id="business_appointment_custom_search_view_form" model="ir.ui.view">
+        <field name="name">business.appointment.custom.search.form</field>
+        <field name="model">business.appointment.custom.search</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="custom_field_id"
+                               domain="[('model', '=', model),('store', '=', True), ('ttype', 'in', ['char', 'text', 'html', 'selection']),]"
+                               options="{'no_create_edit': 1, 'no_quick_create': 1}" 
+                        />
+                        <field name="name"/>
+                        <field name="model" invisible="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+</odoo>

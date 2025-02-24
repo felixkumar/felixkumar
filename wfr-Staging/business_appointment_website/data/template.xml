@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Email -->
+        <record id="email_template_confirmation_code" model="mail.template">
+            <field name="name">Appointments: Confirmation Code</field>
+            <field name="model_id" ref="business_appointment_website.model_website_business_appointment"/>
+            <field name="subject">{{ object.website_id.company_id.name }}: Confirmation Code</field>
+            <field name="body_html" type="html">
+<table border="0" cellpadding="0" cellspacing="0" style="padding-top: 16px; background-color: #F1F1F1; font-family:Verdana, Arial,sans-serif; color: #454748; width: 100%; border-collapse:separate;"><tbody><tr><td align="center">
+<table border="0" cellpadding="0" cellspacing="0" width="590" style="padding: 16px; background-color: white; color: #454748; border-collapse:separate;">
+<tbody>
+    <tr>
+        <td align="center" style="min-width: 590px;">
+            <table border="0" cellpadding="0" cellspacing="0" width="590" style="min-width: 590px; background-color: white; padding: 0px 8px 0px 8px; border-collapse:separate;">
+                <tbody>
+                    <tr>
+                        <td valign="middle" align="right">
+                            <img t-attf-src="#{ctx['base_url']}/logo.png?company=#{object.website_id.company_id.id}" 
+                                 style="padding: 0px; margin: 0px; height: auto; width: 80px;" 
+                                 t-attf-alt="#{object.website_id.company_id.name}"
+                            />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align:center;">
+                            <hr width="100%" style="background-color:rgb(204,204,204);border:medium none;clear:both;display:block;font-size:0px;min-height:1px;line-height:0; margin:16px 0px 16px 0px;"/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td align="center" style="min-width: 590px;">
+            <table border="0" cellpadding="0" cellspacing="0" width="590" style="min-width: 590px; background-color: white; padding: 0px 8px 0px 8px; border-collapse:separate;">
+                <tbody>
+                    <tr>
+                        <td valign="top" style="font-size: 13px;">
+                            <div>
+                                Hello 
+                                <t t-if="object.partner_id">
+                                    <t t-out="object.partner_id.name"/>,
+                                </t>
+                                <t t-else="">
+                                    <t t-out="object.contact_name"/>,
+                                </t>
+                                <br/>
+                                Your confirmation code is:<br/>
+                                <table style="width:100%;text-align:center;font-size: 20px;">
+                                    <tbody>
+                                        <tr>
+                                            <td>   
+                                                <strong>
+                                                    <t t-out="object.confirmation_code"/>
+                                                </strong>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>  
+                                Please insert this code on the <a t-attf-href="#{ctx['website_http_domain']}/appointments/confirm?confirmation_code=#{object.confirmation_code}">confirmation page</a>.    
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:center;">
+                            <hr width="100%" 
+                                style="background-color:rgb(204,204,204);border:medium none;clear:both;display:block;font-size:0px;min-height:1px;line-height:0; margin: 16px 0px 16px 0px;"
+                            />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td align="center" style="min-width: 590px;">
+            <table border="0" 
+                   cellpadding="0" 
+                   cellspacing="0" 
+                   width="590" 
+                   style="min-width: 590px; background-color: white; font-size: 11px; padding: 0px 8px 0px 8px; border-collapse:separate;"
+            >
+                <tbody>
+                    <tr>
+                        <td valign="middle" align="left">
+                            <t t-out="object.website_id.company_id.name"/>
+                        </td>
+                    </tr>
+                <tr>
+                    <td valign="middle" align="left" style="opacity: 0.7;">
+                        <t t-out="object.website_id.company_id.phone"/>
+                        <t t-if="object.website_id.company_id.email">
+                            | 
+                            <a t-attf-href="'mailto:%s' % #{object.website_id.company_id.email}" style="color: #454748;">
+                                <t t-out="object.website_id.company_id.email"/>
+                            </a>
+                        </t>
+                        | 
+                        <a t-attf-href="#{ctx['website_http_domain']}" style=" color: #454748;">
+                            <t t-out="ctx['website_http_domain']"/>
+                        </a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </td>
+    </tr>
+</tbody>
+</table>
+</td></tr></tbody></table>   
+            </field>
+            <field name="auto_delete" eval="True"/>
+        </record>
+
+
+        <record id="email_ba_public_invitation" model="mail.template">
+            <field name="name">Appointments: Portal Invitation</field>
+            <field name="model_id" ref="business_appointment_website.model_website_business_appointment"/>
+            <field name="subject">{{ object.website_id.company_id.name }}: Invitation</field>
+            <field name="body_html" type="html">
+<table border="0" cellpadding="0" cellspacing="0" style="padding-top: 16px; background-color: #F1F1F1; font-family:Verdana, Arial,sans-serif; color: #454748; width: 100%; border-collapse:separate;"><tbody><tr><td align="center">
+<table border="0" cellpadding="0" cellspacing="0" width="590" style="padding: 16px; background-color: white; color: #454748; border-collapse:separate;">
+<tbody>
+    <tr>
+        <td align="center" style="min-width: 590px;">
+            <table border="0" cellpadding="0" cellspacing="0" width="590" style="min-width: 590px; background-color: white; padding: 0px 8px 0px 8px; border-collapse:separate;">
+                <tbody>
+                    <tr>
+                        <td valign="middle" align="right">
+                            <img t-attf-src="#{ctx['base_url']}/logo.png?company=#{object.website_id.company_id.id}" 
+                                 style="padding: 0px; margin: 0px; height: auto; width: 80px;" 
+                                 t-attf-alt="#{object.website_id.company_id.name}"
+                            />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align:center;">
+                            <hr width="100%" style="background-color:rgb(204,204,204);border:medium none;clear:both;display:block;font-size:0px;min-height:1px;line-height:0; margin:16px 0px 16px 0px;"/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td align="center" style="min-width: 590px;">
+            <table border="0" cellpadding="0" cellspacing="0" width="590" style="min-width: 590px; background-color: white; padding: 0px 8px 0px 8px; border-collapse:separate;">
+                <tbody>
+                    <tr>
+                        <td valign="top" style="font-size: 13px;">
+                            <div>
+                                Hello 
+                                <t t-if="object.partner_id">
+                                    <t t-out="object.partner_id.name"/>,
+                                </t>
+                                <t t-else="">
+                                    <t t-out="object.contact_name"/>,
+                                </t>
+                                <br/>
+                                To control your appointments, please finish registration. To this end please follow <a t-attf-href="#{ctx['token_url']}">this link</a> and set a password up.    
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:center;">
+                            <hr width="100%" 
+                                style="background-color:rgb(204,204,204);border:medium none;clear:both;display:block;font-size:0px;min-height:1px;line-height:0; margin: 16px 0px 16px 0px;"
+                            />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td align="center" style="min-width: 590px;">
+            <table border="0" 
+                   cellpadding="0" 
+                   cellspacing="0" 
+                   width="590" 
+                   style="min-width: 590px; background-color: white; font-size: 11px; padding: 0px 8px 0px 8px; border-collapse:separate;"
+            >
+                <tbody>
+                    <tr>
+                        <td valign="middle" align="left">
+                            <t t-out="object.website_id.company_id.name"/>
+                        </td>
+                    </tr>
+                <tr>
+                    <td valign="middle" align="left" style="opacity: 0.7;">
+                        <t t-out="object.website_id.company_id.phone"/>
+                        <t t-if="object.website_id.company_id.email">
+                            | 
+                            <a t-attf-href="'mailto:%s' % #{object.website_id.company_id.email}" style="color: #454748;">
+                                <t t-out="object.website_id.company_id.email"/>
+                            </a>
+                        </t>
+                        | 
+                        <a t-attf-href="#{ctx['website_http_domain']}" style=" color: #454748;">
+                            <t t-out="ctx['website_http_domain']"/>
+                        </a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </td>
+    </tr>
+</tbody>
+</table>
+</td></tr></tbody></table>   
+            </field>
+            <field name="auto_delete" eval="True"/>
+        </record>
+
+        <!-- SMS -->
+        <record id="sms_template_ba_confirmation_code" model="sms.template">
+            <field name="name">Appointments: Confirmation Code</field>
+            <field name="model_id" ref="business_appointment_website.model_website_business_appointment"/>
+            <field name="body">Hello. Your confirmation code is {{ object.confirmation_code }}. {{ object.website_id.company_id.name }}</field>
+        </record>
+
+    </data>
+</odoo>

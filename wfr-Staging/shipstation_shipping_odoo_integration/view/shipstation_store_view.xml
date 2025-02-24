@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="shipstation_store_tree_view_vts" model="ir.ui.view">
+        <field name="name">Shipstation Store</field>
+        <field name="model">shipstation.store.vts</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="store_id"/>
+                <field name="store_name"/>
+                <field name="marketplace_name"/>
+                <field name="acc_number"/>
+                <field name="warehouse_id"/>
+                <field name="pricelist_id"/>
+                <field name="create_customer_from_data"/>
+                <field name="shipstation_order_status"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_shipstation_store_form_view_vts" model="ir.ui.view">
+        <field name="name">Shipstation Store Form View</field>
+        <field name="model">shipstation.store.vts</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button type="object" name="import_order_from_shipstation_with_thred"
+                            string="Import Shipstation Order"/>
+                    <!-- <button type="object" name="generate_shipstation_cron"
+                        string="Generate Automated Cron" /> -->
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button type="object" name="action_view_shipstation_customers"
+                                class="oe_stat_button" icon="fa-user" string="Customer">
+                        </button>
+                        <button type="object" name="action_view_shipstation_orders"
+                                class="oe_stat_button" icon="fa-cart-plus" string="Orders">
+                        </button>
+                        <button type="object" name="action_view_shipstation_message_detail"
+                                class="oe_stat_button" icon="fa-book" string="Messages">
+                        </button>
+                    </div>
+                    <group>
+                        <group string="Shipstation Store Info">
+                            <field name="store_id"/>
+                            <field name="store_name"/>
+                            <field name="marketplace_id"/>
+                            <field name="marketplace_name"/>
+                            <field name="acc_number"/>
+                            <field name="shipstation_configuration_id" />
+                            <field name="last_modification_date"/>
+                            <field name="shipstation_to_date"/>
+                            <field name="process_msg" readonly="1"/>
+                            <field name="shipstation_order_status"/>
+                            <field name="warehouse_id"/>
+                            <field name="create_customer_from_data"/>
+                            <field name="pricelist_id"/>
+                            <field name="add_vat_line"/>
+                            <field name="carrier_id"/>
+                            <field name="import_shipstation_order"/>
+                            <field name="import_shipstation_shipment"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="actionid_shipstation_store_vts" model="ir.actions.act_window">
+        <field name="name">Shipstation Store</field>
+        <field name="res_model">shipstation.store.vts</field>
+        <field name='view_mode'>tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to create a Shipstation Configuration.
+            </p>
+        </field>
+    </record>
+    <menuitem name="Shipstation Store" id="menuitem_shipstation_store_vts"
+              parent="shipstation_odoo_integration_menuitem" action="actionid_shipstation_store_vts"
+              sequence="2"/>
+</odoo>

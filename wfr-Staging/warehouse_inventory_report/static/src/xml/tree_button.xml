@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates>
+    <t t-name="warehouse_inventory_report.ButtonOpenDailyReport.buttons" t-inherit="web.ListView.Buttons" owl="1">
+        <xpath expr="//button[hasclass('o_list_button_add')]" position="after">
+            <button type="button" class="btn btn-secondary" t-on-click="() => this._openDailyReportAction()">
+                Open Daily Report
+            </button>
+        </xpath>
+    </t>
+</templates>

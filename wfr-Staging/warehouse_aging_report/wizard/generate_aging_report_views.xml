@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="form_wizard_generate_aging_report" model="ir.ui.view">
+            <field name="name">Generate Aging Report</field>
+            <field name="model">generate.aging.report</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Generate Aging Report">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="warehouse_ids" widget="many2many_tags"/>
+                                <field name="categ_ids" widget="many2many_tags"/>
+                                <field name="generate_for_all_category" widget="boolean_toggle"/>
+                            </group>
+                        </group>
+                        <newline/>
+                        <footer>
+                            <button name="generate_report" string="Generate Report" type="object"
+                                    class="btn-primary"/>
+                            <button string="Cancel" class="btn-secondary" special="cancel"/>
+                        </footer>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="generate_aging_report_view_action" model="ir.actions.act_window">
+            <field name="name">Generate Aging Report</field>
+            <field name="res_model">generate.aging.report</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <record id="action_generate_aging_report_file" model="ir.actions.server">
+            <field name="name">Generate Aging Report</field>
+            <field name="model_id" ref="warehouse_aging_report.model_generate_aging_report"/>
+            <field name="binding_model_id" ref="warehouse_aging_report.model_generate_aging_report"/>
+            <field name="binding_view_types">list</field>
+            <field name="state">code</field>
+            <field name="code">
+                action = model.generate_report()
+            </field>
+        </record>
+
+        <menuitem id="menu_generate_aging_report"
+                  name="Generate Aging Report"
+                  sequence="13"
+                  action="generate_aging_report_view_action"
+                  parent="stock.menu_warehouse_report"/>
+
+    </data>
+</odoo>

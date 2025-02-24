@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="menu_label_form_view" model="ir.ui.view">
+        <field name="name">menu.label.form</field>
+        <field name="model">menu.label</field>
+        <field name="arch" type="xml">
+            <form string="Product Slider">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field class="text-right" name="label_background_color" widget="color"/>
+                        <field class="text-right" name="label_text_color" widget="color"/>
+                    </group>
+                    <group>
+                        <field name="category_ids"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <record id="view_emipro_theme_base_product_ribbon_form" model="ir.ui.view">
+        <field name="name">emipro_theme_base.product.ribbon.form</field>
+        <field name="model">product.ribbon</field>
+        <field name="inherit_id" ref="website_sale.product_ribbon_form_view"/>
+        <field name="arch" type="xml">
+            <field name="text_color" position="attributes">
+                <attribute name="widget">color</attribute>
+            </field>
+            <field name="bg_color" position="attributes">
+                <attribute name="widget">color</attribute>
+            </field>
+        </field>
+    </record>
+
+
+    <record id="menu_label_tree_view" model="ir.ui.view">
+        <field name="name">menu.label.tree.view</field>
+        <field name="model">menu.label</field>
+        <field name="arch" type="xml">
+            <tree string="Menu Label">
+                <field name="name"/>
+                <field name="label_background_color" widget="color"/>
+                <field name="label_text_color" widget="color"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_menu_label" model="ir.actions.act_window">
+        <field name="name">Menu Labels</field>
+        <field name="res_model">menu.label</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem
+            name="Menu Labels"
+            id="menu_labels"
+            action="action_menu_label"
+            parent="website.menu_website_global_configuration"
+            sequence="12"/>
+</odoo>

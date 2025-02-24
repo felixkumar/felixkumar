@@ -1,0 +1,14 @@
+<odoo>
+    <data>
+        <record id="ibl_obl_dropout_report" model="ir.actions.server">
+            <field name="name">IBL/OBL Dropout Report</field>
+            <field name="type">ir.actions.server</field>
+            <field name="state">code</field>
+            <field name="model_id" ref="model_business_appointment"/>
+            <field name="binding_model_id" ref="model_business_appointment"/>
+            <field name="code">
+                action=model.action_ibl_obl_droupout_report()
+            </field>
+        </record>
+    </data>
+</odoo>

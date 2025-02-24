@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="product_packaging_form_view_warefor_3pl" model="ir.ui.view">
+            <field name="name">product.packaging.form.view.warefor.3pl</field>
+            <field name="model">product.packaging</field>
+            <field name="inherit_id" ref="product.product_packaging_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group" position="inside">
+                    <group>
+                        <label for="height"/>
+                        <div class="o_row" name="height">
+                            <field name="height"/>
+                            <span>
+                                <field name="length_uom_name"/>
+                            </span>
+                        </div>
+                        <label for="width"/>
+                        <div class="o_row" name="width">
+                            <field name="width"/>
+                            <span>
+                                <field name="length_uom_name"/>
+                            </span>
+                        </div>
+                        <label for="packaging_length"/>
+                        <div class="o_row" name="packaging_length">
+                            <field name="packaging_length"/>
+                            <span>
+                                <field name="length_uom_name"/>
+                            </span>
+                        </div>
+                        <label for="max_weight"/>
+                        <div class="o_row" name="max_weight">
+                            <field name="max_weight"/>
+                            <span>
+                                <field name="weight_uom_name"/>
+                            </span>
+                        </div>
+                        <field name="package_per_pallet"/>
+                    </group>
+                </xpath>
+                 <xpath expr="//group[@name='group_product']/field[@name='product_id']" position="after">
+                    <group>
+                        <group>
+                            <field name="package_per_pallet"/>
+                            <field name="qty"/>
+                        </group>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

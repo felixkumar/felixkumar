@@ -1,0 +1,314 @@
+{
+    "config": [
+        {
+            "path": "Invoices/Invoice",
+            "model": "account.move"
+        },
+        {
+            "path": "Invoices/Invoice/Header/InvoiceHeader/TradingPartnerId",
+            "field": "trading_partnerid"
+        },
+        {
+            "path": "Invoices/Invoice/Header/InvoiceHeader/InvoiceNumber",
+            "action": "edi_export_account.action_get_invoice_number"
+        },
+        {
+            "path": "Invoices/Invoice/Header/InvoiceHeader/TsetPurposeCode",
+            "field": "edi_tset_purpose_code"
+        },
+        {
+            "path":"Invoices/Invoice/Header/InvoiceHeader/InvoiceDate",
+            "action": "edi_export_account.action_get_invoice_date"
+        },
+        {
+            "path": "Invoices/Invoice/Header/InvoiceHeader/InvoiceTime",
+            "action": "edi_export_account.action_get_invoice_time"
+        },
+        {
+            "path": "Invoices/Invoice/Header/InvoiceHeader/PurchaseOrderDate",
+            "action": "edi_export_account.action_get_purchase_order_date"
+        },
+        {
+            "path": "Invoices/Invoice/Header/InvoiceHeader/PurchaseOrderNumber",
+            "field": "edi_po_number"
+        },
+        {
+            "path": "Invoices/Invoice/Header/InvoiceHeader/Department",
+            "field": "edi_department"
+        },
+        {
+            "path": "Invoices/Invoice/Header/InvoiceHeader/Vendor",
+            "field": "edi_vendor"
+        },
+        {
+            "path": "Invoices/Invoice/Header/InvoiceHeader/ShipDate",
+            "action": "edi_export_account.action_get_ship_date"
+        },
+        {
+            "path": "Invoices/Invoice/Header/InvoiceHeader/CarrierProNumber",
+            "static": "CN"
+        },
+        {
+            "path": "Invoices/Invoice/Header/InvoiceHeader/BillOfLadingNumber",
+            "static": "CN"
+        },
+        {
+            "path": "Invoices/Invoice/Header/PaymentTerms/TermsType",
+            "field": "edi_terms_type"
+        },
+        {
+            "path": "Invoices/Invoice/Header/PaymentTerms/TermsBasisDateCode",
+            "field": "edi_terms_basis_date_code"
+        },
+        {
+            "path": "Invoices/Invoice/Header/PaymentTerms/TermsDiscountPercentage",
+            "field": "edi_terms_discount_percentage"
+        },
+        {
+            "path": "Invoices/Invoice/Header/PaymentTerms/TermsDiscountDate",
+            "field": "edi_terms_discount_date"
+        },
+        {
+            "path": "Invoices/Invoice/Header/PaymentTerms/TermsDiscountDueDays",
+            "field": "edi_terms_discount_due_days"
+        },
+        {
+            "path": "Invoices/Invoice/Header/PaymentTerms/TermsNetDueDate",
+            "field": "edi_terms_net_due_date"
+        },
+        {
+            "path": "Invoices/Invoice/Header/PaymentTerms/TermsNetDueDays",
+            "field": "edi_terms_net_due_days"
+        },
+        {
+            "path": "Invoices/Invoice/Header/PaymentTerms/TermsDescription",
+            "field": "edi_terms_description"
+        },
+        {
+            "path": "Invoices/Invoice/Header/Dates/DateTimeQualifier",
+            "static": "002"
+        },
+        {
+            "path": "Invoices/Invoice/Header/Dates/Date",
+            "field": "edi_qualified_date"
+        },
+        {
+            "path": "Invoices/Invoice/Header/FOBRelatedInstruction/FOBPayCode",
+            "field": "edi_fob_pay_code"
+        },
+        {
+            "path": "Invoices/Invoice/Header/FOBRelatedInstruction/FOBLocationQualifier",
+            "field": "edi_fob_location_qualifier"
+        },
+        {
+            "path": "Invoices/Invoice/Header/FOBRelatedInstruction/FOBLocationDescription",
+            "field": "edi_fob_location_description"
+        },
+        {
+            "path": "Invoices/Invoice/Header/CarrierInformation/CarrierTransMethodCode",
+            "static": "U"
+        },
+        {
+            "path": "Invoices/Invoice/Header/CarrierInformation/CarrierAlphaCode",
+            "static": "FDEG"
+        },
+        {
+            "path": "Invoices/Invoice/Header/QuantityTotals/QuantityTotalsQualifier",
+            "static": "SQT"
+        },
+        {
+            "path": "Invoices/Invoice/Header/QuantityTotals/Quantity",
+            "field": "edi_invoice_quantity"
+        },
+        {
+            "path": "Invoices/Invoice/Header/QuantityTotals/QuantityUOM",
+            "field": "edi_invoice_quantity_uom"
+        },
+        {
+            "path": "Invoices/Invoice/Header/Address",
+            "multimap": {
+                "determining_tag": "AddressTypeCode",
+                "model": "res.partner",
+                "values": [
+                    {
+                        "value": "BT",
+                        "field": "edi_partner_invoice_id"
+                    },
+                    {
+                        "value": "ST",
+                        "field": "edi_partner_shipping_id"
+                    },
+                    {
+                        "value": "RI",
+                        "field": "edi_company_partner_id"
+                    }
+                ]
+            }
+        },
+        {
+            "path": "Invoices/Invoice/Header/Address/LocationCodeQualifier",
+            "field": "edi_location_code_qualifier"
+        },
+        {
+            "path": "Invoices/Invoice/Header/Address/AddressLocationNumber",
+            "field": "edi_address_location_number"
+        },
+        {
+            "path": "Invoices/Invoice/Header/Address/AddressName",
+            "field": "name"
+        },
+        {
+            "path": "Invoices/Invoice/Header/Address/Address1",
+            "field": "street"
+        },
+        {
+            "path": "Invoices/Invoice/Header/Address/Address2",
+            "field": "street2"
+        },
+        {
+            "path": "Invoices/Invoice/Header/Address/City",
+            "field": "city"
+        },
+        {
+            "path": "Invoices/Invoice/Header/Address/State",
+            "field": "state_code"
+        },
+        {
+            "path": "Invoices/Invoice/Header/Address/PostalCode",
+            "field": "zip"
+        },
+        {
+            "path": "Invoices/Invoice/Header/Address/Country",
+            "field": "country_code"
+        },
+        {
+            "path": "Invoices/Invoice/Header/References/ReferenceQual",
+            "static": "MR"
+        },
+        {
+            "path": "Invoices/Invoice/Header/References/ReferenceID",
+            "static": "edi_merch_type_code"
+        },
+        {
+            "path": "Invoices/Invoice/Header/ChargesAllowances",
+            "field": "edi_charge_allowance_ids"
+        },
+        {
+            "path": "Invoices/Invoice/Header/ChargesAllowances/AllowChrgIndicator",
+            "field": "indicator"
+        },
+        {
+            "path": "Invoices/Invoice/Header/ChargesAllowances/AllowChrgCode",
+            "field": "code"
+        },
+        {
+            "path": "Invoices/Invoice/Header/ChargesAllowances/AllowChrgAmt",
+            "field": "amount"
+        },
+        {
+            "path": "Invoices/Invoice/Header/ChargesAllowances/AllowChrgPercentQual",
+            "field": "percent_qualifier"
+        },
+        {
+            "path": "Invoices/Invoice/Header/ChargesAllowances/AllowChrgPercent",
+            "field": "percent"
+        },
+        {
+            "path": "Invoices/Invoice/Header/ChargesAllowances/AllowChrgHandlingCode",
+            "field": "handling_code"
+        },
+        {
+            "path": "Invoices/Invoice/LineItem",
+            "field": "invoice_line_ids",
+            "domain": "[('display_type','not in',['line_note', 'line_section'])]"
+        },
+        {
+            "path": "Invoices/Invoice/LineItem/InvoiceLine/LineSequenceNumber",
+            "field": "edi_line_sequence_number"
+        },
+        {
+            "path": "Invoices/Invoice/LineItem/InvoiceLine/BuyerPartNumber",
+            "field": "edi_buyer_part_number"
+        },
+        {
+            "path": "Invoices/Invoice/LineItem/InvoiceLine/VendorPartNumber",
+            "field": "edi_vendor_part_number"
+        },
+        {
+            "path": "Invoices/Invoice/LineItem/InvoiceLine/ConsumerPackageCode",
+            "field": "edi_consumer_package_code"
+        },
+        {
+            "path": "Invoices/Invoice/LineItem/InvoiceLine/EAN",
+            "field": "edi_ean"
+        },
+        {
+            "path": "Invoices/Invoice/LineItem/InvoiceLine/GTIN",
+            "field": "edi_gtin"
+        },
+        {
+            "path": "Invoices/Invoice/LineItem/InvoiceLine/ProductID/PartNumber",
+            "field": "edi_part_number"
+        },
+        {
+            "path": "Invoices/Invoice/LineItem/InvoiceLine/InvoiceQty",
+            "field": "edi_invoice_qty"
+        },
+        {
+            "path": "Invoices/Invoice/LineItem/InvoiceLine/InvoiceQtyUOM",
+            "field": "edi_invoice_qty_uom"
+        },
+        {
+            "path": "Invoices/Invoice/LineItem/InvoiceLine/PurchasePrice",
+            "field": "edi_purchase_price"
+        },
+        {
+            "path": "Invoices/Invoice/LineItem/PhysicalDetails/PackSize",
+            "field": "edi_pack_size"
+        },
+        {
+            "path": "Invoices/Invoice/LineItem/PhysicalDetails/PackValue",
+            "field": "edi_pack_size"
+        },
+        {
+            "path": "Invoices/Invoice/LineItem/PhysicalDetails/PackUOM",
+            "static": "EA"
+        },
+        {
+            "path": "Invoices/Invoice/LineItem/Taxes/TaxTypeCode",
+            "field": "edi_tax_type_code"
+        },
+        {
+            "path": "Invoices/Invoice/LineItem/Taxes/TaxAmount",
+            "field": "edi_tax_amount"
+        },
+        {
+            "path": "Invoices/Invoice/LineItem/Taxes/RelationshipCode",
+            "static": "A"
+        },
+        {
+            "path": "Invoices/Invoice/LineItem/ProductOrItemDescription/ProductCharacteristicCode",
+            "static": "08"
+        },
+        {
+            "path": "Invoices/Invoice/LineItem/ProductOrItemDescription/ProductDescription",
+            "field": "name"
+        },
+        {
+            "path": "Invoices/Invoice/Summary/TotalAmount",
+            "action": "edi_export_account.action_get_invoice_total_amount"
+        },
+        {
+            "path": "Invoices/Invoice/Summary/TotalLineItemNumber",
+            "field": "edi_line_count"
+        },
+        {
+            "path": "Invoices/Invoice/Summary/TotalSalesAmount",
+            "field": "edi_amount_total"
+        },
+        {
+            "path": "Invoices/Invoice/Summary/TotalTermsDiscountAmount",
+            "field": "edi_amount_discount"
+        }
+    ]
+}

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="rating_rating_view_search_resource_type" model="ir.ui.view">
+        <field name="name">rating.rating.search.resource.type</field>
+        <field name="model">rating.rating</field>
+        <field name="inherit_id" ref="rating.rating_rating_view_search"/>
+        <field name="mode">primary</field>
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='resource']" position="after">
+                <filter string="Resource type" name="groupby_resource_type" context="{'group_by': 'parent_res_name'}"/>
+                <filter string="Resource" name="groupby_resource" context="{'group_by': 'resource_id'}"/>
+                <filter string="Service" name="groupby_service" context="{'group_by': 'service_id'}"/>
+            </xpath>
+            <xpath expr="/search" position="inside">
+                <filter string="Creation Date" 
+                        name="rating_last_30_days" 
+                        date="create_date" 
+                        default_period="last_30_days"
+                />
+                <separator/>
+            </xpath>
+            <filter name="resource" position="attributes">
+                <attribute name="string">Appointment</attribute>
+            </filter>
+            <field name="res_name" position="attributes">
+                <attribute name="string">Appointment</attribute>
+            </field>
+            <field name="parent_res_name" position="after">
+                <field name="resource_id"/>
+                <field name="service_id"/>
+            </field>
+        </field>
+    </record>
+    <record id="rating_rating_action_view_business_resource_type" model="ir.actions.act_window">
+        <field name="name">Resource Types Rating</field>
+        <field name="res_model">rating.rating</field>
+        <field name="view_mode">kanban,tree,graph,pivot,form</field>
+        <field name="domain">[
+            ("consumed", "=", True), 
+            ("parent_res_model", "=", "business.resource.type"),
+            ("parent_res_id", "=", active_id)
+        ]</field>
+        <field name="search_view_id" ref="rating_rating_view_search_resource_type"/>
+    </record>
+    <record id="rating_rating_action_business_appointment" model="ir.actions.act_window">
+        <field name="name">Appointments Ratings</field>
+        <field name="res_model">rating.rating</field>
+        <field name="view_mode">kanban,tree,pivot,graph,form</field>
+        <field name="domain">[("res_model", "=", "business.appointment"), ("res_id", "=", active_id), ("consumed", "=", True)]</field>
+        <field name="search_view_id" ref="rating_rating_view_search_resource_type"/>
+    </record>
+    <record id="rating_rating_action_business_resource" model="ir.actions.act_window">
+        <field name="name">Resource Ratings</field>
+        <field name="res_model">rating.rating</field>
+        <field name="view_mode">kanban,tree,pivot,graph,form</field>
+        <field name="domain">[("res_model", "=", "business.appointment"), ("resource_id", "=", active_id), ("consumed", "=", True)]</field>
+        <field name="search_view_id" ref="rating_rating_view_search_resource_type"/>
+    </record>
+    <record id="rating_rating_action_appointment_product" model="ir.actions.act_window">
+        <field name="name">Service Ratings</field>
+        <field name="res_model">rating.rating</field>
+        <field name="view_mode">kanban,tree,pivot,graph,form</field>
+        <field name="domain">[("res_model", "=", "business.appointment"), ("service_id", "=", active_id), ("consumed", "=", True)]</field>
+        <field name="search_view_id" ref="rating_rating_view_search_resource_type"/>
+    </record>
+    <record id="rating_rating_action_business_resource_report" model="ir.actions.act_window">
+        <field name="name">Customer Ratings</field>
+        <field name="res_model">rating.rating</field>
+        <field name="view_mode">kanban,pivot,graph,tree,form</field>
+        <field name="domain">[("parent_res_model", "=","business.resource.type"), ("consumed", "=", True)]</field>
+        <field name="context"></field>  
+        <field name="search_view_id" ref="rating_rating_view_search_resource_type"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_empty_folder">
+                No customer ratings yet
+            </p>
+        </field>
+        <field name="context">{
+            "search_default_groupby_resource_type": 1,
+            "search_default_groupby_resource": 1,
+            "search_default_groupby_service": 1,
+        }</field>
+    </record>
+
+</odoo>

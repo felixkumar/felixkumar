@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="report_business_appointment_single">
+        <t t-call="web.external_layout">
+            <t t-set="company" 
+               t-value="doc.sudo().company_id or doc.sudo().resource_id.company_id or doc.sudo().service_id.company_id or doc.sudo().resource_type_id.company_id or doc.sudo().env.user.company_id"
+            />
+            <t t-set="doc" t-value="doc.with_context(lang=doc.partner_id.lang)" />
+            <t t-set="address">
+                <div t-field="doc.partner_id"
+                     t-options='{"widget": "contact", "fields": ["email", "phone", "mobile", "name"], "no_marker": False}' />
+            </t>
+            <div class="page">
+                <div class="oe_structure"/>
+                <h2 class="mt8 mb16">
+                    <span t-field="doc.name"/>
+                </h2>
+                <div id="appointment_details" class="mt8 w-100">
+                    <div id="scheduled_time"
+                         class="w-100 mt8"
+                    >
+                        <strong>Scheduled Time:</strong> 
+                        <span t-out="doc.return_scheduled_time_tz(True)"/> 
+                    </div>
+                    <div id="scheduled_time"
+                         class="w-100 mt8"
+                    >
+                        <strong>Resource:</strong> 
+                        <span t-field="doc.resource_id.name"/>
+                    </div>
+                    <div id="scheduled_time"
+                         class="w-100 mt8"
+                    >
+                        <strong>Service:</strong> 
+                        <span t-field="doc.service_id.name"/>
+                    </div>
+                    <div id="scheduled_time"
+                         class="w-100 mt8" 
+                         t-if="doc.resource_id.location or doc.service_id.location"
+                    >
+                        <strong> Location:</strong>
+                        <t t-if="doc.service_id.location">
+                            <span t-field="doc.service_id.location"/> 
+                        </t>
+                        <t t-else="doc.resource_id.location">
+                            <span t-field="doc.resource_id.location"/> 
+                        </t>                            
+                    </div>
+                </div>
+                <div id="extra_products_details" 
+                     class="mt32 w-100"
+                     t-if="doc.extra_product_ids"
+                >
+                    <h4>Extra products</h4>
+                    <table class="table table-sm o_main_table">
+                        <tbody>
+                            <t t-foreach="doc.extra_product_ids" t-as="line">      
+                                <tr>
+                                    <td class="text-left">
+                                        <span t-field="line.product_id.sudo().name"/>
+                                    </td>
+                                    <td class="text-right">
+                                        <span t-field="line.product_uom_qty"/>
+                                        <span t-field="line.product_id.sudo().uom_name"/>
+                                    </td>                                 
+                                </tr>
+                            </t>                      
+                        </tbody>
+                    </table>                   
+                </div>                
+                <div class="oe_structure"/>
+            </div>
+        </t>
+    </template>
+
+    <template id="report_business_appointment">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="business_appointment.report_business_appointment_single"/>
+            </t>
+        </t>
+    </template>
+
+</odoo>

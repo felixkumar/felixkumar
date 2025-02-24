@@ -1,0 +1,22 @@
+<odoo>
+    <record id="edi_pricelist" model="product.pricelist">
+        <field name="name">EDI Pricelist</field>
+        <field name="sequence">1</field>
+    </record>
+
+    <record id="edi_res_partner_error" model="res.partner">
+        <field name="name">EDI Partner Error</field>
+        <field name="active">True</field>
+        <field name="trading_partnerid">0</field>
+    </record>
+
+    <record id="edi_product_product_error" model="product.product">
+        <field name="name">EDI Product Error</field>
+        <field name="detailed_type">service</field>
+        <field name="active">True</field>
+    </record>
+
+    <record id="uom.product_uom_unit" model="uom.uom">
+        <field name="edi_code">EA</field>
+    </record>
+</odoo>

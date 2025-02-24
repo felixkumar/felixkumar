@@ -1,0 +1,75 @@
+<odoo>
+    <data>
+        <record id="custom_invoice_form" model="ir.ui.view">
+            <field name="name">custom.invoice.form</field>
+            <field name="model">custom.invoice</field>
+            <field name="arch" type="xml">
+                <form string="Custom Invoice">
+                    <sheet>
+                        <div class="oe_title" width="50%">
+                            <label for="name" class="oe_edit_only"/>
+                            <h1>
+                                <field name="name"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="partner_id"/>
+                                <field name="company_id"/>
+                                <field name="invoice_type"/>
+                                <field name="invoice_id"/>
+                                <field name="total_cost" string="Total Price"/>
+                            </group>
+                            <group>
+                                <field name="invoice_date"/>
+                                <field name="due_date"/>
+                                <field name="l2_invoice_id"/>
+                                <field name="l3_invoice_id"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Lines">
+                                <field name="order_lines">
+                                    <tree>
+                                        <field name="product_id"/>
+                                        <field name="pallet_name"/>
+                                        <field name="name"/>
+<!--                                        <field name="processing_cost"/>-->
+                                        <field name="qty"/>
+                                        <field name="unit_price"/>
+                                        <field name="price"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="custom_invoice_tree" model="ir.ui.view">
+            <field name="name">custom.invoice.tree</field>
+            <field name="model">custom.invoice</field>
+            <field name="arch" type="xml">
+                <tree string="Custom Invoice">
+                    <field name="name"/>
+                    <field name="partner_id"/>
+                    <field name="invoice_date"/>
+                    <field name="due_date"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="custom_invoice_action" model="ir.actions.act_window">
+            <field name="name">Custom Invoice</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">custom.invoice</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                </p>
+                <p>
+                </p>
+            </field>
+        </record>
+    </data>
+</odoo>

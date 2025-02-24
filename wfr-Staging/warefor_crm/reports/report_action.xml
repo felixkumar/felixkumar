@@ -1,0 +1,14 @@
+<odoo>
+
+    <record model="ir.actions.server" id="action_pd_report">
+        <field name="name">PD Report</field>
+        <field name="model_id" ref="warefor_crm.model_crm_lead"/>
+        <field name="binding_model_id" ref="warefor_crm.model_crm_lead"/>
+        <field name="state">code</field>
+        <field name="binding_view_types">form</field>
+        <field name="code">
+if records:
+    action = records.print_pd_report()
+        </field>
+    </record>
+</odoo>

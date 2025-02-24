@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="printnode_base.StatusMenu" owl="1">
+        <div class="PrintnodeStatusMenu dropdown" t-att-class="{ 'show bg-black-15': printnodeStatusMenu.isOpen }" t-attf-class="{{ className }}" t-ref="root">
+            <a class="PrintnodeStatusMenu_toggler dropdown-toggle o-no-caret o-dropdown--narrow" href="#" title="Direct Print Client Status" role="button" data-toggle="dropdown" aria-expanded="false" aria-haspopup="true" t-on-click="printnodeStatusMenu.onClickDropdownToggle">
+                <i class="PrintnodeStatusMenu_icon fa fa-print" role="img" aria-label="Direct Print Client Status" />
+                <t t-if="printnodeStatusMenu.releases.length and printnodeStatusMenu.isManager">
+                    <span class="PrintnodeStatusMenu_badge badge badge-pill">!</span>
+                </t>
+            </a>
+
+            <div t-if="printnodeStatusMenu.isOpen" class="PrintnodeStatusMenu_dropdownMenu o-dropdown-menu dropdown-menu-end show" role="menu">
+                <t t-if="printnodeStatusMenu.printnodeEnabled">
+                    <!-- Loader -->
+                    <t t-if="!printnodeStatusMenu.loaded">
+                        <i class="PrintnodeStatusMenu_loading fa fa-circle-o-notch fa-spin"/>
+                    </t>
+
+                    <t t-if="printnodeStatusMenu.loaded">
+                        <!-- Workstation devices -->
+                        <t t-if="printnodeStatusMenu.workstations">
+                            <div>
+                                <h4>Select Workstation</h4>
+                                <select class="form-select" aria-label="Default select example" t-on-change="setWorkstationDevice">
+                                    <option value="">Select Workstation</option>
+                                    <t t-foreach="printnodeStatusMenu.workstations" t-as="workstation" t-key="workstation.id">
+                                        <option t-att-value="workstation.id" t-att-selected="workstation.id == currentWorkstationId"><t t-esc="workstation.name"/></option>
+                                    </t>
+                                </select>
+                            </div>
+                            <hr />
+                        </t>
+
+
+                        <t t-if="printnodeStatusMenu.devices">
+                            <h4>Default Devices</h4>
+                            <div class="o_printnode_status_menu_devices">
+                                <p>
+                                    <a class="collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#printnodeDefaultDevices" aria-expanded="false" aria-controls="printnodeDefaultDevices">Show Default Devices <i class="fa fa-light fa-arrow-right"></i></a>
+                                </p>
+                                <div class="collapse" id="printnodeDefaultDevices">
+                                    <t t-foreach="printnodeStatusMenu.devices" t-as="devices_of_type" t-key="devices_of_type[0]">
+                                        <t t-foreach="devices_of_type[1]" t-as="device" t-key="device.label">
+                                            <div>
+                                                <b><t t-esc="device.label" />: </b>
+                                                <t t-if="device.id">
+                                                    <t t-esc="device.name" />
+                                                </t>
+                                                <t t-else="">
+                                                    Device isn't set
+                                                </t>
+                                            </div>
+                                        </t>
+
+                                        <t t-if="!devices_of_type_last">
+                                            <hr />
+                                        </t>
+                                    </t>
+                                </div>
+                            </div>
+                        </t>
+
+                        <t t-if="printnodeStatusMenu.isManager">
+                            <hr />
+
+                            <!-- Printing stats -->
+                            <t t-if="printnodeStatusMenu.isManager">
+                                <div class="o_printnode_status_menu_limits">
+                                    <t t-foreach="printnodeStatusMenu.limits" t-as="limit" t-key="limit.account">
+                                        <div>
+                                            <t t-if="limit.error">
+                                                <b><t t-esc="limit.account"/></b>: Something went wrong. Check the details on the Direct Print / Settings page
+                                            </t>
+                                            <t t-elif="limit.limits">
+                                                <b><t t-esc="limit.account"/></b>: <t t-esc="limit.printed"/>/<t t-esc="limit.limits"/> printed
+                                            </t>
+                                            <t t-else="">
+                                                <b><t t-esc="limit.account"/></b>: Not Available
+                                                <i class="fa fa-info-circle" title="Number of printed documents and plan limits are unavailable (most likely because this account is a child PrintNode account)" data-toggle="tooltip"></i>
+                                            </t>
+                                        </div>
+                                    </t>
+
+                                    <t t-if="!printnodeStatusMenu.limits.length">
+                                        <span>No Direct Print accounts added</span>
+                                    </t>
+                                </div>
+
+                                <hr />
+                            </t>
+
+                                <!-- Releases -->
+                            <div class="PrintnodeStatusMenu_releases">
+                                <t t-foreach="printnodeStatusMenu.releases" t-as="release" t-key="release.id">
+                                    <div class="alert alert-primary mt-3" role="alert">
+                                        <h5>
+                                            <t t-if="release.is_critical_update">
+                                                <i class="fa fa-exclamation-circle"/>
+                                            </t>
+                                            New Release: <t t-esc="release.version"/>
+                                        </h5>
+                                        <t t-set="release_notes" t-value="release.release_notes.split('\n')"/>
+                                        <ul class="small mb-0">
+                                            <t t-foreach="release_notes" t-as="release_note" t-key="release_note_index">
+                                                <li><t t-out="release_note"/></li>
+                                            </t>
+                                        </ul>
+                                    </div>
+                                </t>
+
+                                <t t-if="printnodeStatusMenu.releases.length">
+                                    <a href="https://print.ventor.tech/faq#i-have-purchased-a-module-where-can-i-download-the-latest-odoo-direct-print-module-version" target="_blank">How to update the app?</a>
+                                </t>
+                            </div>
+
+                            <!-- Rate Us block -->
+                            <div class="PrintnodeStatusMenu_rate_us">
+                                <a t-att-href="printnodeStatusMenu.rateUsURL" target="_blank">Rate Us <i class="fa fa-thumbs-o-up"></i></a>
+                            </div>
+                        </t>
+                    </t>
+                </t>
+
+                <t t-if="!printnodeStatusMenu.printnodeEnabled">
+                    <div class="alert alert-danger mb-0" role="alert">
+                        <h5>Direct Print module is disabled</h5>
+                        <p>Please enable it in the Direct Print / Settings page.</p>
+                    </div>
+                </t>
+            </div>
+        </div>
+    </t>
+
+</templates>

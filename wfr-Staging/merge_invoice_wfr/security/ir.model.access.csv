@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_sh_minv_merge_invoice_wizard,access_sh_minv_merge_invoice_wizard,model_sh_minv_merge_invoice_wizard,,1,1,1,1
+merge_invoice_wfr.access_sh_merge_inv_wizard_line,access_sh_merge_inv_wizard_line,merge_invoice_wfr.model_sh_merge_inv_wizard_line,base.group_user,1,1,1,1

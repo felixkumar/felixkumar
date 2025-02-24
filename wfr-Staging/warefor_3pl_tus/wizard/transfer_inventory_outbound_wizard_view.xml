@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_inventory_transfer_outbound_form" model="ir.ui.view">
+            <field name="name">view.inventory.transfer.outbound.wizard.form</field>
+            <field name="model">transfer.inventory.outbound.wizard</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <group>
+<!--                            <field name="location_id" required="1"/>-->
+                            <field name="destination_location_id" required="1"/>
+                        </group>
+                    </group>
+                    <footer>
+                        <button name="open_wizard_for_transfer_inventory_outbound" string="Transfer Inventory" type="object" class="btn-primary"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_inventory_transfer_outbound_wizard" model="ir.actions.act_window">
+            <field name="name">Inventory Transfer Outbound Wizard</field>
+            <field name="res_model">transfer.inventory.outbound.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_inventory_transfer_outbound_form"/>
+            <field name="target">new</field>
+        </record>
+
+    </data>
+</odoo>

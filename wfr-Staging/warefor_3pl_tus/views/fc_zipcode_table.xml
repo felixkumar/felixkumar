@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="fc_zipcode_table_tree_view" model="ir.ui.view">
+        <field name="name">sales.channel.tree</field>
+        <field name="model">fc.zip.code.table</field>
+        <field name="arch" type="xml">
+            <tree string="FC Zipcode Table" editable="bottom">
+                <field name="zip_code" string="Zip Code"/>
+                <field name="state" string="State"/>
+                <field name="combined" string="Combined"/>
+
+                <field name="texas" string="Texas"/>
+                <field name="california" string="California"/>
+                <field name="georgia" string="Georgia"/>
+                <field name="pennsylvania" string="Pennsylvania"/>
+
+                <!-- TEXAS -->
+                <field name="f_texas_transit_time" string="Transit Time"/>
+                <field name="f_texas_zone" string="Zone"/>
+                <field name="f_texas_cost" string="Cost"/>
+
+                <!-- California -->
+                <field name="f_california_transit_time" string="Transit Time"/>
+                <field name="f_california_zone" string="Zone"/>
+                <field name="f_california_cost" string="Cost"/>
+
+                <!-- Georgia -->
+                <field name="f_georgia_transit_time" string="Transit Time"/>
+                <field name="f_georgia_zone" string="Zone"/>
+                <field name="f_georgia_cost" string="Cost"/>
+
+                <!-- Pennsylvania -->
+                <field name="f_pennsylvania_transit_time" string="Transit Time"/>
+                <field name="f_pennsylvania_zone" string="Zone"/>
+                <field name="f_pennsylvania_cost" string="Cost"/>
+
+                <!-- Min -->
+                <field name="f_min_transit_time" string="Min Transit Time"/>
+                <field name="f_min_zone" string="Min Zone"/>
+                <field name="f_min_cost" string="Min Cost"/>
+
+                <!-- Choices -->
+                <field name="f_choice1" string="Choice 1"/>
+                <field name="f_choice2" string="Choice 2"/>
+                <field name="f_choice3" string="Choice 3"/>
+                <field name="f_choice4" string="Choice 4"/>
+
+                <!-- TEXAS -->
+                <field name="u_texas_transit_time" string="Transit Time"/>
+                <field name="u_texas_zone" string="Zone"/>
+                <field name="u_texas_cost" string="Cost"/>
+
+                <!-- California -->
+                <field name="u_california_transit_time" string="Transit Time"/>
+                <field name="u_california_zone" string="Zone"/>
+                <field name="u_california_cost" string="Cost"/>
+
+                <!-- Georgia -->
+                <field name="u_georgia_transit_time" string="Transit Time"/>
+                <field name="u_georgia_zone" string="Zone"/>
+                <field name="u_georgia_cost" string="Cost"/>
+
+                <!-- Pennsylvania -->
+                <field name="u_pennsylvania_transit_time" string="Transit Time"/>
+                <field name="u_pennsylvania_zone" string="Zone"/>
+                <field name="u_pennsylvania_cost" string="Cost"/>
+
+                <!-- Min -->
+                <field name="u_min_transit_time" string="Min Transit Time"/>
+                <field name="u_min_zone" string="Min Zone"/>
+                <field name="u_min_cost" string="Min Cost"/>
+
+                <!-- Choices -->
+                <field name="u_choice1" string="Choice 1"/>
+                <field name="u_choice2" string="Choice 2"/>
+                <field name="u_choice3" string="Choice 3"/>
+                <field name="u_choice4" string="Choice 4"/>
+
+            </tree>
+        </field>
+    </record>
+
+    <record id="fc_zipcode_table_form_view" model="ir.ui.view">
+        <field name="name">sales.channel.form</field>
+        <field name="model">fc.zip.code.table</field>
+        <field name="arch" type="xml">
+            <form string="FC Zipcode Table">
+                <group>
+                    <group>
+                        <field name="zip_code" string="Zip Code"/>
+                        <field name="state" string="State"/>
+                        <field name="combined" string="Combined"/>
+                    </group>
+                    <group>
+                        <field name="texas" string="Texas"/>
+                        <field name="california" string="California"/>
+                        <field name="georgia" string="Georgia"/>
+                        <field name="pennsylvania" string="Pennsylvania"/>
+                    </group>
+                </group>
+
+                <group string="Fedex" col="12">
+                    <!-- TEXAS -->
+                    <group string="Texas" colspan="3">
+                        <field name="f_texas_transit_time" string="Transit Time"/>
+                        <field name="f_texas_zone" string="Zone"/>
+                        <field name="f_texas_cost" string="Cost"/>
+                    </group>
+
+                    <!-- California -->
+                    <group string="California" colspan="3">
+                        <field name="f_california_transit_time" string="Transit Time"/>
+                        <field name="f_california_zone" string="Zone"/>
+                        <field name="f_california_cost" string="Cost"/>
+                    </group>
+
+                    <!-- Georgia -->
+                    <group string="Georgia" colspan="3">
+                        <field name="f_georgia_transit_time" string="Transit Time"/>
+                        <field name="f_georgia_zone" string="Zone"/>
+                        <field name="f_georgia_cost" string="Cost"/>
+                    </group>
+
+                    <!-- Pennsylvania -->
+                    <group string="Pennsylvania" colspan="3">
+                        <field name="f_pennsylvania_transit_time" string="Transit Time"/>
+                        <field name="f_pennsylvania_zone" string="Zone"/>
+                        <field name="f_pennsylvania_cost" string="Cost"/>
+                    </group>
+                </group>
+
+                <group>
+                    <!-- Min -->
+                    <group string="Fedex Minimum">
+                        <field name="f_min_transit_time" string="Min Transit Time"/>
+                        <field name="f_min_zone" string="Min Zone"/>
+                        <field name="f_min_cost" string="Min Cost"/>
+                    </group>
+
+                    <!-- Choices -->
+                    <group string="Fedex Choices">
+                        <field name="f_choice1" string="Choice 1"/>
+                        <field name="f_choice2" string="Choice 2"/>
+                        <field name="f_choice3" string="Choice 3"/>
+                        <field name="f_choice4" string="Choice 4"/>
+                    </group>
+                </group>
+
+                <group string="UPS" col="12">
+                    <!-- TEXAS -->
+                    <group string="Texas" colspan="3">
+                        <field name="u_texas_transit_time" string="Transit Time"/>
+                        <field name="u_texas_zone" string="Zone"/>
+                        <field name="u_texas_cost" string="Cost"/>
+                    </group>
+
+                    <!-- California -->
+                    <group string="California" colspan="3">
+                        <field name="u_california_transit_time" string="Transit Time"/>
+                        <field name="u_california_zone" string="Zone"/>
+                        <field name="u_california_cost" string="Cost"/>
+                    </group>
+
+                    <!-- Georgia -->
+                    <group string="Georgia" colspan="3">
+                        <field name="u_georgia_transit_time" string="Transit Time"/>
+                        <field name="u_georgia_zone" string="Zone"/>
+                        <field name="u_georgia_cost" string="Cost"/>
+                    </group>
+
+                    <!-- Pennsylvania -->
+                    <group string="Pennsylvania" colspan="3">
+                        <field name="u_pennsylvania_transit_time" string="Transit Time"/>
+                        <field name="u_pennsylvania_zone" string="Zone"/>
+                        <field name="u_pennsylvania_cost" string="Cost"/>
+                    </group>
+
+                </group>
+
+                <group>
+                    <!-- Min -->
+                    <group string="UPS Minimum">
+                        <field name="u_min_transit_time" string="Min Transit Time"/>
+                        <field name="u_min_zone" string="Min Zone"/>
+                        <field name="u_min_cost" string="Min Cost"/>
+                    </group>
+
+                    <!-- Choices -->
+                    <group string="UPS Choices">
+                        <field name="u_choice1" string="Choice 1"/>
+                        <field name="u_choice2" string="Choice 2"/>
+                        <field name="u_choice3" string="Choice 3"/>
+                        <field name="u_choice4" string="Choice 4"/>
+                    </group>
+                </group>
+
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="fc_zipcode_table_action">
+        <field name="name">FC Zipcode Table</field>
+        <field name="res_model">fc.zip.code.table</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem name="FC Zipcode Table" id="fc_zipcode_table_menu" action="fc_zipcode_table_action"
+              parent="sale.menu_sale_config" sequence="5" groups="base.group_erp_manager"/>
+
+</odoo>

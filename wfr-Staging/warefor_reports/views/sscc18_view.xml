@@ -1,0 +1,62 @@
+<odoo>
+    <record id="view_sscc18_barcode_tree" model="ir.ui.view">
+        <field name="name">sscc18.barcode.tree</field>
+        <field name="model">sscc18.barcode</field>
+        <field name="arch" type="xml">
+            <tree string="SSCC18 Barcodes">
+                <field name="sscc18_barcode"/>
+                <field name="company_id"/>
+                <field name="expiry_date"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_sscc18_barcode_form" model="ir.ui.view">
+        <field name="name">sscc18.barcode.form</field>
+        <field name="model">sscc18.barcode</field>
+        <field name="arch" type="xml">
+            <form string="SSCC18 Barcode">
+                <sheet>
+                    <group>
+                        <field name="sscc18_barcode"/>
+                        <field name="company_id"/>
+                        <field name="gs1_code"/>
+                        <field name="serial_no"/>
+                        <field name="expiry_date"/>
+                    </group>
+                    <notebook>
+                        <page name="items" string="Items">
+                            <field name="osd_freight_transfer_ids" readonly="1">
+                                <tree>
+                                    <field name="sku_id"/>
+                                    <field name="description"/>
+                                    <field name="quantity"/>
+                                </tree>
+
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_sscc18_barcode" model="ir.actions.act_window">
+        <field name="name">SSCC18 Barcodes</field>
+        <field name="res_model">sscc18.barcode</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="action_sscc18_barcode" model="ir.actions.act_window">
+        <field name="name">SSCC18 Barcodes</field>
+        <field name="res_model">sscc18.barcode</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_sscc18_barcode"
+                  name="SSCC18 Barcodes"
+                  parent="warefor_3pl_tus.menu_config_obl"
+                  action="action_sscc18_barcode"
+                  sequence="1"/>
+
+</odoo>

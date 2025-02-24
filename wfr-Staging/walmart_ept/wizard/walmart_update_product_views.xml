@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Update Product Stock in Walmart -->
+    <!-- Added By Harshit Trivedi -->
+    <record id="view_walmart_update_products_stock_ept" model="ir.ui.view">
+        <field name="name">Update Product Stock</field>
+        <field name="model">walmart.update.product.stock.ept</field>
+        <field name="arch" type="xml">
+            <form string="Update Stock In eBay">
+                <footer>
+                    <button name="update_stock_in_walmart" string="Update Stock"
+                            type="object" class="oe_highlight"/>
+                    <button string="Cancel" class="oe_highlight" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <!-- Added By Harshit Trivedi -->
+    <record id="action_update_products_stock_ept" model="ir.actions.act_window">
+        <field name="name">Update Stock In walmart</field>
+        <field name="res_model">walmart.update.product.stock.ept</field>
+        <field name="view_mode">form</field>
+        <field name="context">{}</field>
+        <field name="view_id" ref="view_walmart_update_products_stock_ept"/>
+        <field name="target">new</field>
+        <field name="binding_model_id" ref="walmart_ept.model_walmart_offer_ept"/>
+        <field name="binding_view_types">list</field>
+    </record>
+    <!-- Update Product Price in Walmart -->
+    <record id="view_walmart_update_products_price_ept" model="ir.ui.view">
+        <field name="name">Update Price In Walmart</field>
+        <field name="model">walmart.update.product.price.ept</field>
+        <field name="arch" type="xml">
+            <form string="Update Price In Walmart">
+                <footer>
+                    <button name="update_price_in_walmart" string="Update Price"
+                            type="object" class="oe_highlight"/>
+                    <button string="Cancel" class="oe_highlight" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action for Updating Walmart Price in Walmart -->
+    <record id="action_update_products_price_ept" model="ir.actions.act_window">
+        <field name="name">Update Price In Walmart</field>
+        <field name="res_model">walmart.update.product.price.ept</field>
+        <field name="view_mode">form</field>
+        <field name="context">{}</field>
+        <field name="view_id" ref="view_walmart_update_products_price_ept"/>
+        <field name="target">new</field>
+        <field name="binding_model_id" ref="walmart_ept.model_walmart_offer_ept"/>
+        <field name="binding_view_types">list</field>
+    </record>
+
+
+    <!-- Retire a Product In Walmart -->
+    <record id="view_walmart_retire_products_ept" model="ir.ui.view">
+        <field name="name">Retire an Product In Walmart</field>
+        <field name="model">walmart.retire.product.ept</field>
+        <field name="arch" type="xml">
+            <form string="Retire an Product In Walmart">
+                <footer>
+                    <button name="update_retire_product_in_walmart"
+                            string="Retire Products In Walmart"
+                            type="object" class="oe_highlight"/>
+                    <button string="Cancel" class="oe_highlight" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action for Retire a Product In Walmart -->
+    <!--		<act_window name="Retire an Product In Walmart" res_model="walmart.retire.product.ept"-->
+    <!--			src_model="walmart.offer.ept" view_mode="form" view_type="form"-->
+    <!--			target="new" multi="True" key2="client_action_multi" id="action_retire_products_ept"-->
+    <!--			view_id="view_walmart_retire_products_ept" />-->
+</odoo>
+		

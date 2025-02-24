@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="mail_template_desc_tus_ext" model="mail.template">
+            <field name="name">Coupon: Coupon Information</field>
+            <field name="model_id" ref="mass_mailing.model_mailing_contact"/>
+            <field name="subject">Your Reward</field>
+            <field name="email_from">logistics@warefor.com</field>
+            <field name="email_to">${(object.email or '')}</field>
+            <field name="description">Sent to customer with Order Discount information</field>
+            <field name="body_html" type="html">
+                <table border="0" cellpadding="0" cellspacing="0"
+                       style="width:100%; margin:0px auto; background:#ffffff; color:#333333;">
+                    <tbody>
+                        <tr>
+                            <td valign="top" style="text-align: center; font-size: 14px;">
+                                Congratulations,
+                                <br/>
+                                <br/>
+
+                                Here is your reward from Oxford USA Corporation.
+                                <br/>
+                                <br/>
+                            </td>
+                        </tr>
+                        <tr style="margin-top: 16px">
+                            <td valign="top" style="text-align: center; font-size: 14px;">
+                                Use this promo code to get 10% discount on your first order
+                                <br/>
+                                <br/>
+                                <p style="margin-top: 16px;">
+                                    <strong style="padding: 16px 8px 16px 8px; border-radius: 3px; background-color: #51B1E7;color: #fff;">OXFDISC10
+                                    </strong>
+                                </p>
+                                <br/>
+                                <br/>
+                                Thank you,
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </field>
+        </record>
+    </data>
+</odoo>

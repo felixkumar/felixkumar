@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<odoo>
+
+    <menuitem id="menu_ba_custom_fields"
+              name="Custom Fields"
+              parent="business_appointment.menu_business_appointments_conf"
+              sequence="60"
+              groups="business_appointment.group_ba_admin"
+    />
+    <menuitem id="menu_appointments_type_fields"
+              name="Appointment Fields"
+              action="custom_appointment_contact_info_field_action"
+              parent="business_appointment_custom_fields.menu_ba_custom_fields"
+              sequence="10"
+    />
+    <menuitem id="menu_business_resource_type_fields"
+              name="Resource Type Fields"
+              action="custom_business_resource_type_field_action"
+              parent="business_appointment_custom_fields.menu_ba_custom_fields"
+              sequence="20"
+    />
+    <menuitem id="menu_business_resource_fields"
+              name="Resource Fields"
+              action="custom_business_resource_field_action"
+              parent="business_appointment_custom_fields.menu_ba_custom_fields"
+              sequence="30"
+    />
+    <menuitem id="menu_appointment_product_fields"
+              name="Service Fields"
+              action="custom_appointment_product_field_action"
+              parent="business_appointment_custom_fields.menu_ba_custom_fields"
+              sequence="40"
+    />
+
+</odoo>

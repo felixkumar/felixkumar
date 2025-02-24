@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="sync_document_import_sale" model="sync.document.type">
+        <field name="name">Import Sale Order (XML SPS Commerce)</field>
+        <field name="doc_code">import_so_xml</field>
+        <field name="op_type">in</field>
+        <field name="active" eval="True"/>
+    </record>
+</odoo>

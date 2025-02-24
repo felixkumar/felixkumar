@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Main Menu Walmart -->
+    <menuitem id="walmart_main_menu" name="Walmart"
+              web_icon="walmart_ept,static/description/icon.png" sequence="11"
+              groups="walmart_ept.group_walmart_user"/>
+
+    <!-- Configuration menu of Walmart -->
+    <menuitem id="menu_configuration_ept" parent="walmart_main_menu"
+              sequence="20" name="Configuration" groups="walmart_ept.group_walmart_manager"/>
+</odoo>		

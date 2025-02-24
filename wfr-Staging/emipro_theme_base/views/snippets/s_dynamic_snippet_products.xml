@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="emipro_theme_base.emipro_s_dynamic_snippet_products_000_js" model="ir.asset">
+        <field name="name">Emipro Dynamic snippet products 000 JS</field>
+        <field name="bundle">web.assets_frontend</field>
+        <field name="path">emipro_theme_base/static/src/js/snippet/s_dynamic_snippets_products/000.js</field>
+    </record>
+
+</odoo>

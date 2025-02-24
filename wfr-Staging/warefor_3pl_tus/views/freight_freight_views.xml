@@ -1,0 +1,1635 @@
+<odoo>
+    <data>
+
+        <!--***** Freight Freight IBL Views *****-->
+
+        <record id="freight_freights_ibl_form_view" model="ir.ui.view">
+            <field name="name">freight.freights.ibl.form.view</field>
+            <field name="model">freight.freight</field>
+            <field name="arch" type="xml">
+                <form string="Project Logistics" delete="0">
+                    <header>
+                        <field name="is_outbound" invisible="1"/>
+                        <!--                    <field name="is_osd_rec_auto_archive" invisible="1"/>-->
+                        <field name="is_remaining_qty" invisible="1"/>
+                        <field name="is_confirmed" invisible="1"/>
+                        <field name="picking_ids" invisible="1"/>
+                        <field name="active" invisible="1"/>
+                        <field name="is_show_btn" invisible="1"/>
+                        <field name="is_shipped" invisible="1"/>
+                        <!--                    <button name="open_ibl_ops_record" string="Warehouse Ops"-->
+                        <!--                            type="object" class="btn-primary"/>-->
+                        <button name="open_wizard_for_invoice" string="Generate Invoice"
+                                type="object" class="btn-primary" invisible="1"/>
+                        <button name="open_wizard_for_storage_invoice" string="Generate Invoice"
+                                groups="stock.group_stock_manager" type="object" class="btn-primary"/>
+                        <button name="open_wizard_credit_memo" string="Create CM" groups="!user_warehouse_restriction.user_carote_restriction_group_user"
+                                type="object" class="btn-primary"/>
+                        <button name="transfer_inventory_with_pallets_wizard" string="Transfer Inventory With Pallets"
+                                type="object" invisible="1"
+                                attrs="{'invisible': [('purchase_orders_ids', '!=', False)]}"
+                                class="btn-primary"/>
+                        <field name="signature" invisible="1"/>
+                        <field name="truck_driver_name" invisible="1"/>
+                        <field name="delivery_status" widget="statusbar" invisible="1"
+                               options="{'clickable': '1'}"
+                        />
+                        <field name="stage_id" widget="statusbar" readonly="1"
+                               options="{'fold_field': 'is_fold'}"
+                               attrs="{'invisible': [('is_outbound', '=', True)]}"/>
+                    </header>
+                    <sheet>
+                        <div>
+                            <div class="oe_button_box" name="button_box">
+                                <button name="button_freight_transfers" type="object" class="oe_stat_button"
+                                        icon="fa-truck" attrs="{'invisible': [('transfers_count', '=', 0)]}">
+                                    <field name="transfers_count" widget="statinfo" string="Transfers"
+                                           attrs="{'invisible': [('transfers_count', '=', 0)]}"/>
+                                </button>
+                                <button name="button_freight_osd_transfers" type="object" class="oe_stat_button"
+                                        icon="fa-truck" attrs="{'invisible': [('osd_transfers_count', '=', 0)]}">
+                                    <field name="osd_transfers_count" widget="statinfo" string="OS&amp;D Transfers"
+                                           attrs="{'invisible': [('osd_transfers_count', '=', 0)]}"/>
+                                </button>
+                                <button name="action_view_invoice" type="object" class="oe_stat_button"
+                                        icon="fa-pencil-square-o" attrs="{'invisible': [('invoice_count', '=', 0)]}">
+                                    <field name="invoice_count" widget="statinfo" string="Invoices"
+                                           attrs="{'invisible': [('invoice_count', '=', 0)]}"/>
+                                </button>
+                                <button name="action_view_account_move" type="object" class="oe_stat_button"
+                                        icon="fa-pencil-square-o"
+                                        attrs="{'invisible': [('account_move_count', '=', 0)]}">
+                                    <field name="account_move_count" widget="statinfo" string="Invoices"
+                                           attrs="{'invisible': [('account_move_count', '=', 0)]}"/>
+                                </button>
+                                <button name="open_ibl_ops_record" string="Warehouse Ops"
+                                        type="object" icon="fa-files-o" class="oe_stat_button"/>
+                            </div>
+                        </div>
+                        <field name="invoice_ids" invisible="1"/>
+                        <field name="pallet_ids" invisible="1"/>
+                        <field name="account_move_ids" invisible="1"/>
+                        <div class="oe_title" colspan="4">
+                            <h1>
+                                <field name="name" class="oe_inline" placeholder="e.g. SHIP00001"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group name="general" string="General">
+                                <field name="import_id"/>
+                                <field name="partner_id" string="Customer / Consignee"/>
+                                <field name="reference"/>
+                                <field name="customer_po"/>
+                                <field name="storage_type_id"/>
+                                <field name="description"/>
+                                <field name="consignee_id" required="1"/>
+                                <field name="warehouse_id"/>
+                                <field name="user_id" domain="[('share','=',False)]"
+                                       options="{'no_create_edit': True,'no_create': True}"/>
+                                <field name="inbound_logistics_id" domain="[('is_outbound','=',False)]"
+                                       widget="many2many_tags">
+                                </field>
+                                <field name="number_of_pallets"/>
+
+                            </group>
+                            <group>
+                                <group name="ocean_freight_dates" colspan="4" string="Ocean Freight Dates">
+                                    <field name="stuffing_date" string="Stuffing Date"/>
+                                    <field name="date_shipping" string="Sail Date"/>
+                                    <field name="estimated_arrival_date" string="Estimated Port Arrival Date"/>
+                                    <field name="date_landing" string="Actual Port Arrival Date"/>
+                                </group>
+                                <group name="drayage_info" colspan="4" string="Drayage Info">
+                                    <field name="freight_transport_id" invisible="1"/>
+                                    <field name="drayage_id" domain="[('is_3pl_customer','=',True)]"
+                                           context="{'is_outbound': True}"/>
+                                    <field name="pickup_schedule_date" string="Scheduled Date/Time"/>
+                                    <field name="check_in_truck_yard" string="Container / Trailer Check-In"/>
+                                    <field name="unload_start_date" string="Unloading Start Date/Time"/>
+                                    <field name="unload_end_date" string="Unloading End Date/Time"/>
+                                    <field name="check_out_truck_yard" string="Container / Trailer Check-Out"/>
+                                    <field name="unload_time" string="Unloading Time"/>
+                                    <field name="receiving_level_of_service" string="Shipping Level of Service (Days)"/>
+                                    <!--                                    <label for="date_order" string="Date of Pick-up"/>-->
+                                    <!--                                    <div style="text-align:right !important;">-->
+                                    <!--                                        <field name="date_order"/>-->
+                                    <!--                                    </div>-->
+                                    <!--                                    <label for="arrival_at_warefor" string="Arrival @ Warefor"/>-->
+                                    <!--                                    <div style="text-align:right !important;">-->
+                                    <!--                                        <field name="arrival_at_warefor"/>-->
+                                    <!--                                    </div>-->
+                                </group>
+                            </group>
+                        </group>
+                        <group>
+                            <group string="Bill of Lading Info">
+                                <field name="forwarder_id" domain="[('is_3pl_customer','=',True)]"
+                                       context="{'is_outbound': True}"/>
+                                <field name="awb_no"/>
+                                <field name="voyage_no"/>
+                                <field name="carrier_flight" domain="[('is_3pl_customer','=',True)]"
+                                       context="{'is_outbound': True}"
+                                       invisible="1"/>
+                                <field name="vessel_name"/>
+                                <field name="vessel_voyage"/>
+                                <field name="vessel_web_link" widget="url"/>
+                                <field name="port_shipping_id"/>
+                                <field name="port_discharge_id"/>
+                                <field name="final_destination_id"/>
+                                <field name="number_of_containers"/>
+                            </group>
+                            <group string="Container / Load Info">
+                                <label for="vessel" string="Container #" style="width:180px !important;"/>
+                                <div style="text-align:right !important;">
+                                    <field name="vessel"/>
+                                </div>
+                                <label for="seal_number_inbound" string="Seal #" style="width:180px !important;"/>
+                                <div style="text-align:right !important;">
+                                    <field name="seal_number_inbound"/>
+                                </div>
+                                <label for="weight" string="Weight (Lbs)" style="width:180px !important;"/>
+                                <div style="text-align:right !important;">
+                                    <field name="weight" readonly="True"/>
+                                </div>
+                                <label for="weight_kg" string="Weight (Kg)"/>
+                                <div style="text-align:right !important;">
+                                    <field name="weight_kg"/>
+                                </div>
+                                <label for="volume_cuft" string="Volume (Cu Ft)"/>
+                                <div style="text-align:right !important;">
+                                    <field name="volume_cuft"/>
+                                </div>
+                                <label for="volume_cbm" string="Volume (CBM)"/>
+                                <div style="text-align:right !important;">
+                                    <field name="volume_cbm"/>
+                                </div>
+                                <field name="ibl_remarks" placeholder="Remarks" options='{"no_open":True}'/>
+                                <field name="initial_freight_charge" invisible="1"/>
+                                <field name="final_freight_charge" invisible="1"/>
+                                <field name="freight_invoice" invisible="1"/>
+                            </group>
+                        </group>
+                        <group>
+                            <group string="Customs">
+                                <field name="agent_id" context="{'is_outbound': True}"/>
+                                <field name="entry_number"/>
+                            </group>
+                            <group string="Metrics" name="metrics">
+                                <field name="company_currency_id" invisible="1"/>
+                                <label for="fob_per_piece" string="FOB Price per Pallet"
+                                       style="width:180px !important;"/>
+                                <div style="float:right !important;">
+                                    <field name="fob_per_piece" widget="monetary"
+                                           options="{'currency_field': 'company_currency_id'}"/>
+                                </div>
+
+                                <label for="cost_per_pallet" string="Cost per Pallet"/>
+                                <div style="float:right !important;">
+                                    <field name="cost_per_pallet" widget="monetary"
+                                           options="{'currency_field': 'company_currency_id'}"/>
+                                </div>
+
+                                <label for="cost_per_piece" string="Cost per Saleable Unit"/>
+                                <div style="float:right !important;">
+                                    <field name="cost_per_piece" widget="monetary"
+                                           options="{'currency_field': 'company_currency_id'}"/>
+                                </div>
+
+                                <label for="price_per_pound" string="Cost Per Lb"/>
+                                <div style="float:right !important;">
+                                    <field name="price_per_pound" widget="monetary"
+                                           options="{'currency_field': 'company_currency_id'}" readonly="True"/>
+                                </div>
+
+                                <label for="price_per_kg" string="Cost per Metric Ton (MT)"/>
+                                <div style="float:right !important;">
+                                    <field name="price_per_kg" widget="monetary"
+                                           options="{'currency_field': 'company_currency_id'}" readonly="True"/>
+                                </div>
+
+                                <label for="cost_per_cuft" string="Cost per Cu Ft"/>
+                                <div style="float:right !important;">
+                                    <field name="cost_per_cuft" widget="monetary"
+                                           options="{'currency_field': 'company_currency_id'}"/>
+                                </div>
+
+                                <label for="cost_per_cbm" string="Cost per CBM"/>
+                                <div style="float:right !important;">
+                                    <field name="cost_per_cbm" widget="monetary"
+                                           options="{'currency_field': 'company_currency_id'}"/>
+                                </div>
+                            </group>
+                        </group>
+
+                        <notebook>
+                            <page string="Order" name="order">
+                                <group>
+                                    <group>
+                                        <field name="purchase_orders_ids"
+                                               domain="[('state', 'in', ['draft', 'sent', 'to approve'])]"/>
+                                        <field name="cost"/>
+                                        <button name="create_po_lines" type="object" string="Create Lines" groups="!user_warehouse_restriction.user_carote_restriction_group_user"
+                                                class="oe_highlight"/>
+                                    </group>
+                                    <group></group>
+                                </group>
+                                <field name="freight_order_line_ids" nolabel="1">
+                                    <tree editable="bottom">
+                                        <field name="goods" string="Product"/>
+                                        <field name="lot_id"/>
+                                        <field name="total_quantity"/>
+                                        <field name="qty_carton" string="Case QTY"/>
+                                        <field name="product_volume" sum="Total Volume"/>
+                                        <field name="net_weight"/>
+                                        <field name="total_pallet"/>
+                                        <field name="required_pallet"/>
+                                        <field name="total_kg" invisible="1"/>
+                                        <field name="box_quantity" invisible="1"/>
+                                        <field name="num_box" invisible="1"/>
+                                    </tree>
+                                    <form>
+                                        <group>
+                                            <group>
+                                                <field name="goods"/>
+                                                <field name="box_quantity"/>
+                                                <field name="value"/>
+                                                <field name="container_id"/>
+                                                <field name="total_kg" invisible="1"/>
+                                            </group>
+                                            <group>
+                                                <field name="gross_weight" string="Part Weight" sum="Gross Weight"/>
+                                                <field name="num_box"/>
+                                                <field name="sale_price"/>
+                                                <field name="total_quantity"/>
+                                                <field name="lot_id"/>
+                                                <field name="total_pallet"/>
+                                                <field name="required_pallet" sum="Total Required Pallets"/>
+                                                <field name="net_weight"/>
+                                                <!--                                                <field name="freight_id"/>-->
+                                            </group>
+                                        </group>
+                                    </form>
+                                </field>
+                            </page>
+                            <page string="Package Lines" name="package_lines"
+                                  attrs="{'invisible': [('is_outbound', '=', True)]}">
+                                <field name="product_package_ids" widget="one2many" nolabel="1">
+                                    <tree edit="false" create="false">
+                                        <field name="package_id"/>
+                                        <field name="product_qty"/>
+                                        <field name="package_qty"/>
+                                        <field name="package_per_pallet"/>
+                                        <field name="require_pallets"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Containers" name="containers">
+                                <group>
+                                    <field name="is_master"/>
+                                    <field name="container_line_ids">
+                                        <tree editable="bottom">
+                                            <field name="container_no" required="1"/>
+                                            <field name="seal_no"/>
+                                            <field name="gross_weight"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                            </page>
+                            <page string="Billing" name="pallet_cost"
+                                  groups="mc_freight_app.group_freight_administrator">
+                                <group>
+                                    <group>
+                                        <field name="packaging_qty" invisible="1"/>
+                                        <field name="markup_import_cost"/>
+                                    </group>
+                                    <group>
+                                        <field name="picking_ids" widget="many2many_tags"/>
+                                    </group>
+                                    <group>
+                                        <button type="object" name="generate_pallet_config_ids"
+                                                string="Update Billing Data" class="btn-primary"/>
+                                    </group>
+                                </group>
+                                <br/>
+                                <field name="vas_cost_ids" nolabel="1">
+                                    <tree string="Value Added Service" editable="bottom">
+                                        <field name="name" invisible="1"/>
+                                        <field name="product_id" string="Service/Materials" required="1"/>
+                                        <field name="unit_of_measure" invisible="1" string="UOM"/>
+                                        <field name="product_uom"/>
+                                        <field name="total_unit"
+                                               attrs="{'readonly': [('unit_of_measure', 'not in', ['per_unit', 'per_load', 'per_pallet'])]}"/>
+                                        <field name="unit_price"/>
+                                        <field name="total_cost" sum="Total Price"/>
+                                    </tree>
+                                </field>
+
+                                <!--                                <label for="import_cost_ids"/>-->
+                                <!--                                <br/>-->
+                                <!--                                <br/>-->
+                                <!--                                <field name="import_cost_ids">-->
+                                <!--                                    <tree string="Import Cost" editable="bottom">-->
+                                <!--                                        <field name="name" invisible="1"/>-->
+                                <!--                                        <field name="product_id" required="1"/>-->
+                                <!--                                        <field name="actual_cost" sum="Total Actual Cost"/>-->
+                                <!--                                        <field name="processing_fee_per"/>-->
+                                <!--                                        <field name="processing_fee_amt" sum="Total Processing Fees"/>-->
+                                <!--                                        <field name="total_cost" sum="Total Price"/>-->
+                                <!--                                    </tree>-->
+                                <!--                                </field>-->
+
+                                <!--                                <br/>-->
+                                <!--                                <br/>-->
+                                <!--                                <label for="fob_cost_ids"/>-->
+                                <!--                                <br/>-->
+                                <!--                                <br/>-->
+                                <!--                                <field name="fob_cost_ids">-->
+                                <!--                                    <tree string="Calculated against FOB" editable="bottom">-->
+                                <!--                                        <field name="product_id" required="1" domain="[('type', '=', 'service')]"/>-->
+                                <!--                                        <field name="fob_per"/>-->
+                                <!--                                        <field name="total_cost" sum="Total Calculated against FOB"/>-->
+                                <!--                                    </tree>-->
+                                <!--                                </field>-->
+                                <!--                                <div>-->
+                                <!--                                    <label for="import_cost" class="oe oe_right"/>-->
+                                <!--                                    <br/>-->
+                                <!--                                    <field name="import_cost" class="oe oe_right"/>-->
+                                <!--                                </div>-->
+
+
+                                <!--                                <br/>-->
+                                <!--                                <br/>-->
+                                <!--                                <label for="storage_cost_ids"/>-->
+                                <!--                                <br/>-->
+                                <!--                                <br/>-->
+                                <!--                                <field name="storage_cost_ids">-->
+                                <!--                                    <tree string="Storage Fees" editable="bottom">-->
+                                <!--                                        <field name="name" invisible="1"/>-->
+                                <!--                                        <field name="product_id" required="1" domain="[('type', '=', 'service')]"/>-->
+                                <!--                                        <field name="unit_of_measure"/>-->
+                                <!--                                        <field name="total_pallet" invisible="1"/>-->
+                                <!--                                        <field name="unit_price"/>-->
+                                <!--                                        <field name="total_cost" sum="Total Price"/>-->
+                                <!--                                    </tree>-->
+                                <!--                                </field>-->
+                                <!--                                <div>-->
+                                <!--                                    <label for="total_storage_cost" class="oe oe_right"/>-->
+                                <!--                                    <br/>-->
+                                <!--                                    <field name="total_storage_cost" class="oe oe_right"/>-->
+                                <!--                                </div>-->
+
+                                <!--                                <br/>-->
+                                <!--                                <br/>-->
+                            </page>
+                            <page string="Docs" name="docs">
+                                <group>
+                                    <group>
+                                        <field name="bill_of_lading" filename="bill_of_lading_file"/>
+                                        <field name="bill_of_lading_file" invisible="1"/>
+                                        <field name="commercial_invoice" filename="commercial_invoice_file"/>
+                                        <field name="commercial_invoice_file" invisible="1"/>
+                                        <field name="commercial_packing_list" filename="commercial_packing_list_file"/>
+                                        <field name="commercial_packing_list_file" invisible="1"/>
+                                        <field name="certificate_of_origin" filename="certificate_of_origin_file"/>
+                                        <field name="certificate_of_origin_file" invisible="1"/>
+                                        <field name="customs_entry_summary" filename="customs_entry_summary_file"/>
+                                        <field name="customs_entry_summary_file" invisible="1"/>
+                                    </group>
+                                    <group>
+                                        <field name="arrival_notice_ids" widget="many2many_binary"/>
+                                        <field name="freight_invoice_ids" widget="many2many_binary"/>
+                                        <field name="other_attachment_ids" widget="many2many_binary"/>
+                                        <!--                                <field name="signature"/>-->
+                                    </group>
+                                </group>
+                            </page>
+                            <page string="Pallet Configuration" name="pallet_configuration">
+                                <group>
+                                    <group>
+                                        <field name="pallet_configuration_id" string="Pallet Configuration"/>
+                                        <field name="pallet_label_number" string="Pallet Batch Number"/>
+                                    </group>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="image" widget="image"/>
+                                    </group>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+
+                </form>
+            </field>
+        </record>
+
+        <record id="freight_freights_action_tree_view" model="ir.ui.view">
+            <field name="name">freight.freights.action.tree.view</field>
+            <field name="model">freight.freight</field>
+            <field name="arch" type="xml">
+                <tree string="Transit" delete="false" decoration-warning="not is_remaining_qty">
+                    <field name="is_remaining_qty" invisible="1"/>
+                    <field name="name"/>
+                    <field name="sku_names"/>
+                    <field name="sku_total_qty"/>
+                    <field name="sku_total_number_of_pallets"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="freight_freights_action_kanban_view" model="ir.ui.view">
+            <field name="name">freight.freights.action.kanban.view</field>
+            <field name="model">freight.freight</field>
+            <field name="priority" eval="1"/>
+            <field name="arch" type="xml">
+                <kanban default_group_by="stage_id" readonly="1" class="o_kanban_small_column o_opportunity_kanban"
+                        on_create="quick_create" archivable="false"
+                        quick_create="false">
+                    <field name="name"/>
+                    <field name="is_outbound" invisible="1"/>
+                    <field name="user_id"/>
+                    <field name="partner_id"/>
+                    <field name="estimated_arrival_date"/>
+                    <field name="arrival_at_warefor"/>
+                    <field name="supplier_id"/>
+                    <field name="pickup_schedule_date"/>
+                    <field name="description"/>
+                    <field name="reference"/>
+                    <field name="import_id" attrs="{'invisible': [('is_outbound', '=', True)]}"/>
+                    <field name="color"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="#{!selection_mode ? kanban_color(record.color.raw_value) : ''} oe_kanban_global_click">
+                                <div class="o_dropdown_kanban dropdown">
+
+                                    <a class="dropdown-toggle o-no-caret btn" role="button" data-toggle="dropdown"
+                                       data-display="static" href="#" aria-label="Dropdown menu"
+                                       title="Dropdown menu">
+                                        <span class="fa fa-ellipsis-v"/>
+                                    </a>
+                                    <div class="dropdown-menu" role="menu">
+                                        <t t-if="widget.editable">
+                                            <a role="menuitem" type="edit" class="dropdown-item">Edit</a>
+                                        </t>
+                                        <t t-if="widget.deletable">
+                                            <a role="menuitem" type="delete" class="dropdown-item">Delete</a>
+                                        </t>
+                                        <ul class="oe_kanban_colorpicker" data-field="color"/>
+                                    </div>
+                                </div>
+                                <div class="oe_kanban_content">
+                                    <div>
+                                        <strong class="o_kanban_record_title">
+                                            <field name="name"/>
+                                        </strong>
+                                    </div>
+                                    <div attrs="{'invisible': [('is_outbound', '=', True)]}">Supplier:
+                                        <field name="import_id"/>
+                                    </div>
+                                    <div>Customer:
+                                        <field name="partner_id"/>
+                                    </div>
+                                    <div attrs="{'invisible': [('description', '=', False)]}">Description:
+                                        <field name="description"/>
+                                    </div>
+                                    <!--                                    <div>-->
+                                    <!--                                        Estimated Arrival Date:-->
+                                    <!--                                        <field name="estimated_arrival_date"/>-->
+                                    <!--                                    </div>-->
+                                    <div class="text-muted o_kanban_record_subtitle">
+                                        Reference:
+                                        <field name="reference"/>
+                                    </div>
+                                    <div class="o_kanban_record_bottom">
+                                        <div class="oe_kanban_bottom_right">
+                                            <img t-att-src="kanban_image('res.users', 'image_1920', record.user_id.raw_value)"
+                                                 t-att-title="record.user_id.value"
+                                                 t-att-alt="record.user_id.value"
+                                                 class="oe_kanban_avatar"/>
+                                        </div>
+                                    </div>
+                                    <!--                                    <div>-->
+                                    <!--                                        Arrival @ Warefor:-->
+                                    <!--                                        <field name="pickup_schedule_date"/>-->
+                                    <!--                                    </div>-->
+                                    <div>
+                                        Scheduled Arrival:
+                                        <field name="pickup_schedule_date" widget="date"/>
+                                    </div>
+                                    <div>
+                                        Actual Arrival:
+                                        <field name="check_in_truck_yard" widget="date"/>
+                                    </div>
+                                </div>
+                                <div class="oe_clear"/>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_project_logistic_event_calendar">
+            <field name="name">freight.freight.calendar</field>
+            <field name="model">freight.freight</field>
+            <field eval="2" name="priority"/>
+            <field name="arch" type="xml">
+                <calendar date_start="pickup_schedule_date" string="All Day" mode="month" color="reference"
+                          event_limit="5">
+                    <field name="is_outbound" invisible="1"/>
+                    <field name="name"/>
+                    <field name="pickup_schedule_date" attrs="{'invisible': [('is_outbound', '=', True)]}"/>
+                    <field name="partner_id"/>
+                    <field name="drayage_id" domain="[('is_3pl_customer','=',True)]"
+                           attrs="{'invisible': [('is_outbound', '=', True)]}"/>
+                </calendar>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_freight_freight_ibl_graph">
+            <field name="name">freight.freight.obl.graph</field>
+            <field name="model">freight.freight</field>
+            <field name="arch" type="xml">
+                <graph string="Freight Orders">
+                    <field name="stage_id" string="Inbound" type="col"/>
+                </graph>
+            </field>
+        </record>
+
+        <record id="view_freight_freight_ibl_pivot" model="ir.ui.view">
+            <field name="name">freight.freight.ibl.pivot</field>
+            <field name="model">freight.freight</field>
+            <field name="arch" type="xml">
+                <pivot string="IBL Containers" sample="1">
+                    <field name="partner_id" type="row"/>
+                    <field name="name" type="row"/>
+                    <field name="stage_id" type="col"/>
+                    <field name="cost_per_pallet" type="measure"/>
+                    <field name="cost_per_piece" type="measure"/>
+                    <field name="number_of_pallets" type="measure"/>
+
+                </pivot>
+            </field>
+        </record>
+
+        <record id="menu_freight_freights_ibl_action" model="ir.actions.act_window">
+            <field name="name">IBL Containers</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">freight.freight</field>
+            <field name="view_mode">kanban,tree,form,search,calendar,graph,pivot</field>
+            <field name="context">{'is_outbound' : False}</field>
+            <field name="domain">[('is_outbound','=',False),('is_deleted','=',False)]</field>
+            <field name="view_ids"
+                   eval="[(5, 0, 0),
+                          (0, 0, {'view_mode': 'kanban', 'view_id': ref('warefor_3pl_tus.freight_freights_action_kanban_view')}),
+                          (0, 0, {'view_mode': 'tree', 'view_id': ref('warefor_3pl_tus.freight_freights_action_tree_view')}),
+                          (0, 0, {'view_mode': 'form', 'view_id': ref('warefor_3pl_tus.freight_freights_ibl_form_view')}),
+                          (0, 0, {'view_mode': 'calendar', 'view_id': ref('warefor_3pl_tus.view_project_logistic_event_calendar')}),
+                          (0, 0, {'view_mode': 'graph', 'view_id': ref('warefor_3pl_tus.view_freight_freight_ibl_graph')}),
+                          (0, 0, {'view_mode': 'pivot', 'view_id': ref('warefor_3pl_tus.view_freight_freight_ibl_pivot')}),
+                          ]"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                </p>
+                <p>
+                </p>
+            </field>
+        </record>
+
+        <!-- Freight Order Line View -->
+
+        <record id="freight_order_line_form_view" model="ir.ui.view">
+            <field name="name">freight.order.line.form.view</field>
+            <field name="model">freight.order.line</field>
+            <field name="arch" type="xml">
+                <form string="Project Logistics">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="goods"/>
+                                <field name="net_weight"/>
+                                <field name="num_box"/>
+                                <field name="base_cost"/>
+                                <field name="sale_price"/>
+                                <field name="container_id"/>
+                                <field name="total_kg"/>
+                                <field name="volume_by_ft"/>
+                                <field name="required_pallet"/>
+                                <field name="loading_end_date"/>
+                                <field name="product_description"/>
+                                <field name="pickup_schedule_date"/>
+                                <field name="unload_start_date"/>
+                                <field name="receiving_level_of_service"/>
+                            </group>
+                            <group>
+                                <field name="gross_weight"/>
+                                <field name="box_quantity"/>
+                                <field name="value"/>
+                                <field name="base_sale_price"/>
+                                <field name="total_quantity"/>
+                                <field name="freight_id"/>
+                                <field name="is_outbound"/>
+                                <field name="total_pallet"/>
+                                <field name="lot_id"/>
+                                <field name="warehouse_id"/>
+                                <field name="customer_po"/>
+                                <field name="check_in_truck_yard"/>
+                                <field name="unload_end_date"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="freight_ibl_line_tree_view" model="ir.ui.view">
+            <field name="name">freight.freights.action.tree.view</field>
+            <field name="model">freight.order.line</field>
+            <field name="arch" type="xml">
+                <tree string="Inbound Logistics" delete="false" create="false"
+                      decoration-danger="freight_line_color=='true'">
+                    <button name="open_freight_record" string="Open" type="object" class="btn-primary"/>
+                    <field name="customer_po" string="PO #"/>
+                    <field name="goods" string="SKU"/>
+                    <field name="product_description" string="Product"/>
+                    <field name="total_quantity"/>
+                    <field name="freight_line_color" invisible="1"/>
+                    <field name="required_pallet"/>
+                    <field name="pickup_schedule_date" readonly="1"/>
+                    <field name="check_in_truck_yard" string="Check In" readonly="1"/>
+                    <field name="container_check_out_date" string="Check Out" readonly="1"/>
+                    <field name="unload_start_date" string="Unload Start" readonly="1"/>
+                    <field name="unload_end_date" string="Unload Stop" readonly="1"/>
+                    <field name="receiving_level_of_service" string="LOS" readonly="1"/>
+                    <field name="cartons_per_container"/>
+                    <field name="cartons_per_pallet"/>
+                    <field name="pallet_stacking"/>
+                    <field name="cases_per_carton"/>
+                    <field name="units_per_case"/>
+                    <field name="warehouse_stacking"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="menu_freight_freights_ibl_line_action" model="ir.actions.act_window">
+            <field name="name">IBL Products</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">freight.order.line</field>
+            <field name="view_mode">tree,form,search</field>
+            <field name="context">{'is_outbound' : False, 'is_ops_model': True}</field>
+            <field name="domain">[('is_outbound','=',False)]</field>
+            <field name="view_ids"
+                   eval="[(5, 0, 0),
+                          (0, 0, {'view_mode': 'tree', 'view_id': ref('warefor_3pl_tus.freight_ibl_line_tree_view')}),
+                          (0, 0, {'view_mode': 'form', 'view_id': ref('warefor_3pl_tus.freight_order_line_form_view')}),
+                          ]"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                </p>
+                <p>
+                </p>
+            </field>
+        </record>
+
+        <!--***** Freight Freight OBL Views *****-->
+
+        <record id="freight_freights_obl_form_view" model="ir.ui.view">
+            <field name="name">freight.freights.obl.form.view</field>
+            <field name="model">freight.freight</field>
+            <field name="arch" type="xml">
+                <form string="Project Logistics" delete="0">
+                    <header>
+                        <field name="is_confirmed" invisible="1"/>
+                        <field name="is_imported_record" invisible="1"/>
+                        <field name="picking_ids" invisible="1"/>
+                        <!--                        <field name="is_osd_rec_auto_archive" invisible="1"/>-->
+                        <field name="is_remaining_qty" invisible="1"/>
+                        <field name="active" invisible="1"/>
+                        <field name="is_show_btn" invisible="1"/>
+                        <field name="is_outbound" invisible="1"/>
+                        <field name="delivery_status" widget="statusbar" invisible="1"
+                               options="{'clickable': '1'}"
+                        />
+
+
+                        <!--                        <button name="open_obl_ops_record" string="Warehouse Ops"-->
+                        <!--                            type="object" class="btn-primary"/>-->
+                        <button name="open_wizard_for_invoice" string="Generate Invoice"
+                                groups="stock.group_stock_manager" type="object" class="btn-primary" invisible="1"/>
+                        <button name="open_wizard_for_storage_invoice" string="Generate Invoice"
+                                groups="stock.group_stock_manager" type="object" class="btn-primary"/>
+                        <button name="open_wizard_credit_memo" string="Create CM" groups="!user_warehouse_restriction.user_carote_restriction_group_user"
+                                type="object" class="btn-primary"/>
+                        <button name="transfer_inventory_outbound_wizard" string="Transfer Inventory" type="object"
+                                attrs="{'invisible': [('is_outbound', '!=', True)]}"
+                                class="btn-primary" invisible="1"/>
+                        <field name="signature" invisible="1"/>
+                        <field name="truck_driver_name" invisible="1"/>
+
+                        <field name="outbound_stage_id" widget="statusbar" readonly="1"
+                               options="{'fold_field': 'is_fold'}"
+                               attrs="{'invisible': [('is_outbound', '!=', True)]}"
+                        />
+                        <button name="generate_sign" string="SIGN" type="object" class="btn-primary"
+                                attrs="{'invisible': [('truck_driver_name', 'not in', [False, ''])]}" invisible="1"/>
+                        <widget name="signature" string="SIGN" highlight="1" full_name="truck_driver_name"
+                                attrs="{'invisible': [('truck_driver_name', 'in', [False, ''])]}" invisible="1"/>
+                        <field name="is_shipped" invisible="1"/>
+                        <button name="container_start_time" string="Start" type="object" class="btn-primary"
+                                attrs="{'invisible': [('is_show_btn', '=', True)]}" invisible="1"/>
+                        <button name="container_stop_time" string="Stop" type="object" class="btn-primary"
+                                attrs="{'invisible': [('is_show_btn', '=', False)]}"/>
+                        <button name="do_3_step_process" string="Create Transfers" type="object" class="btn-primary" groups="!user_warehouse_restriction.user_carote_restriction_group_user"/>
+                        <button name="get_rate_obl" string="Add Shipping" type="object" class="btn-primary" groups="!user_warehouse_restriction.user_carote_restriction_group_user"/>
+                        <button name="generate_label_from_shipstation_obl" string="Generate ShipStation Label" type="object" data-hotkey="shift+v" groups="!user_warehouse_restriction.user_carote_restriction_group_user"/>
+                    </header>
+                    <sheet>
+                        <div>
+                            <div class="oe_button_box" name="button_box">
+                                <button name="button_freight_transfers" type="object" class="oe_stat_button"
+                                        icon="fa-truck" attrs="{'invisible': [('transfers_count', '=', 0)]}">
+                                    <field name="transfers_count" widget="statinfo" string="Transfers"
+                                           attrs="{'invisible': [('transfers_count', '=', 0)]}"/>
+                                </button>
+                                <button name="action_view_invoice" type="object" class="oe_stat_button"
+                                        icon="fa-pencil-square-o" attrs="{'invisible': [('invoice_count', '=', 0)]}">
+                                    <field name="invoice_count" widget="statinfo" string="Invoices"
+                                           attrs="{'invisible': [('invoice_count', '=', 0)]}"/>
+                                </button>
+                                <button name="action_view_account_move" type="object" class="oe_stat_button"
+                                        icon="fa-pencil-square-o"
+                                        attrs="{'invisible': [('account_move_count', '=', 0)]}">
+                                    <field name="account_move_count" widget="statinfo" string="Invoices"
+                                           attrs="{'invisible': [('account_move_count', '=', 0)]}"/>
+                                </button>
+                                <button name="open_ibl_ops_record" string="Warehouse Ops"
+                                        type="object" icon="fa-files-o" class="oe_stat_button"
+                                        attrs="{'invisible': [('is_imported_record', '=', True), ('fulfillment_method', '=', 'e-commerce')]}"/>
+                            </div>
+                        </div>
+
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name" nolabel="1" placeholder="e.g. SHIP00001"/>
+                            </h1>
+                        </div>
+
+                        <group>
+                            <group string="General">
+
+                                <label for="fulfillment_method" string="Fulfillment Method"
+                                       style="width:180px !important;"/>
+                                <div style="text-align:right !important;">
+                                    <field name="fulfillment_method"
+                                           style="text-align:right !important;width: auto !important;"/>
+                                </div>
+
+                                <label for="edi_store_id" string="Retailer / Store" style="width:180px !important;"/>
+                                <div style="text-align:right !important;">
+                                    <field name="edi_store_id"
+                                           style="text-align:right !important;width: auto !important;"/>
+                                </div>
+
+                                <label for="partner_id" string="Customer" style="width:180px !important;"/>
+                                <div style="text-align:right !important;">
+                                    <field name="partner_id"
+                                           style="text-align:right !important;width: auto !important;"/>
+                                </div>
+
+                                <label for="reference" string="Reference" style="width:180px !important;"/>
+                                <div style="text-align:right !important;">
+                                    <field name="reference" style="text-align:right !important;width: auto !important;"/>
+                                </div>
+
+                                <label for="customer_po" string="Customer Po" style="width:180px !important;"/>
+                                <div style="text-align:right !important;">
+                                    <field name="customer_po" style="text-align:right !important;width: auto !important;"/>
+                                </div>
+
+                                <label for="shipstation_order_id" string="Order ID" style="width:180px !important;"/>
+                                <div style="text-align:right !important;">
+                                    <field name="shipstation_order_id" style="text-align:right !important;width: auto !important;"/>
+                                </div>
+
+                                <label for="po_date" string="PO Date" style="width:180px !important;"/>
+                                <div style="text-align:right !important;">
+                                    <field name="po_date" style="text-align:right !important;width: auto !important;"/>
+                                </div>
+
+                                <label for="description" string="Shipment Description" style="width:180px !important;"/>
+                                <div style="text-align:right !important;">
+                                    <field name="description" style="text-align:right !important;width: auto !important;"/>
+                                </div>
+
+                                <label for="ship_from_partner_id" string="Ship From" style="width:180px !important;"/>
+                                <div style="text-align:right !important;">
+                                    <field name="ship_from_partner_id" style="text-align:right !important;width: auto !important;"/>
+                                </div>
+
+                                <label for="outbound_partner_id" string="Ship To" style="width:180px !important;"/>
+                                <div style="text-align:right !important;">
+                                    <field name="outbound_partner_id" style="text-align:right !important;width: auto !important;"/>
+                                </div>
+
+                                <label for="ship_to_postal_code" string="Ship To Postal Code" style="width:180px !important;"/>
+                                <div style="text-align:right !important;">
+                                    <field name="ship_to_postal_code" style="text-align:right !important;width: auto !important;"/>
+                                </div>
+
+                                <label for="warehouse_id" string="Warehouse" style="width:180px !important;"/>
+                                <div style="text-align:right !important;">
+                                    <field name="warehouse_id" style="text-align:right !important;width: auto !important;"/>
+                                </div>
+
+                                <label for="user_id" string="Responsible" style="width:180px !important;"/>
+                                <div style="text-align:right !important;">
+                                    <field name="user_id" domain="[('share','=',False)]"
+                                           options="{'no_create_edit': True,'no_create': True}" style="text-align:right !important;width: auto !important;"/>
+                                </div>
+
+                                <label for="outbound_logistics_id" string="Related OBL Records"
+                                       style="width:180px !important;"/>
+                                <div style="text-align:right !important;">
+                                    <field name="outbound_logistics_id" domain="[('is_outbound','=',True)]"
+                                           attrs="{'invisible': [('is_outbound', '=', False)]}"
+                                           widget="many2many_tags"
+                                           style="text-align:right !important;width: auto !important;"/>
+                                </div>
+                                <label for="number_of_pallets" string="# of Pallets"
+                                       attrs="{'invisible': [('fulfillment_method', '=', 'e-commerce')]}"/>
+                                <div style="text-align:right !important;"
+                                     attrs="{'invisible': [('fulfillment_method', '=', 'e-commerce')]}">
+                                    <field name="number_of_pallets"/>
+                                </div>
+                                <label for="tracking_number" string="Tracking #"
+                                       attrs="{'invisible': [('fulfillment_method', '=', 'e-commerce')]}"/>
+                                <div style="text-align:right !important;"
+                                     attrs="{'invisible': [('fulfillment_method', '=', 'e-commerce')]}">
+                                    <field name="tracking_number"/>
+                                </div>
+
+                            </group>
+                            <group string="Carrier Info" name="carrier_information">
+                                <label for="bol_number" string="BOL #" style="width:200px !important;"/>
+                                <div style="text-align:right !important;">
+                                    <field name="bol_number"/>
+                                </div>
+
+                                <label for="delivery_price" string="Shipping Price" style="width:200px !important;"/>
+                                <div style="text-align:right !important;">
+                                    <field name="delivery_price"/>
+                                </div>
+
+                                <label for="date_done" string="Order Transmission Date" style="width:200px !important;"/>
+                                <div style="text-align:right !important;">
+                                    <field name="date_done"/>
+                                </div>
+
+                                <label for="load_id_number" string="Load ID #" style="width:200px !important;"
+                                       attrs="{'invisible': [('fulfillment_method', '=', 'e-commerce')]}"/>
+                                <div style="text-align:right !important;"
+                                     attrs="{'invisible': [('fulfillment_method', '=', 'e-commerce')]}">
+                                    <field name="load_id_number"/>
+                                </div>
+
+                                <label for="shipstation_service_id" string="Carrier"
+                                       attrs="{'invisible': [('fulfillment_method', '!=', 'e-commerce')]}"/>
+                                <div style="text-align:right !important;"
+                                     attrs="{'invisible': [('fulfillment_method', '!=', 'e-commerce')]}">
+                                    <field name="shipstation_service_id"/>
+                                </div>
+
+                                <label for="carrier_zone" string="Carrier Zone"
+                                       attrs="{'invisible': [('fulfillment_method', '!=', 'e-commerce')]}"/>
+                                <div style="text-align:right !important;"
+                                     attrs="{'invisible': [('fulfillment_method', '!=', 'e-commerce')]}">
+                                    <field name="carrier_zone"/>
+                                </div>
+
+                                <label for="carrier_flight" string="Carrier"
+                                       attrs="{'invisible': [('fulfillment_method', '=', 'e-commerce')]}"/>
+                                <div style="text-align:right !important;"
+                                     attrs="{'invisible': [('fulfillment_method', '=', 'e-commerce')]}">
+                                    <field name="carrier_flight" domain="[('is_3pl_customer','=',True)]"
+                                           context="{'is_outbound': True}"/>
+                                </div>
+
+                                <label for="truck_driver_name" string="Driver Name" attrs="{'invisible': [('fulfillment_method', '=', 'e-commerce')]}"/>
+                                <div style="text-align:right !important;" attrs="{'invisible': [('fulfillment_method', '=', 'e-commerce')]}">
+                                    <field name="truck_driver_name" readonly="False"/>
+                                </div>
+
+                                <label for="trailer_type" string="Trailer Type" attrs="{'invisible': [('fulfillment_method', '=', 'e-commerce')]}"/>
+                                <div style="text-align:right !important;" attrs="{'invisible': [('fulfillment_method', '=', 'e-commerce')]}">
+                                    <field name="trailer_type"/>
+                                </div>
+
+                                <label for="pickup_schedule_date" string="Scheduled Date"/>
+                                <div style="text-align:right !important;">
+                                    <field name="pickup_schedule_date"/>
+                                </div>
+
+                                <label for="check_in_truck_yard" string="Trailer Check-In"
+                                       attrs="{'invisible': [('fulfillment_method', '=', 'e-commerce')]}"/>
+                                <div style="text-align:right !important;"
+                                     attrs="{'invisible': [('fulfillment_method', '=', 'e-commerce')]}">
+                                    <field name="check_in_truck_yard"/>
+                                </div>
+
+                                <label for="loading_start_date" string="Loading Start" attrs="{'invisible': [('fulfillment_method', '=', 'e-commerce')]}"/>
+                                <div style="text-align:right !important;" attrs="{'invisible': [('fulfillment_method', '=', 'e-commerce')]}">
+                                    <field name="loading_start_date" />
+                                </div>
+
+                                <label for="loading_end_date" string="Loading End" attrs="{'invisible': [('fulfillment_method', '=', 'e-commerce')]}"/>
+                                <div style="text-align:right !important;" attrs="{'invisible': [('fulfillment_method', '=', 'e-commerce')]}">
+                                    <field name="loading_end_date"/>
+                                </div>
+
+                                <label for="pick_date" string="Pick" attrs="{'invisible': [('fulfillment_method', '!=', 'e-commerce')]}"/>
+                                <div style="text-align:right !important;" attrs="{'invisible': [('fulfillment_method', '!=', 'e-commerce')]}">
+                                    <field name="pick_date" />
+                                </div>
+
+                                <label for="pack_date" string="Pack" attrs="{'invisible': [('fulfillment_method', '!=', 'e-commerce')]}"/>
+                                <div style="text-align:right !important;" attrs="{'invisible': [('fulfillment_method', '!=', 'e-commerce')]}">
+                                    <field name="pack_date" />
+                                </div>
+
+                                <label for="out_date" string="Out" attrs="{'invisible': [('fulfillment_method', '!=', 'e-commerce')]}"/>
+                                <div style="text-align:right !important;" attrs="{'invisible': [('fulfillment_method', '!=', 'e-commerce')]}">
+                                    <field name="out_date" />
+                                </div>
+
+                                <label for="loading_time" string="Loading Time" attrs="{'invisible': [('fulfillment_method', '=', 'e-commerce')]}"/>
+                                <label for="loading_time" string="Order Fulfillment Time" attrs="{'invisible': [('fulfillment_method', '!=', 'e-commerce')]}"/>
+                                <div style="text-align:right !important;">
+                                    <field name="loading_time" />
+                                </div>
+
+                                  <label for="first_scann" string="First Scan" attrs="{'invisible': [('fulfillment_method', '!=', 'e-commerce')]}"/>
+                                <div style="text-align:right !important;" attrs="{'invisible': [('fulfillment_method', '!=', 'e-commerce')]}">
+                                    <field name="first_scann"/>
+                                </div>
+
+                                <label for="delivery_eta" string="Delivery ETA" attrs="{'invisible': [('fulfillment_method', '!=', 'e-commerce')]}"/>
+                                <div style="text-align:right !important;" attrs="{'invisible': [('fulfillment_method', '!=', 'e-commerce')]}">
+                                    <field name="delivery_eta" />
+                                </div>
+
+                                <label for="calculated_eta" string="Calculated ETA" attrs="{'invisible': [('fulfillment_method', '!=', 'e-commerce')]}"/>
+                                <div style="text-align:right !important;" attrs="{'invisible': [('fulfillment_method', '!=', 'e-commerce')]}">
+                                    <field name="calculated_eta" />
+                                </div>
+
+                                <label for="delivery_actual" string="Delivery Actual" attrs="{'invisible': [('fulfillment_method', '!=', 'e-commerce')]}"/>
+                                <div style="text-align:right !important;" attrs="{'invisible': [('fulfillment_method', '!=', 'e-commerce')]}">
+                                    <field name="delivery_actual" />
+                                </div>
+
+                                <label for="check_out_truck_yard" string="Loading Out" attrs="{'invisible': [('fulfillment_method', '=', 'e-commerce')]}"/>
+                                <div style="text-align:right !important;" attrs="{'invisible': [('fulfillment_method', '=', 'e-commerce')]}">
+                                    <field name="check_out_truck_yard"/>
+                                </div>
+
+                                <label for="receiving_level_of_service" string="LOS (Days)" attrs="{'invisible': [('fulfillment_method', '=', 'e-commerce')]}"/>
+                                <div style="text-align:right !important;" attrs="{'invisible': [('fulfillment_method', '=', 'e-commerce')]}">
+                                    <field name="receiving_level_of_service" />
+                                </div>
+
+                                <label for="delivery_metrics" string="Delivery Metrics" attrs="{'invisible': [('fulfillment_method', '!=', 'e-commerce')]}"/>
+                                <div style="text-align:right !important;" attrs="{'invisible': [('fulfillment_method', '!=', 'e-commerce')]}">
+                                    <field name="delivery_metrics" />
+                                </div>
+
+                                <label for="delivery_status" string="Delivery Status"/>
+                                <div style="text-align:right !important;">
+                                    <field name="delivery_status"/>
+                                </div>
+
+                                <label for="obl_remarks" string="Remarks"/>
+                                <div style="text-align:right !important;">
+                                    <field name="obl_remarks"/>
+                                </div>
+                            </group>
+                        </group>
+                        <group>
+                            <group string="Metrics" name="metrics">
+                                <field name="company_currency_id" invisible="1"/>
+                                <label for="fob_per_piece" string="FOB Price per Pallet"
+                                       style="width:180px !important;"/>
+                                <div style="float:right !important;">
+                                    <field name="fob_per_piece" widget="monetary"
+                                           options="{'currency_field': 'company_currency_id'}"/>
+                                </div>
+
+                                <label for="cost_per_pallet" string="Cost per Pallet"/>
+                                <div style="float:right !important;">
+                                    <field name="cost_per_pallet" widget="monetary"
+                                           options="{'currency_field': 'company_currency_id'}"/>
+                                </div>
+
+                                <label for="cost_per_piece" string="Cost per Saleable Unit"/>
+                                <div style="float:right !important;">
+                                    <field name="cost_per_piece" widget="monetary"
+                                           options="{'currency_field': 'company_currency_id'}"/>
+                                </div>
+
+                                <label for="price_per_pound" string="Cost Per Lb"/>
+                                <div style="float:right !important;">
+                                    <field name="price_per_pound" widget="monetary"
+                                           options="{'currency_field': 'company_currency_id'}" readonly="True"/>
+                                </div>
+
+                                <label for="price_per_kg" string="Cost per Metric Ton (MT)"/>
+                                <div style="float:right !important;">
+                                    <field name="price_per_kg" widget="monetary"
+                                           options="{'currency_field': 'company_currency_id'}" readonly="True"/>
+                                </div>
+
+                                <label for="cost_per_cuft" string="Cost per Cu Ft"/>
+                                <div style="float:right !important;">
+                                    <field name="cost_per_cuft" widget="monetary"
+                                           options="{'currency_field': 'company_currency_id'}"/>
+                                </div>
+
+                                <label for="cost_per_cbm" string="Cost per CBM"/>
+                                <div style="float:right !important;">
+                                    <field name="cost_per_cbm" widget="monetary"
+                                           options="{'currency_field': 'company_currency_id'}"/>
+                                </div>
+                            </group>
+                            <group string="Container / Truckload Info">
+                                <label for="vessel" string="Container #"/>
+                                <div style="text-align:right !important;">
+                                    <field name="vessel"/>
+                                </div>
+
+                                <label for="seal_number_inbound" string="Seal #"
+                                       attrs="{'invisible': [('fulfillment_method', '=', 'e-commerce')]}"/>
+                                <div style="text-align:right !important;"
+                                     attrs="{'invisible': [('fulfillment_method', '=', 'e-commerce')]}">
+                                    <field name="seal_number_inbound"/>
+                                </div>
+
+                                <label for="trailer" string="Trailer #"
+                                       attrs="{'invisible': [('fulfillment_method', '=', 'e-commerce')]}"/>
+                                <div style="text-align:right !important;"
+                                     attrs="{'invisible': [('fulfillment_method', '=', 'e-commerce')]}">
+                                    <field name="trailer"/>
+                                </div>
+
+                                <label for="weight" string="Weight (Lbs)" style="width:180px !important;"
+                                       attrs="{'invisible': [('fulfillment_method', '=', 'e-commerce')]}"/>
+                                <div style="text-align:right !important;"
+                                     attrs="{'invisible': [('fulfillment_method', '=', 'e-commerce')]}">
+                                    <field name="weight" readonly="True"/>
+                                </div>
+                                <label for="weight_kg" string="Weight (kg)"/>
+                                <div style="text-align:right !important;">
+                                    <field name="weight_kg"/>
+                                </div>
+                                <label for="volume_cuft" string="Volume (Cu Ft)"/>
+                                <div style="text-align:right !important;">
+                                    <field name="volume_cuft"/>
+                                </div>
+                                <label for="volume_cbm" string="Volume (CBM)"/>
+                                <div style="text-align:right !important;">
+                                    <field name="volume_cbm"/>
+                                </div>
+                            </group>
+                        </group>
+                        <group>
+                            <group>
+
+                                <field name="vendor_code_id" invisible="1"/>
+                            </group>
+                        </group>
+
+
+                        <notebook>
+                            <page string="Order" name="order">
+                                <field name="freight_order_line_ids" nolabel="1">
+                                    <tree editable="bottom">
+                                        <field name="goods"/>
+                                        <field name="box_quantity" invisible="1"/>
+                                        <field name="num_box" invisible="1"/>
+                                        <field name="lot_id"/>
+                                        <field name="po_number"/>
+                                        <field name="total_quantity"/>
+                                        <field name="qty_carton" string="Case QTY"/>
+                                        <field name="product_volume" sum="Total Volume"/>
+                                        <field name="net_weight"/>
+                                        <field name="total_pallet"/>
+                                        <field name="required_pallet"/>
+                                        <field name="forecasted_issue" invisible="1"/>
+                                        <button type="object" name="action_product_forecast_report"
+                                                title="Forecast Report" icon="fa-area-chart"
+                                                attrs="{'invisible': [('forecasted_issue', '=', True)]}"/>
+                                        <!--                                        <button type="object" name="action_product_forecast_report" title="Forecast Report" icon="fa-area-chart" attrs="{'invisible': [('forecasted_issue', '=', False)]}" class="text-danger"/>-->
+                                        <button type="object" name="action_product_forecast_report"
+                                                title="Forecast Report" icon="fa-area-chart"
+                                                attrs="{'invisible': [('forecasted_issue', '=', False)]}"
+                                                class="text-color-red"/>
+                                    </tree>
+                                    <form>
+                                        <group>
+                                            <group>
+                                                <field name="goods"/>
+                                                <field name="box_quantity"/>
+                                                <field name="value"/>
+                                                <field name="container_id"/>
+                                                <field name="total_kg" invisible="1"/>
+                                            </group>
+                                            <group>
+                                                <field name="gross_weight" string="Part Weight" sum="Gross Weight"/>
+                                                <field name="num_box"/>
+                                                <field name="sale_price"/>
+                                                <field name="total_quantity"/>
+                                                <field name="net_weight"/>
+                                            </group>
+                                        </group>
+                                    </form>
+                                </field>
+                            </page>
+                            <page string="Billing" name="pallet_cost"
+                                  groups="mc_freight_app.group_freight_administrator">
+
+                                <field name="vas_cost_ids" nolabel="1">
+                                    <tree string="Value Added Service" editable="bottom">
+                                        <field name="name" invisible="1"/>
+                                        <field name="product_id" required="1" string="Service/Materials"/>
+                                        <field name="unit_of_measure" invisible="1" string="UOM"/>
+                                        <field name="product_uom"/>
+                                        <field name="total_unit"
+                                               attrs="{'readonly': [('unit_of_measure', 'not in', ['per_unit', 'per_load', 'per_pallet'])]}"/>
+                                        <field name="unit_price"/>
+                                        <field name="total_cost" sum="Total Price" readonly="1"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Efficiency" name="efficiency" invisible="1">
+                                <group>
+                                    <group>
+                                        <field name="container_start" readonly="False"/>
+                                        <field name="container_end" readonly="False"/>
+                                        <field name="total_time" widget="float_time"/>
+                                    </group>
+                                </group>
+                            </page>
+                            <page string="EDI" name="edi" attrs="{'invisible': [('fulfillment_method', '=', 'e-commerce')]}">
+                                <group>
+                                    <group>
+                                        <field name="edi_carrier_alpha_code" />
+                                        <field name="edi_shipment_identifier" />
+                                        <field name="edi_create_date" />
+                                        <field name="edi_bill_of_lading_number" />
+                                        <field name="edi_bill_of_landing_number" />
+                                        <field name="edi_date_time_qualifier" />
+                                        <field name="qualifier_date" />
+                                        <field name="edi_weight_qualifier" />
+<!--                                        <field name="shipping_serial_id" />-->
+                                        <field name="carrier_package_id" />
+                                    </group>
+                                </group>
+                            </page>
+
+                            <page string="Delivery History" name="delivery_history">
+                                <group>
+                                    <field name="delivery_history" widget="html"/>
+                                </group>
+                            </page>
+
+                            <page string="Claim Info" name="claim_info">
+                                <group name="claims_group">
+                                    <field name="claims" string="Claim Status"/>
+                                    <field name="claim_case_number" string="Claim Case Number"/>
+                                    <field name="claim_check_number" string="Claim Check Number"/>
+                                    <field name="claim_remark" string="Claim Remarks"/>
+                                    <field name="claim_amount" string="Claim Amount"/>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="freight_freights_outbound_action_kanban_view" model="ir.ui.view">
+            <field name="name">freight.freights.action.kanban.view</field>
+            <field name="model">freight.freight</field>
+            <field name="priority" eval="1"/>
+            <field name="arch" type="xml">
+                <kanban default_group_by="outbound_stage_id" readonly="1"
+                        class="o_kanban_small_column o_opportunity_kanban"
+                        on_create="quick_create" archivable="false"
+                        quick_create="false">
+                    <field name="name"/>
+                    <field name="user_id"/>
+                    <field name="partner_id"/>
+                    <field name="estimated_arrival_date"/>
+                    <!--<field name="supplier_id"/>-->
+                    <field name="description"/>
+                    <field name="import_id"/>
+                    <field name="is_outbound"/>
+                    <field name="date_order"/>
+                    <field name="color"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="#{!selection_mode ? kanban_color(record.color.raw_value) : ''} oe_kanban_global_click">
+                                <div class="o_dropdown_kanban dropdown">
+
+                                    <a class="dropdown-toggle o-no-caret btn" role="button" data-toggle="dropdown"
+                                       data-display="static" href="#" aria-label="Dropdown menu" title="Dropdown menu">
+                                        <span class="fa fa-ellipsis-v"/>
+                                    </a>
+                                    <div class="dropdown-menu" role="menu">
+                                        <t t-if="widget.editable">
+                                            <a role="menuitem" type="edit" class="dropdown-item">Edit</a>
+                                        </t>
+                                        <t t-if="widget.deletable">
+                                            <a role="menuitem" type="delete" class="dropdown-item">Delete</a>
+                                        </t>
+                                        <ul class="oe_kanban_colorpicker" data-field="color"/>
+                                    </div>
+                                </div>
+                                <div class="oe_kanban_content">
+                                    <div>
+                                        <strong class="o_kanban_record_title">
+                                            <field name="name"/>
+                                        </strong>
+                                    </div>
+                                    <!--<div attrs="{'invisible': [('import_id', '=', [])]}">
+                                        Supplier:
+                                        <field name="import_id"/>
+                                    </div>-->
+                                    <div>Customer:
+                                        <field name="partner_id"/>
+                                    </div>
+                                    <div>Description:
+                                        <field name="description"/>
+                                    </div>
+                                    <div class="text-muted o_kanban_record_subtitle">
+                                        Date of Pickup:
+                                        <field name="pickup_schedule_date"/>
+                                    </div>
+                                    <!--                                    <div class="text-muted o_kanban_record_subtitle">-->
+                                    <!--                                        Estimated Arrival Date:-->
+                                    <!--                                        <field name="estimated_arrival_date" />-->
+                                    <!--                                    </div>-->
+                                    <div class="o_kanban_record_bottom">
+                                        <div class="oe_kanban_bottom_right">
+                                            <img t-att-src="kanban_image('res.users', 'image_1920', record.user_id.raw_value)"
+                                                 t-att-title="record.user_id.value"
+                                                 t-att-alt="record.user_id.value"
+                                                 class="oe_kanban_avatar"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="oe_clear"/>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_project_logistic_event_calendar_outbound">
+            <field name="name">freight.freight.calendar.outbound</field>
+            <field name="model">freight.freight</field>
+            <field eval="2" name="priority"/>
+            <field name="arch" type="xml">
+                <calendar date_start="pickup_schedule_date" string="All Day" mode="month" color="reference"
+                          event_limit="5">
+                    <field name="is_outbound" invisible="1"/>
+                    <field name="name"/>
+                    <field name="partner_id"/>
+                    <field name="pickup_schedule_date" attrs="{'invisible': [('is_outbound', '!=', True)]}"/>
+                </calendar>
+            </field>
+        </record>
+
+        <record id="freight_freights_outbound_action_tree_view" model="ir.ui.view">
+            <field name="name">freight.freights.action.tree.view</field>
+            <field name="model">freight.freight</field>
+            <field name="arch" type="xml">
+                <tree string="Transit" delete="false" decoration-warning="not is_remaining_qty">
+                    <field name="is_remaining_qty" invisible="1"/>
+                    <field name="name"/>
+                    <field name="sku_names"/>
+                    <field name="sku_total_qty"/>
+                    <field name="sku_total_number_of_pallets"/>
+                    <field name="load_id_number"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_freight_freight_obl_graph">
+            <field name="name">freight.freight.obl.graph</field>
+            <field name="model">freight.freight</field>
+            <field name="arch" type="xml">
+                <graph string="Freight Orders" sample="1">
+                    <field name="outbound_stage_id" string="Outbound" type="col"/>
+                </graph>
+            </field>
+        </record>
+
+        <record id="view_freight_freight_obl_pivot" model="ir.ui.view">
+            <field name="name">freight.freight.obl.pivot</field>
+            <field name="model">freight.freight</field>
+            <field name="arch" type="xml">
+                <pivot string="OBL Containers" sample="1">
+<!--                    <field name="partner_id" type="row"/>-->
+                    <field name="warehouse_id" type="row"/>
+                    <field name="outbound_stage_id" type="row"/>
+<!--                    <field name="cost_per_pallet" type="measure"/>-->
+                    <field name="total_line_qty" type="measure"/>
+                    <field name="number_of_pallets" type="measure"/>
+                    <field name="cost_per_piece" type="measure"/>
+                </pivot>
+            </field>
+        </record>
+
+        <record id="freight_obl_map_view" model="ir.ui.view">
+            <field name="name">freight.freight.view.obl.map</field>
+            <field name="model">freight.freight</field>
+            <field name="priority" eval="3"/>
+            <field name="arch" type="xml">
+                <map res_partner="outbound_partner_id" routing="1">
+                    <field name="outbound_partner_id" string="Customer"/>
+                    <field name="name" string="Reference"/>
+                </map>
+            </field>
+        </record>
+
+        <record id="menu_freight_freights_outbound_action" model="ir.actions.act_window">
+            <field name="name">OBL Containers</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">freight.freight</field>
+            <field name="view_mode">kanban,tree,form,search,calendar,graph,pivot,map</field>
+            <field name="context">{'is_outbound' : True}</field>
+            <field name="domain">[('is_outbound','=',True),('is_deleted','=',False)]</field>
+            <field name="view_ids"
+                   eval="[(5, 0, 0),
+                           (0, 0, {'view_mode': 'kanban', 'view_id': ref('warefor_3pl_tus.freight_freights_outbound_action_kanban_view')}),
+                           (0, 0, {'view_mode': 'tree', 'view_id': ref('warefor_3pl_tus.freight_freights_outbound_action_tree_view')}),
+                          (0, 0, {'view_mode': 'form', 'view_id': ref('warefor_3pl_tus.freight_freights_obl_form_view')}),
+                          (0, 0, {'view_mode': 'calendar', 'view_id': ref('warefor_3pl_tus.view_project_logistic_event_calendar_outbound')}),
+                          (0, 0, {'view_mode': 'graph', 'view_id': ref('warefor_3pl_tus.view_freight_freight_obl_graph')}),
+                          (0, 0, {'view_mode': 'pivot', 'view_id': ref('warefor_3pl_tus.view_freight_freight_obl_pivot')}),
+                          (0, 0, {'view_mode': 'map', 'view_id': ref('warefor_3pl_tus.freight_obl_map_view')}),
+                            ]"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                </p>
+                <p>
+                </p>
+            </field>
+        </record>
+
+        <record id="freight_obl_line_tree_view" model="ir.ui.view">
+            <field name="name">freight.freights.action.tree.view</field>
+            <field name="model">freight.order.line</field>
+            <field name="arch" type="xml">
+                <tree string="Outbound Logistics" delete="false" create="false">
+                    <button name="open_freight_record_obl" string="Open" type="object" class="btn-primary"/>
+                    <field name="customer_po" string="PO #"/>
+                    <field name="goods" string="SKU"/>
+                    <field name="product_description" string="Product"/>
+                    <field name="total_quantity"/>
+                    <field name="required_pallet"/>
+                    <field name="pickup_schedule_date" string="Pick-up Scheduled Date/Time" readonly="1"/>
+                    <field name="check_in_truck_yard" string="Check In" readonly="1"/>
+                    <field name="container_check_out_date" string="Check Out" readonly="1"/>
+                    <field name="loading_start_date" string="Loading Start Date" readonly="1"/>
+                    <field name="loading_end_date" string="Loading End Date" readonly="1"/>
+                    <field name="receiving_level_of_service" string="LOS" readonly="1"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="menu_freight_freights_obl_line_action" model="ir.actions.act_window">
+            <field name="name">OBL Products</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">freight.order.line</field>
+            <field name="view_mode">tree,form,search</field>
+            <field name="context">{'is_outbound' : True, 'is_ops_model': True}</field>
+            <field name="domain">[('is_outbound','=', True)]</field>
+            <field name="view_ids"
+                   eval="[(5, 0, 0),
+                          (0, 0, {'view_mode': 'tree', 'view_id': ref('warefor_3pl_tus.freight_obl_line_tree_view')}),
+                          (0, 0, {'view_mode': 'form', 'view_id': ref('warefor_3pl_tus.freight_order_line_form_view')}),
+                          ]"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                </p>
+                <p>
+                </p>
+            </field>
+        </record>
+
+        <record model="ir.actions.server" id="action_do_3_step_process_mutli_record">
+            <field name="name">Create Transfers</field>
+            <field name="model_id" ref="warefor_3pl_tus.model_freight_freight"/>
+            <field name="binding_model_id" ref="warefor_3pl_tus.model_freight_freight"/>
+            <field name="state">code</field>
+            <field name="binding_view_types">list</field>
+            <field name="code">
+if records:
+    action = records.do_3_step_process()
+            </field>
+        </record>
+
+        <!--***** ********************************* *****-->
+
+        <record id="quick_create_freight_freight_form" model="ir.ui.view">
+            <field name="name">quick.create.freight.form</field>
+            <field name="model">freight.freight</field>
+            <field name="arch" type="xml">
+                <form string="Transit">
+                    <group string="General">
+                        <field name="is_outbound" invisible="1"/>
+                        <field name="import_id"
+                               attrs="{'invisible': [('is_outbound', '=', True)]}"/>
+                        <field name="partner_id" string="Customer"
+                               attrs="{'invisible': [('is_outbound', '!=', True)]}"/>
+                        <field name="partner_id" string="Customer / Consignee"
+                               attrs="{'invisible': [('is_outbound', '=', True)]}"/>
+                        <field name="price_per_pound" attrs="{'invisible': [('is_outbound', '=', True)]}"/>
+                        <field name="description" attrs="{'invisible': [('is_outbound', '=', True)]}"/>
+                        <field name="reference"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record id="freight_order_line_search_view" model="ir.ui.view">
+            <field name="name">freight.order.line.search.view</field>
+            <field name="model">freight.order.line</field>
+            <field name="arch" type="xml">
+                <search string="Search Transit">
+                    <field name="goods"/>
+                    <field name="container_id"/>
+                    <field name="loading_end_date"/>
+                    <field name="product_description"/>
+                    <field name="warehouse_id"/>
+                    <field name="customer_po"/>
+                    <field name="freight_id"/>
+                    <!--                    <filter string="Today" name="check_in_container" domain="[('create_date','=', datetime.datetime.now())]"/>-->
+                    <filter string="Today" name="check_in_container"
+                            domain="[('create_date', '&gt;=', datetime.datetime.now().strftime('%Y-%m-%d 00:00:00')),('create_date', '&lt;=',datetime.datetime.now().strftime('%Y-%m-%d 23:59:59'))]"/>
+                    <filter string="This Month" name="current_months"
+                            domain="[('create_date','&lt;',(context_today()+relativedelta(months=1)).strftime('%%Y-%%m-01')), ('create_date','&gt;=',time.strftime('%%Y-%%m-01'))]"/>
+                    <filter string="Last Month" name="prev_months"
+                            domain="[('create_date','&gt;=',(context_today()-relativedelta(months=1)).strftime('%%Y-%%m-01')),('create_date','&lt;',time.strftime('%%Y-%%m-01'))]"/>
+                    <filter string="This Quarter" name="this_quarters"
+                            domain="[('create_date','&gt;=',(context_today()-relativedelta(months=3)).strftime('%%Y-%%m-01')),('create_date','&lt;',time.strftime('%%Y-%%m-01'))]"/>
+                    <separator/>
+                    <group expand="0" string="Group By">
+                        <filter string="Product" name="group_by_product" domain="[]" context="{'group_by': 'goods'}"/>
+                    </group>
+                    <separator/>
+                </search>
+            </field>
+        </record>
+
+        <record id="freight_freights_search_view" model="ir.ui.view">
+            <field name="name">freight.freights.action.search.view</field>
+            <field name="model">freight.freight</field>
+            <field name="arch" type="xml">
+                <search string="Search Transit">
+                    <field name="name"/>
+                    <field name="container_line_ids"/>
+                    <field name="warehouse_id"/>
+                    <field name="partner_id"/>
+                    <field name="import_id"/>
+                    <field name="create_date"/>
+                    <filter name="Archived" string="Archived" domain="[('active','=',False)]"/>
+                    <!--                    <filter string="Today" name="check_in_container" domain="[('check_in_truck_yard','=', datetime.datetime.now())]"/>-->
+                    <filter string="Today" name="check_in_container"
+                            domain="[('check_in_truck_yard', '&gt;=', datetime.datetime.now().strftime('%Y-%m-%d 00:00:00')),('check_in_truck_yard', '&lt;=',datetime.datetime.now().strftime('%Y-%m-%d 23:59:59'))]"/>
+                    <filter string="This Month" name="current_months"
+                            domain="[('create_date','&lt;',(context_today()+relativedelta(months=1)).strftime('%%Y-%%m-01')), ('create_date','&gt;=',time.strftime('%%Y-%%m-01'))]"/>
+                    <filter string="Last Month" name="prev_months"
+                            domain="[('create_date','&gt;=',(context_today()-relativedelta(months=1)).strftime('%%Y-%%m-01')),('create_date','&lt;',time.strftime('%%Y-%%m-01'))]"/>
+                    <filter string="This Quarter" name="this_quarters"
+                            domain="[('create_date','&gt;=',(context_today()-relativedelta(months=3)).strftime('%%Y-%%m-01')),('create_date','&lt;',time.strftime('%%Y-%%m-01'))]"/>
+                    <separator/>
+                    <filter string="Missing First Scan" name="missing_first_scan" domain="[('is_mfc_stage', '=', True)]"/>
+                    <filter string="Prime Records" name="prime_record" domain="[('is_prime_record', '=', True), ('active', 'in', [True, False])]"/>
+                    <filter string="Master Records" name="master_records" domain="[('is_master', '=', True)]"/>
+                    <filter string="Imported Records" name="imported_records"
+                            domain="[('is_imported_record', '=', True)]"/>
+                    <filter string="eCommerce Records" name="ecommerce_records"
+                            domain="[('fulfillment_method', '=', 'e-commerce')]"/>
+                    <filter string="Shipped" name="shipped"
+                            domain="[('outbound_stage_id.name', '=ilike', 'Shipped'), ('active', 'in',[True ,False])]"/>
+                    <filter string="Red Flags" name="red_flags" domain="[('is_red_flag', '=', True)]"/>
+                    <field name="is_remaining_qty"/>
+                    <filter string="Remaining Containers" name="remaining_container"
+                            domain="[('is_remaining_qty','=',False)]"/>
+                    <field name="load_id_number"/>
+                    <field name="reference"/>
+                    <field name="ship_from_partner_id"/>
+                    <field name="customer_po"/>
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.actions.server" id="generate_multi_record_invoice_action">
+            <field name="name">Generate Invoice</field>
+            <field name="model_id" ref="warefor_3pl_tus.model_freight_freight"/>
+            <field name="binding_model_id" ref="warefor_3pl_tus.model_freight_freight"/>
+            <field name="state">code</field>
+            <field name="code">action = records.action_generate_multi_record_invoice()</field>
+        </record>
+
+        <menuitem id="menu_freight_outbound_root" name="Outbound Logistics" sequence="10"
+                  web_icon="mc_freight_app,static/description/icon.png"/>
+
+        <menuitem id="menu_freight_freight_outbound" name="Outbound Logistics"
+                  parent="menu_freight_outbound_root" sequence="10"/>
+
+        <menuitem id="menu_freight_root"
+                  name="Inbound Logistics"
+                  sequence="10"
+                  action="menu_freight_freights_ibl_action"
+                  web_icon="mc_freight_app,static/description/icon.png"/>
+
+        <menuitem id="menu_freight_freight" name="Inbound Logistics" parent="menu_freight_root" sequence="10"/>
+
+        <menuitem id="menu_freight_freights"
+                  name="IBL Containers"
+                  parent="menu_freight_freight"
+                  action="menu_freight_freights_ibl_action"
+                  sequence="15"/>
+
+        <menuitem id="menu_freight_freights_ibl_lines"
+                  name="IBL Products"
+                  parent="menu_freight_freight"
+                  action="menu_freight_freights_ibl_line_action"
+                  sequence="20"/>
+
+        <menuitem id="menu_freight_stages"
+                  name="Stages"
+                  parent="menu_freight_freight"
+                  action="mc_freight_app.menu_freight_stages_action"
+                  groups="base.group_system"
+                  sequence="11"/>
+
+        <menuitem id="menu_freight_freights_outbound"
+                  name="OBL Containers"
+                  parent="menu_freight_freight_outbound"
+                  action="menu_freight_freights_outbound_action"
+                  sequence="10"/>
+
+        <menuitem id="menu_freight_freights_obl_lines"
+                  name="OBL Products"
+                  parent="menu_freight_freight_outbound"
+                  action="menu_freight_freights_obl_line_action"
+                  sequence="10"/>
+
+        <menuitem id="menu_freight_obl_stages"
+                  name="Stages"
+                  parent="menu_freight_freight_outbound"
+                  action="mc_freight_app.menu_freight_obl_stages_action"
+                  groups="base.group_system"
+                  sequence="11"/>
+
+        <!-- COnfiguration Menu -->
+
+        <menuitem id="menu_freight_configuration" groups="base.group_system" name="Configuration" parent="menu_freight_root" sequence="11000"/>
+
+        <menuitem id="menu_freight_import"
+                  name="Import"
+                  parent="menu_freight_configuration"
+                  action="mc_freight_app.freight_import_action"
+                  sequence="1"/>
+
+        <menuitem id="menu_freight_port"
+                  name="Port"
+                  parent="menu_freight_configuration"
+                  action="mc_freight_app.freight_port_action_id"
+                  sequence="2"/>
+
+        <!--        <menuitem id="menu_action_inventory_counting_form"-->
+        <!--                  name="Inventory Counting"-->
+        <!--                  parent="stock.menu_stock_warehouse_mgmt"-->
+        <!--                  action="stock.action_inventory_form"-->
+        <!--                  sequence="32"/>-->
+
+    </data>
+</odoo>

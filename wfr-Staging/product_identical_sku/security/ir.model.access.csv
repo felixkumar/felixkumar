@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_identical_sku,access_identical_sku,model_identical_sku,product_identical_sku.group_sku_mapping_employee,0,0,0,0
+access_identical_sku,access_identical_sku,model_identical_sku,product_identical_sku.group_sku_mapping_manager,1,1,1,1
+access_identical_sku_locations,access_identical_sku_locations,model_identical_sku_locations,product_identical_sku.group_sku_mapping_manager,1,1,1,1

@@ -1,0 +1,11 @@
+.business-appointment-kanban { flex-flow: row nowrap !important }
+.business-appointment-kanban-box { flex: 1 0 auto !important }
+.business-appointment-kanban-content {
+    display: block !important;
+
+    .business-appointment-kanban-header {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+    .business-appointment-kanban-details { text-align: right !important }
+}

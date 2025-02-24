@@ -1,0 +1,132 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* merge_invoice_wfr
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-10-17 09:50+0000\n"
+"PO-Revision-Date: 2020-10-17 09:50+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: merge_invoice_wfr
+#: model_terms:ir.ui.view,arch_db:merge_invoice_wfr.merge_invoice_wfr_wizard_form
+msgid "Cancel"
+msgstr "Annulla"
+
+#. module: merge_invoice_wfr
+#: model:ir.model.fields.selection,name:merge_invoice_wfr.selection__sh_minv_merge_invoice_wizard__merge_type__cancel
+msgid "Cancel Other Invoices"
+msgstr "Annulla altre fatture"
+
+#. module: merge_invoice_wfr
+#: model:ir.model.fields,field_description:merge_invoice_wfr.field_sh_minv_merge_invoice_wizard__create_uid
+msgid "Created by"
+msgstr "Creato da"
+
+#. module: merge_invoice_wfr
+#: model:ir.model.fields,field_description:merge_invoice_wfr.field_sh_minv_merge_invoice_wizard__create_date
+msgid "Created on"
+msgstr "Creato"
+
+#. module: merge_invoice_wfr
+#: model:ir.model.fields,field_description:merge_invoice_wfr.field_sh_minv_merge_invoice_wizard__partner_id
+msgid "Customer"
+msgstr "Cliente"
+
+#. module: merge_invoice_wfr
+#: model:ir.model.fields,field_description:merge_invoice_wfr.field_sh_minv_merge_invoice_wizard__display_name
+msgid "Display Name"
+msgstr "Nome da visualizzare"
+
+#. module: merge_invoice_wfr
+#: model:ir.model.fields.selection,name:merge_invoice_wfr.selection__sh_minv_merge_invoice_wizard__merge_type__nothing
+msgid "Do Nothing"
+msgstr "Fare niente"
+
+#. module: merge_invoice_wfr
+#: model:ir.model.fields,field_description:merge_invoice_wfr.field_sh_minv_merge_invoice_wizard__id
+msgid "ID"
+msgstr "ID"
+
+#. module: merge_invoice_wfr
+#: model:ir.model.fields,field_description:merge_invoice_wfr.field_sh_minv_merge_invoice_wizard__invoice_id
+msgid "Invoice"
+msgstr "Fattura"
+
+#. module: merge_invoice_wfr
+#: model:ir.model.fields,field_description:merge_invoice_wfr.field_sh_minv_merge_invoice_wizard__inv_type
+msgid "Invoice Type"
+msgstr "Tipo di fattura"
+
+#. module: merge_invoice_wfr
+#: model:ir.model.fields,field_description:merge_invoice_wfr.field_sh_minv_merge_invoice_wizard__invoice_ids
+msgid "Invoices"
+msgstr "Fatture"
+
+#. module: merge_invoice_wfr
+#: model:ir.model.fields,field_description:merge_invoice_wfr.field_sh_minv_merge_invoice_wizard____last_update
+msgid "Last Modified on"
+msgstr "Ultima modifica il"
+
+#. module: merge_invoice_wfr
+#: model:ir.model.fields,field_description:merge_invoice_wfr.field_sh_minv_merge_invoice_wizard__write_uid
+msgid "Last Updated by"
+msgstr "Ultimo aggiornamento di"
+
+#. module: merge_invoice_wfr
+#: model:ir.model.fields,field_description:merge_invoice_wfr.field_sh_minv_merge_invoice_wizard__write_date
+msgid "Last Updated on"
+msgstr "Ultimo aggiornamento il"
+
+#. module: merge_invoice_wfr
+#: model_terms:ir.ui.view,arch_db:merge_invoice_wfr.merge_invoice_wfr_wizard_form
+msgid "Merge"
+msgstr "Unisci"
+
+#. module: merge_invoice_wfr
+#: model:ir.model,name:merge_invoice_wfr.model_sh_minv_merge_invoice_wizard
+msgid "Merge Invoice Wizard"
+msgstr "Unione guidata fattura In"
+
+#. module: merge_invoice_wfr
+#: model:ir.actions.act_window,name:merge_invoice_wfr.merge_invoice_wfr_multi_action
+#: model_terms:ir.ui.view,arch_db:merge_invoice_wfr.merge_invoice_wfr_wizard_form
+msgid "Merge Invoices"
+msgstr "Unisci fatture"
+
+#. module: merge_invoice_wfr
+#: model:ir.model.fields,field_description:merge_invoice_wfr.field_sh_minv_merge_invoice_wizard__merge_type
+msgid "Merge Type"
+msgstr "Tipo di unione"
+
+#. module: merge_invoice_wfr
+#: code:addons/merge_invoice_wfr/wizard/merge_invoice.py:0
+#, python-format
+msgid "Please Select atleast two invoices to perform merge operation."
+msgstr "Seleziona almeno due fatture per eseguire l'operazione di unione."
+
+#. module: merge_invoice_wfr
+#: code:addons/merge_invoice_wfr/wizard/merge_invoice.py:0
+#, python-format
+msgid ""
+"Programming error: wizard action executed without active_ids in context."
+msgstr ""
+"Errore di programmazione: azione guidata eseguita senza active_ids nel contesto."
+
+#. module: merge_invoice_wfr
+#: model:ir.model.fields.selection,name:merge_invoice_wfr.selection__sh_minv_merge_invoice_wizard__merge_type__remove
+msgid "Remove Other Invoices"
+msgstr "Rimuovi altre fatture"
+
+#. module: merge_invoice_wfr
+#: code:addons/merge_invoice_wfr/wizard/merge_invoice.py:0
+#, python-format
+msgid "You can only merge invoices which are in draft state"
+msgstr "Puoi unire solo le fatture che sono in stato di bozza"

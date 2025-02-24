@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="form_view_vendor_dba" model="ir.ui.view">
+            <field name="name">vendor.dba.form.view</field>
+            <field name="model">vendor.dba</field>
+            <field name="arch" type="xml">
+                <form string="DBA">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="tree_view_vendor_dba" model="ir.ui.view">
+            <field name="name">vendor.dba.tree.view</field>
+            <field name="model">vendor.dba</field>
+            <field name="arch" type="xml">
+                <tree editable="bottom" string="DBA">
+                   <field name="name"/>
+                </tree>
+            </field>
+        </record>
+        <record id="action_view_vendor_dba" model="ir.actions.act_window">
+            <field name="name">Vendor DBA</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">vendor.dba</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+     <menuitem
+            parent="account.menu_finance_configuration"
+            id="menu_vendor_dba"
+            action="action_view_vendor_dba"/>
+
+    </data>
+</odoo>

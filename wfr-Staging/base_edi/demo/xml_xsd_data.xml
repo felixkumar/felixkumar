@@ -1,0 +1,44 @@
+<odoo>
+    <record id="test_xsd" model="xml.xsd">
+        <field name="name">Test</field>
+    </record>
+
+    <record id="test_xsd_line_products" model="xml.xsd.line">
+        <field name="xsd_id" ref="base_edi.test_xsd"/>
+        <field name="path">Products</field>
+        <field name="min_occur">1</field>
+        <field name="max_occur">1</field>
+        <field name="type">complex</field>
+        <field name="sequence">1</field>
+    </record>
+
+    <record id="test_xsd_line_product" model="xml.xsd.line">
+        <field name="xsd_id" ref="base_edi.test_xsd"/>
+        <field name="parent_id" ref="base_edi.test_xsd_line_products"/>
+        <field name="path">Product</field>
+        <field name="min_occur">1</field>
+        <field name="max_occur">-1</field>
+        <field name="type">complex</field>
+        <field name="sequence">2</field>
+    </record>
+
+    <record id="test_xsd_line_product_name" model="xml.xsd.line">
+        <field name="xsd_id" ref="base_edi.test_xsd"/>
+        <field name="parent_id" ref="base_edi.test_xsd_line_product"/>
+        <field name="path">Name</field>
+        <field name="min_occur">1</field>
+        <field name="max_occur">-1</field>
+        <field name="type">string</field>
+        <field name="sequence">3</field>
+    </record>
+
+    <record id="test_xsd_line_product_price" model="xml.xsd.line">
+        <field name="xsd_id" ref="base_edi.test_xsd"/>
+        <field name="parent_id" ref="base_edi.test_xsd_line_product"/>
+        <field name="path">Cost</field>
+        <field name="min_occur">1</field>
+        <field name="max_occur">-1</field>
+        <field name="type">string</field>
+        <field name="sequence">4</field>
+    </record>
+</odoo>

@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="group_ba_resource_calendar" model="res.groups">
+        <field name="name">Manage Resource Calendars and All Leaves</field>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+    </record>
+    <record id="module_category_business_appointment" model="ir.module.category">
+        <field name="name">Business Appointments</field>
+        <field name="sequence">20</field>
+        <field name="parent_id" ref="base.module_category_services"/>
+    </record>
+    <record id="group_ba_user" model="res.groups">
+        <field name="name">Appointments: Only Own</field>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        <field name="category_id" ref="business_appointment.module_category_business_appointment"/>
+    </record>
+    <record id="group_ba_admin" model="res.groups">
+        <field name="name">Appointments: Administrator</field>
+        <field name="implied_ids" eval="[(4, ref('business_appointment.group_ba_user')), (4, ref('business_appointment.group_ba_resource_calendar'))]"/>
+        <field name="category_id" ref="business_appointment.module_category_business_appointment"/>
+        <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+    </record>
+    <record id="group_business_appointment_rating" model="res.groups">
+        <field name="name">Rating for Business Appointments</field>
+        <field name="category_id" ref="base.module_category_hidden"/>
+    </record>
+    <record id="group_business_appointment_video_calls" model="res.groups">
+        <field name="name">Video calls for Business Appointments</field>
+        <field name="category_id" ref="base.module_category_hidden"/>
+    </record>
+
+    <data noupdate="0">
+        <!-- All resource leaves for group_ba_resource_calendar -->
+        <record model="ir.rule" id="resource_calendar_leaves_group_ba_resource_calendar">
+            <field name="name">Resource calendar leaves: all</field>
+            <field name="model_id" ref="resource.model_resource_calendar_leaves"/>
+            <field name="groups" eval="[(4, ref('business_appointment.group_ba_resource_calendar'))]"/>
+            <field name="domain_force">[(1, '=', 1)]</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+        <!-- Business Resource Types-->
+        <record id="business_resource_type_user" model="ir.rule">
+            <field name="name">Appointments Users - Business.Resource.Type - Read Own</field>
+            <field name="model_id" ref="business_appointment.model_business_resource_type"/>
+            <field name="domain_force">[
+                "|",
+                    ("company_id","=", False),
+                    ("company_id", "in", company_ids),
+            ]</field>
+            <field name="groups" eval="[(4, ref('business_appointment.group_ba_user'))]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+        <!-- Business Resources -->
+        <record id="business_resource_user" model="ir.rule">
+            <field name="name">Appointments Users - Business.Resource - Read Own</field>
+            <field name="model_id" ref="business_appointment.model_business_resource"/>
+            <field name="domain_force">[
+                "&amp;",
+                    "|", "|", "|",
+                        ("info_info_user_id", "=", user.id),
+                        ("info_info_user_id", "=", False),
+                        ("extra_user_ids", "=", user.id),
+                        ("message_partner_ids", "in", user.partner_id.ids),
+                    "|",
+                        ("company_id","=", False),
+                        ("company_id", "in", company_ids),
+            ]</field>
+            <field name="groups" eval="[(4, ref('business_appointment.group_ba_user'))]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+        <record id="business_resource_user_edit" model="ir.rule">
+            <field name="name">Appointments Users - Business.Resource - Update Own</field>
+            <field name="model_id" ref="business_appointment.model_business_resource"/>
+            <field name="domain_force">[
+                "&amp;",
+                    "|", "|",
+                        ("info_info_user_id", "=", user.id),
+                        ("info_info_user_id", "=", False),
+                        ("extra_user_ids", "=", user.id),
+                    "|",
+                        ("company_id","=", False),
+                        ("company_id", "in", company_ids),
+            ]</field>
+            <field name="groups" eval="[(4, ref('business_appointment.group_ba_user'))]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+        <record id="business_resource_admin" model="ir.rule">
+            <field name="name">Appointments Admins - Business.Resource - Full Rights</field>
+            <field name="model_id" ref="business_appointment.model_business_resource"/>
+            <field name="domain_force">[
+                "|",
+                    ("company_id","=", False),
+                    ("company_id", "in", company_ids),
+            ]</field>
+            <field name="groups" eval="[(4, ref('business_appointment.group_ba_admin'))]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+        <!-- Services -->
+        <record id="business_appointment_product_user" model="ir.rule">
+            <field name="name">Appointments Users - Appointment.Product - Multi Company</field>
+            <field name="model_id" ref="business_appointment.model_appointment_product"/>
+            <field name="domain_force">[
+                "|",
+                    ("company_id","=", False),
+                    ("company_id", "in", company_ids),
+            ]</field>
+            <field name="groups" eval="[(4, ref('business_appointment.group_ba_user'))]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+        <!-- Pre-reservations -->
+        <record id="business_appointment_core_user" model="ir.rule">
+            <field name="name">Appointments Users - Reservations - Update Own</field>
+            <field name="model_id" ref="business_appointment.model_business_appointment_core"/>
+            <field name="domain_force">[
+                "|", "|",
+                    ("user_id", "=", user.id),
+                    ("user_id", "=", False),
+                    ("resource_id.extra_user_ids", "=", user.id),
+                "|",
+                    ("company_id","=", False),
+                    ("company_id", "in", company_ids),
+            ]</field>
+            <field name="groups" eval="[(4, ref('business_appointment.group_ba_user'))]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+        <record id="business_appointment_core_admin" model="ir.rule">
+            <field name="name">Appointments Admins - Reservations - Full Rights</field>
+            <field name="model_id" ref="business_appointment.model_business_appointment_core"/>
+            <field name="domain_force">[
+                "|",
+                    ("company_id","=", False),
+                    ("company_id", "in", company_ids),
+            ]</field>
+            <field name="groups" eval="[(4, ref('business_appointment.group_ba_admin'))]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+        <!-- Appointments -->
+        <record id="business_appointment_followers" model="ir.rule">
+            <field name="name">Appointments Followers - Appointments - Read Followed</field>
+            <field name="model_id" ref="business_appointment.model_business_appointment"/>
+            <field name="domain_force">[
+                "&amp;",
+                    "|", "|", "|", "|",
+                        ("user_id", "=", user.id),
+                        ("user_id", "=", False),
+                        ("resource_id.extra_user_ids", "=", user.id),
+                        ("message_partner_ids", "in", user.partner_id.ids),
+                        ("resource_id.message_partner_ids", "in", user.partner_id.ids),
+                    "|",
+                        ("company_id","=", False),
+                        ("company_id", "in", company_ids),
+            ]</field>
+            <field name="groups" eval="[(4, ref('business_appointment.group_ba_user'))]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+        <record id="business_appointment_user" model="ir.rule">
+            <field name="name">Appointments Users - Appointments - Update Own</field>
+            <field name="model_id" ref="business_appointment.model_business_appointment"/>
+            <field name="domain_force">[
+                "|", "|",
+                    ("user_id", "=", user.id),
+                    ("user_id", "=", False),
+                    ("resource_id.extra_user_ids", "=", user.id),
+                "|",
+                    ("company_id","=", False),
+                    ("company_id", "in", company_ids),
+            ]</field>
+            <field name="groups" eval="[(4, ref('business_appointment.group_ba_user'))]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+        <record id="business_appointment_admin" model="ir.rule">
+            <field name="name">Appointments Admins - Appointments - Full Rights</field>
+            <field name="model_id" ref="business_appointment.model_business_appointment"/>
+            <field name="domain_force">[
+                "|",
+                    ("company_id","=", False),
+                    ("company_id", "in", company_ids),
+            ]</field>
+            <field name="groups" eval="[(4, ref('business_appointment.group_ba_admin'))]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+        <record id="business_appointment_sms_template_user" model="ir.rule">
+            <field name="name">SMS Template: Appointments</field>
+            <field name="model_id" ref="sms.model_sms_template"/>
+            <field name="groups" eval="[(4, ref('business_appointment.group_ba_user'))]"/>
+            <field name="domain_force">[(1, "=", 1)]</field>
+        </record>
+    </data>
+
+</odoo>

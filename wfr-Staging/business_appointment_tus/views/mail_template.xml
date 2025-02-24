@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="email_template_successful_appointment_tus" model="mail.template">
+            <field name="name">Appointments: Confirm Email</field>
+            <field name="model_id" ref="business_appointment.model_business_appointment"/>
+            <field name="subject">Confirmation of Pickup/Drop off for Load Id ${object.x_oz_cbaf_3.name or ''}</field>
+            <field name="body_html" type="html">
+                <table border="0" cellpadding="0" cellspacing="0"
+                       style="padding-top:16px;background-color: #F1F1F1; font-family:Verdana, Arial,sans-serif; color: #454748; width: 100%; border-collapse:separate;">
+                    <tbody>
+                        <tr>
+                            <td align="center">
+                                <table border="0" cellpadding="0" cellspacing="0" width="590"
+                                       style="padding:16px;background-color: white; color: #454748; border-collapse:separate;">
+                                    <tbody>
+                                        <tr>
+                                            <td align="center" style="min-width:590px;">
+                                                <table border="0" cellpadding="0" cellspacing="0" width="590"
+                                                       style="min-width:590px;background-color: white; padding: 0px 8px 0px 8px; border-collapse:separate;">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td valign="middle" align="right">
+                                                                <img src="${ctx['base_url']}/logo.png?}"
+                                                                     style="padding:0px;margin: 0px; height: auto; width: 80px;"/>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td colspan="2" style="text-align:center;">
+                                                                <hr width="100%"
+                                                                    style="background-color:rgb(204,204,204);border:medium none;clear:both;display:block;font-size:0px;min-height:1px;line-height:0; margin:16px 0px 16px 0px;"/>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="center" style="min-width:590px;">
+                                                <table border="0" cellpadding="0" cellspacing="0" width="590"
+                                                       style="min-width:590px;background-color: white; padding: 0px 8px 0px 8px; border-collapse:separate;">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td valign="top" style="font-size:13px;">
+                                                                <div>
+                                                                    Hello
+                                                                    % if object.partner_id:
+                                                                    ${object.partner_id.name},
+                                                                    % else:
+                                                                    ${object.contact_name},
+                                                                    % endif
+                                                                    <br/>
+                                                                    Thank you!
+                                                                    % if ctx["reshedule"]:
+                                                                    Your appointment is re-scheduled:
+                                                                    % else:
+                                                                    Your appointment is scheduled:
+                                                                    % endif
+                                                                    <br/>
+                                                                    <ul>
+                                                                        <li>Reference: ${object.x_oz_cbaf_3.name or ''}
+                                                                        </li>
+                                                                        <li>Scheduled Time:
+                                                                            ${object.return_scheduled_time_tz(True) or ''}
+                                                                        </li>
+                                                                        <li>Service: ${object.service_id.name or ''}
+                                                                        </li>
+                                                                        % if object.resource_id.location or object.service_id.location:
+                                                                        <li>Location:
+                                                                            ${object.service_id.location or object.resource_id.location or ''}
+                                                                        </li>
+                                                                        % endif
+                                                                    </ul>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td valign="top" style="font-size:13px;">
+                                                                <div>
+                                                                    <b><u>Please Note: For pickups, Warefor Logistics can only load:</u></b>
+                                                                    <br/>
+                                                                    <ul>
+                                                                        <li>Swing door dry van</li>
+                                                                        <li>Curtain side flatbed</li>
+                                                                        <li>Flatbed trailers</li>
+                                                                        <li>Containers</li>
+                                                                    </ul>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="text-align:center;">
+                                                                <hr width="100%"
+                                                                    style="background-color:rgb(204,204,204);border:medium none;clear:both;display:block;font-size:0px;min-height:1px;line-height:0; margin: 16px 0px 16px 0px;"/>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </field>
+            <field name="auto_delete" eval="True"/>
+        </record>
+    </data>
+</odoo>

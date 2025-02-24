@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="product_category_report_form_aging_inherit_ext" model="ir.ui.view">
+        <field name="name">product.category.report.form.aging.inherit</field>
+        <field name="model">product.category</field>
+        <field name="inherit_id" ref="product.product_category_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='parent_id']" position="after">
+                <field name="is_use_on_aging_report"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

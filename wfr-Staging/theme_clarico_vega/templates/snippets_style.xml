@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+<!--========================== categories 1 =========================-->
+    <template id="dynamic_filter_template_product_public_category_style_1" name="Category Style 1">
+            <t t-foreach="records" t-as="data" data-number-of-elements="6" data-number-of-elements-sm="2">
+            <t t-set="category" t-value="data['_record']"/>
+            <div class="te_category_item item">
+<!--                <t t-set="page_url" t-value="'/shop/category/%s'%slug(category)"/>-->
+                <t t-set="page_url" t-value="'/shop/category/%s' % category.id"/>
+                <a t-att-href="page_url">
+                    <div class="te_category_img t_img_hover_1 te_img_effect2">
+                        <t t-if="website.is_lazy_load">
+                            <img t-attf-data-src="/web/image/product.public.category/#{category.id}/image_128"
+                                 t-attf-src="/web/image/website/#{website.id}/lazy_load_image"
+                                 t-attf-class="img img-fluid lazyload" t-att-alt="category.name"/>
+                        </t>
+                        <t t-else="">
+                            <img t-att-alt="category.name" t-attf-src="/web/image/product.public.category/#{category.id}/image_128"/>
+                        </t>
+                    </div>
+                    <span class="te_category_name" t-esc="category.name"/>
+                </a>
+            </div>
+        </t>
+    </template>
+<!--========================== categories 2 =========================-->
+    <template id="dynamic_filter_template_product_public_category_style_2" name="Category Style 2">
+        <t t-foreach="records" t-as="data" data-number-of-elements="6" data-number-of-elements-sm="2">
+            <t t-set="category" t-value="data['_record']"/>
+            <div class="te_category_item item">
+<!--                <t t-set="page_url" t-value="'/shop/category/%s'%slug(category)"/>-->
+                <t t-set="page_url" t-value="'/shop/category/%s' % category.id"/>
+                <a t-att-href="page_url">
+                    <t t-if="website.is_lazy_load">
+                        <img t-attf-data-src="/web/image/product.public.category/#{category.id}/image_128"
+                             t-attf-src="/web/image/website/#{website.id}/lazy_load_image"
+                             t-attf-class="img img-fluid lazyload" t-att-alt="category.name"/>
+                    </t>
+                    <t t-else="">
+                        <img t-att-alt="category.name" t-attf-src="/web/image/product.public.category/#{category.id}/image_128"/>
+                    </t>
+                    <span class="te_category_name" t-esc="category.name"/>
+                </a>
+            </div>
+        </t>
+    </template>
+<!--========================== categories 3 =========================-->
+    <template id="dynamic_filter_template_product_public_category_styles_3" name="Category Style 3">
+        <t t-foreach="records" t-as="data" data-number-of-elements="6" data-number-of-elements-sm="2">
+            <t t-set="category" t-value="data['_record']"/>
+            <div class="te_category_item item">
+<!--                <t t-set="page_url" t-value="'/shop/category/%s'%slug(category)"/>-->
+                <t t-set="page_url" t-value="'/shop/category/%s' % category.id"/>
+                <a t-att-href="page_url">
+                    <t t-if="website.is_lazy_load">
+                        <img t-attf-data-src="/web/image/product.public.category/#{category.id}/image_128"
+                             t-attf-src="/web/image/website/#{website.id}/lazy_load_image"
+                             t-attf-class="img img-fluid lazyload" t-att-alt="category.name"/>
+                    </t>
+                    <t t-else="">
+                        <img t-att-alt="category.name" t-attf-src="/web/image/product.public.category/#{category.id}/image_128"/>
+                    </t>
+                    <span class="te_category_name" t-esc="category.name"/>
+                </a>
+            </div>
+        </t>
+    </template>
+
+    <!--==================== Brand Slider Style 1 ===================-->
+    <template id="dynamic_filter_template_product_brand_style_1" name="Brand Style 1">
+        <t t-foreach="records" t-as="data" data-number-of-elements="6" data-number-of-elements-sm="2">
+            <t t-set="brand" t-value="data['_record']"/>
+            <div class="item te_brand_img">
+                <a t-attf-href="/shop/brands/#{brand.id}"  class="brand_link">
+                    <span class="brand_image text-center mx-auto">
+                        <t t-if="website.is_lazy_load">
+                            <img t-attf-data-src="/web/image/product.brand/#{brand.id}/logo/90x90"
+                                 t-attf-src="/web/image/website/#{website.id}/lazy_load_image"
+                                 t-attf-class="img img-fluid lazyload" t-att-alt="brand.name"/>
+                        </t>
+                        <t t-else="">
+                            <img t-attf-src="/web/image/product.brand/#{brand.id}/logo/90x90" t-att-alt="brand.name"/>
+                        </t>
+                    </span>
+                    <div class="brand_name text-center" t-esc="brand.name"/>
+                        <t t-set="show_product_count" t-value="(request.website.viewref('emipro_theme_base.show_product_count').active)"/>
+                        <t t-if="show_product_count">
+                            <div class="product_count text-center">
+                                <span t-esc="len(brand.product_ids)"/>
+                                Products
+                            </div>
+                        </t>
+                </a>
+            </div>
+        </t>
+    </template>
+    <!--==================== Brand Slider Style 2 ===================-->
+    <template id="dynamic_filter_template_product_brand_style_2" name="Brand Style 2">
+        <t t-foreach="records" t-as="data" data-number-of-elements="6" data-number-of-elements-sm="2">
+            <t t-set="brand" t-value="data['_record']"/>
+            <div class="item te_brand_img">
+                <a t-attf-href="/shop/brands/#{brand.id}"  class="brand_link">
+                    <span class="brand_image text-center mx-auto">
+                        <t t-if="website.is_lazy_load">
+                            <img t-attf-data-src="/web/image/product.brand/#{brand.id}/logo/90x90"
+                                 t-attf-src="/web/image/website/#{website.id}/lazy_load_image"
+                                 t-attf-class="img img-fluid lazyload" t-att-alt="brand.name"/>
+                        </t>
+                        <t t-else="">
+                            <img t-attf-src="/web/image/product.brand/#{brand.id}/logo/90x90" t-att-alt="brand.name"/>
+                        </t>
+                    </span>
+                    <div class="brand-content clearfix">
+                    <div class="brand_name " t-esc="brand.name"/>
+                        <t t-set="show_product_count" t-value="(request.website.viewref('emipro_theme_base.show_product_count').active)"/>
+                        <t t-if="show_product_count">
+                            <div class="product_count text-center">
+                                <span t-esc="len(brand.product_ids)"/>
+                                Products
+                            </div>
+                        </t>
+                    </div>
+                </a>
+            </div>
+        </t>
+    </template>
+
+    <!--==================== Brand Slider Style 3 ===================-->
+    <template id="dynamic_filter_template_product_brand_style_3" name="Brand Style 3">
+        <t t-foreach="records" t-as="data" data-number-of-elements="6" data-row-per-slide="3" data-number-of-elements-sm="3">
+        <t t-set="brand" t-value="data['_record']"/>
+            <section class="brand_slider_3 te_brand_slider slider_body o_not_editable">
+                <div class="container">
+                    <section class="te_brand_slider_3">
+                       <div class="item te_brand_img">
+                            <a t-attf-href="/shop/brands/#{brand.id}"  class="brand_link">
+                                <span class="brand_image text-center mx-auto t_img_hover_1 te_img_effect2">
+                                    <t t-if="website.is_lazy_load">
+                                        <img t-attf-data-src="/web/image/product.brand/#{brand.id}/logo/90x90"
+                                             t-attf-src="/web/image/website/#{website.id}/lazy_load_image"
+                                             t-attf-class="img img-fluid lazyload " t-att-alt="brand.name"/>
+                                    </t>
+                                    <t t-else="">
+                                        <img t-attf-src="/web/image/product.brand/#{brand.id}/logo/90x90" t-att-alt="brand.name"/>
+                                    </t>
+                                </span>
+                            </a>
+                       </div>
+                    </section>
+                </div>
+            </section>
+        </t>
+    </template>
+</odoo>

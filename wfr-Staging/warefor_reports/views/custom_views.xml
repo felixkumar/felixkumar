@@ -1,0 +1,184 @@
+<odoo>
+    <data>
+                <record id="res_partner_view_custom" model="ir.ui.view">
+                    <field name="name">res.partner.custom</field>
+                    <field name="model">res.partner</field>
+                    <field name="inherit_id" ref="base.view_partner_form"/>
+                    <field name="arch" type="xml">
+                        <xpath expr="//field[@name='vat']" position="after">
+                            <field name="final_destination_code"/>
+                        </xpath>
+                    </field>
+                </record>
+
+        <record id="freight_order_line_form_view_inherit" model="ir.ui.view">
+            <field name="name">freight.order.inherit</field>
+            <field name="model">freight.freight</field>
+            <field name="inherit_id" ref="warefor_3pl_tus.freight_freights_obl_form_view"/>
+            <field name="arch" type="xml">
+                <!--                <header>-->
+                <!--                    <button name="generate_sscc_18" string="Generate SSCC-18 Barcode Number"-->
+                <!--                            type="object" class="btn-primary"-->
+                <!--                            style="font-size: 14px; padding: 10px 20px;"/>-->
+                <!--                    <button name="unlink_records" string="Delete Records" type="object" class="btn-primary"-->
+                <!--                            style="font-size: 14px; padding: 10px 20px;"/>-->
+
+
+                <!--                </header>-->
+                <xpath expr="//field[@name='required_pallet']" position="after">
+                    <field name="pallet_type" readonly="1" force_save="1"/>
+                    <field name="sub_pallet" readonly="1" force_save="1"/>
+                    <field name="sscc_18_char" readonly="1" force_save="1"/>
+                </xpath>
+                <xpath expr="//field[@name='freight_order_line_ids']/tree/field[@name='total_pallet']" position="after">
+                    <field name="is_processed" invisible="1"/>
+                </xpath>
+                <xpath expr="//page[@name='delivery_history']" position="after">
+                    <page name="shipping_document_line" string="Shipping Documents" attrs="{'invisible':[('fulfillment_method','!=','bulk_orders')]}">
+                        <field name="shipping_document_line_ids" readonly="1">
+                            <tree editable="bottom">
+                                <field name="report_name"/>
+                                <field name="attachment_id"  widget="dow"/>
+                                <button name="regenerate_document" string="Generate PDF" type="object"
+                                        class="oe_highlight" attrs="{'invisible': [('report_name', 'ilike', 'House_Bill_Of_Lading')]}"/>
+                            </tree>
+                        </field>
+                        <group>
+                            <group>
+                                <field name="scac" string="SCAC"/>
+                                <field name="po_type" string="PO Type"/>
+                                <field name="department" string="Department"/>
+                                <field name="event_code" string="Event Code"/>
+                                <field name="commodity_desc_note" string="Commodity Description"/>
+                                <field name="final_destination" string="Final Destination"/>
+                                <field name="final_destination_code" string="Final Destination Code"/>
+                            </group>
+                            <group>
+                                <field name="ltl_nmfc" string="NMFC"/>
+                                <field name="ltl_class" string="Class"/>
+                                <field name="type" string="Type"/>
+                                <field name="gdc" string="GDC"/>
+                                <field name="shipping_point" string="Shipping Point"/>
+                            </group>
+                        </group>
+                    </page>
+                    <page name="actual_req_items" string="Requested Items Summary">
+                         <field name="actual_req_items" readonly="1">
+                             <tree>
+                                 <field name="product_id" string="Item"/>
+                                 <field name="quantity" string="Qty"/>
+                                 <field name="case_qty" string="Case Qty"/>
+                             </tree>
+                         </field>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="warefor_3pl_tus_freight_freights_obl_form_view_inherit_action" model="ir.actions.server">
+            <field name="name">Print Shipping Documents</field>
+            <field name="model_id" ref="warefor_3pl_tus.model_freight_freight"/>
+            <field name="binding_model_id" ref="warefor_3pl_tus.model_freight_freight"/>
+            <field name="binding_view_types">form</field>
+            <field name="state">code</field>
+            <field name="code">
+                action = records.action_download_pdfs()
+            </field>
+        </record>
+
+        <record id="warefor_3pl_tus_freight_freights_obl_form_view_inherit_action_shipment_manifest"
+                model="ir.actions.server">
+            <field name="name">Shipment Manifest</field>
+            <field name="model_id" ref="warefor_3pl_tus.model_freight_freight"/>
+            <field name="binding_model_id" ref="warefor_3pl_tus.model_freight_freight"/>
+            <field name="binding_view_types">form</field>
+            <field name="state">code</field>
+            <field name="code">
+                action = records.shipment_manifest()
+            </field>
+        </record>
+
+<!--        <record id="warefor_3pl_tus_freight_freights_obl_form_view_inherit_action_house_bill_of_lading"-->
+<!--                model="ir.actions.server">-->
+<!--            <field name="name">House Bill of Lading</field>-->
+<!--            <field name="model_id" ref="warefor_3pl_tus.model_freight_freight"/>-->
+<!--            <field name="binding_model_id" ref="warefor_3pl_tus.model_freight_freight"/>-->
+<!--            <field name="binding_view_types">form</field>-->
+<!--            <field name="state">code</field>-->
+<!--            <field name="code">-->
+<!--                action = records.house_bill_of_lading()-->
+<!--            </field>-->
+<!--        </record>-->
+
+        <record id="warefor_3pl_tus_freight_freights_obl_form_view_inherit_action_loaded_with_pride"
+                model="ir.actions.server">
+            <field name="name">Loaded With Pride</field>
+            <field name="model_id" ref="warefor_3pl_tus.model_freight_freight"/>
+            <field name="binding_model_id" ref="warefor_3pl_tus.model_freight_freight"/>
+            <field name="binding_view_types">form</field>
+            <field name="state">code</field>
+            <field name="code">
+                action = records.loaded_with_pride()
+            </field>
+        </record>
+
+        <record id="warefor_3pl_tus_freight_freights_obl_form_view_inherit_action_master_bill_of_lading"
+                model="ir.actions.server">
+            <field name="name">Master Bill of Lading</field>
+            <field name="model_id" ref="warefor_3pl_tus.model_freight_freight"/>
+            <field name="binding_model_id" ref="warefor_3pl_tus.model_freight_freight"/>
+            <field name="binding_view_types">form</field>
+            <field name="state">code</field>
+            <field name="code">
+                action = records.call_bill_of_lading()
+            </field>
+        </record>
+
+        <record id="warefor_3pl_tus_freight_freights_obl_form_view_inherit_action_pallet_label"
+                model="ir.actions.server">
+            <field name="name">Pallet Label</field>
+            <field name="model_id" ref="warefor_3pl_tus.model_freight_freight"/>
+            <field name="binding_model_id" ref="warefor_3pl_tus.model_freight_freight"/>
+            <field name="binding_view_types">form</field>
+            <field name="state">code</field>
+            <field name="code">
+                action = records.pallet_label()
+            </field>
+        </record>
+
+
+        <record id="warefor_3pl_tus_freight_freights_obl_form_view_inherit_batch_action" model="ir.actions.server">
+            <field name="name">Print Shipping Documents</field>
+            <field name="model_id" ref="warefor_3pl_tus.model_freight_freight"/>
+            <field name="binding_model_id" ref="warefor_3pl_tus.model_freight_freight"/>
+            <field name="binding_view_types">list</field>
+            <field name="state">code</field>
+            <field name="code">
+                action = records.action_download_batch_pdfs()
+            </field>
+        </record>
+        
+	<record id="warefor_3pl_tus_freight_freights_obl_form_view_inherit_bol_batch_action" model="ir.actions.server">
+            <field name="name">Print Master Bill of Lading</field>
+            <field name="model_id" ref="warefor_3pl_tus.model_freight_freight"/>
+            <field name="binding_model_id" ref="warefor_3pl_tus.model_freight_freight"/>
+            <field name="binding_view_types">list</field>
+            <field name="state">code</field>
+            <field name="code">
+                action = records.action_print_bol_report()
+            </field>
+        </record>
+
+        <!--        <record id="freight_order_line_form_view_inherit" model="ir.ui.view">-->
+        <!--            <field name="name">freight.order.line.form.view.inherit</field>-->
+        <!--            <field name="model">freight.freight</field>-->
+        <!--            <field name="inherit_id" ref="warefor_3pl_tus.freight_freights_obl_form_view"/>-->
+        <!--            <field name="arch" type="xml">-->
+        <!--                <xpath expr="//page[@name='order']//field[@name='freight_order_line_ids']/tree" position="inside">-->
+        <!--                    <field name="pallet_type" string="Pallet Type"/>-->
+        <!--                    <field name="sub_pallet" string="Sub Pallet"/>-->
+        <!--                </xpath>-->
+        <!--            </field>-->
+        <!--        </record>-->
+    </data>
+</odoo>

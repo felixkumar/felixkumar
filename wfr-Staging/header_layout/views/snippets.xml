@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!-- Snippets menu -->
+    <template id="snippets" inherit_id="website.snippets">
+        <xpath expr="//div[hasclass('o_panel')][last()]" position="after">
+            <div id="snippet_external" class="o_panel">
+                <div class="o_panel_header">
+                    External Dynamic Snippets
+                </div>
+                <div class="o_panel_body">
+                    <t t-if="debug" t-snippet="header_layout.s_dynamic_snippet_owl_carousel"
+                       string="Dynamic Product Carousel"
+                       t-thumbnail="/website/static/src/img/snippets_thumbs/s_dynamic_carousel.svg"/>
+                    <t t-if="debug" t-snippet="header_layout.category_container_homepage"
+                       string="Category Carousel"
+                       t-thumbnail="/website/static/src/img/snippets_thumbs/s_dynamic_carousel.svg"/>
+                    <!--                    <t t-if="debug" t-snippet="header_layout.s_product_rating"-->
+                    <!--                       string="Rating Carousel"-->
+                    <!--                       t-thumbnail="/website/static/src/img/snippets_thumbs/s_dynamic_carousel.svg"/>-->
+                    <t t-snippet="header_layout.s_newsletter_subscribe_button" string="Newsletter"
+                       t-thumbnail="/website/static/src/img/snippets_thumbs/s_newsletter_subscribe_form.svg"
+                       t-forbid-sanitize="form"/>
+                    <t t-snippet="header_layout.s_newsletter_subscribe_custom_popup" string="Newsletter Pop-up"
+                       t-thumbnail="/website/static/src/img/snippets_thumbs/newsletter_subscribe_popup.svg"
+                       t-forbid-sanitize="form"/>
+                    <t t-snippet="header_layout.s_product_rating" string="Product Rating Slider"
+                       t-thumbnail="/mass_mailing/static/src/img/snippets_thumbs/s_rating.svg">
+                        <keywords>products, rating , reviews</keywords>
+                    </t>
+                </div>
+            </div>
+        </xpath>
+    </template>
+
+    <template id="header_snippet_options" inherit_id="website.snippet_options">
+        <xpath expr="//div/we-select[@data-variable='header-template']" position="inside">
+            <we-button title="center logo custom"
+                       data-name="header_centered_logo_custom_opt"
+                       data-customize-website-views="header_layout.template_header_centered_logo_custom"
+                       data-customize-website-variable="'header_centered_logo_custom_opt'"
+                       data-img="/website/static/src/img/snippets_options/header_template_centered_logo.svg"/>
+        </xpath>
+        <xpath expr="//div[@data-js='anchor']" position="replace">
+            <div data-js="anchor"
+                 data-selector=":not(p).oe_structure > *, :not(p)[data-oe-type=html] > *"
+                 data-exclude=".modal *, .oe_structure .oe_structure *, [data-oe-type=html] .oe_structure *">
+                <we-button class="fa fa-fw fa-link o_we_link"
+                           title="Create a link to target this section"
+                           data-no-preview="true"/>
+            </div>
+        </xpath>
+
+    </template>
+    <template id="s_popup_snippet_options" inherit_id="website.s_popup_options">
+        <xpath expr="//t[@t-set='extra_popup_options']/we-select[@data-attribute-name='display']" position="inside">
+            <we-button data-select-data-attribute="onClick">On click</we-button>
+        </xpath>
+    </template>
+</odoo>

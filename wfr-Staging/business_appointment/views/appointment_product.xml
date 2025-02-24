@@ -1,0 +1,240 @@
+<?xml version="1.0"?>
+<odoo>
+
+    <record id="appointment_product_view_search" model="ir.ui.view">
+        <field name="name">appointment.product.search</field>
+        <field name="model">appointment.product</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="product_id"/>
+                <field name="ba_description"/>
+                <filter string="Activities Todo" name="activities_my" domain="[('activity_ids.user_id', '=', uid)]"/>
+                <separator/>
+                <filter string="Late Activities"
+                        name="activities_overdue"
+                        domain="[('activity_ids.date_deadline', '&lt;', context_today().strftime('%Y-%m-%d'))]"
+                />
+                <filter string="Today Activities"
+                        name="activities_today"
+                        domain="[('activity_ids.date_deadline', '=', context_today().strftime('%Y-%m-%d'))]"
+                />
+                <filter string="Future Activities"
+                        name="activities_upcoming_all"
+                        domain="[('activity_ids.date_deadline', '&gt;', context_today().strftime('%Y-%m-%d'))]"
+                />
+                <separator/>
+                <filter string="Archived" name="inactive" domain="[('active', '=', False)]"/>
+            </search>
+        </field>
+    </record>
+    <record id="appointment_product_view_form" model="ir.ui.view">
+        <field name="name">appointment.product.form.appointment</field>
+        <field name="model">appointment.product</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="%(business_appointment.rating_rating_action_appointment_product)d" 
+                                type="action" 
+                                attrs="{'invisible': [('rating_satisfaction', '=', -1)]}" 
+                                class="oe_stat_button oe_percent" 
+                                icon="fa-smile-o" 
+                                groups="business_appointment.group_business_appointment_rating"
+                        >
+                            <div class="o_field_widget o_stat_info">
+                                <span class="o_stat_value">
+                                    <field name="rating_satisfaction" nolabel="1"/>
+                                </span>
+                                <span class="o_stat_text">%</span>
+                            </div>
+                        </button>
+                    </div>
+                    <div class="d-flex row mb8">
+                        <div class="col-10">
+                            <h1>
+                                <field name="name" placeholder="service reference" class="w-100" required="1"/>
+                            </h1>
+                        </div>
+                        <div class="col-2">
+                            <field name="image_1920" widget="image" class="oe_avatar" options="{'preview_image': 'image_128'}"/>
+                        </div>
+                    </div>          
+                    <group name="ba_ap_main_details">
+                        <group>
+                            <label for="appointment_duration"/>
+                            <div>
+                                <field name="appointment_duration"
+                                       widget="float_time"
+                                       attrs="{'invisible': [('duration_uom', '!=', 'hours')]}"
+                                       class="oe_inline"
+                                />
+                                <field name="appointment_duration_days" attrs="{'invisible': [('duration_uom', '!=', 'days')]}" class="oe_inline"/>
+                                <field name="duration_uom" class="oe_inline"/>
+                                <field name="active" invisible="1" />
+                            </div>
+                            <field name="location"/>
+                        </group>
+                        <group>
+                            <field name="product_id" options="{'no_create_edit': 1, 'no_quick_create': 1}" />
+                            <field name="suggested_product_ids" widget="many2many_tags" options="{'no_quick_create': 1, 'no_create_edit': 1}"/>
+                        </group>
+                    </group>                        
+                    <notebook>
+                        <page string="Settings" name="settings">
+                            <group name="overall_appointments_configs">
+                                <group name="general_appointments_configs">
+                                    <field name="step_duration" widget="float_time" attrs="{'invisible': [('duration_uom', '!=', 'hours')]}"/>
+                                    <field name="step_duration_days" attrs="{'invisible': [('duration_uom', '!=', 'days')]}"/>
+                                    <field name="start_round_rule" attrs="{'invisible': [('duration_uom', '!=', 'hours')]}" widget="float_time"/>
+                                    <field name="start_round_rule_days" attrs="{'invisible': [('duration_uom', '!=', 'days')]}" widget="float_time"/>
+                                    <field name="checkout_time" widget="float_time"/>
+                                    <field name="extra_working_calendar_id"/>
+                                    <field name="start_limit_rule_id" attrs="{'invisible': [('duration_uom', '!=', 'days')]}"/>
+                                    <field name="end_limit_rule_id" attrs="{'invisible': [('duration_uom', '!=', 'days')]}"/>
+                                </group>
+                                <group name="manual_duration">
+                                    <field name="manual_duration"/>
+                                    <field name="min_manual_duration"
+                                           attrs="{'invisible': ['|', ('manual_duration', '=', False), ('duration_uom', '!=', 'hours')]}"
+                                           widget="float_time"
+                                    />
+                                    <field name="max_manual_duration"
+                                           attrs="{'invisible': ['|', ('manual_duration', '=', False), ('duration_uom', '!=', 'hours')]}"
+                                           widget="float_time"
+                                    />
+                                    <field name="multiple_manual_duration"
+                                           attrs="{'invisible': ['|', ('manual_duration', '=', False), ('duration_uom', '!=', 'hours')]}"
+                                           widget="float_time"
+                                    />
+                                    <field name="min_manual_duration_days" attrs="{'invisible': ['|', ('manual_duration', '=', False), ('duration_uom', '!=', 'days')]}"/>
+                                    <field name="max_manual_duration_days" attrs="{'invisible': ['|', ('manual_duration', '=', False), ('duration_uom', '!=', 'days')]}"/>
+                                    <field name="multiple_manual_duration_days" attrs="{'invisible': ['|', ('manual_duration', '=', False), ('duration_uom', '!=', 'days')]}"/>
+                                    <field name="company_id" options="{'no_create_edit': 1, 'no_quick_create': 1}"/>
+                                </group>
+                            </group>
+                            <label for="extra_resource_ids" class="mt8"/>
+                            <div class="text-muted">
+Define which resources are needed to provide this service in addition to the main resource that is chosen during scheduling. Each line represents a set of resource types or resources one of which should be available. For example, the first line is "Resource Types 'Rooms' OR Resources 'Openspance 1' OR 'Openspace 2'"; the second line is "Resource 'Machine 1' OR 'Machine 2' OR 'Machine 3'", while the resource itself is provided by John Brown (selected during reservation). 
+                            </div>
+                            <field name="extra_resource_ids">
+                                <tree editable="top">
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="name"/>
+                                    <field name="extra_resource_type_ids"
+                                           widget="many2many_tags"
+                                           options="{'no_create_edit': 1, 'no_quick_create': 1}"
+                                           attrs="{'required': [('extra_resource_ids', '=', False)]}"
+                                    />
+                                    <field name="extra_resource_ids"
+                                           widget="many2many_tags"
+                                           options="{'no_create_edit': 1, 'no_quick_create': 1}"
+                                           attrs="{'required': [('extra_resource_type_ids', '=', False)]}"
+                                    />
+                                </tree>
+                                <form>
+                                    <sheet>
+                                        <group>
+                                            <field name="name"/>
+                                            <field name="extra_resource_ids" widget="many2many_tags" options="{'no_create_edit': 1, 'no_quick_create': 1}"/>                                            
+                                        </group>
+                                    </sheet>
+                                </form>
+                            </field>
+                        </page>
+                        <page name="description" string="Description">
+                            <field name="ba_description" placeholder="description" />
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record  id="appointment_product_view_kanban" model="ir.ui.view" >
+        <field name="name">appointment.product.kanban</field>
+        <field name="model">appointment.product</field>
+        <field name="arch" type="xml">
+            <kanban class="oe_background_grey o_kanban_dashboard" group_create="0" group_delete="0" group_edit="0" archivable="0" quick_create="0">
+                <field name="id"/>
+                <field name="name"/>
+                <field name="color"/>
+                <field name="image_128"/>
+                <field name="activity_ids"/>
+                <field name="activity_state"/>
+                <field name="product_id"/>
+                <field name="rating_satisfaction"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="#{kanban_color(record.color.raw_value)} oe_kanban_global_click">
+                            <div>
+                                <div class="o_kanban_card_content business-appointment-kanban-content">
+                                    <div class="o_kanban_image">
+                                        <a type="open">
+                                            <img t-att-src="kanban_image('appointment.product', 'image_128', record.id.value)" class="o_image_64_contain" alt="Service Image"/>
+                                        </a>
+                                    </div>
+                                    <div class="o_kanban_primary_left ba_kanban_primary_left">
+                                        <div class="o_primary business-appointment-kanban-header">
+                                            <span><t t-out="record.name.value"/></span>
+                                        </div>
+                                    </div>
+                                    <div class="oe_kanban_details business-appointment-kanban-details">
+                                        <ul>
+                                            <li>
+                                                <span>Product: <field name="product_id"/></span>
+                                            </li>
+                                            <li attrs="{'invisible': [('rating_satisfaction', '=', -1)]}" groups="business_appointment.group_business_appointment_rating">
+                                                <a name="%(business_appointment.rating_rating_action_appointment_product)d" type="action">
+                                                    <i class="fa fa-smile-o" role="img" aria-label="Percentage of satisfaction" title="Percentage of satisfaction"/> 
+                                                    <span class="ml4" t-out="record.rating_satisfaction.value"/> %
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="container o_kanban_card_manage_pane dropdown-menu" role="menu" groups="base.group_user">
+                                    <div class="o_kanban_card_manage_settings row">
+                                        <div role="menuitem" aria-haspopup="true" class="col-6">
+                                            <ul class="oe_kanban_colorpicker" data-field="color" role="popup"/>
+                                        </div>
+                                        <div role="menuitem" class="col-6">
+                                            <a class="dropdown-item" role="menuitem" type="edit">Edit</a>
+                                            <a class="dropdown-item jstr-dropdown-item" role="menuitem" type="delete">Delete</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a class="o_kanban_manage_toggle_button o_dropdown_kanban" href="#" groups="base.group_user">
+                                    <i class="fa fa-ellipsis-v" role="img" aria-label="Manage" title="Manage"/>
+                                </a>
+                                <div class="o_kanban_record_bottom">
+                                    <div class="oe_kanban_bottom_left">
+                                        <div class="o_kanban_inline_block">
+                                            <field name="activity_ids" widget="kanban_activity"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+    <record id="appointment_product_view_tree" model="ir.ui.view">
+        <field name="name">appointment.product.tree</field>
+        <field name="model">appointment.product</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+    <record id="appointment_product_action" model="ir.actions.act_window">
+        <field name="name">Services</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">appointment.product</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="search_view_id" eval="appointment_product_view_search"/>
+    </record>
+</odoo>

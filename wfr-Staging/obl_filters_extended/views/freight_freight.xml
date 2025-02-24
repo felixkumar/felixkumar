@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="obl_freight_search_inherit" model="ir.ui.view">
+            <field name="name">obl.freight.search.inherit</field>
+            <field name="model">freight.freight</field>
+            <field name="inherit_id" ref="warefor_3pl_tus.freight_freights_search_view"/>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <xpath expr="//search" position="replace">
+                    <search string="Search Transit">
+                        <field name="name"/>
+                        <field name="container_line_ids"/>
+                        <field name="warehouse_id"/>
+                        <field name="partner_id"/>
+                        <field name="import_id"/>
+                        <field name="create_date"/>
+                        <filter name="all" string="All" domain="[('active','in', [True, False])]"/>
+                        <filter name="Archived" string="Archived" domain="[('active','=', False)]"/>
+                        <filter string="Today" name="check_in_container"
+                                domain="[('create_date', '&gt;=', datetime.datetime.now().strftime('%Y-%m-%d 00:00:00')),('create_date', '&lt;=',datetime.datetime.now().strftime('%Y-%m-%d 23:59:59'))]"/>
+                        <filter string="This Month" name="current_months"
+                                domain="[('create_date','&lt;',(context_today()+relativedelta(months=1)).strftime('%%Y-%%m-01')), ('create_date','&gt;=',time.strftime('%%Y-%%m-01'))]"/>
+                        <filter string="Last Month" name="prev_months"
+                                domain="[('create_date','&gt;=',(context_today()-relativedelta(months=1)).strftime('%%Y-%%m-01')),('create_date','&lt;',time.strftime('%%Y-%%m-01'))]"/>
+                        <filter string="This Quarter" name="this_quarters"
+                                domain="[('create_date','&gt;=',(context_today()-relativedelta(months=3)).strftime('%%Y-%%m-01')),('create_date','&lt;',time.strftime('%%Y-%%m-01'))]"/>
+                        <separator/>
+                        <filter string="Missing First Scan" name="missing_first_scan" domain="[('is_mfc_stage', '=', True)]"/>
+                        <separator/>
+                        <filter string="Prime Records" name="prime_record" domain="[('is_prime_record', '=', True)]"/>
+                        <separator/>
+                        <filter string="Master Records" name="master_records" domain="[('is_master', '=', True)]"/>
+                        <separator/>
+                        <filter string="Imported Records" name="imported_records"
+                                domain="[('is_imported_record', '=', True)]"/>
+                        <separator/>
+                        <filter string="eCommerce Records" name="ecommerce_records"
+                                domain="[('fulfillment_method', '=', 'e-commerce')]"/>
+                        <separator/>
+                        <filter string="Shipped" name="shipped"
+                                domain="[('outbound_stage_id.name', '=ilike', 'Shipped'), ('active', 'in',[True ,False])]"/>
+                        <separator/>
+                        <filter string="Red Flags" name="red_flags" domain="[('is_red_flag', '=', True)]"/>
+                        <field name="is_remaining_qty"/>
+                        <filter string="Remaining Containers" name="remaining_container"
+                                domain="[('is_remaining_qty','=',False)]"/>
+                        <field name="load_id_number"/>
+                        <field name="reference"/>
+                        <field name="ship_from_partner_id"/>
+                        <field name="customer_po"/>
+                    </search>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

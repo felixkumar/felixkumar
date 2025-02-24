@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="3pl_mail.Chatter" t-inherit="mail.Chatter" t-inherit-mode="extension" owl="1">
+        <xpath expr="//t[@t-if='chatter.isAttachmentBoxVisible']" position="replace">
+            <t>
+                <AttachmentBox
+                        class="o_Chatter_attachmentBox"
+                        threadLocalId="chatter.thread.localId"
+                />
+            </t>
+        </xpath>
+    </t>
+</templates>

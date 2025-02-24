@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="walmart_res_partner_tree_view_ept" model="ir.ui.view">
+        <field name="name">walmart.res.partner.view.tree.ept</field>
+        <field name="model">res.partner</field>
+        <field eval="100" name="priority"/>
+        <field name="arch" type="xml">
+            <tree string="Contacts" create="0">
+                <field name="name"/>
+                <field name="function" invisible="1"/>
+                <field name="phone"/>
+                <field name="email"/>
+                <field name="user_id" invisible="1"/>
+                <field name="is_walmart_customer" invisible="1"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="walmart_res_partner_action" model="ir.actions.act_window">
+        <field name="name">Customers</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.partner</field>
+        <field name="domain">[('is_walmart_customer', '=', True),
+            ('walmart_instance_id', '!=', False)]
+        </field>
+
+        <field name="view_mode">tree,form</field>
+        <field name="context">{"search_default_customer": 1}</field>
+        <field name="search_view_id" ref="base.view_res_partner_filter"/>
+    </record>
+
+    <menuitem id="walmart_res_partner_main" action="walmart_res_partner_action"
+              parent="walmart_ept.walmart_sales_main_menu" sequence="2" name="Customer"/>
+</odoo>

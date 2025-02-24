@@ -1,0 +1,49 @@
+<odoo>
+    <data>
+        <record id="view_shipstation_detail_sale_order_form_view" model="ir.ui.view">
+            <field name="name">view.shipstation.detail.sale.order.form.view</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook/page[last()]" position="after">
+                	<page string="Shipstation Order Detail" name="shipstation_order_detail">
+                		<group>
+								<field name="shipstation_order_id" readonly="1" />
+								<field name="shipstation_order_number" readonly="1" />
+								<field name="shipstation_store_id" />
+								<field name="shipstation_store" readonly="1" />
+								<!--<field name="is_return_order" />-->
+								<field name="is_exported_to_shipstation" />
+                                <field name="gift_note" readonly="1"/>
+						</group>
+						<group>
+                                <field name="shipstation_configuration_id" readonly="1"/>
+								<field name="carrierCode" readonly="1" />
+								<field name="shipstation_delivery_price" readonly="1" />
+								<field name="serviceCode" readonly="1" />
+								<field name="orderStatus" readonly="1" />
+								<field name="order_custom_data" readonly="1" />
+                                <field name="customer_note" readonly="1"/>
+                                <field name="shipstation_ship_date" readonly="1"/>
+						</group>
+                	</page>
+					<page string="Shipstation Shipping Charges" name="shipstation_shipping_charges">
+                        <field name="shipstation_shipping_charge_ids" readonly="1">
+                            <tree nolabel="1" readonly="1">
+                                <field name="shipstation_provider"/>
+                                <field name="shipstation_service_code"/>
+                                <field name="shipstation_service_name" />
+                                <field name="shipping_cost" />
+                                <field name="other_cost"/>
+                                <button type='object' class="fa fa-arrow-right oe_link" name="set_service" string="Use Service"/>
+                            </tree>
+                        </field>
+                        <group>
+                            <field name="shipstation_shipping_charge_id" readonly="1"/>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

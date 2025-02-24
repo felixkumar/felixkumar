@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="dr_website_content_view_form_inherited" model="ir.ui.view">
+        <field name="name">dr.website.content.view.form.inherited</field>
+        <field name="model">dr.website.content</field>
+        <field name="inherit_id" ref="droggol_theme_common.dr_website_content_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='identifier']" position="attributes">
+                <attribute name="groups"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

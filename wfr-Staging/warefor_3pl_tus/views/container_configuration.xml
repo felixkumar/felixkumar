@@ -1,0 +1,64 @@
+<odoo>
+    <data>
+        <record id="container_configuration_form_view" model="ir.ui.view">
+            <field name="name">container.configuration.form</field>
+            <field name="model">container.configuration</field>
+            <field name="arch" type="xml">
+                <form string="Container Configuration">
+                    <sheet>
+                        <div class="oe_title" width="50%">
+                            <label for="name" class="oe_edit_only"/>
+                            <h1>
+                                <field name="name" required="1"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="container_size"/>
+                                <field name="cu_ft"/>
+                                <field name="pay_load_lbs"/>
+                            </group>
+                            <group>
+                                <field name="cu_metric"/>
+                                <field name="pay_load_kg"/>
+                            </group>
+                        </group>
+                        <group>
+                            <field name="description"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="container_configuration_tree_view" model="ir.ui.view">
+            <field name="name">container.configuration.tree</field>
+            <field name="model">container.configuration</field>
+            <field name="arch" type="xml">
+                <tree string="Container Configuration">
+                    <field name="name"/>
+                    <field name="container_size"/>
+                    <field name="cu_ft"/>
+                    <field name="pay_load_lbs"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="container_configuration_action" model="ir.actions.act_window">
+            <field name="name">Container Configuration</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">container.configuration</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                </p>
+                <p>
+                </p>
+            </field>
+        </record>
+
+        <menuitem id="menu_container_configuration" name="Container Configuration" action="container_configuration_action"
+                  parent="warefor_3pl_tus.menu_pallet_mgmt_root" sequence="3"/>
+
+    </data>
+</odoo>

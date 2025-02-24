@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_warehouse_stock_inventory,warehouse.stock.inventory_usr,model_warehouse_stock_inventory,,1,1,1,1
+access_warehouse_stock_inventory_line,warehouse.stock.inventory.line_usr,model_warehouse_stock_inventory_line,,1,1,1,1
+access_stock_fee_billing,stock.fee.billing,model_stock_fee_billing,,1,1,1,1
+access_stock_fee_billing_line,stock.fee.billing.line,model_stock_fee_billing_line,,1,1,1,1
+access_warehouse_stock_inventory_line_report,warehouse.stock.inventory.line.report,model_warehouse_stock_inventory_line_report,,1,1,1,1
+access_generate_old_days_report,generate.old.days.report,model_generate_old_days_report,,1,1,1,1

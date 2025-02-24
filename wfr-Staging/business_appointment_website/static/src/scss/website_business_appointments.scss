@@ -1,0 +1,104 @@
+// Searchbar
+.business-appointment-website-searchbar {
+    .form-inline { margin-left: 8px }
+}
+// Progressbar
+.business-appointment-website-progress-container {
+    border-top: 2px solid #dce0dd;
+    display: flex;
+
+    .business-appointment-website-progress-container-dot {
+        margin-top: -18px; 
+        font-size: 24px;
+    }
+    .business-appointment-website-progress-container-step {
+        padding: 0;
+        flex: 1 1 0;
+        text-align: center;
+    }
+    .business-appointment-website-progress-container-step:hover { text-decoration: none }
+    .business-appointment-website-progress-container-step.business-appointment-website-progress-container-complete {color: #28a745}
+    .business-appointment-website-progress-container-step.business-appointment-website-progress-container-active { color: #188fce }
+    .business-appointment-website-progress-container-step.business-appointment-website-progress-container-return { color: #188fce }
+    .business-appointment-website-progress-container-step.business-appointment-website-progress-container-disabled {
+        pointer-events: none;
+        color: #9299a1;
+    }
+    .business-appointment-website-progress-container-header { font-size: 14px }
+    .business-appointment-website-progress-container-step.business-appointment-website-progress-container-active > .business-appointment-website-progress-container-header { color: black }
+    .business-appointment-website-progress-container-step.business-appointment-website-progress-container-return > .business-appointment-website-progress-container-header { color: black }
+    .business-appointment-website-progress-container-white {background: radial-gradient(white 50%, transparent 50%)}
+}
+// Resource types, resources, service cards
+.business-appointment-website-grid { 
+    padding: 0px 15px;
+
+    .business-appointment-website-grid-box {
+        background-color: white;
+        background-clip: content-box;
+        display: flex;
+        flex-wrap: wrap;
+        cursor: pointer;
+        min-height: 120px;
+        padding: 8px;
+      
+        .business-appointment-website-grid-image { padding: 8px }
+        .business-appointment-website-grid-header {
+            overflow-wrap: break-word;
+            padding: 4px 4px 0px 4px;
+        }
+        .business-appointment-website-grid-description {
+            overflow: hidden;
+            overflow-wrap: break-word;
+            padding: 0px 4px 0px 4px;
+        }
+        .business-appointment-website-grid-footer {
+            text-align: right;
+            padding-right: 32px;
+            padding-bottom: 8px;
+            margin-top: auto;
+
+            .business-appointment-website-grid-full-details { padding-left: 10px }
+        }
+    }
+    .business-appointment-website-grid-box:hover { text-decoration: none }
+    .business-appointment-website-grid-box-active { background-color: #f2fae8 }
+}
+// Selected resources header
+.business-appointment-website-selected-resources {
+    min-height: 40px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid #dee2e6 !important;
+
+    .business-appointment-website-selected-resources-left { 
+        padding-left: 8px;
+
+        .business-appointment-website-selected-resources-record {
+            font-size: 16px;
+            overflow-wrap: break-word;
+            white-space: inherit;
+        }
+    }
+    .business-appointment-website-selected-resources-right {
+        text-align: right;
+        padding-right: 0;
+    }    
+}
+.business-appointment-website-price { padding: 0px 4px 0px 4px }
+.business-appointment-website-terms-agree-required { border: 1px solid #dc3545 }
+/* Depending on the device */
+@media screen and (max-width: 540px) {
+    .business-appointment-website-mobile-hidden { display: none !important }
+}
+@media screen and (min-width: 540px) and (max-width: 860px) {
+    .business-appointment-website-tablet-hidden {display: none !important}
+}
+@media screen and (min-width: 860px) {
+    .business-appointment-website-row {
+        margin-left: 0px !important;
+        margin-right: 0px !important;
+    }
+}

@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- ================ Added new custom Header in customize option ================ -->
+    <template id="header_custom_options" inherit_id="website.snippet_options">
+        <xpath expr="//we-select[@data-variable='header-template']/we-button[last()]" position="after">
+            <we-button title="Vega Style 1"
+                       data-name="header_style_1_opt"
+                       data-customize-website-views="theme_clarico_vega.template_header_style_1"
+                       data-customize-website-variable="'header_style_1'"
+                       data-img="/theme_clarico_vega/static/src/img/customise_option/header_01.png"/>
+            <we-button title="Vega Style 2"
+                       data-name="header_style_2_opt"
+                       data-customize-website-views="theme_clarico_vega.template_header_style_2"
+                       data-customize-website-variable="'header_style_2'"
+                       data-img="/theme_clarico_vega/static/src/img/customise_option/header_02.png"/>
+            <we-button title="Vega Style 3"
+                       data-name="header_style_3_opt"
+                       data-customize-website-views="theme_clarico_vega.template_header_style_3"
+                       data-customize-website-variable="'header_style_3'"
+                       data-img="/theme_clarico_vega/static/src/img/customise_option/header_03.png"/>
+        </xpath>
+        <xpath expr="//we-select[@data-variable='header-template']" position="after">
+            <!--img lazy load-->
+            <t t-if="request.env['website'].sudo().get_current_website().is_lazy_load">
+                <div data-selector="img">
+                    <we-checkbox string="Lazy Load" data-select-class="lazyload" data-no-preview="true"/>
+                </div>
+            </t>
+            <we-checkbox
+                    data-dependencies="header_style_1_opt, header_style_2_opt, header_style_3_opt"
+                    string="Display Preheader"
+                    data-name="is_preheader"
+                    data-customize-website-views="theme_clarico_vega.pre_header"
+                    data-reload="/"/>
+            <we-select string="Language &amp; Currency Switcher in "
+                       data-dependencies="header_style_1_opt, header_style_2_opt, header_style_3_opt"
+                       data-reload="/">
+                <we-button data-name="place_in_preheader" string="Preheader"
+                           data-customize-website-variable="'place_in_preheader'"
+                           data-customize-website-views="theme_clarico_vega.place_in_preheader"/>
+                <we-button data-name="place_in_header" string="Header"
+                           data-customize-website-variable="'place_in_header'"
+                           data-customize-website-views="theme_clarico_vega.place_in_header"/>
+            </we-select>
+            <we-colorpicker data-dependencies="header_style_1_opt, header_style_2_opt, header_style_3_opt" string="Header Top BG Color"
+                            data-color="header_top_bg_color" data-color-type="theme" data-customize-website-color=""/>
+            <we-colorpicker data-dependencies="header_style_1_opt, header_style_2_opt, header_style_3_opt" string="Header Top Text Color"
+                            data-color="header_top_text_color" data-color-type="theme" data-customize-website-color=""/>
+        </xpath>
+
+        <!-- Hotspot Settings -->
+        <xpath expr="." position="inside">
+            <!-- Image Hotspot -->
+            <div data-selector=".img_hotspot_setting" data-no-check="true" data-js="hotspotSetting">
+                <we-button-group data-imghotspot="hotspot" string="Hotspot">
+                    <we-button data-set-img-hotspot="enabled" string="On" data-name="hotspot_enable"
+                               data-select-class="demo_hotspot" data-no-preview="true"/>
+                    <we-button data-set-img-hotspot="disabled" string="Off" data-name="hotspot_disable"
+                               data-select-class="" data-no-preview="true"/>
+                </we-button-group>
+            </div>
+            <div data-selector=".hotspot_element" data-no-check="true" data-js="hotspotActions">
+                <!-- Hotspot Action -->
+                <we-row>
+                    <we-select string="Hotspot Action" data-no-preview="true" data-name="hotspot_action">
+                        <we-button data-name="redirect_url" data-select-class="redirect_url" data-set-action="redirect_url"
+                                   data-customize-website-variable="'redirect_url'">Redirect URL
+                        </we-button>
+                        <we-button data-name="redirect_product" data-select-class="redirect_product" data-set-action="redirect_product"
+                                   data-customize-website-variable="'redirect_product'">Redirect on product
+                        </we-button>
+                        <we-button data-name="display_card" data-select-class="display_card" data-set-action="display_card"
+                                   data-customize-website-variable="'display_card'">Display basic product card
+                        </we-button>
+                        <we-button data-name="display_adv_card" data-select-class="display_adv_card quick-view-a" data-set-action="display_adv_card"
+                                   data-customize-website-variable="'display_adv_card'">Display advanced product card
+                        </we-button>
+                    </we-select>
+                    <we-button class="fa fa-link" data-name="media_link_opt"
+                               data-dependencies="redirect_url, redirect_product" data-set-link="true"
+                               data-no-preview="true"
+                               title="Redirect the user elsewhere when he clicks on the media."/>
+                </we-row>
+
+                <t t-set="domain" t-translation="off">["|", ["website_id", "=", false], ["website_id", "=", <t t-out="current_website.id"/>]]</t>
+                <we-many2one string="Products"
+                              data-dependencies="redirect_product, display_card, display_adv_card"
+                              data-name="product_template_opt"
+                              data-attribute-name="productTemplateIds"
+                              data-no-preview="true"
+                              data-model="product.template"
+                              t-att-data-domain="domain"
+                              data-allow-delete="true"
+                              data-fakem2m="true"
+                              data-set-product-link="true"
+                              data-select-data-attribute=""/>
+                <we-input string="Your URL" class="o_we_sublevel_1 o_we_large" data-name="media_url_opt" data-dependencies="media_link_opt"
+                          data-set-url="" data-no-preview="true" placeholder="www.example.com"/>
+                <we-checkbox string="Open in new window" class="o_we_sublevel_1" data-dependencies="media_url_opt" data-set-new-window="true" data-no-preview="true"/>
+
+                    <!-- Hotspot Shape -->
+                    <we-select string="Shape" data-dependencies="hotspot_enable" data-variable="shape_hotspot" data-name="shape_hotspot" data-attribute-name="shape" data-attribute-default-value="circle_hotspot">
+                        <we-button data-name="circle_hotspot" data-select-class="circle" data-select-data-attribute="circle_hotspot">Circle</we-button>
+                        <we-button data-name="square" data-select-class="square">Square</we-button>
+                    </we-select>
+
+                    <!-- Hotspot Animation -->
+                    <we-select string="Hotspot Animation" data-dependencies="hotspot_enable" data-variable="animation_hotspot" data-name="animation_hotspot" data-attribute-name="fades" data-attribute-default-value="fade_hotspot">
+                        <we-button data-name="fade_hotspot" data-select-class="fade_hotspot" data-select-data-attribute="fade_hotspot">Fade</we-button>
+                        <we-button data-name="blink" data-select-class="blink">Blink</we-button>
+                    </we-select>
+
+                    <!-- Hotspot Theme -->
+                    <we-select string="Animation Theme" data-dependencies="fade_hotspot" data-variable="animation_hotspot" data-name="animation_hotspot" data-attribute-name="theme" data-attribute-default-value="light_bg">
+                        <we-button data-name="light_bg" data-select-class="light_theme" data-select-data-attribute="light_bg">Light Theme</we-button>
+                        <we-button data-name="dark_bg" data-select-class="dark_theme">Dark Theme</we-button>
+                    </we-select>
+            </div>
+        </xpath>
+
+        <xpath expr="//*[@data-selector='theme-options']//we-select[@data-variable='btn-primary-outline']"
+               position="after">
+            <we-select string="Animation" data-variable="button-template">
+                <we-button data-name="none" data-customize-website-variable="'none'">None</we-button>
+                <we-button data-name="style_1" data-customize-website-variable="'style_1'">Fade In</we-button>
+                <we-button data-name="style_2" data-customize-website-variable="'style_2'">Shadow</we-button>
+                <we-button data-name="style_3" data-customize-website-variable="'style_3'">Slide Down</we-button>
+                <we-button data-name="style_5" data-customize-website-variable="'style_5'">Skew</we-button>
+                <we-button data-name="style_6" data-customize-website-variable="'style_6'">With Gradient</we-button>
+                <we-button data-name="style_7" data-customize-website-variable="'style_7'">Slide Up</we-button>
+            </we-select>
+            <we-colorpicker data-dependencies="style_1, style_2, style_3, style_4, style_5, style_6, style_7" string="Text Color"
+                            data-color="animation_text_color" data-color-type="theme" data-customize-website-color=""/>
+            <we-colorpicker data-dependencies="style_1, style_2, style_3, style_4, style_5, style_6, style_7" string="Text Hover color"
+                            data-color="animation_hover_color" data-color-type="theme" data-customize-website-color=""/>
+            <we-colorpicker string="Gradient color 1"
+                            data-color="button_gradient_1" data-color-type="theme" data-customize-website-color=""/>
+            <we-colorpicker string="Gradient color 2"
+                            data-color="button_gradient_2" data-color-type="theme" data-customize-website-color=""/>
+        </xpath>
+    </template>
+    <!-- ================ Added new custom Footer in customize option ================ -->
+    <template id="footer_custom_options" inherit_id="website.snippet_options">
+        <xpath expr="//we-select[@data-variable='footer-template']/we-button[last()]" position="after">
+            <we-button title="Footer Style 1"
+                       data-customize-website-views="theme_clarico_vega.footer_style_1"
+                       data-customize-website-variable="'option_footer_01'"
+                       data-img="/theme_clarico_vega/static/src/img/customise_option/footer_1.jpg"/>
+        </xpath>
+    </template>
+    <template id="s_dynamic_snippet_products_template_options" inherit_id="website_sale.s_dynamic_snippet_products_template_options">
+        <xpath expr="//we-select[@data-name='product_category_opt']" position="after">
+            <we-select string="Brand" data-name="product_brand_opt" data-attribute-name="productBrandId" data-no-preview="true">
+                <we-button data-select-data-attribute="all">All Brands</we-button>
+                <we-button data-select-data-attribute="current">Current Brand or All</we-button>
+            </we-select>
+        </xpath>
+    </template>
+    <template id="custom_timer_options" inherit_id="website.snippet_options">
+        <xpath expr="//we-select[@data-name='variants_opt']" position="after">
+            <we-select string="Timer" data-variable="offer-timer" data-no-preview="true" data-reload="/">
+                <we-button data-name="timer_options_opt" data-customize-website-views="">Style 1
+                </we-button>
+                <we-button data-name="timer_options_list_s2"
+                           data-customize-website-views="theme_clarico_vega.timer_template_two">Style 2
+                </we-button>
+                <we-button data-name="timer_options_list_s3"
+                           data-customize-website-views="theme_clarico_vega.timer_template_three">Style 3
+                </we-button>
+                <we-button data-name="timer_options_list_s4"
+                           data-customize-website-views="theme_clarico_vega.timer_template_four">Style 4
+                </we-button>
+            </we-select>
+            <we-colorpicker
+                    data-dependencies="timer_options_opt, timer_options_list_s2, timer_options_list_s3, timer_options_list_s4"
+                    string="Background Color"
+                    data-color="offer_timer_background_color" data-color-type="theme" data-customize-website-color=""/>
+        </xpath>
+    </template>
+</odoo>

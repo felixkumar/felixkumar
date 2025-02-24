@@ -1,0 +1,19 @@
+.business-appointment-filters {
+    .business-appointment-filter {
+        padding-left: 2px;
+        margin-bottom: 2px;
+    }
+    .business-appointment-filter:hover { cursor: pointer }
+    .business-appointment-filter-active { background-color: #e9ecef }
+    .business-appointment-filter-icon {
+        color: #666666;
+        cursor: pointer;
+        font-size: 9pt;
+        padding-left: 3px;
+    }
+
+    @for $i from 1 through length($o-colors-complete) {
+        $color: nth($o-colors-complete, $i);
+        .business-appointment-color-#{$i - 1} { color: $color !important }
+    }
+}

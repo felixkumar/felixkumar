@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="shipstation_delivery_carrier_form_view_ept" model="ir.ui.view">
+            <field name="name">ShipStation Delivery Carrier</field>
+            <field name="model">delivery.carrier</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="delivery.view_delivery_carrier_form"/>
+            <field name="arch" type="xml">
+                <field name="integration_level" position="after">
+                    <field name="shipstation_instance_id"
+                           attrs="{'invisible':[('delivery_type', 'in', ('fixed','base_on_rule'))]}" context="{'form_view_ref': 'shipstation_ept.shipstation_form_view'}"/>
+                    <field name="shipstation_carrier_code"/>
+                </field>
+                <xpath expr="//page[@name='destination']" position='before'>
+                    <page string="ShipStation Configuration" name="shipstation_configuration"
+                          attrs="{'invisible': [('delivery_type', '!=', 'shipstation_ept')]}">
+                        <group>
+                            <group>
+                                <field name="get_cheapest_rates"/>
+                                <field name="ept_shipstation_carrier_id"
+                                       domain="[('shipstation_instance_id','=',shipstation_instance_id)]"
+                                       attrs="{'required': [('delivery_type', '=', 'shipstation_ept'), ('get_cheapest_rates', '=', False)], 'invisible': [('get_cheapest_rates', '=', True)]}"
+                                       options="{'no_create':True}"/>
+                                <field name="shipstation_service_id"
+                                       attrs="{'required': [('get_cheapest_rates', '=', False),('delivery_type', '=', 'shipstation_ept')], 'invisible': [('get_cheapest_rates', '=', True)]}"
+                                       domain="[('shipstation_instance_id','=',shipstation_instance_id),('ept_shipstation_carrier_id','=',ept_shipstation_carrier_id)]"/>
+				                <field name="ept_shipstation_carrier_ids"
+                                       domain="[('shipstation_instance_id','=',shipstation_instance_id)]"
+                                       attrs="{'required': [('delivery_type', '=', 'shipstation_ept'), ('get_cheapest_rates', '=', True)], 'invisible': [('get_cheapest_rates', '=', False)]}"
+                                       widget="many2many_tags"
+                                       options="{'no_create':True}"/>
+                                <field name="shipstation_service_ids"
+                                       attrs="{'invisible': [('get_cheapest_rates', '=', False)]}"
+                                       widget="many2many_tags"
+                                       domain="[('shipstation_instance_id','=',shipstation_instance_id), ('ept_shipstation_carrier_id','in',ept_shipstation_carrier_ids)]"/>
+                                <field name="confirmation"/>
+                                <field name="shipstation_package_id"
+                                       domain="[('shipstation_instance_id','=',shipstation_instance_id),('ept_shipstation_carrier_id','=',ept_shipstation_carrier_id)]"
+                                       attrs="{'required': [('get_cheapest_rates', '=',False),('delivery_type', '=', 'shipstation_ept')]}"/>
+                                <field name="package_unit_default"
+                                       attrs="{'required': [('delivery_type', '=', 'shipstation_ept')]}"/>
+                                <field name="shipstation_weight_uom"
+                                       attrs="{'required': [('delivery_type', '=', 'shipstation_ept'),('delivery_type', '=', 'shipstation_ept')]}"/>
+                                <!--<field name="shipstation_weight_uom_id" invisible="1"
+                                       domain="[('category_id','=',2)]" edit="0" create="0"/>-->
+                                <field name="shipstation_weight_uom_id"
+                                       invisible="1"/>
+                            </group>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

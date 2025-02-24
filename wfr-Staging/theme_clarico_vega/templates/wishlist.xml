@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--=====================  Wishlist Page ======================================-->
+    <template id="product_wishlist_ept" inherit_id="website_sale_wishlist.product_wishlist">
+        <xpath expr="//section[hasclass('wishlist-section')]" position="attributes">
+            <attribute name="class">wishlist-section mt16</attribute>
+        </xpath>
+        <xpath expr="//h3" position="replace"/>
+        <xpath expr="//div[hasclass('checkbox')]" position="replace">
+            <div class="checkbox">
+                <label class='text-muted'>
+                    <input type="checkbox" id='b2b_wish' value="1" class="mr8"/>
+                    <span>Add product to my cart but keep it in my wishlist</span>
+                </label>
+            </div>
+        </xpath>
+        <xpath expr="//table[@id='o_comparelist_table']" position="replace">
+            <table class="table table-striped table-hover text-center table-comparator t_wish_table mt16 container mb16"
+                   id="o_comparelist_table">
+                <tbody class="d-grid wishlist_lists">
+                    <t t-foreach="wishes" t-as="wish">
+                        <t t-set="combination_info" t-value="wish.product_id._get_combination_info_variant()"/>
+                        <tr t-att-data-wish-id='wish.id' t-att-data-product-id='wish.product_id.id'
+                            t-att-data-product-tracking-info="json.dumps(request.env['product.template'].get_google_analytics_data(combination_info))"
+                            class="t_wish_table_tr ">
+                            <t t-set="check_stock"
+                               t-value="website.option_out_of_stock and wish.product_id.type=='product' and (not wish.product_id.allow_out_of_stock_order) and (wish.product_id.sudo().free_qty &lt; 1)"/>
+                            <td class="wish_product_img">
+                                <a t-att-href="wish.product_id.website_url" class="position-relative">
+                                    <t t-if="website.is_lazy_load">
+                                        <img t-attf-data-src="/web/image/product.product/#{wish.product_id.id}/image_128"
+                                             t-attf-src="/web/image/website/#{website.id}/lazy_load_image"
+                                             t-attf-class="img img-fluid lazyload #{'sold-out' if check_stock else ''}"
+                                             style="margin:auto;" alt="Product image"/>
+                                    </t>
+                                    <t t-else="">
+                                        <img t-attf-src="/web/image/product.product/#{wish.product_id.id}/image_128"
+                                             t-attf-class="img img-fluid #{'sold-out' if check_stock else ''}"
+                                             style="margin:auto;" alt="Product image"/>
+                                    </t>
+
+                                    <div class="te-out-of-stock-lbl" t-if="check_stock">
+                                        <t t-call="theme_clarico_vega.out_of_stock_label"/>
+                                    </div>
+                                </a>
+                            </td>
+                            <td class="wish_product_name_and_price">
+                                <div t-attf-class="te_wish_name mb8">
+                                    <a t-att-href="wish.product_id.website_url">
+                                        <t t-esc="wish.product_id.display_name"/>
+                                    </a>
+                                </div>
+                                <div class=" align-middle" t-if="combination_info['prevent_zero_price_sale']">
+                                    <span t-field="website.prevent_zero_price_sale_text"/>
+                                </div>
+                                <div class="align-middle" t-else="">
+                                    <t t-if="website._display_product_price()">
+
+                                        <t t-esc="combination_info['price']"
+                                           t-options="{'widget': 'monetary', 'display_currency': website.pricelist_id.currency_id}"/>
+                                        <small t-if="combination_info['base_unit_price']"
+                                               class="cart_product_base_unit_price d-block text-muted"
+                                               groups="website_sale.group_show_uom_price">
+                                            <t t-call='website_sale.base_unit_price'>
+                                                <t t-set='product' t-value='wish.product_id'/>
+                                            </t>
+                                        </small>
+                                        <del t-attf-class="small text-danger mr8 {{'' if combination_info['has_discounted_price'] else 'd-none'}}"
+                                             style="white-space: nowrap;" t-esc="combination_info['list_price']"
+                                             t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+                                    </t>
+                                    <div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class='wish_add_to_cart_btn text-left td-wish-btn align-middle'>
+                                <input name="product_id" t-att-value="wish.product_id.id" type="hidden"/>
+                                <a t-if="combination_info['prevent_zero_price_sale']"
+                                   t-att-href="website.contact_us_button_url" class="btn btn-primary btn_cta">Contact Us
+                                </a>
+                                <div class="te_wish_btn" t-else=" ">
+                                    <button id="add_to_cart_button" type="button" role="button" t-att-disabled="check_stock"
+                                            t-if="website._display_add_to_cart()"
+                                            class="btn btn-link btn-block o_wish_add mb4 me-2">
+                                        <i class="fa fa-shopping-cart"></i>
+                                    </button>
+                                    <button t-if="is_view_active('website_sale_comparison.add_to_compare')"
+                                            type="button" class="btn btn-link o_add_to_compare no-decoration mb4"
+                                            t-att-data-product-id='wish.product_id.id'>
+                                        <i t-attf-class="fa fa-exchange"></i>
+                                    </button>
+                                </div>
+                            </td>
+                            <td class="wish_remove_product align-middle">
+                                <button type="button" class="btn btn-link o_wish_rm no-decoration">
+                                    <i class="fa fa-trash-o mr4"/>Remove
+                                </button>
+                            </td>
+                        </tr>
+                    </t>
+                </tbody>
+            </table>
+        </xpath>
+    </template>
+
+    <template id="product_wishlist_stock_wishlist_ept" inherit_id="website_sale_stock_wishlist.product_wishlist">
+        <xpath expr="//button[@id='add_to_cart_button']" position="replace">
+            <t t-set="is_sold_out"
+               t-value="not wish.product_id.allow_out_of_stock_order and wish.product_id._is_sold_out()"/>
+            <button id="add_to_cart_button" t-if="website._display_add_to_cart()"
+                    class="btn btn-link btn-block o_wish_add  mb4"
+                    t-att-disabled="is_sold_out">
+                <i class="fa fa-shopping-cart mr4"></i>
+                <span class="d-none d-md-inline">Add to Cart</span>
+            </button>
+        </xpath>
+    </template>
+
+    <template id="product_comparison_wishlist_ept" inherit_id="website_sale_comparison_wishlist.product_wishlist">
+        <xpath expr="//button[hasclass('o_add_to_compare')]" position="replace"/>
+    </template>
+</odoo>

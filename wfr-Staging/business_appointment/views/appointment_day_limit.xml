@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<odoo>
+
+    <record id="appointment_day_limit_view_search" model="ir.ui.view">
+        <field name="name">appointment.day.limit.search</field>
+        <field name="model">appointment.day.limit</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+            </search>
+        </field>
+    </record>
+    <record id="appointment_day_limit_view_form" model="ir.ui.view">
+        <field name="name">appointment.day.limit.form</field>
+        <field name="model">appointment.day.limit</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>   
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" placeholder="some reference" class="oe_inline" required="1"/>
+                        </h1>
+                    </div>   
+                    <notebook>
+                        <page string="Restrict for weekdays">
+                            <div class="text-muted">
+                                Define weekdays on which the service cannot be started/finished to be provided. For example, if you selected Sunday as not possible to start: Saturday-Monday would be fine; Sunday-Monday or Sunday-Tuesday would not be possible
+                            </div>
+                            <group>
+                                <field name="mo"/>
+                                <field name="tu"/>
+                                <field name="we"/>
+                                <field name="th"/>
+                                <field name="fr"/>
+                                <field name="sa"/>
+                                <field name="su"/>
+                            </group>
+                        </page>
+                        <page string="Restrict for specific dates">
+                            <div class="text-muted">
+                                Define specific dates which cannot be a start/finish for reservation
+                            </div>
+                            <field name="spcific_day_ids">
+                                <tree editable="top">
+                                    <field name="limit_day"/>
+                                </tree>
+                                <form>
+                                    <sheet>
+                                        <field name="limit_day"/>
+                                    </sheet>
+                                </form>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="appointment_day_limit_view_tree" model="ir.ui.view">
+        <field name="name">appointment.day.limit.tree</field>
+        <field name="model">appointment.day.limit</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+</odoo>

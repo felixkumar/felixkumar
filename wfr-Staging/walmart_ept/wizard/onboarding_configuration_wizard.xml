@@ -1,0 +1,616 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--Below view use for instance creation from the onboarding panel-->
+    <record id="walmart_on_board_instance_configuration_wizard" model="ir.ui.view">
+        <field name="name">Configure Instance</field>
+        <field name="model">walmart.instance.create.ept</field>
+        <field name="arch" type="xml">
+            <form string="Configure Instance" class="o_walmart_ept">
+                <group class="o_onboard_padding">
+                    <group>
+                        <field name="name" required="1"
+                               readonly="context.get('is_already_instance_created', False)"/>
+                        <field name="walmart_consumer_id" required="1"
+                               readonly="context.get('is_already_instance_created', False)"/>
+                        <field name="is_selling_on_wfs" required="0" widget="boolean_toggle"
+                               readonly="context.get('is_already_instance_created', False)"/>
+                    </group>
+                    <group>
+                        <field name="walmart_country_id" required="1" password="1"
+                               readonly="context.get('is_already_instance_created', False)"/>
+                        <field name="environment" required="1" password="1"
+                               readonly="context.get('is_already_instance_created', False)"/>
+                    </group>
+<!--                    <group colspan="2">-->
+<!--                        <group colspan="1">-->
+<!--                            <field name="update_notification" widget="boolean_toggle"-->
+<!--                                   readonly="context.get('is_already_instance_created', False)"/>-->
+<!--                        </group>-->
+<!--                        <group colspan="1">-->
+<!--                            <field name="customer_so_number"-->
+<!--                                   readonly="context.get('is_already_instance_created', False)"/>-->
+<!--                        </group>-->
+<!--                    </group>-->
+                    <group string="Client Secret" colspan="2">
+                        <field name="walmart_secret_key" required="1" nolabel="1" colspan="2"
+                               readonly="context.get('is_already_instance_created', False)"/>
+                    </group>
+                </group>
+                <group invisible="context.get('is_calling_from_onboarding_panel', False)"
+                       class="o_onboard_padding">
+                    <p colspan="2" class="alert alert-warning" role="alert">
+                        <div style="color:#ff0000; font-size:15px;">
+                            <b>Important Note:</b>
+                        </div>
+                        <div class="d-inline-block w-100">
+                            <div class="row">
+                                <div class="col-11 p-0">
+                                    <ul>
+                                        <li>
+                                            After creating the instance, please make sure you
+                                            complete all
+                                            the other
+                                            necessary configurations such as
+                                            Warehouse, Pricelist etc. from
+                                            the Walmart setting screen.
+                                        </li>
+                                        <li>
+                                            Walmart =&gt; Configurations =&gt; Settings
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </p>
+                </group>
+                <div class="row mt16 o_settings_container o_onboard_padding">
+                    <div class="col-12 col-lg-12 o_setting_box o_onboard_setting_box">
+                        <div class="alert alert-warning on_board_alert_warning" role="alert">
+                            <h3>Note :</h3>
+                            <ul>
+                                <li>
+                                    If you choose to activate <b>Get Update Notification</b>, Emipro Server will ask for
+                                    details about your Odoo, including Company name, Company email, Database UUID,
+                                    and List of Emipro apps. Therefore, Emipro can inform you of any app-related
+                                    updates and fixes. You can disable this configuration at any time. Please check
+                                    our privacy policy for more detail.
+                                    <a href='https://www.emiprotechnologies.com/iap-privacy-policy' target="_blank">
+                                        Click Here
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <footer>
+                    <button string="Create" type="object"
+                            name="test_walmart_connection" class="oe_highlight o_onboard_button"
+                            invisible="context.get('is_already_instance_created', False)"/>
+                    <button class="oe_highlight o_onboard_button_white" special="cancel"
+                            string="Cancel"/>
+                </footer>
+                <script>
+                    $('document').ready(function(){
+                    $('div.o_form_view.o_walmart_ept').parents('div.modal-content').addClass('on_board_custom_form');
+                    $('div.on_board_custom_form').find('table.o_group').find('label').addClass('on_board_field_label');
+                    $('div.on_board_custom_form').find('table.o_group').find('td').find('span').addClass('on_board_field');
+                    $('div.on_board_custom_form').find('table.o_group').find('td').find('a').addClass('on_board_field');
+                    $('div.on_board_custom_form').find('table.o_group').find('td').find('a').find('span').removeClass('on_board_field');
+                    });
+                </script>
+            </form>
+        </field>
+    </record>
+
+    <!-- view of general configuration-->
+    <record id="walmart_general_configurations_onboarding_wizard_view" model="ir.ui.view">
+        <field name="name">walmart.general.configurations.onboarding.form</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority">1000</field>
+        <field name="arch" type="xml">
+            <form class="o_bol_ept">
+                <field name="walmart_marketplace_id" invisible="True"/>
+                <div class="oe_title mb-2 ml-2"
+                     attrs="{'invisible': [('walmart_marketplace_id', '!=', False)]}">
+                    <h1 class="o_on_board_heading">
+                        No Instance Created Yet!
+                    </h1>
+                </div>
+                <div class="oe_title mb-2 ml-2"
+                     attrs="{'invisible': [('walmart_marketplace_id', '=', False)]}">
+                    <h1 class="font-weight-bold o_on_board_heading">
+                        <field name="walmart_marketplace_id" readonly="1"
+                               options="{'no_open': True}"/>
+                    </h1>
+                </div>
+                <div class="o_horizontal_separator o_onboard_header font-weight-bold"
+                     attrs="{'invisible': [('walmart_marketplace_id', '=', False)]}">Marketplace
+                    Information
+                </div>
+                <div class="row mt16 o_settings_container o_onboard_padding"
+                     attrs="{'invisible': [('walmart_marketplace_id', '=', False)]}">
+                    <div class="col-xs-12 col-md-6 o_setting_box o_onboard_setting_box">
+                        <label for="walmart_country_id" class="o_onboard_label"/>
+                        <field name="walmart_country_id"
+                               class="o_light_label o_onboard_input"
+                               attrs="{'required':[('walmart_marketplace_id','!=',False)]}"
+                               options="{'no_create':True,'no_create_edit': True,'no_open': True}"/>
+                        <a href="javascript:void(0)"
+                           title="Country"
+                           class="ml-2 o_doc_link o_onboard_doc_link"/>
+                    </div>
+                    <div class="col-xs-12 col-md-6 o_setting_box o_onboard_setting_box">
+                        <label for="walmart_pricelist_id" class="o_onboard_label"/>
+                        <field name="walmart_pricelist_id"
+                               class="o_light_label o_onboard_input"
+                               attrs="{'required':[('walmart_marketplace_id','!=',False)]}"
+                               options="{'no_create':True,'no_create_edit': True,'no_open': True}"/>
+                        <a href="javascript:void(0)"
+                           title="Pricelist"
+                           class="ml-2 o_doc_link o_onboard_doc_link"/>
+                    </div>
+                    <div class="col-xs-12 col-md-6 o_setting_box o_onboard_setting_box">
+                        <label for="walmart_warehouse_id" class="o_onboard_label"/>
+                        <field name="walmart_warehouse_id"
+                               class="o_light_label o_onboard_input"
+                               attrs="{'required':[('walmart_marketplace_id','!=',False)]}"
+                               options="{'no_create':True,'no_create_edit': True,'no_open': True}"/>
+                        <a href="javascript:void(0)"
+                           title="Warehouse"
+                           class="ml-2 o_doc_link o_onboard_doc_link"/>
+                    </div>
+                    <div class="col-xs-12 col-md-6 o_setting_box o_onboard_setting_box">
+                        <label for="walmart_lang_id" class="o_onboard_label"/>
+                        <field name="walmart_lang_id"
+                               class="o_light_label o_onboard_input"
+                               attrs="{'required':[('walmart_marketplace_id','!=',False)]}"
+                               options="{'no_create':True,'no_create_edit': True,'no_open': True}"/>
+                        <a href="javascript:void(0)"
+                           title="Lang"
+                           class="ml-2 o_doc_link o_onboard_doc_link"/>
+                    </div>
+                    <div class="col-xs-12 col-md-6 o_setting_box o_onboard_setting_box">
+                        <label for="walmart_company_id" class="o_onboard_label"/>
+                        <field name="walmart_company_id"
+                               class="o_light_label o_onboard_input"
+                               attrs="{'required':[('walmart_marketplace_id','!=',False)]}"
+                               options="{'no_create':True,'no_create_edit': True,'no_open': True}"/>
+                        <a href="javascript:void(0)"
+                           title="Company"
+                           class="ml-2 o_doc_link o_onboard_doc_link"/>
+                    </div>
+                    <div class="col-xs-12 col-md-6 o_setting_box o_onboard_setting_box">
+                        <label for="walmart_payment_term_id" class="o_onboard_label"/>
+                        <field name="walmart_payment_term_id"
+                               class="o_light_label o_onboard_input"
+                               attrs="{'required':[('walmart_marketplace_id','!=',False)]}"
+                               options="{'no_create':True,'no_create_edit': True,'no_open': True}"/>
+                        <a href="javascript:void(0)"
+                           title="Payment term"
+                           class="ml-2 o_doc_link o_onboard_doc_link"/>
+                    </div>
+                    <div class="col-xs-12 col-md-6 o_setting_box o_onboard_setting_box">
+                        <label for="walmart_team_id" class="o_onboard_label"/>
+                        <field name="walmart_team_id"
+                               class="o_light_label o_onboard_input"
+                               attrs="{'required':[('walmart_marketplace_id','!=',False)]}"
+                               options="{'no_create':True,'no_create_edit': True,'no_open': True}"/>
+                        <a href="javascript:void(0)"
+                           title="Team Id"
+                           class="ml-2 o_doc_link o_onboard_doc_link"/>
+                    </div>
+                    <div class="col-xs-12 col-md-6 o_setting_box o_onboard_setting_box">
+                        <label for="walmart_settlement_report_journal_id" class="o_onboard_label"/>
+                        <field name="walmart_settlement_report_journal_id"
+                               class="o_light_label o_onboard_input"
+                               attrs="{'required':[('walmart_marketplace_id','!=',False)]}"
+                               options="{'no_create':True,'no_create_edit': True,'no_open': True}"/>
+                        <a href="javascript:void(0)"
+                           title="walmart settlement report journal"
+                           class="ml-2 o_doc_link o_onboard_doc_link"/>
+                    </div>
+
+                    <!--added for WFS order-->
+                    <div class="col-xs-12 col-md-6 o_setting_box o_onboard_setting_box"
+                         attrs="{'invisible': [('walmart_marketplace_id', '=', False)]}">
+                        <div class="ml-2 pl-1">
+                            <label for="is_selling_on_wfs"
+                                   string="Are you selling on WFS?"
+                                   class="o_onboard_label"/>
+                            <field name="is_selling_on_wfs"
+                                   widget="boolean_toggle" class="o_onboard_boolean_toggle o_onboard_input"/>
+                            <a href="javascript:void(0)"
+                               title="Are you selling on WFS?"
+                               class="ml-2 o_doc_link o_onboard_doc_link"/>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-md-6 o_setting_box o_onboard_setting_box" attrs="{'invisible':[('is_selling_on_wfs','=',False)]}">
+                        <label for="walmart_wfs_warehouse_id" class="o_onboard_label"/>
+                        <field name="walmart_wfs_warehouse_id"
+                               class="o_light_label o_onboard_input"
+                               attrs="{'required':[('walmart_marketplace_id','!=',False)]}"
+                               options="{'no_create':True,'no_create_edit': True,'no_open': True}"/>
+                        <a href="javascript:void(0)"
+                           title="WFS Warehouse"
+                           class="ml-2 o_doc_link o_onboard_doc_link"/>
+                    </div>
+                    <!--added for WFS order-->
+
+                    <div class="col-xs-12 col-md-6 o_setting_box o_onboard_setting_box"
+                         attrs="{'invisible': [('walmart_marketplace_id', '=', False)]}">
+                        <div class="ml-2 pl-1">
+                            <label for="walmart_auto_create_product_not_found_in_odoo"
+                                   string="Auto Create Offer Not Found in Odoo"
+                                   class="o_onboard_label" style="width: 50%;"/>
+                            <field name="walmart_auto_create_product_not_found_in_odoo"
+                                   widget="boolean_toggle" class="o_onboard_boolean_toggle o_onboard_input"/>
+                            <a href="javascript:void(0)"
+                               title="It will automatically create new product in odoo and offer in walmart if offer not found in walmart while importing orders"
+                               class="ml-2 o_doc_link o_onboard_doc_link"/>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="o_horizontal_separator o_onboard_header font-weight-bold"
+                     attrs="{'invisible': [('walmart_marketplace_id', '=', False)]}">Shipment and
+                    Other Fees
+                </div>
+                <div class="row mt16 o_settings_container o_onboard_padding"
+                     attrs="{'invisible': [('walmart_marketplace_id', '=', False)]}">
+                    <div class="col-xs-12 col-md-6 o_setting_box o_onboard_setting_box">
+                        <label for="walmart_shipping_product_id" class="o_onboard_label"/>
+                        <field name="walmart_shipping_product_id"
+                               class="o_light_label o_onboard_input"
+                               attrs="{'required':[('walmart_marketplace_id','!=',False)]}"
+                               options="{'no_create':True,'no_create_edit': True,'no_open': True}"/>
+                        <a href="javascript:void(0)"
+                           title="Shipping Product"
+                           class="ml-2 o_doc_link o_onboard_doc_link"/>
+                    </div>
+                    <div class="col-xs-12 col-md-6 o_setting_box o_onboard_setting_box">
+                        <label for="walmart_discount_product_id" class="o_onboard_label"/>
+                        <field name="walmart_discount_product_id"
+                               class="o_light_label o_onboard_input"
+                               attrs="{'required':[('walmart_marketplace_id','!=',False)]}"
+                               options="{'no_create':True,'no_create_edit': True,'no_open': True}"/>
+                        <a href="javascript:void(0)"
+                           title="Discount Product"
+                           class="ml-2 o_doc_link o_onboard_doc_link"/>
+                    </div>
+                </div>
+                <div class="o_horizontal_separator o_onboard_header font-weight-bold"
+                     attrs="{'invisible': [('walmart_marketplace_id', '=', False)]}">Order
+                    Information
+                </div>
+
+                <div class="row mt16 o_settings_container o_onboard_padding"
+                     attrs="{'invisible': [('walmart_marketplace_id', '=', False)]}">
+                    <div class="col-xs-12 col-md-6 o_setting_box o_onboard_setting_box">
+                        <div class="ml-2 pl-1">
+                            <field name="walmart_auto_workflow_id"
+                                   class="o_light_label o_onboard_input"
+                                   options="{'no_create':True,'no_create_edit': True,'no_open': True}"
+                                   attrs="{'required':[('walmart_marketplace_id','!=',False)]}"/>
+                            <label for="walmart_auto_workflow_id"
+                                   string="Auto Workflow"
+                                   class="o_onboard_label"/>
+                            <a href="javascript:void(0)"
+                               title="Order will be process base on the auto invoice workflow. &#013; It will confirm order, Create and Validate Invoice, Register Payment and Force Accounting Date base on the auto invoice workflow."
+                               class="ml-2 o_doc_link o_onboard_doc_link"/>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-6 o_setting_box o_onboard_setting_box">
+                        <div class="ml-2 pl-1">
+                            <label for="walmart_is_default_odoo_sequence_in_sales_order"
+                                   string="Use Odoo Default Sequence?"
+                                   class="o_onboard_label"/>
+                            <field name="walmart_is_default_odoo_sequence_in_sales_order"
+                                   widget="boolean_toggle" class="o_onboard_boolean_toggle o_onboard_input"/>
+                            <a href="javascript:void(0)"
+                               title="If checked,Then use default sequence of odoo for sale order create."
+                               class="ml-2 o_doc_link o_onboard_doc_link"/>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-6 o_setting_box o_onboard_setting_box"
+                         attrs="{'invisible':[('walmart_is_default_odoo_sequence_in_sales_order','=',True)]}">
+                        <div>
+                            <label for="walmart_order_prefix" class="o_onboard_label"/>
+                            <field name="walmart_order_prefix"
+                                   class="o_light_label w-50 o_onboard_input"/>
+                            <a href="javascript:void(0)"
+                               title="Enter Order Prefix"
+                               class="ml-2 o_doc_link o_onboard_doc_link"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="o_horizontal_separator o_onboard_header font-weight-bold"
+                     attrs="{'invisible': [('walmart_marketplace_id', '=', False)]}">Inventory
+                    Information
+                </div>
+                <div class="row mt16 o_settings_container o_onboard_padding">
+                    <div class="col-xs-12 col-md-6 o_setting_box o_onboard_setting_box o_onboard_padding">
+                        <div class="ml-2 pl-1">
+                            <field name="walmart_stock_field_id" class="o_light_label o_onboard_input"
+                                   options="{'no_create':True,'no_create_edit': True,'no_open': True}"
+                                   attrs="{'required':[('walmart_marketplace_id','!=',False)]}"
+                                   domain="[('model_id.model','=','product.product'),('name','in',['qty_available','virtual_available'])]"/>
+                            <label for="walmart_stock_field_id"
+                                   string="Inventory Field"
+                                   class="o_onboard_label"/>
+                            <a href="javascript:void(0)"
+                               title="Inventory Field"
+                               class="ml-2 o_doc_link o_onboard_doc_link"/>
+                        </div>
+                    </div>
+                </div>
+                <footer>
+                    <button string="Save General Configurations" type="object"
+                            name="walmart_save_general_configurations"
+                            class="oe_highlight o_onboard_button"
+                            attrs="{'invisible': [('walmart_marketplace_id', '=', False)]}"/>
+                    <button class="oe_highlight o_onboard_button_white" special="cancel"
+                            string="Cancel"/>
+                </footer>
+                <script>
+                    $('document').ready(function(){
+                    $('div.o_form_view.o_walmart_ept').parents('div.modal-content').addClass('on_board_custom_form')
+                    });
+                </script>
+            </form>
+        </field>
+    </record>
+
+    <!--This is a common view for cron configuration wizard -->
+    <record id="walmart_onboarding_cron_configuration_ept_form_view"
+            model="ir.ui.view">
+        <field name="name">walmart.cron.configuration.ept.form</field>
+        <field name="model">walmart.cron.configuration.ept</field>
+        <field name="priority">11</field>
+        <field name="arch" type="xml">
+            <form string="Walmart Cron view" class="o_bol_ept">
+                <div class="oe_title mb-2 ml-2"
+                     attrs="{'invisible': [('walmart_marketplace_id', '!=', False)]}">
+                    <h1 class="o_on_board_heading">
+                        No Instance Created Yet!
+                    </h1>
+                </div>
+                <div class="oe_title"
+                     attrs="{'invisible': [('walmart_marketplace_id', '=', False)]}"
+                     invisible="not context.get('is_calling_from_onboarding_panel', False)">
+                    <h1 class="font-weight-bold o_on_board_heading">
+                        <field name="walmart_marketplace_id" readonly="1"
+                               options="{'no_open': True}"/>
+                    </h1>
+                </div>
+
+                <div class="o_horizontal_separator o_onboard_header font-weight-bold"
+                     invisible="context.get('is_calling_from_onboarding_panel', False) and not context.get('is_instance_exists', False)"
+                     attrs="{'invisible': [('walmart_marketplace_id', '=', False)]}">
+                    Schedulers Configuration
+                </div>
+                <div invisible="context.get('is_calling_from_onboarding_panel', False) and not context.get('is_instance_exists', False)"
+                       attrs="{'invisible': [('walmart_marketplace_id', '=', False)]}">
+                    <div class="row mt16 o_settings_container o_onboard_padding">
+                        <div class="col-xs-12 col-md-6 o_setting_box o_onboard_setting_box">
+                            <div class="o_setting_left_pane">
+                                <field name="auto_import_walmart_orders" widget="boolean_toggle"
+                                       class="o_onboard_boolean_toggle" style="margin-left: -0.5em"/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <span>
+                                    <h6>Import Walmart Orders ?</h6>
+                                </span>
+                                <div class="text-muted">
+                                    Walmart Order Import
+                                </div>
+                                <br/>
+
+                                <div class="o_onboard_cron_settings"
+                                     attrs="{'invisible': [('auto_import_walmart_orders', '=', False)]}">
+                                    <field name="auto_import_walmart_orders_interval_number"
+                                           attrs="{'required': [('auto_import_walmart_orders', '=', True)]}"
+                                           class="o_onboard_cron_box"/>
+                                    <field name="auto_import_walmart_orders_interval_type"
+                                           placeholder="Interval Type"
+                                           attrs="{'required': [('auto_import_walmart_orders', '=', True)]}"
+                                           class="o_onboard_cron_type"/>
+                                    <field name="auto_import_walmart_orders_next_execution"
+                                           placeholder="Next Execution Date"
+                                           attrs="{'required': [('auto_import_walmart_orders', '=', True)]}"
+                                           class="o_onboard_cron_execution"/>
+                                    <field name="auto_import_walmart_orders_user_id"
+                                           attrs="{'required': [('auto_import_walmart_orders', '=', True)]}"
+                                           class="o_onboard_cron_user"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-md-6 o_setting_box o_onboard_setting_box">
+                                <div class="o_setting_left_pane">
+                                    <field name="walmart_order_auto_update" widget="boolean_toggle"
+                                           class="o_onboard_boolean_toggle" style="margin-left: -0.5em"/>
+                                </div>
+                                <div class="o_setting_right_pane">
+                                    <span>
+                                        <h6>Update Order Status ?</h6>
+                                    </span>
+                                    <div class="text-muted">
+                                        Import Walmart Orders
+                                    </div>
+                                    <br/>
+
+                                    <div class="o_onboard_cron_settings"
+                                         attrs="{'invisible': [('walmart_order_auto_update', '=', False)]}">
+                                        <field name="walmart_order_update_interval_number"
+                                               attrs="{'required': [('walmart_order_auto_update', '=', True)]}"
+                                               class="o_onboard_cron_box"/>
+                                        <field name="walmart_order_update_interval_type"
+                                               placeholder="Interval Type"
+                                               attrs="{'required': [('walmart_order_auto_update', '=', True)]}"
+                                               class="o_onboard_cron_type"/>
+                                        <field name="walmart_order_update_next_execution"
+                                               placeholder="Next Execution Date"
+                                               attrs="{'required': [('walmart_order_auto_update', '=', True)]}"
+                                               class="o_onboard_cron_execution"/>
+                                        <field name="walmart_order_status_update_user_id"
+                                               attrs="{'required': [('walmart_order_auto_update', '=', True)]}"
+                                               class="o_onboard_cron_user"/>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                    <div class="row mt16 o_settings_container o_onboard_padding">
+                        <div class="col-xs-12 col-md-6 o_setting_box o_onboard_setting_box">
+                                <div class="o_setting_left_pane">
+                                    <field name="walmart_stock_auto_export" widget="boolean_toggle"
+                                           class="o_onboard_boolean_toggle" style="margin-left: -0.5em"/>
+                                </div>
+                                <div class="o_setting_right_pane">
+                                    <span>
+                                        <h6>Auto Inventory Export ?
+                                        </h6>
+                                    </span>
+                                    <div class="text-muted">
+                                        Auto Inventory Export
+                                    </div>
+                                    <br/>
+
+                                    <div class="o_onboard_cron_settings"
+                                         attrs="{'invisible': [('walmart_stock_auto_export', '=', False)]}">
+                                        <field name="walmart_update_stock_interval_number"
+                                               attrs="{'required': [('walmart_stock_auto_export', '=', True)]}"
+                                               class="o_onboard_cron_box"/>
+                                        <field name="walmart_update_stock_interval_type"
+                                               placeholder="Interval Type"
+                                               attrs="{'required': [('walmart_stock_auto_export', '=', True)]}"
+                                               class="o_onboard_cron_type"/>
+                                        <field name="walmart_update_stock_next_execution"
+                                               placeholder="Next Execution Date"
+                                               attrs="{'required': [('walmart_stock_auto_export', '=', True)]}"
+                                               class="o_onboard_cron_execution"/>
+                                        <field name="walmart_stock_update_user_id"
+                                               attrs="{'required': [('walmart_stock_auto_export', '=', True)]}"
+                                               class="o_onboard_cron_user"/>
+                                    </div>
+                                </div>
+                            </div>
+                        <div class="col-xs-12 col-md-6 o_setting_box o_onboard_setting_box">
+                            <div class="o_setting_left_pane">
+                                <field name="auto_import_walmart_wfs_orders" widget="boolean_toggle"
+                                       class="o_onboard_boolean_toggle" style="margin-left: -0.5em"/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <span>
+                                    <h6>Import Walmart WFS Order ?</h6>
+                                </span>
+                                <div class="text-muted">
+                                    Import Walmart WFS Orders
+                                </div>
+                                <br/>
+
+                                <div class="o_onboard_cron_settings"
+                                     attrs="{'invisible': [('auto_import_walmart_wfs_orders', '=', False)]}">
+                                    <field name="auto_import_walmart_wfs_orders_interval_number"
+                                           attrs="{'required': [('auto_import_walmart_wfs_orders', '=', True)]}"
+                                           class="o_onboard_cron_box"/>
+                                    <field name="auto_import_walmart_wfs_orders_interval_type"
+                                           placeholder="Interval Type"
+                                           attrs="{'required': [('auto_import_walmart_wfs_orders', '=', True)]}"
+                                           class="o_onboard_cron_type"/>
+                                    <field name="auto_import_walmart_wfs_orders_next_execution"
+                                           placeholder="Next Execution Date"
+                                           attrs="{'required': [('auto_import_walmart_wfs_orders', '=', True)]}"
+                                           class="o_onboard_cron_execution"/>
+                                    <field name="auto_import_walmart_wfs_orders_user_id"
+                                           attrs="{'required': [('auto_import_walmart_wfs_orders', '=', True)]}"
+                                           class="o_onboard_cron_user"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt16 o_settings_container o_onboard_padding">
+                            <div class="col-xs-12 col-md-6 o_setting_box o_onboard_setting_box">
+                                <div class="o_setting_left_pane">
+                                    <field name="auto_import_walmart_wfs_inventory" widget="boolean_toggle"
+                                           class="o_onboard_boolean_toggle" style="margin-left: -0.5em"/>
+                                </div>
+                                <div class="o_setting_right_pane">
+                                    <span>
+                                        <h6>Import Walmart WFS Inventory ?</h6>
+                                    </span>
+                                    <div class="text-muted">
+                                        Import Walmart WFS Inventory
+                                    </div>
+                                    <br/>
+
+                                    <div class="o_onboard_cron_settings"
+                                         attrs="{'invisible': [('auto_import_walmart_wfs_inventory', '=', False)]}">
+                                        <field name="auto_import_walmart_wfs_inventory_interval_number"
+                                               attrs="{'required': [('auto_import_walmart_wfs_inventory', '=', True)]}"
+                                               class="o_onboard_cron_box"/>
+                                        <field name="auto_import_walmart_wfs_inventory_interval_type"
+                                               placeholder="Interval Type"
+                                               attrs="{'required': [('auto_import_walmart_wfs_inventory', '=', True)]}"
+                                               class="o_onboard_cron_type"/>
+                                        <field name="auto_import_walmart_wfs_inventory_next_execution"
+                                               placeholder="Next Execution Date"
+                                               attrs="{'required': [('auto_import_walmart_wfs_inventory', '=', True)]}"
+                                               class="o_onboard_cron_execution"/>
+                                        <field name="auto_import_walmart_wfs_inventory_user_id"
+                                               attrs="{'required': [('auto_import_walmart_wfs_inventory', '=', True)]}"
+                                               class="o_onboard_cron_user"/>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+                <footer>
+                    <button string="Save" class="oe_highlight o_onboard_button" type="object"
+                            name="save_cron_configuration"
+                            invisible="context.get('is_calling_from_onboarding_panel', False) and not context.get('is_instance_exists', False)"
+                            attrs="{'invisible': [('walmart_marketplace_id', '=', False)]}"/>
+                    <button string="Cancel" special="cancel"
+                            class="oe_highlight o_onboard_button_white"/>
+                </footer>
+                <script>
+                    $('document').ready(function(){
+                    $('div.o_form_view.o_walmart_ept').parents('div.modal-content').addClass('on_board_custom_form');
+                    });
+                </script>
+            </form>
+        </field>
+    </record>
+
+    <!--This action used to instance create.-->
+    <record id="walmart_on_board_instance_configuration_action"
+            model="ir.actions.act_window">
+        <field name="name">Instances</field>
+        <field name="res_model">walmart.instance.create.ept</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="view_id" ref="walmart_on_board_instance_configuration_wizard"/>
+    </record>
+
+    <!--This action used to set general configuration on panel view.-->
+    <record id="action_walmart_general_config"
+            model="ir.actions.act_window">
+        <field name="name">General Configuration</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.config.settings</field>
+        <field name="view_mode">form</field>
+        <field name="context">{'default_walmart_marketplace_id': active_id}</field>
+        <field name="target">inline</field>
+    </record>
+
+    <!--This action used to set cron configuration on panel view.-->
+    <record id="action_wizard_onboarding_walmart_cron_configuration_ept"
+            model="ir.actions.act_window">
+        <field name="name">Scheduled Actions Configuration</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">walmart.cron.configuration.ept</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+
+</odoo>

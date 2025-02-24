@@ -1,0 +1,12 @@
+<odoo>
+    <record id="xml_xsd_view_form_inherit_import" model="ir.ui.view">
+        <field name="name">xml.xsd.form.inherit.import</field>
+        <field name="model">xml.xsd</field>
+        <field name="inherit_id" ref="base_edi.xml_xsd_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='type']" position="after">
+                <field name="is_trading_partner_field"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

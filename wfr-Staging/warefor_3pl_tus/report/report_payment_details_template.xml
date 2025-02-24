@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_payment_details_document">
+        <t t-call="web.basic_layout">
+            <t t-set="o" t-value="o.with_context(lang=lang)"/>
+            <div class="page">
+                <style>
+                    td,th{
+                    border:none !important;
+                    }
+                </style>
+                <div style="width: 100%;border: 1px solid white;line-height:18px;" cellspacing="0">
+                    <img src="warefor_3pl_tus/static/src/img/warefor_logo.png" style="height: 45px;width: 205px;" alt="Logo"/>
+                    <t t-set="o" t-value="o.with_context(lang=lang)"/>
+                    <br/>
+                    <b t-esc="o.company_id.partner_id.name"/>
+                    <br/>
+                    <t t-esc="o.company_id.partner_id.street"/>
+                    <br/>
+                    <t t-esc="o.company_id.partner_id.city"/>
+                    <t t-if="o.company_id.partner_id.city">,</t>
+                    <t t-esc="o.company_id.partner_id.state_id.code"/>
+                    <t t-esc="o.company_id.partner_id.zip"/>
+                    <div>(832) 568-4114</div>
+                    <div>ap@warefor.com</div>
+                </div>
+                <hr width="100%" style="background-color:#707070;border: 1.6px solid #707070;min-height:1px; padding:0px; margin:0px;"/>
+
+                <h3 style="margin-top:50px;">
+                    <strong>Payment Details</strong>
+                </h3>
+                <div class="mb-4 mt-3">
+                    <div class="row">
+                        <div class="col-6" t-if="o.date">
+                            Payment Date:
+                            <span t-field="o.date"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6" t-if="o.partner_type">
+                            <t t-if="o.partner_type == 'customer'">
+                                Customer:
+                            </t>
+                            <t t-if="o.partner_type == 'supplier'">
+                                Vendor:
+                            </t>
+                            <span t-field="o.partner_id"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6" t-if="o.amount">
+                            Payment Amount:
+                            <span t-field="o.amount" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6" t-if="o.ref">
+                            Memo:
+                            <span t-field="o.ref"/>
+                        </div>
+                    </div>
+                </div>
+
+                <t t-set="partials" t-value="o.move_id._get_reconciled_invoices_partials()[0]"/>
+                <t t-set="invoices" t-value="{partial[2].move_id for partial in partials}"/>
+                <t t-set="total_due" t-value="0"/>
+                <t t-set="invoice_ids" t-value="[]"/>
+                <t t-set="payment_ref" t-value="[]"/>
+                <t t-set="test" t-value="[]"/>
+                <t t-foreach="invoices" t-as="inv">
+                    <t t-if="any(inv.currency_id != par[2].currency_id for par in inv._get_reconciled_invoices_partials()[0])" t-set="otherCurrency" t-value="True"/>
+                    <t t-set="total_due" t-value="inv.amount_total + total_due"/>
+                    <t t-set="test" t-value="invoice_ids.append(inv.id)"/>
+                </t>
+                <t t-set="invoice_ids" t-value="o.env['account.move'].browse(invoice_ids)"/>
+                <table class="table table-sm" style="border:1px solid #fff !important;">
+                    <thead>
+                        <tr>
+                            <th class="text-start">
+                                <span>Invoice Date</span>
+                            </th>
+                            <th class="text-center">
+                                <span>Reference</span>
+                            </th>
+                            <th t-if="otherCurrency" class="text-center">
+                                <span>Amount In Currency</span>
+                            </th>
+                            <th class="text-end">
+                                <span>Amount</span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-set="total_payment" t-value="0"/>
+                        <t t-foreach="invoice_ids.sorted(lambda x: x.invoice_date)" t-as="inv">
+                            <t t-if="inv.move_type != 'entry'">
+                                <tr>
+                                    <td class="text-start">
+                                        <span t-field="inv.invoice_date"/>
+                                    </td>
+                                    <td class="text-center">
+                                        <span t-field="inv.ref"/>
+                                    </td>
+                                    <t t-set="test" t-value="payment_ref.append(inv.ref)"/>
+                                    <td t-if="otherCurrency"/>
+                                    <td class="text-end">
+                                        <span t-field="inv.amount_total"/>
+                                    </td>
+                                    <t t-set="total_payment" t-value="total_payment + inv.amount_total"/>
+                                </tr>
+                                <!-- PAYMENTS/REVERSALS -->
+
+                                <tr t-foreach="inv._get_reconciled_invoices_partials()[0]" t-as="par">
+                                    <t t-set="payment" t-value="par[2].move_id"/>
+                                    <t t-set="temp_payment_ref" t-value="payment and payment.ref.split(' ') or ''"/>
+                                    <t t-if="payment.ref not in payment_ref and not any([tpr in payment_ref for tpr in temp_payment_ref])">
+                                        <t t-set="test" t-value="payment_ref.append(payment.ref)"/>
+                                        <td class="text-start">
+                                            <span t-field="payment.date"/>
+                                        </td>
+                                        <td class="text-center">
+                                            <span t-field="payment.ref"/>
+                                        </td>
+                                        <t t-set="amountPayment" t-value="-payment.amount_total"/>
+                                        <t t-set="amountInvoice" t-value="-par[1]"/>
+                                        <t t-set="currencyPayment" t-value="payment.currency_id"/>
+                                        <t t-set="currencyInvoice" t-value="inv.currency_id"/>
+                                        <!-- Fill the column "Amount In Currency" only if necessary -->
+                                        <td t-if="otherCurrency" class="text-end">
+                                            <span t-if="currencyPayment != currencyInvoice" t-esc="amountPayment" t-options="{'widget': 'monetary', 'display_currency': currencyPayment}"/>
+                                        </td>
+                                        <td class="text-end">
+                                            <span t-esc="amountInvoice" t-options="{'widget': 'monetary', 'display_currency': currencyInvoice}"/>
+                                        </td>
+                                        <t t-set="total_payment" t-value="total_payment + amountInvoice"/>
+                                    </t>
+                                </tr>
+                            </t>
+                        </t>
+                    </tbody>
+                </table>
+                <t t-set="sub_total" t-value="(o.amount - total_payment)"/>
+                <table style="margin-top:80px;width:45%;float:right;line-height:40px;border-left:1px solid #fff !important;border-right:1px solid #fff !important;border-bottom:1px solid #fff !important;">
+                    <tr style="border:none !important;">
+                        <td style="border:none !important;">
+                            <strong>Due Amount</strong>
+                        </td>
+                        <td style="text-align:right;border:none !important;">$
+                            <t t-esc="'{:,.2f}'.format(total_payment)"/>
+                        </td>
+                    </tr>
+                    <tr style="border:none !important;">
+                        <td style="border:none !important;">
+                            <strong>Payment</strong>
+                        </td>
+                        <td style="text-align:right;border:none !important;">$
+                            <t t-esc="'-{:,.2f}'.format(o.amount)"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="border:none !important;"/>
+                        <td style="text-align:right;border:none !important;">
+                            <strong>$
+                                <t t-esc="'{:,.2f}'.format(sub_total)"/>
+                            </strong>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </t>
+    </template>
+
+    <template id="report_payment_deatils">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-set="lang" t-value="o.partner_id.lang or o.company_id.partner_id.lang"/>
+                <t t-call="warefor_3pl_tus.report_payment_details_document" t-lang="lang"/>
+            </t>
+        </t>
+    </template>
+</odoo>

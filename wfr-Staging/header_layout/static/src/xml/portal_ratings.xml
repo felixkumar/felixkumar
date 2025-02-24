@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="rating_card_inherited" t-inherit="portal_rating.rating_card" t-inherit-mode="extension" owl="1">
+        <xpath expr="//div" position="attributes">
+            <t t-if="widget._getContext()['website_id'] == 4">
+                <attribute name="class" add="custom_rating_card" separator=" "/>
+            </t>
+        </xpath>
+        <xpath expr="//div[hasclass('row')]/div[1]/p" position="replace">
+            <t t-if="widget._getContext()['website_id'] == 4">
+            </t>
+            <t t-else="">
+                <p t-if="!two_columns" class="text-center"><strong>Average</strong></p>
+
+            </t>
+            </xpath>
+        <xpath expr="//div[contains(@t-attf-class, 'o_website_rating_avg')]" position="attributes">
+            <t t-if="widget._getContext()['website_id'] == 4">
+                <attribute name="t-attf-class"
+                           add="d-flex align-items-center justify-content-center justify-content-lg-start"
+                           separator=" "/>
+
+            </t>
+        </xpath>
+        <xpath expr="//div[contains(@t-attf-class, 'o_website_rating_avg')]/t[@t-call='portal.chatter_message_count']"
+               position="replace">
+            <t t-if="widget._getContext()['website_id'] == 4"></t>
+            <t t-else="">
+                <t t-call="portal.chatter_message_count"/>
+            </t>
+        </xpath>
+        <xpath expr="//div[contains(@t-attf-class, 'o_website_rating_avg')]/h1" position="attributes">
+            <t t-if="widget._getContext()['website_id'] == 4">
+                <attribute name="style">margin-right:1rem;</attribute>
+                <attribute name="class" add="fw-500 mb-0 o_website_rating_avg_value" separator=" "/>
+            </t>
+        </xpath>
+        <xpath expr="//div[contains(@t-attf-class, 'o_website_rating_avg')]" position="after">
+            <t t-if="widget._getContext()['website_id'] == 4">
+                <t t-call="portal.chatter_message_count"/>
+            </t>
+        </xpath>
+        <xpath expr="//div[hasclass('o_website_rating_card_container')]/div" position="attributes">
+            <t t-if="widget._getContext()['website_id'] == 4">
+                <attribute name="t-attf-class">#{two_columns and 'col-lg-12' or 'col-lg-7'}</attribute>
+            </t>
+        </xpath>
+
+        <xpath expr="//div[hasclass('row')]/div[last()]" position="replace">
+            <t t-if="widget._getContext()['website_id'] == 4">
+                <div t-attf-class="#{two_columns and 'col-lg-12' or 'col-lg-5'} col-12 text-center d-flex align-items-lg-end align-items-center text-center justify-content-lg-end justify-content-center mt-lg-0 mt-3">
+                    <a href="#" role="button" data-bs-target=".o_portal_chatter_composer_custom"
+                       data-bs-toggle="collapse"
+                       aria-expanded="false" class="collapsed">
+                    <button type="button" class="btn fs-14 fw-600 text-uppercase"
+                            style="background-color:#F8F7F7;border-radius:4px;letter-spacing: 1.68px;padding:12px 32px;">
+                        WRITE A REVIEW
+                    </button></a>
+                </div>
+            </t>
+            <t t-else="">
+                    <div t-attf-class="#{two_columns and 'col-lg-12' or 'col-lg-7'}"
+                                 t-if="!_.isEmpty(widget.get('rating_card_values'))">
+                <hr t-if="two_columns"/>
+                                <p t-if="!two_columns"><strong>Details</strong></p>
+                                <t t-set="selected_rating" t-value="widget.get('rating_value')"/>
+                                <table t-attf-class="o_website_rating_table #{selected_rating and 'o_website_rating_table_has_selection' or ''}">
+                    <t t-foreach="widget.get('rating_card_values')['percent']" t-as="percent">
+                        <t t-set="row_selected" t-value="percent['num'] == selected_rating"/>
+                        <tr t-attf-class="o_website_rating_table_row #{row_selected ? 'o_website_rating_table_row_selected' : (selected_rating ? 'opacity-50' : '')}"
+                            t-att-data-star="percent['num']">
+                            <td class="o_website_rating_table_star_num text-nowrap" t-att-data-star="percent['num']">
+                                <t t-esc="percent['num']"/>
+                                stars
+                            </td>
+                            <td class="o_website_rating_table_progress">
+                                <div class="progress">
+                                    <div class="progress-bar o_rating_progressbar" role="progressbar"
+                                         t-att-aria-valuenow="percent['percent']" aria-valuemin="0" aria-valuemax="100"
+                                         t-att-style="'width:' + percent['percent'] + '%;'">
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="o_website_rating_table_percent">
+                                <strong><t t-esc="Math.round(percent['percent'] * 100) / 100"/>%</strong>
+                            </td>
+                            <td class="o_website_rating_table_reset">
+                                <button t-attf-class="btn btn-link o_website_rating_selection_reset #{row_selected and 'visible' or 'invisible'}"
+                                        t-att-data-star="percent['num']">
+                                    <i class="fa fa-times d-block" role="img" aria-label="Remove Selection"/>
+                                </button>
+                            </td>
+                        </tr>
+                    </t>
+                </table>
+            </div>
+
+            </t>
+        </xpath>
+    </t>
+
+    <t t-name="chatter_messages_extended" t-inherit="portal.chatter_messages" t-inherit-mode="extension" owl="1">
+        <xpath expr="//div[contains(@class, 'o_portal_chatter_messages')]"
+               position="replace">
+            <t t-if="widget._getContext()['website_id'] == 4">
+               <div class="o_portal_chatter_messages">
+                <t t-foreach="widget.get('messages') || []" t-as="message">
+                    <div class="row o_portal_chatter_message o_portal_chatter_oxf_message"
+                         t-att-id="'message-' + message.id">
+                        <div class="col-12 col-lg-3 d-flex flex-column o_portal_chatter_message_title">
+                            <h6 class='mb-1 fs-16 fw-500'><t t-esc="message.author_id[1]"/></h6>
+                            <span class="fs-14 fw-500" style="color:#475656 !important;">Verified Buyer<img
+                                    src="/header_layout/static/src/svg/vector_black.svg"
+                                    alt="Vector" height="16px" width="16px" class="ms-1"/></span>
+                        </div>
+                        <div class="col-lg-9 col-12 o_message_body_custom o_portal_chatter_message_body pt-3 pt-lg-0 px-lg-4"
+                             style="color:#535353;">
+                            <div class="d-flex flex-row justify-content-between">
+                                <div class="fw-normal">
+                                    <t t-out="message.body"/>
+                                </div>
+                                <div class="o_portal_chatter_puslished_date text-end" style="width:30%;">
+                                    <t t-esc="message.message_day_from_today"/>
+                                </div>
+                            </div>
+                            <div class="col-12 o_portal_chatter_attachments">
+                                <t t-call="portal.Chatter.Attachments">
+                                    <t t-set="attachments" t-value="message.attachment_ids"/>
+                                </t>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+                </div>
+            </t>
+            <t t-else="">
+                <div class="o_portal_chatter_messages">
+            <t t-foreach="widget.get('messages') || []" t-as="message">
+                <div class="d-flex o_portal_chatter_message" t-att-id="'message-' + message.id">
+                    <img class="o_portal_chatter_avatar" t-att-src="message.author_avatar_url" alt="avatar"/>
+                    <div class="flex-grow-1">
+                        <t t-call="portal.chatter_internal_toggle" t-if="widget.options['is_user_employee']"/>
+
+                        <div class="o_portal_chatter_message_title">
+                            <h5 class='mb-1'><t t-esc="message.author_id[1]"/></h5>
+                            <p class="o_portal_chatter_puslished_date"><t t-esc="message.published_date_str"/></p>
+                        </div>
+                        <t t-out="message.body"/>
+
+                        <div class="o_portal_chatter_attachments">
+                            <t t-call="portal.Chatter.Attachments">
+                                <t t-set="attachments" t-value="message.attachment_ids"/>
+                            </t>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </div>
+            </t>
+        </xpath>
+    </t>
+
+    <t t-name="Composer_extended" t-inherit="portal.Composer" t-inherit-mode="extension" owl="1">
+        <xpath expr="//div[contains(@class, 'd-flex')]" position="replace">
+            <t t-if="widget._getContext()['website_id'] == 4">
+                <div class="row">
+                    <div class="col-3">
+                    <img alt="Avatar" class="o_portal_chatter_avatar o_object_fit_cover align-self-start"
+                         t-attf-src="/web/image/res.partner/#{widget.options['partner_id']}/avatar_128"
+                         t-if="!widget.options['is_user_public'] or !widget.options['token']"/>
+                        </div>
+                    <div class="col-9 px-3" style="border-left:1px solid #A9A9A9;padding-left:32px;">
+                        <div class="o_portal_chatter_composer_input">
+                            <div class="o_portal_chatter_composer_body mb32">
+                                <textarea rows="4" name="message" class="form-control"
+                                          placeholder="Write a message..."></textarea>
+                                <div class="o_portal_chatter_attachments mt-3"/>
+                                <div class="mt8">
+                                    <button t-attf-data-action="/mail/chatter_post"
+                                            class="o_portal_chatter_composer_btn btn btn-primary"
+                                            type="submit">Send</button>
+                                    <button class="o_portal_chatter_attachment_btn btn btn-secondary" type="button"
+                                            title="Add attachment">
+                                        <i class="fa fa-paperclip"/>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-none">
+                            <input type="file" class="o_portal_chatter_file_input" multiple="multiple"/>
+                        </div>
+                    </div>
+                </div>
+            </t>
+            <t t-else="">
+                <div class="d-flex">
+                    <img alt="Avatar" class="o_portal_chatter_avatar o_object_fit_cover align-self-start"
+                         t-attf-src="/web/image/res.partner/#{widget.options['partner_id']}/avatar_128"
+                         t-if="!widget.options['is_user_public'] or !widget.options['token']"/>
+                    <div class="flex-grow-1">
+                        <div class="o_portal_chatter_composer_input">
+                            <div class="o_portal_chatter_composer_body mb32">
+                                <textarea rows="4" name="message" class="form-control"
+                                          placeholder="Write a message..."></textarea>
+                                <div class="o_portal_chatter_attachments mt-3"/>
+                                <div class="mt8">
+                                    <button t-attf-data-action="/mail/chatter_post"
+                                            class="o_portal_chatter_composer_btn btn btn-primary"
+                                            type="submit">Send</button>
+                                    <button class="o_portal_chatter_attachment_btn btn btn-secondary" type="button"
+                                            title="Add attachment">
+                                        <i class="fa fa-paperclip"/>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-none">
+                            <input type="file" class="o_portal_chatter_file_input" multiple="multiple"/>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </xpath>
+        <xpath expr="//div[contains(@class, 'o_portal_chatter_composer')]" position="attributes">
+            <t t-if="widget._getContext()['website_id'] == 4">
+                <attribute name="class" add="o_portal_chatter_composer_custom collapse " separator=" "/>
+            </t>
+            <t t-else="">
+                <attribute name="class" remove="o_portal_chatter_composer_custom collapse " separator=" "/>
+            </t>
+        </xpath>
+        </t>
+
+    <t t-name="chatter_message_count_inherited" t-inherit="portal.chatter_message_count" t-inherit-mode="extension"
+       owl="1">
+            <xpath expr="//div[hasclass('o_message_counter')]" position="replace">
+                <t t-if="widget._getContext()['website_id'] == 4">
+                    <div class="o_message_counter text-lg-start text-center fw-normal" style="color:#535353;">
+                        <t t-if="count">
+                            Overall rating given to this product by our customers.
+                        </t>
+                        <t t-else="">
+                            Be the first to review this product.
+                        </t>
+                    </div>
+                </t>
+                <t t-else="">
+                    <div class="o_message_counter">
+                        <t t-if="count">
+                            <span class="fa fa-comments"/>
+                            <span class="o_message_count"> <t t-esc="count"/></span>
+                            <t t-if="count == 1">comment</t>
+                            <t t-else="">comments</t>
+                        </t>
+                        <t t-else="">
+                            There are no comments for now.
+                        </t>
+                    </div>
+                </t>
+            </xpath>
+        </t>
+    <t t-name="Chatter_Extended" t-inherit="portal.Chatter" t-inherit-mode="extension"
+       owl="1">
+        <xpath expr="//div[contains(@t-attf-class, 'o_portal_chatter')]/div/hr" position="replace">
+            <t t-if="widget._getContext()['website_id'] == 4">
+            </t>
+            <t t-else="">
+                <hr t-if="widget.options['allow_composer']"/>
+
+            </t>
+        </xpath>
+
+        <xpath expr="//div[contains(@t-attf-class, 'o_portal_chatter')]/hr[@t-if='!two_columns']" position="replace">
+            <t t-if="widget._getContext()['website_id'] == 4">
+<!--                <attribute name="style">height:1px;color:rgba(0, 0, 0, 0.1)</attribute>-->
+            </t>
+            <t t-else="">
+                <hr t-if="!two_columns"/>
+            </t>
+        </xpath>
+    </t>
+
+</templates>

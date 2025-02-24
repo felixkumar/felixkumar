@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="mail_compose_message_view_form_internal_thread" model="ir.ui.view">
+        <field name="name">mail.compose.message.form</field>
+        <field name="model">mail.compose.message</field>
+        <field name="inherit_id" ref="mail.email_compose_message_wizard_form"/>
+        <field name="arch" type="xml">
+            <label for="partner_ids" position="before">
+                <label for="send_only_internal" attrs="{'invisible': [('is_log', '=', True)]}" class="mt16"/>
+                <field name="send_only_internal" attrs="{'invisible': [('is_log', '=', True)]}" class="mt16" nolabel="1"/>
+            </label>
+            <span name="document_followers_text" position="attributes">
+                <attribute name="attrs">{'invisible': ['|', '|', ('model', '=', False), ('composition_mode', '=', 'mass_mail'), ('send_only_internal', '=', True),]}</attribute>
+            </span>
+        </field>
+    </record>
+
+</odoo>

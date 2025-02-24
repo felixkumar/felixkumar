@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_outbound_sign_form" model="ir.ui.view">
+            <field name="name">outbound.sign.wizard.form</field>
+            <field name="model">outbound.sign.wizard</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <group>
+                            <field name="name" required="1"/>
+                        </group>
+                    </group>
+                    <footer>
+                        <button name="mark_sign" string="Mark Sign" type="object" class="btn-primary"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="mark_sign_wizard_action" model="ir.actions.act_window">
+            <field name="name">Mark Sign</field>
+            <field name="res_model">outbound.sign.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_outbound_sign_form"/>
+            <field name="target">new</field>
+        </record>
+
+    </data>
+</odoo>

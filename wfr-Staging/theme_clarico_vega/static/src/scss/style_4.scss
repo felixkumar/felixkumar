@@ -1,0 +1,330 @@
+/*============================= 01. Category Slider ====================*/
+.s_product_public_category_style_1{
+    .te_category_item {
+        background:nth($f_color,18);
+        height: 100%;
+        width:100%;
+
+        position:relative;
+        a {
+            text-decoration: none;
+            .te_category_img {
+                height: 216px;
+                display: flex;
+                align-items: center;
+                img {
+                    width: 100%;
+                    height: inherit;
+                    margin: 0 auto;
+                    @include transition(all,.4s)
+                }
+            }
+        }
+        .te_category_name {
+        margin-top: 6px;
+        display: block;
+        width: 100%;
+        text-align: center;
+        padding: 8px;
+        background: #d8d8d8bf;
+        position: absolute;
+        bottom: 8px;
+        }
+    }
+}
+/* ============================ category 2 ===================== */
+.s_product_public_category_style_2{
+  .te_category_item {
+        height: 222px;
+        position:relative;
+        width: 100%;
+        &:hover {
+            .te_category_name {
+                opacity: 1;
+                &:before, &:after {
+                    opacity: 1;
+                    transform: scale(1);
+                }
+            }
+            .te_category_img {
+                img {
+                    @include transform(scale3d(0.9,0.9,0.9));
+                }
+            }
+        }
+        a {
+            display: inline-block;
+            width: 100%;
+            padding: 10px;
+            height: 100%;
+            .te_category_name {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-weight: 500;
+                background: rgba(0,0,0,0.2);
+                color: #fff;
+                @include transition(all,.4s)
+                opacity: 0;
+                padding: 10px;
+                &:before, &:after {
+                    @include position(absolute,10px,10px,10px,10px);
+                    content: '';
+                    transition: opacity 0.35s,transform 0.35s;
+                    opacity: 0;
+                    z-index: 0;
+                }
+                &:before {
+                    border-top: 2px solid nth($f_color,5);
+                    border-bottom: 2px solid nth($f_color,5);
+                    @include transform(scale(0, 1));
+                }
+                &:after {
+                    border-right: 2px solid nth($f_color,5);
+                    border-left: 2px solid nth($f_color,5);
+                    @include transform(scale(1, 0));
+                }
+                @include media-breakpoint-down(lg) {
+                    opacity: 1;
+                    background: rgba(0,0,0,0.2);
+                    &:before, &:after {
+                        opacity: 1;
+                        transform: scale(1);
+                    }
+                }
+            }
+            .te_category_img {
+                height: inherit;
+                display: flex;
+                align-items: center;
+                img {
+                    width: 100%;
+                    max-height: 170px;
+                    @include object-fit(scale-down);
+                    margin: 0 auto;
+                    @include transform(scale3d(1,1,1));
+                    @include transition(all,.4s);
+                }
+            }
+            & img {
+                height: inherit;
+            }
+        }
+  }
+}
+/* ============================= category 3==================== */
+.s_product_public_category_styles_3{
+    .te_category_item {
+        border: 1px solid #eee;
+//         height: 216px;
+        width: 100%;
+        @include transition(all,.4s);
+        &:hover {
+            box-shadow: 0 1px 10px #ddd;
+        }
+        a {
+            text-decoration: none;
+            .te_category_img {
+                height: 150px;
+                display: flex;
+                align-items: center;
+                padding: 6px;
+                img {
+                    width: auto;
+                    height: 100%;
+                    margin: 0 auto;
+                }
+            }
+            .te_category_name {
+                font-weight: 500;
+                margin-top: 6px;
+                display: inline-block;
+                width: 100%;
+                background: #eee;
+                padding: 6px;
+                text-align: center;
+            }
+            & img {
+                height: calc(100% - 48px);
+            }
+        }
+    }
+}
+/* ============================ Brand Style 1 ========================== */
+.s_product_brand_style_1{
+    .brand_link{
+        text-decoration: none;
+        .brand_image {
+            height: 120px;
+            display: flex;
+            align-items: center;
+            img {
+                max-height: 120px;
+                margin: 0px auto;
+                width: auto;
+                @include transition(all,0.4s,ease);
+                padding: 6px;
+                max-width: 100%;
+                height: auto;
+                margin: 0 auto;
+            }
+        }
+        .brand_name {
+            margin-top: 10px;
+            word-break: break-all;
+            color: nth($f_color,19);
+        }
+        .product_count {
+            font-size: $font-size-base - 0.125rem;
+            color: nth($f_color,15);
+        }
+    }
+    .owl-item{
+        display: flex;
+    }
+}
+.te_brand_img {
+        margin: 10px 5px;
+        @include transition(all,0.4s,ease)
+        padding: 8px;
+        width:100%;
+        &:hover {
+            @include box-shadow(0 1px 10px #ddd);
+        }
+    }
+/* ============================ Brand Style 2========================== */
+.s_product_brand_style_2{
+      .owl-item{
+            display: flex;
+        }
+    .te_brand_img {
+        margin: 10px 5px;
+        min-height: 150px;
+        @include border-radius(10px);
+        padding: 0;
+        background: rgba(255,255,255,0.5);
+        .brand_link {
+            text-decoration: none;
+            .brand_image {
+                height: 130px;
+                border: 1px solid #ededed;
+                border-bottom: 0px;
+                border-radius: 6px 6px 0 0;
+                display: flex;
+                align-items: center;
+                img {
+                    max-height: 130px;
+                    padding: 16px 6px;
+                    width: auto;
+                    height: auto;
+                    margin: 0 auto;
+                }
+            }
+            .brand-content {
+                background: #f5f5f5;
+                padding: 6px 10px;
+                border: 1px solid #ededed;
+                border-radius: 0 0 6px 6px;
+                .brand_name {
+                    vertical-align: middle;
+                    margin-top: 0;
+                    text-align: center;
+                }
+                .product_count {
+                    line-height: 1.6;
+                    text-align: center;
+                    font-size: $font-size-base - 0.125rem;
+                    color: nth($f_color,15);
+                }
+            }
+        }
+    }
+}
+.carousel-item{
+    .flex-shrink-0{
+        padding:0;
+    }
+}
+
+/* ============================ Brand Style 3 ========================== */
+.s_product_brand_style_3{
+    .carousel-item .flex-shrink-0 {
+        padding: 0;
+        justify-content: center;
+        border: 1px solid #ededed;
+    }
+    .owl-carousel.owl-loaded{
+        @include media-breakpoint-down(md) {
+                display:flex !important;
+        }
+    }
+}
+
+.brand_slider_3 {
+    > .container {
+        overflow: hidden;
+        .te_brand_img {
+            @include media-breakpoint-down(md) {
+                display:flex;
+                justify-content: center;
+            }
+            &:hover{
+                box-shadow: unset !important;
+            }
+            .brand_link {
+                text-decoration: none;
+                .brand_image {
+                    @include transition(all,0.4s,ease)
+                    img {
+                        max-height: 90px;
+                        filter: grayscale(90%);
+                        padding: 8px;
+                        @include media-breakpoint-down(md) {
+                            filter: grayscale(0);
+                        }
+                        &:hover {
+                            filter: grayscale(0);
+                        }
+                    }
+                }
+            }
+            .t_img_hover_1.te_img_effect2 {
+                overflow: visible;
+                position: relative;
+                display: inline-block;
+            }
+        }
+    }
+}
+.brand_slider_template_3 {
+    .s_product_brand_style_3{
+        .row{
+            margin: 0px -25px;
+        }
+        .carousel-item .flex-shrink-0 {
+            border: 0px solid #ededed;
+            border-right: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+            @include make-col(4, 12);
+            margin: 0px;
+            margin-right: -4px;
+            margin-bottom: -2px;
+            img {
+                padding: 0 !important;
+            }
+        }
+    }
+    > .row {
+        align-items: center;
+        .te_brand_slider {
+            > .container {
+                width: 100%;
+            }
+        }
+    }
+}

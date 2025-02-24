@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template xml:space="preserve">
+    <t t-name="ChatterTopbar" t-inherit="mail.ChatterTopbar" t-inherit-mode="extension" owl="1">
+        <xpath expr="//button[hasclass('o_ChatterTopbar_buttonSendMessage')]" position="replace">
+            <t t-if="chatterTopbar.chatter.threadModel == 'maintenance.request'">
+                <button class="o_ChatterTopbar_button o_ChatterTopbar_buttonSendMessage btn text-nowrap me-2"
+                        type="button"
+                        t-att-class="{
+                                'o-active btn-odoo': chatterTopbar.chatter.composerView and !chatterTopbar.chatter.composerView.composer.isLog,
+                                'btn-odoo': !chatterTopbar.chatter.composerView,
+                                'btn-light': chatterTopbar.chatter.composerView and chatterTopbar.chatter.composerView.composer.isLog,
+                            }"
+                        t-att-disabled="!chatterTopbar.chatter.canPostMessage"
+                        data-hotkey="m"
+                        t-on-click="chatterTopbar.chatter.onClickSendMessage"
+                >
+                            Send message
+                        </button>
+            </t>
+            <t t-else="">
+            </t>
+        </xpath>
+    </t>
+</template>

@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Main Configuration view of Walmart Marketplace -->
+    <record id="view_marketplace_config_settings" model="ir.ui.view">
+        <field name="name">Walmart Settings</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('settings')]" position="inside">
+                <div class="app_settings_block " data-string="Walmart"
+                     string="Walmart" data-key="walmart_ept" groups="walmart_ept.group_walmart_manager">
+                    <div name="marketplace_config">
+                        <h2 style="font-size:25px;background-color:rgb(245,255,250);">Walmart
+                            Marketplace
+                        </h2>
+                        <div class="row mt16 o_settings_container">
+                            <div class="col-xs-12 col-md-6 o_setting_box">
+                                <label for="walmart_marketplace_id"
+                                       string="Select Marketplace"/>
+                                <field name="walmart_marketplace_id" widget="selection"
+                                       class="oe_inline"/>
+                                <button string="Create More Walmart Marketplace"
+                                        icon="fa-arrow-right text-success"
+                                        name="%(create_walmart_instace_action_ept)d"
+                                        type="action"
+                                        class="oe_link"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div name="marketplace_configuration"
+                         attrs="{'invisible': [('walmart_marketplace_id', '=', False)]}">
+                        <h2 style="font-size:21px;background-color:rgb(245,255,250);">
+                            Marketplace Configuration
+                        </h2>
+                    </div>
+                    <div name="auto_creation"
+                         attrs="{'invisible': [('walmart_marketplace_id', '=', False)]}">
+                        <h2>Marketplace Information</h2>
+                        <div class="row mt16 o_settings_container">
+                            <div class="col-xs-12 col-md-6 o_setting_box">
+                                <div class="o_setting_right_pane">
+                                    <label for="walmart_company_id"/>
+                                    <div class="text-muted">
+                                        Selected Walmart Company will be set in your Walmart manage.
+                                    </div>
+                                    <field name="walmart_company_id"
+                                           attrs="{'required': [('walmart_marketplace_id', '!=', False)]}"
+                                           widget="selection"/>
+                                    <div class="text-muted"/>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-md-6 o_setting_box">
+                                <div class="o_setting_right_pane">
+                                    <label for="walmart_warehouse_id"/>
+                                    <div class="text-muted">
+                                        Selected Warehouse will be set in your Walmart orders.
+                                    </div>
+                                    <field name="walmart_warehouse_id"
+                                           attrs="{'required': [('walmart_marketplace_id', '!=', False)]}"
+                                           widget="selection"/>
+                                    <div class="text-muted"/>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-md-6 o_setting_box">
+                                <div class="o_setting_right_pane">
+                                    <label for="walmart_country_id"/>
+                                    <div class="text-muted">
+                                        Selected your Company Country.
+                                    </div>
+                                    <field name="walmart_country_id"
+                                           attrs="{'required': [('walmart_marketplace_id', '!=', False)]}"
+                                           />
+                                    <div class="text-muted"/>
+                                </div>
+                            </div>
+
+                            <div class="col-xs-12 col-md-6 o_setting_box">
+                                <div class="o_setting_right_pane">
+                                    <label for="walmart_lang_id"/>
+                                    <div class="text-muted">
+                                        Selected your language.
+                                    </div>
+                                    <field name="walmart_lang_id"
+                                           attrs="{'required': [('walmart_marketplace_id', '!=', False)]}"
+                                           widget="selection"/>
+                                    <div class="text-muted"/>
+                                </div>
+                            </div>
+
+                            <div class="col-xs-12 col-md-6 o_setting_box">
+                                <div class="o_setting_left_pane">
+                                    <field name="walmart_auto_create_product_not_found_in_odoo"
+                                           style="margin-left: -0.5em"
+                                           help="If Ticked, It will automatically create new product in odoo and offer in walmart if offer not found in walmart while importing orders ."/>
+                                </div>
+                                <div class="o_setting_right_pane">
+                                    <label for="walmart_auto_create_product_not_found_in_odoo"/>
+                                    <div class="text-muted">
+                                        It will automatically create new product in
+                                        odoo and offer in
+                                        walmart if offer not found in walmart while
+                                        importing orders
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-md-6 o_setting_box">
+                                <div class="o_setting_left_pane">
+                                    <field name="is_selling_on_wfs" style="margin-left: -0.5em"
+                                           help="If Ticked, It will automatically create new product in odoo and offer in walmart if offer not found in walmart while importing orders ."/>
+                                </div>
+                                <div class="o_setting_right_pane">
+                                    <label for="is_selling_on_wfs"/>
+                                    <div class="text-muted">
+                                        It will automatically create new product in
+                                        odoo and offer in
+                                        walmart if offer not found in walmart while
+                                        importing orders
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--added for WFS order-->
+                            <div class="col-xs-12 col-md-6 o_setting_box">
+                            </div>
+                            <div class="col-xs-12 col-md-6 o_setting_box">
+                                <div class="o_setting_right_pane">
+                                    <div attrs="{'invisible':[('is_selling_on_wfs','=',False)]}">
+                                        <label for="walmart_wfs_warehouse_id"/>
+                                        <div class="text-muted">
+                                            Selected Warehouse will be set in your WFS orders.
+                                        </div>
+                                        <field name="walmart_wfs_warehouse_id"
+                                               attrs="{'required': [('walmart_marketplace_id', '!=', False)]}"
+                                               widget="selection"/>
+                                        <div class="text-muted"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div name="shipment_fee"
+                             attrs="{'invisible': [('walmart_marketplace_id', '=', False)]}"
+                             invisible="1">
+                            <h2>Shipment and Other Fees</h2>
+                            <div class="row mt16 o_settings_container">
+                                <div class="col-xs-12 col-md-6 o_setting_box">
+                                    <div class="o_setting_right_pane">
+                                        <label for="walmart_shipping_product_id"/>
+                                        <field name="walmart_shipping_product_id"
+                                               attrs="{'required': [('walmart_marketplace_id', '!=', False)]}"/>
+                                        <div class="text-muted"/>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-md-6 o_setting_box">
+                                    <div class="o_setting_right_pane">
+                                        <label for="walmart_discount_product_id"/>
+                                        <field name="walmart_discount_product_id"
+                                               attrs="{'required': [('walmart_marketplace_id', '!=', False)]}"/>
+                                        <div class="text-muted"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div name="walmart_order_information"
+                             attrs="{'invisible':[('walmart_marketplace_id','=',False)]}">
+                            <h2>Order Information</h2>
+                            <div class="row mt16 o_settings_container">
+                                <div class="col-xs-12 col-md-6 o_setting_box">
+                                    <div class="o_setting_left_pane">
+                                        <field name="walmart_is_default_odoo_sequence_in_sales_order"
+                                               help="If Ticked, Set Order Number based on default Sale Order Sequence."
+                                               style="margin-left: -0.5em"/>
+                                    </div>
+                                    <div class="o_setting_right_pane">
+                                        <label for="walmart_is_default_odoo_sequence_in_sales_order"/>
+                                        <div class="text-muted">
+                                            Set Order Number based on default Sale Order
+                                            Sequence
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-12 col-md-6 o_setting_box">
+                                    <div class="o_setting_right_pane">
+                                        <div attrs="{'invisible':[('walmart_is_default_odoo_sequence_in_sales_order','=',True)]}">
+                                            <label for="walmart_order_prefix"/>
+                                            <field name="walmart_order_prefix"
+                                                   attrs="{'required': [('walmart_marketplace_id', '!=', False),
+                                                       ('walmart_is_default_odoo_sequence_in_sales_order', '=', False)]}"/>
+                                            <div class="text-muted"/>
+                                        </div>
+                                    </div>
+                                    <field name="walmart_country_code" invisible="1"/>
+                                    <div class="o_setting_right_pane"
+                                         attrs="{'invisible':[('walmart_country_code','!=','US')]}">
+                                        <div>
+                                            <label for="walmart_tax_id"/>
+                                            <div class="text-muted">
+                                                Select Default Sales Tax
+                                            </div>
+                                            <field name="walmart_tax_id"
+                                                   options="{'no_create':1,'no_create_edit':1}"/>
+                                            <div class="text-muted"/>
+                                            <button name="install_tax_calculate_module"
+                                                    type="object"
+                                                    string="Install Tax Calculate Module"
+                                                    class="oe_link"
+                                                    help="Install this module if you are USA Seller."/>
+                                            <div class="text-muted">
+                                                This Module is only needed if you are selling in US.
+                                                Install the module by clicking on above link.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-12 col-md-6 o_setting_box" invisible="1">
+                                    <div class="o_setting_left_pane">
+                                        <field name="is_walmart_import_shipped_orders"
+                                               help="If Ticked, It will import Shipped Order and will Confirm the
+                                                   order as well as Validate its picking."/>
+                                    </div>
+                                    <div class="o_setting_right_pane">
+                                        <label for="is_walmart_import_shipped_orders"/>
+                                        <div class="text-muted"/>
+                                        <div
+                                                attrs="{'invisible': [('is_walmart_import_shipped_orders','=',False)]}">
+                                            <label for="walmart_ship_start_date"/>
+                                            <field name="walmart_ship_start_date"
+                                                   attrs="{'required': [('is_walmart_import_shipped_orders', '!=', False)]}"/>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-12 col-md-6 o_setting_box"
+                                     name="auto_workflow"
+                                     attrs="{'invisible': [('walmart_marketplace_id', '=', False)]}">
+                                    <div class="o_setting_right_pane">
+                                        <label for="walmart_auto_workflow_id"/>
+                                        <div class="text-muted">
+                                            Selected auto invoice Workflow.
+                                        </div>
+                                        <field name="walmart_auto_workflow_id"
+                                               attrs="{'required': [('walmart_marketplace_id', '!=', False)]}"
+                                               widget="selection"/>
+                                        <div class="text-muted"/>
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-12 col-md-6 o_setting_box" invisible="1">
+                                    <div class="o_setting_left_pane">
+                                        <field name="walmart_auto_create_refund"
+                                               class="oe_inline"/>
+                                    </div>
+                                    <div class="o_setting_right_pane">
+                                        <label for="walmart_auto_create_refund"/>
+                                        <div class="text-muted">
+                                            Create Credit Note
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-12 col-md-6 o_setting_box">
+                                    <div class="o_setting_right_pane">
+                                        <label for="walmart_pricelist_id"/>
+                                        <div class="text-muted">
+                                            1.During product sync operation, prices will be
+                                            Imported/Exported using this
+                                            Pricelist.
+                                            <br/>
+                                            2.During order sync operation, this pricelist will be
+                                            set in the
+                                            order if the
+                                            order currency from store and the currency from the
+                                            pricelist
+                                            set here, matches.
+                                        </div>
+                                        <field name="walmart_pricelist_id"
+                                               attrs="{'required': [('walmart_marketplace_id', '!=', False)]}"
+                                               widget="selection"/>
+                                        <div class="text-muted"/>
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-12 col-md-6 o_setting_box">
+                                    <div class="o_setting_right_pane">
+                                        <label for="walmart_payment_term_id"/>
+                                        <div class="text-muted">
+                                            Select Payment term for Doing payment.
+                                        </div>
+                                        <field name="walmart_payment_term_id"
+                                               attrs="{'required': [('walmart_marketplace_id', '!=', False)]}"
+                                               widget="selection"/>
+                                        <div class="text-muted"/>
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-12 col-md-6 o_setting_box">
+                                    <div class="o_setting_right_pane">
+                                        <label for="walmart_team_id"/>
+                                        <div class="text-muted">
+                                            Set the sales team for walmart orders
+                                        </div>
+                                        <field name="walmart_team_id"
+                                               attrs="{'required': [('walmart_marketplace_id', '!=', False)]}"
+                                               widget="selection"/>
+                                        <div class="text-muted"/>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div name="walmart_inventory_information"
+                             attrs="{'invisible':[('walmart_marketplace_id','=',False)]}">
+                            <h2>Inventory Information</h2>
+                            <div class="row mt16 o_settings_container">
+                                <div class="col-12 col-lg-6 o_setting_box">
+                                    <div class="o_setting_right_pane">
+                                        <div>
+                                            <label for="walmart_stock_field_id"/>
+                                            <div class="text-muted">
+                                                Select inventory field for Walmart products.
+                                                <br/>
+                                                Forecast Quantity = Quantity On Hand - Outgoing +
+                                                Incoming
+                                                <br/>
+                                                Free To Use Quantity = Quantity On Hand - Reserved
+                                                quantity
+                                            </div>
+                                            <field name="walmart_stock_field_id"
+                                                   widget="selection"
+                                                   domain="[('model_id.model','=','product.product'),('name','in',['free_qty','virtual_available'])]"
+                                                   attrs="{'required':[('walmart_marketplace_id','!=',False)]}"
+                                                   class="oe_inline"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div name="walmart_journal_information"
+                             attrs="{'invisible':[('walmart_marketplace_id','=',False)]}">
+                            <h2>Settlement Report</h2>
+                            <div class="row mt16 o_settings_container">
+                                <div class="col-xs-12 col-md-6 o_setting_box">
+                                    <div class="o_setting_right_pane">
+                                        <label for="walmart_settlement_report_journal_id"/>
+                                        <div class="text-muted">
+                                            Select settlement journal report.
+                                        </div>
+                                        <field name="walmart_settlement_report_journal_id"
+                                               attrs="{'required': [('walmart_marketplace_id', '!=', False)]}"
+                                               widget="selection"/>
+                                        <div class="text-muted"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Action for Walmart configuration settings -->
+    <record id="action_walmart_configuration" model="ir.actions.act_window">
+        <field name="name">Settings</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.config.settings</field>
+        <field name="view_mode">form</field>
+        <field name="target">inline</field>
+        <field name="context">{'module': 'walmart_ept'}</field>
+    </record>
+    <!-- Sub menu of Configuration main menu [Walmart Settings] -->
+    <menuitem id="menu_config_walmart_setting" sequence="1"
+              name="Settings" parent="walmart_ept.menu_configuration_ept"
+              action="action_walmart_configuration" groups="walmart_ept.group_walmart_user"/>
+
+</odoo>

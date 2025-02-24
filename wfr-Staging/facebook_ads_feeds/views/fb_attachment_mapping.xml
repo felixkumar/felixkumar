@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (c) 2016-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>;) -->
+<!-- See LICENSE file for full copyright and licensing details. -->
+<!-- License URL : https://store.webkul.com/license.html/ -->
+<odoo>
+    <record model="ir.ui.view" id="fb_attachment_mapping_form">
+        <field name="name">FB Attachment Form</field>
+        <field name="model">fb.attachment.mapping</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="FB Attachment">
+                <sheet>
+                    <group >
+                      <field name="fb_shop" />
+                      <field name="attachment_id" />
+                      <field name="latest" />
+                      <field name="updated" />
+                    </group>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="fb_attachment_mapping_tree">
+        <field name="name">FB Attachment Tree</field>
+        <field name="model">fb.attachment.mapping</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="FB Attachment">
+                <field name="fb_shop" />
+                <field name="attachment_id" />
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="fb_attachment_mapping_action">
+        <field name="name">FB Attachment</field>
+        <field name="res_model">fb.attachment.mapping</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="fb_attachment_mapping_tree" />
+    </record>
+
+
+</odoo>

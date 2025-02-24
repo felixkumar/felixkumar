@@ -1,0 +1,104 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="product_template_view_form_normal_inherit_warefor_3pl" model="ir.ui.view">
+        <field name="name">product.template.view.form.normal.inherit.warefor.3pl</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='general_information']/group[1]" position="after">
+                <group>
+                    <group>
+                        <field name="date"/>
+                        <field name="item_number"/>
+                        <field name="upc" string="UPC-A / GTIN-12 / Sellable Unit"/>
+                        <field name="ean_gtin_number" string="EAN-13 / GTIN-13 / Case"/>
+                        <field name="pallet_gtin" string="Pallet GTIN"/>
+                        <field name="brand"/>
+                        <field name="manufacturer"/>
+                        <field name="description"/>
+                        <field name="customer_m2m_ids" widget="many2many_tags"/>
+                        <field name="vendor_no"/>
+                        <field name="department_no"/>
+                        <field name="item_customer_number"/>
+                        <field name="payment_term_id" widget="selection"/>
+                    </group>
+                    <group>
+                        <field name="qrcode" widget="image"/>
+                    </group>
+                </group>
+            </xpath>
+            <xpath expr="//page[last()]" position="after">
+                <page string="Product Dimension" invisible="1">
+                    <group col="5">
+                        <label string="Item Size" for="item_size_in"/>
+                        <field name="item_size_in" nolabel="1"/> <label string="In" for="item_size_in"/>
+                        <field name="item_size_cm" nolabel="1"/> <label string="cm" for="item_size_cm"/>
+                    </group>
+                    <group col="5">
+                        <label string="Item Capacity" for="item_capacity_cm"/>
+                        <field name="item_capacity_cm" nolabel="1"/> <label string="Qt"
+                                                                            for="item_capacity_cm"/>
+                        <field name="item_capacity_l" nolabel="1"/> <label string="L"
+                                                                           for="item_capacity_l"/>
+                    </group>
+                    <newline/>
+                    <label string="Unit of Sale Dimensions" for="usd_length_in" class="o_horizontal_separator"
+                           style="font-size: 1.625rem !important;"/>
+                    <group col="5">
+                        <label string="Length" for="usd_length_in"/>
+                        <field name="usd_length_in" nolabel="1"/> <label string="In"
+                                                                         for="usd_length_in"/>
+                        <field name="usd_length_cm" nolabel="1"/> <label string="cm"
+                                                                         for="usd_length_cm"/>
+                    </group>
+                    <group col="5">
+                        <label string="Width" for="usd_width_in"/>
+                        <field name="usd_width_in" nolabel="1"/> <label string="In" for="usd_width_in"/>
+                        <field name="usd_width_cm" nolabel="1"/> <label string="cm" for="usd_width_in"/>
+                    </group>
+                    <group col="5">
+                        <label string="Height" for="usd_height_in"/>
+                        <field name="usd_height_in" nolabel="1"/> <label string="In"
+                                                                         for="usd_height_in"/>
+                        <field name="usd_height_cm" nolabel="1"/> <label string="cm"
+                                                                         for="usd_height_cm"/>
+                    </group>
+                    <group col="5">
+                        <label string="Cube" for="usd_cube_lbs"/>
+                        <field name="usd_cube_lbs" nolabel="1"/> <label string="Culn"
+                                                                        for="usd_cube_lbs"/>
+                        <field name="usd_cube_cm" nolabel="1"/> <label string="cm3" for="usd_cube_cm"/>
+                    </group>
+                    <newline/>
+                    <group col="5">
+                        <label string="Unit of Sale Weight" for="usw_lbs"/>
+                        <field name="usw_lbs" nolabel="1"/> <label string="lbs" for="usw_lbs"/>
+                        <field name="usw_kg" nolabel="1"/> <label string="Kg" for="usw_kg"/>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="product_template_view_form_inherit_barcode" model="ir.ui.view">
+        <field name="name">product.template.view.form.inherit.barcode</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_only_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='barcode']" position="attributes">
+                <attribute name="string">Orderable Barcode</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="product_product_view_form_inherit_barcode" model="ir.ui.view">
+        <field name="name">product.product.view.form.inherit.barcode</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_normal_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='barcode']" position="attributes">
+                <attribute name="string">Orderable Barcode</attribute>
+            </xpath>
+        </field>
+    </record>
+</odoo>

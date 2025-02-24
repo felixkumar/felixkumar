@@ -1,0 +1,841 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_HouseBillOfLading_doc">
+        <div class="page" style="page-break-before:always;width:100%;">
+            <div t-call="web.layout">
+                <div style="padding:3px;display: inline-block;width:100%;">
+                    <table style="width:100%;border: 2px solid #000000;margin: auto;background-color: #f2f2f2;">
+                        <tr>
+                            <td style="width:25%;">
+                                <div style="width:100%; position:relative; top:3px; font-size:10px;">
+                                    <span>Date:</span>
+                                    <span style="padding-left:15px;">
+                                        <t style="padding-left:10px;"
+                                           t-esc="o.po_date and o.po_date.strftime('%m/%d/%y')"/>
+                                    </span>
+                                </div>
+                            </td>
+                            <td style="text-align:center;width:25%;">
+                                <div style="width:100%;position:relative;top:3px;font-weight: bold;">
+                                    BILL OF LADING
+                                </div>
+                            </td>
+                            <td style="width:25%;"/>
+                        </tr>
+                    </table>
+                </div>
+                <table style="width:100%; margin-top:10px;display: inline-block;">
+                    <tr>
+                        <td style="vertical-align: baseline;">
+                            <div style="width:90%;">
+                                <t t-set="from" t-value="o.ship_from_partner_id"/>
+                                <div style="border: 2px solid #000000;font-weight: bold;font-size: 13px;padding-left: 10px;padding-top:5px;background-color: #f2f2f2;">
+                                    SHIP FROM
+                                </div>
+                                <div style="padding-left:10px;font-size:11px;">
+                                    <span style="line-height: 1rem;padding-top:5px;">
+                                        <b>
+                                            <t t-esc="from.name or ''"/>
+                                        </b>
+                                        <br/>
+                                        <t t-esc="from.street"/>
+                                        <t t-if="from.street2">
+                                            <br/>
+                                            <t t-esc="from.street2"/>
+                                        </t>
+                                        <br/>
+                                        <t t-esc="from.city"/>
+                                        <t t-if="from.city">,</t>
+                                        <t t-esc="from.state_id.code"/>
+                                        <t t-esc="from.zip"/>
+                                        <br/>
+                                        <t t-esc="from.country_id.name"/>
+                                        <br/>
+                                    </span>
+                                </div>
+                                <div style="border: 2px solid #000000;font-weight: bold;font-size: 13px;padding-left: 10px;padding-top:5px;background-color: #f2f2f2;">
+                                    SHIP TO
+                                </div>
+                                <div style="padding-left:10px;font-size: 11px;padding-top:5px;">
+                                    <span style="line-height: 1rem;">
+                                        <b>
+                                            <t t-esc="o.outbound_partner_id.name or ''"/>
+                                        </b>
+                                        <br/>
+                                        <t t-esc="o.outbound_partner_id.street"/>
+                                        <t t-if="o.outbound_partner_id.street2">
+                                            <br/>
+                                            <t t-esc="o.outbound_partner_id.street2"/>
+                                        </t>
+                                        <br/>
+                                        <t t-esc="o.outbound_partner_id.city"/>
+                                        <t t-if="o.outbound_partner_id.city">,</t>
+                                        <t t-esc="o.outbound_partner_id.state_id.code"/>
+                                        <t t-esc="o.outbound_partner_id.zip"/>
+                                        <br/>
+                                        <t t-esc="o.outbound_partner_id.country_id.name"/>
+                                        <br/>
+                                    </span>
+                                </div>
+                            </div>
+                        </td>
+                        <td style="width:50%;font-size: 11px;vertical-align: baseline;padding-left:10px;">
+                            <table style="width:100%;">
+                                <div style="width:98%; font-size:11px;">
+                                    <tr style="font-size:11px;">
+                                        <td style="vertical-align: baseline;text-align:start;">
+                                            <div>BOL #</div>
+                                        </td>
+                                        <td style="vertical-align: baseline;text-align:end;">
+                                            <div>
+                                                <t t-esc="o.bol_number"/>
+                                            </div>
+                                            <br/>
+                                            <br/>
+                                        </td>
+                                    </tr>
+                                    <tr style="font-size:11px;">
+                                        <td style="vertical-align: baseline;text-align:start;">
+                                            <div>SCAC</div>
+                                        </td>
+                                        <td style="vertical-align: baseline;text-align:end;">
+                                            <div>
+                                                <t t-esc="o.scac"/>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr style="font-size:11px;">
+                                        <td style="vertical-align: baseline;text-align:start;">
+                                            <div>Carrier Name</div>
+                                        </td>
+                                        <td style="vertical-align: baseline;text-align:end;">
+                                            <div style="white-space:nowrap;overflow:visible;">
+                                                <t t-esc="o.carrier_flight.name"/>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr style="font-size:11px;">
+                                        <td style="vertical-align: baseline;text-align:start;">
+                                            <div>Trailer #</div>
+                                        </td>
+                                        <td style="vertical-align: baseline;text-align:end;">
+                                            <div>
+                                                <t t-esc="o.trailer"/>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr style="font-size:11px;">
+                                        <td style="vertical-align: baseline;text-align:start;">
+                                            <div>Seal #</div>
+                                        </td>
+                                        <td style="vertical-align: baseline;text-align:end;">
+                                            <div>
+                                                <t t-esc="o.seal_number_inbound"/>
+                                            </div>
+                                            <br/>
+                                            <br/>
+                                        </td>
+                                    </tr>
+                                    <tr style="font-size:11px;">
+                                        <td colspan="2">
+                                            <div>Freight Charge Terms:
+                                                (prepaid unless marked
+                                                otherwise)
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr style="font-size:11px;">
+                                        <td colspan="2">
+                                            <span>Prepaid
+                                                (
+                                                <t t-if="o.is_fr_prepaid_h">
+                                                    <span style="padding-left:2px;padding-right:2px;">
+                                                        X
+                                                    </span>
+                                                </t>
+                                                <t t-else="">
+                                                    <span style="visibility:hidden;padding-left:2px;padding-right:2px;">
+                                                        X
+                                                    </span>
+                                                </t>
+                                                )
+                                            </span>
+                                            <span style="padding-left:15px;">Collect
+                                                (
+                                                <t t-if="o.is_fr_collect_h">
+                                                    <span style="padding-left:2px;padding-right:2px;">
+                                                        X
+                                                    </span>
+                                                </t>
+                                                <t t-else="">
+                                                    <span style="visibility:hidden;padding-left:2px;padding-right:2px;">
+                                                        X
+                                                    </span>
+                                                </t>
+                                                )
+                                            </span>
+                                            <span style="padding-left:15px;">3rd Party
+                                                (
+                                                <t t-if="o.is_fr_3rd_party_h">
+                                                    <span style="padding-left:2px;padding-right:2px;">
+                                                        X
+                                                    </span>
+                                                </t>
+                                                <t t-else="">
+                                                    <span style="visibility:hidden;padding-left:2px;padding-right:2px;">
+                                                        X
+                                                    </span>
+                                                </t>
+                                                )
+                                            </span>
+                                        </td>
+                                    </tr>
+                                </div>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="vertical-align: baseline;">
+                            <div style="width:90%">
+                                <div style="border: 2px solid #000000;font-weight: bold;font-size: 13px;padding-left: 10px;padding-top:5px;background-color: #f2f2f2;">
+                                    THIRD PARTY FREIGHT CHARGES BILL TO
+                                </div>
+                                <div style="padding-left:10px;font-size: 11px;padding-top:5px;">
+                                    <t t-if="'Carote' in from.name and 'Wal-Mart' in o.outbound_partner_id">
+                                        <span style="font-weight: bold;line-height: 1rem;">
+                                        <p><b>Wal-Mart Stores, Inc,</b><br/>
+                                                702,S.W.Eight St.<br/>
+                                                Bentonville, AR 72715
+                                        </p>
+                                    </span>
+                                    </t>
+                                    <t t-else="">
+                                        <span style="font-weight: bold;line-height: 1rem;">
+                                        <b>
+                                            <t t-esc="o.forwarder_id.name or ''"/>
+                                        </b>
+                                        <br/>
+                                        <t t-esc="o.forwarder_id.street"/>
+                                        <t t-if="o.forwarder_id.street2">
+                                            <br/>
+                                            <t t-esc="o.forwarder_id.street2"/>
+                                        </t>
+                                        <br/>
+                                        <t t-esc="o.forwarder_id.city"/>
+                                        <t t-if="o.forwarder_id.city">,</t>
+                                        <t t-esc="o.forwarder_id.state_id.code"/>
+                                        <t t-esc="o.forwarder_id.zip"/>
+                                        <br/>
+                                        <t t-esc="o.forwarder_id.country_id.name"/>
+                                        <br/>
+                                    </span>
+                                    </t>
+                                </div>
+
+                            </div>
+                        </td>
+                        <td style="width:50%;vertical-align: baseline;padding-left:10px;">
+                            <div>
+                                <div style="border: 2px solid #000000;font-weight: bold;font-size: 13px;padding-left: 10px;padding-top:5px;background-color: #f2f2f2;">
+                                    SPECIAL INSTRUCTIONS
+                                </div>
+                                <div style="padding-left:10px;font-size: 11px;padding-top:5px;line-height: 1rem;">
+                                    <t t-if="'Carote' in from.name and 'Wal-Mart' in o.outbound_partner_id">
+                                        <div>
+                                        <span>PO Type :</span>
+                                        <span>
+                                            0033
+                                        </span>
+                                    </div>
+                                    <div>
+                                        <span>Department :</span>
+                                        <span>
+                                            0014
+                                        </span>
+                                    </div>
+                                    <div>
+                                        <span>Event code :</span>
+                                        <span>
+                                            POS REPLEN
+                                        </span>
+                                    </div>
+                                    </t>
+                                    <t t-else="">
+                                        <div>
+                                        <span>PO Type :</span>
+                                        <span>
+                                            <t t-esc="o.po_type"/>
+                                        </span>
+                                    </div>
+                                    <div>
+                                        <span>Department :</span>
+                                        <span>
+                                            <t t-esc="o.department"/>
+                                        </span>
+                                    </div>
+                                    <div>
+                                        <span>Event code :</span>
+                                        <span>
+                                            <t t-esc="o.event_code"/>
+                                        </span>
+                                    </div>
+                                    </t>
+
+
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+                <table class="order-info"
+                       style="width:100%;margin-top:10px;border: 1px solid gray;border-collapse: collapse;display: inline-block;">
+                    <tr>
+                        <th colspan="7"
+                            style="vertical-align:middle;text-align:center;font-size:13px;border:2px solid #000000;;padding-top:5px;background-color: #f2f2f2;">
+                            CUSTOMER ORDER INFORMATION
+                        </th>
+                    </tr>
+                    <tr style="font-size: 13px;background-color: #f2f2f2;">
+                        <th style="border:1px solid gray;padding:0 5px;vertical-align: middle;text-align:start;">
+                            Customer PO
+                            #
+                        </th>
+                        <th style="border:1px solid gray;padding:0 5px;vertical-align: middle;text-align:center;">#
+                            Pkgs
+                        </th>
+                        <th style="border:1px solid gray;padding:0 5px;vertical-align: middle;text-align:center;">
+                            # Pallets
+                        </th>
+                        <th style="border:1px solid gray;padding:0 5px;vertical-align: middle;text-align:center;">
+                            Volume
+                            <br/>(CuFT)
+                        </th>
+                        <th style="border:1px solid gray;padding:0 5px;vertical-align: middle;text-align:center;">
+                            Weight
+                            <br/>(Lbs)
+                        </th>
+                        <th style="border:1px solid gray;padding:0 5px;vertical-align: middle;text-align:center;">
+                            Delivery Date
+                        </th>
+                        <th style="border:1px solid gray;padding:0 5px;vertical-align: middle;text-align:end;">
+                            PO Destination
+                        </th>
+                    </tr>
+                    <tr style="font-size: 12px;">
+                        <td style="border:1px solid gray;padding:5px 5px;vertical-align: center;">
+                            <t t-esc="line.po_number"/>
+                        </td>
+                        <td style="border:1px solid gray;padding:0 5px;vertical-align: middle;text-align:right;">
+                            <t t-set="total_packages"
+                               t-value="sum(lines.qty_carton for lines in line)"/>
+                            <t t-esc="'{:,.2f}'.format(total_packages)"/>
+                        </td>
+                        <td style="border:1px solid gray;padding:0 5px;vertical-align: middle;text-align:right;">
+                            <t t-set="total_pallets"
+                               t-value="sum(lines.required_pallet for lines in line)"/>
+                            <t t-esc="'{:,.2f}'.format(total_pallets)"/>
+                        </td>
+                        <td style="border:1px solid gray;padding:0 5px;vertical-align: middle;text-align:right;">
+                            <t t-set="total_volume"
+                               t-value="sum(lines.product_volume for lines in line)"/>
+                            <t t-esc="'{:,.2f}'.format(total_volume)"/>
+                        </td>
+                        <td style="border:1px solid gray;padding:0 5px;vertical-align: middle;text-align:right;">
+                            <t t-set="total_weight"
+                               t-value="sum(lines.net_weight for lines in line)"/>
+                            <t t-esc="'{:,.2f}'.format(total_weight)"/>
+                        </td>
+                        <td style="border:1px solid gray;padding:0 5px;vertical-align: middle;text-align:center;">
+                            <t t-esc="o.pickup_schedule_date and o.pickup_schedule_date.strftime('%m/%d/%y')"/>
+                        </td>
+                        <td style="border:1px solid gray;padding:0 5px;vertical-align: middle;text-align:right;">
+                            <t t-esc="o.partner_id.zip"/>
+                        </td>
+                    </tr>
+                    <tr style="font-size: 12px;font-weight: bold;">
+                        <th style="border:1px solid gray;padding:5px 5px;vertical-align: middle;text-align:left;">
+                            Grand Total
+                        </th>
+                        <td style="border:1px solid gray;padding:0 5px;vertical-align: middle;text-align:right;">
+                            <!--                            <t t-set="total_packages"-->
+                            <!--                               t-value="sum(line.quantity_carton for line in o.freight_order_line_ids)"/>-->
+                            <t t-esc="'{:,.2f}'.format(total_packages)"/>
+
+                        </td>
+                        <td style="border:1px solid gray;padding:0 5px;vertical-align: middle;text-align:right;">
+                            <!--                            <t t-set="total_pallets"-->
+                            <!--                               t-value="sum(line.required_pallet for line in o.freight_order_line_ids)"/>-->
+                            <t t-esc="'{:,.2f}'.format(total_pallets)"/>
+                        </td>
+                        <td style="border:1px solid gray;padding:0 5px;vertical-align: middle;text-align:right;">
+                            <!--                            <t t-set="total_volume"-->
+                            <!--                               t-value="sum(line.product_volume for line in o.freight_order_line_ids)"/>-->
+                            <t t-esc="'{:,.2f}'.format(total_volume)"/>
+                        </td>
+                        <td style="border:1px solid gray;padding:0 5px;vertical-align: middle;text-align:right;">
+                            <!--                            <t t-set="total_weight"-->
+                            <!--                               t-value="sum(line.net_weight for line in o.freight_order_line_ids)"/>-->
+                            <t t-esc="'{:,.2f}'.format(total_weight)"/>
+                        </td>
+                    </tr>
+                </table>
+                <table class="order-info"
+                       style="width:100%;margin-top:10px;display: inline-block;border: 1px solid gray;border-collapse: collapse;page-break-inside:avoid;">
+                    <tr>
+                        <th colspan="8"
+                            style="background-color:#f2f2f2;vertical-align:middle;text-align:center;font-size:14px;border:2px solid #000000;font-size:13px;padding-top:5px;">
+                            CARRIER INFORMATION
+                        </th>
+                    </tr>
+                    <tr style="font-size: 12px;background-color: #f2f2f2;">
+                        <th style="border:1px solid gray;padding:5px 5px;vertical-align: middle;text-align:middle;padding-bottom:0px;"
+                            colspan="2">Handling Unit
+                        </th>
+                        <th style="border:1px solid gray;padding:5px 5px;vertical-align: middle;text-align:middle;padding-bottom:0px;"
+                            colspan="2">Package
+                        </th>
+                        <th style="border:1px solid gray;padding:5px 5px;vertical-align: middle;text-align:middle;padding-bottom:0px;"
+                            rowspan="2">Weight<br/>(Lbs)
+                        </th>
+                        <th style="border:1px solid gray;padding:5px 5px;vertical-align: middle;text-align:middle;"
+                            rowspan="2">Commodity Description - Note (1)
+                        </th>
+                        <th style="border:1px solid gray;padding:5px 5px;vertical-align: middle;text-align:middle;padding-bottom:0px;"
+                            colspan="2">LTL Only
+                        </th>
+                    </tr>
+                    <tr style="font-size: 12px;background-color: #f2f2f2;">
+                        <th style="border:1px solid gray;padding:5px 5px;vertical-align: middle;text-align:middle;padding-bottom:0px;">
+                            QTY
+                        </th>
+                        <th style="border:1px solid gray;padding:5px 5px;vertical-align: middle;text-align:middle;padding-bottom:0px;">
+                            Type
+                        </th>
+                        <th style="border:1px solid gray;padding:5px 5px;vertical-align: middle;text-align:middle;padding-bottom:0px;">
+                            QTY
+                        </th>
+                        <th style="border:1px solid gray;padding:5px 5px;vertical-align: middle;text-align:middle;padding-bottom:0px;">
+                            Type
+                        </th>
+                        <th style="border:1px solid gray;padding:5px 5px;vertical-align: middle;text-align:middle;padding-bottom:0px;">
+                            NMFC #
+                        </th>
+                        <th style="border:1px solid gray;padding:5px 5px;vertical-align: middle;text-align:middle;padding-bottom:0px;">
+                            Class
+                        </th>
+                    </tr>
+                    <tr style="font-size: 12px;">
+                        <td style="border:1px solid gray;padding:5px 5px;vertical-align: middle;text-align:right;padding-bottom:0px;">
+                            <t t-out="'{:,.2f}'.format(total_pallets)"/>
+                        </td>
+                        <td style="border:1px solid gray;padding:5px 5px;vertical-align: middle;text-align:left;padding-bottom:0px;">
+                            Pallets
+                        </td>
+                        <td style="border:1px solid gray;padding:5px 5px;vertical-align: middle;text-align:right;padding-bottom:0px;">
+                            <t t-out="'{:,.2f}'.format(total_packages)"/>
+                        </td>
+                        <td style="border:1px solid gray;padding:5px 5px;vertical-align: middle;text-align:left;padding-bottom:0px;">
+                            Cases
+                        </td>
+                        <td style="border:1px solid gray;padding:5px 5px;vertical-align: middle;text-align:middle;padding-bottom:0px;">
+                            <t t-out="'{:,.2f}'.format(total_weight)"/>
+                        </td>
+                        <td style="border:1px solid gray;padding:5px 5px;vertical-align: middle;text-align:left;padding-bottom:0px;">
+                            <t t-esc="o.commodity_desc_note"/>
+                        </td>
+                        <td style="border:1px solid gray;padding:5px 5px;vertical-align: middle;text-align:left;padding-bottom:0px;">
+                            <t t-esc="o.ltl_nmfc"/>
+                        </td>
+                        <td style="border:1px solid gray;padding:5px 5px;vertical-align: middle;text-align:right;padding-bottom:0px;">
+                            <t t-esc="o.ltl_class"/>
+                        </td>
+                    </tr>
+                    <tr style="font-size: 10px;">
+                        <td colspan="8"
+                            style="font-size:10px;border:1.5px solid gray;vertical-align: baseline;padding-top:5px;">
+                            <b>Note (1):</b>
+                            Commodities requiring
+                            special or
+                            additional care or attention in handling or
+                            stowing must be so marked and packaged as
+                            to ensure safe transportation with ordinary
+                            care.
+                            <b>See Section 2(e) of NMFC Item 360.</b>
+                        </td>
+                    </tr>
+                </table>
+                <table class="order-info" style="width:100%;padding-top:10px;font-size:9px;display: inline-block;">
+                    <tr>
+                        <td style="padding-left:5px;vertical-align: baseline;">
+                            <div style="width:95%;">
+                                Where the rate is dependent on value,
+                                shippers are required to state
+                                specifically in writing the agreed or
+                                declared value of the property as follows:
+                            </div>
+                            <div style="width:90%;">
+                                "The agreed or declared value of the property is specifically stated by the shipper to
+                                be
+                                not
+                                exeeding: ................. per .................."
+                            </div>
+                        </td>
+                        <td style="width:39%;vertical-align: baseline;">
+                            <div style="display: inline-block;">
+                                COD Amount:
+                                <t t-esc="o.company_currency_id.symbol"/>
+                                <span style="display: inline-block; border-bottom: 1px solid gray; width: 80px;">
+                                    <t t-esc="o.cod_amount_h"/>
+                                </span>
+                            </div>
+                            <div style="padding-top:5px;">
+                                <div>Fee Terms: &#160;&#160;&#160;Collect (
+                                    <t t-if="o.is_fee_collect_h">
+                                        <span style="padding-left:2px;padding-right:2px;">
+                                            X
+                                        </span>
+                                    </t>
+                                    <t t-else="">
+                                        <span style="visibility:hidden;padding-left:2px;padding-right:2px;">
+                                            X
+                                        </span>
+<!--                                    </t>-->
+                                    ) &#160;&#160;&#160;Prepaid
+                                    (
+<!--                                    <t t-if="o.is_fee_prepaid_h">-->
+<!--                                        <span style="padding-left:2px;padding-right:2px;">-->
+<!--                                            X-->
+<!--                                        </span>-->
+<!--                                    </t>-->
+<!--                                    <t t-else="">-->
+                                        <span style="visibility:hidden;padding-left:2px;padding-right:2px;">
+                                            X
+                                        </span>
+                                    </t>
+                                    )
+                                </div>
+                                <div style="padding-left:57px;">Customer Check Acceptable (
+                                    <t t-if="o.is_customer_check_h">
+                                        <span style="padding-left:2px;padding-right:2px;">
+                                            X
+                                        </span>
+                                    </t>
+                                    <t t-else="">
+                                        <span style="visibility:hidden;padding-left:2px;padding-right:2px;">
+                                            X
+                                        </span>
+                                    </t>
+                                    )
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+                <div style="display: inline-block;background-color: #f2f2f2;width:100%;margin-top:5px;border:2px solid #000000;font-size: 12px;padding-top:5px;">
+                    <div style="padding-left:15px;">
+                        <b>NOTE:</b>
+                        Liability limitation for loss or
+                        damage in this shipment may be applicable. See 49 U.S.C. B 14706(c)(1)(A) and (B)
+                    </div>
+                </div>
+                <table class="order-info" style="width:100%;display: inline-block;padding-top:10px;padding-left:5px;">
+                    <tr>
+                        <td style="vertical-align: baseline;">
+                            <div style="width:93%; font-size:10px;line-height: 1rem;">
+                                RECEIVED, subject to individually determined rates or contracts that have been agreed
+                                upon in writing between the carrier and shipper, if applicable, otherwise to the rates,
+                                classifications and rules that have been established by the carrier and are available to
+                                the
+                                shipper, on request, and to all applicable state and federal regulations.
+                            </div>
+                        </td>
+                        <td style="width:39%;line-height: 1rem;vertical-align: baseline;padding-right:5px;">
+                            <div style="font-size:10px;">
+                                The carrier shall not make delivery of this shipment without
+                                payment of freight and all other lawful charges.
+                            </div>
+                            <div style="font-size:12px;padding-top:10px;position:relative;">
+                                <div>Shipper</div>
+                                <div>Signature
+                                    <span style="display: inline-block; border-bottom: 1px solid gray; width: 210px;">
+                                        <t t-if="o.shipper_sign">
+                                            <img t-att-src="'data:image/png;base64,' + o.shipper_sign.decode('utf-8')"
+                                                 class="image-1" style="max-width: 100%; height: auto;"/>
+                                        </t>
+                                    </span>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+                <div style="page-break-inside:avoid;">
+                    <table class="order-info" style="width:100%;padding-top:10px;font-size:10px;">
+                        <tr>
+                            <td style="vertical-align: baseline;position:relative;">
+                                <div style="width:100%;">
+                                    <div style="border: 2px solid #000000;font-weight: bold;font-size: 13px;padding-left: 10px;padding-top:5px;background-color: #f2f2f2;">
+                                        SHIPPER SIGNATURE/ DATE
+                                    </div>
+                                    <div style="padding-left:5px;margin-bottom: 50px;font-size:10px;padding-top:5px;line-height: 1rem;">
+                                        This is to certify that the above named materials are
+                                        properly classified, described, packaged, marked and
+                                        labeled, and are in proper condition for transportation
+                                        according to the applicable regulations of the Department of
+                                        Transportation.
+                                    </div>
+                                </div>
+                                <div style="position:absolute;bottom:-15px;width:100%;padding-top:10px;">
+                                    <table style="border-spacing: 10px;">
+                                        <tr>
+                                            <td style="display: inline-block; border-bottom: 1px solid grey; width: 150px;">
+                                                <t t-if="o.shipper_sign_h" t-esc="o.shipper_sign_h" t-options='{"widget": "image"}'/>
+                                            </td>
+                                            <td style="display: inline-block; border-bottom: 1px solid grey; width: 70px;font-size:11px !important;">
+                                                <t t-esc="o.date_h and o.date_h.strftime('%m/%d/%y')"/>
+                                            </td>
+                                        </tr>
+                                        <tr style="font-size:12px">
+                                            <td>Signature</td>
+                                            <td>Date</td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+                            </td>
+                            <td style="width:25%;font-size:10px;vertical-align: baseline;padding-left:40px;">
+                                <div>
+                                    <span style="padding:1;">
+                                        <b>Trailer Loaded:</b>
+                                    </span>
+                                    <br/>
+                                    <span style="padding:1;">(
+<!--                                        <t t-if="o.is_by_shipper_trai_h">-->
+<!--                                            <span style="padding-left:2px;padding-right:2px;">-->
+<!--                                                X-->
+<!--                                            </span>-->
+<!--                                        </t>-->
+<!--                                        <t t-else="">-->
+                                            <span style="visibility:hidden;padding-left:2px;padding-right:2px;">
+                                                X
+                                            </span>
+<!--                                        </t>-->
+                                        ) By Shipper
+                                    </span>
+                                    <br/>
+                                    <span style="padding:1;">(
+<!--                                        <t t-if="o.is_by_driver_trai_h">-->
+<!--                                            <span style="padding-left:2px;padding-right:2px;">-->
+<!--                                                X-->
+<!--                                            </span>-->
+<!--                                        </t>-->
+<!--                                        <t t-else="">-->
+                                            <span style="visibility:hidden;padding-left:2px;padding-right:2px;">
+                                                X
+                                            </span>
+<!--                                        </t>-->
+                                        ) By Driver
+                                    </span>
+                                </div>
+                                <div style="padding-top:16px;">
+                                    <span style="padding:1;">
+                                        <b>Freight Counted:</b>
+                                    </span>
+                                    <br/>
+                                    <span style="padding:1;">(
+<!--                                        <t t-if="o.is_by_shipper_freight_h">-->
+<!--                                            <span style="padding-left:2px;padding-right:2px;">-->
+<!--                                                X-->
+<!--                                            </span>-->
+<!--                                        </t>-->
+<!--                                        <t t-else="">-->
+                                            <span style="visibility:hidden;padding-left:2px;padding-right:2px;">
+                                                X
+                                            </span>
+<!--                                        </t>-->
+                                        ) By Shipper
+                                    </span>
+                                    <br/>
+                                    <table>
+                                        <tr style="font-size:10px;">
+                                            <td style="padding:0;">(
+<!--                                                <t t-if="o.is_by_driver_freight_h">-->
+<!--                                                    <span style="padding-left:2px;padding-right:2px;">-->
+<!--                                                        X-->
+<!--                                                    </span>-->
+<!--                                                </t>-->
+<!--                                                <t t-else="">-->
+                                                    <span style="visibility:hidden;padding-left:2px;padding-right:2px;">
+                                                        X
+                                                    </span>
+<!--                                                </t>-->
+                                                )
+                                            </td>
+                                            <td>
+                                                <div>By Driver/ Pallets</div>
+                                            </td>
+                                        </tr>
+                                        <tr style="font-size:10px;">
+                                            <td style="visibility:hidden;padding:0;">(
+<!--                                                <t t-if="o.is_by_shipper_trai">-->
+<!--                                                    <span style="padding-left:2px;padding-right:2px;">-->
+<!--                                                        X-->
+<!--                                                    </span>-->
+<!--                                                </t>-->
+<!--                                                <t t-else="">-->
+                                                    <span style="visibility:hidden;padding-left:2px;padding-right:2px;">
+                                                        X
+                                                    </span>
+<!--                                                </t>-->
+                                                )
+                                            </td>
+                                            <td>
+                                                <div>Said to Contain</div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <span style="padding:1;">(
+<!--                                        <t t-if="o.is_by_pieces_h">-->
+<!--                                            <span style="padding-left:2px;padding-right:2px;">-->
+<!--                                                X-->
+<!--                                            </span>-->
+<!--                                        </t>-->
+<!--                                        <t t-else="">-->
+                                            <span style="visibility:hidden;padding-left:2px;padding-right:2px;">
+                                                X
+                                            </span>
+<!--                                        </t>-->
+                                        ) By Driver/ Pieces
+                                    </span>
+                                </div>
+                            </td>
+                            <td style="width:39%;vertical-align:baseline;position:relative;">
+                                <div style="width:100%;">
+                                    <div style="border: 2px solid #000000;font-weight: bold;font-size: 11px;padding-left: 10px;padding-top:5px;background-color: #f2f2f2;">
+                                        CARRIER SIGNATURE/ PICKUP DATE
+                                    </div>
+                                    <div style="padding-left:5px;margin-bottom: 50px;padding-top:5px;line-height: 1rem;">
+                                        <span>
+                                            Carrier acknowledges receipt of packages and required
+                                            placards. Carrier certifies emergency response information
+                                            was made available and/or carrier has the DOT emergency
+                                            response guidebook or equivalent documentation in the
+                                            vehicle.
+                                        </span>
+                                        <span>
+                                            <br/>
+                                            Property described above is received in
+                                            <br/>
+                                            good order, except as noted.
+                                            <br/>
+                                            <br/>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div style="position:absolute;bottom:-15px;width:100%;padding-right:5px;padding-top:10px;">
+                                    <table style="border-spacing: 10px;">
+                                        <tr>
+                                            <tr>
+                                                <td style="display: inline-block; border-bottom: 1px solid grey; width: 180px;">
+                                                    <t t-if="o.carrier_sign_h">
+                                                        <img t-att-src="'data:image/png;base64,' + o.carrier_sign_h.decode('utf-8')"
+                                                             class="image-1" style="max-width: 100%; height: auto;"/>
+                                                    </t>
+                                                </td>
+                                                <td style="display: inline-block; border-bottom: 1px solid grey; width: 70px;font-size:11px !important;">
+                                                    <t t-esc="o.pickup_date_h and o.pickup_date_h.strftime('%m/%d/%y')"/>
+                                                </td>
+                                            </tr>
+                                        </tr>
+                                        <tr style="font-size:12px">
+                                            <td>Signature</td>
+                                            <td>Date</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                    <div style="padding-top:25px; text-align:center; font-size:12px; font-weight: bold;">
+                        (SHIPMENT MANIFEST PRINTED ON THE BACK OF THIS BOL)
+                    </div>
+                </div>
+                <style>
+                    span#oe_neutralize_banner {
+                    display:none !important;
+                    }
+                    img {
+                    width: 80px;
+                    position: absolute;
+                    top: -20px;
+                    }
+                    .image-1{
+                    width: 80px;
+                    position: absolute;
+                    top: 5px;
+                    left: 50px;
+                    }
+                </style>
+            </div>
+        </div>
+    </template>
+
+    <template id="report_HouseBillOfLading">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-set="unique_pos" t-value="set([line.po_number for line in o.freight_order_line_ids])"/>
+                <t t-foreach="unique_pos" t-as="po_num">
+                    <t t-set="grouped_lines"
+                       t-value="[line for line in o.freight_order_line_ids if line.po_number == po_num]"/>
+                    <t t-foreach="grouped_lines" t-as="line">
+                        <t t-call="warefor_reports.report_HouseBillOfLading_doc"
+                           t-lang="o.partner_id.lang"/>
+                    </t>
+                </t>
+            </t>
+        </t>
+    </template>
+
+
+    <!--    <template id="report_HouseBillOfLading">-->
+<!--        <t t-call="web.html_container">-->
+<!--            <t t-set="unique_pos" t-value="set(line.customer_po for line in docs.freight_order_line_ids)"/>-->
+<!--            <t t-foreach="unique_pos" t-as="po_num">-->
+<!--                <t t-set="grouped_docs"-->
+<!--                   t-value="[doc for doc in docs if (line.customer_po == po_num for line in doc.freight_order_line_ids)]"/>-->
+<!--                <t t-foreach="grouped_docs" t-as="o">-->
+<!--                    <t t-call="warefor_reports.report_HouseBillOfLading_doc"/>-->
+<!--                </t>-->
+<!--            </t>-->
+<!--        </t>-->
+<!--    </template>-->
+
+    <record id="report_House_BOL_paperformat" model="report.paperformat">
+        <field name="name">House BOL Paper Format</field>
+        <field name="default" eval="False"/>
+        <field name="format">custom</field>
+        <field name="page_height">0</field>
+        <field name="page_width">0</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">10</field>
+        <field name="margin_bottom">10</field>
+        <field name="margin_left">10</field>
+        <field name="margin_right">10</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">0</field>
+        <field name="dpi">80</field>
+    </record>
+
+    <record id="house_bol_report_template_new" model="ir.actions.report">
+        <field name="name">House Bill of Lading</field>
+        <field name="model">freight.freight</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">warefor_reports.report_HouseBillOfLading</field>
+        <field name="report_file">warefor_reports.report_HouseBillOfLading</field>
+        <field name="print_report_name">'House Bill of Lading - %s' % (object.name)</field>
+<!--        <field name="binding_model_id"-->
+<!--               ref="warefor_3pl_tus.model_freight_freight"/>-->
+        <field name="paperformat_id" ref="warefor_reports.report_House_BOL_paperformat"/>
+<!--        <field name="binding_type">report</field>-->
+    </record>
+
+</odoo>

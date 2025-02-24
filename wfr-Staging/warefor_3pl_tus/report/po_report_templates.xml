@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="po_report_custom_layout_std">
+        <!-- ## HEADER ## -->
+        <div t-attf-class="header o_company_#{company.id}_layout" t-att-style="report_header_style">
+            <div class="row">
+                <div class="col-3 mb4">
+                    <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" style="max-height: 45px;"
+                         alt="Logo"/>
+                </div>
+                <!--                <div class="col-9 text-right" style="margin-top:22px;" t-field="company.report_header" name="moto"/>-->
+                <div class="col-9 text-right" style="margin-top:22px;">
+                    <h3>
+                        Purchase Order
+                    </h3>
+                </div>
+            </div>
+            <!--            <div t-if="company.logo or company.report_header" class="row zero_min_height">-->
+            <!--                <div class="col-12">-->
+            <!--                    <div style="border-bottom: 1px solid black;"/>-->
+            <!--                </div>-->
+            <!--            </div>-->
+            <div class="row">
+                <div class="col-6" name="company_address">
+                    <div t-field="company.partner_id"
+                         t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": true}'
+                    />
+                    <span style="color: blue;">ap@warefor.com</span>
+                </div>
+                <div class="col-6">
+                    <div>
+                        <table class="table" style="border: 1px solid black;">
+                            <thead>
+                                <tr>
+                                    <th style="border: 1px solid black;">
+                                        PO Number
+                                    </th>
+                                    <th style="border: 1px solid black;">
+                                        Date
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="border: 1px solid black;">
+                                        <t t-esc="o.name"/>
+                                    </td>
+                                    <td style="border: 1px solid black;">
+                                        <t t-esc="o.date_approve and o.date_approve.date() or ''"/>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div t-attf-class="article o_company_#{company.id}_layout"
+             t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id"
+             t-att-data-oe-lang="o and o.env.context.get('lang')">
+            <t t-raw="0"/>
+        </div>
+    </template>
+
+    <template id="po_report_custom_layout">
+        <t t-if="not o" t-set="o" t-value="doc"/>
+        <t t-if="not company">
+            <!-- Multicompany -->
+            <t t-if="company_id">
+                <t t-set="company" t-value="company_id"/>
+            </t>
+            <t t-elif="o and 'company_id' in o and o.company_id.sudo()">
+                <t t-set="company" t-value="o.company_id.sudo()"/>
+            </t>
+            <t t-else="else">
+                <t t-set="company" t-value="res_company"/>
+            </t>
+        </t>
+        <t t-call="warefor_3pl_tus.po_report_custom_layout_std">
+            <t t-raw="0"/>
+        </t>
+    </template>
+
+    <template id="report_purchase_order_warefor_doc">
+        <t t-call="warefor_3pl_tus.po_report_custom_layout">
+            <div class="page">
+                <style>
+                    .border-heading-row{
+                    background-color: #b8b8b8;
+                    font-size:15px;
+                    border-spacing:0px;
+                    line-height: 7px;
+                    text-align:left;
+                    }
+                </style>
+                <div class="oe_structure"/>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-6">
+                            <table class="table" style="border: 1px solid black;" width="50%">
+                                <thead class="border-heading-row">
+                                    <tr>
+                                        <th style="background-color: #b8b8b8; border: 1px solid black; text-align: left !important;">
+                                            Vendor
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td style="border: 1px solid black;">
+                                            <div t-field="o.partner_id"
+                                                 t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": true}'/>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-6">
+                            <table class="table" style="border: 1px solid black;" width="50%">
+                                <thead class="border-heading-row">
+                                    <tr>
+                                        <th style="background-color: #b8b8b8; border: 1px solid black; text-align: left !important;">
+                                            Ship To
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td style="border: 1px solid black;">
+                                            <span t-esc="o.company_id.partner_id"
+                                                  t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": true}'/>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <br></br>
+                    <br></br>
+                    <div class="row">
+                        <table class="table" style="border: 1px solid black;" width="100%">
+                            <thead class="border-heading-row" style="text-align:center;">
+                                <tr>
+                                    <th style="background-color: #b8b8b8; border: 1px solid black;">
+                                        Buyer
+                                    </th>
+                                    <th style="background-color: #b8b8b8; border: 1px solid black;">
+                                        Payment Term
+                                    </th>
+                                    <th style="background-color: #b8b8b8; border: 1px solid black;">
+                                        Ship Via
+                                    </th>
+                                    <th style="background-color: #b8b8b8; border: 1px solid black;">
+                                        FOB
+                                    </th>
+                                    <th style="background-color: #b8b8b8; border: 1px solid black;">
+                                        Freight
+                                    </th>
+                                    <th style="background-color: #b8b8b8; border: 1px solid black;">
+                                        Currency
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="border: 1px solid black;">
+                                        <span t-esc="o.user_id.name"/>
+                                    </td>
+                                    <td style="border: 1px solid black;">
+                                        <span t-esc="o.payment_term_id.name"/>
+                                    </td>
+                                    <td style="border: 1px solid black;">
+                                    </td>
+                                    <td style="border: 1px solid black;">
+                                    </td>
+                                    <td style="border: 1px solid black;">
+                                    </td>
+                                    <td style="border: 1px solid black;">
+                                        <sapn t-esc="o.company_id.currency_id.name"/>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <br></br>
+                    <br></br>
+                    <div class="row">
+                        <table class="table" style="border: 1px solid black;" width="100%">
+                            <thead class="border-heading-row" style="text-align:center;">
+                                <tr>
+                                    <th width="25%" style="background-color: #b8b8b8; border: 1px solid black;">
+                                        Item #
+                                    </th>
+                                    <th width="25%" style="background-color: #b8b8b8; border: 1px solid black;">
+                                        Description
+                                    </th>
+                                    <th width="10%" style="background-color: #b8b8b8; border: 1px solid black;">
+                                        Quantity
+                                    </th>
+                                    <th width="10%" style="background-color: #b8b8b8; border: 1px solid black;">
+                                        UOM
+                                    </th>
+                                    <th width="20%" style="background-color: #b8b8b8; border: 1px solid black;">
+                                        Unit Price
+                                    </th>
+                                    <th width="10%" style="background-color: #b8b8b8; border: 1px solid black;">
+                                        Amount
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr t-foreach="o.order_line" t-as="line">
+                                    <td style="border: 1px solid black;">
+                                        <sapn t-esc="line.product_id.name"/>
+                                    </td>
+                                    <td style="border: 1px solid black;">
+                                        <sapn t-esc="line.name"/>
+                                    </td>
+                                    <td style="border: 1px solid black;">
+                                        <sapn t-esc="line.product_qty"/>
+                                    </td>
+                                    <td style="border: 1px solid black;">
+                                        <sapn t-esc="line.product_uom.name"/>
+                                    </td>
+                                    <td style="border: 1px solid black;">
+                                        <sapn t-esc="line.price_unit"/>
+                                    </td>
+                                    <td style="border: 1px solid black;">
+                                        <sapn t-esc="line.price_subtotal"
+                                              t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+
+                                    </td>
+                                    <td colspan="3" style="background-color: #b8b8b8; border: 1px solid black;">
+                                        Total Net Amount
+                                    </td>
+                                    <td style="background-color: #b8b8b8; border: 1px solid black;">
+                                        <strong>
+                                            <sapn t-esc="o.amount_total"
+                                                  t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                        </strong>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <br></br>
+                <br></br>
+                <div class="row">
+                    <table class="table" style="border: 1px solid black;" width="100%">
+                        <thead class="border-heading-row">
+                            <tr style="border: 1px solid black;">
+                                <td style="background-color: #b8b8b8;">
+                                    <strong>Shipment Schedule</strong>
+                                </td>
+                                <td style="background-color: #b8b8b8;"></td>
+                                <td style="background-color: #b8b8b8;"></td>
+                            </tr>
+                            <tr>
+                                <th style="background-color: #b8b8b8; border: 1px solid black;">
+                                    Item #
+                                </th>
+                                <th style="background-color: #b8b8b8; border: 1px solid black;">
+                                    Required ETA
+                                </th>
+                                <th style="background-color: #b8b8b8; border: 1px solid black;">
+                                    Quantity
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="border: 1px solid black;">
+                                    <!--                                    <sapn t-esc="line.product_id.name"/>-->
+                                </td>
+                                <td style="border: 1px solid black;">
+                                    <!--                                    <sapn t-esc="line.name"/>-->
+                                </td>
+                                <td style="border: 1px solid black;">
+                                    <!--                                    <sapn t-esc="line.product_qty"/>-->
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <br></br>
+                <br></br>
+                <div class="row">
+                    <table width="100%">
+                        <thead>
+                            <tr t-if="o.notes">
+                                <th style="border: 1px solid black;">
+                                    <span t-esc="o.notes"/>
+                                </th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+                <br></br>
+                <br></br>
+                <div class="row">
+                    <div class="col-6">
+                    </div>
+                    <div class="col-6">
+                        <t t-if="o.signature">
+                            <img class="img img-fluid js_variant_img_small"
+                                 t-attf-src="data:image/png;base64,{{o.signature.decode()}}"/>
+                        </t>
+                        <div style="border-top: 1px solid black;">
+                            Approved By
+                            <br></br>
+                            <span t-esc="user_id.name"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <template id="report_purchase_order_warefor">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="warefor_3pl_tus.report_purchase_order_warefor_doc" t-lang="o.partner_id.lang"/>
+            </t>
+        </t>
+    </template>
+
+</odoo>

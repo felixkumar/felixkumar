@@ -1,0 +1,44 @@
+<odoo>
+    <data>
+        <record id="empty_location_report_wizard_view" model="ir.ui.view">
+            <field name="name">empty.location.report.wizard.view</field>
+            <field name="model">empty.location.report</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <group>
+                            <field name="product_id" required="1"/>
+                            <field name="company_id" widget="many2many_tags" required="1"/>
+                        </group>
+                    </group>
+                    <footer>
+                        <button name="print_report_pdf" string="Generate PDF" type="object" invisible="1"/>
+                        <button name="print_report_excel" string="Generate Excel" type="object"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="empty_location_report_wizard_view_action" model="ir.actions.act_window">
+            <field name="name">Empty Location Report</field>
+            <field name="res_model">empty.location.report</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <report id="report_empty_location_excel"
+                model="empty.location.report"
+                string="Empty Location Report"
+                report_type="xlsx"
+                name="warefor_3pl_tus.report_empty_location_xlsx"
+                file="Empty Location"
+                attachment_use="False"/>
+
+        <menuitem id="menu_empty_location_report"
+                  name="Empty Location Report"
+                  action="empty_location_report_wizard_view_action"
+                  parent="stock.menu_warehouse_report"/>
+    </data>
+</odoo>

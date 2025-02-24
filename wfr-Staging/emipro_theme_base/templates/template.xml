@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--==================== Brand Page ========================-->
+    <template id="brand_listing_template" name="Brand Listing">
+        <t t-call="website.layout">
+            <t t-set="additional_title">Brands</t>
+            <div id="wrap"/>
+        </t>
+    </template>
+    <template id="quick_view_container" name="Quick View Container">
+        <div class="quick_view_content"/>
+    </template>
+
+    <template id="show_product_count" name="Show Product Count" />
+
+    <!-- Dynamic Snippet -->
+    <template id="s_dynamic_snippet_category" name="Categories">
+        <t t-call="website.s_dynamic_snippet_template">
+            <t t-set="snippet_name" t-value="'s_dynamic_snippet_category'"/>
+        </t>
+    </template>
+
+    <!-- Dynamic Snippet -->
+    <template id="s_dynamic_snippet_brand" name="Brands">
+        <t t-call="website.s_dynamic_snippet_template">
+            <t t-set="snippet_name" t-value="'s_dynamic_snippet_brand'"/>
+        </t>
+    </template>
+
+    <!-- Dynamic Snippet -->
+    <template id="s_dynamic_snippet_prod_temp" name="Product Slider">
+        <t t-call="website.s_dynamic_snippet_template">
+            <t t-set="snippet_name" t-value="'s_dynamic_snippet_prod_temp'"/>
+        </t>
+    </template>
+
+    <!-- Dynamic Snippet Selector Option -->
+    <template id="s_dynamic_snippet_category_options" inherit_id="website.snippet_options">
+        <xpath expr="." position="inside">
+            <t t-call="website.dynamic_snippet_carousel_options_template">
+                <t t-set="snippet_name" t-value="'dynamic_snippet_category'"/>
+                <t t-set="snippet_selector" t-value="'.s_dynamic_snippet_category'"/>
+            </t>
+        </xpath>
+    </template>
+
+    <!-- Dynamic Snippet Selector Option -->
+    <template id="s_dynamic_snippet_brand_options" inherit_id="website.snippet_options">
+        <xpath expr="." position="inside">
+            <t t-call="website.dynamic_snippet_carousel_options_template">
+                <t t-set="snippet_name" t-value="'dynamic_snippet_brand'"/>
+                <t t-set="snippet_selector" t-value="'.s_dynamic_snippet_brand'"/>
+            </t>
+        </xpath>
+    </template>
+
+    <!-- Dynamic Snippet Selector Option -->
+    <template id="s_dynamic_snippet_prod_temp_options" inherit_id="website.snippet_options">
+        <xpath expr="." position="inside">
+            <t t-call="website.dynamic_snippet_carousel_options_template">
+                <t t-set="snippet_name" t-value="'dynamic_snippet_prod_temp'"/>
+                <t t-set="snippet_selector" t-value="'.s_dynamic_snippet_prod_temp'"/>
+            </t>
+        </xpath>
+    </template>
+
+    <!-- Dynamic Snippet Configuration Option -->
+    <template id="s_dynamic_snippet_category_template_options" inherit_id="website.s_dynamic_snippet_options_template">
+        <xpath expr="//we-select[@data-name='filter_opt']" position="after">
+            <t t-if="snippet_name == 'dynamic_snippet_category'">
+                <t t-set="domain" t-translation="off">["|", ["website_id", "=", false], ["website_id", "=", <t t-out="current_website.id"/>]]</t>
+                <we-many2many string="Category"
+                              data-name="product_category_opt"
+                              data-attribute-name="productCategoryIds"
+                              data-no-preview="true"
+                              data-model="product.public.category"
+                              t-att-data-domain="domain"
+                              data-allow-delete="true"
+                              data-fakem2m="true"
+                              data-select-data-attribute=""/>
+            </t>
+        </xpath>
+    </template>
+
+    <!-- Dynamic Snippet Configuration Option -->
+    <template id="s_dynamic_snippet_brand_template_options" inherit_id="website.s_dynamic_snippet_options_template">
+        <xpath expr="//we-select[@data-name='filter_opt']" position="after">
+            <t t-if="snippet_name == 'dynamic_snippet_brand'">
+                <t t-set="domain" t-translation="off">[["website_published", "=", true], "|", ["website_id", "=", false], ["website_id", "=", <t t-out="current_website.id"/>]]</t>
+                <we-many2many string="Brand"
+                              data-name="product_brand_opt"
+                              data-attribute-name="productBrandIds"
+                              data-no-preview="true"
+                              data-model="product.brand"
+                              t-att-data-domain="domain"
+                              data-allow-delete="true"
+                              data-fakem2m="true"
+                              data-select-data-attribute=""/>
+
+                <we-checkbox string="Show Product Count"
+                             data-customize-website-views="emipro_theme_base.show_product_count"
+                             data-no-preview="true"
+                             data-toggle-option="false" 
+                             data-reload="/"/>
+            </t>
+        </xpath>
+    </template>
+
+    <!-- Dynamic Snippet Configuration Option -->
+    <template id="s_dynamic_snippet_prod_temp_template_options" inherit_id="website.s_dynamic_snippet_options_template">
+        <xpath expr="//we-select[@data-name='filter_opt']" position="after">
+            <t t-if="snippet_name == 'dynamic_snippet_prod_temp'">
+                <we-select string="Category" data-name="product_category_opt" data-attribute-name="productCategoryId" data-no-preview="true">
+                    <we-button data-select-data-attribute="all">All Products</we-button>
+                    <we-button data-select-data-attribute="current">Current Category or All</we-button>
+                </we-select>
+
+                <we-select string="Brand" data-name="product_brand_opt" data-attribute-name="productBrandId"
+                           data-no-preview="true">
+                    <we-button data-select-data-attribute="all">All Brands</we-button>
+                    <we-button data-select-data-attribute="current">Current Brand or All</we-button>
+                </we-select>
+
+                <t t-set="domain" t-translation="off">["|", ["website_id", "=", false], ["website_id", "=", <t t-out="current_website.id"/>]]</t>
+                <we-many2many string="Products"
+                              data-name="product_template_opt"
+                              data-attribute-name="productTemplateIds"
+                              data-no-preview="true"
+                              data-model="product.template"
+                              t-att-data-domain="domain"
+                              data-allow-delete="true"
+                              data-fakem2m="true"
+                              data-select-data-attribute=""/>
+                <we-many2many string="Tags"
+                    data-name="product_tag_opt"
+                    data-attribute-name="productTagIds"
+                    data-no-preview="true"
+                    data-model="product.tag"
+                    t-att-data-domain="domain"
+                    data-allow-delete="true"
+                    data-fakem2m="true"
+                    data-select-data-attribute=""/>
+                <we-input string="Product names" class="o_we_large" data-name="product_names_opt"
+                    data-attribute-name="productNames" data-no-preview="true" data-select-data-attribute=""
+                    placeholder="e.g. lamp,bin" title="Comma-separated list of parts of product names, barcodes or internal reference"/>
+            </t>
+        </xpath>
+    </template>
+
+    <!-- Dynamic Snippet Configuration Option JS -->
+    <record id="emipro_theme_base.s_dynamic_snippet_category_000_js" model="ir.asset">
+        <field name="name">Dynamic snippet Category 000 JS</field>
+        <field name="bundle">web.assets_frontend</field>
+        <field name="path">emipro_theme_base/static/src/js/snippet/s_dynamic_snippet_category/000.js</field>
+    </record>
+
+     <!-- Dynamic Snippet Configuration Option JS -->
+    <record id="emipro_theme_base.s_dynamic_snippet_brand_000_js" model="ir.asset">
+        <field name="name">Dynamic snippet Category 000 JS</field>
+        <field name="bundle">web.assets_frontend</field>
+        <field name="path">emipro_theme_base/static/src/js/snippet/s_dynamic_snippet_brand/000.js</field>
+    </record>
+
+    <!-- Dynamic Snippet Configuration Option JS -->
+    <record id="emipro_theme_base.s_dynamic_snippet_prod_temp_000_js" model="ir.asset">
+        <field name="name">Dynamic snippet Category 000 JS</field>
+        <field name="bundle">web.assets_frontend</field>
+        <field name="path">emipro_theme_base/static/src/js/snippet/s_dynamic_snippet_product_templates/000.js</field>
+    </record>
+</odoo>

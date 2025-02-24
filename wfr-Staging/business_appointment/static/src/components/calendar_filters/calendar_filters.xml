@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="business_appointment.CalendarFilters" owl="1">
+        <div class="business-appointment-filters" t-if="state.resourceTypes.length != 0">
+            <div class="mt8">
+                <h5>Types</h5>
+                <t t-foreach="state.resourceTypes" t-as="resourceType" t-key="resourceType.id">
+                    <div t-attf-class="business-appointment-filter #{state.activeResourceType and resourceType.id == this.activeResourcesTypeId and 'business-appointment-filter-active' or ''}" t-on-click="() => this._onSelectResourceType(resourceType.id)">
+                        <small><small><i t-attf-class="fa fa-circle mr4 business-appointment-color-#{this.getColor(resourceType.id)}"/></small></small>
+                        <span t-esc="resourceType.text" class="fa"/>
+                    </div>
+                </t>
+            </div>
+            <div class="mt16" t-if="this.availableResources.length != 0">
+                <h5>
+                    Resources
+                    <i class="fa fa-check-square-o business-appointment-filter-icon" t-on-click="() => this.onSelectAllResources()"></i>
+                    <i class="fa fa-ban business-appointment-filter-icon" t-on-click="() => this.onClearAllResources()"></i>
+                </h5>
+                <t t-foreach="this.availableResources" t-as="resource" t-key="resource.id">
+                    <t t-set="isActive" t-value="this.activeResourcesIds.includes(resource.id)"/>
+                    <div t-attf-class="business-appointment-filter #{isActive and 'business-appointment-filter-active' or ''}" t-on-click="() => this._onSelectResource(resource.id)">
+                        <i t-attf-class="fa mr4 #{isActive and 'fa-check-square-o' or 'fa-square-o'} business-appointment-color-#{this.getColor(resource.id)}"/>
+                        <span t-esc="resource.text" class="fa"/>
+                    </div>
+                </t>
+            </div>
+            <div class="mt16" t-if="this.availableServices.length != 0">
+                <h5>Services</h5>
+                <t t-foreach="this.availableServices" t-as="service" t-key="service.id">
+                    <div t-attf-class="business-appointment-filter #{state.activeResourceType and service.id == this.activeServiceId and 'business-appointment-filter-active' or ''}" t-on-click="() => this._onSelectService(service.id)">
+                        <small><small><i t-attf-class="fa fa-circle mr4 business-appointment-color-#{this.getColor(service.id)}"/></small></small>
+                        <span t-esc="service.text" class="fa"/>
+                    </div>
+                </t>
+            </div>
+            <div class="mt16" t-if="state.appointmentStates.length != 0">
+                <h5>
+                    States
+                    <i class="fa fa-check-square-o business-appointment-filter-icon" t-on-click="() => this.onSelectAllStates()"></i>
+                    <i class="fa fa-ban business-appointment-filter-icon" t-on-click="() => this.onClearAllStates()"></i>
+                </h5>
+                <t t-foreach="state.appointmentStates" t-as="appointmentState" t-key="appointmentState[0]">
+                    <t t-set="isActive" t-value="this.activeStatesIds.includes(appointmentState[0])"/>
+                    <div t-attf-class="business-appointment-filter #{isActive and 'business-appointment-filter-active' or ''}" t-on-click="() => this._onSelectState(appointmentState[0])">
+                        <i t-attf-class="fa mr4 #{isActive and 'fa-check-square-o' or 'fa-square-o'} business-appointment-color-#{this.getColor(appointmentState[0])}"/>
+                        <span t-esc="appointmentState[1]" class="fa"/>
+                    </div>
+                </t>   
+            </div>
+            <div class="w-100 mt8">
+                <button class="btn btn-sm btn-secondary business-appointment-pull-right" t-on-click="() => this._onSaveDefaults()">
+                    <i class="fa fa-save mr4"></i> Save as default
+                </button>
+            </div>
+        </div>
+    </t>
+
+</templates>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates>
+
+    <t t-name="business_appointment.ControllerButtons" owl="1">
+        <button type="button" t-attf-class="btn btn-primary" t-on-click.stop.prevent="() => this.startScheduling()">
+            Schedule
+        </button>
+    </t>
+    <t t-name="business_appointment.CalendarControllerButtons" t-inherit="web.CalendarController.controlButtons" t-inherit-mode="primary" owl="1">
+        <xpath expr="//span[hasclass('o_calendar_navigation_buttons')]" position="before">
+            <button type="button" t-attf-class="btn btn-primary mr8" t-on-click.stop.prevent="() => this.startScheduling()">
+                Schedule
+            </button>
+        </xpath>
+    </t>
+
+</templates>

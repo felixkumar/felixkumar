@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<odoo>
+
+    <record id="business_resource_type_view_form" model="ir.ui.view">
+        <field name="name">business.resource.type.form.website</field>
+        <field name="model">business.resource.type</field>
+        <field name="inherit_id" ref="business_appointment.business_resource_type_view_form"/>
+        <field name="arch" type="xml">
+            <div name="button_box" position="inside">
+                <button class="oe_stat_button" 
+                        name="action_portal_publish_button"
+                        type="object" 
+                        icon="fa-globe" 
+                >
+                    <field name="is_published" widget="website_publish_button"/>
+                </button>
+            </div>
+            <notebook position="inside">
+                <page string="Website">
+                    <group>
+                        <field name="website_id" options="{'no_create_edit': 1,'no_quick_create': 1}" groups="website.group_multi_website"/>
+                        <field name="donotshow_full_description"/>
+                    </group>
+                    <button name="edit_website"
+                            type="object"
+                            string="edit full website description"
+                            class="oe_link"
+                            icon="fa-arrow-right"
+                    />
+                </page>
+            </notebook>
+            <group name="rtype_time_requirements" position="inside">
+                <label for="allowed_cancellation"/>
+                <div>
+                     <field name="allowed_cancellation" class="oe_inline"/>
+                     <field name="allowed_cancellation_uom" 
+                            class="oe_inline"
+                            attrs="{'required': [('allowed_cancellation', '&gt;', 0)], 'invisible': [('allowed_cancellation', '&lt;=', 0)]}"    
+                    />
+                </div>
+            </group>
+        </field>
+    </record>
+    <record id="business_resource_type_publish" model="ir.actions.server">
+        <field name="name">Website Publish</field>
+        <field name="type">ir.actions.server</field>
+        <field name="model_id" ref="business_appointment.model_business_resource_type"/>
+        <field name="binding_model_id" ref="business_appointment.model_business_resource_type"/>
+        <field name="state">code</field>
+        <field name="code">
+if records:
+    records.write({"website_published": True})
+        </field>
+    </record>
+    <record id="business_resource_type_ubpublish" model="ir.actions.server">
+        <field name="name">Website Unpublish</field>
+        <field name="type">ir.actions.server</field>
+        <field name="model_id" ref="business_appointment.model_business_resource_type"/>
+        <field name="binding_model_id" ref="business_appointment.model_business_resource_type"/>
+        <field name="state">code</field>
+        <field name="code">
+if records:
+    records.write({"website_published": False})
+        </field>
+    </record>
+
+</odoo>

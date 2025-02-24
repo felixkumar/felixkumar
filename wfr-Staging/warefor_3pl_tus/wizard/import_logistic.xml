@@ -1,0 +1,53 @@
+<odoo>
+    <data>
+        <record id="import_logistic_view_wizard" model="ir.ui.view">
+            <field name="name">wizard for import xls file for logistic</field>
+            <field name="model">import.logistic</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <field name="excel_file" filename="excel_filename"/>
+                    </group>
+                    <group>
+                        <button class="oe_highlight">
+                            <a style="color:white;" colspan="2" href="/warefor_3pl_tus/static/Logistic Demo File.zip"
+                               target="_blank">Demo File Here.
+                            </a>
+                        </button>
+                    </group>
+                    <footer>
+                        <button name="import_xls" string="Import" type="object"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record id="import_logistic_view_wizard_action"
+                model="ir.actions.act_window">
+            <field name="name">Import IBL Logistic</field>
+            <field name="res_model">import.logistic</field>
+            <field name="view_mode">form</field>
+            <field name="context" eval="{'is_ibl': True}"/>
+            <field name="target">new</field>
+        </record>
+        <menuitem id="import_logistic_view_wizard_action_menu"
+                  name="Import IBL Record"
+                  action="import_logistic_view_wizard_action"
+                  parent="warefor_3pl_tus.menu_freight_freight"
+                  sequence="12"/>
+
+        <record id="import_logistic_obl_view_wizard_action"
+                model="ir.actions.act_window">
+            <field name="name">Import OBL Logistic</field>
+            <field name="res_model">import.logistic</field>
+            <field name="view_mode">form</field>
+            <field name="context" eval="{'is_obl': True}"/>
+            <field name="target">new</field>
+        </record>
+        <menuitem id="import_logistic_obl_view_wizard_action_menu"
+                  name="Import OBL Logistic"
+                  action="import_logistic_obl_view_wizard_action"
+                  parent="warefor_3pl_tus.menu_freight_freight_outbound"
+                  sequence="12"
+        />
+    </data>
+</odoo>

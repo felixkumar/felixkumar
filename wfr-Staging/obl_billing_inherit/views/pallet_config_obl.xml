@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="pallet_config_obl_tree_inherit" model="ir.ui.view">
+            <field name="name">pallet.config.obl.tree.inherit</field>
+            <field name="model">pallet.config.obl</field>
+            <field name="inherit_id" ref="warefor_3pl_tus.pallet_obl_config_tree_view"/>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <xpath expr="//tree/field[@name='warehouse_id']" position="after">
+                    <field name="fulfillment_method"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="pallet_config_obl_form_inherit" model="ir.ui.view">
+            <field name="name">pallet.config.obl.form.inherit</field>
+            <field name="model">pallet.config.obl</field>
+            <field name="inherit_id" ref="warefor_3pl_tus.pallet_obl_configuration_form_view"/>
+<!--            <field name="priority" eval="8"/>-->
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='product_ids']" position="after">
+                    <field name="fulfillment_method"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

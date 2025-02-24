@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+
+    <t t-name="business_appointment.ChosenAppointments" owl="1">
+        <div class="business-appointment-row mb16" t-if="props.chosenAppointments and props.chosenAppointments.length != 0">
+            <t t-foreach="props.chosenAppointments" t-as="choice" t-key="choice.id">
+                <div class="business-appointment-chosen">
+                    <t t-esc="choice.title"/>
+                    <i class="fa fa-times business-appointment-pull-right" t-on-click="() => this._onRemoveAppointment(choice.id)"/>
+                </div>
+            </t>
+            <div class="business-appointment-chosen business-appointment-forward-checkout" t-if="this.props.scheduling" t-on-click="() => this.onFinishAppointments()">
+                <span><i class="fa fa-forward"/> Forward <i class="fa fa-forward"/></span>
+            </div>
+        </div>
+    </t>
+
+</templates>

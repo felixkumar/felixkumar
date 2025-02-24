@@ -1,0 +1,57 @@
+<odoo>
+    <data>
+        <record id="custom_revision_form" model="ir.ui.view">
+            <field name="name">custom.revision.form</field>
+            <field name="model">custom.revision</field>
+            <field name="arch" type="xml">
+                <form string="Custom Revision">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="shipping_custom_id"/>
+                                <field name="freight_id"/>
+                            </group>
+                            <group>
+                                <field name="reason"/>
+                                <field name="revision_date"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="custom_revision_tree" model="ir.ui.view">
+            <field name="name">custom.revision.tree</field>
+            <field name="model">custom.revision</field>
+            <field name="arch" type="xml">
+                <tree string="Custom Revision">
+                    <field name="shipping_custom_id"/>
+                    <field name="freight_id"/>
+                    <field name="reason"/>
+                    <field name="revision_date"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="custom_revision_action" model="ir.actions.act_window">
+            <field name="name">Custom Revision</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">custom.revision</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                </p>
+                <p>
+                </p>
+            </field>
+        </record>
+
+<!--        <menuitem id="menu_custom_revision"-->
+<!--                  name="Custom Clearance Revision"-->
+<!--                  parent="menu_shipping_custom_root"-->
+<!--                  action="custom_revision_action"-->
+<!--                  sequence="101"/>-->
+
+    </data>
+</odoo>

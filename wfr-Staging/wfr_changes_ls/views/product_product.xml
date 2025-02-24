@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="product_product_stock_tree_inherit" model="ir.ui.view">
+            <field name="name">product.product.stock.tree.inherit</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="stock.product_product_stock_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='action_view_orderpoints']" position="attributes">
+                    <attribute name="groups">!user_warehouse_restriction.user_carote_restriction_group_user</attribute>
+                </xpath>
+                <xpath expr="//field[@name='qty_available']" position="after">
+                    <field name="unavailable_qty" string="Unavailable Quantity" sum="Total Unavailable"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

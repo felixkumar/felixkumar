@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<!--        <record id="view_edi_charges_allowance" model="ir.ui.view">-->
+<!--            <field name="name">edi.view.charge.allowance</field>-->
+<!--            <field name="model">charge.allowance</field>-->
+<!--            <field name="arch" type="xml">-->
+<!--                <tree editable="bottom">-->
+<!--                    <field name="indicator"/>-->
+<!--                    <field name="code"/>-->
+<!--                    <field name="amount"/>-->
+<!--                    <field name="percent_qualifier"/>-->
+<!--                    <field name="percent"/>-->
+<!--                    <field name="handling_code"/>-->
+<!--                </tree>-->
+<!--            </field>-->
+<!--        </record>-->
+</odoo>

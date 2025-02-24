@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="account_move_edi_form_inherit" model="ir.ui.view">
+            <field name="name">account.move.edi.form.inherit</field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="edi_export_account.view_account_move_form_inherit_edi_sale"/>
+            <field name="arch" type="xml">
+                <xpath expr="///field[@name='invoice_line_ids']/tree/field[@name='edi_qty_cases']" position="attributes">
+                    <attribute name="optional">hide</attribute>
+                </xpath>
+                <xpath expr="///field[@name='invoice_line_ids']/tree/field[@name='edi_case_price']" position="attributes">
+                    <attribute name="optional">hide</attribute>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

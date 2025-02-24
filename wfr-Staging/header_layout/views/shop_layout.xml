@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="shop_layout" name="Custom : Shop Layout">
+        <t t-call="website.layout">
+            <t t-set="additional_title">Shop</t>
+            <t t-set="website_sale_sortable" t-value="website._get_product_sort_mapping()"/>
+            <t t-set="isSortingBy"
+               t-value="[sort for sort in website_sale_sortable if sort[0]==request.params.get('order', '')]"/>
+
+            <div id="wrap" class="js_sale shop_page oxf_shop_page overflow-hidden">
+                <div class="oe_structure oe_empty oe_structure_not_nearest" id="oe_structure_website_sale_products_1"/>
+                <div class="container oe_website_sale website_shop_sale" t-att-data-ppg="ppg" t-att-data-ppr="ppr"
+                     t-att-data-default-sort="website.shop_default_sort">
+                    <div class="o_wsale_products_grid_table_wrapper"/> <!-- Class is used in JS for filters, Put it here to make it works. -->
+                    <t t-call="header_layout.category_pills"/>
+
+                    <div class="d-lg-flex row justify-content-end align-items-end o_sortby_dropdown_and_price_list">
+                        <div class="col-auto">
+                            <div class="d-flex flex-wrap justify-content-end">
+                                <t t-set="website_sale_pricelists"
+                                   t-value="website.get_pricelist_available(show_visible=True)"/>
+                                <div t-attf-class="o_pricelist_dropdown dropdown#{'' if website_sale_pricelists and len(website_sale_pricelists)&gt;1 else ' d-none'}">
+                                    <t t-set="curr_pl" t-value="website.pricelist_id"/>
+                                    <span class="h6 me-1">Pricelist :</span>
+                                    <a role="button" href="#"
+                                       class="dropdown-toggle btn btn-link px-0 text-body shadow-none"
+                                       data-bs-toggle="dropdown">
+                                        <t t-esc="curr_pl and curr_pl.name or ' - '"/>
+                                    </a>
+                                    <div class="dropdown-menu" role="menu">
+                                        <t t-foreach="website_sale_pricelists" t-as="pl">
+                                            <a role="menuitem" t-att-href="'/shop/change_pricelist/%s' % pl.id"
+                                               class="dropdown-item">
+                                                <span class="switcher_pricelist" t-att-data-pl_id="pl.id"
+                                                      t-esc="pl.name"/>
+                                            </a>
+                                        </t>
+                                    </div>
+                                </div>
+                                <t t-if="is_view_active('website_sale.sort')">
+                                    <div class="o_sortby_dropdown dropdown dropdown_sorty_by ms-3">
+                                        <span class="d-inline h6 me-1">Sort By :</span>
+                                        <a role="button" href="#"
+                                           class="dropdown-toggle btn btn-link p-0 text-body shadow-none"
+                                           data-bs-toggle="dropdown">
+                                            <span class="d-inline">
+                                                <t t-if="isSortingBy" t-out="isSortingBy[0][1]"/>
+                                                <span t-else="" t-field="website.shop_default_sort"/>
+                                            </span>
+                                            <i class="fa fa-sort-amount-asc d-none"/>
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-end" role="menu">
+                                            <t t-foreach="website_sale_sortable" t-as="sortby">
+                                                <a role="menuitem" rel="noindex,nofollow"
+                                                   t-att-href="keep('/shop', order=sortby[0])"
+                                                   class="dropdown-item">
+                                                    <span t-out="sortby[1]"/>
+                                                </a>
+                                            </t>
+                                        </div>
+                                    </div>
+                                </t>
+                            </div>
+                        </div>
+                    </div>
+                    <div t-att-class="row">
+                        <div id="products_grid"
+                             class="col-12">
+                            <t t-if="products and category">
+                                <t t-if="search_product">
+                                    <t t-set="shop_products" t-value="search_product"/>
+                                </t>
+                                <t t-else="">
+                                    <t t-set="shop_products" t-value="products"/>
+                                </t>
+                                <t t-if="category.child_id" t-foreach="category.child_id" t-as="categ">
+                                    <div class="product-category-container" style="border-top:1px solid #D4D4D4;"
+                                         t-if="categ.product_tmpl_ids">
+                                        <div class="d-flex justify-content-between product-category-header-container">
+                                            <div>
+                                                <h3 class="fw-500" t-esc="categ.name"/>
+                                                <a class="fw-500 d-flex align-items-center category-nav"
+                                                   t-att-href="keep('/shop/category/%s' % slug(categ), category=0)">
+                                                    <span style="color:#535353;">View All</span>
+                                                    <img src="/header_layout/static/src/svg/vector.svg"
+                                                         alt="Vector" class="ms-2"/>
+                                                </a>
+                                            </div>
+                                            <div class="d-flex justify-content-lg-end">
+                                                <a class="btn mb-3 mr-1 p-0 shadow-none owl-prev"
+                                                   t-attf-href="#o_product_card_{{categ.id}}"
+                                                   role="button"
+                                                   data-bs-slide="prev">
+                                                    <img src="/header_layout/static/src/svg/fill_vector_1.svg"
+                                                         alt="Vector" class="shadow-none"/>
+                                                </a>
+                                                <a class="btn mb-3 p-0 shadow-none owl-next"
+                                                   t-attf-href="#o_product_card_{{categ.id}}"
+                                                   role="button"
+                                                   data-bs-slide="next">
+                                                    <img src="/header_layout/static/src/svg/fill_vector_2.svg"
+                                                         alt="Vector" class="shadow-none"/>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="container">
+                                            <div t-attf-id="o_product_card_{{categ.id}}"
+                                                 class="category-product-container owl-carousel d-flex p-0">
+                                                <t t-set="category_products"
+                                                   t-value="shop_products.filtered(lambda x:x.public_categ_ids == categ)"/>
+                                                <t t-foreach="category_products"
+                                                   t-as="product">
+                                                    <div class="item product-card">
+                                                        <t t-call="header_layout.product_card"/>
+                                                    </div>
+                                                </t>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </t>
+                                <t t-if="not category.child_id">
+                                    <t t-set="products" t-value="category.product_tmpl_ids"/>
+                                    <div class="container d-flex flex-wrap justify-content-lg-start product-card-container"
+                                         style="border-top:1px solid #D4D4D4;">
+                                        <div t-attf-class="ps-0 product-card"
+                                             t-att-data-product-template-id="product.id"
+                                             t-foreach="shop_products" t-as="product">
+                                            <t t-call="header_layout.product_card"/>
+
+                                        </div>
+                                    </div>
+                                </t>
+
+                            </t>
+                            <div t-else="" style="border-top:1px solid #D4D4D4;">
+                                <div t-if="not search" class="my-5">
+                                    <div class="text-center">
+                                        <h2 class="mt-4">We couldn't find any product!</h2>
+                                        <p t-if="category">No product defined in category
+                                            <span class="text-dark"
+                                                  t-out="category.name"/>
+                                            .
+                                        </p>
+                                    </div>
+                                    <div groups="sales_team.group_sale_manager" class="text-center mt48">
+                                        <div class="text-muted">Click<i>'New'</i> in the top-right corner to create your
+                                            first
+                                            product.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div t-else="" class="my-5">
+                                    <div class="text-center">
+                                        <div>You searched for<span class="text-primary" t-out="search"/>.
+                                        </div>
+                                        <t t-call="theme_prime.tp_svg_no_products">
+                                            <t t-set="_classes" t-value="'m-5 mx-auto w-25'"/>
+                                        </t>
+                                        <h2 class="mt-4">We couldn't find any matches!</h2>
+                                        <p>Please check the spelling or try searching something else</p>
+                                    </div>
+                                    <div class="col-12 col-md-6 col-lg-5 mx-auto mt-4">
+                                        <t t-call="website.website_search_box_input">
+                                            <t t-set="_form_classes"
+                                               t-valuef="o_wsale_products_searchbar_form w-100 mx-auto"/>
+                                            <t t-set="_classes" t-valuef="w-100"/>
+                                            <t t-set="search_type" t-valuef="products"/>
+                                            <t t-set="action"
+                                               t-value="keep('/shop'+ ('/category/'+slug(category)) if category else None, search=0) or '/shop'"/>
+                                            <t t-set="display_image" t-valuef="true"/>
+                                            <t t-set="display_description" t-valuef="true"/>
+                                            <t t-set="display_extra_link" t-valuef="false"/>
+                                            <t t-set="display_detail" t-valuef="false"/>
+                                        </t>
+                                    </div>
+                                    <div t-ignore="true" groups="sales_team.group_sale_manager"
+                                         class="text-center mt48">
+                                        <div class="text-muted">Click<i>'New'</i> in the top-right corner to create your
+                                            first
+                                            product.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="oe_structure oe_empty oe_structure_not_nearest" id="oe_structure_website_sale_products_2"/>
+            </div>
+        </t>
+    </template>
+
+    <template id="category_pills" name="Custom : Shop Category Pills">
+        <div class="category-pill-container">
+            <t t-set="_categories_to_display" t-value="categories"/>
+            <div t-if="_categories_to_display"
+                 class="row pt-3">
+                <div class="col-lg-6 col-12 text-justify">
+                    <t t-if="category">
+                        <t t-set='editor_msg'>Drag building blocks here to customize the header for "<t
+                                t-esc='category.name'/>" category.
+                        </t>
+                        <a t-if="category.parent_id" title="Go To Collection" href="#"
+                           t-att-data-link-href="keep('/shop/category/%s' % slug(category.parent_id), category=0)"
+                           class="d-flex align-items-center nav_collection pb-2">
+                            <img src="/header_layout/static/src/svg/left_arrow.svg" alt="Vector"/>
+                            <span class="ps-2 fw-500">Back To Collections</span>
+                        </a>
+
+                        <t t-if="not category.child_id">
+                            <h1 class="mb-0 category_title" t-esc="category.name"/>
+                        </t>
+                        <div class="o_editable pt-2 lh-lg " id="category_header" t-att-data-editor-message="editor_msg"
+                             t-field="category.website_description"/>
+                    </t>
+                </div>
+                <div class="col-12">
+                    <div t-attf-class="category-pills-container mb-0 d-flex ">
+                        <t t-foreach="categories" t-as="_category">
+                            <div class="me-2">
+                                <a t-att-title="_category.name" href="#"
+                                   t-att-data-link-href="keep('/shop/category/%s' % slug(_category), category=0)"
+                                   t-attf-class="d-block fw-500 category-pill rounded-pill #{_category.id == category.id and 'active' or ''}">
+                                    <t t-out="_category.name"/>
+                                </a>
+                            </div>
+                        </t>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="product_card" name="Product Card">
+        <div t-attf-class="o_wsale_product_grid_wrapper position-relative custom_product_card h-100 o_wsale_product_grid_wrapper_#{product.id}">
+            <form action="/shop/cart/update" method="post"
+                  class="oe_product_cart h-100 w-100 d-flex border-0"
+                  t-att-data-publish="product.website_published and 'on' or 'off'"
+                  itemscope="itemscope"
+                  itemtype="http://schema.org/Product">
+
+                <t t-set="product_href"
+                   t-value="product.website_url"/>
+                <t t-set="combination"
+                   t-value="product._get_first_possible_combination()"/>
+                <t t-set="combination_info"
+                   t-value="product._get_combination_info(combination, add_qty=add_qty or 1, pricelist=pricelist)"/>
+                <div class="oe_product_image position-relative h-100 flex-grow-0 overflow-hidden">
+                    <t t-set="product_variant_id"
+                       t-value="product._get_first_possible_variant_id()"/>
+                    <t t-set="product_id"
+                       t-value="request.env['product.product'].browse(product_variant_id)"/>
+                    <input name="product_id"
+                           t-att-value="product_variant_id"
+                           type="hidden"/>
+                    <a t-att-href="product_href"
+                       class="oe_product_image_link d-block h-100 position-relative pt-0"
+                       itemprop="url" contenteditable="false">
+                        <t t-set="image_holder"
+                           t-value="product._get_image_holder()"/>
+                        <div t-field="product.image_1920"
+                             class="oe_unmovable position-relative"
+                             t-options='{"widget": "image", "preview_image": "image_1024", "class": "oe_unmovable mh-100 br-4", "alt-field": "name", "style":"background-color:#EAEAEA;"}'/>
+<!--                             t-options='{"widget": "image", "preview_image": "image_1024", "class": "oe_unmovable product_detail_img mh-100 br-4", "alt-field": "name", "zoom": product.can_image_1024_be_zoomed and "image_1920", "style":"background-color:#EAEAEA;"}'/>-->
+                        <t t-set="rating_stats"
+                           t-value="product.sudo().rating_get_stats()"/>
+                        <div t-if="rating_stats['total']"
+                             class="d-flex rounded-pill me-2 mb-2 ms-2 bg-white align-items-center justify-content-center text-center position-relative"
+                             t-attf-title="#{rating_stats['total']} Reviews"
+                             style="width:60px;margin-top:-2.5rem;height:28px;">
+                            <i class="fa fa-star"
+                               style="color:#DF7800;"/>
+                            <span class="ms-1 fs-14 fw-500" style="color:#282828 !important;"
+                                  t-out="'%.1f' % rating_stats['avg']"/>
+                        </div>
+
+                        <span class="o_ribbon"
+                              t-field="product.website_ribbon_id.html"/>
+                    </a>
+                </div>
+                <div class="o_wsale_product_information position-relative d-flex flex-column flex-grow-1 flex-shrink-1 pb-0">
+                    <div class="o_wsale_product_information_text flex-grow-1">
+                        <h6 class="o_wsale_products_item_title fs-20 fw-500">
+                            <a class="text-primary text-decoration-none"
+                               itemprop="name" t-att-href="product_href"
+                               t-att-content="product.web_product_title"
+                               t-field="product.web_product_title"/>
+
+                            <a t-if="not product.website_published"
+                               role="button" t-att-href="product_href"
+                               class="btn btn-sm btn-danger"
+                               title="This product is unpublished.">
+                                Unpublished
+                            </a>
+                        </h6>
+                        <p class="custom-text-muted mb-0 fs-16 fw-normal product_card_description"
+                           t-esc="product.website_product_description"/>
+                    </div>
+                    <hr style="background-color:#EAEAEA;opacity:1.0;"/>
+                    <div>
+                        <t t-set="pricelist"
+                           t-value="request.env['product.pricelist'].browse(website._get_cached_pricelist_id())"/>
+                        <t t-if="pricelist" t-set="product_price" t-value="product._get_sales_prices(pricelist)"/>
+                        <t t-if="pricelist" t-set="template_price_vals" t-value="product_price[product.id]"/>
+                        <t t-call="website_sale.product_price"/>
+                        <small t-if="combination_info['base_unit_price']"
+                               class="ms-1 text-muted o_base_unit_price_wrapper d-none"
+                               groups="website_sale.group_show_uom_price">
+                            <t t-call='website_sale.base_unit_price'/>
+                        </small>
+                    </div>
+                    <div class="d-flex align-items-start text-center add_to_cart_wrap o_wsale_product_btn"
+                         t-if="product.product_variant_id and pricelist and (template_price_vals['price_reduce'] or not website.prevent_zero_price_sale)">
+                        <a t-if="product._website_show_quick_add()" href="#" role="button"
+                           class="col-8 a-submit fs-14 text-uppercase btn btn-primary product-add-to-cart shadow-none lh-lg shop_add_to_cart"
+                           aria-label="Shopping cart"
+                           style="background-color:#475656 !important;">
+                            Add to Cart
+                        </a>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </template>
+</odoo>

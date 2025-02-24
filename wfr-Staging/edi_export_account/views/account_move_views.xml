@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_account_move_form_inherit_edi_sale" model="ir.ui.view">
+        <field name="name">view.account.move.form.inherit.edi.sale</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+            <data>
+                <xpath expr="//notebook" position="inside">
+                    <page name="edi_fields" string="EDI">
+                        <group name="first_group">
+                            <group name="first_group_left">
+                                <field name="edi_status"/>
+                                <field name="edi_date"/>
+                                <field name="edi_merch_type_code"/>
+                                <field name="edi_quantity_totals_qualifier"/>
+                                <field name="edi_tset_purpose_code"/>
+                            </group>
+                            <group name="first_group_right">
+                                <field name="edi_customer_payment_terms"/>
+                            </group>
+                        </group>
+                    </page>
+                </xpath>
+                <xpath expr="//field[@name='invoice_line_ids']/tree/field[@name='name']" position="after">
+                    <field name="edi_line_sequence_number" optional="hide"/>
+                    <field name="edi_vendor_part_number" optional="hide"/>
+                    <field name="edi_buyer_part_number" optional="hide"/>
+                </xpath>
+                <xpath expr="///field[@name='invoice_line_ids']/tree/field[@name='quantity']" position="after">
+                    <field name="edi_qty_cases" optional="show"/>
+                    <field name="edi_case_price" optional="show"/>
+                </xpath>
+                <xpath expr="//field[@name='invoice_line_ids']/tree/field[@name='product_uom_id']" position="attributes">
+                    <attribute name="readonly">1</attribute>
+                    <attribute name="optional">hide</attribute>
+                </xpath>
+                <!-- Duplicating on line_ids to enable saving of custom fields (limitation of v13 accounting) -->
+                <!-- https://github.com/odoo/odoo/issues/40915#issuecomment-574624912 -->
+                <xpath expr="//field[@name='line_ids']/tree/field[@name='name']" position="after">
+                    <field name="edi_line_sequence_number" invisible="1"/>
+                    <field name="edi_vendor_part_number" invisible="1"/>
+                    <field name="edi_buyer_part_number" invisible="1"/>
+                </xpath>
+                <xpath expr="//field[@name='line_ids']/tree/field[@name='name']" position="after">
+                    <field name="edi_qty_cases" invisible="1"/>
+                    <field name="edi_case_price" invisible="1"/>
+                </xpath>
+            </data>
+        </field>
+    </record>
+</odoo>

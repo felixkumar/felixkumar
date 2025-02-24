@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Tree view of Shipstation Sale Order -->
+        <record id="shipstation_sale_order_tree_view_ept" model="ir.ui.view">
+            <field name="name">ShipStation Sale Order Tree View</field>
+            <field name="model">sale.order</field>
+            <field name="priority">100</field>
+            <field name="arch" type="xml">
+                <tree string="ShipStation Sale Order Tree View" create="0" decoration-info="state=='done'"
+                      decoration-danger="state=='cancel'">
+                    <field name="name"/>
+                    <field name="date_order"/>
+                    <field name="partner_id"/>
+                    <field name="partner_shipping_id"/>
+                    <field name="ept_shipstation_store_id"/>
+                    <field name="shipstation_instance_id"/>
+                    <field name="amount_total" sum="Total Tax Included"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Search View of Shipstation Sale Order -->
+        <record id="shipstation_sale_order_search_view_ept" model="ir.ui.view">
+            <field name="name">ShipStation Sale Order Search View</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_sales_order_filter"/>
+            <field name="arch" type="xml">
+                <filter name="my_sale_orders_filter" position="after">
+                    <field name="client_order_ref"/>
+                    <group expand="0" string="Group By...">
+                        <filter string="Store" name="ept_shipstation_store_id" icon="terp-personal"
+                                context="{'group_by':'ept_shipstation_store_id'}"/>
+                        <filter string="Instance" name="shipstation_instance_id" icon="terp-personal"
+                                context="{'group_by':'shipstation_instance_id'}"/>
+                        <filter string="Order Date" name="date_order" icon="terp-personal"
+                                context="{'group_by':'date_order'}"/>
+                        <filter string="Status" name="state" icon="terp-personal" context="{'group_by':'state'}"/>
+                    </group>
+                </filter>
+            </field>
+        </record>
+
+        <!-- Form View of Sale Order -->
+        <record id="shipstation_sales_order_form_view_ept" model="ir.ui.view">
+            <field name="name">shipstation.sale.order.form</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <notebook position="inside">
+                        <page string="ShipStation Info" name="ShipStation Info"
+                              attrs="{'invisible':[('shipstation_instance_id','=',False)]}">
+                            <group>
+                                <group>
+                                    <field name="type_of_delivery" invisible="1"/>
+                                    <field name="shipstation_instance_id"
+                                           attrs="{'required':[('type_of_delivery','=','shipstation_ept')]}" context="{'form_view_ref': 'shipstation_ept.shipstation_form_view'}"/>
+                                    <field name="ept_shipstation_store_id"
+                                           domain="[('shipstation_instance_id', '=', shipstation_instance_id)]"/>
+                                </group>
+                            </group>
+                        </page>
+                    </notebook>
+                </data>
+            </field>
+        </record>
+
+
+        <!-- Action For Sale Order -->
+        <record id="action_shipstation_sales_order_ept" model="ir.actions.act_window">
+            <field name="name">Sale Orders</field>
+            <field name="res_model">sale.order</field>
+            <field name="domain">[('shipstation_instance_id', '!=', False)]</field>
+            <field name="view_id" ref="shipstation_sale_order_tree_view_ept"/>
+        </record>
+
+        <!-- Action for Quotation Orders -->
+        <record id="action_shipstation_instance_sale_quotation_only" model="ir.actions.act_window">
+            <field name="name">ShipStation Quotations</field>
+            <field name="res_model">sale.order</field>
+            <field name="view_id" ref="shipstation_sale_order_tree_view_ept"/>
+            <field name="domain">[('state', 'in', ('draft', 'sent', 'cancel')),
+                                  ('shipstation_instance_id', '=', active_id)]</field>
+        </record>
+
+        <!-- Action for Only Sale Orders -->
+        <record id="action_shipstation_instance_sales_order_only" model="ir.actions.act_window">
+            <field name="name">ShipStation Sales Order</field>
+            <field name="res_model">sale.order</field>
+            <field name="view_id" ref="shipstation_sale_order_tree_view_ept"/>
+            <field name="domain">[('state', 'not in', ('draft', 'sent', 'cancel')),
+                                  ('shipstation_instance_id', '=', active_id)]</field>
+        </record>
+
+        <!-- Sales Menu -->
+        <menuitem id="shipstation_sales_main_menu" name="Sales"
+                  parent="shipstation_ept.shipstation_instance_menu_item" sequence="1"/>
+
+        <!-- Sale Order submenu -->
+        <menuitem id="shipstation_sales_orders_menu"
+                  name="Sale Orders" parent="shipstation_ept.shipstation_sales_main_menu" sequence="1"
+                  action="action_shipstation_sales_order_ept"/>
+    </data>
+</odoo>

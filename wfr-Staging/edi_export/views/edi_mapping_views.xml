@@ -1,0 +1,37 @@
+<odoo>
+    <record id="edi_mapping_line_view_form_inherit_export" model="ir.ui.view">
+        <field name="name">edi.mapping.line.form.inherit.export</field>
+        <field name="model">edi.mapping.line</field>
+        <field name="inherit_id" ref="base_edi.edi_mapping_line_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='common']" position="after">
+                <group string="Export" attrs="{'invisible': [('sync_action_doc_type', '!=', 'out')]}">
+                    <group name="multimap" string="Map From Multiple Fields">
+                        <field name="export_map_to_multiple"/>
+                        <field name="export_map_to_multiple_sentinel_tag" attrs="{'invisible': [('export_map_to_multiple', '=', False)]}"/>
+                        <field name="export_map_to_multiple_odoo_model_id" attrs="{'invisible': [('export_map_to_multiple', '=', False)]}"/>
+                        <field name="export_map_to_multiple_ids" attrs="{'invisible': [('export_map_to_multiple', '=', False)]}">
+                            <tree>
+                                <field name="value"/>
+                                <field name="odoo_field_id"/>
+                            </tree>
+                        </field>
+                    </group>
+
+                    <group name="domain" string="Domain">
+                        <field name="export_domain" />
+                    </group>
+
+                    <group name="action" string="Action">
+                        <field name="export_call_server_action"/>
+                        <field name="export_server_action_id" attrs="{'invisible': [('export_call_server_action', '=', False)]}"/>
+                    </group>
+
+                    <group name="static" string="Static">
+                        <field name="export_static_value"/>
+                    </group>
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_account_form_inherit_warefor" model="ir.ui.view">
+            <field name="name">account.account.inherit.form</field>
+            <field name="model">account.account</field>
+            <field name="inherit_id" ref="account.view_account_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='account_type']" position="after">
+                    <field name="parent_account_id"/>
+                    <field name="detail_type"/>
+                    <field name="detail_description"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_account_list_inherit_warefor" model="ir.ui.view">
+            <field name="name">account.account.inherit.tree</field>
+            <field name="model">account.account</field>
+            <field name="inherit_id" ref="account.view_account_list"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='account_type']" position="after">
+                    <field name="parent_account_id"/>
+                    <field name="detail_type"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

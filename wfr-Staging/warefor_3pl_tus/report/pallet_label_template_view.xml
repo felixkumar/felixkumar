@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <template id="report_pallet_label">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="pallet">
+                    <t t-set="transit_app_id" t-value="pallet.transit_app_id"/>
+                    <t t-set="vendor_id" t-value="transit_app_id.import_id[0] if transit_app_id.import_id else False"/>
+                    <t t-set="product_ids"
+                       t-value="pallet.product_ids.mapped('product_id') if pallet.product_ids else False"/>
+                    <t t-set="customer_id"
+                       t-value="transit_app_id.partner_id[0] if transit_app_id.partner_id else False"/>
+                    <t t-set="purchase_order_id" t-value="transit_app_id.purchase_orders_ids"/>
+                    <t t-set="company_id" t-value="transit_app_id.purchase_orders_ids.company_id"/>
+                    <t t-set="pallet_name" t-value="pallet.name.split('-')[0]"/>
+<!--                    <t t-set="pallet_number" t-value="pallet.name.split('-')[1]"/>-->
+                    <t t-set="pallet_number" t-value="pallet.pallet_number"/>
+                    <style>
+                        .table tr td{
+                        border-bottom:2px solid #000;
+                        }
+                        .table table, .table table tr td{
+                        border:none!important;
+                        }
+                        .font_size{
+                            font-size: 25px;
+                        }
+                        .td_width{
+                        width: 30%;
+                        }
+                    </style>
+                    <div class="page" style="page-break-before:always;">
+                        <div>
+                            <table class="table table-bordered" style="align-self: center; width:95%;" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <td style="text-align:center;">
+                                            <t t-if="company_id.logo">
+                                                <img style="width: 80%; height: 30%; object-fit: contain; margin-top:10px; !important"
+                                                    t-attf-src="data:image/png;base64,{{company_id.logo}}"/>
+                                            </t>
+                                        </td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- begin product barcode -->
+                                    <tr>
+                                        <td style="height: 120px; text-align:center;">
+                                            <t t-foreach="product_ids" t-as="product">
+                                                <span style="font-size:30px;">
+                                                    <br/>
+                                                    <b>PRODUCT</b>
+                                                </span>
+                                                <br/>
+                                                <img alt="Barcode"
+                                                     t-att-src="pallet.base_url+'/report/barcode/Code128/'+product.barcode"
+                                                     style="width:500px;height:120px; margin-top:10px; !important"/>
+                                                <br/>
+                                                <br/>
+                                            </t>
+                                        </td>
+                                    </tr>
+                                    <!-- end propduct barcode -->
+                                    <tr>
+                                        <td>
+                                            <table class="table" style="align-self: center; width:95%;">
+                                                <t t-foreach="pallet.product_ids" t-as="product">
+                                                    <tr>
+                                                        <td class="td_width">
+                                                            <span class="font_size">
+                                                                <b>ITEM SKU</b>
+                                                            </span>
+                                                        </td>
+                                                        <td>
+                                                            <span class="font_size">
+                                                                <t t-esc="product.product_id.default_code"/>
+                                                            </span>
+                                                            <br/>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="td_width">
+                                                            <span class="font_size">
+                                                                <b>ITEM NAME</b>
+                                                            </span>
+                                                        </td>
+                                                        <td>
+                                                            <span class="font_size">
+                                                                <t t-esc="product.product_id.name"/>
+                                                            </span>
+                                                            <br/>
+                                                        </td>
+                                                    </tr>
+                                                </t>
+                                                <tr>
+                                                    <td>
+                                                        <br/>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="td_width">
+                                                        <span class="font_size">
+                                                            <b>PO#</b>
+                                                        </span>
+                                                    </td>
+                                                    <td>
+                                                        <span class="font_size">
+                                                            <t t-esc="purchase_order_id.name"/>
+                                                        </span>
+                                                        <br/>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td class="td_width">
+                                                        <span class="font_size">
+                                                            <b>REC.DATE</b>
+                                                        </span>
+                                                    </td>
+                                                    <td>
+                                                        <span class="font_size">
+                                                            <t t-if="purchase_order_id.date_planned">
+                                                                <t t-esc="purchase_order_id.date_planned.date()"/>
+                                                            </t>
+                                                        </span>
+                                                        <br/>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="td_width">
+                                                        <span class="font_size">
+                                                            <b>PALLET BATCH</b>
+                                                        </span>
+                                                    </td>
+                                                    <td>
+                                                        <span class="font_size">
+                                                            <t t-esc="pallet_name"/>
+                                                        </span>
+                                                        <br/>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="td_width">
+                                                        <span class="font_size">
+                                                            <b>PALLET ID</b>
+                                                        </span>
+                                                    </td>
+                                                    <td>
+                                                        <span class="font_size">
+                                                            <t t-esc="pallet.name"/>
+                                                        </span>
+                                                        <br/>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="td_width">
+                                                        <span class="font_size">
+                                                            <b>PALLET #</b>
+                                                        </span>
+                                                    </td>
+                                                    <td>
+                                                        <span class="font_size">
+                                                            <t t-if="pallet_number">
+                                                                <t t-esc="pallet_number"/>
+                                                            </t>
+                                                            <t t-else="">
+                                                                None
+                                                            </t>
+                                                            of
+                                                            <t t-esc="pallet.pallet_product_batch"/>
+                                                        </span>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <!-- begin pallet barcode -->
+                                    <tr>
+                                        <td style="height: 160px; text-align:center;">
+                                            <span class="font_size" style="margin-bottom:10px; !important">
+                                                <br/>
+                                                <b>PALLET</b>
+                                            </span>
+                                            <br/>
+                                            <img alt="Barcode"
+                                                 t-att-src="pallet.base_url+'/report/barcode/Code128/'+pallet.name"
+                                                 style="width:500px;height:120px; margin-top:10px; !important"/>
+                                            <br/>
+                                            <br/>
+                                        </td>
+                                    </tr>
+                                    <!-- begin pallet barcode -->
+                                    <tr>
+                                        <td style="height: 180px; text-align:center;">
+                                            <center>
+                                                <style>
+                                                    .square {
+                                                    height: 150px;
+                                                    width: 150px;
+                                                    float:center;
+                                                    background-color: #1000;
+                                                    border-style: solid;
+                                                    text-align:center;
+                                                    font-size: 50px;
+                                                    }
+                                                </style>
+                                                <div class="square">
+                                                    <div style="text-align:center; margin-top:35px !important;">
+                                                        <t t-esc="int(sum(pallet.product_ids.mapped('product_qty')))"/>
+                                                        <br/>
+                                                        <span style="font-size:20px;">
+                                                            <b>QTY</b>
+                                                        </span>
+                                                        <br/>
+                                                    </div>
+                                                </div>
+                                            </center>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </template>
+
+    </data>
+</odoo>

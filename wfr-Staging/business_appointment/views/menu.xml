@@ -1,0 +1,135 @@
+<?xml version="1.0"?>
+<odoo>
+
+    <menuitem name="Appointments"
+              id="menu_business_appointments_main"
+              sequence="40"
+              groups="business_appointment.group_ba_user"
+              web_icon="business_appointment,static/description/icon.png"
+    />
+    <menuitem name="Appointments"
+              id="menu_business_appointments"
+              parent="menu_business_appointments_main"
+              action="business_appointment.business_appointment_action"
+              sequence="10"
+              groups="business_appointment.group_ba_user"
+    />
+    <menuitem name="Pre-Reservations"
+              id="menu_business_appointments_core"
+              parent="menu_business_appointments_main"
+              action="business_appointment.business_appointment_core_action"
+              sequence="20"
+              groups="business_appointment.group_ba_user"
+    />
+    <menuitem name="Resources"
+              id="menu_business_resources_conf"
+              parent="menu_business_appointments_main"
+              sequence="30"
+              groups="business_appointment.group_ba_admin"
+    />
+    <menuitem name="Resource Types"
+              id="menu_business_resource_types"
+              parent="menu_business_resources_conf"
+              action="business_appointment.business_resource_type_action"
+              sequence="10"
+              groups="business_appointment.group_ba_admin"
+    />
+    <menuitem name="Resources"
+              id="menu_business_resources"
+              parent="menu_business_resources_conf"
+              action="business_appointment.business_resource_action"
+              sequence="20"
+              groups="business_appointment.group_ba_admin"
+    />
+    <menuitem name="Services"
+              id="menu_business_services"
+              parent="menu_business_resources_conf"
+              action="business_appointment.appointment_product_action"
+              sequence="30"
+              groups="business_appointment.group_ba_admin"
+    />
+    <menuitem name="Reporting"
+              id="menu_business_appointments_reports"
+              parent="menu_business_appointments_main"
+              sequence="50"
+              groups="business_appointment.group_ba_admin"
+    />  
+    <menuitem name="Appointments Analysis"
+              id="menu_business_analytic"
+              parent="menu_business_appointments_reports"
+              action="business_appointment.appointment_analytic_action"
+              sequence="10"
+              groups="business_appointment.group_ba_admin"
+    />
+    <menuitem name="Customer Ratings"
+              id="menu_business_ratings"
+              parent="menu_business_appointments_reports"
+              action="business_appointment.rating_rating_action_business_resource_report"
+              sequence="20"
+              groups="business_appointment.group_business_appointment_rating" 
+    />
+    <menuitem name="Configuration"
+              id="menu_business_appointments_conf"
+              parent="menu_business_appointments_main"
+              sequence="300"
+              groups="business_appointment.group_ba_admin,business_appointment.group_ba_resource_calendar"
+    />    
+    <menuitem name="Working Calendars"
+              id="menu_working_calendar"
+              parent="menu_business_appointments_conf"
+              action="resource.action_resource_calendar_form"
+              sequence="30"
+    />
+    <menuitem id="menu_ba_templates"
+              name="Notifications"
+              parent="business_appointment.menu_business_appointments_conf"
+              sequence="70"
+              groups="business_appointment.group_ba_admin"
+    />
+    <menuitem id="menu_appointments_appointment_alarms"
+              name="Reminders"
+              action="appointment_alarm_action"
+              parent="business_appointment.menu_ba_templates"
+              sequence="10"
+    />
+    <menuitem id="menu_appointments_email_templates"
+              name="Email Templates"
+              action="action_mail_template_ba"
+              parent="business_appointment.menu_ba_templates"
+              sequence="20"
+    />
+    <menuitem id="menu_appointments_sms_templates"
+              name="SMS Templates"
+              action="sms_template_action"
+              parent="business_appointment.menu_ba_templates"
+              sequence="30"
+    />
+    <menuitem id="menu_alarm_tasks"
+              name="Reminder Queue"
+              action="alarm_task_action"
+              parent="business_appointment.menu_ba_templates"
+              sequence="40"
+    />
+    <menuitem id="menu_ba_misc"
+              name="Misc"
+              parent="business_appointment.menu_business_appointments_conf"
+              sequence="80"
+              groups="business_appointment.group_ba_admin"
+    />
+    <menuitem name="Pricelists" 
+              id="menu_business_services_pricelists" 
+              parent="menu_ba_misc" 
+              action="product.product_pricelist_action2" 
+              groups="product.group_sale_pricelist" 
+              sequence="40" 
+    />
+    <menuitem name="Configuration"
+              id="menu_res_config_settings_appointment"
+              parent="menu_business_appointments_conf"
+              sequence="300"
+              action="res_config_settings_business_appointment_action"
+              groups="business_appointment.group_ba_admin"
+
+    />
+
+</odoo>

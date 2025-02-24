@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="freight_stages_data_form_view" model="ir.ui.view">
+            <field name="name">freight.stages.data.form</field>
+            <field name="model">freight.stages.data</field>
+            <field name="arch" type="xml">
+                <form string="Dynamic Stages Tags" create="0">
+                    <sheet>
+                        <div class="alert alert-info">
+                            Please update the warefor_3pl_tus module after updating the data.
+                        </div>
+                        <div></div>
+                        <group>
+                            <field name="name" readonly="1"/>
+                            <field name="freight_stage_id" readonly="1" />
+                            <field name="status_ids" widget="many2many_tags"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="freight_stages_data_tree_view" model="ir.ui.view">
+            <field name="name">freight.stages.data.tree</field>
+            <field name="model">freight.stages.data</field>
+            <field name="arch" type="xml">
+                <tree string="Dynamic Stages Tags" create="0">
+                    <field name="name"/>
+                    <field name="freight_stage_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="freight_stages_data_action" model="ir.actions.act_window">
+            <field name="name">Dynamic Stages Tags</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">freight.stages.data</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="menu_freight_stages_data"
+                  name="Dynamic Stages Tags"
+                  parent="warefor_3pl_tus.menu_config_obl"
+                  action="freight_stages_data_action"
+                  sequence="1"/>
+
+    </data>
+</odoo>

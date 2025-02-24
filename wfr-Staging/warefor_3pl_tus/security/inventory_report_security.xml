@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Inventory Report Allow User -->
+        <record id="inventory_report_allow_users" model="res.groups">
+            <field name="name">Inventory Report Allow</field>
+            <field name="category_id" ref="base.module_category_inventory_inventory"/>
+            <field name="implied_ids" eval="[(6, 0, [ref('base.group_user')])]"/>
+        </record>
+
+        <record model="ir.ui.menu" id="stock.menu_valuation">
+            <field name="groups_id" eval="[(4,ref('warefor_3pl_tus.inventory_report_allow_users'))]"/>
+        </record>
+
+        <record model="ir.ui.menu" id="stock.menu_warehouse_report">
+            <field name="groups_id"
+                   eval="[(4,ref('warefor_3pl_tus.inventory_report_allow_users')), (4,ref('user_warehouse_restriction.user_warehouse_restriction_group_user'))]"/>
+        </record>
+
+<!--
+        <record model="ir.ui.menu" id="stock.menu_forecast_inventory">
+            <field name="groups_id" eval="[(4,ref('stock.group_stock_manager'))]"/>
+        </record>
+-->
+
+        <record model="ir.ui.menu" id="stock.stock_move_menu">
+            <field name="groups_id" eval="[(4,ref('stock.group_stock_manager'))]"/>
+        </record>
+
+        <record model="ir.ui.menu" id="stock.stock_move_line_menu">
+            <field name="groups_id" eval="[(4,ref('stock.group_stock_manager'))]"/>
+        </record>
+    </data>
+</odoo>

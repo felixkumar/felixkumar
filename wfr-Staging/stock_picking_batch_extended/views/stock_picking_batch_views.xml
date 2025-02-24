@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="stock_picking_batch_form_three_step_batch_extended" model="ir.ui.view">
+        <field name="name">stock.picking.batch.form.extended</field>
+        <field name="model">stock.picking.batch</field>
+        <field name="inherit_id" ref="stock_picking_batch.stock_picking_batch_form"/>
+        <field name="arch" type="xml">
+            <data>
+                <xpath expr="//field[@name='scheduled_date']" position="after">
+                    <field name="parent_batch_id" readonly="1"/>
+                    <field name="process_from_cron" readonly="0"/>
+                </xpath>
+            </data>
+        </field>
+    </record>
+
+    <menuitem action="stock_picking_batch.stock_picking_batch_action" id="stock_picking_batch.stock_picking_batch_menu"
+              parent="stock.menu_stock_warehouse_mgmt" sequence="21" groups="base.group_no_one"/>
+</odoo>

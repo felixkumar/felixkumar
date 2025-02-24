@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Form View of Shipstation Carrier -->
+        <record id="shipstation_carrier_form_view_ept" model="ir.ui.view">
+            <field name="name">shipstation.carrier.form.view.ept</field>
+            <field name="model">shipstation.carrier.ept</field>
+            <field name="arch" type="xml">
+                <form string="ShipStation Carrier" create="false">
+                    <header>
+                        <button name="get_carrier_shipstation_services" string="Get Services"
+                                class="oe_highlight" type="object" groups="shipstation_ept.group_shipstation_manager"/>
+                        <button name="get_carrier_shipstation_packages" string="Get Packages"
+                                class="oe_highlight" type="object" groups="shipstation_ept.group_shipstation_manager"/>
+                        <button name="create_shipping_method" string="Create Shipping Methods"
+                                class="oe_highlight" type="object" groups="shipstation_ept.group_shipstation_manager"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name" readonly="1"/>
+                                <field name="code" readonly="1"/>
+                                <field name="shipping_provider_id"/>
+                            </group>
+                            <group>
+                                <!-- Modified by [ES] Task: 183287 | Dated on 27, Jan 2022-->
+                                <field name="shipstation_instance_id" required="1" readonly="1" context="{'form_view_ref': 'shipstation_ept.shipstation_form_view'}"/>
+                                <field name="carrier_rate_currency_id"/>
+                                <!--Added by Hardik Joshi Task: 189671 | Dated on 10, 05 2022-->
+                                <!--<field name="tracking_url"/>-->
+                                <!--<span colspan="2" lass="text-muted">For ex.: www.example.com/{TRACKING_NUMBER}</span>-->
+                            </group>
+                        </group>
+                        <notebook>
+                            <page name="shipstation_services" string="Shipstation Services">
+                                <field name="shipstation_service_ids" nolabel="1">
+                                    <tree create="0" edit="0" delete="0">
+                                        <field name="service_name" readonly="True"/>
+                                        <field name="company_id" readonly="True"/>
+                                        <button name="add_new_shipstation_service" string="Use Service"
+                                                type="object" icon="fa-plus-square"
+                                                context="{'hide_field':1}"
+                                                groups="sales_team.group_sale_manager"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page name="shipstation_packages" string="Shipstaion Packages">
+                                <field name="shipstation_package_ids" nolabel="1" widget="one2many" mode="tree">
+                                    <tree editable="bottom" create="true" edit="true" delete="true">
+                                        <field name="name"/>
+                                        <field name="height" string="Height (in)"/>
+                                        <field name="width" string="Width (in)"/>
+                                        <field name="packaging_length" string="Length (in)"/>
+                                        <field name="max_weight"/>
+                                        <field name="shipper_package_code" string="Package Code"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page name="shiping_methods" string="Shipping Methods">
+                                <field name="delivery_carrier_ids" nolabel="1"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Search View For Shipstation Carrier -->
+        <record id="shipstation_carrier_search_view_ept" model="ir.ui.view">
+            <field name="name">view.shipstation.carrier.filter</field>
+            <field name="model">shipstation.carrier.ept</field>
+            <field name="type">search</field>
+            <field name="arch" type="xml">
+                <search string="ShipStation Carrier">
+                    <field name="name"/>
+                    <field name="code" readonly="1"/>
+                    <field name="shipstation_instance_id"/>
+                    <group expand="0" string="Group By...">
+                        <filter string="ShipStation Instance" name="shipstation_instance_id" icon="terp-personal"
+                                context="{'group_by':'shipstation_instance_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <!-- Tree View of Shipstation Carrier -->
+        <record id="shipstation_carrier_tree_view_ept" model="ir.ui.view">
+            <field name="name">ShipStation Carriers</field>
+            <field name="model">shipstation.carrier.ept</field>
+            <field name="arch" type="xml">
+                <tree string="ShipStation Carriers" create="false" edit="false">
+                    <field name="name"/>
+                    <field name="code" readonly="1"/>
+                    <field name="shipstation_instance_id" required="1"/>
+                    <field name="carrier_rate_currency_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Action for Shipstation Carrier Tree View -->
+        <record id="action_shipstation_carrier_ept" model="ir.actions.act_window">
+            <field name="name">ShipStation Carriers</field>
+            <field name="res_model">shipstation.carrier.ept</field>
+            <field name="view_id" ref="shipstation_carrier_tree_view_ept"/>
+        </record>
+
+        <!-- Carrier Menu in Configuration Menu -->
+        <menuitem id="shipstation_carrier_menu" name="Carriers"
+                  parent="shipstation_ept.menu_configuration_ept" sequence="6"
+                  action="action_shipstation_carrier_ept"/>
+    </data>
+</odoo>

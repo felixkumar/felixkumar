@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_shipstation_common_log_book_ept" model="ir.actions.act_window">
+        <field name="name">Shipstation Operation Logs</field>
+        <field name="res_model">common.log.lines.ept</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('module','=','shipstation_ept')]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No mismatch Log Lines are there!
+            </p>
+            <p>If any import/export/update process has got issue, log lines will be shown here.</p>
+        </field>
+    </record>
+
+    <!-- Shipstation Process Log Book Menu -->
+    <menuitem id="shipstation_file_process_job_log" name="Operations Log"
+              parent="menu_shipstation_import_export_process_ept" sequence="1"
+              action="action_shipstation_common_log_book_ept"/>
+
+</odoo>

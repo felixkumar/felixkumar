@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Bread crumbs -->
+    <template id="portal_layout" name="Portal Layout: Appointments" inherit_id="portal.portal_breadcrumbs" priority="40">
+        <xpath expr="//ol[hasclass('o_portal_submenu')]" position="inside">
+            <t t-if="ba_turn_on_appointments">
+                <li t-if="appointments or ba_appointment_id or page_name == 'My Appointments'" 
+                    t-attf-class="breadcrumb-item #{'active ' if not ba_appointment_id else ''}"
+                >
+                    <a t-if="ba_appointment_id" t-attf-href="/my/business/appointments?{{ keep_query() }}">
+                        My Appointments
+                    </a>
+                    <t t-else="">My Appointments</t>
+                </li>
+                <li t-if="ba_appointment_id" class="breadcrumb-item active">
+                    <t t-esc="ba_appointment_id.name"/>
+                    <t t-esc="ba_appointment_id.sudo().service_id.name"/>
+                </li>
+            </t>
+        </xpath>
+    </template>
+    <!-- Portal documents entry -->
+    <template id="portal_my_home" name="Show Appointments" customize_show="True" inherit_id="portal.portal_my_home" priority="85">
+        <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+            <t t-call="portal.portal_docs_entry">
+                <t t-set="title">My Appointments</t>
+                <t t-set="url" t-value="'/my/business/appointments'"/>
+                <t t-set="placeholder_count" t-value="'appointments_count'"/>
+            </t>
+            <t t-call="portal.portal_docs_entry">
+                <t t-set="title">Schedule Appointment</t>
+                <t t-set="url" t-value="'/appointments'"/>
+                <t t-set="placeholder_count" t-value="'ba_counter'"/>
+            </t>
+        </xpath>
+    </template>
+    <!-- Active filters and searches template -->
+    <template id="done_search_appointments" name="Search alert">
+        <t t-if="done_search">
+            Active search: "<t t-esc="done_search"/>".
+        </t>
+        <t t-if="done_filters">
+            Active filters: "<t t-esc="done_filters"/>".
+        </t>
+        <a href="/appointments">Schedule a new appointment</a> or <a href="/my/business/appointments?filterby=all">clear search</a>.
+    </template>  
+    <!-- Appointments -->
+    <template id="portal_appointments" name="My Appointments">
+        <t t-call="portal.portal_layout">
+            <t t-set="breadcrumbs_searchbar" t-value="True"/>
+            <t t-call="portal.portal_searchbar">
+                <t t-set="title">My Appointments</t>
+            </t>
+            <div t-if="not appointments" class="col-md-12 col-sm-8 mt16 alert alert-info">
+                There are currently no appointments found by your criteria.
+                <t t-call="business_appointment_website.done_search_appointments"/>
+            </div>
+            <t t-if="appointments" t-call="portal.portal_table">
+                <div class="business-appointment-pull-right">
+                    <a role="button" class="btn btn-primary btn-block mb8" href="/appointments">
+                        <i class="fa fa-plus-square-o"/> Schedule New Appointment
+                    </a>
+                </div>
+                <div t-if="done_search or done_filters" class="col-lg-12 -col-md-12 col-sm-12 alert alert-info">
+                    <t >
+                        <t t-call="business_appointment_website.done_search_appointments"/>
+                    </t>
+                </div>
+                <thead>
+                    <tr class="active">
+                        <th>Reference</th>
+                        <th>Scheduled Time</th>
+                        <th>Resource</th>
+                        <th>Service</th>
+                    </tr>
+                </thead>
+                <t t-foreach="appointments" t-as="appointment">
+                    <tr t-attf-class="#{appointment.return_not_topical() and 'text-muted' or ''}">
+                        <td>
+                            <a t-attf-href="/my/business/appointments/#{appointment.id}?#{keep_query()}">
+                                <t t-esc="appointment.name"/>
+                            </a>
+                        </td>
+                        <td><t t-esc="appointment.return_scheduled_time_tz()"/></td>
+                        <td><t t-esc="appointment.sudo().resource_id.name"/></td>
+                        <td><t t-esc="appointment.sudo().service_id.name"/></td>
+                    </tr>
+                </t>
+            </t>
+        </t>
+    </template>
+    <!-- Appointment page -->
+    <template id="portal_appointment_page" name="My Appointment" inherit_id="portal.portal_sidebar" primary="True">
+        <xpath expr="//div[hasclass('o_portal_sidebar')]" position="inside">
+            <div class="row mt16">
+                <t t-set="ba_topical" t-value="(ba_appointment_id.sudo().resource_type_id and ba_appointment_id.sudo().resource_type_id.check_cancel_timeframe(ba_appointment_id) and not ba_appointment_id.return_not_topical()) and True or False"/>
+                <t t-call="portal.portal_record_sidebar">
+                    <t t-set="classes" t-value="'col-12 col-lg flex-lg-grow-0'"/>
+                    <t t-set="title">
+                        <h2 class="mb-0">
+                            <t t-if="not ba_topical">
+                                <span class="text-muted"><t t-esc="ba_appointment_id.name"/></span>
+                            </t>
+                            <t t-else="">
+                                <b><t t-esc="ba_appointment_id.name"/></b>
+                            </t>
+                        </h2>
+                    </t>
+                    <t t-set="entries">
+                        <ul class="list-group list-group-flush flex-wrap flex-row flex-lg-column">
+                            <li class="list-group-item flex-grow-1" id="ba_functional_buttons">
+                                <div class="business-appointment-pull-right text-center" id="business-appointments-portal-buttons">
+                                    <!-- ba_hidden until https://github.com/odoo/odoo/issues/100464 is fixed -->
+                                    <a role="button"
+                                       t-att-id="ba_appointment_id.id" 
+                                       class="btn btn-primary w-100 mb8 business-appoinment-portal-video business-appointment-hidden"
+                                       href="#"
+                                       name="ba_btn_video_link"
+                                       t-if="ba_appointment_id.videocall"
+                                    >
+                                        <i class="fa fa-video-camera"/> Join conference
+                                    </a>
+                                    <a role="button"
+                                       t-att-id="ba_appointment_id.id" 
+                                       class="btn btn-primary w-100 mb8 business-appoinment-portal-repeat"
+                                       href="#"
+                                       name="reschedule_ba"
+                                    >
+                                        <i class="fa fa-copy"/> Repeat
+                                    </a>
+                                    <div class="business-appoinment-portal-complementaries" t-if="ba_topical and extra_products_option and (ba_appointment_id.extra_product_ids or ba_appointment_id.sudo().service_id.suggested_product_ids)" t-att-id="ba_appointment_id.id"/>
+                                    <a role="button"
+                                       t-att-id="ba_appointment_id.id" 
+                                       t-if="ba_topical"
+                                       class="btn btn-secondary w-100 mb8 business-appoinment-portal-reschedule"
+                                       href="#"
+                                       name="reschedule_ba"
+                                    >
+                                        <i class="fa fa-clock-o"/> Re-Schedule
+                                    </a>
+                                    <a role="button"
+                                       t-att-id="ba_appointment_id.id" 
+                                       t-if="ba_topical"
+                                       class="btn btn-secondary w-100 mb8 business-appoinment-portal-cancel"
+                                       href="#"
+                                    >
+                                        <i class="fa fa-times"/> Cancel
+                                    </a>
+                                    <a role="button" class="btn btn-primary w-100 mb8" href="/appointments">
+                                        <i class="fa fa-plus-square-o"/> Schedule New
+                                    </a> 
+                                </div>
+                            </li>
+                        </ul>
+                    </t>
+                </t>
+                <div id="quote_content" class="col-12 col-lg justify-content-end">
+                    <div t-attf-class="card #{'pb-5' if report_type == 'html' else ''}">
+                        <div t-if="success" class="alert alert-success alert-dismissable d-print-none" role="status">
+                            <span t-esc="success"/>
+                         </div>
+                        <div t-if="error" class="alert alert-danger alert-dismissable d-print-none" role="alert">
+                            <span t-esc="error"/>
+                        </div>
+                        <div id="introduction" t-attf-class="pb-2 pt-3 card-header bg-white">
+                            <t t-if="not ba_topical">
+                                <span class="text-muted"><t t-esc="ba_appointment_id.return_scheduled_time_tz()"/></span>
+                            </t>
+                            <t t-else="">
+                                <h3><b><t t-esc="ba_appointment_id.return_scheduled_time_tz()"/></b></h3>
+                            </t>                           
+                            <span t-if="ba_appointment_id.state == 'cancel'" class="business-appointment-pull-right badge text-bg-primary">
+                                Canceled
+                            </span>
+                        </div>
+                        <div t-attf-class="card-body #{not ba_topical and 'text-muted' or ''}">
+                            <div class="row" id="main_attrs">
+                                <div class="col-md-6" id="ba_left_column">
+                                    <strong>Service:</strong>
+                                    <t t-esc="ba_appointment_id.sudo().service_id.name"/>
+                                </div>
+                                <div class="col-md-6" id="ba_right_column">
+                                    <strong>Resource:</strong>
+                                    <t t-esc="ba_appointment_id.sudo().resource_id.name"/>
+                                </div>                            
+                            </div>
+                            <div class="row col-12 col-lg-12 mb-4 mb-md-0" id="extra_products" t-if="extra_products_option and ba_appointment_id.extra_product_ids">
+                                <div>
+                                    <div>
+                                        <strong>Extra products:</strong>
+                                    </div>
+                                    <table class="table table-sm" t-if="ba_appointment_id.extra_product_ids">
+                                        <tbody>
+                                            <t t-foreach="ba_appointment_id.extra_product_ids" t-as="line">      
+                                                <tr t-attf-class="#{not ba_topical and 'text-muted' or ''}">
+                                                    <td class="text-left">
+                                                        <span t-field="line.product_id.sudo().name"/>
+                                                    </td>
+                                                    <td class="text-right">
+                                                        <span t-field="line.product_uom_qty"/>
+                                                        <span t-field="line.product_id.sudo().uom_name"/>
+                                                    </td>                                 
+                                                </tr>
+                                            </t>                      
+                                        </tbody>
+                                    </table>   
+                                </div>
+                            </div>
+                            <div class="row col-12 col-lg-12 mb-4 mb-md-0" id="full_description">
+                                <div>
+                                    <div>
+                                        <strong>Extra comments:</strong>
+                                    </div>
+                                    <div>
+                                        <t t-esc="ba_appointment_id.description"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </xpath>
+    </template>
+    <!-- Communication option -->
+    <template id="communication_appointment" inherit_id="business_appointment_website.portal_appointment_page" name="Contact and Communication History" active="True" customize_show="True">
+        <xpath expr="//li[@id='ba_functional_buttons']" position="after">
+            <li class="list-group-item flex-grow-1" t-if="ba_appointment_id.user_id">
+                <div class="small mb-1"><strong class="text-muted">Your Contact</strong></div>
+                <div class="row flex-nowrap">
+                    <div class="col flex-grow-0 pr-2">
+                        <img class="rounded-circle mr4 float-left o_portal_contact_img"
+                             t-if="ba_appointment_id.sudo().user_id.image_128"
+                             t-att-src="image_data_uri(ba_appointment_id.sudo().user_id.image_128)" alt="Contact"
+                        />
+                        <img class="rounded-circle mr4 float-left o_portal_contact_img"
+                             t-else=""
+                             src="/web/static/src/img/user_menu_avatar.png"
+                             alt="Contact"
+                        />
+                    </div>
+                    <div class="col pl-0" style="min-width: 150px">
+                        <span t-esc="ba_appointment_id.sudo().user_id" t-options='{"widget": "contact", "fields": ["name"], "no_marker": True}'/>
+                        <a href="#discussion" class="small">
+                            <i class="fa fa-comment"></i> Send message
+                        </a>
+                    </div>
+                </div>
+            </li>
+        </xpath>
+        <xpath expr="//div[@id='quote_content']" position="inside">
+            <div id="appointment_communication" class="mt-4">
+                <h2>Communication</h2>
+                <t t-call="portal.message_thread">
+                    <t t-set="object" t-value="ba_appointment_id"/>
+                </t>
+            </div>
+        </xpath>
+    </template>
+    <!-- Print Appointment Option -->
+    <template id="print_appointment" inherit_id="business_appointment_website.portal_appointment_page" name="Print Appointment" active="True" customize_show="True">
+        <xpath expr="//a[@name='reschedule_ba']" position="before">
+            <a role="button"
+               t-att-id="ba_appointment_id.id" 
+               class="btn btn-primary w-100 mb8 print_appointment"
+               t-attf-href='/my/business/appointments/download/#{ba_appointment_id.id}/#{ba_appointment_id.safe_file_name}?#{keep_query()}'
+            >
+                <i class="fa fa-print"/> Print Confirmation
+            </a>
+        </xpath>
+    </template>
+
+</odoo>

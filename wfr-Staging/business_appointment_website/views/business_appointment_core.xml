@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<odoo>
+
+    <record id="business_appointment_core_view_search" model="ir.ui.view">
+        <field name="name">business.appointment.core.search</field>
+        <field name="model">business.appointment.core</field>
+        <field name="inherit_id" ref="business_appointment.business_appointment_core_view_search"/>
+        <field name="arch" type="xml">
+            <filter name="today" position="before">
+                <filter string="Website/Portal" name="website_created" domain="[('website_created', '=', True)]"/>
+                <filter string="Backend" name="backend_created" domain="[('website_created', '=', False)]"/>
+                <separator/>
+            </filter>
+        </field>
+    </record>
+    <record id="business_appointment_core_view_form" model="ir.ui.view">
+        <field name="name">business.appointment.core.form</field>
+        <field name="model">business.appointment.core</field>
+        <field name="inherit_id" ref="business_appointment.business_appointment_core_view_form"/>
+        <field name="arch" type="xml">
+            <field name="company_id" position="before">
+                <field name="website_created"/>
+                <field name="website_id" options="{'no_create_edit': 1, 'no_quick_create': 1}" groups="website.group_multi_website"/>
+            </field>
+        </field>
+    </record>
+
+</odoo>

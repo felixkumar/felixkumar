@@ -1,0 +1,234 @@
+<?xml version="1.0"?>
+<odoo>
+
+    <record id="business_appointment_core_view_search" model="ir.ui.view">
+        <field name="name">business.appointment.core.search</field>
+        <field name="model">business.appointment.core</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="resource_id"/>
+                <field name="service_id"/>
+                <field name="partner_id" filter_domain="['|', '|', '|', ('partner_id', 'ilike', self), ('contact_name', 'ilike', self), ('partner_name', 'ilike', self), ('email', 'ilike', self)]"/>
+                <field name="resource_type_id"/>
+                <filter string="My Appointments" name="my_appointments" domain="[('user_id', '=', uid)]"/>
+                <separator/>
+                <filter string="Pre-Reservations" name="prereserv" domain="[('state', '=', 'draft')]"/>
+                <filter string="Awaiting Confirmation" name="need_approval" domain="[('state', '=', 'need_approval')]"/>
+                <separator/>
+                <filter name="today" string="Today" domain="[('day_date', '=', (context_today().strftime('%%Y-%%m-%%d')))]"/>
+                <filter name="filter_week"
+                        string="Next 7 days"
+                        domain="[('day_date', '&gt;=', (context_today().strftime('%%Y-%%m-%%d'))),('day_date', '&lt;=', ((context_today()+datetime.timedelta(days=7)).strftime('%%Y-%%m-%%d')))]"
+                />
+                <filter name="filter_month"
+                        string="This Month"
+                        domain="[('day_month','=',((context_today()).strftime('%m-%Y')))]"
+                />
+                <filter name="filter_year"
+                        string="This Year"
+                        domain="[('day_year','=',((context_today()).strftime('%Y')))]"
+                />
+                <separator/>
+                <filter string="Activities Todo"
+                        name="activities_my"
+                        domain="[('activity_ids.user_id', '=', uid)]"
+                />
+                <separator/>
+                <filter string="Late Activities"
+                        name="activities_overdue"
+                        domain="[('activity_ids.date_deadline', '&lt;', context_today().strftime('%Y-%m-%d'))]"
+                />
+                <filter string="Today Activities"
+                        name="activities_today"
+                        domain="[('activity_ids.date_deadline', '=', context_today().strftime('%Y-%m-%d'))]"
+                />
+                <filter string="Future Activities"
+                        name="activities_upcoming_all"
+                        domain="[('activity_ids.date_deadline', '&gt;', context_today().strftime('%Y-%m-%d'))]"
+                />
+                <separator/>
+                <group expand="0" string="Group By">
+                    <filter string="Resource" name="group_resource_id" context="{'group_by': 'resource_id'}"/>
+                    <filter string="Service" name="service_id_group" context="{'group_by': 'service_id'}"/>
+                    <filter string="Resource Type" name="resource_type_id_group" context="{'group_by': 'resource_type_id'}"/>
+                    <filter string="Start Date" name="datetime_start_group" context="{'group_by': 'datetime_start'}"/>
+                    <filter string="State" name="state_group" context="{'group_by': 'state'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+    <record id="business_appointment_core_view_form" model="ir.ui.view">
+        <field name="name">business.appointment.core.form</field>
+        <field name="model">business.appointment.core</field>
+        <field name="arch" type="xml">
+            <form duplicate="0">
+                <header>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_cancel_prereserv"
+                                type="object"
+                                class="oe_stat_button"
+                                icon="fa-times"
+                                attrs="{'invisible': [('state', 'in', ['processed'])]}"
+                        >
+                            Cancel
+                        </button>
+                        <button name="action_confirm_prereserv"
+                                type="object"
+                                class="oe_stat_button"
+                                icon="fa-check-square-o"
+                                attrs="{'invisible': [('state', 'not in', ['need_approval'])]}"
+                        >
+                            Confirm
+                        </button>
+                    </div>
+                    <group>
+                        <field name="resource_id"
+                               options="{'no_create_edit': 1, 'no_quick_create': 1}"
+                               readonly="1"
+                        />
+                        <field name="service_id"
+                               options="{'no_create_edit': 1, 'no_quick_create': 1}"
+                               readonly="1"
+                        />
+                        <field name="resource_type_id" invisible="1"/>
+                        <field name="extra_resource_ids"
+                               widget="many2many_tags"
+                               readonly="1"
+                        />
+                        <label for="datetime_start"/>
+                        <div>
+                            <field name="datetime_start" class="oe_inline" readonly="1"/> to
+                            <field name="datetime_end" class="oe_inline" readonly="1"/>
+                        </div>
+                        <field name="user_id"/>
+                        <field name="pricelist_id" 
+                               groups="product.group_product_pricelist,product.group_sale_pricelist" 
+                               options="{'no_open':True, 'no_create': True}"
+                        />
+                        <field name="company_id" groups="base.group_multi_company"/>
+                    </group>
+                    <group name="contact_info" string="Contact Info">
+                        <group colspan="6">
+                            <field name="partner_id"
+                                   context="{'default_name': contact_name, 'default_street': street, 'default_street2': street2, 'default_city': city, 'default_state_id': state_id, 'default_zip': zipcode, 'default_country_id': country_id, 'default_function': function, 'default_phone': phone, 'default_mobile': mobile, 'default_email': email, 'default_title': title, 'default_parent_id': parent_company_id}"
+                                   widget="res_partner_many2one"
+                            />
+                        </group>
+                        <group attrs="{'invisible': [('partner_id', '!=', False)]}"> 
+                            <label for="contact_name"/>
+                            <div class="o_row">
+                                <field name="contact_name"/>
+                                <field name="title" placeholder="Title" options='{"no_open": True}'/>
+                            </div>
+                            <field name="email" widget="email"/>
+                            <field name="phone" widget="phone"/>
+                            <field name="mobile"/>
+                            <field name="function"/>
+                        </group>
+                        <group attrs="{'invisible': [('partner_id', '!=', False)]}">
+                            <label for="street" string="Address"/>
+                            <div class="o_address_format">
+                                <field name="street" placeholder="Street..." class="o_address_street"/>
+                                <field name="street2" placeholder="Street 2..." class="o_address_street"/>
+                                <field name="city" placeholder="City" class="o_address_city"/>
+                                <field name="state_id"
+                                       class="o_address_state"
+                                       placeholder="State"
+                                       options='{"no_open": True, "no_create_edit": True, "no_quick_create": 1}'
+                                />
+                                <field name="zipcode" placeholder="ZIP" class="o_address_zip"/>
+                                <field name="country_id"
+                                       placeholder="Country"
+                                       class="o_address_country"
+                                       options='{"no_open": True, "no_create_edit": True, "no_quick_create": 1}'
+                                />
+                            </div>
+                            <field name="parent_company_id"
+                                   options='{"no_open": True, "no_create_edit": True, "no_quick_create": 1}'
+                                   attrs="{'invisible': [('partner_id', '!=', False)]}"
+                            />
+                            <field name="partner_name" attrs="{'invisible': [('parent_company_id', '!=', False)]}"/>
+                        </group>
+                    </group>
+                    <label for="extra_product_ids"/>
+                    <field name="extra_product_ids">
+                        <tree editable="top">
+                            <field name="product_id"/>
+                            <field name="product_uom_qty"/>
+                        </tree>
+                        <form>
+                            <sheet>
+                                <group>
+                                    <field name="product_id"/>
+                                    <field name="product_uom_qty"/>                                    
+                                </group>
+                            </sheet>
+                        </form>
+                    </field>
+                    <notebook>
+                        <page string="Notes">
+                            <field name="description"/>
+                        </page>
+                        <page string="Timeline">
+                            <group>
+                                <field name="create_date" string="Pre-Reservation Datetime" readonly="1"/>
+                                <field name="schedule_datetime" readonly="1"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+    <record id="business_appointment_core_view_tree" model="ir.ui.view">
+        <field name="name">business.appointment.core.tree</field>
+        <field name="model">business.appointment.core</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="resource_id"/>
+                <field name="partner_id"/>
+                <field name="contact_name"/>
+                <field name="service_id"/>
+                <field name="datetime_start" string="Start"/>
+                <field name="datetime_end"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+    <record id="business_appointment_core_action" model="ir.actions.act_window">
+        <field name="name">Reservations</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">business.appointment.core</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[("state", "in", ("draft", "need_approval"))]</field>
+        <field name="context">{}</field>
+        <field name="search_view_id" eval="business_appointment_core_view_search"/>
+    </record>
+    <record id="action_mass_appointments_confirmation" model="ir.actions.server">
+        <field name="name">Confirm</field>
+        <field name="model_id" ref="model_business_appointment_core"/>
+        <field name="binding_model_id" ref="business_appointment.model_business_appointment_core"/>
+        <field name="state">code</field>
+        <field name="code">
+records.action_confirm_prereserv()
+        </field>
+    </record>
+    <record id="action_mass_appointments_cancel" model="ir.actions.server">
+        <field name="name">Cancel</field>
+        <field name="model_id" ref="model_business_appointment_core"/>
+        <field name="binding_model_id" ref="business_appointment.model_business_appointment_core"/>
+        <field name="state">code</field>
+        <field name="code">
+records.action_cancel_prereserv()
+        </field>
+    </record>
+
+</odoo>

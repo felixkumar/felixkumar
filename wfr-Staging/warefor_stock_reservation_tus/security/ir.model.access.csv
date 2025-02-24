@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_stock_reserved_own_saleuser,stock_reserved_own_user,model_stock_move_reservation,sales_team.group_sale_salesman,1,0,0,0
+access_stock_reserved_sale_manager,stock_reserved_sale_manager,model_stock_move_reservation,sales_team.group_sale_manager,1,1,1,1
+access_stock_reserved_stock_manager,stock_reserved_stock_manager,model_stock_move_reservation,stock.group_stock_user,1,1,1,1

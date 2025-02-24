@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_stock_warehouse_inherit_warefor_3pl" model="ir.ui.view">
+        <field name="name">stock.warehouse.form.inherit.warefor.3pl</field>
+        <field name="model">stock.warehouse</field>
+        <field name="inherit_id" ref="stock.view_warehouse"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="is_3pl_warehouse"/>
+                <field name="bulk_route_id"/>
+                <field name="ecommerce_route_id"/>
+            </xpath>
+            <xpath expr="//sheet" position="before">
+                <header>
+                    <button string="Configure 3D Rack" name="configure_3d_rack"
+                            type="object" class="oe_highlight"/>
+                </header>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_location_form_inherit" model="ir.ui.view">
+        <field name="name">stock.location.form.inherit</field>
+        <field name="model">stock.location</field>
+        <field name="inherit_id" ref="stock.view_location_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='return_location']" position="after">
+                <field name="stored_pallet"/>
+                <field name="outbound_stored_pallet" string="# of Pallets"/>
+                <field name="stored_rack"/>
+                <field name="is_inventory_adjustment_location"/>
+                <field name="is_outbound_location"/>
+                <field name="is_destination_location"/>
+                <field name="is_virtual_location"/>
+                <field name="is_omit_on_source_location"/>
+                <field name="available_stock"/>
+                <field name="product_per_pallet"/>
+            </xpath>
+            <xpath expr="//group" position="after">
+                <group>
+                    <group name="3pl_location_info" col="8" colspan="2">
+                        <field name="building"/>
+                        <field name="sub_inventory"/>
+                        <field name="aisle_location"/>
+                        <field name="level_configuration"/>
+                        <field name="pallet_positions_area"/>
+                    </group>
+                </group>
+            </xpath>
+            <xpath expr="//form/sheet" position="inside">
+                <notebook>
+                    <page string="Racks">
+                        <field name="rack_ids" edit="False" nolabel="1">
+                            <tree create="false" delete="false" edit="false">
+                                <field name="name"/>
+                                <field name="is_rack"/>
+                                <field name="stored_pallet"/>
+                            </tree>
+                        </field>
+                    </page>
+                </notebook>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="stock_location_view_tree2_outbound" model="ir.ui.view">
+        <field name="name">stock.location.tree2.outbound</field>
+        <field name="model">stock.location</field>
+        <field name="inherit_id" ref="stock.view_location_tree2"/>
+        <field name="arch" type="xml">
+            <xpath expr="//tree/field[@name='usage']" position="after">
+                <field name="available_stock"/>
+                <field name="product_per_pallet"/>
+                <field name="outbound_stored_pallet" string="# of Pallets"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

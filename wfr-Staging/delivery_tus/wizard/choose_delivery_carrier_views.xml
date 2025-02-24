@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="choose_delivery_carrier_view_form_tus" model="ir.ui.view">
+        <field name="name">choose.delivery.carrier.form.tus</field>
+        <field name="model">choose.delivery.carrier</field>
+        <field name="inherit_id" ref="delivery.choose_delivery_carrier_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='carrier_id']" position="before">
+                <field name="picking_id" attrs="{'invisible': [('picking_id', '=', False)]}" readonly="1"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

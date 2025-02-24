@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_inbound_report_wizard_form" model="ir.ui.view">
+            <field name="name">inbound.report.wizard.form.view</field>
+            <field name="model">inbound.report.wizard</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <group>
+                            <field name="partner_id" required="1" options="{'no_create': True,'no_edit': True}"/>
+                            <field name="title_name" required="1"/>
+                            <field name="warehouse_ids" widget="many2many_tags" required="1" options="{'no_create': True,'no_edit': True}"/>
+                        </group>
+                    </group>
+                    <footer>
+                        <button name="generate_ibl_full_empty_container_report" string="Print XLSX Report" type="object" class="btn-primary"/>
+                        <button name="view_report" string="View Report" type="object" class="btn-primary"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_inbound_report_wizard" model="ir.actions.act_window">
+            <field name="name">Inbound Full/Empty Report Wizard</field>
+            <field name="res_model">inbound.report.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_inbound_report_wizard_form"/>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem id="menu_move_pallets" name="IBL Empty Full Container Report" action="action_inbound_report_wizard"
+                  parent="warefor_3pl_tus.menu_freight_freights_inbound_report"/>
+
+    </data>
+</odoo>

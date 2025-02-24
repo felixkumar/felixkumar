@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<odoo>
+
+    <record id="sms_template_action" model="ir.actions.act_window">
+        <field name="name">SMS Templates</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">sms.template</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[
+            ("model", "in", ["website.business.appointment", "business.appointment", "business.appointment.core",
+            "appointment.product", "business.resource", "business.resource.type"])
+        ]</field>
+        <field name="context">{"default_model": "business.appointment"}</field>        
+    </record>
+
+</odoo>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="storage_type_ibl_form_view" model="ir.ui.view">
+            <field name="name">storage.type.ibl.form.view</field>
+            <field name="model">storage.type.ibl</field>
+            <field name="arch" type="xml">
+                <form string="Storage Type IBL">
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="name"/>
+                            <h1>
+                                <field name="name" placeholder="Storage..."/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="create_date"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="storage_type_ibl_tree_view" model="ir.ui.view">
+            <field name="name">storage.type.ibl.tree</field>
+            <field name="model">storage.type.ibl</field>
+            <field name="arch" type="xml">
+                <tree string="Storage Type IBL">
+                    <field name="sequence" widget="handle"/>
+                    <field name="name"/>
+                    <field name="create_date"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="storage_type_ibl_act_window" model="ir.actions.act_window">
+            <field name="name">Storage Type IBL</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">storage.type.ibl</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    There are no examples. Click here to add new Storage Type IBL.
+                </p>
+            </field>
+        </record>
+
+        <menuitem name="Storage Type IBL"
+                  id="storage_type_ibl_menu"
+                  parent="warefor_3pl_tus.menu_freight_configuration"
+                  action="storage_type_ibl_act_window"
+        />
+
+    </data>
+</odoo>

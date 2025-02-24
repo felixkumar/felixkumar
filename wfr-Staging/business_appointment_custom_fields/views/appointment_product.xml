@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="appointment_product_view_form" model="ir.ui.view">
+        <field name="name">appointment.product.form.custom</field>
+        <field name="model">appointment.product</field>
+        <field name="inherit_id" ref="business_appointment.appointment_product_view_form"/>
+        <field name="arch" type="xml">
+            <notebook position="inside">
+                <page name="custom_fields" string="Custom Details" invisible="0">
+                    <group name="group_custom_fields" invisible="1"/>
+                </page>
+            </notebook>
+            <group name="ba_ap_main_details" position="after">
+                <group name="ba_ap_custom_details">
+                    <group name="left_panel_group" invisible="1"/>
+                    <group name="right_panel_group" invisible="1"/>
+                </group>
+            </group>
+            <group name="overall_appointments_configs" position="after">
+                <group name="settings_tab_group" invisible="1"/>                
+            </group>
+            <field name="ba_description" position="after">
+                <group name="after_description_group" invisible="1"/>
+            </field>
+        </field>
+    </record>
+
+</odoo>

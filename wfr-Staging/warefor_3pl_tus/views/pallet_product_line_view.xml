@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="form_view_pallet_product_line" model="ir.ui.view">
+            <field name="name">pallet.product.line.form.view</field>
+            <field name="model">pallet.product.line</field>
+            <field name="arch" type="xml">
+                <form string="Pallet Product Line">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="product_id" required='1'/>
+                                <field name="product_qty"/>
+                                <field name="sold_qty"/>
+                                <field name="remaining_qty"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</odoo>

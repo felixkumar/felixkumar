@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="product_label_styles" inherit_id="website_sale.snippet_options">
+        <xpath expr="//div[@data-name='ribbon_customize_opt']//we-select[1]//we-button[last()]" position="after">
+                <we-button data-set-ribbon-mode="product_label_style_1">Vega Tag</we-button>
+                <we-button data-set-ribbon-mode="product_label_style_2">Vega Square Shadow</we-button>
+                <we-button data-set-ribbon-mode="product_label_style_3">Vega Edge 1</we-button>
+                <we-button data-set-ribbon-mode="product_label_style_4">Vega Edge 2</we-button>
+                <we-button data-set-ribbon-mode="product_label_style_5">Vega Round</we-button>
+        </xpath>
+    </template>
+</odoo>

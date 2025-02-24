@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="tus_theme_clarico_vega.login_register_popup" model="ir.ui.view">
+        <field name="name">login_register_popup</field>
+        <field name="inherit_id" search="[('key', '=', 'theme_clarico_vega.login_register_popup')]"/>
+        <field name="type">qweb</field>
+        <field name="priority" eval="35"/>
+        <field name="active">True</field>
+        <field name="key">tus_theme_clarico_vega.login_register_popup</field>
+        <field name="arch" type="xml">
+            <xpath expr="//a[@href='#loginPopup']" position="replace">
+                <a href="#loginPopup" class="nav-link active" data-bs-toggle="tab" type="button" role="tab"
+                   aria-controls="loginPopup">Sign In
+                </a>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="tus_theme_clarico_vega.user_sign_in_ept" model="ir.ui.view">
+        <field name="name">login_register_popup</field>
+        <field name="inherit_id" search="[('key', '=', 'theme_clarico_vega.user_sign_in_ept')]"/>
+        <field name="type">qweb</field>
+        <field name="priority" eval="35"/>
+        <field name="active">True</field>
+        <field name="key">tus_theme_clarico_vega.user_sign_in_ept</field>
+        <field name="arch" type="xml">
+            <xpath expr="//li" position="replace">
+                <li t-nocache="Profile session and user group can change unrelated to parent caches."
+                            t-nocache-_item_class="_item_class"
+                            t-nocache-_link_class="_link_class"
+                            groups="base.group_public" t-attf-class="#{_item_class} o_no_autohide_item">
+                    <ul class="d-flex flex-row">
+                        <li t-nocache="Profile session and user group can change unrelated to parent caches."
+                            t-nocache-_item_class="_item_class"
+                            t-nocache-_link_class="_link_class"
+                            groups="base.group_public" t-attf-class="#{_item_class} o_no_autohide_item">
+                            <t t-if="request.website.viewref('theme_clarico_vega.login_popup_ept').active">
+                                <a href="javascript:void(0);" t-attf-class="te_signin #{_link_class}"
+                                   data-target="#loginRegisterPopup">
+                                    Sign in
+                                </a>
+                            </t>
+                            <t t-else="">
+                                <a t-attf-href="/web/login" t-attf-class="te_signin #{_link_class}">
+                                    Sign in
+                                </a>
+                            </t>
+                        </li>
+                        <li t-nocache="Profile session and user group can change unrelated to parent caches."
+                            t-nocache-_item_class="_item_class"
+                            t-nocache-_link_class="_link_class"
+                            groups="base.group_public" t-attf-class="#{_item_class} o_no_autohide_item">
+                            <t t-if="request.website.viewref('theme_clarico_vega.login_popup_ept').active">
+                                <a href="javascript:void(0);" t-attf-class="te_signup #{_link_class}"
+                                   data-target="#loginRegisterPopup">
+                                    Register
+                                </a>
+                            </t>
+                            <t t-else="">
+                                <a href="/web/signup" t-attf-class="te_signup #{_link_class}">
+                                    Register
+                                </a>
+                            </t>
+                        </li>
+                    </ul>
+
+                    <!--                <a t-attf-href="#registerPopup" t-attf-class="#{_link_class}">Sign in<span t-if="request.session.profile_session" class="text-danger fa fa-circle"/></a>-->
+                </li>
+            </xpath>
+        </field>
+    </record>
+</odoo>

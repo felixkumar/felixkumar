@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="sync_document_export_shipment" model="sync.document.type">
+        <field name="name">Export Shipment Inquiry (XML SPS Commerce)</field>
+        <field name="doc_code">export_shipment_xml</field>
+        <field name="op_type">out</field>
+        <field name="active" eval="True"/>
+    </record>
+
+    <record id="action_get_shipment_date" model="ir.actions.server">
+        <field name="name">Get Shipment Date</field>
+        <field name="model_id" ref="stock.model_stock_picking"/>
+        <field name="state">code</field>
+        <field name="code">
+            edi_value = record.scheduled_date and record.scheduled_date.strftime('%Y-%m-%d') or ''
+        </field>
+    </record>
+
+    <record id="action_get_ship_notice_date" model="ir.actions.server">
+        <field name="name">Get Ship Notice Date</field>
+        <field name="model_id" ref="stock.model_stock_picking"/>
+        <field name="state">code</field>
+        <field name="code">
+            edi_value = record.edi_create_date and record.edi_create_date.strftime('%Y-%m-%d') or ''
+        </field>
+    </record>
+
+    <record id="action_get_qualifier_date" model="ir.actions.server">
+        <field name="name">Get Qualifier Date</field>
+        <field name="model_id" ref="stock.model_stock_picking"/>
+        <field name="state">code</field>
+        <field name="code">
+            edi_value = record.qualifier_date and record.qualifier_date.strftime('%Y-%m-%d') or ''
+        </field>
+    </record>
+
+    <record id="action_get_shipment_time" model="ir.actions.server">
+        <field name="name">Get Shipment Time</field>
+        <field name="model_id" ref="stock.model_stock_picking"/>
+        <field name="state">code</field>
+        <field name="code">
+            edi_value = record.scheduled_date and record.scheduled_date.strftime('%H:%M:%S') or ''
+        </field>
+    </record>
+
+    <record id="action_get_ship_notice_time" model="ir.actions.server">
+        <field name="name">Get Ship Notice Time</field>
+        <field name="model_id" ref="stock.model_stock_picking"/>
+        <field name="state">code</field>
+        <field name="code">
+            edi_value = record.edi_create_date and record.edi_create_date.strftime('%H:%M:%S') or ''
+        </field>
+    </record>
+
+    <record id="action_get_qualifier_date_time" model="ir.actions.server">
+        <field name="name">Get Qualifier Time</field>
+        <field name="model_id" ref="stock.model_stock_picking"/>
+        <field name="state">code</field>
+        <field name="code">
+            edi_value = record.qualifier_date and record.qualifier_date.strftime('%H:%M:%S') or ''
+        </field>
+    </record>
+
+    <record id="action_get_qty_in_integer" model="ir.actions.server">
+        <field name="name">Get Quantity In Integer</field>
+        <field name="model_id" ref="stock.model_stock_move"/>
+        <field name="state">code</field>
+        <field name="code">
+            edi_value = record.quantity_done and int(record.quantity_done) or 0
+        </field>
+    </record>
+
+    <record id="action_get_qty_pack_in_integer" model="ir.actions.server">
+        <field name="name">Get Quantity Package In Integer</field>
+        <field name="model_id" ref="stock.model_stock_move"/>
+        <field name="state">code</field>
+        <field name="code">
+            edi_value = record.sale_line_id and int(record.sale_line_id.edi_pack_size) or 0
+        </field>
+    </record>
+
+    <record id="action_get_buyer_part_number" model="ir.actions.server">
+        <field name="name">Get Buyer Part Number</field>
+        <field name="model_id" ref="stock.model_stock_move"/>
+        <field name="state">code</field>
+        <field name="code">
+            edi_value = record.sale_line_id and record.sale_line_id.edi_buyer_part_number or 0
+        </field>
+    </record>
+
+    <record id="action_get_vendor_part_number" model="ir.actions.server">
+        <field name="name">Get Vendor Part Number</field>
+        <field name="model_id" ref="stock.model_stock_move"/>
+        <field name="state">code</field>
+        <field name="code">
+            edi_value = record.product_id and record.product_id.default_code or 0
+        </field>
+    </record>
+
+    <record id="action_get_edi_obl_weight" model="ir.actions.server">
+        <field name="name">Get EDI OBL Weight</field>
+        <field name="model_id" ref="stock.model_stock_picking"/>
+        <field name="state">code</field>
+        <field name="code">
+            edi_value = record.edi_obl_weight and round(record.edi_obl_weight, 2) or 0
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="walmart_order_refund_tree_view_ept" model="ir.ui.view">
+        <field name="name">walmart.order.refund.view.tree.ept</field>
+        <field name="model">walmart.order.refund.ept</field>
+        <field name="arch" type="xml">
+            <tree string="Walmart Order Refund">
+                <field name="order_id"/>
+                <field name="instance_id"/>
+                <field name="journal_id"/>
+                <field name="invoice_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="walmart_order_refund_form_view_ept" model="ir.ui.view">
+        <field name="name">walmart.order.refund.view.form.ept</field>
+        <field name="model">walmart.order.refund.ept</field>
+        <field name="arch" type="xml">
+            <form string="Walmart Instance">
+                <header>
+                    <button name="refund_order_in_walmart" string="Refund Order In Walmart"
+                            type="object" class="oe_highlight"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="order_id" required="1"
+                                   options="{'no_create':True,'no_create_edit': True}"
+                                   domain="[('state','in',['sale']),('walmart_marketplace_order_ref','!=',None)]"/>
+                            <field name="instance_id" readonly="1" force_save="1"/>
+                            <field name="company_id" invisible="1"/>
+                        </group>
+                        <group>
+                            <field name="walmart_refund_reason" required="1"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Refund Lines">
+                            <field name="walmart_refund_line_ids" nolabel="1"/>
+                        </page>
+                        <page string="Account Info">
+                            <group>
+                                <group>
+                                    <field name="journal_id" widget='selection' required="1"
+                                           domain="[('company_id','=',company_id)]"/>
+                                    <field name="date_ept"/>
+                                </group>
+                                <group>
+                                    <field name="invoice_id" readonly="1"/>
+                                </group>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+    <record id="walmart_order_refund_search_view_ept" model="ir.ui.view">
+        <field name="name">walmart.order.refund.view.search.ept</field>
+        <field name="model">walmart.order.refund.ept</field>
+        <field name="type">search</field>
+        <field name="arch" type="xml">
+            <search string="Order Refund">
+                <field name="order_id"/>
+                <field name="invoice_id"/>
+                <group expand="0" string="Group By...">
+                    <filter name="instance" string="Instance" icon="terp-personal"
+                            context="{'group_by':'instance_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+
+    <record id="walmart_order_refund_main_action_ept" model="ir.actions.act_window">
+        <field name="name">Walmart Refund</field>
+        <field name="res_model">walmart.order.refund.ept</field>
+        <field name="view_id" ref="walmart_order_refund_tree_view_ept"/>
+        <field name="help" type="html">
+            <div class="oe_empty_walmart_refund">
+                <br/>
+                <br/>
+                <br/>
+                <p>
+                    There is no Refund Order created for any of Walmart Instance yet.
+                    Clicking on "Create" button, you can create new Refund order for
+                    Walmart.
+                    To create Refund at Walmart, you need to select Walmart Order
+                    no. and
+                    set the refund Qty &amp; Amount per product of that Order.
+                </p>
+            </div>
+        </field>
+    </record>
+
+    <record id="walmart_order_refund_action_ept" model="ir.actions.act_window">
+        <field name="name">Walmart Refund</field>
+        <field name="res_model">walmart.order.refund.ept</field>
+        <field name="view_id" ref="walmart_order_refund_tree_view_ept"/>
+        <field name="domain">[('instance_id','=',active_id)]</field>
+    </record>
+
+
+    <!-- Refund Lines -->
+    <record id="walmart_order_refund_line_tree_view_ept" model="ir.ui.view">
+        <field name="name">walmart.order.refund.line.view.tree.ept</field>
+        <field name="model">walmart.order.refund.lines.ept</field>
+        <field name="arch" type="xml">
+            <tree string="Walmart Order Line Refund" create="false">
+                <field name="product_id"/>
+                <field name="product_qty" sum="Total"/>
+                <field name="price_subtotal" sum="Total"/>
+                <field name="price_tax" sum="Total"/>
+                <field name="order_line_amount" sum="Total"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="walmart_order_refund_line_form_view_ept" model="ir.ui.view">
+        <field name="name">walmart.order.refund.line.view.form.ept</field>
+        <field name="model">walmart.order.refund.lines.ept</field>
+        <field name="arch" type="xml">
+            <form string="Walmart Order Line Refund">
+                <group>
+                    <group>
+                        <field name="product_id" readonly="1"/>
+                    </group>
+                    <group>
+                        <field name="product_qty" readonly="1"/>
+                        <field name="price_subtotal" invisible="1"/>
+                        <field name="order_line_amount" readonly="1"
+                               attrs="{'invisible': [('order_line_amount','=',0.0)]}"/>
+                    </group>
+                </group>
+            </form>
+        </field>
+    </record>
+</odoo>
+	

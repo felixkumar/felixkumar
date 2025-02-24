@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+
+    <record id="walmart_product_categ_services" model="product.category">
+        <field name="name">Walmart Services</field>
+    </record>
+
+    <record id="product_product_walmart_shipment_fee" model="product.product">
+        <field name="default_code">WALMART SHIPPING FEE</field>
+        <field name="list_price">0.0</field>
+        <field name="standard_price">0.0</field>
+        <field name="type">service</field>
+        <field name="name">Shipment Fee</field>
+        <field name="categ_id" ref="walmart_product_categ_services"/>
+    </record>
+
+    <record id="product_product_walmart_shipment_discount" model="product.product">
+        <field name="default_code">WALMART SHIPMENT DISCOUNT</field>
+        <field name="list_price">0.0</field>
+        <field name="standard_price">0.0</field>
+        <field name="type">service</field>
+        <field name="name">Shipment Discount</field>
+        <field name="categ_id" ref="walmart_product_categ_services"/>
+    </record>
+
+</odoo>	      

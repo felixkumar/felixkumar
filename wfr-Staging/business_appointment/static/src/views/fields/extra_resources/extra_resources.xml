@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="business_appointment.ExtraResources" owl="1">
+        <div t-on-mouseover="(event) => this._onShowExtraResources(event)" t-on-mouseout="() => this._onHideExtraResources()">
+            <i class="fa fa-warning"> </i> The service requires extra resources
+        </div>
+    </t>
+
+</templates>

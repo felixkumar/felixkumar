@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<odoo>
+
+     <record id="choose_appointment_customert_form_view" model="ir.ui.view">
+        <field name="name">Confirm Reservation</field>
+        <field name="model">choose.appointment.customer</field>
+        <field name="arch" type="xml">
+            <form>
+                <group name="overall_details">
+                    <group colspan="2">
+                        <field name="partner_id"
+                               context="{'default_name': contact_name, 'default_street': street, 'default_street2': street2, 'default_city': city, 'default_state_id': state_id, 'default_zip': zipcode, 'default_country_id': country_id, 'default_function': function, 'default_phone': phone, 'default_mobile': mobile, 'default_email': email, 'default_title': title, 'default_parent_id': parent_company_id}"
+                               widget="res_partner_many2one"
+                               attrs="{'invisible': [('appointment_id', '!=', False)]}"
+                        />
+                        <field name="pricelist_id" 
+                               groups="product.group_product_pricelist,product.group_sale_pricelist" 
+                               options="{'no_open': True, 'no_create_edit': True}"
+                        />
+                    </group>
+                    <group attrs="{'invisible': [('partner_id', '!=', False)]}">
+                        <label for="contact_name"/>
+                        <div class="o_row">
+                            <field name="contact_name"/>
+                            <field name="title" placeholder="Title" options='{"no_open": True}'/>
+                        </div>
+                        <field name="email" widget="email"/>
+                        <field name="phone" widget="phone"/>
+                        <field name="mobile"/>
+                        <field name="function"/>
+                    </group>
+                    <group attrs="{'invisible': [('partner_id', '!=', False)]}">
+                        <label for="street" string="Address"/>
+                        <div class="o_address_format">
+                            <field name="street" placeholder="Street..." class="o_address_street"/>
+                            <field name="street2" placeholder="Street 2..." class="o_address_street"/>
+                            <field name="city" placeholder="City" class="o_address_city"/>
+                            <field name="state_id"
+                                   class="o_address_state"
+                                   placeholder="State"
+                                   options='{"no_open": 1, "no_create_edit": 1, "no_quick_create": 1}'
+                            />
+                            <field name="zipcode" placeholder="ZIP" class="o_address_zip"/>
+                            <field name="country_id"
+                                   placeholder="Country"
+                                   class="o_address_country"
+                                   options='{"no_open": 1, "no_create_edit": 1, "no_quick_create": 1}'
+                            />
+                        </div>
+                        <field name="parent_company_id" options='{"no_open": 1, "no_create_edit": 1, "no_quick_create": 1}'/>
+                        <field name="partner_name" attrs="{'invisible': [('parent_company_id', '!=', False)]}"/>
+                    </group>
+                </group>
+                <group name="description_group">
+                    <field name="description" placeholder="extra notes..." />
+                </group>
+                <group invisible="1">
+                    <field name="appointment_id"/>
+                    <field name="reservation_ids" widget="many2many_tags"/>
+                    <field name="resource_type_id" widget="many2many_tags"/>
+                </group>
+            </form>
+        </field>
+    </record>
+
+</odoo>

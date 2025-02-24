@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--This is a common view for cron configuration wizard -->
+    <record id="walmart_cron_configuration_ept_form_view" model="ir.ui.view">
+        <field name="name">walmart.cron.configuration</field>
+        <field name="model">walmart.cron.configuration.ept</field>
+        <field name="priority">11</field>
+        <field name="arch" type="xml">
+            <form string="Scheduler Configuration">
+                <field name="walmart_marketplace_id" invisible="1"/>
+
+                <div class="row mt16 o_settings_container" name="cron_config">
+
+                    <!-- Import Walmart Orders -->
+                    <div class="col-xs-12 col-md-6 o_setting_box">
+                        <div class="o_setting_left_pane">
+                            <field name="auto_import_walmart_orders"/>
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <label for="auto_import_walmart_orders"/>
+                            <div class="content-group"
+                                 attrs="{'invisible': [('auto_import_walmart_orders', '=', False)]}">
+                                <div class="mt16">
+                                    <span string="I want to import order at every "/>
+                                    <field name="auto_import_walmart_orders_interval_number"
+                                           attrs="{'required': [('auto_import_walmart_orders', '=', True)]}"
+                                           class="oe_inline"/>
+                                    <field name="auto_import_walmart_orders_interval_type"
+                                           attrs="{'required': [('auto_import_walmart_orders', '=', True)]}"
+                                           class="oe_inline"/>
+                                    <field name="auto_import_walmart_orders_next_execution"
+                                           attrs="{'required': [('auto_import_walmart_orders', '=', True)]}"
+                                           class="oe_inline"/>
+                                    <field name="auto_import_walmart_orders_user_id"
+                                           attrs="{'required': [('auto_import_walmart_orders', '=', True)]}"
+                                           class="oe_inline"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Auto Update Order Status -->
+                    <div class="col-12 col-lg-6 o_setting_box">
+                        <div class="o_setting_left_pane">
+                            <field name="walmart_order_auto_update"
+                                   help="If Ticked, Order shipment will be automatically updated by system to Walmart."/>
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <label for="walmart_order_auto_update"/>
+                            <div class="content-group"
+                                 attrs="{'invisible': [('walmart_order_auto_update', '=', False)]}">
+                                <div class="mt16">
+                                    <span string="I want to Auto Update Order at every "/>
+                                    <field name="walmart_order_update_interval_number"
+                                           attrs="{'required': [('walmart_order_auto_update', '=', True)]}"
+                                           class="oe_inline"/>
+                                    <field name="walmart_order_update_interval_type"
+                                           attrs="{'required': [('walmart_order_auto_update', '=', True)]}"
+                                           class="oe_inline"/>
+                                    <field name="walmart_order_update_next_execution"
+                                           attrs="{'required': [('walmart_order_auto_update', '=', True)]}"
+                                           class="oe_inline"/>
+                                    <field name="walmart_order_status_update_user_id"
+                                           attrs="{'required': [('walmart_order_auto_update', '=', True)]}"
+                                           class="oe_inline"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Auto Send Invoice e-mail -->
+                    <div class="col-12 col-lg-6 o_setting_box" invisible="1">
+                        <div class="o_setting_left_pane">
+                            <field name="walmart_auto_send_invoice"
+                                   help="If Ticked, mail will be automatically sent to customer by system to Walmart."/>
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <label for="walmart_auto_send_invoice"/>
+                            <div class="content-group"
+                                 attrs="{'invisible': [('walmart_auto_send_invoice', '=', False)]}">
+                                <div class="mt16">
+                                    <span string="I want to Auto Send the E-mail to customer at every "/>
+                                    <field name="walmart_send_invoice_interval_number"
+                                           attrs="{'required': [('walmart_auto_send_invoice', '=', True)]}"
+                                           class="oe_inline"/>
+                                    <field name="walmart_send_invoice_interval_type"
+                                           attrs="{'required': [('walmart_auto_send_invoice', '=', True)]}"
+                                           class="oe_inline"/>
+                                    <field name="walmart_send_invoice_next_execution"
+                                           attrs="{'required': [('walmart_auto_send_invoice', '=', True)]}"
+                                           class="oe_inline"/>
+                                    <field name="walmart_send_invoice_update_user_id"
+                                           attrs="{'required': [('walmart_auto_send_invoice', '=', True)]}"
+                                           class="oe_inline"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Auto Send Refund Invoice e-mail -->
+                    <div class="col-12 col-lg-6 o_setting_box" invisible="1">
+                        <div class="o_setting_left_pane">
+                            <field name="walmart_auto_send_refund_invoice"
+                                   help="If Ticked, mail will be automatically sent to customer by system to Walmart."/>
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <label for="walmart_auto_send_refund_invoice"/>
+                            <div class="content-group"
+                                 attrs="{'invisible': [('walmart_auto_send_refund_invoice', '=', False)]}">
+                                <div class="mt16">
+                                    <span string="I want to Auto Send the E-mail to customer at every "/>
+                                    <field name="walmart_refund_invoice_send_interval_number"
+                                           attrs="{'required': [('walmart_auto_send_refund_invoice', '=', True)]}"
+                                           class="oe_inline"/>
+                                    <field name="walmart_refund_invoice_send_interval_type"
+                                           attrs="{'required': [('walmart_auto_send_refund_invoice', '=', True)]}"
+                                           class="oe_inline"/>
+                                    <field name="walmart_refund_invoice_send_next_execution"
+                                           attrs="{'required': [('walmart_auto_send_refund_invoice', '=', True)]}"
+                                           class="oe_inline"/>
+                                    <field name="walmart_refund_invoice_send_update_user_id"
+                                           attrs="{'required': [('walmart_auto_send_refund_invoice', '=', True)]}"
+                                           class="oe_inline"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Auto Export Inventory -->
+                    <div class="col-12 col-lg-6 o_setting_box">
+                        <div class="o_setting_left_pane">
+                            <field name="walmart_stock_auto_export"/>
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <label for="walmart_stock_auto_export"/>
+                            <div class="content-group"
+                                 attrs="{'invisible': [('walmart_stock_auto_export', '=', False)]}">
+                                <div class="mt16">
+                                    <span
+                                            string="I want to Auto Update Inventory at every "/>
+                                    <field name="walmart_update_stock_interval_number"
+                                           attrs="{'required': [('walmart_stock_auto_export', '=', True)]}"
+                                           class="oe_inline"/>
+                                    <field name="walmart_update_stock_interval_type"
+                                           attrs="{'required': [('walmart_stock_auto_export', '=', True)]}"
+                                           class="oe_inline"/>
+                                    <field name="walmart_update_stock_next_execution"
+                                           attrs="{'required': [('walmart_stock_auto_export', '=', True)]}"
+                                           class="oe_inline"/>
+                                    <field name="walmart_stock_update_user_id"
+                                           attrs="{'required': [('walmart_stock_auto_export', '=', True)]}"
+                                           class="oe_inline"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Auto Get Item Details -->
+                    <div class="col-12 col-lg-6 o_setting_box">
+                        <div class="o_setting_left_pane">
+                            <field name="walmart_auto_create_item_report_request"/>
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <label for="walmart_auto_create_item_report_request"/>
+                            <div class="content-group"
+                                 attrs="{'invisible': [('walmart_auto_create_item_report_request', '=', False)]}">
+                                <div class="mt16">
+                                    <span string="I want to Create Item Report at every "/>
+                                    <field name="walmart_auto_create_item_report_request_interval_number"
+                                           attrs="{'required': [('walmart_auto_create_item_report_request', '=', True)]}"
+                                           class="oe_inline"/>
+                                    <field name="walmart_auto_create_item_report_request_interval_type"
+                                           attrs="{'required': [('walmart_auto_create_item_report_request', '=', True)]}"
+                                           class="oe_inline"/>
+                                    <field name="walmart_auto_create_item_report_request_next_execution"
+                                           attrs="{'required': [('walmart_auto_create_item_report_request', '=', True)]}"
+                                           class="oe_inline"/>
+                                    <field name="walmart_auto_create_item_report_request_user_id"
+                                           attrs="{'required': [('walmart_auto_create_item_report_request', '=', True)]}"
+                                           class="oe_inline"/>
+                                </div>
+                            </div>
+                            <group attrs="{'invisible': [('walmart_auto_create_item_report_request', '=', False)]}">
+                                <field name="update_product_image" class="oe_inline"/>
+                                <field name="create_product_inventory" class="oe_inline"/>
+                                <field name="location_id" class="oe_inline"
+                                       string="Select Stock Location for Inventory"
+                                       attrs="{'required': [('create_product_inventory', '=', True)],
+                                                   'invisible': [('create_product_inventory', '=', False)]}"/>
+                            </group>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-lg-6 o_setting_box">
+                        <div class="o_setting_left_pane">
+                            <field name="walmart_auto_process_item_report"/>
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <label for="walmart_auto_process_item_report"/>
+                            <div class="content-group"
+                                 attrs="{'invisible': [('walmart_auto_process_item_report', '=', False)]}">
+                                <div class="mt16">
+                                    <span string="I want to Create Item Report at every "/>
+                                    <field name="walmart_auto_process_item_report_interval_number"
+                                           attrs="{'required': [('walmart_auto_process_item_report', '=', True)]}"
+                                           class="oe_inline"/>
+                                    <field name="walmart_auto_process_item_report_interval_type"
+                                           attrs="{'required': [('walmart_auto_process_item_report', '=', True)]}"
+                                           class="oe_inline"/>
+                                    <field name="walmart_auto_process_item_report_next_execution"
+                                           attrs="{'required': [('walmart_auto_process_item_report', '=', True)]}"
+                                           class="oe_inline"/>
+                                    <field name="walmart_auto_process_item_report_user_id"
+                                           attrs="{'required': [('walmart_auto_process_item_report', '=', True)]}"
+                                           class="oe_inline"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Auto Import Walmart Wfs Order -->
+                    <div class="col-xs-12 col-md-6 o_setting_box">
+                        <div class="o_setting_left_pane">
+                            <field name="auto_import_walmart_wfs_orders"/>
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <label for="auto_import_walmart_wfs_orders"/>
+                            <div class="content-group"
+                                 attrs="{'invisible': [('auto_import_walmart_wfs_orders', '=', False)]}">
+                                <div class="mt16">
+                                    <span string="I want to import order at every "/>
+                                    <field name="auto_import_walmart_wfs_orders_interval_number"
+                                           attrs="{'required': [('auto_import_walmart_wfs_orders', '=', True)]}"
+                                           class="oe_inline"/>
+                                    <field name="auto_import_walmart_wfs_orders_interval_type"
+                                           attrs="{'required': [('auto_import_walmart_wfs_orders', '=', True)]}"
+                                           class="oe_inline"/>
+                                    <field name="auto_import_walmart_wfs_orders_next_execution"
+                                           attrs="{'required': [('auto_import_walmart_wfs_orders', '=', True)]}"
+                                           class="oe_inline"/>
+                                    <field name="auto_import_walmart_wfs_orders_user_id"
+                                           attrs="{'required': [('auto_import_walmart_wfs_orders', '=', True)]}"
+                                           class="oe_inline"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Auto Import Walmart Wfs Inventory -->
+                    <div class="col-xs-12 col-md-6 o_setting_box">
+                        <div class="o_setting_left_pane">
+                            <field name="auto_import_walmart_wfs_inventory"/>
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <label for="auto_import_walmart_wfs_inventory"/>
+                            <div class="content-group"
+                                 attrs="{'invisible': [('auto_import_walmart_wfs_inventory', '=', False)]}">
+                                <div class="mt16">
+                                    <span string="I want to import order at every "/>
+                                    <field name="auto_import_walmart_wfs_inventory_interval_number"
+                                           attrs="{'required': [('auto_import_walmart_wfs_inventory', '=', True)]}"
+                                           class="oe_inline"/>
+                                    <field name="auto_import_walmart_wfs_inventory_interval_type"
+                                           attrs="{'required': [('auto_import_walmart_wfs_inventory', '=', True)]}"
+                                           class="oe_inline"/>
+                                    <field name="auto_import_walmart_wfs_inventory_next_execution"
+                                           attrs="{'required': [('auto_import_walmart_wfs_inventory', '=', True)]}"
+                                           class="oe_inline"/>
+                                    <field name="auto_import_walmart_wfs_inventory_user_id"
+                                           attrs="{'required': [('auto_import_walmart_wfs_inventory', '=', True)]}"
+                                           class="oe_inline"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Auto Import Walmart Reconciliation Report -->
+                    <div class="col-xs-12 col-md-6 o_setting_box">
+                        <div class="o_setting_left_pane">
+                            <field name="auto_import_walmart_reconciliation_report"/>
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <label for="auto_import_walmart_reconciliation_report"/>
+                            <div class="content-group"
+                                 attrs="{'invisible': [('auto_import_walmart_reconciliation_report', '=', False)]}">
+                                <div class="mt16">
+                                    <span string="I want to import order at every "/>
+                                    <field name="auto_import_walmart_reconciliation_report_interval_number"
+                                           attrs="{'required': [('auto_import_walmart_reconciliation_report', '=', True)]}"
+                                           class="oe_inline"/>
+                                    <field name="auto_import_walmart_reconciliation_report_interval_type"
+                                           attrs="{'required': [('auto_import_walmart_reconciliation_report', '=', True)]}"
+                                           class="oe_inline"/>
+                                    <field name="auto_import_walmart_reconciliation_report_next_execution"
+                                           attrs="{'required': [('auto_import_walmart_reconciliation_report', '=', True)]}"
+                                           class="oe_inline"/>
+                                    <field name="auto_import_walmart_reconciliation_report_user_id"
+                                           attrs="{'required': [('auto_import_walmart_reconciliation_report', '=', True)]}"
+                                           class="oe_inline"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <footer>
+                    <button string="Save Cron Configuration"
+                            class="oe_highlight" type="object" name="save_cron_configuration"/>
+                    <button string="Cancel" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_wizard_walmart_cron_configuration_ept" model="ir.actions.act_window">
+        <field name="name">Walmart Schedulers Configuration</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">walmart.cron.configuration.ept</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+</odoo>

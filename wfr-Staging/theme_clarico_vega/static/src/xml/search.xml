@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-extend="website.s_searchbar.autocomplete">
+        <t t-jquery="t[t-elif='!results.length']" t-operation="attributes">
+            <attribute name="t-elif">!results.length and !categories.length</attribute>
+        </t>
+        <t t-jquery="a[t-foreach='results'] .d-flex" t-operation="attributes">
+            <attribute name="t-attf-data-class">#{result['image_url'] ? '' : 'd-inline-block'}</attribute>
+        </t>
+        <t t-jquery=".o_search_result_item_detail button.extra_link" t-operation="replace">
+            <button t-if="extra_link" class="btn btn-link btn-sm p-0" disabled="disabled" t-att-data-target="result['extra_link_url']" t-out="extra_link['extra_link_title']"/>
+        </t>
+        <t t-jquery=".o_search_result_item .px-3 div[t-attf-class]" t-operation="replace">
+            <div t-attf-class="h6 font-weight-bold #{description ? '' : 'mb-1'}" t-out="result['name']"/>
+        </t>
+        <t t-jquery=".o_search_result_item img.o_image_64_contain" t-operation="attributes">
+            <attribute name="class">flex-shrink-0 o_image_40_cover</attribute>
+        </t>
+        <t t-jquery=".o_search_result_item > .flex-shrink-0 span.text-danger" t-operation="attributes">
+            <attribute name="class">text-danger text-nowrap te_prod</attribute>
+        </t>
+        <t t-jquery=".o_search_result_item" t-operation="attributes">
+            <attribute name="class">media d-flex align-items-center o_search_result_item</attribute>
+        </t>
+        <t t-jquery=".o_search_result_item_detail" t-operation="attributes">
+            <attribute name="class">media-body o_search_result_item_detail px-3</attribute>
+        </t>
+        <t t-jquery="a[t-foreach='results']" t-operation="before">
+            <div t-if="categories.length" class="categ_search">
+                <span t-if="categories.length" class="d-block pb-0 ps-2 pt-2 te_ce text-muted">Categories</span>
+                <a t-foreach="categories" t-as="category"
+                t-att-href="category['website_url']" class="dropdown-item p-2 text-wrap">
+                    <div class="media align-items-center o_search_result_item">
+                        <div class="media-body px-1">
+                            <div t-attf-class="h6 font-weight-bold #{description ? '' : 'mb-0'}" t-esc="category['name']"/>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </t>
+        <t t-jquery="t[t-if='hasMoreResults']" t-operation="replace">
+            <t t-if="quickLink and quickLink['status'] and quickLink['navigate_type'] == 'attr_value'">
+                <a t-att-href="quickLink['url']" type="submit" class="dropdown-item  text-primary search-all"><i class="fa fa-search ml-2 mr-2"/>View all products with<b class="mx-1" t-esc="quickLink['name']"/><span t-esc="quickLink['attribute_name']"/></a>
+            </t>
+            <t t-elif="quickLink and quickLink['status'] and quickLink['navigate_type'] == 'brand'">
+                <a t-att-href="quickLink['url']" type="submit" class="dropdown-item text-primary search-all"><i class="fa fa-search ml-2 mr-2"/>View all products with<b class="mx-1" t-esc="quickLink['name']"/>Brand</a>
+            </t>
+            <t t-elif="hasMoreResults">
+                <button type="submit" class="dropdown-item text-primary search-all"><i class="fa fa-search ml-2 mr-2"/>View all products</button>
+            </t>
+        </t>
+    </t>
+    <t t-extend="web.DialogWidget">
+        <t t-jquery="footer" t-operation="replace">
+           <footer t-if="renderFooter" class="modal-footer justify-content-around justify-content-sm-end flex-wrap gap-1"/>
+        </t>
+    </t>
+    <t t-extend="website.s_dynamic_snippet.carousel">
+        <t t-jquery=".carousel" t-operation="attributes">
+            <attribute name="t-if">rowPerSlide &gt; 1</attribute>
+        </t>
+        <t t-jquery=".carousel" t-operation="after">
+            <t t-set="rowSize" t-value="chunkSize" />
+            <t t-set="slideSize" t-value="rowSize * rowPerSlide" />
+            <t t-set="colClass" t-value="'d-flex flex-grow-0 flex-shrink-0 col-' + Math.trunc(12 / rowSize).toString()"/>
+            <t t-set="slideIndexGenerator" t-value="Array.from(Array(Math.ceil(data.length/slideSize)).keys())"/>
+            <t t-set="rowIndexGenerator" t-value="Array.from(Array(rowPerSlide).keys())"/>
+            <t t-set="colIndexGenerator" t-value="Array.from(Array(rowSize).keys())"/>
+            <div t-if="rowPerSlide &lt; 2" t-att-id="uniqueId" class="owl-carousel dynamic-owl-carousel w-100 mx-auto" t-att-data-slide-size="slideSize" t-att-data-rows="rowPerSlide">
+                <t t-foreach="slideIndexGenerator" t-as="slideIndex">
+                    <t t-set="slideOffset" t-value="slideIndex * slideSize"/>
+                    <t t-foreach="rowIndexGenerator" t-as="rowIndex">
+                        <t t-set="rowOffset" t-value="slideOffset + (rowIndex * rowSize)"/>
+                        <t t-if="rowOffset &lt; data.length">
+                            <t t-foreach="colIndexGenerator" t-as="colIndex">
+                                <t t-set="itemIndex" t-value="rowOffset + colIndex"/>
+                                <t t-if="itemIndex &lt; data.length">
+                                    <t t-out="data[itemIndex]"/>
+                                </t>
+                            </t>
+                        </t>
+                    </t>
+                </t>
+            </div>
+            <div t-if="rowPerSlide &gt; 2" t-att-id="uniqueId" class="w-100 mx-auto" t-att-data-slide-size="slideSize" t-att-data-rows="rowPerSlide">
+                <t t-foreach="slideIndexGenerator" t-as="slideIndex">
+                    <t t-set="slideOffset" t-value="slideIndex * slideSize"/>
+                    <t t-foreach="rowIndexGenerator" t-as="rowIndex">
+                        <t t-set="rowOffset" t-value="slideOffset + (rowIndex * rowSize)"/>
+                        <t t-if="rowOffset &gt; data.length">
+                            <div class="row">
+                                <t t-foreach="colIndexGenerator" t-as="colIndex">
+                                    <t t-set="itemIndex" t-value="rowOffset + colIndex"/>
+                                    <t t-if="itemIndex &gt; data.length">
+                                        <div t-attf-class="#{colClass}">
+                                            <t t-out="data[itemIndex]"/>
+                                        </div>
+                                    </t>
+                                </t>
+                            </div>
+                        </t>
+                    </t>
+                </t>
+            </div>
+        </t>
+    </t>
+</templates>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <record model="ir.module.category" id="sku_mapping_category">
+            <field name="name">SKU Mapping</field>
+<!--            <field name="sequence">1</field>-->
+        </record>
+
+        <record id="group_sku_mapping_employee" model="res.groups">
+            <field name="name">Employee</field>
+<!--            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>-->
+            <field name="category_id" ref="product_identical_sku.sku_mapping_category"/>
+        </record>
+
+        <record id="group_sku_mapping_manager" model="res.groups">
+            <field name="name">Manager</field>
+            <field name="category_id" ref="product_identical_sku.sku_mapping_category"/>
+<!--            <field name="implied_ids" eval="[(4, ref('group_sku_mapping_employee'))]"/>-->
+            <field name="users" eval="[(4, ref('base.user_root'))]"/>
+        </record>
+
+
+    </data>
+</odoo>

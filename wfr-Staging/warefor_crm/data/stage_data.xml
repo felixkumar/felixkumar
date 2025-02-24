@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record model="product.development.state" id="state_1">
+        <field name="name">NEW</field>
+        <field name="sequence">1</field>
+    </record>
+    <record model="product.development.state" id="state_2">
+        <field name="name">PRODUCT ENGINEERING</field>
+        <field name="sequence">2</field>
+    </record>
+    <record model="product.development.state" id="state_3">
+        <field name="name">PACKAGING ENGINEERING</field>
+        <field name="sequence">3</field>
+    </record>
+    <record model="product.development.state" id="state_4">
+        <field name="name">ART &amp; PHOTOGRAPHY</field>
+        <field name="sequence">4</field>
+    </record>
+    <record model="product.development.state" id="state_5">
+        <field name="name">ART ADAPTATION</field>
+        <field name="sequence">5</field>
+    </record>
+    <record model="product.development.state" id="state_6">
+        <field name="name">WEBSITE</field>
+        <field name="sequence">6</field>
+    </record>
+    <record model="product.development.state" id="state_7">
+        <field name="name">COST CALCULATION</field>
+        <field name="sequence">7</field>
+    </record>
+    <record model="product.development.state" id="state_8">
+        <field name="name">LOGISTICS</field>
+        <field name="sequence">8</field>
+    </record>
+    <record model="product.development.state" id="state_9">
+        <field name="name">MANUFACTURING</field>
+        <field name="sequence">9</field>
+    </record>
+    <record model="product.development.state" id="state_10">
+        <field name="name">PRESENTATION</field>
+        <field name="sequence">10</field>
+    </record>
+    <record model="product.development.state" id="state_11">
+        <field name="name">PENDING</field>
+        <field name="sequence">11</field>
+    </record>
+    <record model="product.development.state" id="state_12">
+        <field name="name">DONE</field>
+        <field name="sequence">12</field>
+    </record>
+</odoo>

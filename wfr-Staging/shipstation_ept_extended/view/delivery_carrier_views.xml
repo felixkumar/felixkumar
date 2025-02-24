@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="view_delivery_carrier_form_ext" model="ir.ui.view">
+            <field name="name">delivery.carrier.form.ext</field>
+            <field name="model">delivery.carrier</field>
+            <field name="inherit_id" ref="delivery.view_delivery_carrier_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='on_time_shipping']" position="after">
+                            <field name="is_lowest_cost"/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

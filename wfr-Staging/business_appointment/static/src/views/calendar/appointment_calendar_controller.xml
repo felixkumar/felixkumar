@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="business_appointment.BusinessAppointmentCalendarView" t-inherit="web.CalendarController" t-inherit-mode="primary" owl="1">
+        <DatePicker position="after">
+            <div t-if="!env.isSmall" class="w-100">
+                <CalendarFilters/>
+            </div>
+        </DatePicker>
+    </t>
+
+</templates>

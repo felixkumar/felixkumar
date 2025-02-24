@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="shipstation_delivery_carrier_service_tree_view_vts"
+		model="ir.ui.view">
+		<field name="name">shipstation.delivery.carrier.service.tree.view.vts
+		</field>
+		<field name="model">shipstation.delivery.carrier.service</field>
+		<field name="type">tree</field>
+		<field name="arch" type="xml">
+			<tree>
+				<field name="name" />
+				<field name="service_code" />
+				<field name="service_nature" />
+				<field name="delivery_carrier_id" />
+				<field name="residential_address" />
+				<field name="supported_domestic" />
+				<field name="supported_international" />
+			</tree>
+		</field>
+	</record>
+	<record id="view_shipstation_delivery_carrier_service_form_view_vts"
+		model="ir.ui.view">
+		<field name="name">view.shipstation.delivery.carrier.service.form.view.vts
+		</field>
+		<field name="model">shipstation.delivery.carrier.service</field>
+		<field name="type">form</field>
+		<field name="arch" type="xml">
+			<form>
+				<sheet>
+					<group string="Shipstation Delivery Carrier Service">
+						<group>
+							<field name="name" />
+							<field name="service_code" />
+						</group>
+						<group>
+							<field name="supported_domestic" />
+							<field name="shipstation_configuration_id"/>
+							<field name="supported_international" />
+							<field name="delivery_carrier_id" />
+							<field name="residential_address" />
+						</group>
+					</group>
+				</sheet>
+			</form>
+		</field>
+	</record>
+	<record id="actionid_shipstation_delivery_carrier_service_vts"
+		model="ir.actions.act_window">
+		<field name="name">Shipstation Delivery Carrier Service</field>
+		<field name="res_model">shipstation.delivery.carrier.service</field>
+		<field name='view_mode'>tree,form</field>
+		<field name="help" type="html">
+			<p class="oe_view_nocontent_create">
+				Click to Create a Shipstation Delivery Carrier
+			</p>
+		</field>
+	</record>
+	<menuitem name="Shipstation Carrier Service"
+		id="menuitem_shipstation_delivery_carrier_service_vts" parent="shipstation_odoo_integration_menuitem"
+		action="actionid_shipstation_delivery_carrier_service_vts" sequence="2" />
+</odoo>

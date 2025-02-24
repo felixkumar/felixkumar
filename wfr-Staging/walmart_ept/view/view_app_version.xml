@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="emipro_app_version_detail_action" model="ir.actions.act_window">
+        <field name="name">Emipro App Updates</field>
+        <field name="res_model">emipro.app.version.details</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="domain">[('module_name','in',['walmart_ept','common_connector_library'])]</field>
+        <field name="context">{"search_default_group_by_module_id": 1}</field>
+        <field name="view_id" ref="common_connector_library.customer_app_version_detail_tree_view"/>
+    </record>
+
+    <menuitem id="menu_act_sale_workflow_process_form_ept"
+              name="Emipro App Updates"
+              sequence="10"
+              parent="walmart_ept.menu_configuration_ept"
+              action="walmart_ept.emipro_app_version_detail_action"/>
+</odoo>

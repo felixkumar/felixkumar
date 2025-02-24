@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="shipstation_instance_tree" model="ir.ui.view">
+        <field name="name">Shipstation instance Tree</field>
+        <field name="model">shipstation.instance.ept</field>
+        <field name="arch" type="xml">
+            <tree create="false" edit="false">
+                <field name="name"/>
+                <field name="company_id"/>
+                <field name="last_import_product"/>
+                <field name="shipstation_last_export_order"/>
+            </tree>
+        </field>
+    </record>
+    <record id="shipstation_instance_search_view_ept" model="ir.ui.view">
+        <field name="name">Shipstation instance Search View</field>
+        <field name="model">shipstation.instance.ept</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <filter string="Archived" name="Inactive" domain="[('active', '=', False)]"/>
+                <group expand="0" string="Group By...">
+                    <filter name="provider" string="Provider" icon="terp-personal"
+                            context="{'group_by':'provider'}"/>
+                    <filter string="Test Environment" domain="[('prod_environment', '=', False)]"
+                            name="prod_environment"/>
+                    <filter string="Production Environment" domain="[('prod_environment', '=', True)]"
+                            name="prod_environment"/>
+                </group>
+            </search>
+        </field>
+    </record>
+    <record id="shipstation_form_view" model="ir.ui.view">
+        <field name="name">Shipstation Form View</field>
+        <field name="model">shipstation.instance.ept</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form create="false" edit="false">
+                <header>
+                    <button name="reset_credentials" string="Reset Credentials"
+                            class="oe_highlight" type="object" groups="shipstation_ept.group_shipstation_manager"
+                            attrs="{'invisible':[('provider','!=','shipstation_ept')]}"/>
+                    <button name="shipstation_sync" string="Sync"
+                            class="oe_highlight" type="object" groups="shipstation_ept.group_shipstation_manager"
+                            attrs="{'invisible':[('provider','!=','shipstation_ept')]}"/>
+                </header>
+                <sheet>
+                    <field name="active" invisible="1"/>
+                    <div class="oe_button_box" name="button_box">
+                        <button type="object" style="width:16% !important"
+                                name="cron_configuration_action" class="oe_stat_button"
+                                groups="base.group_system" icon="fa-wrench"
+                                attrs="{'invisible': [('active','=',False)]}">
+                            <span class="o_stat_text">Configure Schedulers</span>
+                        </button>
+                        <button name="view_shipstation_marketplace"
+                                type="object" groups="shipstation_ept.group_shipstation_manager"
+                                class="oe_stat_button" icon="fa-university" string="Marketplaces"
+                                attrs="{'invisible':[('provider','!=','shipstation_ept')]}"/>
+                        <button name="view_shipstation_stores"
+                                type="object" groups="shipstation_ept.group_shipstation_manager"
+                                class="oe_stat_button" icon="fa-shopping-bag" string="Stores"
+                                attrs="{'invisible':[('provider','!=','shipstation_ept')]}"/>
+                        <button name="view_shipstation_carrier"
+                                type="object" groups="shipstation_ept.group_shipstation_manager"
+                                class="oe_stat_button" icon="fa-taxi" string="Carriers"
+                                attrs="{'invisible':[('provider','!=','shipstation_ept')]}"/>
+                        <button name="view_shipstation_packages"
+                                type="object" groups="shipstation_ept.group_shipstation_manager"
+                                class="oe_stat_button" icon="fa-suitcase" string="Packages"
+                                attrs="{'invisible':[('provider','!=','shipstation_ept')]}"
+                                context="{'no_carrier_col': True}"/>
+                        <button name="view_shipstation_warehouses"
+                                type="object" groups="shipstation_ept.group_shipstation_manager"
+                                class="oe_stat_button" icon="fa-home" string="Warehouses"
+                                attrs="{'invisible':[('provider','!=','shipstation_ept')]}"/>
+                        <field name="prod_environment" invisible="1"/>
+                        <button name="toggle_prod_environment"
+                                attrs="{'invisible': [('prod_environment', '=', False)]}"
+                                class="oe_stat_button"
+                                type="object" icon="fa-play">
+                            <div class="o_stat_info o_field_widget">
+                                <span class="text-success">Production</span>
+                                <span class="o_stat_text">Environment</span>
+                            </div>
+                        </button>
+                        <!-- transfer referenced here due to view inheritance issue in current master (post-saas-16) -->
+                        <button name="toggle_prod_environment"
+                                attrs="{'invisible': [('prod_environment', '=', True)]}"
+                                class="oe_stat_button"
+                                type="object" icon="fa-stop">
+                            <div class="o_stat_info o_field_widget">
+                                <span class="o_warning_text">Test</span>
+                                <span class="o_stat_text">Environment</span>
+                            </div>
+                        </button>
+                    </div>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" placeholder="e.g. Fedex, DHL..."
+                                   attrs="{'readonly': [('active','=',True)]}"/>
+                        </h1>
+                    </div>
+                    <group>
+						<group attrs="{'invisible': [('provider', '!=', 'shipstation_ept')]}">
+                                    <field name="shipstation_url"
+                                           attrs="{'required':[('provider','=','shipstation_ept')],'readonly': [('active','=',True)]}"/>
+                                    <field name="shipstation_api_key"
+                                           attrs="{'required':[('provider','=','shipstation_ept')]}" readonly="1"/>
+                                    <field name="shipstation_api_secret_key" password="True"
+                                           attrs="{'required':[('provider','=','shipstation_ept')]}" readonly="1"/>
+                                    <field name="weight_uom_id" invisible="1"/>
+                        </group>
+                        <group>
+                            <field name="provider" invisible="1" attrs="{'readonly': [('active','=',True)]}"/>
+                            <field name="company_id" groups="base.group_multi_company"
+                                   attrs="{'readonly': [('active','=',True)]}"/>
+                        </group>
+                    </group>
+                    <notebook name="Notebook">
+                        <page string="Instance Information" name="instance_info">
+                            <group>
+                                <group>
+                                    <field name="last_import_product" readonly="1"/>
+                                    <field name="shipstation_last_export_order" readonly="1"/>
+                                </group>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_shipstation_instance_id" model="ir.actions.act_window">
+        <field name="name">Shipstation Instances</field>
+        <field name="res_model">shipstation.instance.ept</field>
+        <field name='view_mode'>tree,form</field>
+        <field name="domain">[('provider', '=', 'shipstation_ept')]</field>
+        <field name="context">{'default_provider': 'shipstation_ept'}</field>
+        <field name="view_ids" eval="[(5, 0, 0),
+            (0, 0, {'view_mode': 'tree', 'view_id': ref('shipstation_instance_tree')}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('shipstation_form_view')})]"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Create a new Shipstation Instance.
+            </p>
+        </field>
+    </record>
+
+	<record id="shipstation_reset_credentials" model="ir.ui.view">
+            <field name="name">shipstation.instance.ept.form</field>
+            <field name="model">shipstation.instance.ept</field>
+            <field name="arch" type="xml">
+                <form>
+                	<group>
+                		<field name="shipstation_api_key"/>
+                    	<field name="shipstation_api_secret_key" password="True"/>
+                	</group>
+                    <footer>
+                    	<button string="Save" class="oe_highlight" type="object" name ="save_credentials"/>
+                        <button string="Discard" class="btn btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+</odoo>

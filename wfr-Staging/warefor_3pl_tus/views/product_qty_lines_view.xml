@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="form_view_product_qty_lines" model="ir.ui.view">
+            <field name="name">product.qty.lines.form.view</field>
+            <field name="model">product.qty.lines</field>
+            <field name="arch" type="xml">
+                <form string="Product Box Configuration">
+                    <sheet>
+                        <group>
+                            <field name="product_id"/>
+                            <field name="product_qty"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="tree_view_product_qty_lines" model="ir.ui.view">
+            <field name="name">product.qty.lines.tree.view</field>
+            <field name="model">product.qty.lines</field>
+            <field name="arch" type="xml">
+                <tree string="Product Box Configuration">
+                    <field name="product_id"/>
+                    <field name="product_qty"/>
+                </tree>
+            </field>
+        </record>
+
+
+    </data>
+</odoo>

@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="product_template_carote_user_form_inherit" model="ir.ui.view">
+            <field name="name">product.template.carote.user.form.inherit</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_only_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@name='button_box']" position="inside">
+                    <t groups="user_warehouse_restriction.user_carote_restriction_group_user">
+                        <field name="tracking" invisible="1"/>
+                        <field name="show_on_hand_qty_status_button" invisible="1"/>
+                        <field name="show_forecasted_qty_status_button" invisible="1"/>
+                        <button type="object"
+                                name="action_open_quants"
+                                attrs="{'invisible':[('show_on_hand_qty_status_button', '=', False)]}"
+                                class="oe_stat_button" icon="fa-cubes">
+                            <div class="o_field_widget o_stat_info">
+                                <span class="o_stat_value" widget="statinfo">
+                                    <field name="qty_available" widget="statinfo" nolabel="1" class="mr4"/>
+                                    <field name="uom_name"/>
+                                </span>
+                                <span class="o_stat_text">On Hand</span>
+                            </div>
+                        </button>
+                        <button type="object"
+                                name="action_product_tmpl_forecast_report"
+                                attrs="{'invisible':[('show_forecasted_qty_status_button', '=', False)]}"
+                                context="{'default_product_tmpl_id': id}"
+                                class="oe_stat_button" icon="fa-cubes">
+                            <div class="o_field_widget o_stat_info">
+                                <span class="o_stat_value">
+                                    <field name="virtual_available" widget="statinfo" nolabel="1" class="mr4"/>
+                                    <field name="uom_name"/>
+                                </span>
+                                <span class="o_stat_text">Forecasted</span>
+                            </div>
+                        </button>
+                        <button type="object"
+                                name= "action_view_stock_move_lines"
+                                attrs="{'invisible':[('type', 'not in', ['product', 'consu'])]}"
+                                class="oe_stat_button" icon="fa-exchange"
+                                groups="user_warehouse_restriction.user_carote_restriction_group_user">
+                            <div class="o_field_widget o_stat_info mr4">
+                                <span class="o_stat_text">In:</span>
+                                <span class="o_stat_text">Out:</span>
+                            </div>
+                            <div class="o_field_widget o_stat_info">
+                                <span class="o_stat_value"><field name="nbr_moves_in"/></span>
+                                <span class="o_stat_value"><field name="nbr_moves_out"/></span>
+                            </div>
+                        </button>
+                    </t>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="product_product_carote_user_form_inherit" model="ir.ui.view">
+            <field name="name">product.product.carote.user.form.inherit</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_normal_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@name='button_box']" position="inside">
+                    <t groups="user_warehouse_restriction.user_carote_restriction_group_user">
+                        <field name="tracking" invisible="1"/>
+                        <field name="show_on_hand_qty_status_button" invisible="1"/>
+                        <field name="show_forecasted_qty_status_button" invisible="1"/>
+                        <button class="oe_stat_button"
+                                name="action_open_quants"
+                                icon="fa-cubes"
+                                type="object"
+                                attrs="{'invisible':[('show_on_hand_qty_status_button', '=', False)]}">
+                            <div class="o_field_widget o_stat_info">
+                                <span class="o_stat_value">
+                                    <field name="qty_available" widget="statinfo" nolabel="1" class="mr4"/>
+                                    <field name="uom_name"/>
+                                </span>
+                                <span class="o_stat_text">On Hand</span>
+                            </div>
+                        </button>
+                        <button type="object"
+                                name="action_product_forecast_report"
+                                attrs="{'invisible':[('show_forecasted_qty_status_button', '=', False)]}"
+                                context="{'default_product_id': id}"
+                                class="oe_stat_button" icon="fa-cubes">
+                            <div class="o_field_widget o_stat_info">
+                                <span class="o_stat_value">
+                                    <field name="virtual_available" widget="statinfo" nolabel="1" class="mr4"/>
+                                    <field name="uom_name"/>
+                                </span>
+                                <span class="o_stat_text">Forecasted</span>
+                            </div>
+                        </button>
+                        <button type="object"
+                                name= "action_view_stock_move_lines"
+                                attrs="{'invisible':[('type', 'not in', ['product', 'consu'])]}"
+                                class="oe_stat_button" icon="fa-exchange"
+                                groups="user_warehouse_restriction.user_carote_restriction_group_user">
+                            <div class="o_field_widget o_stat_info mr4">
+                                <span class="o_stat_text">In:</span>
+                                <span class="o_stat_text">Out:</span>
+                            </div>
+                            <div class="o_field_widget o_stat_info">
+                                <span class="o_stat_value"><field name="nbr_moves_in"/></span>
+                                <span class="o_stat_value"><field name="nbr_moves_out"/></span>
+                            </div>
+                        </button>
+                    </t>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="product_template_common_form_inherited" model="ir.ui.view">
+            <field name="name">product.template.common.form.inherited</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//sheet" position="inside">
+                    <field name="can_edit" invisible="1"/>
+                </xpath>
+                <xpath expr="//notebook" position="after">
+                    <t groups="user_warehouse_restriction.user_carote_restriction_group_user">
+                        <field name="sale_ok" invisible="1"/>
+                        <field name="purchase_ok" invisible="1"/>
+                        <notebook name="carote_product_tabs">
+                            <page string="General Information" name="carote_general_information">
+                                <group>
+                                    <group name="carote_group_general">
+                                        <field name="active" invisible="1"/>
+                                        <field name="detailed_type" attrs="{'readonly': [('can_edit', '=', False)]}"/>
+                                        <field name="product_tooltip" string="" class="fst-italic text-muted"/>
+                                        <field name="uom_id" groups="uom.group_uom" options="{'no_create': True}" attrs="{'readonly': [('can_edit', '=', False)]}"/>
+                                        <field name="is_locked" invisible="1"/>
+                                        <field name="uom_po_id" groups="uom.group_uom" options="{'no_create': True}" attrs="{'readonly': [('can_edit', '=', False)]}"/>
+                                    </group>
+                                    <group name="carote_group_standard_price">
+                                        <label for="list_price" attrs="{'readonly': [('can_edit', '=', False)]}"/>
+                                        <div name="pricing" attrs="{'readonly': [('can_edit', '=', False)]}">
+                                            <field name="list_price" class="oe_inline" widget='monetary'
+                                                   options="{'currency_field': 'currency_id', 'field_digits': True}"
+                                                   attrs="{'readonly': [('can_edit', '=', False)]}"/>
+                                        </div>
+                                        <label for="standard_price" attrs="{'readonly': [('can_edit', '=', False)]}"/>
+                                        <div name="standard_price_uom" attrs="{'readonly': [('can_edit', '=', False)]}">
+                                            <field name="standard_price" class="oe_inline" widget='monetary'
+                                                   options="{'currency_field': 'cost_currency_id', 'field_digits': True}"
+                                                   attrs="{'readonly': [('can_edit', '=', False)]}"/>
+                                            <span groups="uom.group_uom">  per
+                                                <field name="uom_name" class="oe_inline"/>
+                                            </span>
+                                        </div>
+                                    </group>
+                                    <group name="carote_misc_details">
+                                        <field name="categ_id" string="Product Category" attrs="{'readonly': [('can_edit', '=', False)]}"/>
+                                        <field name="default_code" string="MFR SKU" attrs="{'invisible': [('product_variant_count', '>', 1)], 'readonly': [('can_edit', '=', False)]}"/>
+                                        <field name="barcode" string="Orderable Barcode" attrs="{'invisible': [('product_variant_count', '>', 1)], 'readonly': [('can_edit', '=', False)]}"/>
+                                        <field name="product_tag_ids" widget="many2many_tags" options="{'color_field': 'color'}" attrs="{'readonly': [('can_edit', '=', False)]}"/>
+                                        <field name="company_id" groups="base.group_multi_company"
+                                               options="{'no_create': True}" attrs="{'readonly': [('can_edit', '=', False)]}"/>
+                                        <field name="currency_id" invisible="1"/>
+                                        <field name="cost_currency_id" invisible="1"/>
+                                        <field name="product_variant_id" invisible="1"/>
+                                    </group>
+                                    <group name="carote_measurements" string="Measurement">
+                                        <field name="is_packaging_product" invisible="1"/>
+                                        <field name="product_height" attrs="{'readonly': [('can_edit', '=', False)]}"/>
+                                        <field name="product_width" attrs="{'readonly': [('can_edit', '=', False)]}"/>
+                                        <field name="product_length" attrs="{'readonly': [('can_edit', '=', False)]}"/>
+                                    </group>
+                                    <group name="carote_prod_desc">
+                                        <field name="date" attrs="{'readonly': [('can_edit', '=', False)]}"/>
+                                        <field name="item_number" attrs="{'readonly': [('can_edit', '=', False)]}"/>
+                                        <field name="upc" string="UPC-A / GTIN-12 / Sellable Unit" attrs="{'readonly': [('can_edit', '=', False)]}"/>
+                                        <field name="ean_gtin_number" string="EAN-13 / GTIN-13 / Case" attrs="{'readonly': [('can_edit', '=', False)]}"/>
+                                        <field name="pallet_gtin" string="Pallet GTIN" attrs="{'readonly': [('can_edit', '=', False)]}"/>
+                                        <field name="brand" attrs="{'readonly': [('can_edit', '=', False)]}"/>
+                                        <field name="manufacturer" attrs="{'readonly': [('can_edit', '=', False)]}"/>
+                                        <field name="description" attrs="{'readonly': [('can_edit', '=', False)]}"/>
+                                        <field name="customer_m2m_ids" widget="many2many_tags" attrs="{'readonly': [('can_edit', '=', False)]}"/>
+                                        <field name="vendor_no" attrs="{'readonly': [('can_edit', '=', False)]}"/>
+                                        <field name="department_no" attrs="{'readonly': [('can_edit', '=', False)]}"/>
+                                        <field name="item_customer_number" attrs="{'readonly': [('can_edit', '=', False)]}"/>
+                                    </group>
+                                </group>
+                                <group name="carote_internal_notes" string="Internal Notes">
+                                    <field colspan="2" name="description" nolabel="1" placeholder="This note is only for internal purposes."/>
+                                </group>
+                            </page>
+
+                            <page name="carote_documents" string="Documents">
+                                <field name="document_ids" domain="[('is_product_document', '=', 1)]"
+                                       context="{'default_is_product_document': 1, 'default_public': 1, 'tree_view_ref' : 'emipro_theme_base.view_product_document_tree'}"
+                                       attrs="{'readonly': [('can_edit', '=', False)]}">
+                                    <form string="Product Tab">
+                                        <sheet>
+                                            <label for="name"/>
+                                            <h1>
+                                                <field name="name"/>
+                                            </h1>
+                                            <group>
+                                                <group>
+                                                    <field name="type" string="Document Type"/>
+                                                    <field name="datas" filename="name"
+                                                           attrs="{'invisible':[('type','=','url')]}" string="File"/>
+                                                    <field name="url" widget="url"
+                                                           attrs="{'invisible':[('type','=','binary')]}"/>
+                                                    <field name="public" invisible="1"/>
+                                                    <field name="is_product_document" invisible="1"/>
+                                                </group>
+                                                <group/>
+                                            </group>
+                                            <group>
+                                                <div class="text-danger" attrs="{'invisible':[('type','!=','url')]}">
+                                                    <span>Please provide complete URL along with its HTTP(S) Protocol.
+                                                    </span>
+                                                </div>
+                                            </group>
+                                            <p class="oe_grey oe_edit_only">
+                                                <strong>Note</strong>: Public user can only access Public Type Documents.
+                                            </p>
+                                        </sheet>
+                                    </form>
+                                </field>
+                            </page>
+                        </notebook>
+                    </t>
+                </xpath>
+                <xpath expr="//notebook[1]" position="attributes">
+                    <attribute name="groups">!user_warehouse_restriction.user_carote_restriction_group_user</attribute>
+                </xpath>
+                <xpath expr="//div[@name='options']" position="attributes">
+                    <attribute name="groups">!user_warehouse_restriction.user_carote_restriction_group_user</attribute>
+                </xpath>
+                <xpath expr="//field[@name='name']" position="attributes">
+                    <attribute name="attrs">{'readonly': [('can_edit', '=', False)]}</attribute>
+                </xpath>
+
+            </field>
+        </record>
+
+    </data>
+</odoo>

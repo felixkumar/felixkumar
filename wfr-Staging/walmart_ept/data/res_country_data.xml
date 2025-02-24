@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo noupdate="1">
+
+    <record id="base.us" model="res.country">
+        <field name="walmart_marketplace_code">USA</field>
+    </record>
+
+    <record id="base.ca" model="res.country">
+        <field name="walmart_marketplace_code">CANADA</field>
+    </record>
+
+</odoo>

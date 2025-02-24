@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <record id="view_edi_product_form_inherit" model="ir.ui.view">
+            <field name="name">edi.view.product.form</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_only_form_view"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//notebook" position="inside">
+                        <page name="edi_fields" string="EDI">
+                            <group name="first_group">
+                                <group name="group_left">
+                                    <field name="edi_ean"/>
+                                    <field name="edi_gtin"/>
+                                </group>
+                                <group name="group_left"/>
+                            </group>
+                        </page>
+                    </xpath>
+                </data>
+            </field>
+        </record>
+
+        <record id="view_edi_packaging_form_inherit" model="ir.ui.view">
+            <field name="name">edi.view.packaging.form</field>
+            <field name="model">product.packaging</field>
+            <field name="inherit_id" ref="product.product_packaging_form_view"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//field[@name='company_id']" position="after">
+                        <field name="edi_package_price"/>
+                    </xpath>
+                </data>
+            </field>
+        </record>
+
+        <record id="view_edi_pricelist_form_inherit" model="ir.ui.view">
+            <field name="name">edi.pricelist.form</field>
+            <field name="model">product.pricelist</field>
+            <field name="inherit_id" ref="product.product_pricelist_view"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//field[@name='min_quantity']" position="before">
+                        <field name="edi_product_product" invisible="1"/>
+                        <field name="edi_package_id" domain="[('product_id', '=', edi_product_product)]"/>
+                    </xpath>
+                    <xpath expr="//field[@name='date_end']" position="after">
+                        <field name="edi_partner_id"/>
+                        <field name="edi_inv_partner_id"/>
+                    </xpath>
+                </data>
+            </field>
+        </record>
+
+        <record id="view_edi_pricelist_item_form_inherit" model="ir.ui.view">
+            <field name="name">edi.pricelist.item.form</field>
+            <field name="model">product.pricelist.item</field>
+            <field name="inherit_id" ref="product.product_pricelist_item_form_view"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//field[@name='date_end']" position="after">
+                        <field name="edi_partner_id"/>
+                        <field name="edi_product_product" invisible="1"/>
+                        <field name="edi_package_id" domain="[('product_id', '=', edi_product_product)]"/>
+                    </xpath>
+                </data>
+            </field>
+        </record>
+</odoo>

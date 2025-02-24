@@ -1,0 +1,14 @@
+<odoo>
+    <data>
+        <record id="freight_stage_form_view_inherit" model="ir.ui.view">
+            <field name="name">freight.stage.form.view.inherit</field>
+            <field name="model">freight.stage</field>
+            <field name="inherit_id" ref="mc_freight_app.menu_freight_form_action"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='is_fold']" position="after">
+                    <field name="is_shipment_confirmation"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

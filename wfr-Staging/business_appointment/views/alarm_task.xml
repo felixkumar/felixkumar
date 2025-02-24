@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<odoo>
+
+    <record id="alarm_task_view_search" model="ir.ui.view">
+        <field name="name">alarm.task.search</field>
+        <field name="model">alarm.task</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="appointment_id"/>
+                <field name="alarm_id"/>
+                <field name="alarm_time"/>
+                <group expand="0" string="Group by...">
+                    <filter string="Reminder Time" name="alarm_time_group" domain="[]" context="{'group_by': 'alarm_time'}"/>
+                    <filter string="Alarm" name="alarm_id_group" domain="[]" context="{'group_by': 'alarm_id'}"/>
+                    <filter string="Appointment" name="appointment_id_group" domain="[]" context="{'group_by': 'appointment_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+    <record id="alarm_task_view_form" model="ir.ui.view">
+        <field name="name">alarm.task.form.appointment</field>
+        <field name="model">alarm.task</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>   
+                    <group>
+                        <field name="alarm_time"/>
+                        <field name="alarm_id"/>
+                        <field name="appointment_id"/>
+                    </group>     
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="alarm_task_view_tree" model="ir.ui.view">
+        <field name="name">alarm.task.tree</field>
+        <field name="model">alarm.task</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="alarm_time"/>
+                <field name="alarm_id"/>
+                <field name="appointment_id"/>
+            </tree>
+        </field>
+    </record>
+    <record id="alarm_task_action" model="ir.actions.act_window">
+        <field name="name">Reminders Queue</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">alarm.task</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" eval="alarm_task_view_search"/>      
+    </record>
+
+</odoo>

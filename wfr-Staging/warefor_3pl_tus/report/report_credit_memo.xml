@@ -1,0 +1,1360 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="report_custom_credit_memo">
+            <t t-call="web.basic_layout">
+                <div class="page" style="padding-top: 10px !important; padding-left: 0px !important;">
+                    <style>
+                        .text_label{
+                        width:350px;
+                        height:20px !important;
+                        background-color: #b8b8b8;
+                        font-size:12px;
+                        }
+                        .text_data{
+                        height:15px !important;
+                        font-size:12px;
+                        }
+                        .header_text_label{
+                        font-size:12px;
+                        background-color: #b8b8b8;
+                        }
+                        .border-heading-row td{
+                        background-color: #b8b8b8;
+                        font-size:12px;
+                        border: 1px solid #000;
+                        border-spacing:0px;
+                        line-height:15px;
+                        text-align:center;
+                        width:40px !important;
+                        border-right:none !important;
+                        border-left:none !important;
+                        }
+                        .border-sub-row td{
+                        font-size:12px;
+                        border: 1px solid #000;
+                        border-spacing:0px;
+                        line-height:15px;
+                        text-align:center;
+                        width:40px !important;
+                        border-right:none !important;
+                        border-left:none !important;
+                        }
+                        .border-sub-row-note td{
+                        font-size:12px;
+                        border: 1px solid #000;
+                        border-spacing:0px;
+                        width:40px !important;
+                        border-right:none !important;
+                        }
+                        .border-heading-main td{
+                        border-right:none;
+                        border-left:none;
+                        }
+                        .border-heading-main td:first-child{
+                        border-left:1px solid #000 !important;
+                        }
+                        .border-heading-main td:last-child{
+                        border-right:1px solid #000 !important;
+                        }
+                        .border-heading-right-main td:last-child{
+                        border-right:1px solid #000 !important;
+                        padding-right: 10px !important;
+                        }
+                        .border-heading-left-main td:first-child{
+                        border-left:1px solid #000 !important;
+                        }
+                        .border-top-main td{
+                        border-top:1px solid #000 !important;
+                        }
+                        .table th, .table td {
+                        padding: 3px;
+                        }
+
+                        .display-table{
+                        width:100% !important;
+                        border:1px solid #000;
+                        font-size:12px !important;
+                        text-align:center;
+                        line-height:25px;
+                        margin:0 !important;
+                        padding:0 !important;
+                        border-bottom:hidden !important;
+                        }
+                        .display-table tr{
+                        width:100% !important;
+                        }
+                        .display-table tr:nth-child(1){
+                        border-bottom:1px solid #000;
+                        border-top:1px solid #000;
+                        }
+                        .display-table td:nth-child(1){
+                        width:80px !important;
+                        }
+                        .display-table td:nth-child(2){
+                        width:80px !important;
+                        }
+                        .display-table td:nth-child(3){
+                        width:280px !important;
+                        }
+                        .display-table td:nth-child(4){
+                        width:80px !important;
+                        }
+                        .display-table td:nth-child(5){
+                        width:80px !important;
+                        }
+                        .display-table td:nth-child(6){
+                        width:80px !important;
+                        }
+                        .display-table td:nth-child(7){
+                        width:80px !important;
+                        }
+                        .display-table td:nth-child(8){
+                        width:80px !important;
+                        }
+                    </style>
+                    <t t-set="line_length" t-value="1"/>
+                    <t t-set="partner_id"
+                       t-value="o.freight_id.partner_id and o.freight_id.partner_id[0] or o.partner_id"/>
+                    <t t-set="po_id"
+                       t-value="o.invoice_line_ids and o.invoice_line_ids[0].sale_line_ids and o.invoice_line_ids[0].sale_line_ids[0].order_id.purchase_order_id or False"/>
+                    <table class="table mt32" style="width:100%;font-size:12px !important;" cellspacing="0">
+                        <tbody style="line-height:normal;border: 1px solid white;">
+                            <td style="width: 80%; padding-left: 15px;border: 1px solid white;">
+                                <img src="warefor_3pl_tus/static/src/img/warefor_logo.png"
+                                        style="height: 45px;width: 205px;" alt="Logo"/>
+                                <t t-set="o" t-value="o.with_context(lang=lang)"/>
+                                <br/>
+                                <b t-esc="o.company_id.partner_id.name"/>
+                                <br/>
+                                <t t-esc="o.company_id.partner_id.street"/>
+                                <br/>
+                                <t t-esc="o.company_id.partner_id.city"/>,
+                                <t t-esc="o.company_id.partner_id.state_id.code"/>
+                                <t t-esc="o.company_id.partner_id.zip"/>
+                                <br/>
+                                <t t-esc="o.company_id.partner_id.phone"/>
+                            </td>
+                            <td style="width: 30%;border-top: 1px solid white; padding-left:50px">
+                                <div style="width:300px; background-color: #b8b8b8; font-size:15px;border-top: 1px solid white;">
+                                    <p style="text-align: center;">
+                                        <b>CREDIT MEMO</b>
+                                    </p>
+                                </div>
+                                <span>Invoice #:</span>
+                                <span style="padding-left: 63px;">
+                                    <b t-esc="o.name"/>
+                                </span>
+                                <br/>
+                                <br/>
+                                <span>Invoice Date:</span>
+                                <span style="padding-left: 45px;">
+                                    <b t-esc="o.invoice_date and o.invoice_date.strftime('%m/%d/%y')"/>
+                                </span>
+                                <br/>
+                                <br/>
+                                <span>Vendor Number:</span>
+                                <span style="padding-left: 27px;">
+                                    <b t-esc="o.partner_id.warefor_vendor_number or ''"/>
+                                </span>
+                            </td>
+                        </tbody>
+                        <tbody style="line-height:normal;border: 1px solid white;">
+                            <td colspan="2" style="text-align:center;border: 1px solid white;">
+                                <hr width="100%"
+                                    style="background-color:#707070;border: 1.6px solid #707070;min-height:1px; padding:0px; margin:0px;"/>
+                            </td>
+                        </tbody>
+                        <tbody style="line-height:normal;border: 1px solid white;">
+                            <td style="padding:2px;border: 1px solid white;">
+                                <div class="text_label" style="padding-left: 12px; padding-top: 3px;">
+                                    <b>BILL TO</b>
+                                </div>
+                                <div style="padding-left: 15px;">
+                                    <br/>
+                                    <b>
+                                        <t t-esc="partner_id.name or ''"/>
+                                    </b>
+                                    <t t-if="o.freight_id.partner_id">
+                                        <br/>
+                                        <t t-esc="o.freight_id.partner_id.street"/>
+                                        <t t-if="o.freight_id.partner_id.street2">
+                                            <br/>
+                                            <t t-esc="o.freight_id.partner_id.street2"/>
+                                        </t>
+                                        <br/>
+                                        <t t-esc="o.freight_id.partner_id.city"/><t t-if="o.freight_id.partner_id.city">,</t>
+                                        <t t-esc="o.freight_id.partner_id.state_id.code"/>
+                                        <t t-esc="o.freight_id.partner_id.zip"/>
+                                        <br/>
+                                        <t t-esc="o.freight_id.partner_id.country_id.name"/>
+                                        <br/>
+                                    </t>
+                                    <t t-else="">
+                                        <br/>
+                                        <t t-esc="o.partner_id.street"/>
+                                        <t t-if="o.partner_id.street2">
+                                            <br/>
+                                            <t t-esc="o.partner_id.street2"/>
+                                        </t>
+                                        <br/>
+                                        <t t-esc="o.partner_id.city"/><t t-if="o.partner_id.city">,</t>
+                                        <t t-esc="o.partner_id.state_id.code"/>
+                                        <t t-esc="o.partner_id.zip"/>
+                                        <br/>
+                                        <t t-esc="o.partner_id.country_id.name"/>
+                                        <br/>
+                                    </t>
+                                </div>
+                            </td>
+                            <td style="padding:2px;border: 1px solid white;">
+                                <div class="text_label" style="padding-left: 15px; padding-top: 3px;">
+                                    <b>SHIP TO</b>
+                                </div>
+                                <div style="padding-left: 15px;">
+                                    <t t-if="o.freight_id.outbound_partner_id">
+                                        <br/>
+                                        <b>
+                                            <t t-esc="o.freight_id.outbound_partner_id.name or ''"/>
+                                        </b>
+                                        <br/>
+                                        <t t-esc="o.freight_id.outbound_partner_id.street"/>
+                                        <t t-if="o.freight_id.outbound_partner_id.street2">
+                                            <br/>
+                                            <t t-esc="o.freight_id.outbound_partner_id.street2"/>
+                                        </t>
+                                        <br/>
+                                        <t t-esc="o.freight_id.outbound_partner_id.city"/><t t-if="o.freight_id.outbound_partner_id.city">,</t>
+                                        <t t-esc="o.freight_id.outbound_partner_id.state_id.code"/>
+                                        <t t-esc="o.freight_id.outbound_partner_id.zip"/>
+                                        <br/>
+                                        <t t-esc="o.freight_id.outbound_partner_id.country_id.name"/>
+                                        <br/>
+                                    </t>
+                                    <t t-else="">
+                                        <br/>
+                                        <b>
+                                            <t t-esc="o.partner_shipping_id.name or ''"/>
+                                        </b>
+                                        <br/>
+                                        <t t-esc="o.partner_shipping_id.street"/>
+                                        <t t-if="o.partner_shipping_id.street2">
+                                            <br/>
+                                            <t t-esc="o.partner_shipping_id.street2"/>
+                                        </t>
+                                        <br/>
+                                        <t t-esc="o.partner_shipping_id.city"/><t t-if="o.partner_shipping_id.city">,</t>
+                                        <t t-esc="o.partner_shipping_id.state_id.code"/>
+                                        <t t-esc="o.partner_shipping_id.zip"/>
+                                        <br/>
+                                        <t t-esc="o.partner_shipping_id.country_id.name"/>
+                                        <br/>
+                                    </t>
+                                </div>
+                            </td>
+                        </tbody>
+                    </table>
+
+                    <table class="table mt32"
+                           style="width:100%;font-size:12px !important; margin-bottom: 15px !important;"
+                           cellspacing="0">
+                        <thead class="border-heading-row border-heading-right-main border-heading-left-main">
+                            <td width="25%" class="header_text_label">
+                                Customer Account #
+                            </td>
+                            <td width="25%" class="header_text_label">
+                                Customer Reference #
+                            </td>
+                            <td width="25%" class="header_text_label">
+                                Payment Terms
+                            </td>
+                            <td width="25%" class="header_text_label">
+                                Due Date
+                            </td>
+                        </thead>
+                        <tr class="border-sub-row border-heading-right-main border-heading-left-main">
+                            <td width="25%" class="text_data">
+                                <t t-esc="o.partner_id.id"/>
+                            </td>
+                            <td width="25%" class="text_data">
+                                <t t-esc="o.ref"/>
+                            </td>
+                            <td width="25%" class="text_data">
+                                <t t-esc="o.partner_id.property_payment_term_id.name or ''"/>
+                            </td>
+                            <td width="25%" class="text_data">
+                                <t t-esc="o.invoice_date_due and o.invoice_date_due.strftime('%m/%d/%y')"/>
+                            </td>
+                        </tr>
+                        <thead class="border-heading-row border-heading-right-main border-heading-left-main">
+                            <td width="25%" class="header_text_label">
+                                Customer PO #
+                            </td>
+                            <td width="25%" class="header_text_label">
+                                PO Date
+                            </td>
+                            <td width="25%" class="header_text_label">
+                                Buyer Name
+                            </td>
+                            <td width="25%" class="header_text_label">
+                                Ship Date
+                            </td>
+                        </thead>
+                        <tr class="border-sub-row border-heading-right-main border-heading-left-main">
+                            <td width="25%" class="text_data">
+                                <t t-esc="o.freight_id.customer_po"/>
+                            </td>
+                            <td width="25%" class="text_data">
+<!--                                <t t-esc="o.freight_id.customer_po"/>-->
+                            </td>
+                            <td width="25%" class="text_data">
+                            </td>
+                            <td width="25%" class="text_data">
+                            </td>
+                        </tr>
+
+                    </table>
+
+                    <table class="display-table" style="display:block;min-height: 360px !important;margin-top:20px !important;">
+                        <tr style="background-color:#b8b8b8 !important;color:#212529 !important;">
+                            <td>Line #</td>
+                            <td>Item #</td>
+                            <td style="text-align: left; padding-left:25px;">Description</td>
+                            <td style="text-align: right;padding-right:15px;">Quantity</td>
+                            <td>UOM</td>
+                            <td style="text-align: right;">Unit Price</td>
+                            <td>Taxes</td>
+                            <td>Total Price</td>
+                        </tr>
+                        <tr t-foreach="o.invoice_line_ids" t-as="invoice_line">
+                            <td>
+                                <span t-esc="line_length"/>
+                                <t t-set="line_length" t-value="line_length + 1"/>
+                            </td>
+                            <td>
+                                <span t-esc="invoice_line.product_id.default_code"/>
+                            </td>
+                            <td style="text-align: left;padding-left:25px;">
+                                <span t-esc="invoice_line.name"/>
+                            </td>
+                            <td style="text-align: right;padding-right:15px;">
+                                - <span t-esc="ceil(invoice_line.quantity or 0)"/>
+                            </td>
+                            <td>
+                                <span t-esc="invoice_line.product_uom_id.name"/>
+                            </td>
+                            <td style="text-align: right;">
+                                <span t-field="invoice_line.price_unit"
+                                      t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
+                            </td>
+                            <td>
+                                <t t-if="invoice_line.tax_ids">
+                                    <t t-esc="str(invoice_line.tax_ids.mapped('amount'))[1:-1]"/>
+                                </t>
+                                <t t-else="">N/A</t>
+                            </td>
+                            <td style="text-align: right;padding-right:8px !important;">
+                                (<span t-field="invoice_line.price_subtotal"
+                                      t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>)
+                            </td>
+                        </tr>
+                    </table>
+
+                    <t t-if="o.company_banking_info_want">
+                        <div style="font-size:12px !important;min-height:200px !important;border:1px solid #000;width:100%;border-top:hidden !important;" cellspacing="0">
+                            <div style="margin-left:8px !important;margin:0;padding:0;line-height:15px;" t-raw="o.company_banking_info"/>
+                        </div>
+                    </t>
+                    <t t-else="">
+                        <div style="font-size:12px !important;min-height:200px !important;border:1px solid #000;width:100%;border-top:hidden !important;" cellspacing="0">
+                        <div style="margin-left:8px !important;margin:0;padding:0;line-height:15px;"/>
+                    </div>
+                    </t>
+
+                    <table class="table mt32" style="font-size:12px !important;border-top:hidden !important;" cellspacing="0">
+                        <tr class="border-sub-row-note border-heading-right-main border-heading-left-main"
+                            style="line-height: normal;">
+                            <td width="50%" colspan="6" style="padding: 0px 0px 0px 0px !important; padding-left: 10px !important;">
+                                <div style="float:left;">
+                                    <!--<span>-->
+                                        <b>NOTES:</b>
+                                    <!--</span>-->
+                                    <br/>
+                                    <t t-esc="o.narration"/>
+                                </div>
+                            </td>
+                            <td style="width:250px; padding-left: 10px !important;padding-left: 0px !important;padding-right: 0px !important;padding-bottom: 0px;border-bottom:1px solid #000;">
+                                <div style="width:200px; float:left;white-space: nowrap; padding: 6px 10px 3px 10px;">
+                                    <div style="float:left;">Sub Total</div>
+                                    <div type="text" style="text-align:right;width:95px;float:right;">
+                                        (<span t-field="o.amount_untaxed"
+                                              t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>)
+                                    </div>
+                                </div>
+
+                                <div style="width:200px; float:left;padding: 3px 10px 3px 10px;">
+                                    <div style=" float:left;">Taxes</div>
+                                    <div type="text" style="text-align:right;width:95px;float:right;">
+                                        <span t-field="o.amount_tax"
+                                              t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
+                                    </div>
+                                </div>
+                                <div style="width:200px; background-color: #b8b8b8;float:left;padding: 3px 10px 6px 10px;">
+                                    <b style="float:left;">Total</b>
+                                    <div type="text" style="text-align:right;width:95px;float:right;">
+                                        (<b t-field="o.amount_total"
+                                           t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>)
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </t>
+        </template>
+
+        <template id="report_custom_credit_memo_ibl">
+            <t t-call="web.basic_layout">
+                <div class="page" style="padding-top: 10px !important; padding-left: 0px !important;">
+                    <style>
+                        .text_label{
+                        width:350px;
+                        height:20px !important;
+                        background-color: #b8b8b8;
+                        font-size:12px;
+                        }
+                        .text_data{
+                        height:15px !important;
+                        font-size:12px;
+                        }
+                        .header_text_label{
+                        font-size:12px;
+                        background-color: #b8b8b8;
+                        }
+                        .border-heading-row td{
+                        background-color: #b8b8b8;
+                        font-size:12px;
+                        border: 1px solid #000;
+                        border-spacing:0px;
+                        line-height:15px;
+                        text-align:center;
+                        width:40px !important;
+                        border-right:none !important;
+                        border-left:none !important;
+                        }
+                        .border-sub-row td{
+                        font-size:12px;
+                        border: 1px solid #000;
+                        border-spacing:0px;
+                        line-height:15px;
+                        text-align:center;
+                        width:40px !important;
+                        border-right:none !important;
+                        border-left:none !important;
+                        }
+                        .border-sub-row-note td{
+                        font-size:12px;
+                        border: 1px solid #000;
+                        border-spacing:0px;
+                        width:40px !important;
+                        border-right:none !important;
+                        }
+                        .border-heading-main td{
+                        border-right:none;
+                        border-left:none;
+                        }
+                        .border-heading-main td:first-child{
+                        border-left:1px solid #000 !important;
+                        }
+                        .border-heading-main td:last-child{
+                        border-right:1px solid #000 !important;
+                        }
+                        .border-heading-right-main td:last-child{
+                        border-right:1px solid #000 !important;
+                        padding-right: 10px !important;
+                        }
+                        .border-heading-left-main td:first-child{
+                        border-left:1px solid #000 !important;
+                        }
+                        .border-top-main td{
+                        border-top:1px solid #000 !important;
+                        }
+                        .table th, .table td {
+                        padding: 3px;
+                        }
+
+                        .display-table{
+                        width:100% !important;
+                        border:1px solid #000;
+                        font-size:12px !important;
+                        text-align:center;
+                        line-height:25px;
+                        margin:0 !important;
+                        padding:0 !important;
+                        border-bottom:hidden !important;
+                        }
+                        .display-table tr{
+                        width:100% !important;
+                        }
+                        .display-table thead{
+                        border-bottom:1px solid #000;
+                        }
+                        .display-table td:nth-child(1){
+                        width:80px !important;
+                        }
+                        .display-table td:nth-child(2){
+                        width:80px !important;
+                        }
+                        .display-table td:nth-child(3){
+                        width:280px !important;
+                        }
+                        .display-table td:nth-child(4){
+                        width:80px !important;
+                        }
+                        .display-table td:nth-child(5){
+                        width:80px !important;
+                        }
+                        .display-table td:nth-child(6){
+                        width:80px !important;
+                        }
+                        .display-table td:nth-child(7){
+                        width:80px !important;
+                        }
+                        .display-table td:nth-child(8){
+                        width:80px !important;
+                        }
+                    </style>
+                    <t t-set="line_length" t-value="1"/>
+                    <t t-set="partner_id"
+                       t-value="o.freight_id.partner_id and o.freight_id.partner_id[0] or o.partner_id"/>
+                    <t t-set="po_id"
+                       t-value="o.invoice_line_ids and o.invoice_line_ids[0].sale_line_ids and o.invoice_line_ids[0].sale_line_ids[0].order_id.purchase_order_id or False"/>
+
+                    <table class="table mt32" style="float:left;width:100%;font-size:12px !important;" cellspacing="0">
+                        <tbody style="line-height:normal;border: 1px solid white;">
+                            <td style="width: 80%; padding-left: 15px;border: 1px solid white;">
+                                <!--                                <img t-att-src="image_data_uri(o.company_id.logo_web)"-->
+                                <!--                                     style="height: 45px;width: 205px;" alt="Logo"/>-->
+                                <img src="warefor_3pl_tus/static/src/img/warefor_logo.png"
+                                     style="height: 45px;width: 205px;" alt="Logo"/>
+                                <t t-set="o" t-value="o.with_context(lang=lang)"/>
+                                <br/>
+                                <b t-esc="o.company_id.partner_id.name"/>
+                                <br/>
+                                <t t-esc="o.company_id.partner_id.street"/>
+                                <br/>
+                                <t t-esc="o.company_id.partner_id.city"/>,
+                                <t t-esc="o.company_id.partner_id.state_id.code"/>
+                                <t t-esc="o.company_id.partner_id.zip"/>
+                                <br/>
+                                <t t-esc="o.company_id.partner_id.phone"/>
+                            </td>
+                            <td style="width: 30%;border-top: 1px solid white; padding-left:50px">
+                                <div style="width:300px; background-color: #b8b8b8; font-size:15px;border-top: 1px solid white;">
+                                    <p style="text-align: center;">
+                                        <b>CREDIT MEMO</b>
+                                    </p>
+                                </div>
+                                <span>Invoice #:</span>
+                                <span style="padding-left: 63px;">
+                                    <b t-esc="o.name"/>
+                                </span>
+                                <br/>
+                                <br/>
+                                <span>Invoice Date:</span>
+                                <span style="padding-left: 45px;">
+                                    <b t-esc="o.invoice_date and o.invoice_date.strftime('%m/%d/%y')"/>
+                                </span>
+                                <br/>
+                                <br/>
+                                <span>Vendor Number:</span>
+                                <span style="padding-left: 27px;">
+                                    <b t-esc="o.freight_id.partner_id.warefor_vendor_number or ''"/>
+                                </span>
+                            </td>
+                        </tbody>
+                        <tbody style="line-height:normal;border: 1px solid white;">
+                            <td colspan="2" style="text-align:center;border: 1px solid white;">
+                                <hr width="100%"
+                                    style="background-color:#707070;border: 1.6px solid #707070;min-height:1px; padding:0px; margin:0px;"/>
+                            </td>
+                        </tbody>
+                        <tbody style="line-height:normal;border: 1px solid white;">
+                            <td style="padding:2px;border: 1px solid white;">
+                                <div class="text_label" style="padding-left: 12px; padding-top: 3px;">
+                                    <b>BILL TO</b>
+                                </div>
+                                <div style="padding-left: 15px;">
+                                    <br/>
+                                    <b>
+                                        <t t-esc="partner_id.name or ''"/>
+                                    </b>
+                                    <t t-if="o.freight_id.partner_id">
+                                        <br/>
+                                        <t t-esc="o.freight_id.partner_id.street"/>
+                                        <t t-if="o.freight_id.partner_id.street2">
+                                            <br/>
+                                            <t t-esc="o.freight_id.partner_id.street2"/>
+                                        </t>
+                                        <br/>
+                                        <t t-esc="o.freight_id.partner_id.city"/>
+                                        <t t-if="o.freight_id.partner_id.city">,</t>
+                                        <t t-esc="o.freight_id.partner_id.state_id.code"/>
+                                        <t t-esc="o.freight_id.partner_id.zip"/>
+                                        <br/>
+                                        <t t-esc="o.freight_id.partner_id.country_id.name"/>
+                                        <br/>
+                                    </t>
+                                    <t t-else="">
+                                        <br/>
+                                        <t t-esc="o.partner_id.street"/>
+                                        <t t-if="o.partner_id.street2">
+                                            <br/>
+                                            <t t-esc="o.partner_id.street2"/>
+                                        </t>
+                                        <br/>
+                                        <t t-esc="o.partner_id.city"/>
+                                        <t t-if="o.partner_id.city">,</t>
+                                        <t t-esc="o.partner_id.state_id.code"/>
+                                        <t t-esc="o.partner_id.zip"/>
+                                        <br/>
+                                        <t t-esc="o.partner_id.country_id.name"/>
+                                        <br/>
+                                    </t>
+                                </div>
+                            </td>
+                            <td style="padding:2px;border: 1px solid white;">
+                                <div class="text_label" style="padding-left: 15px; padding-top: 3px;">
+                                    <b>SHIP TO</b>
+                                </div>
+                                <div style="padding-left: 15px;">
+                                    <t t-if="o.freight_id.outbound_partner_id">
+                                        <br/>
+                                        <b>
+                                            <t t-esc="o.freight_id.outbound_partner_id.name or ''"/>
+                                        </b>
+                                        <br/>
+                                        <t t-esc="o.freight_id.outbound_partner_id.street"/>
+                                        <t t-if="o.freight_id.outbound_partner_id.street2">
+                                            <br/>
+                                            <t t-esc="o.freight_id.outbound_partner_id.street2"/>
+                                        </t>
+                                        <br/>
+                                        <t t-esc="o.freight_id.outbound_partner_id.city"/>
+                                        <t t-if="o.freight_id.outbound_partner_id.city">,</t>
+                                        <t t-esc="o.freight_id.outbound_partner_id.state_id.code"/>
+                                        <t t-esc="o.freight_id.outbound_partner_id.zip"/>
+                                        <br/>
+                                        <t t-esc="o.freight_id.outbound_partner_id.country_id.name"/>
+                                        <br/>
+                                    </t>
+                                    <t t-else="">
+                                        <br/>
+                                        <b>
+                                            <t t-esc="o.partner_shipping_id.name or ''"/>
+                                        </b>
+                                        <br/>
+                                        <t t-esc="o.partner_shipping_id.street"/>
+                                        <t t-if="o.partner_shipping_id.street2">
+                                            <br/>
+                                            <t t-esc="o.partner_shipping_id.street2"/>
+                                        </t>
+                                        <br/>
+                                        <t t-esc="o.partner_shipping_id.city"/>
+                                        <t t-if="o.partner_shipping_id.city">,</t>
+                                        <t t-esc="o.partner_shipping_id.state_id.code"/>
+                                        <t t-esc="o.partner_shipping_id.zip"/>
+                                        <br/>
+                                        <t t-esc="o.partner_shipping_id.country_id.name"/>
+                                        <br/>
+                                    </t>
+                                </div>
+                            </td>
+                        </tbody>
+                    </table>
+
+                    <table class="table mt32"
+                           style="width:100%; font-size:12px !important; margin-bottom: 15px !important;"
+                           cellspacing="0">
+                        <thead class="border-heading-row border-heading-right-main border-heading-left-main">
+                            <td width="12%" class="header_text_label">
+                                Customer PO #
+                            </td>
+                            <td width="12%" class="header_text_label">
+                                Customer Reference #
+                            </td>
+                            <td width="12%" class="header_text_label">
+                                Payment Terms
+                            </td>
+                            <td width="20%" class="header_text_label">
+                                Due Date
+                            </td>
+                        </thead>
+                        <tr class="border-sub-row border-heading-right-main border-heading-left-main">
+                            <td width="12%" class="text_data">
+                                <t t-esc="o.freight_id.customer_po"/>
+                            </td>
+                            <td width="12%" class="text_data">
+                                <t t-esc="o.freight_id.reference"/>
+                            </td>
+                            <td width="15%" class="text_data">
+                                <t t-esc="o.partner_id.property_payment_term_id.name or ''"/>
+                            </td>
+                            <td width="30%" class="text_data">
+                                <t t-esc="o.invoice_date_due and o.invoice_date_due.strftime('%m/%d/%y')"/>
+                            </td>
+                        </tr>
+                        <thead class="border-heading-row border-heading-right-main border-heading-left-main">
+                            <td width="12%" class="header_text_label" colspan="2" style="padding-left: 60px;">
+                                Bill of Lading #
+                            </td>
+                            <td width="12%" class="header_text_label">
+                                Carrier Name
+                            </td>
+                            <td width="12%" class="header_text_label">
+                                Receipt Date
+                            </td>
+                        </thead>
+                        <tr class="border-sub-row border-heading-right-main border-heading-left-main">
+                            <td width="12%" class="text_data" style="padding-left: 60px;" colspan="2">
+                                <t t-esc="o.freight_id.awb_no"/>
+                            </td>
+                            <td width="12%" class="text_data">
+                                <t t-esc="o.freight_id.drayage_id.name"/>
+                            </td>
+                            <td width="12%" class="text_data">
+                                    <t t-esc="o.freight_id.check_in_date_local and o.freight_id.check_in_date_local.strftime('%m/%d/%y')"/>
+                            </td>
+                        </tr>
+
+                    </table>
+
+                    <table class="table mt32"
+                           style="width:100%; font-size:12px !important;margin-bottom: 15px !important;"
+                           cellspacing="0">
+                        <thead class="border-heading-row border-heading-right-main border-heading-left-main">
+                            <td style="width:15% !important" class="header_text_label">
+                                Item #
+                            </td>
+                            <td style="width:35% !important" class="header_text_label">
+                                Item Description
+                            </td>
+                            <td style="width:10% !important" class="header_text_label">
+                                Total Qty
+                            </td>
+                            <td style="width:10% !important" class="header_text_label">
+                                Lot/Serial #
+                            </td>
+                            <td style="width:10% !important" class="header_text_label">
+                                Pallet Qty
+                            </td>
+                            <td style="width:10% !important" class="header_text_label">
+                                Cost
+                            </td>
+                            <td style="width:10% !important" class="header_text_label">
+                                Total Cost
+                            </td>
+                        </thead>
+
+                        <t t-if="o.freight_id.freight_order_line_ids">
+                            <tr t-foreach="o.freight_id.freight_order_line_ids" t-as="freight_order_line_id"
+                                class="text_data border-sub-row border-heading-right-main border-heading-left-main">
+                                <td style="width:15% !important;" class="text_data">
+                                    <t t-esc="freight_order_line_id.goods.default_code"/>
+                                </td>
+                                <td style="width:35% !important;text-align:left;padding-left:10px;" class="text_data">
+                                    <t t-esc="freight_order_line_id.goods.name"/>
+                                </td>
+                                <td style="width:10% !important" class="text_data">
+                                    <t t-esc="'{:,d}'.format(freight_order_line_id.total_quantity and int(freight_order_line_id.total_quantity or 0))"/>
+                                </td>
+                                <td style="width:10% !important" class="text_data">
+                                    <t t-esc="freight_order_line_id.lot_id.name"/>
+                                </td>
+                                <td style="width:10% !important" class="text_data">
+                                    <t t-esc="ceil(freight_order_line_id.required_pallet or 0)"/>
+<!--                                    <t t-esc="'{:,d}'.format(freight_order_line_id.required_pallet and int(freight_order_line_id.required_pallet) or 0)"/>-->
+
+                                </td>
+                                <td style="width:10% !important" class="text_data">
+                                    <t t-esc="freight_order_line_id.base_cost"
+                                       t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
+                                </td>
+                                <td style="width:10% !important;text-align:right;" class="text_data">
+                                    <t t-esc="freight_order_line_id.value"
+                                       t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
+                                </td>
+                            </tr>
+                        </t>
+                        <t t-else="">
+                            <tr class="text_data border-sub-row border-heading-right-main border-heading-left-main">
+                                <td style="height:15px;" colspan="7"/>
+                            </tr>
+                        </t>
+                    </table>
+
+                    <table class="display-table"
+                           t-att-style="'display:block; min-height:{}!important;'.format(len(o.freight_id.freight_order_line_ids) > 3 and '280px' or '320px')">
+                        <thead style="background-color:#b8b8b8 !important;color:#212529 !important;">
+                            <td class="text_data">Line #</td>
+                            <td class="text_data">Item #</td>
+                            <td class="text_data" style="text-align: left; padding-left:25px;">Description</td>
+                            <td class="text_data" style="text-align: right;padding-right:15px;">Quantity</td>
+                            <td class="text_data">UOM</td>
+                            <td class="text_data" style="text-align: right;">Unit Price</td>
+                            <td class="text_data">Taxes</td>
+                            <td class="text_data">Total Price</td>
+                        </thead>
+                        <tr t-foreach="o.invoice_line_ids" t-as="invoice_line">
+                            <td class="text_data">
+                                <span t-esc="line_length"/>
+                                <t t-set="line_length" t-value="line_length + 1"/>
+                            </td>
+                            <td class="text_data">
+                                <span t-esc="invoice_line.product_id.default_code"/>
+                            </td>
+                            <td class="text_data" style="text-align: left;padding-left:25px;">
+                                <span t-esc="invoice_line.name"/>
+                            </td>
+                            <td class="text_data" style="text-align: right;padding-right:15px;">
+                                <t t-if="invoice_line.product_id.uom_id.category_id.is_time_category">
+                                    - <span t-esc="invoice_line.quantity"/>
+                                </t>
+                                <t t-else="">
+                                    - <span t-esc="ceil(invoice_line.quantity or 0)"/>
+                                </t>
+
+                            </td>
+                            <td class="text_data">
+                                <span t-esc="invoice_line.product_uom_id.name"/>
+                            </td>
+                            <td class="text_data" style="text-align: right;">
+                                <span t-field="invoice_line.price_unit"
+                                      t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
+                            </td>
+                            <td class="text_data">
+                                <t t-if="invoice_line.tax_ids">
+                                    <t t-esc="str(invoice_line.tax_ids.mapped('amount'))[1:-1]"/>
+                                </t>
+                                <t t-else="">N/A</t>
+                            </td>
+                            <td class="text_data" style="text-align: right;padding-right:8px !important;">
+                                (<span t-field="invoice_line.price_subtotal"
+                                      t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>)
+                            </td>
+                        </tr>
+                    </table>
+
+                    <t t-if="o.company_banking_info_want">
+                        <div style="font-size:12px !important;min-height:180px !important;border:1px solid #000;width:100%;border-top:hidden !important;">
+                            <div style="margin-left:8px !important;margin:0;padding:0;line-height:15px;" t-raw="o.company_banking_info"/>
+                        </div>
+                    </t>
+                    <t t-else="">
+                        <div style="font-size:12px !important;min-height:180px !important;border:1px solid #000;width:100%;border-top:hidden !important;">
+                            <div style="margin-left:8px !important;margin:0;padding:0;line-height:15px;"/>
+                        </div>
+                    </t>
+
+                    <table class="table mt32" style="font-size:12px !important;border-top:hidden !important;" cellspacing="0">
+                        <tr class="border-sub-row-note border-heading-right-main border-heading-left-main"
+                            style="line-height: normal;">
+                            <td width="50%" colspan="6" style="padding: 0px 0px 0px 0px !important; padding-left: 10px !important;">
+                                <div style="float:left;">
+                                    <!--<span>-->
+                                        <b>NOTES:</b>
+                                    <!--</span>-->
+                                    <br/>
+                                    <t t-esc="o.narration"/>
+                                </div>
+                            </td>
+                            <td style="width:250px; padding-left: 10px !important;padding-left: 0px !important;padding-right: 0px !important;padding-bottom: 0px;border-bottom:1px solid #000;">
+                                <div style="width:200px; float:left;white-space: nowrap; padding: 6px 10px 3px 10px;">
+                                    <div style="float:left;">Sub Total</div>
+                                    <div type="text" style="text-align:right;width:95px;float:right;">
+                                        (<span t-field="o.amount_untaxed"
+                                              t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>)
+                                    </div>
+                                </div>
+
+                                <div style="width:200px; float:left;padding: 3px 10px 3px 10px;">
+                                    <div style=" float:left;">Taxes</div>
+                                    <div type="text" style="text-align:right;width:95px;float:right;">
+                                        <span t-field="o.amount_tax"
+                                              t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
+                                    </div>
+                                </div>
+                                <div style="width:200px; background-color: #b8b8b8;float:left;padding: 3px 10px 6px 10px;">
+                                    <b style="float:left;">Total</b>
+                                    <div type="text" style="text-align:right;width:95px;float:right;">
+                                        (<b t-field="o.amount_total"
+                                           t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>)
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </t>
+        </template>
+
+        <template id="report_custom_credit_memo_obl">
+            <t t-call="web.basic_layout">
+                <div class="page" style="padding-top: 10px !important; padding-left: 0px !important;">
+                    <style>
+                        .text_label{
+                        width:350px;
+                        height:20px !important;
+                        background-color: #b8b8b8;
+                        font-size:12px;
+                        }
+                        .text_data{
+                        height:15px !important;
+                        font-size:12px;
+                        }
+                        .header_text_label{
+                        font-size:12px;
+                        background-color: #b8b8b8;
+                        }
+                        .border-heading-row td{
+                        background-color: #b8b8b8;
+                        font-size:12px;
+                        border: 1px solid #000;
+                        border-spacing:0px;
+                        line-height:15px;
+                        text-align:center;
+                        width:40px !important;
+                        border-right:none !important;
+                        border-left:none !important;
+                        }
+                        .border-sub-row td{
+                        font-size:12px;
+                        border: 1px solid #000;
+                        border-spacing:0px;
+                        line-height:15px;
+                        text-align:center;
+                        width:40px !important;
+                        border-right:none !important;
+                        border-left:none !important;
+                        }
+                        .border-sub-row-note td{
+                        font-size:12px;
+                        border: 1px solid #000;
+                        border-spacing:0px;
+                        width:40px !important;
+                        border-right:none !important;
+                        }
+                        .border-heading-main td{
+                        border-right:none;
+                        border-left:none;
+                        }
+                        .border-heading-main td:first-child{
+                        border-left:1px solid #000 !important;
+                        }
+                        .border-heading-main td:last-child{
+                        border-right:1px solid #000 !important;
+                        }
+                        .border-heading-right-main td:last-child{
+                        border-right:1px solid #000 !important;
+                        padding-right: 10px !important;
+                        }
+                        .border-heading-left-main td:first-child{
+                        border-left:1px solid #000 !important;
+                        }
+                        .border-top-main td{
+                        border-top:1px solid #000 !important;
+                        }
+                        .table th, .table td {
+                        padding: 3px;
+                        }
+
+                        .display-table{
+                        width:100% !important;
+                        border:1px solid #000;
+                        font-size:12px !important;
+                        text-align:center;
+                        line-height:25px;
+                        margin:0 !important;
+                        padding:0 !important;
+                        border-bottom:hidden !important;
+                        }
+                        .display-table tr{
+                        width:100% !important;
+                        }
+                        .display-table thead{
+                        border-bottom:1px solid #000;
+                        }
+                        .display-table td:nth-child(1){
+                        width:80px !important;
+                        }
+                        .display-table td:nth-child(2){
+                        width:80px !important;
+                        }
+                        .display-table td:nth-child(3){
+                        width:280px !important;
+                        }
+                        .display-table td:nth-child(4){
+                        width:80px !important;
+                        }
+                        .display-table td:nth-child(5){
+                        width:80px !important;
+                        }
+                        .display-table td:nth-child(6){
+                        width:80px !important;
+                        }
+                        .display-table td:nth-child(7){
+                        width:80px !important;
+                        }
+                        .display-table td:nth-child(8){
+                        width:80px !important;
+                        }
+                    </style>
+                    <t t-set="line_length" t-value="1"/>
+                    <t t-set="partner_id" t-value="o.freight_id.partner_id and o.freight_id.partner_id[0] or o.partner_id"/>
+                    <t t-set="po_id" t-value="o.invoice_line_ids and o.invoice_line_ids[0].sale_line_ids and o.invoice_line_ids[0].sale_line_ids[0].order_id.purchase_order_id or False"/>
+                    <table class="table mt32" style="float:left;width:100%;font-size:12px !important;" cellspacing="0">
+                        <tbody style="line-height:normal;border: 1px solid white;">
+                            <td style="width: 80%; padding-left: 15px;border: 1px solid white;">
+                                <img src="warefor_3pl_tus/static/src/img/warefor_logo.png" style="height: 45px;width: 205px;" alt="Logo"/>
+                                <t t-set="o" t-value="o.with_context(lang=lang)"/>
+                                <br/>
+                                <b t-esc="o.company_id.partner_id.name"/>
+                                <br/>
+                                <t t-esc="o.company_id.partner_id.street"/>
+                                <br/>
+                                <t t-esc="o.company_id.partner_id.city"/>,
+                                <t t-esc="o.company_id.partner_id.state_id.code"/>
+                                <t t-esc="o.company_id.partner_id.zip"/>
+                                <br/>
+                                <t t-esc="o.company_id.partner_id.phone"/>
+                            </td>
+                            <td style="width: 30%;border-top: 1px solid white; padding-left:50px">
+                                <div style="width:300px; background-color: #b8b8b8; font-size:15px;border-top: 1px solid white;">
+                                    <p style="text-align: center;">
+                                        <b>CREDIT MEMO</b>
+                                    </p>
+                                </div>
+                                <span>Invoice #:</span>
+                                <span style="padding-left: 63px;">
+                                    <b t-esc="o.name"/>
+                                </span>
+                                <br/>
+                                <br/>
+                                <span>Invoice Date:</span>
+                                <span style="padding-left: 45px;">
+                                    <b t-esc="o.invoice_date and o.invoice_date.strftime('%m/%d/%y')"/>
+                                </span>
+                                <br/>
+                                <br/>
+                                <span>Vendor Number:</span>
+                                <span style="padding-left: 27px;">
+                                    <b t-esc="o.freight_id.partner_id.warefor_vendor_number or ''"/>
+                                </span>
+                            </td>
+                        </tbody>
+                        <tbody style="line-height:normal;border: 1px solid white;">
+                            <td colspan="2" style="text-align:center;border: 1px solid white;">
+                                <hr width="100%" style="background-color:#707070;border: 1.6px solid #707070;min-height:1px; padding:0px; margin:0px;"/>
+                            </td>
+                        </tbody>
+                        <tbody style="line-height:normal;border: 1px solid white;">
+                            <td style="padding:2px;border: 1px solid white;">
+                                <div class="text_label" style="padding-left: 12px; padding-top: 3px;">
+                                    <b>BILL TO</b>
+                                </div>
+                                <div style="padding-left: 15px;">
+                                    <br/>
+                                    <b>
+                                        <t t-esc="partner_id.name or ''"/>
+                                    </b>
+                                    <t t-if="o.freight_id.partner_id">
+                                        <br/>
+                                        <t t-esc="o.freight_id.partner_id.street"/>
+                                        <t t-if="o.freight_id.partner_id.street2">
+                                            <br/>
+                                            <t t-esc="o.freight_id.partner_id.street2"/>
+                                        </t>
+                                        <br/>
+                                        <t t-esc="o.freight_id.partner_id.city"/><t t-if="o.freight_id.partner_id.city">,</t>
+                                        <t t-esc="o.freight_id.partner_id.state_id.code"/>
+                                        <t t-esc="o.freight_id.partner_id.zip"/>
+                                        <br/>
+                                        <t t-esc="o.freight_id.partner_id.country_id.name"/>
+                                        <br/>
+                                    </t>
+                                    <t t-else="">
+                                        <br/>
+                                        <t t-esc="o.partner_id.street"/>
+                                        <t t-if="o.partner_id.street2">
+                                            <br/>
+                                            <t t-esc="o.partner_id.street2"/>
+                                        </t>
+                                        <br/>
+                                        <t t-esc="o.partner_id.city"/><t t-if="o.partner_id.city">,</t>
+                                        <t t-esc="o.partner_id.state_id.code"/>
+                                        <t t-esc="o.partner_id.zip"/>
+                                        <br/>
+                                        <t t-esc="o.partner_id.country_id.name"/>
+                                        <br/>
+                                    </t>
+                                </div>
+                            </td>
+                            <td style="padding:2px;border: 1px solid white;">
+                                <div class="text_label" style="padding-left: 15px; padding-top: 3px;">
+                                    <b>SHIP TO</b>
+                                </div>
+                                <div style="padding-left: 15px;">
+                                    <t t-if="o.freight_id.outbound_partner_id">
+                                        <br/>
+                                        <b>
+                                            <t t-esc="o.freight_id.outbound_partner_id.name or ''"/>
+                                        </b>
+                                        <br/>
+                                        <t t-esc="o.freight_id.outbound_partner_id.street"/>
+                                        <t t-if="o.freight_id.outbound_partner_id.street2">
+                                            <br/>
+                                            <t t-esc="o.freight_id.outbound_partner_id.street2"/>
+                                        </t>
+                                        <br/>
+                                        <t t-esc="o.freight_id.outbound_partner_id.city"/><t t-if="o.freight_id.outbound_partner_id.city">,</t>
+                                        <t t-esc="o.freight_id.outbound_partner_id.state_id.code"/>
+                                        <t t-esc="o.freight_id.outbound_partner_id.zip"/>
+                                        <br/>
+                                        <t t-esc="o.freight_id.outbound_partner_id.country_id.name"/>
+                                        <br/>
+                                    </t>
+                                    <t t-else="">
+                                        <br/>
+                                        <b>
+                                            <t t-esc="o.partner_shipping_id.name or ''"/>
+                                        </b>
+                                        <br/>
+                                        <t t-esc="o.partner_shipping_id.street"/>
+                                        <t t-if="o.partner_shipping_id.street2">
+                                            <br/>
+                                            <t t-esc="o.partner_shipping_id.street2"/>
+                                        </t>
+                                        <br/>
+                                        <t t-esc="o.partner_shipping_id.city"/><t t-if="o.partner_shipping_id.city">,</t>
+                                        <t t-esc="o.partner_shipping_id.state_id.code"/>
+                                        <t t-esc="o.partner_shipping_id.zip"/>
+                                        <br/>
+                                        <t t-esc="o.partner_shipping_id.country_id.name"/>
+                                        <br/>
+                                    </t>
+                                </div>
+                            </td>
+                        </tbody>
+                    </table>
+
+                    <table class="table mt32" style="width:100%; font-size:12px !important; margin-bottom: 15px !important;" cellspacing="0">
+                        <thead class="border-heading-row border-heading-right-main border-heading-left-main">
+                            <td width="25%" class="header_text_label">
+                                Customer Account #
+                            </td>
+                            <td width="25%" class="header_text_label">
+                                Customer Reference #
+                            </td>
+                            <td width="25%" class="header_text_label">
+                                Payment Terms
+                            </td>
+                            <td width="25%" class="header_text_label">
+                                Due Date
+                            </td>
+                        </thead>
+                        <tr class="border-sub-row border-heading-right-main border-heading-left-main">
+                            <td width="25%" class="text_data">
+                                <t t-esc="o.partner_id.id"/>
+                            </td>
+                            <td width="25%" class="text_data">
+                                <t t-esc="o.freight_id.reference"/>
+                            </td>
+                            <td width="25%" class="text_data">
+                                <t t-esc="o.partner_id.property_payment_term_id.name or ''"/>
+                            </td>
+                            <td width="25%" class="text_data">
+                                <t t-esc="o.invoice_date_due and o.invoice_date_due.strftime('%m/%d/%y')"/>
+                            </td>
+                        </tr>
+                        <thead class="border-heading-row border-heading-right-main border-heading-left-main">
+                            <td width="25%" class="header_text_label">
+                                Customer PO #
+                            </td>
+                            <td width="25%" class="header_text_label">
+                                Bill of Lading #
+                            </td>
+                            <td width="25%" class="header_text_label">
+                                Carrier Name
+                            </td>
+                            <td width="25%" class="header_text_label">
+                                Ship Date
+                            </td>
+                        </thead>
+                        <tr class="border-sub-row border-heading-right-main border-heading-left-main">
+                            <td width="25%" class="text_data">
+                                <t t-esc="o.freight_id.customer_po"/>
+                            </td>
+                            <td width="25%" class="text_data">
+                                <t t-esc="o.freight_id.bol_number"/>
+                            </td>
+                            <td width="25%" class="text_data">
+                                <t t-esc="o.freight_id.carrier_flight.name"/>
+                            </td>
+                            <td width="25%" class="text_data">
+                                <t t-esc="o.freight_id.loading_end_date and o.freight_id.loading_end_date.strftime('%m/%d/%y')"/>
+                            </td>
+                        </tr>
+
+                    </table>
+
+                    <table class="table mt32" style="width:100%; font-size:12px !important;margin-bottom: 15px !important;" cellspacing="0">
+                        <thead class="border-heading-row border-heading-right-main border-heading-left-main">
+                            <td style="width:15% !important" class="header_text_label">
+                                Item #
+                            </td>
+                            <td style="width:35% !important" class="header_text_label">
+                                Item Description
+                            </td>
+                            <td style="width:10% !important" class="header_text_label">
+                                Total Qty
+                            </td>
+                            <td style="width:10% !important" class="header_text_label">
+                                Lot/Serial #
+                            </td>
+                            <td style="width:10% !important" class="header_text_label">
+                                Pallet Qty
+                            </td>
+                            <td style="width:10% !important" class="header_text_label">
+                                Cost
+                            </td>
+                            <td style="width:10% !important" class="header_text_label">
+                                Total Cost
+                            </td>
+                        </thead>
+
+                        <t t-if="o.freight_id.freight_order_line_ids">
+                        <tr t-foreach="o.freight_id.freight_order_line_ids" t-as="freight_order_line_id" class="text_data border-sub-row border-heading-right-main border-heading-left-main">
+                            <td style="width:15% !important;" class="text_data">
+                                <t t-esc="freight_order_line_id.goods.default_code"/>
+                            </td>
+                            <td style="width:35% !important;text-align:left;padding-left:10px;" class="text_data">
+                                <t t-esc="freight_order_line_id.goods.name"/>
+                            </td>
+                            <td style="width:10% !important" class="text_data">
+                                <t t-esc="'{:,d}'.format(freight_order_line_id.total_quantity and int(freight_order_line_id.total_quantity or 0))"/>
+                            </td>
+                            <td style="width:10% !important" class="text_data">
+                                <t t-esc="freight_order_line_id.lot_id.name"/>
+                            </td>
+                            <td style="width:10% !important" class="text_data">
+                                <t t-esc="ceil(freight_order_line_id.required_pallet or 0)"/>
+                            </td>
+                            <td style="width:10% !important" class="text_data">
+                                <t t-esc="freight_order_line_id.base_cost" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
+                            </td>
+                            <td style="width:10% !important;text-align:right;" class="text_data">
+                                <t t-esc="freight_order_line_id.value" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
+                            </td>
+                        </tr>
+                        </t>
+                        <t t-else="">
+                            <tr class="text_data border-sub-row border-heading-right-main border-heading-left-main">
+                                <td style="height:15px;" colspan="7"/>
+                            </tr>
+                        </t>
+                    </table>
+
+                    <table class="display-table" t-att-style="'display:block; min-height:{}!important;'.format(len(o.freight_id.freight_order_line_ids) > 3 and '260px' or '300px')">
+                        <thead style="background-color:#b8b8b8 !important;color:#212529 !important;">
+                            <td class="text_data">Line #</td>
+                            <td class="text_data">Item #</td>
+                            <td class="text_data" style="text-align: left; padding-left:25px;">Description</td>
+                            <td class="text_data" style="text-align: right;padding-right:15px;">Quantity</td>
+                            <td class="text_data">UOM</td>
+                            <td class="text_data" style="text-align: right;">Unit Price</td>
+                            <td class="text_data">Taxes</td>
+                            <td class="text_data">Total Price</td>
+                        </thead>
+                        <tr t-foreach="o.invoice_line_ids" t-as="invoice_line">
+                            <td class="text_data">
+                                <span t-esc="line_length"/>
+                                <t t-set="line_length" t-value="line_length + 1"/>
+                            </td>
+                            <td class="text_data">
+                                <span t-esc="invoice_line.product_id.default_code"/>
+                            </td>
+                            <td class="text_data" style="text-align: left;padding-left:25px;">
+                                <span t-esc="invoice_line.name"/>
+                            </td>
+                            <td class="text_data" style="text-align: right;padding-right:15px;">
+                                - <span t-esc="ceil(invoice_line.quantity or 0)"/>
+                            </td>
+                            <td class="text_data">
+                                <span t-esc="invoice_line.product_uom_id.name"/>
+                            </td>
+                            <td class="text_data" style="text-align: right;">
+                                <span t-field="invoice_line.price_unit" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
+                            </td>
+                            <td class="text_data">
+                                <t t-if="invoice_line.tax_ids">
+                                    <t t-esc="str(invoice_line.tax_ids.mapped('amount'))[1:-1]"/>
+                                </t>
+                                <t t-else="">N/A</t>
+                            </td>
+                            <td class="text_data" style="text-align: right;padding-right:8px !important;">
+                                (<span t-field="invoice_line.price_subtotal" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>)
+                            </td>
+                        </tr>
+                    </table>
+
+                    <t t-if="o.company_banking_info_want">
+                        <div style="font-size:12px !important;min-height:180px !important;border:1px solid #000;width:100%;border-top:hidden !important;">
+                            <div style="margin-left:8px !important;margin:0;padding:0;line-height:15px;" t-raw="o.company_banking_info"/>
+                        </div>
+                    </t>
+                    <t t-else="">
+                        <div style="font-size:12px !important;min-height:180px !important;border:1px solid #000;width:100%;border-top:hidden !important;">
+                            <div style="margin-left:8px !important;margin:0;padding:0;line-height:15px;"/>
+                        </div>
+                    </t>
+
+                    <table class="table mt32" style="font-size:12px !important;border-top:hidden !important;" cellspacing="0">
+                        <tr class="border-sub-row-note border-heading-right-main border-heading-left-main" style="line-height: normal;">
+                            <td width="50%" colspan="6" style="padding: 0px 0px 0px 0px !important; padding-left: 10px !important;">
+                                <div style="float:left;">
+                                    <!--<span>-->
+                                        <b>NOTES:</b>
+                                    <!--</span>-->
+                                    <br/>
+                                    <t t-esc="o.narration"/>
+                                </div>
+                            </td>
+                            <td style="width:250px; padding-left: 10px !important;padding-left: 0px !important;padding-right: 0px !important;padding-bottom: 0px;border-bottom:1px solid #000;">
+                                <div style="width:200px; float:left;white-space: nowrap; padding: 6px 10px 3px 10px;">
+                                    <div style="float:left;">Sub Total</div>
+                                    <div type="text" style="text-align:right;width:95px;float:right;">
+                                        (<span t-field="o.amount_untaxed" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>)
+                                    </div>
+                                </div>
+
+                                <div style="width:200px; float:left;padding: 3px 10px 3px 10px;">
+                                    <div style=" float:left;">Taxes</div>
+                                    <div type="text" style="text-align:right;width:95px;float:right;">
+                                        <span t-field="o.amount_tax" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
+                                    </div>
+                                </div>
+                                <div style="width:200px; background-color: #b8b8b8;float:left;padding: 3px 10px 6px 10px;">
+                                    <b style="float:left;">Total</b>
+                                    <div type="text" style="text-align:right;width:95px;float:right;">
+                                        (<b t-field="o.amount_total" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>)
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </t>
+        </template>
+
+    </data>
+</odoo>

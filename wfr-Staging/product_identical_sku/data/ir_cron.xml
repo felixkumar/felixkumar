@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+        <record id="shipstation_quantity_update_cron" model="ir.cron">
+            <field name="name">Update Shipstation SKU Quantities</field>
+            <field eval="False" name="active"/>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="interval_number">5</field>
+            <field name="interval_type">minutes</field>
+            <field name="numbercall">-1</field>
+            <field name="model_id" ref="product.model_product_template"/>
+            <field name="state">code</field>
+            <field name="code">model.update_shipstation_quantities()</field>
+        </record>
+
+        <record id="copy_ku_mappings_cron" model="ir.cron">
+            <field name="name">Copy Identical SKU to SKU Mappings Table</field>
+            <field eval="False" name="active"/>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="interval_number">5</field>
+            <field name="interval_type">minutes</field>
+            <field name="numbercall">-1</field>
+            <field name="model_id" ref="product.model_product_template"/>
+            <field name="state">code</field>
+            <field name="code">model.copy_identical_sku()</field>
+        </record>
+
+
+
+    </data>
+</odoo>

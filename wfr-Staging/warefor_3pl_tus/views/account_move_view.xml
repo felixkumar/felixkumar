@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="account_view_move_form_inherit" model="ir.ui.view">
+            <field name="name">account.view.move.form.inherit</field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="account.view_move_form"/>
+            <field name="arch" type="xml">
+<!--                <xpath expr="//notebook//field[@name='invoice_line_ids']//tree//field[@name='quantity']" position="before">-->
+<!--                    <field name="month_qty" string="Original Qty"/>-->
+<!--                </xpath>-->
+<!--                <xpath expr="//header" position="inside">-->
+<!--                    <button name="send_edi_document"-->
+<!--                                type="object"-->
+<!--                                string="Send Edi Document"-->
+<!--                                class="oe_highlight"/>-->
+<!--                </xpath>-->
+                <xpath expr="//div[@name='journal_div']" position="after">
+                    <field name="edi_data_file" filename="edi_data_file_name"/>
+                    <field name="edi_data_file_name" invisible="1"/>
+                    <field name="pl_purchase_id" readonly="0" attrs="{'invisible': [('move_type', '!=', 'in_invoice')]}"/>
+                </xpath>
+                <xpath expr="//notebook//field[@name='partner_bank_id']" position="after">
+                    <field name="edi_purchase_order"/>
+                    <field name="edi_po_date"/>
+                    <field name="is_outbound_pl" invisible="1"/>
+                    <field name="freight_id" context="{'form_view_ref':'warefor_3pl_tus.freight_freights_ibl_form_view'}" attrs="{'invisible': [('is_outbound_pl', '=', True)]}"/>
+                    <field name="freight_id_obl" context="{'form_view_ref':'warefor_3pl_tus.freight_freights_obl_form_view'}" attrs="{'invisible': [('is_outbound_pl', '=', False)]}"/>
+                    <field name="logistic_source"/>
+                    <field name="active" invisible="1"/>
+                </xpath>
+                <xpath expr="//notebook//field[@name='to_check']" position="after">
+                    <field name="warehouse_id"/>
+                    <field name="sale_id"/>
+                </xpath>
+
+                <xpath expr="//page[@name='other_info']//group[last()]" position="after">
+                    <group string="Banking Info" name="banking_info">
+                        <group>
+                            <field name="company_banking_info" widget="html"/>
+                        </group>
+                        <group>
+                            <field name="company_banking_info_want"/>
+                            <label for="is_auto_payment_method" string="Payment Method" invisible="1"/>
+                            <div class="oe_inline" invisible="1">
+                                <b>Auto</b> <field name="is_auto_payment_method"/>
+                                <b>Online</b> <field name="is_online_payment_method"/>
+                            </div>
+                        </group>
+                    </group>
+                </xpath>
+
+                <xpath expr="//field[@name='narration']" position="attributes">
+                    <attribute name="placeholder">Notes</attribute>
+                </xpath>
+
+                <xpath expr="//page[@id='other_tab_entry']//field[@name='company_id']" position="after">
+                    <field name="warehouse_id" string="Warehouse"/>
+<!--                    <field name="asset_id"/>-->
+                </xpath>
+
+                <xpath expr="//field[@name='partner_id']" position="attributes">
+                    <attribute name="context">
+                        {
+                        'res_partner_search_mode': (context.get('default_move_type', 'entry') in ('out_invoice', 'out_refund', 'out_receipt') and 'customer') or (context.get('default_move_type', 'entry') in ('in_invoice', 'in_refund', 'in_receipt') and 'supplier') or False,
+                        'show_address': 1, 'default_is_company': True, 'show_vat': True, 'show_dba': True}
+                    </attribute>
+                </xpath>
+
+            </field>
+        </record>
+
+        <!-- Update account Move search view!-->
+        <record id="account_move_search_inherit_3pl" model="ir.ui.view">
+            <field name="name">account.move.search.inherit.3pl</field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="account.view_account_invoice_filter"/>
+            <field name="arch" type="xml">
+                <xpath expr="//filter[@name='late']" position="after">
+                    <filter string="Auto Payment Method" name="auto" domain="[('is_auto_payment_method', '=', True)]"/>
+                    <filter string="Online Payment Method" name="online" domain="[('is_online_payment_method', '=', True)]"/>
+                    <filter string="Require 1099" name="partner_id" domain="[('partner_id.require_1099', '=', True)]"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

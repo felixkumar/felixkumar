@@ -1,0 +1,31 @@
+<odoo>
+    <data>
+        <record id="shipstation_ept_inherit_stock_picking_batch_form" model="ir.ui.view">
+            <field name="name">Stock Picking Batch</field>
+            <field name="model">stock.picking.batch</field>
+            <field name="inherit_id" ref="stock_picking_batch.stock_picking_batch_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//header/button[last()]" position="after">
+                    <field name="shipstation_ready_for_download" invisible="1"/>
+                    <button name="shipstation_send_to_shipper_ept" string="Generate Shipstation Label" type="object"
+                            class="oe_highlight"
+                            attrs="{'invisible':['|',('state','not in',['done']),
+                            ('shipstation_integration_level','!=','rate')]}"/>
+                    <button name="shipstation_download_labels" string="Download Shipstation Labels" type="object"
+                            class="oe_highlight"
+                            attrs="{'invisible':[('shipstation_ready_for_download','=',False)]}"/>
+                    <button name="shipstation_download_invoices" string="Download Shipstation Invoices" type="object"
+                            class="oe_highlight"
+                            attrs="{'invisible':[('shipstation_ready_for_download','=',False)]}"/>
+                </xpath>
+                <field name="user_id" position="after">
+                    <field name="carrier_id"
+                           options='{"no_create": 1, "no_create_edit": 1}'/>
+                    <field name="shipstation_integration_level" invisible="1"/>
+                    <field name="batch_processed_via_shipstation_cron"
+                           attrs="{'invisible':[('batch_processed_via_shipstation_cron','=',False)],'readonly':[('batch_processed_via_shipstation_cron','!=',False)]}"/>
+                </field>
+            </field>
+        </record>
+    </data>
+</odoo>

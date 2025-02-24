@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+warefor_reports.access_loaded_pride_wizard,access_loaded_pride_wizard,warefor_reports.model_loaded_pride_wizard,base.group_user,1,1,1,1
+warefor_reports.access_master_bol_wizard,access_master_bol_wizard,warefor_reports.model_master_bol_wizard,base.group_user,1,1,1,1
+warefor_reports.access_sscc18_barcode,access_sscc18_barcode,warefor_reports.model_sscc18_barcode,base.group_user,1,1,1,1
+warefor_reports.access_shipping_document_line,access_shipping_document_line,warefor_reports.model_shipping_document_line,base.group_user,1,1,1,1
+warefor_reports.access_actual_freight_items,access_actual_freight_items,warefor_reports.model_actual_freight_items,base.group_user,1,1,1,1

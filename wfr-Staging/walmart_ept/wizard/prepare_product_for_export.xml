@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!--Wizard view of prepare product for export.-->
+    <record id="export_product_to_walmart_ept" model="ir.ui.view">
+        <field name="name">walmart.export.products.view.ept</field>
+        <field name="model">walmart.prepare.product.for.export.ept</field>
+        <field name="arch" type="xml">
+            <form string="Export Products">
+                <sheet>
+                    <group name="walmart_export_products">
+                        <group>
+                            <field name="export_method" required="1"/>
+                            <field name="walmart_instance_id"
+                                   attrs="{'required':[('export_method','=','direct')],'invisible':[('export_method','!=','direct')]}"
+                                   options="{'no_create':True,'no_create_edit':True}"/>
+                        </group>
+                    </group>
+                    <group>
+                        <div style="color:#000000" id="export_products_note" colspan="2">
+                            <p class="alert alert-warning" role="alert">
+                                <u>
+                                    <h3 style="font-weight:bold;color:#7d5a29">Note :</h3>
+                                </u>
+                                <b>
+                                    <ol attrs="{'invisible':[('export_method','=','direct')]}">
+                                        <li>
+                                            You can use this option, when you want to export the
+                                            details with changes in the current values of the fields
+                                            such as name or sku.
+                                        </li>
+                                        <li>
+                                            Products without Internal Reference (SKU) will not be
+                                            exported.
+                                        </li>
+                                        <li>
+                                            You can import CSV/XLSX file here: walmart => Processes => walmart
+                                            Operations.
+                                            Select the instance and Operation > Map Offers From CSV/XLSX.
+                                        </li>
+                                    </ol>
+                                    <ol attrs="{'invisible':[('export_method','in',('csv','xlsx'))]}">
+                                        <li>
+                                            You can use this option, when you want to export the
+                                            details without making changes in the current values of
+                                            the fields such as name or sku.
+                                        </li>
+                                        <li>
+                                            Products without Internal Reference (SKU) will not be
+                                            exported.
+                                        </li>
+                                    </ol>
+                                </b>
+                            </p>
+                        </div>
+                    </group>
+
+                    <footer>
+                        <button name="prepare_product_for_export"
+                                string="Export" type="object"
+                                class="oe_highlight"/>
+                        <button string="Cancel" class="oe_highlight" special="cancel"/>
+                    </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!--Action for prepare product for export-->
+    <record id="action_walmart_export_odoo_products_ept" model="ir.actions.act_window">
+        <field name="name">Walmart - Prepare Product for Export</field>
+        <field name="res_model">walmart.prepare.product.for.export.ept</field>
+        <field name="binding_model_id" ref="product.model_product_template"/>
+        <field name="binding_view_types">form,list</field>
+        <field name="target">new</field>
+        <field name="view_id" ref="walmart_ept.export_product_to_walmart_ept"/>
+        <field name="groups_id" eval="[(4, ref('walmart_ept.group_walmart_manager'))]"/>
+    </record>
+
+</odoo>

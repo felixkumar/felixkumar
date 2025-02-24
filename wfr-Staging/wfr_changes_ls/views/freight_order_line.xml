@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="freight_order_line_form_inherit" model="ir.ui.view">
+            <field name="name">freight.order.line.form.inherit</field>
+            <field name="model">freight.order.line</field>
+            <field name="inherit_id" ref="warefor_3pl_tus.freight_order_line_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//sheet/group" position="after">
+                    <group name="shipping_info" string="Shipping Information">
+                        <group name="grp_1">
+                            <field name="freight_stage_id" string="Freight Stage"/>
+                            <field name="freight_sail" string="Freight Sail Date"/>
+                            <field name="freight_port_arrival" string="Freight Actual Port Arrival"/>
+                            <field name="freight_available" string="Freight Available to Fill Order"/>
+                        </group>
+                        <group name="grp_2">
+                            <field name="freight_etd" string="Freight ETD (Port of Entry)"/>
+                            <field name="freight_eta_entry" string="Freight ETA (Port of Entry)"/>
+                            <field name="freight_eta_warehouse" string="Freight ETA (Warehouse)"/>
+                        </group>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="freight_order_line_tree_inherit" model="ir.ui.view">
+            <field name="name">freight.order.line.tree.inherit</field>
+            <field name="model">freight.order.line</field>
+            <field name="inherit_id" ref="warefor_3pl_tus.freight_ibl_line_tree_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//tree" position="replace">
+                    <tree string="Inbound Logistics" delete="false" create="false"
+                          decoration-danger="freight_line_color=='true'">
+                        <button name="open_freight_record" string="Open" type="object" class="btn-primary"/>
+                        <field name="goods" string="Item #"/>
+                        <field name="product_customer_item_number" string="Customer Item Number" optional="show"/>
+                        <field name="product_description" string="Product Description"/>
+                        <field name="total_quantity" string="Quantity"/>
+                        <field name="customer_po" string="PO #"/>
+                        <field name="freight_po_date" string="PO Date"/>
+                        <field name="freight_plan_expected_completion_date" string="PO-ECD"/>
+                        <field name="freight_plan_actual_completion_date" string="PO-ACD"/>
+                        <field name="freight_id" string="Record Reference"/>
+                        <field name="freight_vessel" string="Container #"/>
+                        <field name="freight_stuffing_date" string="Loading Date"/>
+                        <field name="freight_etd" string="ETD"/>
+                        <field name="freight_sail" string="Departure Date"/>
+                        <field name="freight_vessel_name" string="Vessel Name"/>
+                        <field name="freight_vessel_voyage" string="Voyage #"/>
+                        <field name="freight_port_shipping_id" string="Port of Export"/>
+                        <field name="freight_port_discharge_id" string="Port of Entry"/>
+                        <field name="freight_eta_entry" string="ETA"/>
+                        <field name="freight_port_arrival" string="Arrival Date"/>
+                        <field name="freight_eta_warehouse" string="DC ETA"/>
+                        <field name="check_in_truck_yard" string="DC Check-In" readonly="1"/>
+                        <field name="container_check_out_date" string="DC Check-Out" readonly="1"/>
+                        <field name="freight_available" string="Available to Order"/>
+
+
+                        <field name="freight_line_color" invisible="1"/>
+                        <!--                    <field name="required_pallet"/>-->
+                        <!--&lt;!&ndash;                    <field name="pickup_schedule_date" readonly="1"/>&ndash;&gt;-->
+                        <!--                    <field name="unload_start_date" string="Unload Start" readonly="1"/>-->
+                        <!--                    <field name="unload_end_date" string="Unload Stop" readonly="1"/>-->
+                        <!--                    <field name="receiving_level_of_service" string="LOS" readonly="1"/>-->
+                        <!--                    <field name="cartons_per_container"/>-->
+                        <!--                    <field name="cartons_per_pallet"/>-->
+                        <!--                    <field name="pallet_stacking"/>-->
+                        <!--                    <field name="cases_per_carton"/>-->
+                        <!--                    <field name="units_per_case"/>-->
+                        <!--                    <field name="warehouse_stacking"/>-->
+
+                        <field name="freight_stage_id" string="Freight Stage" optional="show"/>
+                    </tree>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="freight_order_line_pivot_view" model="ir.ui.view">
+            <field name="name">freight.freights.action.pivot.view</field>
+            <field name="model">freight.order.line</field>
+            <field name="arch" type="xml">
+                <pivot string="IBL Products">
+                    <field name="product_customer_item_number" type="row"/>
+                    <field name="create_date" interval="month" type="col"/>
+                    <field name="product_description" type="row" string="Desc"/>
+                </pivot>
+            </field>
+        </record>
+
+        <record id="warefor_3pl_tus.menu_freight_freights_ibl_line_action" model="ir.actions.act_window">
+            <field name="name">IBL Products</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">freight.order.line</field>
+            <field name="view_mode">tree,form,search,pivot</field>
+            <field name="context">{'is_outbound' : False, 'is_ops_model': True}</field>
+            <field name="domain">[('is_outbound','=',False)]</field>
+            <field name="view_ids"
+                   eval="[(5, 0, 0),
+                          (0, 0, {'view_mode': 'tree', 'view_id': ref('warefor_3pl_tus.freight_ibl_line_tree_view')}),
+                          (0, 0, {'view_mode': 'form', 'view_id': ref('warefor_3pl_tus.freight_order_line_form_view')})]"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                </p>
+                <p>
+                </p>
+            </field>
+        </record>
+
+    </data>
+</odoo>

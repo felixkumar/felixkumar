@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+
+    <record id="ir_cron_update_order_status" model="ir.cron">
+        <field name="name">Update Order Status</field>
+        <field name="active" eval="False"/>
+        <field name="user_id" ref="base.user_root"/>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="doall" eval="False"/>
+        <field name="model_id" eval="ref('walmart_ept.model_walmart_marketplace_ept')"/>
+        <field name="state">code</field>
+        <field name="code">model.auto_update_order_status_ept(args={})</field>
+    </record>
+
+    <record id="ir_cron_auto_export_inventory" model="ir.cron">
+        <field name="name">Auto Export Inventory</field>
+        <field eval="False" name="active"/>
+        <field name="user_id" ref="base.user_root"/>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="doall" eval="False"/>
+        <field name="model_id" eval="ref('walmart_ept.model_walmart_marketplace_ept')"/>
+        <field name="state">code</field>
+        <field name="code">model.auto_export_inventory_ept(args={})</field>
+    </record>
+
+    <record id="ir_cron_auto_create_item_report_request" model="ir.cron">
+        <field name="name">Auto Create Item Report Request in Walmart</field>
+        <field eval="False" name="active"/>
+        <field name="user_id" ref="base.user_root"/>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="doall" eval="False"/>
+        <field name="model_id" eval="ref('walmart_ept.model_walmart_product_sync_report_ept')"/>
+        <field name="state">code</field>
+        <field name="code">model.auto_create_item_request_report(args={})</field>
+    </record>
+
+    <record id="ir_cron_auto_process_item_report" model="ir.cron">
+        <field name="name">Auto Process Item Report</field>
+        <field eval="False" name="active"/>
+        <field name="user_id" ref="base.user_root"/>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="doall" eval="False"/>
+        <field name="model_id" eval="ref('walmart_ept.model_walmart_product_sync_report_ept')"/>
+        <field name="state">code</field>
+        <field name="code">model.auto_process_item_request_report(args={})</field>
+    </record>
+
+<!--    <record id="ir_cron_auto_get_item_report" model="ir.cron">-->
+<!--        <field name="name">Auto Get Item Report</field>-->
+<!--        <field eval="False" name="active"/>-->
+<!--        <field name="user_id" ref="base.user_root"/>-->
+<!--        <field name="interval_number">1</field>-->
+<!--        <field name="interval_type">days</field>-->
+<!--        <field name="numbercall">-1</field>-->
+<!--        <field name="doall" eval="False"/>-->
+<!--        <field name="model_id" eval="ref('walmart_ept.model_walmart_marketplace_ept')"/>-->
+<!--        <field name="state">code</field>-->
+<!--        <field name="code">model.auto_get_item_report_ept(args={})</field>-->
+<!--    </record>-->
+
+    <record id="ir_cron_auto_import_walmart_orders" model="ir.cron">
+        <field name="name">Auto Import Walmart Orders(Do Not Delete)</field>
+        <field eval="False" name="active"/>
+        <field name="user_id" ref="base.user_root"/>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="doall" eval="False"/>
+        <field name="model_id" ref="model_walmart_order_queue_ept"/>
+        <field name="state">code</field>
+        <field name="code">model.import_order_cron_action(args={})</field>
+    </record>
+
+    <!--import wfs order cron data-->
+    <record id="ir_cron_auto_import_walmart_wfs_orders" model="ir.cron">
+        <field name="name">Auto Import Walmart WFS Orders(Do Not Delete)</field>
+        <field eval="False" name="active"/>
+        <field name="user_id" ref="base.user_root"/>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="doall" eval="False"/>
+        <field name="model_id" ref="model_walmart_order_queue_ept"/>
+        <field name="state">code</field>
+        <field name="code">model.with_context(wfs_order=True).import_wfs_order_cron_action(args={})</field>
+    </record>
+
+    <!--import wfs inventory cron data-->
+    <record id="ir_cron_auto_import_walmart_wfs_inventory" model="ir.cron">
+        <field name="name">Auto Import Walmart WFS Inventory(Do Not Delete)</field>
+        <field eval="False" name="active"/>
+        <field name="user_id" ref="base.user_root"/>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="doall" eval="False"/>
+        <field name="model_id" ref="model_walmart_marketplace_ept"/>
+        <field name="state">code</field>
+        <field name="code">model.auto_import_walmart_wfs_inventory_via_cron(args={})</field>
+    </record>
+
+    <!--import reconciliation report cron data-->
+    <record id="ir_cron_auto_import_walmart_reconciliation_report" model="ir.cron">
+        <field name="name">Auto Import Walmart Reconciliation Report(Do Not Delete)</field>
+        <field eval="False" name="active"/>
+        <field name="user_id" ref="base.user_root"/>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="doall" eval="False"/>
+        <field name="model_id" ref="model_walmart_marketplace_ept"/>
+        <field name="state">code</field>
+        <field name="code">model.auto_import_walmart_reconciliation_report_ept(args={})</field>
+    </record>
+
+    <!--process reconciliation report cron data-->
+    <record id="ir_cron_auto_process_walmart_reconciliation_report" model="ir.cron">
+        <field name="name">Auto Process Walmart Reconciliation Report(Do Not Delete)</field>
+        <field eval="False" name="active"/>
+        <field name="user_id" ref="base.user_root"/>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="doall" eval="False"/>
+        <field name="model_id" ref="model_walmart_marketplace_ept"/>
+        <field name="state">code</field>
+        <field name="code">model.auto_process_walmart_reconciliation_report_ept(args={})</field>
+    </record>
+
+    <!-- Auto send invoice via e-mail cron -->
+    <record id="ir_cron_auto_send_invoice_via_mail" model="ir.cron">
+        <field name="name">Auto Send Invoice Via E-mail</field>
+        <field eval="False" name="active"/>
+        <field name="user_id" ref="base.user_root"/>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="doall" eval="False"/>
+        <field name="model_id" ref="model_walmart_marketplace_ept"/>
+        <field name="state">code</field>
+        <field name="code">model.auto_send_invoice_via_cron()</field>
+    </record>
+    <!-- Auto send refund invoice via e-mail cron -->
+    <record id="ir_cron_auto_send_refund_invoice_via_mail" model="ir.cron">
+        <field name="name">Auto Send Refund Invoice Via E-mail</field>
+        <field eval="False" name="active"/>
+        <field name="user_id" ref="base.user_root"/>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="doall" eval="False"/>
+        <field name="model_id" ref="model_walmart_marketplace_ept"/>
+        <field name="state">code</field>
+        <field name="code">model.auto_send_refund_invoice_via_cron()</field>
+    </record>
+
+    <!--Auto cron job for process order data queue and it runs every 5 min.-->
+    <record id="process_walmart_order_queue" model="ir.cron">
+        <field name="name">Walmart: Process Orders Queue</field>
+        <field eval="False" name="active"/>
+        <field name="model_id" ref="model_walmart_order_queue_line_ept"/>
+        <field name="state">code</field>
+        <field name="code">model.auto_import_order_queue_data()</field>
+        <field name="user_id" ref="base.user_root"/>
+        <field name="interval_number">5</field>
+        <field name="interval_type">minutes</field>
+        <field name="numbercall">-1</field>
+    </record>
+
+</odoo>

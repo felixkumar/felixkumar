@@ -1,0 +1,308 @@
+<odoo>
+    <data noupdate="0">
+        <function name="write" model="ir.model.data">
+            <function name="search" model="ir.model.data">
+                <value eval=" [('name', '=', 'mail_template_data_portal_welcome'), ('module', '=', 'portal')] "/>
+            </function>
+            <value eval="{'noupdate': False}"/>
+        </function>
+        <record id="portal.mail_template_data_portal_welcome" model="mail.template">
+            <field name="body_html" type="html">
+                <table border="0" cellpadding="0" cellspacing="0"
+                       style="padding-top: 16px; background-color: #F1F1F1; font-family:Verdana, Arial,sans-serif; color: #454748; width: 100%; border-collapse:separate;">
+                    <tr>
+                        <td align="center">
+                            <table border="0" cellpadding="0" cellspacing="0" width="590"
+                                   style="padding: 16px; background-color: white; color: #454748; border-collapse:separate;">
+                                <tbody>
+                                    <!-- HEADER -->
+                                    <tr>
+                                        <td align="center" style="min-width: 590px;">
+                                            <table border="0" cellpadding="0" cellspacing="0" width="590"
+                                                   style="min-width: 590px; background-color: white; padding: 0px 8px 0px 8px; border-collapse:separate;">
+                                                <tr>
+                                                    <td valign="middle">
+                                                        <span style="font-size: 10px;">Your Account</span>
+                                                        <br/>
+                                                        <span style="font-size: 20px; font-weight: bold;">
+                                                            ${object.user_id.name}
+                                                        </span>
+                                                    </td>
+                                                    <td valign="middle" align="right">
+                                                        <img src="/logo.png?company=${object.user_id.company_id.id}"
+                                                             style="padding: 0px; margin: 0px; height: auto; width: 80px;"
+                                                             alt="${object.user_id.company_id.name}"/>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="2" style="text-align:center;">
+                                                        <hr width="100%"
+                                                            style="background-color:rgb(204,204,204);border:medium none;clear:both;display:block;font-size:0px;min-height:1px;line-height:0; margin:16px 0px 16px 0px;"/>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <!-- CONTENT -->
+                                    <tr>
+                                        <td align="center" style="min-width: 590px;">
+                                            <table border="0" cellpadding="0" cellspacing="0" width="590"
+                                                   style="min-width: 590px; background-color: white; padding: 0px 8px 0px 8px; border-collapse:separate;">
+                                                <tr>
+                                                    <td valign="top" style="font-size: 13px;">
+                                                        <div>
+                                                            Dear ${object.user_id.name or ''},
+                                                            <br/>
+                                                            <br/>
+                                                            You have been given access to
+                                                            ${object.user_id.company_id.name}'s portal.
+                                                            <br/>
+                                                            Your login account data is:
+                                                            <ul>
+                                                                <li>Username: ${object.user_id.login or ''}</li>
+                                                                <li>Portal:
+                                                                    <a href="${'portal_url' in ctx and ctx['portal_url'] or ''}">
+                                                                        ${'portal_url' in ctx and ctx['portal_url'] or ''}
+                                                                    </a>
+                                                                </li>
+                                                            </ul>
+                                                            You can set or change your password via the following url:
+                                                            <ul>
+                                                                <li>
+                                                                    <a href="${object.user_id.signup_url}">
+                                                                        ${object.user_id.signup_url}
+                                                                    </a>
+                                                                </li>
+                                                            </ul>
+                                                            ${object.wizard_id.welcome_message or ''}
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="text-align:center;">
+                                                        <hr width="100%"
+                                                            style="background-color:rgb(204,204,204);border:medium none;clear:both;display:block;font-size:0px;min-height:1px;line-height:0; margin: 16px 0px 16px 0px;"/>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <!-- FOOTER -->
+                                    <tr>
+                                        <td align="center" style="min-width: 590px;">
+                                            <table border="0" cellpadding="0" cellspacing="0" width="590"
+                                                   style="min-width: 590px; background-color: white; font-size: 11px; padding: 0px 8px 0px 8px; border-collapse:separate;">
+                                                <tr>
+                                                    <td valign="middle" align="left">
+                                                        ${object.user_id.company_id.name}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td valign="middle" align="left" style="opacity: 0.7;">
+                                                        ${object.user_id.company_id.phone}
+                                                        % if object.user_id.company_id.email
+                                                        |
+                                                        <a href="'mailto:%s' % ${object.user_id.company_id.email}"
+                                                           style="text-decoration:none; color: #454748;">
+                                                            ${object.user_id.company_id.email}
+                                                        </a>
+                                                        % endif
+                                                        % if object.user_id.company_id.website
+                                                        |
+                                                        <a href="'%s' % ${object.user_id.company_id.website}"
+                                                           style="text-decoration:none; color: #454748;">
+                                                            ${object.user_id.company_id.website}
+                                                        </a>
+                                                        % endif
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    <!-- POWERED BY -->
+                    <tr>
+                        <td align="center" style="min-width: 590px;">
+                            <table border="0" cellpadding="0" cellspacing="0" width="590"
+                                   style="min-width: 590px; background-color: #F1F1F1; color: #454748; padding: 8px; border-collapse:separate;">
+                                <tr>
+                                    <td style="text-align: center; font-size: 13px;">
+                                        Powered by WareFor
+                                        <!--                                        <a target="_blank"-->
+                                        <!--                                           href="https://www.odoo.com?utm_source=db&amp;utm_medium=portalinvite"-->
+                                        <!--                                           style="color: #875A7B;">Odoo-->
+                                        <!--                                        </a>-->
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </field>
+        </record>
+
+        <function name="write" model="ir.model.data">
+            <function name="search" model="ir.model.data">
+                <value eval=" [('name', '=', 'mail_template_data_portal_welcome'), ('module', '=', 'portal')] "/>
+            </function>
+            <value eval="{'noupdate': False}"/>
+        </function>
+
+        <function name="write" model="ir.model.data">
+            <function name="search" model="ir.model.data">
+                <value eval=" [('name', '=', 'mail_template_user_signup_account_created'), ('module', '=', 'auth_signup')] "/>
+            </function>
+            <value eval="{'noupdate': False}"/>
+        </function>
+
+        <record id="auth_signup.mail_template_user_signup_account_created" model="mail.template">
+            <field name="body_html" type="html">
+                <table border="0" cellpadding="0" cellspacing="0"
+                       style="padding-top: 16px; background-color: #FFFFFF; font-family:Verdana, Arial,sans-serif; color: #454748; width: 100%; border-collapse:separate;">
+                    <tr>
+                        <td align="center">
+                            <table border="0" cellpadding="0" cellspacing="0" width="590"
+                                   style="padding: 16px; background-color: #FFFFFF; color: #454748; border-collapse:separate;">
+                                <tbody>
+                                    <!-- HEADER -->
+                                    <tr>
+                                        <td align="center" style="min-width: 590px;">
+                                            <table border="0" cellpadding="0" cellspacing="0" width="590"
+                                                   style="min-width: 590px; background-color: white; padding: 0px 8px 0px 8px; border-collapse:separate;">
+                                                <tr>
+                                                    <td valign="middle">
+                                                        <span style="font-size: 10px;">Your Account</span>
+                                                        <br/>
+                                                        <span style="font-size: 20px; font-weight: bold;">
+                                                            <t t-out="object.name or ''">Marc Demo</t>
+                                                        </span>
+                                                    </td>
+                                                    <td valign="middle" align="right">
+                                                        <img t-attf-src="/logo.png?company={{ object.company_id.id }}"
+                                                             style="padding: 0px; margin: 0px; height: auto; width: 80px;"
+                                                             t-att-alt="object.company_id.name"/>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="2" style="text-align:center;">
+                                                        <hr width="100%"
+                                                            style="background-color:rgb(204,204,204);border:medium none;clear:both;display:block;font-size:0px;min-height:1px;line-height:0; margin: 16px 0px 16px 0px;"/>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <!-- CONTENT -->
+                                    <tr>
+                                        <td align="center" style="min-width: 590px;">
+                                            <table border="0" cellpadding="0" cellspacing="0" width="590"
+                                                   style="min-width: 590px; background-color: white; padding: 0px 8px 0px 8px; border-collapse:separate;">
+                                                <tr>
+                                                    <td valign="top" style="font-size: 13px;">
+                                                        <div>
+                                                            Dear <t t-out="object.name or ''">Marc Demo</t>,
+                                                            <br/>
+                                                            <br/>
+                                                            Your account has been successfully created!
+                                                            <br/>
+                                                            Your login is
+                                                            <strong>
+                                                                <t t-out="object.email or ''">mark.brown23@example.com
+                                                                </t>
+                                                            </strong>
+                                                            <br/>
+                                                            To gain access to your account, you can use the following
+                                                            link:
+                                                            <div style="margin: 16px 0px 16px 0px;">
+                                                                <a t-attf-href="/web/login?auth_login={{object.email}}"
+                                                                    t-att-style="'background-color: %s; padding: 8px 16px 8px 16px; text-decoration: none; color: #fff; border-radius: 5px; font-size:13px;' % (object.company_id.secondary_color if object.company_id.secondary_color else '#000')">
+                                                                    Go to My Account
+                                                                </a>
+                                                            </div>
+                                                            Thanks,
+                                                            <br/>
+                                                            <t t-if="object.company_id.is_oxford or object.company_id.is_logistics">
+                                                                <t t-out="object.company_id.website_id and object.company_id.website_id.name or object.company_id.name or ''">--<br/>My Company</t>
+
+                                                            </t>
+<!--                                                            <t t-if="user.signature">-->
+<!--                                                                <br/>-->
+<!--                                                                <t t-out="user.signature or ''">&#45;&#45;<br/>Mitchell Admin-->
+<!--                                                                </t>-->
+<!--                                                            </t>-->
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="text-align:center;">
+                                                        <hr width="100%"
+                                                            style="background-color:rgb(204,204,204);border:medium none;clear:both;display:block;font-size:0px;min-height:1px;line-height:0; margin: 16px 0px 16px 0px;"/>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <!-- FOOTER -->
+                                    <tr>
+                                        <td align="center" style="min-width: 590px;">
+                                            <table border="0" cellpadding="0" cellspacing="0" width="590"
+                                                   style="min-width: 590px; background-color: white; font-size: 11px; padding: 0px 8px 0px 8px; border-collapse:separate;">
+                                                <tr>
+                                                    <td valign="middle" align="left">
+                                                        <t t-out="object.company_id.name or ''">YourCompany</t>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td valign="middle" align="left" style="opacity: 0.7;">
+                                                        <t t-out="object.company_id.phone or ''">+1 650-123-4567</t>
+                                                        <t t-if="object.company_id.email">
+                                                            |
+                                                            <a t-attf-href="'mailto:%s' % {{ object.company_id.email }}"
+                                                               style="text-decoration:none; color: #454748;">
+                                                                <t t-out="object.company_id.email or ''">
+                                                                    info@yourcompany.com
+                                                                </t>
+                                                            </a>
+                                                        </t>
+                                                        <t t-if="object.company_id.website">
+                                                            |
+                                                            <a t-attf-href="'%s' % {{ object.company_id.website }}"
+                                                               style="text-decoration:none; color: #454748;">
+                                                                <t t-out="object.company_id.website or ''">
+                                                                    http://www.example.com
+                                                                </t>
+                                                            </a>
+                                                        </t>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    <!-- POWERED BY -->
+<!--                    <tr>-->
+<!--                        <td align="center" style="min-width: 590px;">-->
+<!--                            <table border="0" cellpadding="0" cellspacing="0" width="590"-->
+<!--                                   style="min-width: 590px; background-color: #F1F1F1; color: #454748; padding: 8px; border-collapse:separate;">-->
+<!--                                <tr>-->
+<!--                                    <td style="text-align: center; font-size: 13px;">-->
+<!--                                        Powered by-->
+<!--                                        <a target="_blank" href="https://www.odoo.com?utm_source=db&amp;utm_medium=auth"-->
+<!--                                           style="color: #875A7B;">Odoo-->
+<!--                                        </a>-->
+<!--                                    </td>-->
+<!--                                </tr>-->
+<!--                            </table>-->
+<!--                        </td>-->
+<!--                    </tr>-->
+                </table>
+            </field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,46 @@
+<odoo>
+    <data>
+        <record id="pallet_potd_form" model="ir.ui.view">
+            <field name="name">pallet.potd.form</field>
+            <field name="model">pallet.potd</field>
+            <field name="arch" type="xml">
+                <form create="false" string="Pallets POTD">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="product_id"/>
+                                <field name="date"/>
+                                <field name="cost"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="pallet_potd_tree" model="ir.ui.view">
+            <field name="name">pallet.potd.tree</field>
+            <field name="model">pallet.potd</field>
+            <field name="arch" type="xml">
+                <tree create="false" string="Pallets POTD">
+                    <field name="product_id"/>
+                    <field name="date"/>
+                    <field name="cost" type="char"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="pallet_potd_action" model="ir.actions.act_window">
+            <field name="name">Pallets POTD</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">pallet.potd</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="menu_pallet_potd"
+                  action="pallet_potd_action"
+                  name="Pallets POTD"
+                  parent="warefor_3pl_tus.menu_pallet_mgmt_root" sequence="30"/>
+
+    </data>
+</odoo>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (c) 2016-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>;) -->
+<!-- See LICENSE file for full copyright and licensing details. -->
+<!-- License URL : https://store.webkul.com/license.html/ -->
+<odoo>
+    <record model="ir.ui.view" id="google_category_form">
+        <field name="name">Google Category Form</field>
+        <field name="model">google.category</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Google Category">
+                <sheet>
+                    <group >
+                      <field name="name" />
+                      <field name="google_categ_id" />
+                    </group>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="google_category_tree">
+        <field name="name">Google Category Tree</field>
+        <field name="model">google.category</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="Google Category">
+                <field name="name" />
+                <field name="google_categ_id" />
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="google_category_action">
+        <field name="name">Google Category</field>
+        <field name="res_model">google.category</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="google_category_tree" />
+    </record>
+
+    <menuitem name="Google Category" id= "google_category_menu" parent="mappings_fields" action="google_category_action" sequence="6"/>
+
+</odoo>

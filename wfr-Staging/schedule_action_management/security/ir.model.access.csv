@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+ir_cron_management,access.ir_cron_management,model_ir_cron_management,,1,1,1,1
+ir_cron_line,access.ir_cron_line,model_ir_cron_line,,1,1,1,1

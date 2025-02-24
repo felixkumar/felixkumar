@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates xml:space="preserve">
+    <t t-name="w_3pl.ForecastedButtons3pl" owl="1" t-inherit="stock.ForecastedButtons" t-inherit-mode="extension">
+        <xpath expr="//button[@title='Replenish']" position="attributes">
+            <attribute name="t-attf-style">display:{{ context.uid == '1580' and 'none'}};</attribute>
+        </xpath>
+    </t>
+</templates>

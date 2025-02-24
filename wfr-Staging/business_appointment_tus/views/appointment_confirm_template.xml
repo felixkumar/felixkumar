@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--  VALIDATE EMAIL  -->
+    <template id="confirm_appointment_tu" name="Appointment Confirmed">
+        <style>
+            .click-here-button{padding: 10px 30px;background-color: #188fce;color: #fff;font-weight: 300;font-size: 20px;}
+            .click-here-button:hover{background-color: #016b70;color: #fff;text-decoration: none !important;}
+        </style>
+        <t t-call="portal.portal_layout">
+            <t t-set="no_breadcrumbs" t-value="True"/>
+            <div id="intro"/>
+            <div class="container">
+                <div style="text-align:center;margin-top:50px;font-size: 35px;color: green;">
+                    <b><i class="fa fa-check-circle" style="font-size:40px;color:green"></i> Appointment Confirmed</b>
+                </div>
+                <br/>
+                <div style="text-align:center;">
+                    <p style="font-size:20px;"><t t-if="appointment_id" t-esc="appointment_id.partner_id.name"/>, your appointment for order #<t t-if="appointment_id" t-esc="appointment_id.x_oz_cbaf_3.name"/> is confirmed/rescheduled for <t  t-if="appointment_id" t-esc="appointment_id.return_scheduled_time_tz()"/>. </p>
+                    <p style="font-size:20px;"> Please ensure the driver has our current address: 116 Empire Blvd, Brookshire, TX 77423 </p><br/>
+                </div>
+                <div style="text-align:center;">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3462.807660069356!2d-95.93744582359884!3d29.783202675056117!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x86413bb8e26eb1c1%3A0xaf450ee757b2537f!2s116%20Empire%20Blvd%2C%20Brookshire%2C%20TX%2077423%2C%20USA!5e0!3m2!1sen!2sin!4v1682069278087!5m2!1sen!2sin"
+                            width="900" height="500"
+                            style="border: 0;box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;"
+                            allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                <div style="text-align:center;">
+                    <div class="d-flex flex-row" style="margin: 50px 0px;">
+                        <p><a class="click-here-button" href="/appointments">
+                            To schedule appointments for additional orders, please click here.</a></p>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>

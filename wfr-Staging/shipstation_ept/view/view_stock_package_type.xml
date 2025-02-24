@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_shipstation_stock_package_type" model="ir.ui.view">
+        <field name="name">view_shipstation_stock_package_type</field>
+        <field name="model">stock.package.type</field>
+        <field name="type">form</field>
+        <field name="inherit_id" ref="stock.stock_package_type_form"/>
+        <field name="arch" type="xml">
+            <data>
+                <field name="company_id" position="after">
+                    <field name="ept_shipstation_carrier_id" invisible="1"/>
+                </field>
+                <field name="shipper_package_code" position="attributes">
+                    <attribute name="attrs">{'invisible':[('package_carrier_type','!=','shipstation_ept')]}</attribute>
+                </field>
+            </data>
+        </field>
+    </record>
+
+    <record id="tree_view_stock_package_type_inherit" model="ir.ui.view">
+        <field name="name">tree_view_stock_package_type_inherit</field>
+        <field name="model">stock.package.type</field>
+        <field name="inherit_id" ref="delivery.stock_package_type_tree_delivery"/>
+        <field name="arch" type="xml">
+            <field name="package_carrier_type" position="replace">
+                <field name="package_carrier_type" invisible="context.get('no_carrier_col')"/>
+            </field>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="view_partner_form_warefor" model="ir.ui.view">
+            <field name="name">warefor.partner.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook/page[@name='sales_purchases']" position="after">
+                    <page name="vendor_docs" string="Vendor Docs">
+                        <group>
+                            <group>
+                                <field name="require_1099"/>
+                                <field name="vendor_identifier"/>
+                                <field name="nda"/>
+                                <field name="ach_auth"/>
+                                <field name="w9"/>
+                                <field name="other_file" widget="many2many_binary"/>
+                            </group>
+                            <group>
+                                <field name="tax_classification_id" invisible="0"/>
+                                <field name="is_oxford_usa_corporation"/>
+                            </group>
+                        </group>
+                    </page>
+                    <page name="vendor_code_ids" string="Vendor Code" invisible="1">
+                        <field name="vendor_code_ids" nolabel="1">
+                            <tree editable="bottom">
+                                <field name="code"/>
+                                <field name="customer_id"/>
+                            </tree>
+                            <form>
+                                <group>
+                                    <group>
+                                        <field name="code"/>
+                                        <field name="customer_id"/>
+                                    </group>
+                                </group>
+                            </form>
+                        </field>
+                    </page>
+                </xpath>
+                <xpath expr="//field[@name='vat']" position="after">
+                    <field name="warefor_vendor_number"/>
+                </xpath>
+                <xpath expr="//page[@name='accounting']//group[last()]" position="after">
+                    <group>
+                        <group string="Banking Info">
+                            <field name="company_banking_info" widget="html"/>
+                        </group>
+                        <group string="Default Invoice Note">
+                            <field name="default_invoice_text"/>
+                        </group>
+                    </group>
+                </xpath>
+                <xpath expr="//notebook/page[@name='sales_purchases']/group[@name='container_row_2']/group[@name='sale']/field[@name='user_id']" position="after">
+                    <field name="freight_customer_id"/>
+                </xpath>
+                <xpath expr="//page[@name='sales_purchases']//group[@name='inventory']/field[@name='property_stock_supplier']" position="after">
+                    <field name="use_virtual_location" invisible="1"/>
+                    <field name="virtual_location_id" attrs="{'invisible':[('use_virtual_location','=', False)]}"/>
+                </xpath>
+                <xpath expr="//page[@name='sales_purchases']//field[@name='property_supplier_payment_term_id']" position="after">
+                    <label for="is_auto_payment_method" string="Payment Method"/>
+                    <div class="oe_inline">
+                        <b style="padding-left:20px !important;">Auto</b> <field name="is_auto_payment_method"/>
+                        <b style="padding-left:20px !important;">Online</b> <field name="is_online_payment_method"/>
+                    </div>
+                </xpath>
+
+            </field>
+        </record>
+
+        <record id="res_partner_search_view" model="ir.ui.view">
+            <field name="name">res.partner.search.view.inherit</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_res_partner_filter"/>
+            <field name="arch" type="xml">
+                <xpath expr="//filter[@name='supplier']" position="after">
+                    <filter string="Auto Payment Method" name="is_auto_payment_method" domain="[('is_auto_payment_method', '=', True)]"/>
+                    <filter string="Online Payment Method" name="is_online_payment_method" domain="[('is_online_payment_method', '=', True)]"/>
+                    <filter string="Require 1099" name="require_1099" domain="[('require_1099', '=', True)]"/>
+                   <separator/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="action_3pl_contacts" model="ir.actions.act_window">
+            <field name="name">3PL Contacts</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.partner</field>
+            <field name="view_mode">kanban,tree,form,activity</field>
+            <field name="search_view_id" ref="base.view_res_partner_filter"/>
+            <field name="context">{'is_3pl_customer': True}</field>
+            <field name="domain">[('is_3pl_customer','=',True)]</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create a 3PL contact in your address book
+                </p>
+            </field>
+        </record>
+
+        <record id="contacts.action_contacts" model="ir.actions.act_window">
+            <field name="domain">[('is_3pl_customer','!=',True)]</field>
+        </record>
+
+        <menuitem name="3PL Contacts"
+            id="menu_3pl_contacts"
+            sequence="4"
+            web_icon="contacts,static/description/icon.png"
+            />
+
+        <menuitem id="res_partner_menu_3pl_contacts"
+        name="3PL Contacts"
+        action="action_3pl_contacts"
+        parent="menu_3pl_contacts"
+        sequence="2"/>
+
+        <record id="vendor_code_view" model="ir.ui.view">
+            <field name="name">vendor.code.view</field>
+            <field name="model">vendor.code.line</field>
+            <field name="arch" type="xml">
+                <form string="Vendor Code">
+                    <sheet>
+                        <group>
+                            <field name="code"/>
+                            <field name="customer_id"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+    <!-- Tax Classification View Start-->
+
+        <record id="tax_classification_form_view" model="ir.ui.view">
+            <field name="name">tax.classification.form.view</field>
+            <field name="model">tax.classification</field>
+            <field name="arch" type="xml">
+                <form string="Tax Classification">
+                    <sheet>
+                        <group>
+                            <group>
+                               <field name="name"/>
+                               <field name="active"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="tax_classification_tree_view" model="ir.ui.view">
+            <field name="name">tax.classification.tree</field>
+            <field name="model">tax.classification</field>
+            <field name="arch" type="xml">
+                <tree string="Tax Classification">
+                    <field name="name"/>
+                    <field name="active"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="tax_classification_search_view" model="ir.ui.view">
+            <field name="name">tax.classification.search.view</field>
+            <field name="model">tax.classification</field>
+            <field name="arch" type="xml">
+                <search string="Tax Classification">
+                    <filter string="Archived" name="active" domain="[('active','=',False)]"/>
+                    <separator/>
+                </search>
+            </field>
+        </record>
+
+        <record id="tax_classification_action" model="ir.actions.act_window">
+            <field name="name">Tax Classification</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">tax.classification</field>
+            <field name="view_mode">tree,form,search</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                </p>
+                <p>
+                </p>
+            </field>
+        </record>
+
+        <menuitem id="tax_classification_action_menu"
+                  name="Tax Classification"
+                  action="tax_classification_action"
+                  parent="contacts.res_partner_menu_config"/>
+
+
+    <!-- Tax Classification View End-->
+
+        <record id="view_partner_form_inherited_tus" model="ir.ui.view">
+            <field name="name">res.partner.form.tus</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[hasclass('oe_title')]" position="inside">
+                    <div class="o_row" invisible="context.get('res_partner_search_mode') != 'supplier'">
+                        <field name="supplier_rank" invisible="1"/>
+                        <label for="dba_id" attrs="{'invisible': [('supplier_rank','&lt;',1)]}"/>
+                        <h5>
+                            <field name="dba_id" attrs="{'invisible': [('supplier_rank','&lt;',1)]}"/>
+                        </h5>
+                    </div>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

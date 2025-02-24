@@ -1,0 +1,50 @@
+<odoo>
+    <data>
+        <record id="osd_freight_transfer_line_view" model="ir.ui.view">
+            <field name="name">osd.freight.transfer.line.form.view</field>
+            <field name="model">osd.freight.transfer.line</field>
+            <field name="arch" type="xml">
+                <form string="Trailer Configuration">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="freight_id"/>
+                                <field name="lot_id"/>
+                                <field name="quantity"/>
+                                <field name="destination_location_id"/>
+                                <field name="on_hand_qty"/>
+                                <field name="is_osd_inventory_transfered"/>
+                                <field name="pack_picking_id"/>
+                                <field name="pack_picking_state"/>
+                            </group>
+                            <group>
+                                <field name="sku_id"/>
+                                <field name="description"/>
+                                <field name="location_id"/>
+                                <field name="is_outbound_pl"/>
+                                <field name="warehouse_id"/>
+                                <field name="pick_picking_id"/>
+                                <field name="ship_picking_id"/>
+                                <field name="ship_picking_state"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="osd_freight_transfer_line_action" model="ir.actions.act_window">
+            <field name="name">Freight Transfer Line</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">osd.freight.transfer.line</field>
+            <field name="view_mode">form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                </p>
+                <p>
+                </p>
+            </field>
+        </record>
+
+    </data>
+</odoo>

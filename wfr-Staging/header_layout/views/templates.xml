@@ -1,0 +1,869 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <template id="product_alternative" name="Products: On other Products Page">
+            <ul t-attf-class="list-inline list-unstyled">
+                <div class="mb-2 title_text">
+                    <span class="h6">STYLE :</span>
+                    <t t-if="product.web_product_title">
+                        <span class="custom-text-muted text-uppercase" t-field="product.web_product_title"/>
+                    </t>
+                    <t t-else="">
+                        <span class="custom-text-muted text-uppercase" t-field="product.name"/>
+                    </t>
+                </div>
+                <li t-foreach="product.alternative_product_ids.sorted(key=lambda pro_id:pro_id.website_sequence)"
+                    class="list-inline-item my-1 " t-as="pro_id">
+                    <a t-att-href="pro_id.website_url">
+                        <div t-field="pro_id.website_product_image" class="oe_unmovable"
+                             t-att-style="'border: 2px solid #475656;' if product.id == pro_id.id else 'border:none'"
+                             t-options='{"widget": "image", "class": "product_style_icons", "alt-field": "name", "style":"background-size:cover;border-radius:50%;"}'/>
+                    </a>
+                </li>
+            </ul>
+        </template>
+
+        <template id="products_slider" name="Products : Slider">
+            <section class="oe_website_sale" id="products_slider">
+                <div class="container accessory_product_container">
+                    <div class="row">
+                        <div class="d-flex flex-lg-row flex-column col-12 px-lg-0 header_container">
+                            <div class="col-lg-9 col-12">
+                                <h2 class="">You may also like</h2>
+                                <span class="custom-text-muted mb-3 ">Celebrate the heart of your home–the kitchen–with
+                                    dinnerware.
+                                </span>
+                            </div>
+                            <div class="d-flex text-lg-end col-lg-3 col-12 py-1 justify-content-lg-end">
+                                <a class="btn mb-3 me-1 p-0 shadow-none owl-prev" href="#accessory_product_slider"
+                                   role="button"
+                                   data-bs-slide="prev">
+                                    <img src="/header_layout/static/src/svg/fill_vector_1.svg"
+                                         alt="Vector"/>
+                                </a>
+                                <a class="btn mb-3 p-0 shadow-none owl-next" href="#accessory_product_slider"
+                                   role="button"
+                                   data-bs-slide="next">
+                                    <img src="/header_layout/static/src/svg/fill_vector_2.svg"
+                                         alt="Vector"/>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="container slider-product-container">
+                            <div id="accessory_product_slider"
+                                 class="owl-carousel px-0">
+                                <t t-set="products" t-value="data.product_tmpl_id"/>
+                                <t t-foreach="products" t-as="product">
+                                    <div class="item">
+                                        <t t-call="header_layout.product_card"/>
+                                    </div>
+                                </t>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </template>
+
+        <template id="product_inherited" inherit_id="website_sale.product" active="False">
+            <xpath expr="//div[@id='o_wsale_cta_wrapper']" position="before">
+                <t t-if="website.company_id.is_oxford">
+                    <t t-if="product.alternative_product_ids" t-call="header_layout.product_alternative"/>
+                </t>
+            </xpath>
+            <xpath expr='//div[hasclass("o_wsale_product_page")]' position='attributes'>
+                <t t-if="website.company_id.is_oxford">
+                    <attribute name="class" separator=" " add="oxf_product_page"/>
+                </t>
+            </xpath>
+
+            <xpath expr="//div[@id='product_detail_main']" position="before">
+                <t t-if="website.company_id.is_oxford">
+                    <div class="d-flex align-items-center text-center mt-2 mt-lg-4 ps-lg-2 ps-0 pt-lg-3"
+                         id="custom_breadcrumb">
+                        <ol class="breadcrumb pt-3 mb-2 m-lg-0 fs-14 fw-normal ps-0 pb-0" style="color:#535353;">
+                            <li class="breadcrumb-item o_not_editable">
+                                <a t-att-href="keep(category=0)" class="text-decoration-underline">Shop</a>
+                            </li>
+                            <li t-if="category" class="breadcrumb-item">
+                                <a t-att-href="keep('/shop/category/%s' % slug(category), category=0)"
+                                   t-field="category.name" class="text-decoration-underline"/>
+                            </li>
+                            <li t-elif="product.public_categ_ids" class="breadcrumb-item">
+                                <a t-att-href="keep('/shop/category/%s' % slug(product.public_categ_ids[0]), category=0)"
+                                   t-field="product.public_categ_ids[0].name" class="text-decoration-underline"/>
+                            </li>
+                            <li class="breadcrumb-item active">
+                                <t t-if="product.web_product_title">
+                                    <span t-field="product.web_product_title"/>
+                                </t>
+                                <t t-else="">
+                                    <span t-field="product.name"/>
+                                </t>
+                            </li>
+                        </ol>
+                    </div>
+                </t>
+            </xpath>
+
+            <xpath expr="//div[@id='product_details']/p" position="attributes">
+                <t t-if="website.company_id.is_oxford">
+                    <attribute name="class" add="d-none" separator=" "/>
+                </t>
+            </xpath>
+
+            <xpath expr="//div[@id='product_details']//a[hasclass('o_product_page_reviews_link')]"
+                   position="replace">
+                <t t-if="website.company_id.is_oxford">
+                    <a href="#o_product_page_reviews"
+                       class="o_product_page_reviews_link text-decoration-none custom_rating_card">
+                        <t t-call="portal_rating.rating_widget_stars_static">
+                            <t t-set="rating_avg" t-value="product.rating_avg"/>
+                            <t t-set="trans_text_plural">%s Reviews</t>
+                            <t t-set="trans_text_singular">%s Review</t>
+                            <t t-set="rating_count"
+                               t-value="(trans_text_plural if product.rating_count > 1 else trans_text_singular) % product.rating_count"/>
+                        </t>
+                    </a>
+                </t>
+                <t t-else="">
+                    <a href="#o_product_page_reviews" class="o_product_page_reviews_link text-decoration-none">
+                        <t t-call="portal_rating.rating_widget_stars_static">
+                            <t t-set="rating_avg" t-value="product.rating_avg"/>
+                            <t t-set="trans_text_plural">%s reviews</t>
+                            <t t-set="trans_text_singular">%s review</t>
+                            <t t-set="rating_count"
+                               t-value="(trans_text_plural if product.rating_count > 1 else trans_text_singular) % product.rating_count"/>
+                        </t>
+                    </a>
+                </t>
+            </xpath>
+
+            <xpath expr="//div[@id='product_details']/h1[@t-field='product.name']" position="before">
+                <t t-if="website.company_id.is_oxford">
+                    <t t-if="product.public_categ_ids">
+                        <span style="color: #535353;" class="fw-500 product_category_title" itemprop="name"
+                              t-esc="product.public_categ_ids[0].name.upper()">Product Category
+                        </span>
+                    </t>
+                    <t t-else="">
+                    </t>
+                </t>
+            </xpath>
+
+            <xpath expr="//div[@id='product_details']/h1[@t-field='product.name']" position="replace">
+                <t t-if="website.company_id.is_oxford">
+                    <t t-if="product.web_product_title">
+                        <h3 itemprop="name" t-field="product.web_product_title" class="product-title">Product Name</h3>
+                    </t>
+                    <t t-else="">
+                        <h3 itemprop="name" t-field="product.name" class="product-title">Product Name</h3>
+                    </t>
+                    <p t-field="product.website_product_description" class="custom-text-muted fs-14 fw-500 my-2"
+                       placeholder="A short description that will also appear on documents."/>
+                </t>
+                <t t-else="">
+                    <h1 itemprop="name" t-field="product.name">Product Name</h1>
+
+                </t>
+            </xpath>
+
+            <xpath expr="//div[@id='product_details']/form/div[hasclass('js_main_product')]/div/t"
+                   position="before">
+                <t t-if="website.company_id.is_oxford">
+                    <hr/>
+                </t>
+            </xpath>
+
+            <xpath expr="//div[@id='product_detail_main']/div[@id='product_details']" position="attributes">
+                <t t-if="website.company_id.is_oxford">
+                    <attribute name="t-attf-class" remove="col-lg-#{image_cols[1]}" separator=" "/>
+                    <attribute name="t-attf-class" add="col-lg-4 mt-lg-0 pt-lg-2 pe-lg-0" separator=" "/>
+                    <attribute name="t-attf-class" remove="mt-4" separator=" "/>
+                    <!--                    <attribute name="style">padding:0 2.5rem;</attribute>-->
+                </t>
+            </xpath>
+            <xpath expr="//div[@id='product_detail_main']/div[1]" position="attributes">
+                <t t-if="website.company_id.is_oxford">
+                    <attribute name="t-attf-class" remove="col-lg-#{image_cols[0]}" separator=" "/>
+                    <attribute name="t-attf-class" add="col-lg-8" separator=" "/>
+                </t>
+            </xpath>
+
+            <xpath expr="//div[@id='product_detail_main']/div[1]" position="replace">
+                <t t-if="website.company_id.is_oxford and website.product_page_image_layout_mobile != website.product_page_image_layout">
+                    <div t-attf-class="col-lg-8 o_wsale_product_images position-relative d-none d-lg-block"
+                         t-if="website.product_page_image_width != 'none'">
+                        <t t-set="product_images"
+                           t-value="product_variant._get_images() if product_variant else product._get_images()"/>
+                        <t t-call="website_sale.shop_product_#{website.product_page_image_layout}"/>
+                    </div>
+                    <div t-attf-class="col-lg-8 o_wsale_product_images o_wsale_product_mobile_images overflow-visible position-relative d-lg-none d-block"
+                         t-if="website.product_page_image_width != 'none'">
+                        <t t-set="product_images"
+                           t-value="product_variant._get_images() if product_variant else product._get_images()"/>
+                        <t t-call="website_sale.shop_product_#{website.product_page_image_layout_mobile}"/>
+                    </div>
+                </t>
+                <t t-else="">
+                    <div t-attf-class="col-lg-#{image_cols[0]} mt-lg-4 o_wsale_product_images position-relative"
+                         t-if="website.product_page_image_width != 'none'">
+                        <t t-call="website_sale.shop_product_images"/>
+                    </div>
+                </t>
+            </xpath>
+
+            <xpath expr="//div[@id='product_details']/form" position="after">
+                <t t-if="website.company_id.is_oxford">
+                    <div t-if="product.product_tag_ids">
+                        <ul class="list-unstyled d-flex flex-column justify-content-between"
+                            style="gap:12px !important;">
+                            <li t-foreach="product.product_tag_ids" t-as="tag">
+                                <div class="d-flex flex-row align-items-center">
+                                    <div class="me-2">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                             viewBox="0 0 24 24"
+                                             fill="none">
+                                            <path d="M12 24C18.6274 24 24 18.6274 24 12C24 5.37258 18.6274 0 12 0C5.37259 0 0 5.37258 0 12C0 18.6274 5.37259 24 12 24Z"
+                                                  fill="#91493C"/>
+                                            <path d="M17.0785 7.5L9.71913 14.5712L6.92151 11.8831L6 12.7686L9.71913 16.3421L18 8.38543L17.0785 7.5Z"
+                                                  fill="#F8F7F7"/>
+                                        </svg>
+                                    </div>
+                                    <div class="fs-12 fw-500">
+                                        <span t-esc="tag.name"/>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </t>
+            </xpath>
+
+            <xpath expr="//div[@id='wrap']" position="inside">
+                <t t-if="website.company_id.is_oxford">
+                    <div class="container">
+                        <div class="row d-flex mx-lg-5 mx-0 product_page_row_1 overflow-hidden br-4 ">
+                            <div class="col-lg-6 d-flex justify-content-center align-items-center order-lg-0 order-1"
+                                 style="background-color:#E6E3DE;">
+                                <div class="col-10 d-inline-flex flex-column align-items-center justify-content-center text-center">
+                                    <h2>Sustainably Sourced</h2>
+                                    <p>Reclaimed, alternative or responsibly harvested materials that meet the high
+                                        social and environmental standards.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-12 p-0">
+                                <div t-if='product.product_template_image_ids'
+                                     t-field="product.product_template_image_ids[0].image_1920"
+                                     class="oe_unmovable position-relative"
+                                     t-options='{"widget": "image", "preview_image": "image_1024", "class": "oe_unmovable mh-100 w-100", "alt-field": "name","style":"transform: scaleX(-1);"}'/>
+                                <!--                                     t-options='{"widget": "image", "preview_image": "image_1024", "class": "oe_unmovable product_detail_img mh-100 w-100", "alt-field": "name", "zoom": product.can_image_1024_be_zoomed and "image_1920","style":"transform: scaleX(-1);"}'/>-->
+                            </div>
+                            <!--                            <div class="col-12 d-lg-none d-flex justify-content-center mt-0 "-->
+                            <!--                                 style="background-color:#E6E3DE;">-->
+                            <!--                                <div class="d-inline-flex flex-column align-items-center justify-content-center text-center">-->
+                            <!--                                    <h2>Sustainably Sourced</h2>-->
+                            <!--                                    <p>Reclaimed, alternative or responsibly harvested materials that meet the high-->
+                            <!--                                        social and environmental standards.-->
+                            <!--                                    </p>-->
+                            <!--                                </div>-->
+                            <!--                            </div>-->
+                        </div>
+
+                        <div class="row d-flex mx-lg-5 mx-0 product_page_row_2 o_not_editable">
+                            <div class="col-lg-6 col-12" style="background-color:#f0f0f0;">
+                                <div t-if='product.product_template_image_ids and product.product_template_image_ids[1]'
+                                     t-field="product.product_template_image_ids[1].image_1920"
+                                     class="oe_unmovable position-relative"
+                                     t-options='{"widget": "image", "preview_image": "image_1024", "class": "oe_unmovable mh-100 w-100", "alt-field": "name"}'/>
+                            </div>
+                            <div class="col-lg-6 col-12 o_not_editable">
+                                <div id="product_specification">
+                                    <t t-set="categories"
+                                       t-value="product.valid_product_template_attribute_line_ids._prepare_categories_for_display()"/>
+                                    <t t-if="categories">
+                                        <div class="col-12 pt-lg-0 pb-4 m-lg-0 m-0" id="custom_product_specifications">
+                                            <h2 class="fw-500">The Details</h2>
+                                            <table class="table mb-0">
+                                                <t t-foreach="categories" t-as="categ">
+                                                    <t t-set="single_value_attributes"
+                                                       t-value="categories[categ]._prepare_single_value_for_display()"/>
+                                                    <tr class="border border-start-0 border-end-0"
+                                                        t-foreach="single_value_attributes" t-as="attribute">
+                                                        <td class="text-uppercase fs-14 fw-600 custom-text-muted pt16 pb16">
+                                                            <span t-field="attribute.name"/>
+                                                        </td>
+                                                        <td class="fs-14 pt16 pb16">
+                                                            <t t-foreach="single_value_attributes[attribute]"
+                                                               t-as="ptal">
+                                                                <div t-if="ptal.product_template_value_ids._only_active().attribute_value_description"
+                                                                     t-field="ptal.product_template_value_ids._only_active().attribute_value_description"/>
+                                                                <span t-else=""
+                                                                      t-field="ptal.product_template_value_ids._only_active().name"/>
+                                                                <t t-if="not ptal_last">,</t>
+                                                            </t>
+                                                        </td>
+                                                    </tr>
+                                                </t>
+                                            </table>
+                                        </div>
+                                    </t>
+                                    <div class="p-4 text-center" t-else="">
+                                        No Specifications
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="oxf_review_rating_container" style="background-color:#E6E3DE;">
+                        <div class="o_shop_discussion_rating border-top-0" data-anchor="true">
+                            <section id="o_product_page_reviews" class="container" data-anchor="true">
+                                <h3 class="text-center fw-500 oxf_review_container_header">Our customers love it</h3>
+                                <div id="o_product_page_reviews_content">
+                                    <t t-call="portal.message_thread">
+                                        <t t-set="object" t-value="product"/>
+                                        <t t-set="display_rating" t-value="True"/>
+                                        <t t-set="message_per_page" t-value="5"/>
+                                        <t t-set="two_columns" t-value="False"/>
+                                    </t>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                    <div class="oe_structure oe_empty oe_structure_not_nearest mt16"
+                         id="oe_structure_website_sale_product_3"
+                         data-editor-message="DROP BUILDING BLOCKS HERE TO MAKE THEM AVAILABLE ACROSS ALL PRODUCTS"/>
+                    <t t-if="product.accessory_product_ids" t-call="header_layout.products_slider">
+
+                        <t t-set="data" t-value="product.accessory_product_ids"/>
+                        <t t-set="column" t-value="3"/>
+                    </t>
+                    <div class="d-flex justify-content-between align-items-center me-0 ms-0 col-12 oe_website_sale custom_product_bottom">
+                        <div class="d-flex align-items-center ">
+                            <div>
+                                <div t-field="product.image_1920"
+                                     class="oe_unmovable position-relative'"
+                                     t-options='{"widget": "image", "preview_image": "image_1024", "class": "oe_unmovable mh-100 br-4", "alt-field": "name", "style":"max-width:80px;"}'/>
+                            </div>
+                            <div class="mx-2">
+                                <span class="fw-500" t-esc="product.web_product_title or product.name"/>
+                                <span class="custom-text-muted fs-14 fw-normal d-none d-lg-block"
+                                      t-esc="product.website_product_description or ' '"/>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <div class="mx-2 d-none d-lg-block fs-24 fw-500">
+                                <t t-call="website_sale.product_price"/>
+                            </div>
+
+                            <form action="/shop/cart/update" method="post" name="footer_add_to_cart"
+                                  class="oe_product_cart h-100 d-flex"
+                                  t-att-data-publish="product.website_published and 'on' or 'off'"
+                                  itemscope="itemscope" itemtype="http://schema.org/Product">
+                                <t t-set="product_variant_id"
+                                   t-value="product._get_first_possible_variant_id()"/>
+                                <t t-set="pricelist"
+                                   t-value="request.env['product.pricelist'].browse(website._get_cached_pricelist_id())"/>
+                                <t t-if="pricelist" t-set="product_price"
+                                   t-value="product._get_sales_prices(pricelist)"/>
+                                <t t-if="pricelist" t-set="template_price_vals" t-value="product_price[product.id]"/>
+                                <input name="product_id" t-att-value="product_variant_id"
+                                       type="hidden"/>
+                                <input type="hidden" name="csrf_token "
+                                       t-att-value="request.csrf_token()"
+                                       t-nocache="The csrf token must always be up to date."/>
+                                <div id="add_to_cart_wrap" class="d-inline-flex align-items-center me-auto"
+                                     t-if="product.product_variant_id and pricelist and  (template_price_vals['price_reduce'] or not website.prevent_zero_price_sale)">
+                                    <button t-if="product._website_show_quick_add()" id="add_to_cart"
+                                            class="btn btn-primary btn-lg text-uppercase btn-sm product-add-to-cart
+                                bg-475656 fw-600 fs-16"
+                                            href="#"
+                                            style="border-radius:4px; letter-spacing: 1.92px;background-color:#475656 !important;">
+                                        <span>ADD TO CART</span>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="oe_structure oe_empty oe_structure_not_nearest mt16"
+                         id="oe_structure_website_sale_product_4"
+                         data-editor-message="DROP BUILDING BLOCKS HERE TO MAKE THEM AVAILABLE ACROSS ALL PRODUCTS"/>
+                </t>
+            </xpath>
+        </template>
+
+        <template id="product_price" inherit_id="website_sale.product_price" active="False">
+            <xpath expr="//div[contains(@t-attf-class, 'product_price')]" position="attributes">
+                <t t-if="website.company_id.is_oxford">
+                    <attribute name="t-attf-class" add="fs-20" separator=" "/>
+                    <attribute name="t-attf-class" remove="mt-2" separator=" "/>
+                    <attribute name="style">height:24px;</attribute>
+                </t>
+            </xpath>
+            <!--            <xpath expr="//div[contains(@t-attf-class, 'product_price')]" position="after">-->
+            <!--                <t t-if="website.company_id.is_oxford">-->
+            <!--                    <hr/>-->
+            <!--                </t>-->
+            <!--            </xpath>-->
+
+            <xpath expr="//div[contains(@t-attf-class, 'product_price')]//h3" position="attributes">
+                <t t-if="website.company_id.is_oxford">
+                    <attribute name="t-attf-class" separator=" " add="fs-20 d-flex align-items-center gap-2 mb-0"/>
+                </t>
+            </xpath>
+            <xpath expr="//span[contains(@t-attf-class, 'oe_default_price')]" position="attributes">
+                <t t-if="website.company_id.is_oxford">
+                    <attribute name="t-attf-class" add="custom-text-muted fs-16" separator=" "/>
+                </t>
+            </xpath>
+            <xpath expr="//h3" position="inside">
+                <t t-if="website.company_id.is_oxford and combination_info['list_price'] and (combination_info['list_price'] &gt; combination_info['price'])">
+                    <span class="discount_tag fs-12 fw-600">
+                        <span t-esc="combination_info['list_price']-combination_info['price']"
+                              t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+                        <span>OFF</span>
+                    </span>
+                </t>
+            </xpath>
+        </template>
+
+        <template id="navbar_add_class" inherit_id="website.navbar" active="True">
+            <xpath expr="//nav" position="attributes">
+                <t t-if="website.company_id.is_oxford">
+                    <attribute name="t-attf-class" add="bg-white" separator=" "/>
+                </t>
+            </xpath>
+        </template>
+
+        <template id="login" inherit_id="web.login" name="Oxford:Login Layout" active="False">
+            <xpath expr="//div[hasclass('field-login')]" position="before">
+                <t t-if="website.company_id.is_oxford">
+                    <div class="fw-500 text-center mb-3">
+                        <span style="font-size:48px;">Log In</span>
+                    </div>
+                </t>
+            </xpath>
+
+            <xpath expr="//input[@id='login']" position="attributes">
+                <t t-if="website.company_id.is_oxford">
+                    <attribute name="t-attf-class" add="oe_form_control_oxf br-8 bg-white border-grey" separator=" "/>
+                    <attribute name="placeholder">Email address</attribute>
+                </t>
+            </xpath>
+
+            <xpath expr="//input[@id='password']" position="attributes">
+                <t t-if="website.company_id.is_oxford">
+                    <attribute name="t-attf-class" add="oe_form_control_oxf br-8 bg-white border-grey" separator=" "/>
+                </t>
+            </xpath>
+
+            <xpath expr="//label[@for='login']" position="attributes">
+                <t t-if="website.company_id.is_oxford">
+                    <attribute name="class" add="d-none" separator=" "/>
+                </t>
+            </xpath>
+
+            <xpath expr="//label[@for='password']" position="attributes">
+                <t t-if="website.company_id.is_oxford">
+                    <attribute name="class" add="d-none" separator=" "/>
+                </t>
+            </xpath>
+
+            <xpath expr="//button[@type='submit']" position="attributes">
+                <t t-if="website.company_id.is_oxford">
+                    <attribute name="class" add="text-uppercase fw-600 br-8" separator=" "/>
+                </t>
+            </xpath>
+
+            <xpath expr="//button[@name='redirect']" position="attributes">
+                <t t-if="website.company_id.is_oxford">
+                    <attribute name="class" add="d-none" separator=" "/>
+                </t>
+            </xpath>
+
+            <xpath expr="//a[@t-if='signup_enabled']" position="attributes">
+                <t t-if="website.company_id.is_oxford">
+                    <attribute name="class" add="fw-normal text-decoration-underline fs-14" separator=" "/>
+                </t>
+            </xpath>
+
+            <xpath expr="//a[@t-if='reset_password_enabled']" position="replace">
+                <t t-if="website.company_id.is_oxford">
+                    <a t-if="reset_password_enabled" t-attf-href="/web/reset_password?{{ keep_query() }}"
+                       class="fw-normal text-decoration-underline fs-14">Forgot Password?
+                    </a>
+                </t>
+            </xpath>
+
+            <xpath expr="//div[hasclass('justify-content-between')]" position="attributes">
+                <t t-if="website.company_id.is_oxford">
+                    <attribute name="class" add="mt-3" separator=" "/>
+                    <attribute name="class" remove="mt-2 small" separator=" "/>
+                </t>
+            </xpath>
+
+            <xpath expr="//form" position="attributes">
+                <t t-if="website.company_id.is_oxford">
+                    <attribute name="class" add="custom_oe_login_form" separator=" "/>
+                </t>
+            </xpath>
+        </template>
+
+        <template id="reset_password" inherit_id="auth_signup.reset_password" name="OXF: Reset Password" active="False">
+            <xpath expr="//t[@t-if='token and not invalid_token']" position="before">
+                <t t-if="website.company_id.is_oxford">
+                    <div class="text-center mb-3">
+                        <span class="fw-500" style="font-size:48px;">Reset Password</span>
+                        <p class="fw-normal">Enter the email address you used to sign up and
+                            we’ll send password reset instructions to your inbox.
+                        </p>
+                    </div>
+                </t>
+            </xpath>
+
+            <xpath expr="//label[@for='login']" position="attributes">
+                <t t-if="website.company_id.is_oxford">
+                    <attribute name="class" add="d-none" separator=" "/>
+                </t>
+            </xpath>
+
+            <xpath expr="//input[@id='login']" position="attributes">
+                <t t-if="website.company_id.is_oxford">
+                    <attribute name="t-attf-class" add="form-control br-8 bg-white border-grey" separator=" "/>
+                    <attribute name="placeholder">Email address</attribute>
+                </t>
+            </xpath>
+
+            <xpath expr="//button[@type='submit']" position="replace">
+                <t t-if="website.company_id.is_oxford">
+                    <button type="submit" class="btn btn-primary text-uppercase fw-600 br-8">Submit Request</button>
+                </t>
+                <t t-else="">
+                    <button type="submit" class="btn btn-primary">Reset Password</button>
+                </t>
+            </xpath>
+
+            <xpath expr="//div[hasclass('oe_login_buttons')]/div" position="attributes">
+                <t t-if="website.company_id.is_oxford">
+                    <attribute name="class" add="mt-3 text-decoration-underline" separator=" "/>
+                    <attribute name="class" remove="small mt-2 " separator=" "/>
+                </t>
+            </xpath>
+
+            <xpath expr="//form" position="attributes">
+                <t t-if="website.company_id.is_oxford">
+                    <attribute name="class" add="custom_reset_password_form" separator=" "/>
+                </t>
+
+            </xpath>
+        </template>
+
+        <template id="signup" inherit_id="auth_signup.signup" name="Oxford: OAuth Signup" active="False">
+            <xpath expr="//input[@name='csrf_token']" position="after">
+                <t t-if="website.company_id.is_oxford">
+                    <div class="fw-500 text-center mb-3">
+                        <span style="font-size:48px;">Sign Up</span>
+                    </div>
+                </t>
+            </xpath>
+            <xpath expr="//form" position="attributes">
+                <attribute name="class" add="custom_oe_login_form" separator=" "/>
+            </xpath>
+
+            <xpath expr="//button[@type='submit']" position="attributes">
+                <t t-if="website.company_id.is_oxford">
+                    <attribute name="class" add="text-uppercase fw-600 br-8" separator=" "/>
+                </t>
+            </xpath>
+            <xpath expr="//div[hasclass('oe_login_buttons')]/a" position="attributes">
+                <t t-if="website.company_id.is_oxford">
+                    <attribute name="class">fw-normal text-decoration-underline fs-14 mt-3</attribute>
+                </t>
+            </xpath>
+        </template>
+
+
+        <template id="rating_widget_stars_static_inherited" inherit_id="portal_rating.rating_widget_stars_static"
+                  name="Product Rating" active="False">
+            <xpath expr="//div[hasclass('o_website_rating_static')]" position="replace">
+                <t t-if="website.company_id.is_oxford">
+                    <div class="o_website_rating_static o_website_rating_static_custom"
+                         t-att-style="inline_mode and 'display:inline'" t-att-title="rating_avg">
+                        <t t-if="rating_style_compressed">
+                            <div>
+                                <t t-if="rating_avg &lt;= 2">
+                                    <i class="fa fa-star-o" role="img"></i>
+                                </t>
+                                <t t-elif="rating_avg &gt;= 2.1 and rating_avg &lt;= 3.5">
+                                    <i class="fa fa-star-half-o" role="img"></i>
+                                </t>
+                                <t t-else="">
+                                    <i class="fa fa-star" role="img"></i>
+                                </t>
+                            </div>
+                            <small class="ms-1">
+                                <t t-esc="rating_avg"/>
+                            </small>
+                        </t>
+                        <t t-else="">
+                            <div>
+                                <t t-foreach="range(0, val_integer)" t-as="num">
+                                    <i class="fa fa-star" role="img"></i>
+                                </t>
+                                <t t-if="val_decimal">
+                                    <i class="fa fa-star-half-o" role="img"></i>
+                                </t>
+                                <t t-foreach="range(0, empty_star)" t-as="num">
+                                    <i class="fa fa-star-o" role="img"></i>
+                                </t>
+                            </div>
+                            <small class="ms-1">
+                                <t t-esc="rating_count"/>
+                            </small>
+                        </t>
+                    </div>
+                </t>
+            </xpath>
+        </template>
+
+        <template id="address_custom" inherit_id="website_sale.address">
+            <xpath expr="//form/div" position="replace">
+                <div class="row address_custom_div">
+                    <div t-attf-class="mb-3 #{error.get('name') and 'o_has_error' or ''} col-lg-12 div_name">
+                        <label class="col-form-label" for="name">Name</label>
+                        <input type="text" name="name"
+                               t-attf-class="form-control #{error.get('name') and 'is-invalid' or ''}"
+                               t-att-value="'name' in checkout and checkout['name']"/>
+                    </div>
+                    <div class="w-100"/>
+                    <div t-attf-class="mb-3 #{error.get('email') and 'o_has_error' or ''} col-lg-6" id="div_email">
+                        <label t-attf-class="col-form-label #{mode[1] == 'shipping' and 'label-optional' or ''}"
+                               for="email">Email
+                        </label>
+                        <input type="email" name="email"
+                               t-attf-class="form-control #{error.get('email') and 'is-invalid' or ''}"
+                               t-att-value="'email' in checkout and checkout['email']"/>
+                    </div>
+                    <div t-attf-class="mb-3 #{error.get('phone') and 'o_has_error' or ''} col-lg-6" id="div_phone">
+                        <label class="col-form-label" for="phone">Phone</label>
+                        <input type="tel" name="phone"
+                               t-attf-class="form-control #{error.get('phone') and 'is-invalid' or ''}"
+                               t-att-value="'phone' in checkout and checkout['phone']"/>
+                    </div>
+                    <div class="w-100"/>
+                    <div t-attf-class="mb-3 #{error.get('street') and 'o_has_error' or ''} col-lg-12 div_street">
+                        <label class="col-form-label" for="street">Street
+                            <span class="d-none d-md-inline">and Number</span>
+                        </label>
+                        <input type="text" name="street"
+                               t-attf-class="form-control #{error.get('street') and 'is-invalid' or ''}"
+                               t-att-value="'street' in checkout and checkout['street']"/>
+                    </div>
+                    <div t-attf-class="mb-3 #{error.get('street2') and 'o_has_error' or ''} col-lg-12 div_street2">
+                        <label class="col-form-label label-optional" for="street2">Street 2</label>
+                        <input type="text" name="street2"
+                               t-attf-class="form-control #{error.get('street2') and 'is-invalid' or ''}"
+                               t-att-value="'street2' in checkout and checkout['street2']"/>
+                    </div>
+                    <div class="w-100"/>
+                    <div t-attf-class="mb-3 #{error.get('city') and 'o_has_error' or ''} col-md-6 div_city">
+                        <label class="col-form-label" for="city">City</label>
+                        <input type="text" name="city"
+                               t-attf-class="form-control #{error.get('city') and 'is-invalid' or ''}"
+                               t-att-value="'city' in checkout and checkout['city']"/>
+                    </div>
+                    <div t-attf-class="mb-3 #{error.get('state_id') and 'o_has_error' or ''} col-md-6 div_state"
+                         t-att-style="(not country or not country.state_ids) and 'display: none'">
+                        <label class="col-form-label" for="state_id">State / Province</label>
+                        <select name="state_id"
+                                t-attf-class="form-select #{error.get('state_id') and 'is-invalid' or ''}"
+                                data-init="1">
+                            <option value="">State / Province...</option>
+                            <t t-foreach="country_states" t-as="s">
+                                <option t-att-value="s.id"
+                                        t-att-selected="s.id == ('state_id' in checkout and country and checkout['state_id'] != '' and int(checkout['state_id']))">
+                                    <t t-esc="s.name"/>
+                                </option>
+                            </t>
+                        </select>
+                    </div>
+                    <div class="w-100"/>
+                    <t t-set='zip_city'
+                       t-value='country and [x for x in country.get_address_fields() if x in ["zip", "city"]] or ["city", "zip"]'/>
+                    <t t-if="'zip' in zip_city and zip_city.index('zip')">
+                        <div t-attf-class="mb-3 #{error.get('zip') and 'o_has_error' or ''} col-lg-6 div_zip">
+                            <label class="col-form-label label-optional" for="zip">Zip Code</label>
+                            <input type="text" name="zip"
+                                   t-attf-class="form-control #{error.get('zip') and 'is-invalid' or ''}"
+                                   t-att-value="'zip' in checkout and checkout['zip']"/>
+                        </div>
+                    </t>
+                    <div t-attf-class="mb-3 #{error.get('country_id') and 'o_has_error' or ''} col-lg-6 div_country">
+                        <label class="col-form-label" for="country_id">Country</label>
+                        <select id="country_id" name="country_id"
+                                t-attf-class="form-select #{error.get('country_id') and 'is-invalid' or ''}"
+                                t-att-mode="mode[1]">
+                            <option value="">Country...</option>
+                            <t t-foreach="countries" t-as="c">
+                                <option t-att-value="c.id" t-att-selected="c.id == (country and country.id or -1)">
+                                    <t t-esc="c.name"/>
+                                </option>
+                            </t>
+                        </select>
+                    </div>
+
+                    <div class="w-100"/>
+                    <t t-if="mode == ('new', 'billing') and not only_services">
+                        <div class="col-lg-12">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" id='shipping_use_same' class="mr8" name='use_same' value="1"
+                                           checked='checked'/>Ship to the same address
+                                    <span class='ship_to_other text-muted' style="display: none">&amp;nbsp;(
+                                        <i>Your shipping address will be requested later)</i>
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                    </t>
+                </div>
+            </xpath>
+            <xpath expr="//h2[hasclass('o_page_header')]/span" position="replace">
+                <span t-if="account_on_checkout != 'mandatory'">Fill in your Billing Address</span>
+            </xpath>
+        </template>
+
+        <template id="confirmation" inherit_id="website_sale.confirmation">
+            <xpath expr="//div[hasclass('thanks_msg')]//a" position="attributes">
+                <t t-if="website.company_id.is_oxford">
+                    <attribute name="class" add="d-lg-none d-md-none" separator=" "/>
+                </t>
+            </xpath>
+        </template>
+
+        <!--
+                <template id="s_product_container_homepage" name="Product Slider: Homepage">
+                    <section class="oe_website_sale o_not_editable" id="products_home_slider"  t-att-filterId="filterId">
+                    <t t-set="filterId" t-value="request.env.ref('header_layout.dynamic_filter_oxf_products_template').id"/>
+                    <input type="hidden" name="filterId" t-att-value="filterId"/>
+                        <div class="container product_slide_container" >
+                            <div class="row">
+                                <div class="d-flex flex-lg-row flex-column col-12 px-lg-0 header_container">
+                                    <div class="col-lg-9 col-12">
+                                        <h2 class="">Traditional Dinnerware, Refreshed</h2>
+                                        <span class="custom-text-muted mb-3 ">Celebrate the heart of your home–the kitchen–with
+                                            dinnerware that speaks to your specific design preferences and lifestyle.
+                                        </span>
+                                    </div>
+                                    <div class="d-flex text-lg-end col-lg-3 col-12 py-1 justify-content-lg-end">
+                                        <a class="btn mb-3 me-1 p-0 shadow-none owl-prev" href="#home_product_slider"
+                                           role="button"
+                                           data-bs-slide="prev">
+                                            <img src="/header_layout/static/src/svg/fill_vector_1.svg"
+                                                 alt="Vector"/>
+                                        </a>
+                                        <a class="btn mb-3 p-0 shadow-none owl-next" href="#home_product_slider"
+                                           role="button"
+                                           data-bs-slide="next">
+                                            <img src="/header_layout/static/src/svg/fill_vector_2.svg"
+                                                 alt="Vector"/>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="container slider-product-container">
+                                    <div  class="home_product_slider" >
+        &lt;!&ndash;                                <div class="dynamic_snippet_template"/>&ndash;&gt;
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </section>
+                </template>
+        -->
+        <!-- <template id="header_layout.product_dynamic_template">
+             <div class="owl-carousel">
+                 <t t-esc="data"/>
+                 <t t-foreach="data" t-as="product">
+                     <div class="item">
+                         &lt;!&ndash; Display dynamic content here &ndash;&gt;
+                       <t t-call="header_layout.product_card"/>
+                     </div>
+                 </t>
+             </div>
+         </template>-->
+
+        <template id="category_container_homepage" name="Category Slider: Homepage">
+            <section class="oe_website_sale o_not_editable" id="categories_home_slider">
+                <div class="container category_slide_container">
+                    <div class="row">
+                        <div class="d-flex flex-lg-row flex-column col-12 px-lg-0 header_container">
+                            <div class="col-lg-9 col-12">
+                                <h2 class="">A collection for every consumer</h2>
+                                <span class="custom-text-muted mb-3 ">From sophisticated designs inspired by tradition
+                                    to colorful pieces to liven up your space.
+                                </span>
+                            </div>
+                            <div class="d-flex text-lg-end col-lg-3 col-12 py-1 justify-content-lg-end">
+                                <a class="btn mb-3 me-1 p-0 shadow-none owl-prev" href="#home_category_slider"
+                                   role="button"
+                                   data-bs-slide="prev">
+                                    <img src="/header_layout/static/src/svg/fill_vector_1.svg"
+                                         alt="Vector"/>
+                                </a>
+                                <a class="btn mb-3 p-0 shadow-none owl-next" href="#home_category_slider"
+                                   role="button"
+                                   data-bs-slide="next">
+                                    <img src="/header_layout/static/src/svg/fill_vector_2.svg"
+                                         alt="Vector"/>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="container slider-category-container">
+                            <div id="home_category_slider"
+                                 class="owl-carousel px-0">
+                                <t t-set="categories"
+                                   t-value="request.env['product.public.category'].search([('child_id','=', False)])"/>
+                                <t t-foreach="categories" t-as="category">
+
+                                    <div class="item category_item_style_2">
+                                        <t t-set="page_url" t-value="'/shop/category/%s' % category.id"/>
+                                        <a t-att-href="page_url">
+                                            <div t-field="category.icon"
+                                                 class="oe_unmovable position-relative oxf_category d-flex justify-content-center overflow-hidden"
+                                                 t-options='{"widget": "image", "preview_image": "icon", "class": "oe_unmovable  mh-100 oxf_category_item_style_2", "alt-field": "name"}'/>
+                                            <span class="col-12 fw-500 lh-3" t-esc="category.name"/>
+                                        </a>
+                                    </div>
+                                </t>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </template>
+
+        <template id="header_layout.website_review_page" name="Reviews" priority="15">
+            <t t-call="website.layout">
+                <div class="oxf_review_rating_container my-0" style="background-color:#E6E3DE;">
+                    <div class="o_shop_discussion_rating border-top-0" data-anchor="true">
+                        <section id="o_website_page_reviews" class="container" data-anchor="true">
+                            <h3 class="text-center fw-500 oxf_review_container_header">Exceeding Expectations for 75+
+                                Years
+                            </h3>
+                            <div id="o_website_page_reviews_content">
+                                <t t-call="portal.message_thread">
+                                    <t t-set="object" t-value="website"/>
+                                    <t t-set="display_rating" t-value="true"/>
+                                    <t t-set="message_per_page" t-value="5"/>
+                                    <t t-set="two_columns" t-value="False"/>
+                                </t>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </t>
+        </template>
+    </data>
+</odoo>

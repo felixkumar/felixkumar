@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<!--    <template id="assets_frontend" name="frotend assets" inherit_id="website.assets_frontend">-->
+<!--        <xpath expr="script[last()]" position="after">-->
+<!--            <script type="text/javascript" src="/business_appointment_tus/static/src/js/skip_page.js"/>-->
+<!--       </xpath>-->
+<!--    </template>-->
+</odoo>

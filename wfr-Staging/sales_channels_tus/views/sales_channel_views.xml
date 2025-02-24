@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="sales_channel_form_view" model="ir.ui.view">
+            <field name="name">sales.channel.form</field>
+            <field name="model">sales.channel</field>
+            <field name="arch" type="xml">
+                <form string="Sales Channel">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="sales_channel_tree_view" model="ir.ui.view">
+            <field name="name">sales.channel.tree</field>
+            <field name="model">sales.channel</field>
+            <field name="arch" type="xml">
+                <tree string="Sales Channel" editable="bottom">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_sales_channel_filter" model="ir.ui.view">
+            <field name="name">sales.channel.search</field>
+            <field name="model">sales.channel</field>
+            <field name="arch" type="xml">
+                <search string="Sales Channel">
+                    <field name="name" context="{'group_by': 'name'}"/>
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="sales_channel_action">
+            <field name="name">Sales Channel</field>
+            <field name="res_model">sales.channel</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="view_sales_channel_filter"/>
+        </record>
+
+        <record id="sales_channels_tus.inherit_sale_view_order_form" model="ir.ui.view">
+            <field name="name">Sales Channel Order Search View</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_sales_order_filter"/>
+            <field name="arch" type="xml">
+                <xpath expr="//filter[@name='my_sale_orders_filter']" position="after">
+                    <filter name="group_by_sales_channel_account" string="Sales Channel"
+                            context="{'group_by': 'sales_channel_id'}"/>
+                </xpath>
+            </field>
+        </record>
+
+        <menuitem id="menu_sales_channel"
+                  action="sales_channel_action"
+                  name="Sales Channel"
+                  parent="sale.menu_sale_config"
+                  sequence="19"/>
+
+    </data>
+</odoo>

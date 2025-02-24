@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="edi_mapping_view_form" model="ir.ui.view">
+        <field name="name">edi.mapping.form</field>
+        <field name="model">edi.mapping</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_create_lines_from_xsd" string="Create Lines" type="object"/>
+                    <button name="configure" string="Configure" type="object"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="sync_action_id"/>
+                            <field name="sync_action_type" invisible="1"/>
+                            <field name="partner_id"/>
+                        </group>
+                        <group>
+                            <field name="xsd_id"/>
+                        </group>
+                    </group>
+                    <field name="mapping_line_ids" widget="mapping_widget">
+                        <tree limit="100000">
+                            <field name="parent_id" invisible="1"/>
+                            <field name="child_ids" invisible="1"/>
+                            <field name="has_children" invisible="1"/>
+                            <field name="depth" invisible="1"/>
+                            <field name="tag" options="{'expandable': True}"/>
+                            <field name="odoo_model_id"/>
+                            <field name="odoo_field_id"/>
+                        </tree>
+                    </field>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="edi_mapping_view_tree" model="ir.ui.view">
+        <field name="name">edi.mapping.tree</field>
+        <field name="model">edi.mapping</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="sync_action_id"/>
+                <field name="partner_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="edi_mapping_line_view_form" model="ir.ui.view">
+        <field name="name">edi.mapping.line.form</field>
+        <field name="model">edi.mapping.line</field>
+        <field name="arch" type="xml">
+            <form>
+                <field name="sync_action_doc_type" invisible="1"/>
+                <group name="common" string="Common">
+                    <field name="tag"/>
+                    <field name="odoo_model_id"/>
+                    <field name="odoo_field_id" domain="[('model_id', '=', odoo_model_id)]"/>
+                    <field name="child_ids" invisible="1"/>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_edi_mapping_views" model="ir.actions.act_window">
+        <field name="name">Edi Mappings</field>
+        <field name="res_model">edi.mapping</field>
+        <field name="target">main</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+    </record>
+
+    <menuitem id="menu_edi_mapping"
+        name="Mappings"
+        parent="menu_edi"
+        action="action_edi_mapping_views"
+        sequence="3"/>
+</odoo>

@@ -1,0 +1,52 @@
+<odoo>
+    <data>
+        <record id="shipping_wizard_form" model="ir.ui.view">
+            <field name="name">shipping.wizard.form</field>
+            <field name="model">shipping.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Set Delivered/Received Date on Shipping">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="shipping_date"/>
+                            </group>
+                            <group>
+                                <field name="shipping_type" widget="radio"/>
+                            </group>
+                            <field name="freight_ids">
+                                <tree>
+                                    <field name="name" string="Name"/>
+                                    <field name="partner_id"/>
+                                    <field name="port_loading_id"/>
+                                    <field name="port_shipping_id"/>
+                                    <field name="import_id"/>
+                                    <field name="date_order"/>
+                                </tree>
+                            </field>
+                        </group>
+                        <footer>
+                        <button string="Set Date" name="set_date" type="object"
+                                class="btn-primary"/>
+                        <button string="Cancel" class="btn-default" special="cancel"/>
+                    </footer>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="shipping_wizard_action" model="ir.actions.act_window">
+            <field name="name">Set Delivered/Received Date on Shipping</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">shipping.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="shipping_wizard_form"/>
+            <field name="target">new</field>
+        </record>
+
+<!--        <menuitem id="menu_shipping_date"-->
+<!--                  name="Set Shipping Date"-->
+<!--                  parent="menu_track_order_root"-->
+<!--                  action="shipping_wizard_action"-->
+<!--                  sequence="2"/>-->
+    </data>
+</odoo>

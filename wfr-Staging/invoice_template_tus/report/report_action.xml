@@ -1,0 +1,32 @@
+<odoo>
+
+    <record id="account_custom_customer_invoice_paperformat_temp" model="report.paperformat">
+        <field name="name">Custom Invoice Paper Format</field>
+        <field name="default" eval="True"/>
+        <field name="format">custom</field>
+        <field name="page_height">279</field>
+        <field name="page_width">215</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">97</field>
+        <field name="margin_bottom">36.50</field>
+        <field name="margin_left">5</field>
+        <field name="margin_right">5</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">96</field>
+        <field name="dpi">85</field>
+    </record>
+   
+    <!-- Invoice Report PDF -->
+    <record id="account_custom_customer_invoice" model="ir.actions.report">
+        <field name="name">Invoice</field>
+        <field name="model">account.move</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">invoice_template_tus.report_custom_customer_invoice</field>
+        <field name="report_file">invoice_template_tus.report_custom_customer_invoice</field>
+        <field name="print_report_name">(object._get_report_base_filename())</field>
+        <field name="binding_model_id" ref="warefor_3pl_tus.model_account_move"/>
+        <field name="paperformat_id" ref="invoice_template_tus.account_custom_customer_invoice_paperformat_temp"/>
+        <field name="binding_type">report</field>
+    </record>
+    
+</odoo>

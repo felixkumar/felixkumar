@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="osd_report_template_main_view">
+        <t t-call="web.html_container">
+            <t t-call="web.layout">
+
+                <div class="page" style="padding-top:">
+                    <t t-foreach="freight_ids" t-as="freight_id">
+                        <t t-set="o" t-value="env['freight.freight'].browse(freight_id)"/>
+                        <t t-set="osd_ids" t-value="o.osd_ids.filtered(lambda x: x.sku_id.id in product_ids)"/>
+                        <style>
+                            .text_data{
+                            height:20px !important;
+                            font-size:12px;
+                            }
+                        </style>
+                        <t t-if="osd_ids">
+                            <h2 style="text-align: center;">
+                                <span t-esc="o.name"/>
+                            </h2>
+                            <table class="table" border="1" style="width:100%;">
+                                <thead>
+                                    <th class="text_data" width="50%">SKU</th>
+                                    <th class="text_data" width="30%">Report Type</th>
+                                    <th class="text_data" width="20%">QTY</th>
+                                </thead>
+                                <t t-foreach="o.osd_ids" t-as="osd_line">
+                                    <t t-if="osd_line and osd_line.sku_id.id in product_ids">
+                                        <tbody>
+                                            <tr style="page-break-after:always;text-align:center;">
+                                                <td class="text_data">
+                                                    <span t-esc="osd_line.sku_id.name"/>
+                                                </td>
+                                                <td class="text_data">
+<!--                                                    <span t-esc="osd_line.report_type"/>-->
+                                                </td>
+                                                <td class="text_data">
+<!--                                                    <span t-esc="osd_line.qty"/>-->
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </t>
+                                </t>
+                            </table>
+                        </t>
+                    </t>
+                </div>
+            </t>
+        </t>
+    </template>
+
+    <record id="osd_report_template" model="ir.actions.report">
+        <field name="name">OS&amp;D Report</field>
+        <field name="model">freight.freight</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">warefor_3pl_tus.osd_report_template_main_view</field>
+        <field name="report_file">warefor_3pl_tus.osd_report_template_main_view</field>
+        <field name="print_report_name">'OS&amp;D-%s' % object.name</field>
+        <field name="binding_model_id" ref="model_freight_freight"/>
+        <field name="paperformat_id" ref="warefor_3pl_tus.account_custom_customer_invoice_paperformat"/>
+        <field name="binding_type">report</field>
+    </record>
+
+</odoo>
+
+

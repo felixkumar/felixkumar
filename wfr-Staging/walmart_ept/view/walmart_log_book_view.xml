@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--Action of common log book-->
+    <record id="action_common_log_book_ept_walmart" model="ir.actions.act_window">
+        <field name="name">Common Log Book</field>
+        <field name="res_model">common.log.book.ept</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('walmart_marketplace_id','=',active_id)]</field>
+    </record>
+
+    <!--Search view of common log book-->
+    <record id="common_log_book_walmart_search_view_ept" model="ir.ui.view">
+        <field name="name">Common Log Search View</field>
+        <field name="model">common.log.book.ept</field>
+        <field name="type">search</field>
+        <field name="arch" type="xml">
+            <search string="Common Logs">
+                <field name="name"/>
+                <field name="type"/>
+                <group expand="0" string="Group By...">
+                    <filter name="marketplace" string="Marketplace" icon="terp-personal"
+                            context="{'group_by': 'walmart_marketplace_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!--Inherit tree view of common log book-->
+    <record id="inherit_view_of_common_log_book_ept_tree" model="ir.ui.view">
+        <field name="name">Marketplace in Log book Tree</field>
+        <field name="model">common.log.book.ept</field>
+        <field name="inherit_id"
+               ref="common_connector_library.action_common_log_book_ept_tree"/>
+        <field name="arch" type="xml">
+            <field name="create_date" position="after">
+                <field name="walmart_marketplace_id"
+                       attrs="{'column_invisible':[('module','!=','walmart_ept')]}"/>
+            </field>
+        </field>
+    </record>
+
+    <!--Inherit form view of common log book-->
+    <record id="inherit_view_of_common_log_book_ept_from" model="ir.ui.view">
+        <field name="name">Marketplace in Log book Form</field>
+        <field name="model">common.log.book.ept</field>
+        <field name="inherit_id"
+               ref="common_connector_library.action_common_log_book_ept_form"/>
+        <field name="arch" type="xml">
+            <field name="active" position="after">
+                <field name="walmart_marketplace_id" readonly="1"/>
+            </field>
+            <field name="res_id" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+        </field>
+    </record>
+
+    <record id="action_walmart_log_book_line_ept" model="ir.actions.act_window">
+        <field name="name">Log Book Lines</field>
+        <field name="res_model">common.log.lines.ept</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('module','=','walmart_ept')]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No mismatch details are found.
+            </p>
+        </field>
+    </record>
+    <!-- Main Log Menu -->
+    <menuitem id="menu_walmart_log_ept" name="Logs"
+              parent="walmart_ept.walmart_main_menu" sequence="5"
+              groups="walmart_ept.group_walmart_user">
+    </menuitem>
+
+    <menuitem id="walmart_file_process_job_log_line" name="Log lines"
+              parent="walmart_ept.menu_walmart_log_ept" sequence="4"
+              action="action_walmart_log_book_line_ept" groups="walmart_ept.group_walmart_user"/>
+
+</odoo>  

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="business_resource_view_form" model="ir.ui.view">
+        <field name="name">business.resource.form.custom</field>
+        <field name="model">business.resource</field>
+        <field name="inherit_id" ref="business_appointment.business_resource_view_form"/>
+        <field name="arch" type="xml">
+            <notebook position="inside">
+                <page name="custom_fields" string="Custom Details" invisible="0">
+                    <group name="group_custom_fields" invisible="1"/>
+                </page>
+            </notebook>
+            <group name="ba_resource_details_group" position="inside">
+                <group name="left_panel_group" invisible="1"/>
+                <group name="right_panel_group" invisible="1"/>
+            </group>
+            <field name="description" position="after">
+                <group name="after_description_group" invisible="1"/>
+            </field>
+        </field>
+    </record>
+
+</odoo>

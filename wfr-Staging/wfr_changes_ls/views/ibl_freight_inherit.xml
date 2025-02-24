@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="freight_freight_ibl_form_inherit" model="ir.ui.view">
+            <field name="name">freight.freight.ibl.form.inherit</field>
+            <field name="model">freight.freight</field>
+            <field name="inherit_id" ref="warefor_3pl_tus.freight_freights_ibl_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='partner_id']" position="attributes">
+                    <attribute name="required">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='warehouse_id']" position="attributes">
+                    <attribute name="required">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='ibl_remarks']" position="attributes">
+                    <attribute name="groups">!user_warehouse_restriction.user_carote_restriction_group_user</attribute>
+                </xpath>
+
+
+                <xpath expr="//label[@for='vessel']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='vessel']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//label[@for='seal_number_inbound']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='seal_number_inbound']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//group[@name='ocean_freight_dates']" position="replace">
+                    <group name="shipping_info" colspan="4" string="Shipping Information">
+                        <field name="vessel" string="Container #" required="1"/>
+                        <field name="seal_number_inbound" string="Seal #"/>
+                        <field name="stuffing_date" string="Stuffing Date"/>
+                        <field name="shipping_info_etd" string="ETD (Port of Export)"/>
+                        <field name="date_shipping" string="Sail Date"/>
+                        <field name="estimated_arrival_date" string="ETA (Port of Entry)"/>
+                        <field name="date_landing" string="Actual Port Arrival Date"/>
+                        <label for="wh_scheduled" string="ETA (Warehouse)"/>
+                        <div class="o_row">
+                            <field id="wh_scheduled" name="pickup_schedule_date" string="WH Expected Date"/>
+                        </div>
+                        <field name="available_to_order" string="Available to Fill Orders"/>
+                    </group>
+                </xpath>
+                <xpath expr="//group[@name='drayage_info']" position="replace">
+                    <group name="drayage_info" colspan="4" string="Drayage Info">
+                        <field name="freight_transport_id" invisible="1"/>
+                        <field name="drayage_id" domain="[('is_3pl_customer','=',True)]"
+                               context="{'is_outbound': True}"/>
+                        <field name="check_in_truck_yard" string="Container / Trailer Check-In"/>
+                        <field name="unload_start_date" string="Unloading Start Date/Time"/>
+                        <field name="unload_end_date" string="Unloading End Date/Time"/>
+                        <field name="check_out_truck_yard" string="Container / Trailer Check-Out"/>
+                        <field name="unload_time" string="Unloading Time"/>
+                        <field name="receiving_level_of_service" string="Shipping Level of Service (Days)"/>
+                    </group>
+                </xpath>
+                <xpath expr="//page[@name='package_lines']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//page[@name='docs']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//page[@name='pallet_configuration']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='port_shipping_id']" position="attributes">
+                    <attribute name="string">Port of Export</attribute>
+                </xpath>
+                <xpath expr="//field[@name='port_discharge_id']" position="attributes">
+                    <attribute name="string">Port of Entry</attribute>
+                </xpath>
+
+
+                <xpath expr="//header/button[@name='open_wizard_credit_memo']" position="after">
+                    <button name="copy_freight_data" string="Duplicate" groups="user_warehouse_restriction.user_carote_restriction_group_user"
+                            type="object" class="btn-secondary"/>
+                </xpath>
+
+
+                <xpath expr="//sheet" position="inside">
+                    <field name="hide_transfers_btn" invisible="1"/>
+                </xpath>
+                <xpath expr="//button[@name='button_freight_transfers']" position="attributes">
+                    <attribute name="attrs">{'invisible': ['|', ('transfers_count', '=', 0), ('hide_transfers_btn', '=', True)]}</attribute>
+                </xpath>
+                <xpath expr="//button[@name='button_freight_osd_transfers']" position="attributes">
+                    <attribute name="attrs">{'invisible': ['|', ('osd_transfers_count', '=', 0), ('hide_transfers_btn', '=', True)]}</attribute>
+                </xpath>
+                <xpath expr="//header" position="inside">
+                    <button name="action_planned_production" string="Move to Planned Production"
+                            class="btn btn-primary" type="object"
+                            attrs="{'invisible': [('transfers_count', '>', '0')]}"/>
+                </xpath>
+
+                <xpath expr="//sheet//group[@name='general']" position="replace">
+                    <group name="general_planned">
+                        <group name="general" string="General" colspan="6">
+                            <field name="import_id"/>
+                            <field name="partner_id" string="Customer / Consignee" required="1"/>
+                            <field name="reference" required="1"/>
+                            <field name="customer_po"/>
+                            <field name="po_date" string="PO Date"/>
+                            <field name="storage_type_id"/>
+                            <field name="description"/>
+                            <field name="consignee_id" required="1"/>
+                            <field name="warehouse_id" required="1"/>
+                            <field name="user_id" domain="[('share','=',False)]"
+                                   options="{'no_create_edit': True,'no_create': True}"/>
+                            <field name="inbound_logistics_id" domain="[('is_outbound','=',False)]"
+                                   widget="many2many_tags">
+                            </field>
+                            <field name="number_of_pallets"/>
+                        </group>
+                        <group name="planned" string="Planned Production" colspan="6">
+                            <field name="plan_production_scheduled_date"/>
+                            <field name="plan_expected_completion_date"/>
+                            <field name="plan_actual_completion_date"/>
+                        </group>
+                    </group>
+                </xpath>
+
+            </field>
+        </record>
+
+        <record id="freight_carote_limited_ibl_view" model="ir.ui.view">
+            <field name="name">freight.carote.ibl.limited.view</field>
+            <field name="model">freight.freight</field>
+            <field name="inherit_id" ref="warefor_3pl_tus.freight_freights_ibl_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='import_id']" position="replace">
+                    <t groups="user_warehouse_restriction.user_carote_restriction_group_user">
+                        <field name="import_id" string="Supplier" readonly="1"/>
+                    </t>
+                    <t groups="!user_warehouse_restriction.user_carote_restriction_group_user">
+                        <field name="import_id" string="Supplier" required="1"/>
+                    </t>
+                </xpath>
+                <xpath expr="//field[@name='partner_id']" position="replace">
+                    <t groups="user_warehouse_restriction.user_carote_restriction_group_user">
+                        <field name="partner_id" readonly="1"/>
+                    </t>
+                    <t groups="!user_warehouse_restriction.user_carote_restriction_group_user">
+                        <field name="partner_id" required="1"/>
+                    </t>
+                </xpath>
+                <xpath expr="//field[@name='consignee_id']" position="replace">
+                    <t groups="user_warehouse_restriction.user_carote_restriction_group_user">
+                        <field name="consignee_id" readonly="1"/>
+                    </t>
+                    <t groups="!user_warehouse_restriction.user_carote_restriction_group_user">
+                        <field name="consignee_id" required="1"/>
+                    </t>
+                </xpath>
+            </field>
+
+        </record>
+
+        <record id="freight_freight_obl_form_inherit" model="ir.ui.view">
+            <field name="name">freight.freight.obl.form.inherit</field>
+            <field name="model">freight.freight</field>
+            <field name="inherit_id" ref="warefor_3pl_tus.freight_freights_obl_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='open_ibl_ops_record']" position="attributes">
+                    <attribute name="groups">!user_warehouse_restriction.user_carote_restriction_group_user</attribute>
+                </xpath>
+
+                <xpath expr="//header" position="inside">
+                    <button name="sync_osd_freight_lines" string="Update Freight Lines" type="object"
+                            class="btn btn-secondary"
+                            groups="!user_warehouse_restriction.user_carote_restriction_group_user"
+                            attrs="{'invisible': [('is_outbound', '=', False)]}"/>
+                </xpath>
+            </field>
+        </record>
+
+        <menuitem name="Inventory"
+                  id="stock.menu_stock_root"
+                  sequence="140"
+                  groups="stock.group_stock_manager,stock.group_stock_user,user_warehouse_restriction.user_carote_restriction_group_user"
+                  web_icon="stock,static/description/icon.svg"/>
+
+        <menuitem id="warehouse_inventory_report.menu_warehouse_stock_fee_billing_report" name="Warehouse Monthly Report"
+                  parent="stock.menu_warehouse_report" sequence="11"
+                  groups="stock.group_stock_manager,stock.group_stock_user"
+                  action="warehouse_inventory_report.stock_fee_billing_action"/>
+
+
+    </data>
+</odoo>

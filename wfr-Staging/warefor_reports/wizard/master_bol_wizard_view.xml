@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="master_bol_wizard_view_form" model="ir.ui.view">
+        <field name="name">master.bol.wizard.view.form</field>
+        <field name="model">master.bol.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="skip_signature"/>
+                        <field name="freight_record" attrs="{'invisible':[('skip_signature','=',True)]}"/>
+                    </group>
+                    <group attrs="{'invisible':[('skip_signature','=',True)]}">
+                        <group id="check" string="Freight Charge Terms">
+                            <field name="is_master_fr_prepaid"/>
+                            <field name="is_master_fr_collect"/>
+                            <field name="is_master_fr_3rd_party"/>
+                        </group>
+                        <group id="check" string="Fee Terms">
+                            <field name="is_master_fee_prepaid"/>
+                            <field name="is_master_fee_collect"/>
+                            <field name="is_customer_check"/>
+                        </group>
+                    </group>
+                    <group class="col-6" attrs="{'invisible':[('skip_signature','=',True)]}">
+                        <field name="master_cod_amount"/>
+                    </group>
+
+                    <group attrs="{'invisible':[('skip_signature','=',True)]}">
+                        <group>
+                            <field name="master_date"/>
+                        </group>
+                        <group>
+                            <field name="master_pickup_date"/>
+                        </group>
+                    </group>
+                    <group id="check" string="Trailer Loaded" attrs="{'invisible':[('skip_signature','=',True)]}">
+                        <field name="is_master_by_shipper_trai"/>
+                        <field name="is_master_by_driver_trai"/>
+                    </group>
+                    <group id="check" string="Freight Counted" attrs="{'invisible':[('skip_signature','=',True)]}">
+                        <field name="is_master_by_shipper_freight"/>
+                        <field name="is_master_by_driver_freight"/>
+                        <field name="is_master_by_pieces"/>
+                    </group>
+                    <group attrs="{'invisible':[('skip_signature','=',True)]}">
+                        <field name="master_shipper_sign" widget="signature"/>
+                    </group>
+                    <group attrs="{'invisible':[('skip_signature','=',True)]}">
+                        <field name="master_carrier_sign" widget="signature"/>
+                    </group>
+                </sheet>
+                <footer>
+                    <button name="print_report_master_bol" type="object" string="Print" class="oe_highlight"/>
+                    <button name="cancel_btn" string="Cancel" special="cancel" data-hotkey="z" class="btn-secondary"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>

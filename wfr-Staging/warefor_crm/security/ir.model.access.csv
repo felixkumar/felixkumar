@@ -1,0 +1,10 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_product_development,product.development,model_product_development,,1,1,1,1
+access_container_load_calculation,container.load.calculation,model_container_load_calculation,,1,1,1,1
+access_container_size,container.size,model_container_size,,1,1,1,1
+access_container_floor_pallet,container.floor.pallet,model_container_floor_pallet,,1,1,1,1
+access_product_development_state,product.development.state,model_product_development_state,,1,1,1,1
+access_export_fob_price,export.fob.price,model_export_fob_price,,1,1,1,1
+access_importation_cost,importation.cost,model_importation_cost,,1,1,1,1
+access_storage_cost,storage.cost,model_storage_cost,,1,1,1,1
+access_material_cost,material.cost,model_material_cost,,1,1,1,1

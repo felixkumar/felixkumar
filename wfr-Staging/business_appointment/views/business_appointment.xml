@@ -1,0 +1,314 @@
+<?xml version="1.0"?>
+<odoo>
+
+    <record id="business_appointment_view_search" model="ir.ui.view">
+        <field name="name">business.appointment.search</field>
+        <field name="model">business.appointment</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="resource_id" filter_domain="['|', '|', ('resource_id', 'ilike', self), ('extra_resource_ids', 'ilike', self), ('info_resource_id', 'ilike', self)]"/>
+                <field name="service_id"/>
+                <field name="partner_id" filter_domain="['|', '|', '|', ('partner_id', 'ilike', self), ('contact_name', 'ilike', self), ('partner_name', 'ilike', self), ('email', 'ilike', self)]"/>
+                <field name="resource_type_id"/>
+                <field name="state"/>
+                <field name="prereservation_id" invisible="1"/>
+                <filter string="My Appointments" name="my_appointments" domain="[('user_id', '=', uid)]"/>
+                <separator/>
+                <filter string="Planned Appointments" name="planned_appointments" domain="[('state', '=', 'reserved')]"/>
+                <separator/>
+                <filter string="Planned but Already Late"
+                        name="planned_and_appointments"
+                        domain="[('datetime_start', '&lt;', (time.strftime('%%Y-%%m-%%d %%H:%%M:%%S'))), ('state', '=', 'reserved')]"
+                />
+                <separator/>
+                <filter name="today"
+                        string="Today"
+                        domain="[('day_date', '=', (context_today().strftime('%%Y-%%m-%%d')))]"
+                />
+                <filter name="filter_week"
+                        string="Next 7 days"
+                        domain="[('day_date', '&gt;=', (context_today().strftime('%%Y-%%m-%%d'))),('day_date', '&lt;=', ((context_today()+datetime.timedelta(days=7)).strftime('%%Y-%%m-%%d')))]"
+                />
+                <filter name="filter_month"
+                        string="This Month"
+                        domain="[('day_month','=',((context_today()).strftime('%m-%Y')))]"
+                />
+                <filter name="filter_year"
+                        string="This Year"
+                        domain="[('day_year','=',((context_today()).strftime('%Y')))]"
+                />
+                <separator/>
+                <filter string="Activities Todo" name="activities_my" domain="[('activity_ids.user_id', '=', uid)]"/>
+                <separator/>
+                <filter string="Late Activities"
+                        name="activities_overdue"
+                        domain="[('activity_ids.date_deadline', '&lt;', context_today().strftime('%Y-%m-%d'))]"
+                />
+                <filter string="Today Activities"
+                        name="activities_today"
+                        domain="[('activity_ids.date_deadline', '=', context_today().strftime('%Y-%m-%d'))]"
+                />
+                <filter string="Future Activities"
+                        name="activities_upcoming_all"
+                        domain="[('activity_ids.date_deadline', '&gt;', context_today().strftime('%Y-%m-%d'))]"
+                />
+                <separator/>
+                <group expand="0" string="Group By">
+                    <filter string="By Prime Resources" name="group_prime_resource_id" context="{'group_by': 'info_resource_id'}"/>
+                    <filter string="By All Resources (incl. Aliases)" name="group_resource_id" context="{'group_by': 'resource_id'}"/>
+                    <filter string="Service" name="service_id_group" context="{'group_by': 'service_id'}"/>
+                    <filter string="Contact" name="partner_id_group" context="{'group_by': 'partner_id'}"/>
+                    <filter string="Responsible" name="partner_id_group" context="{'group_by': 'user_id'}"/>
+                    <filter string="Resource Type" name="resource_type_id_group" context="{'group_by': 'resource_type_id'}"/>
+                    <filter string="Start Date" name="datetime_start_group" context="{'group_by': 'datetime_start'}"/>
+                    <filter string="State" name="state_group" context="{'group_by': 'state'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+    <record id="business_appointment_view_form" model="ir.ui.view">
+        <field name="name">business.appointment.form</field>
+        <field name="model">business.appointment</field>
+        <field name="arch" type="xml">
+            <form js_class="appointment_form" duplicate="0">
+                <header>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_mark_done"
+                                type="object"
+                                class="oe_stat_button"
+                                icon="fa-calendar-check-o"
+                                attrs="{'invisible': [('state', 'not in', ['reserved'])]}"
+                        >
+                            Mark Done
+                        </button>
+                        <button name="action_mark_missed"
+                                type="object"
+                                class="oe_stat_button"
+                                icon="fa-calendar-times-o"
+                                attrs="{'invisible': [('state', 'not in', ['reserved'])]}"
+                        >
+                            Mark Missed
+                        </button>
+                        <button name="action_cancel"
+                                type="object"
+                                class="oe_stat_button"
+                                icon="fa-times"
+                                attrs="{'invisible': [('state', 'in', ['cancel'])]}"
+                        >
+                            Cancel
+                        </button>
+                        <button name="action_restore"
+                                type="object"
+                                class="oe_stat_button"
+                                icon="fa-refresh"
+                                attrs="{'invisible': [('state', 'not in', ['done', 'cancel', 'missed'])]}"
+                        >
+                            Re-Plan
+                        </button>
+                        <button name="%(business_appointment.rating_rating_action_business_appointment)d" 
+                                type="action" 
+                                attrs="{'invisible': [('rating_count', '=', 0)]}" 
+                                class="oe_stat_button" 
+                                icon="fa-smile-o" 
+                                groups="business_appointment.group_business_appointment_rating"
+                        >
+                            <field name="rating_count" string="Rating" widget="statinfo"/>
+                        </button>
+                    </div>
+                    <div class="oe_title">
+                        <h1><field name="name"/></h1>
+                    </div>
+                    <group name="appointment_details">
+                        <group>
+                            <field name="resource_id" readonly="1"/>
+                            <field name="service_id" readonly="1"/>
+                            <field name="resource_type_id" invisible="1"/>
+                            <label for="datetime_start"/>
+                            <div>
+                                <field name="datetime_start" class="oe_inline" readonly="1"/> to
+                                <field name="datetime_end" class="oe_inline" readonly="1"/>
+                            </div>
+                            <field name="extra_resource_ids" widget="many2many_tags" readonly="1"/>
+                        </group>
+                        <group>
+                            <field name="partner_id" widget="res_partner_many2one"/>
+                            <field name="pricelist_id" 
+                                   groups="product.group_product_pricelist,product.group_sale_pricelist" 
+                                   options="{'no_open':True, 'no_create': True}"
+                            />
+                            <field name="user_id"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                            <field name="alarm_ids" 
+                                   options="{'color_field': 'color'}"
+                                   attrs="{'invisible': [('state', '!=', 'reserved')]}"
+                                   widget="many2many_tags"
+                            />
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Notes" name="notes">
+                            <field name="description"/>
+                        </page>
+                        <!-- Invisible until https://github.com/odoo/odoo/issues/100464 is fixed -->
+                        <page string="Video call" 
+                              name="videocall"
+                              groups="business_appointment.group_business_appointment_video_calls"
+                              invisible="1"
+                        >
+                            <group>
+                                <field name="videocall" 
+                                       widget="url"
+                                       readonly="1"
+                                       attrs="{'invisible': [('state', '!=', 'reserved')]}"
+                                />
+                            </group>
+                            <div attrs="{'invisible': [('state', '!=', 'reserved')]}">
+                                <button name="action_generate_videocall" 
+                                        type="object"
+                                        class="btn btn-link "
+                                        attrs="{'invisible':  [('videocall', '!=', False), ('videocall', '!=', '')]}"
+                                >
+                                     <span class="fa fa-plus"></span><span> Add video call</span>
+                                </button>
+                                <button name="action_clear_videocall"
+                                        type="object"
+                                        class="btn btn-link "
+                                        attrs="{'invisible': ['|', ('videocall', '=', False), ('videocall', '=', '')]}"
+                                >
+                                     <span class="fa fa-times"></span><span> Delete video call</span>
+                                </button>
+                            </div>
+                        </page>
+                        <page string="Extra Products" name="extra_products">
+                            <field name="extra_product_ids">
+                                <tree editable="top">
+                                    <field name="product_id"/>
+                                    <field name="product_uom_qty"/>
+                                </tree>
+                                <form>
+                                    <sheet>
+                                        <group>
+                                            <field name="product_id"/>
+                                            <field name="product_uom_qty"/>                                    
+                                        </group>
+                                    </sheet>
+                                </form>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+    <record id="business_appointment_view_tree" model="ir.ui.view">
+        <field name="name">business.appointment.tree</field>
+        <field name="model">business.appointment</field>
+        <field name="arch" type="xml">
+            <tree js_class="appointment_list"
+                  decoration-danger="state in ['reserved'] and late_to_know"
+                  decoration-success="state in ['reserved']"
+                  decoration-muted="state in ['cancel']"
+                  decoration-warning="state in ['missed']"
+            >
+                <field name="name"/>
+                <field name="resource_id"/>
+                <field name="service_id"/>
+                <field name="partner_id"/>
+                <field name="datetime_start" string="Start"/>
+                <field name="datetime_end"/>
+                <field name="state"/>
+                <field name="late_to_know" invisible="1"/>
+            </tree>
+        </field>
+    </record>
+    <record id="business_appointment_view_calendar" model="ir.ui.view">
+        <field name="name">business.appointment.appointment.calendar</field>
+        <field name="type">calendar</field>
+        <field name="model">business.appointment</field>
+        <field name="arch" type="xml">
+            <calendar string="Business Appointments" 
+                      date_start="datetime_start"
+                      date_stop="datetime_end"
+                      color="resource_id"
+                      event_open_popup="0"
+                      mode="month"
+                      js_class="appointment_calendar"
+            >
+                <field name="name"/>
+                <!-- Invisible until https://github.com/odoo/odoo/issues/100464 is fixed -->
+                <field name="videocall" 
+                       attrs="{'invisible': [('videocall', '=', False)]}"
+                       widget="url"
+                       groups="business_appointment.group_business_appointment_video_calls"
+                       invisible="1"
+                />
+                <field name="partner_id"/>
+                <field name="service_id"/>
+                <field name="resource_id"/>
+                <field name="extra_resource_ids" 
+                       attrs="{'invisible': ['|', ('extra_resource_ids', '=', False), ('extra_resource_ids', '=', [])]}"
+                       widget="many2many_tags"
+                />
+                <field name="resource_type_id"/>
+                <field name="user_id"/>
+                <field name="state"/>
+            </calendar>
+        </field>
+    </record>
+    <record id="business_appointment_action" model="ir.actions.act_window">
+        <field name="name">Appointments</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">business.appointment</field>
+        <field name="view_mode">calendar,tree,form</field>
+        <field name="search_view_id" eval="business_appointment_view_search"/>
+    </record>
+    <record id="business_appointment_action_only_form" model="ir.actions.act_window">
+        <field name="name">Appointment</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">business.appointment</field>
+        <field name="view_mode">form</field>
+    </record>
+    <record id="business_appointment_action_tree_main" model="ir.actions.act_window">
+        <field name="name">Appointments</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">business.appointment</field>
+        <field name="view_mode">tree,calendar,form</field>
+    </record>
+    <record id="action_mass_appointments_done" model="ir.actions.server">
+        <field name="name">Mark Done</field>
+        <field name="model_id" ref="model_business_appointment"/>
+        <field name="binding_model_id" ref="business_appointment.model_business_appointment"/>
+        <field name="state">code</field>
+        <field name="code">
+records.action_mark_done()
+        </field>
+    </record>
+    <record id="action_mass_appointments_missed" model="ir.actions.server">
+        <field name="name">Mark Missed</field>
+        <field name="model_id" ref="model_business_appointment"/>
+        <field name="binding_model_id" ref="business_appointment.model_business_appointment"/>
+        <field name="state">code</field>
+        <field name="code">
+records.action_mark_missed()
+        </field>
+    </record>
+    <record id="action_mass_appointments_rcancel" model="ir.actions.server">
+        <field name="name">Cancel</field>
+        <field name="model_id" ref="model_business_appointment"/>
+        <field name="binding_model_id" ref="business_appointment.model_business_appointment"/>
+        <field name="state">code</field>
+        <field name="code">
+records.action_cancel()
+        </field>
+    </record>
+
+</odoo>

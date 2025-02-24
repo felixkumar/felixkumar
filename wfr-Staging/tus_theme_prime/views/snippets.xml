@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!-- Snippets menu -->
+    <template id="snippets" inherit_id="website.snippets">
+        <xpath expr="//div[hasclass('o_panel')][last()]" position="after">
+            <div id="snippet_external" class="o_panel">
+                <div class="o_panel_header">
+                    External Snippets
+                </div>
+                <div class="o_panel_body">
+                    <t t-snippet="tus_theme_prime.s_icon_images" string="Icon Images"
+                       t-thumbnail="/website/static/src/img/snippets_thumbs/s_references.svg">
+                    </t>
+                </div>
+            </div>
+        </xpath>
+    </template>
+
+    <record id="tus_theme_prime.snippet_options" model="ir.ui.view">
+        <field name="name">snippet_options</field>
+        <field name="inherit_id" search="[('key', '=', 'theme_prime.snippet_options')]"/>
+        <field name="type">qweb</field>
+        <field name="priority" eval="35"/>
+        <field name="active">True</field>
+        <field name="key">tus_theme_prime.snippet_options</field>
+        <field name="arch" type="xml">
+            <xpath expr="//we-select[@data-variable='tp-preheader-template']" position="inside">
+                <we-button title="Prime Preheader Custom" data-name="tp_preheader_custom_opt"
+                           data-customize-website-views="tus_theme_prime.template_preheader_custom"
+                           data-customize-website-variable="'custom_style'"
+                           data-img="/tus_theme_prime/static/src/snippets/preheader_text.svg"/>
+            </xpath>
+
+        </field>
+    </record>
+</odoo>

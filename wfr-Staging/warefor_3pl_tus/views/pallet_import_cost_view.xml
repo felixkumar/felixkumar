@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="form_view_pallet_import_cost" model="ir.ui.view">
+            <field name="name">pallet.import.cost.form.view</field>
+            <field name="model">pallet.import.cost</field>
+            <field name="arch" type="xml">
+                <form string="Pallet Import Cost">
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="name" class="oe_edit_only" string="Name"/>
+                            <h1>
+                                <field name="name"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="actual_cost"/>
+                                <field name="processing_fee_per" readonly="1"/>
+                            </group>
+                            <group>
+                                <field name="processing_fee_amt"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="tree_view_pallet_import_cost" model="ir.ui.view">
+            <field name="name">pallet.import.cost.tree.view</field>
+            <field name="model">pallet.import.cost</field>
+            <field name="arch" type="xml">
+                <tree string="Pallet">
+                    <field name="name"/>
+                    <field name="actual_cost" sum="Total Actual Cost"/>
+                    <field name="processing_fee_per"/>
+                    <field name="processing_fee_amt" sum="Total Processing Fee"/>
+                    <field name="total_cost" sum="Total Price"/>
+                </tree>
+            </field>
+        </record>
+
+    </data>
+</odoo>

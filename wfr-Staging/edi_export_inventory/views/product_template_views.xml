@@ -1,0 +1,25 @@
+<odoo>
+    <record id="view_edi_inventory_product_template_form_inherit" model="ir.ui.view">
+            <field name="name">edi.inventory.view.product.template.form</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="edi_sale_common.view_edi_product_form_inherit"/>
+            <field eval="99" name="priority"/>
+            <field name="arch" type="xml">
+                    <xpath expr="//page[@name='edi_fields']/group[@name='first_group']" position="inside">
+                        <field name='outbound_edi_inventory_partners'>
+                            <tree>
+                                <field name="name"/>
+                            </tree>
+                        </field>
+                    </xpath>
+
+                    <xpath expr="//group[@name='first_group']/group[@name='group_left']" position="inside">
+                        <field name="edi_buyer_part_number" />
+                        <field name="edi_vendor_part_number" />
+                        <field name="edi_consumer_package_code" />
+                        <field name="edi_expiration_date" />
+                        <field name="edi_product_characteristic_code" />
+                    </xpath>
+            </field>
+        </record>
+</odoo>

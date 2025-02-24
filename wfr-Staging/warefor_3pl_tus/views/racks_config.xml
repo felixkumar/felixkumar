@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="form_view_racks_configuration" model="ir.ui.view">
+            <field name="name">racks.configuration.form.view</field>
+            <field name="model">racks.configuration</field>
+            <field name="arch" type="xml">
+                <form string="Racks Configuration">
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="name" class="oe_edit_only" string="Name"/>
+                            <h1>
+                                <field name="name"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="warehouse_id"/>
+                                <field name="limit"/>
+                                <field name="row"/>
+                                <field name="column"/>
+                                <field name="toggle_row" widget="boolean_toggle"/>
+                                <field name="toggle_column" widget="boolean_toggle"/>
+                            </group>
+                            <group>
+                                <field name="row_space"/>
+                                <field name="column_space"/>
+                                <field name="rack_space"/>
+                            </group>
+                        </group>
+                        <group>
+                            <group>
+                                <field name="starting_position_x"/>
+                                <field name="starting_position_y"/>
+                                <field name="starting_position_z"/>
+                            </group>
+                            <group>
+                                <field name="size_x"/>
+                                <field name="size_y"/>
+                                <field name="size_z"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="tree_view_racks_configuration" model="ir.ui.view">
+            <field name="name">racks.configuration.tree.view</field>
+            <field name="model">racks.configuration</field>
+            <field name="arch" type="xml">
+                <tree string="Racks Configuration">
+                    <field name="name"/>
+                    <field name="warehouse_id"/>
+                    <field name="starting_position_x"/>
+                    <field name="starting_position_y"/>
+                    <field name="starting_position_z"/>
+                    <field name="size_x"/>
+                    <field name="size_y"/>
+                    <field name="size_z"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_action_racks_configuration" model="ir.actions.act_window">
+            <field name="name">Racks Configuration</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">racks.configuration</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="menu_racks_configuration" name="3D Racks" action="view_action_racks_configuration"
+                  parent="warefor_3pl_tus.menu_pallet_mgmt_root" sequence="6"/>
+
+    </data>
+</odoo>

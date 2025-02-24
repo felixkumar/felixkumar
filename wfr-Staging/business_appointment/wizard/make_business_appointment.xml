@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<odoo>
+
+    <record id="make_business_appointment_form_view" model="ir.ui.view">
+        <field name="name">Schedule Appointment</field>
+        <field name="model">make.business.appointment</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="appointment_id"
+                           options="{'no_create_edit': 1, 'no_quick_create': 1}"
+                           attrs="{'invisible': [('appointment_id', '=', False)]}"
+                           readonly="1"
+                    />
+                    <field name="pricelist_id" attrs="{'invisible': [('group_pricelists', '=', False)]}" options="{'no_open':True, 'no_create_edit': True}"/>
+                    <field name="resource_type_id" options="{'no_create_edit': 1, 'no_quick_create': 1}"/>
+                    <field name="resource_ids"
+                           widget="resource_many2many"
+                           options="{'no_create_edit': 1, 'no_quick_create': 1}"
+                           domain="[('resource_type_id', '=', resource_type_id)]"
+                           attrs="{'invisible': [('allocation_type', '=', 'automatic')], 'required': [('allocation_type', '=', 'manual')]}"
+                    />
+                    <field name="service_id"
+                           options="{'no_create_edit': 1, 'no_quick_create': 1}"
+                           domain="[('id', 'in', available_service_ids)]"
+                           attrs="{'invisible': [('make_services_visible', '=', False)], 'required': [('make_services_visible', '=', True)]}"
+                    />
+                    <div attrs="{'invisible': [('extra_lines', '=', ''), ('product_price', '=', '')]}"/>
+                    <div name="service_info" class="text-muted" attrs="{'invisible': [('extra_lines', '=', ''), ('product_price', '=', '')]}">
+                        <field name="extra_lines" widget="extraResourcesHint" attrs="{'invisible': [('extra_lines', '=', '')]}"/>
+                        <div attrs="{'invisible': [('product_price', '=', '')]}">
+                            <i class="fa fa-money"> </i>&amp;nbsp;<field name="product_price" class="oe_inline" string=" "/>
+                        </div>
+                    </div>
+                </group>
+                <notebook>
+                    <page string="Available Slots" attrs="{'invisible': ['|', '|', ('resource_type_id', '=', False), ('service_id', '=', False), '&amp;', ('resource_ids', '=', []), ('allocation_type', '!=', 'automatic')]}">
+                        <field class="w-100" name="timeslots" widget="timeSlotsWidget"/>
+                    </page>
+                    <page string="Settings" invisible="1">
+                        <group>
+                            <field name="allocation_type"/>
+                            <field name="available_service_ids" widget="many2many_tags"/>
+                            <field name="make_services_visible"/>
+                            <field name="number_of_appointments"/>
+                            <field name="group_pricelists"/>
+                        </group>
+                    </page>
+                </notebook>
+            </form>
+        </field>
+    </record>
+    <record id="make_business_appointment_action" model="ir.actions.act_window">
+        <field name="name">Schedule Appointment</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">make.business.appointment</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="business_appointment.make_business_appointment_form_view"/>
+        <field name="target">new</field>
+    </record>
+
+</odoo>

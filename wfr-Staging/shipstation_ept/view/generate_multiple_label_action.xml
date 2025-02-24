@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="action_generate_multiple_label_on_shipstation" model="ir.actions.server">
+            <field name="name">Generate Multiple Labels</field>
+            <field name="model_id" ref="stock.model_stock_picking"/>
+            <field name="binding_model_id" ref="stock.model_stock_picking"/>
+            <field name="binding_view_types">list</field>
+            <field name="state">code</field>
+            <field name="code">action = records.generate_multiple_label_on_shipstation()</field>
+        </record>
+    </data>
+</odoo>

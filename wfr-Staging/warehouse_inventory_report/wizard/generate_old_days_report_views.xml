@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="form_wizard_generate_old_days_report" model="ir.ui.view">
+            <field name="name">Generate Old Days Report</field>
+            <field name="model">generate.old.days.report</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Generate Old Days Report">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="date"/>
+                            </group>
+                        </group>
+                        <newline/>
+                        <footer>
+                            <button name="generate_report" string="Generate Report" type="object"
+                                    class="btn-primary"/>
+                            <button string="Cancel" class="btn-secondary" special="cancel"/>
+                        </footer>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="generate_old_days_report_view_action" model="ir.actions.act_window">
+            <field name="name">Generate Old Days Report</field>
+            <field name="res_model">generate.old.days.report</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem id="menu_generate_old_days_report"
+                  name="Generate Old Days Report"
+                  action="generate_old_days_report_view_action"
+                  parent="stock.menu_warehouse_report"/>
+
+    </data>
+</odoo>

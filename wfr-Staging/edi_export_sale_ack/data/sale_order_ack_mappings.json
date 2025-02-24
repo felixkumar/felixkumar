@@ -1,0 +1,223 @@
+{
+    "config": [
+        {
+            "path": "OrderAcks/OrderAck",
+            "model": "sale.order"
+        },
+        {
+            "path": "OrderAcks/OrderAck/Header/OrderHeader/TradingPartnerId",
+            "field": "trading_partnerid"
+        },
+        {
+            "path": "OrderAcks/OrderAck/Header/OrderHeader/PurchaseOrderNumber",
+            "field": "edi_po_number"
+        },
+        {
+            "path": "OrderAcks/OrderAck/Header/OrderHeader/TsetPurposeCode",
+            "field": "edi_tset_purpose_code"
+        },
+        {
+            "path": "OrderAcks/OrderAck/Header/OrderHeader/PurchaseOrderDate",
+            "field": "edi_purchase_order_date"
+        },
+        {
+            "path": "OrderAcks/OrderAck/Header/OrderHeader/PurchaseOrderTime",
+            "field": "edi_purchase_order_time"
+        },
+        {
+            "path": "OrderAcks/OrderAck/Header/OrderHeader/AcknowledgementNumber",
+            "field": "name"
+        },
+        {
+            "path": "OrderAcks/OrderAck/Header/OrderHeader/AcknowledgementType",
+            "field": "edi_acknowledgement_type"
+        },
+        {
+            "path": "OrderAcks/OrderAck/Header/OrderHeader/Vendor",
+            "field": "edi_vendor"
+        },
+        {
+            "path": "OrderAcks/OrderAck/Header/OrderHeader/CustomerOrderNumber",
+            "field": "name"
+        },
+        {
+            "path": "OrderAcks/OrderAck/Header/PaymentTerms/TermsDescription",
+            "field": "edi_terms_description"
+        },
+        {
+            "path": "OrderAcks/OrderAck/Header/Dates/DateTimeQualifier",
+            "field": "edi_date_time_qualifier"
+        },
+        {
+            "path": "OrderAcks/OrderAck/Header/Dates/Date",
+            "map_based_on_field": {
+                "determining_tag": "../DateTimeQualifier",
+                "model": "sale.order",
+                "values": [
+                    {
+                        "value": "068",
+                        "field": "commitment_date"
+                    },
+                    {
+                        "value": "067",
+                        "field": "edi_requested_pickup_date"
+                    },
+                    {
+                        "value": "",
+                        "field": "commitment_date"
+                    }
+                ]
+            }
+        },
+        {
+            "path": "OrderAcks/OrderAck/Header/Contacts/ContactTypeCode",
+            "field": "edi_contact_type_code"
+        },
+        {
+            "path": "OrderAcks/OrderAck/Header/Contacts/ContactName",
+            "field": "partner_name"
+        },
+        {
+            "path": "OrderAcks/OrderAck/Header/Contacts/PrimaryPhone",
+            "field": "partner_phone"
+        },
+        {
+            "path": "OrderAcks/OrderAck/Header/Contacts/PrimaryEmail",
+            "field": "partner_email"
+        },
+        {
+            "path": "OrderAcks/OrderAck/Header/FOBRelatedInstruction/FOBPayCode",
+            "field": "edi_fob_pay_code"
+        },
+        {
+            "path": "OrderAcks/OrderAck/Header/FOBRelatedInstruction/FOBLocationQualifier",
+            "field": "edi_fob_location_qualifier"
+        },
+        {
+            "path": "OrderAcks/OrderAck/Header/FOBRelatedInstruction/FOBLocationDescription",
+            "field": "edi_fob_location_description"
+        },
+        {
+            "path": "OrderAcks/OrderAck/Header/FOBRelatedInstruction/TransportationTermsType",
+            "field": "edi_fob_transportation_terms_type"
+        },
+        {
+            "path": "OrderAcks/OrderAck/Header/FOBRelatedInstruction/TransportationTerms",
+            "field": "edi_fob_transportation_terms"
+        },
+        {
+            "path": "OrderAcks/OrderAck/Header/CarrierInformation/CarrierTransMethodCode",
+            "field": "edi_carrier_trans_method_code"
+        },
+        {
+            "path": "OrderAcks/OrderAck/Header/CarrierInformation/CarrierRouting",
+            "field": "edi_carrier_routing"
+        },
+        {
+            "path": "OrderAcks/OrderAck/Header/Notes/NoteCode",
+            "field": "edi_note_code"
+        },
+        {
+            "path": "OrderAcks/OrderAck/Header/Notes/Note",
+            "field": "note"
+        },
+        {
+            "path": "OrderAcks/OrderAck/LineItem",
+            "field": "order_line",
+            "domain": "[('display_type','not in',['line_note', 'line_section'])]"
+        },
+        {
+            "path": "OrderAcks/OrderAck/LineItem/OrderLine/LineSequenceNumber",
+            "field": "edi_line_sequence_number"
+        },
+        {
+            "path": "OrderAcks/OrderAck/LineItem/OrderLine/BuyerPartNumber",
+            "field": "edi_buyer_part_number"
+        },
+        {
+            "path": "OrderAcks/OrderAck/LineItem/OrderLine/VendorPartNumber",
+            "field": "edi_vendor_part_number"
+        },
+        {
+            "path": "OrderAcks/OrderAck/LineItem/OrderLine/ConsumerPackageCode",
+            "field": "edi_consumer_package_code"
+        },
+        {
+            "path": "OrderAcks/OrderAck/LineItem/OrderLine/GTIN",
+            "field": "edi_gtin"
+        },
+        {
+            "path": "OrderAcks/OrderAck/LineItem/OrderLine/OrderQty",
+            "field": "product_uom_qty"
+        },
+        {
+            "path": "OrderAcks/OrderAck/LineItem/OrderLine/OrderQtyUOM",
+            "field": "edi_product_uom_code"
+        },
+        {
+            "path": "OrderAcks/OrderAck/LineItem/OrderLine/PurchasePrice",
+            "field": "edi_price"
+        },
+        {
+            "path": "OrderAcks/OrderAck/LineItem/LineItemAcknowledgement/ItemStatusCode",
+            "field": "edi_item_status_code"
+        },
+        {
+            "path": "OrderAcks/OrderAck/LineItem/LineItemAcknowledgement/ItemScheduleQty",
+            "field": "product_uom_qty"
+        },
+        {
+            "path": "OrderAcks/OrderAck/LineItem/LineItemAcknowledgement/ItemScheduleUOM",
+            "field": "edi_product_uom_code"
+        },
+        {
+            "path": "OrderAcks/OrderAck/LineItem/Dates/DateTimeQualifier",
+            "field": "edi_date_time_qualifier"
+        },
+        {
+            "path": "OrderAcks/OrderAck/LineItem/Dates/Date",
+            "map_based_on_field": {
+                "determining_tag": "../DateTimeQualifier",
+                "model": "sale.order",
+                "values": [
+                    {
+                        "value": "068",
+                        "field": "edi_commitment_date"
+                    },
+                    {
+                        "value": "067",
+                        "field": "edi_requested_pickup_date"
+                    },
+                    {
+                        "value": "017",
+                        "field": "edi_commitment_date"
+                    }
+                ]
+            }
+        },
+        {
+            "path": "OrderAcks/OrderAck/LineItem/ProductOrItemDescription/ProductCharacteristicCode",
+            "field": "edi_product_characteristic_code"
+        },
+        {
+            "path": "OrderAcks/OrderAck/LineItem/ProductOrItemDescription/ProductDescription",
+            "field": "name"
+        },
+        {
+            "path": "OrderAcks/OrderAck/LineItem/Notes/NoteCode",
+            "field": "edi_note_code"
+        },
+        {
+            "path": "OrderAcks/OrderAck/LineItem/Notes/Note",
+            "field": "edi_note"
+        },
+        {
+            "path": "OrderAcks/OrderAck/Summary/TotalAmount",
+            "field": "amount_total"
+        },
+        {
+            "path": "OrderAcks/OrderAck/Summary/TotalLineItemNumber",
+            "field": "edi_total_line_item_number"
+        }
+    ]
+}

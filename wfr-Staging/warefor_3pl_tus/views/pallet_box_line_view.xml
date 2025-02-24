@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="form_view_pallet_box_line" model="ir.ui.view">
+            <field name="name">pallet.box.line.form.view</field>
+            <field name="model">pallet.box.line</field>
+            <field name="arch" type="xml">
+                <form string="Pallet Box Line">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="box_id"/>
+                                <field name="box_qty"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</odoo>

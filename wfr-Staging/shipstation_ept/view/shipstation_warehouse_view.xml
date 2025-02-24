@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Form View of Shipstation Carrier -->
+        <record id="shipstation_warehouse_form_view_ept" model="ir.ui.view">
+            <field name="name">shipstation.warehouse.form.view.ept</field>
+            <field name="model">shipstation.warehouse.ept</field>
+            <field name="arch" type="xml">
+                <form string="ShipStation Warehouse" create="false">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="shipstation_instance_id" required="1" context="{'form_view_ref': 'shipstation_ept.shipstation_form_view'}"/>
+                                <field name="is_default"/>
+                                <field name="origin_address_id" required="1"/>
+                            </group>
+                            <group>
+                                <field name="odoo_warehouse_id"
+                                attrs="{'required':[('is_default','=',False)]}"/>
+                                <field name="return_address_id" required="1"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <!-- Search View For Shipstation Warehouse -->
+        <record id="shipstation_warehouse_search_view_ept" model="ir.ui.view">
+            <field name="name">view.shipstation.warehouse.filter</field>
+            <field name="model">shipstation.warehouse.ept</field>
+            <field name="type">search</field>
+            <field name="arch" type="xml">
+                <search string="ShipStation Warehouse">
+                    <field name="shipstation_instance_id"/>
+                    <group expand="0" string="Group By...">
+                        <filter string="ShipStation Instance" name="shipstation_instance_id" icon="terp-personal"
+                                context="{'group_by':'shipstation_instance_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <!-- Tree View of Shipstation warehouse -->
+        <record id="shipstation_warehouse_tree_view_ept" model="ir.ui.view">
+            <field name="name">Shipstation Warehouses</field>
+            <field name="model">shipstation.warehouse.ept</field>
+            <field name="arch" type="xml">
+                <tree string="Shipstation Warehouses" create="false">
+                    <field name="name" readonly="True"/>
+                    <field name="shipstation_instance_id" readonly="True"/>
+                    <field name="odoo_warehouse_id" readonly="True"/>
+                    <field name="origin_address_id" readonly="True"/>
+                    <field name="return_address_id" readonly="True"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Action for Shipstation warehouse Tree View -->
+        <record id="action_shipstation_warehouse_ept" model="ir.actions.act_window">
+            <field name="name">Shipstation Warehouses</field>
+            <field name="res_model">shipstation.warehouse.ept</field>
+            <field name="view_id" ref="shipstation_warehouse_tree_view_ept"/>
+        </record>
+
+        <!-- Warehouse Menu in Configuration Menu -->
+        <menuitem id="shipstation_warehouse_menu" name="Warehouses"
+                  parent="shipstation_ept.menu_configuration_ept" sequence="5"
+                  action="action_shipstation_warehouse_ept"/>
+    </data>
+</odoo>

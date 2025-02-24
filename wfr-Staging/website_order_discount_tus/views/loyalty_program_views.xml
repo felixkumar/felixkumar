@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="loyalty_program_view_form_inherit" model="ir.ui.view">
+        <field name="name">loyalty.program.view.form.inherit</field>
+        <field name="model">loyalty.program</field>
+        <field name="inherit_id" ref="loyalty.loyalty_program_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@id='o_loyalty_program_availabilities']" position="inside">
+                <span class="d-inline-block">
+                    <field name="subscription_ok" class="w-auto me-0"/>
+                    <label for="subscription_ok" class="me-3"/>
+                </span>
+            </xpath>
+            <xpath expr="//field[@name='available_on']" position="before">
+                <field name="exclude_bold_customer"/>
+                <field name="limit_per_customer"/>
+                <field name="per_customer_usage_count" attrs="{'invisible':[('limit_per_customer','=',False)]}"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

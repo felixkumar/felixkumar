@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="account_asset_view_inherit" model="ir.ui.view">
+        <field name="name">account.asset.view.inherit</field>
+        <field name="model">account.asset.asset</field>
+        <field name="inherit_id" ref="om_account_asset.view_account_asset_asset_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[2]" position="after">
+                <page string="Multi Vendor">
+                    <field name="multi_vendor_ids" mode="tree" required="1" options="{'reload_whole_on_button': true}">
+                        <tree string="Multi Vendor" editable="bottom">
+                            <field name="asset_id" invisible="1"/>
+                            <field name="vendor_id" required="1"/>
+                            <field name="amount" widget="monetary" required="1"/>
+                        </tree>
+                        <form string="Multi Vendor">
+                            <group>
+                                <group>
+                                    <field name="asset_id" invisible="1"/>
+                                    <field name="vendor_id" required="1"/>
+                                </group>
+                                <group>
+                                    <field name="amount" widget="monetary" required="1"/>
+                                </group>
+                            </group>
+                        </form>
+                    </field>
+                </page>
+            </xpath>
+            <xpath expr="//header/button[@name='set_to_close']" position="replace">
+                <button name="set_to_close" string="Sell or Dispose" type="object" class="oe_highlight"
+                attrs="{'invisible': ['|', ('multi_vendor_ids','!=', []), ('state', 'not in', ['open'])]}" />
+            </xpath>
+            <xpath expr="//header/button[@name='set_to_close']" position="after">
+                <button name="multi_vendor_bill" string="SELL OR DISPOSE"
+                        attrs="{'invisible': ['|', ('multi_vendor_ids','=', []), ('state', 'not in', ['open'])]}" type="object"
+                        class="oe_highlight"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="account_move_view_inherit" model="ir.ui.view">
+        <field name="name">account.move.view.inherit</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='journal_id']" position="after">
+                <field name="asset_id"/>
+            </xpath>
+        </field>
+    </record>
+    <menuitem id="om_account_asset.menu_action_account_asset_asset_form"
+              name="Account Assets"
+              parent="account.account_reports_management_menu"
+              action="om_account_asset.action_account_asset_asset_form"
+              sequence="25"
+              groups="account.group_account_manager"/>
+</odoo>

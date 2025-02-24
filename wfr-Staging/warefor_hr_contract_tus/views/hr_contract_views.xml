@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<!--    ADDED NEW FIELDS IN CONTRACT FORM VIEW-->
+    <record id="hr_contract_view_form_inherited" model="ir.ui.view">
+        <field name="name">hr.contract.form</field>
+        <field name="model">hr.contract</field>
+        <field name="inherit_id" ref="hr_contract.hr_contract_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='hourly_wage']" position="after">
+                <field name="overhead_markup" widget="percentage"/>
+                <field name="hourly_cost"/>
+            </xpath>
+
+            <xpath expr="//label[@for='hourly_wage']" position="replace">
+                <label for="hourly_wage"/>
+            </xpath>
+
+            <xpath expr="//div[@name='hourly_wage']" position="replace">
+                <div class="o_row mw-50" name="hourly_wage">
+                    <field name="hourly_wage" nolabel="1" attrs="{'readonly':[('wage_type','=','monthly')]}"/>
+                    <span>/ hour</span>
+                </div>
+            </xpath>
+
+        </field>
+    </record>
+
+    <record id="hr_contract_history_view_form_tus" model="ir.ui.view">
+        <field name="name">hr.contract.history.form.tus</field>
+        <field name="model">hr.contract.history</field>
+        <field name="inherit_id" ref="hr_contract.hr_contract_history_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//tree/field[@name='wage']" position="before">
+                <field name="hourly_wage" optional="show"/>
+                <field name="hourly_cost" optional="show"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

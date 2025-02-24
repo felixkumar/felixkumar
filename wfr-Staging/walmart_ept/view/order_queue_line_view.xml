@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="view_order_queue_line_tree" model="ir.ui.view">
+        <field name="name">walmart.order.queue.line.ept.tree</field>
+        <field name="model">walmart.order.queue.line.ept</field>
+        <field eval="100" name="priority"/>
+        <field name="arch" type="xml">
+            <tree create="false" duplicate="false" edit="false" sample="1"
+                  decoration-danger="state=='failed'"
+                  decoration-success="state=='done'" decoration-info="state=='draft'">
+                <field name="name"/>
+                <field name="walmart_order_id"/>
+                <field name="processed_at"/>
+                <field name="customer_name"/>
+                <field name="customer_email" optional="hide"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_walmart_order_queue_line_ept_form" model="ir.ui.view">
+        <field name="name">walmart.order.queue.line.ept.form</field>
+        <field name="model">walmart.order.queue.line.ept</field>
+        <field name="arch" type="xml">
+            <form create="0" edit="0" delete="0">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="walmart_instance_id" readonly="1"/>
+                            <field string="Order Data ID" name="walmart_order_id" readonly="1"/>
+                            <field name="name" readonly=""/>
+                        </group>
+                        <group>
+                            <field name="walmart_order_queue_id" string="Order Data Queue"
+                                   readonly="1"/>
+                            <field string="Sale Order Ref" name="sale_order_id" readonly="1"/>
+                            <field name="state" readonly="1"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Log Lines">
+                            <field name="walmart_order_common_log_lines_ids">
+                                <tree create="false" editable="bottom">
+                                    <field name="message"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Order Data">
+                            <group>
+                                <field string="Customer Email " name="customer_email" readonly="1"/>
+                                <field string="Order Data" name="order_data" readonly="1"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+</odoo>

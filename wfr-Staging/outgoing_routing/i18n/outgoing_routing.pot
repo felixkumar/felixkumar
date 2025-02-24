@@ -1,0 +1,272 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* outgoing_routing
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-08-18 13:42+0000\n"
+"PO-Revision-Date: 2022-08-18 13:42+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: outgoing_routing
+#: model_terms:ir.ui.view,arch_db:outgoing_routing.view_stock_config_settings
+msgid "- quants are reserved according to Picking startegy (see above)"
+msgstr ""
+
+#. module: outgoing_routing
+#: model_terms:ir.ui.view,arch_db:outgoing_routing.view_stock_config_settings
+msgid ""
+"- quants are reserved first in locations that contain a sufficient amount of"
+" product and have higher priority (i.e. from location name 'A' and beyond)"
+msgstr ""
+
+#. module: outgoing_routing
+#: model_terms:ir.ui.view,arch_db:outgoing_routing.view_stock_config_settings
+msgid ""
+"- quants are reserved first in locations that contain a sufficient amount of"
+" product and have higher priority (i.e. from location name 'Z' to 'A')"
+msgstr ""
+
+#. module: outgoing_routing
+#: model_terms:ir.ui.view,arch_db:outgoing_routing.view_stock_config_settings
+msgid ""
+"- quants are reserved first in locations that contain a sufficient amount of"
+" product and have higher priority (i.e. from location with removal priority "
+"'0' to '∞')"
+msgstr ""
+
+#. module: outgoing_routing
+#: model_terms:ir.ui.view,arch_db:outgoing_routing.view_stock_config_settings
+msgid ""
+"- quants are reserved first in locations that contain a sufficient amount of"
+" product and have higher priority (i.e. from location with removal priority "
+"'∞' to '0')"
+msgstr ""
+
+#. module: outgoing_routing
+#: model_terms:ir.ui.view,arch_db:outgoing_routing.view_stock_config_settings
+msgid "- quants are reserved in Odoo standard way (FIFO/LIFO)"
+msgstr ""
+
+#. module: outgoing_routing
+#: model_terms:ir.ui.view,arch_db:outgoing_routing.view_stock_config_settings
+msgid ""
+"- the route is calculated from <b>location</b> '<b>A</b>' to '<b>Z</b>'"
+msgstr ""
+
+#. module: outgoing_routing
+#: model_terms:ir.ui.view,arch_db:outgoing_routing.view_stock_config_settings
+msgid ""
+"- the route is calculated from <b>location</b> '<b>Z</b>' to '<b>A</b>'"
+msgstr ""
+
+#. module: outgoing_routing
+#: model_terms:ir.ui.view,arch_db:outgoing_routing.view_stock_config_settings
+msgid ""
+"- the route is calculated from location contains <b>product</b> '<b>A</b>' "
+"to '<b>Z</b>'"
+msgstr ""
+
+#. module: outgoing_routing
+#: model_terms:ir.ui.view,arch_db:outgoing_routing.view_stock_config_settings
+msgid ""
+"- the route is calculated from location contains <b>product</b> '<b>Z</b>' "
+"to '<b>A</b>'"
+msgstr ""
+
+#. module: outgoing_routing
+#: model_terms:ir.ui.view,arch_db:outgoing_routing.view_stock_config_settings
+msgid ""
+"- the route is calculated from location with <b>removal priority</b> "
+"'<b>0</b>' to '<b>∞</b>'"
+msgstr ""
+
+#. module: outgoing_routing
+#: model_terms:ir.ui.view,arch_db:outgoing_routing.view_stock_config_settings
+msgid ""
+"- the route is calculated from location with <b>removal priority</b> "
+"'<b>∞</b>' to '<b>0</b>'"
+msgstr ""
+
+#. module: outgoing_routing
+#: model_terms:ir.ui.view,arch_db:outgoing_routing.view_stock_config_settings
+msgid "<br/>Your current settings:"
+msgstr ""
+
+#. module: outgoing_routing
+#: model:ir.model.fields.selection,name:outgoing_routing.selection__res_company__outgoing_routing_order__0
+msgid "Ascending (A-Z)"
+msgstr ""
+
+#. module: outgoing_routing
+#: model:ir.model,name:outgoing_routing.model_stock_picking_batch
+msgid "Batch Transfer"
+msgstr ""
+
+#. module: outgoing_routing
+#: model:ir.model.fields.selection,name:outgoing_routing.selection__res_company__stock_reservation_strategy__base
+msgid "By Picking Strategy"
+msgstr ""
+
+#. module: outgoing_routing
+#: model:ir.model.fields.selection,name:outgoing_routing.selection__res_company__stock_reservation_strategy__quantity
+msgid "By Quantity"
+msgstr ""
+
+#. module: outgoing_routing
+#: model:ir.model,name:outgoing_routing.model_res_company
+msgid "Companies"
+msgstr ""
+
+#. module: outgoing_routing
+#: model:ir.model.fields,field_description:outgoing_routing.field_stock_picking__company_id
+#: model:ir.model.fields,field_description:outgoing_routing.field_stock_picking_batch__company_id
+#: model:ir.model.fields,field_description:outgoing_routing.field_stock_picking_mixin__company_id
+msgid "Company"
+msgstr ""
+
+#. module: outgoing_routing
+#: model:ir.model,name:outgoing_routing.model_res_config_settings
+msgid "Config Settings"
+msgstr ""
+
+#. module: outgoing_routing
+#: model:ir.model.fields.selection,name:outgoing_routing.selection__res_company__stock_reservation_strategy__none
+msgid "Default"
+msgstr ""
+
+#. module: outgoing_routing
+#: model:ir.model.fields.selection,name:outgoing_routing.selection__res_company__outgoing_routing_order__1
+msgid "Descending (Z-A)"
+msgstr ""
+
+#. module: outgoing_routing
+#: code:addons/outgoing_routing/models/stock_picking.py:0
+#, python-format
+msgid "Hint: operations are sorted by {} in {} order."
+msgstr ""
+
+#. module: outgoing_routing
+#: model:ir.model,name:outgoing_routing.model_stock_location
+msgid "Inventory Locations"
+msgstr ""
+
+#. module: outgoing_routing
+#: model:ir.model.fields.selection,name:outgoing_routing.selection__res_company__outgoing_routing_strategy__location_id_name
+msgid "Location name"
+msgstr ""
+
+#. module: outgoing_routing
+#: model:ir.model.fields.selection,name:outgoing_routing.selection__res_company__outgoing_routing_strategy__location_id_removal_prio
+msgid "Location removal priority"
+msgstr ""
+
+#. module: outgoing_routing
+#: model:ir.model.fields,field_description:outgoing_routing.field_stock_picking_batch__related_pack_operations
+#: model_terms:ir.ui.view,arch_db:outgoing_routing.view_picking_wave_form
+msgid "Operations"
+msgstr ""
+
+#. module: outgoing_routing
+#: model:ir.model.fields,field_description:outgoing_routing.field_stock_picking__operations_to_pick
+#: model:ir.model.fields,field_description:outgoing_routing.field_stock_picking_batch__operations_to_pick
+msgid "Operations to Pick"
+msgstr ""
+
+#. module: outgoing_routing
+#: model:ir.model.fields,field_description:outgoing_routing.field_res_company__outgoing_routing_order
+#: model:ir.model.fields,field_description:outgoing_routing.field_res_config_settings__outgoing_routing_order
+msgid "Picking Order"
+msgstr ""
+
+#. module: outgoing_routing
+#: model:ir.model.fields,field_description:outgoing_routing.field_res_company__outgoing_routing_strategy
+#: model:ir.model.fields,field_description:outgoing_routing.field_res_config_settings__outgoing_routing_strategy
+#: model_terms:ir.ui.view,arch_db:outgoing_routing.view_stock_config_settings
+msgid "Picking Strategy"
+msgstr ""
+
+#. module: outgoing_routing
+#: model_terms:ir.ui.view,arch_db:outgoing_routing.view_stock_config_settings
+msgid "Please, select parameters to calculate route through warehouse(s):"
+msgstr ""
+
+#. module: outgoing_routing
+#: model_terms:ir.ui.view,arch_db:outgoing_routing.view_stock_config_settings
+msgid "Please, select parameters to reorder quants during reservation:"
+msgstr ""
+
+#. module: outgoing_routing
+#: model:ir.model,name:outgoing_routing.model_stock_move_line
+msgid "Product Moves (Stock Move Line)"
+msgstr ""
+
+#. module: outgoing_routing
+#: model:ir.model.fields.selection,name:outgoing_routing.selection__res_company__outgoing_routing_strategy__product_id_name
+msgid "Product name"
+msgstr ""
+
+#. module: outgoing_routing
+#: model:ir.model,name:outgoing_routing.model_stock_quant
+msgid "Quants"
+msgstr ""
+
+#. module: outgoing_routing
+#: model:ir.model.fields,field_description:outgoing_routing.field_stock_location__removal_prio
+#: model:ir.model.fields,field_description:outgoing_routing.field_stock_quant__removal_prio
+msgid "Removal Priority"
+msgstr ""
+
+#. module: outgoing_routing
+#: model:ir.model.fields,field_description:outgoing_routing.field_res_company__stock_reservation_strategy
+#: model:ir.model.fields,field_description:outgoing_routing.field_res_config_settings__stock_reservation_strategy
+#: model_terms:ir.ui.view,arch_db:outgoing_routing.view_stock_config_settings
+msgid "Reservation Strategy"
+msgstr ""
+
+#. module: outgoing_routing
+#: model:ir.model.fields,field_description:outgoing_routing.field_res_company__routing_module_version
+#: model:ir.model.fields,field_description:outgoing_routing.field_stock_picking__routing_module_version
+#: model:ir.model.fields,field_description:outgoing_routing.field_stock_picking_batch__routing_module_version
+#: model:ir.model.fields,field_description:outgoing_routing.field_stock_picking_mixin__routing_module_version
+msgid "Routing Module Version"
+msgstr ""
+
+#. module: outgoing_routing
+#: model:ir.model.fields,field_description:outgoing_routing.field_stock_location__strategy_sequence
+msgid "Sequence"
+msgstr ""
+
+#. module: outgoing_routing
+#: model:ir.model.fields,help:outgoing_routing.field_stock_location__strategy_sequence
+msgid "Sequence based on warehouse location outgoing strategy/order"
+msgstr ""
+
+#. module: outgoing_routing
+#: model:ir.model,name:outgoing_routing.model_stock_picking_mixin
+msgid "Stock Picking Mixin"
+msgstr ""
+
+#. module: outgoing_routing
+#: model:ir.model.fields,field_description:outgoing_routing.field_stock_picking__strategy_order_r
+#: model:ir.model.fields,field_description:outgoing_routing.field_stock_picking_batch__strategy_order_r
+msgid "Strategy Order"
+msgstr ""
+
+#. module: outgoing_routing
+#: model_terms:ir.ui.view,arch_db:outgoing_routing.view_picking_form
+#: model_terms:ir.ui.view,arch_db:outgoing_routing.view_picking_wave_form
+msgid "To Process"
+msgstr ""
+
+#. module: outgoing_routing
+#: model:ir.model,name:outgoing_routing.model_stock_picking
+msgid "Transfer"
+msgstr ""

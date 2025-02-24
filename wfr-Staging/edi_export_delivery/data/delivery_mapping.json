@@ -1,0 +1,354 @@
+{
+    "config": [
+        {
+            "path": "Shipment",
+            "model": "stock.picking"
+        },
+        {
+            "path": "Shipment/Header/ShipmentHeader/TradingPartnerId",
+            "field": "tradingpartner_id"
+        },
+        {
+            "path": "Shipment/Header/ShipmentHeader/ShipmentIdentification",
+            "field": "edi_shipment_identifier"
+        },
+        {
+            "path": "Shipment/Header/ShipmentHeader/ShipDate",
+            "action": "edi_export_delivery.action_get_shipment_date"
+        },
+        {
+            "path": "Shipment/Header/ShipmentHeader/ShipmentTime",
+            "action": "edi_export_delivery.action_get_shipment_time"
+        },
+        {
+            "path": "Shipment/Header/ShipmentHeader/TsetPurposeCode",
+            "field": "edi_tset_purpose_code"
+        },
+        {
+            "path": "Shipment/Header/ShipmentHeader/ShipNoticeDate",
+            "action": "edi_export_delivery.action_get_ship_notice_date"
+        },
+        {
+            "path": "Shipment/Header/ShipmentHeader/ShipNoticeTime",
+            "action": "edi_export_delivery.action_get_ship_notice_time"
+        },
+        {
+            "path": "Shipment/Header/ShipmentHeader/ASNStructureCode",
+            "field": "asn_structure_code"
+        },
+        {
+            "path": "Shipment/Header/ShipmentHeader/BillOfLadingNumber",
+            "field": "edi_bill_of_lading_number"
+        },
+        {
+            "path": "Shipment/Header/ShipmentHeader/CarrierProNumber",
+            "field": "edi_bill_of_landing_number"
+        },
+        {
+            "path": "Shipment/Header/ShipmentHeader/CurrentScheduledDeliveryDate",
+            "field": "commitment_date"
+        },
+        {
+            "path": "Shipment/Header/Dates/DateTimeQualifier",
+            "field": "edi_date_time_qualifier"
+        },
+        {
+            "path": "Shipment/Header/Dates/Date",
+            "action": "edi_export_delivery.action_get_qualifier_date"
+        },
+        {
+            "path": "Shipment/Header/Dates/Time",
+            "action": "edi_export_delivery.action_get_qualifier_date_time"
+        },
+        {
+            "path": "Shipment/Header/References",
+            "field": "reference_line_ids"
+        },
+        {
+            "path": "Shipment/Header/References/ReferenceQual",
+            "field": "ReferenceQual"
+        },
+        {
+            "path": "Shipment/Header/References/ReferenceID",
+            "field": "ReferenceID"
+        },
+        {
+            "path": "Shipment/Header/Notes",
+            "field": "notes_line_ids"
+        },
+        {
+            "path": "Shipment/Header/Notes/NoteCode",
+            "field": "NoteCode"
+        },
+        {
+            "path": "Shipment/Header/Notes/Note",
+            "field": "Note"
+        },
+        {
+            "path": "Shipment/Header/Contacts/ContactTypeCode",
+            "field": "edi_contact_type_code"
+        },
+        {
+            "path": "Shipment/Header/Address",
+            "multimap": {
+                "determining_tag": "AddressTypeCode",
+                "model": "res.partner",
+                "values": [
+                    {
+                        "value": "SF",
+                        "field": "edi_ship_from_location_id"
+                    },
+                    {
+                        "value": "ST",
+                        "field": "edi_partner_shipping_id"
+                    },
+                    {
+                        "value": "WH",
+                        "field": "edi_company_warehouse_id"
+                    }
+                ]
+            }
+        },
+        {
+            "path": "Shipment/Header/Address/AddressTypeCode",
+            "field": "edi_address_type_code"
+        },
+        {
+            "path": "Shipment/Header/Address/AddressLocationNumber",
+            "field": "edi_address_location_number"
+        },
+        {
+            "path": "Shipment/Header/Address/AddressName",
+            "field": "name"
+        },
+        {
+            "path": "Shipment/Header/Address/AddressAlternateName",
+            "field": "display_name"
+        },
+        {
+            "path": "Shipment/Header/Address/Address1",
+            "field": "street"
+        },
+        {
+            "path": "Shipment/Header/Address/Address3",
+            "field": "street2"
+        },
+        {
+            "path": "Shipment/Header/Address/City",
+            "field": "city"
+        },
+        {
+            "path": "Shipment/Header/Address/State",
+            "field": "state_code"
+        },
+        {
+            "path": "Shipment/Header/Address/PostalCode",
+            "field": "zip"
+        },
+        {
+            "path": "Shipment/Header/Address/Country",
+            "field": "country_code"
+        },
+        {
+            "path": "Shipment/Header/Address/Contacts/ContactTypeCode",
+            "field": "company_type"
+        },
+        {
+            "path": "Shipment/Header/CarrierInformation/CarrierTransMethodCode",
+            "field": "carrier_trans_method_code"
+        },
+        {
+            "path": "Shipment/Header/CarrierInformation/CarrierAlphaCode",
+            "field": "edi_carrier_alpha_code"
+        },
+        {
+            "path": "Shipment/Header/CarrierInformation/CarrierRouting",
+            "field": "edi_carrier_routing"
+        },
+        {
+            "path": "Shipment/Header/QuantityAndWeight/PackingMedium",
+            "field": "edi_packing_medium"
+        },
+        {
+            "path": "Shipment/Header/QuantityAndWeight/WeightQualifier",
+            "field": "edi_weight_qualifier"
+        },
+        {
+            "path": "Shipment/Header/QuantityAndWeight/Weight",
+            "action": "edi_export_delivery.action_get_edi_obl_weight"
+        },
+        {
+            "path": "Shipment/Header/QuantityAndWeight/WeightUOM",
+            "field": "edi_obl_uom"
+        },
+        {
+            "path": "Shipment/Header/FOBRelatedInstruction/FOBPayCode",
+            "field": "edi_fob_pay_code"
+        },
+        {
+            "path": "Shipment/OrderLevel/OrderHeader/PurchaseOrderNumber",
+            "field": "edi_po_number"
+        },
+        {
+            "path": "Shipment/OrderLevel/OrderHeader/Vendor",
+            "field": "edi_vendor"
+        },
+        {
+            "path": "Shipment/OrderLevel/Address",
+            "multimap": {
+                "determining_tag": "AddressTypeCode",
+                "model": "res.partner",
+                "values": [
+                    {
+                        "value": "BY",
+                        "field": "partner_id"
+                    }
+                ]
+            }
+        },
+        {
+            "path": "Shipment/OrderLevel/Address/AddressTypeCode",
+            "field": "edi_address_type_code"
+        },
+        {
+            "path": "Shipment/OrderLevel/Address/AddressName",
+            "field": "name"
+        },
+        {
+            "path": "Shipment/OrderLevel/Address/City",
+            "field": "city"
+        },
+        {
+            "path": "Shipment/OrderLevel/Address/PostalCode",
+            "field": "zip"
+        },
+        {
+            "path": "Shipment/OrderLevel/RegulatoryCompliances/RegulatoryComplianceQual",
+            "static": "DOLFL"
+        },
+        {
+            "path": "Shipment/OrderLevel/RegulatoryCompliances/YesOrNoResponse",
+            "static": "Y"
+        },
+        {
+            "path": "Shipment/OrderLevel/PackLevel/Pack/PackLevelType",
+            "field": "edi_pack_level_type"
+        },
+        {
+            "path": "Shipment/OrderLevel/PackLevel/Pack/ShippingSerialID",
+            "field": "sscc_18_barcode_char"
+        },
+        {
+            "path": "Shipment/OrderLevel/PackLevel/Pack/CarrierPackageID",
+            "field": "carrier_package_id"
+        },
+        {
+            "path": "Shipment/OrderLevel/PackLevel/PhysicalDetails/PackQualifier",
+            "field": "edi_pack_qualifier"
+        },
+        {
+            "path": "Shipment/OrderLevel/PackLevel/PhysicalDetails/PackValue",
+            "field": "edi_pack_size"
+        },
+        {
+            "path": "Shipment/OrderLevel/PackLevel/PhysicalDetails/WeightQualifier",
+            "field": "edi_weight_qualifier"
+        },
+        {
+            "path": "Shipment/OrderLevel/PackLevel/PhysicalDetails/PackWeight",
+            "field": "edi_pack_weight"
+        },
+        {
+            "path": "Shipment/OrderLevel/PackLevel/PhysicalDetails/PackWeightUOM",
+            "field": "edi_weight_uom_name"
+        },
+        {
+            "path": "Shipment/OrderLevel/PackLevel/ItemLevel",
+            "field": "move_ids_without_package"
+        },
+        {
+            "path": "Shipment/OrderLevel/PackLevel/ItemLevel/ShipmentLine/LineSequenceNumber",
+            "field": "edi_line_sequence_number"
+        },
+        {
+            "path": "Shipment/OrderLevel/PackLevel/ItemLevel/ShipmentLine/BuyerPartNumber",
+            "action": "edi_export_delivery.action_get_buyer_part_number"
+        },
+        {
+            "path": "Shipment/OrderLevel/PackLevel/ItemLevel/ShipmentLine/VendorPartNumber",
+            "action": "edi_export_delivery.action_get_vendor_part_number"
+        },
+        {
+            "path": "Shipment/OrderLevel/PackLevel/ItemLevel/ShipmentLine/EAN",
+            "field": "product_id",
+            "search_field": "edi_ean"
+        },
+        {
+            "path": "Shipment/OrderLevel/PackLevel/ItemLevel/ShipmentLine/GTIN",
+            "field": "product_id",
+            "search_field": "edi_gtin"
+        },
+        {
+            "path": "Shipment/OrderLevel/PackLevel/ItemLevel/ShipmentLine/ConsumerPackageCode",
+            "field": "sale_line_id",
+            "search_field": "edi_consumer_package_code"
+        },
+        {
+            "path": "Shipment/OrderLevel/PackLevel/ItemLevel/ShipmentLine/ItemStatusCode",
+            "field": "edi_item_status_code"
+        },
+        {
+            "path": "Shipment/OrderLevel/PackLevel/ItemLevel/ShipmentLine/ShipQty",
+            "action": "edi_export_delivery.action_get_qty_in_integer"
+        },
+        {
+            "path": "Shipment/OrderLevel/PackLevel/ItemLevel/ShipmentLine/ShipQtyUOM",
+            "field": "edi_uom"
+        },
+        {
+            "path": "Shipment/OrderLevel/PackLevel/ItemLevel/PhysicalDetails/PackQualifier",
+            "field": "edi_pack_qualifier"
+        },
+        {
+            "path": "Shipment/OrderLevel/PackLevel/ItemLevel/PhysicalDetails/PackValue",
+            "action": "edi_export_delivery.action_get_qty_pack_in_integer"
+        },
+        {
+            "path": "Shipment/OrderLevel/PackLevel/ItemLevel/ProductOrItemDescription/ProductDescription",
+            "field": "edi_sale_line_name"
+        },
+        {
+            "path": "Shipment/OrderLevel/PackLevel/ItemLevel/Address",
+            "multimap": {
+                "determining_tag": "AddressTypeCode",
+                "model": "res.partner",
+                "values": [
+                    {
+                        "value": "WH",
+                        "field": "edi_company_warehouse_id"
+                    }
+                ]
+            }
+        },
+        {
+            "path": "Shipment/OrderLevel/PackLevel/ItemLevel/Address/AddressTypeCode",
+            "field": "edi_address_type_code"
+        },
+        {
+            "path": "Shipment/OrderLevel/PackLevel/ItemLevel/Address/AddressLocationNumber",
+            "field": "edi_address_location_number"
+        },
+        {
+            "path": "Shipment/OrderLevel/PackLevel/ItemLevel/Address/AddressName",
+            "field": "name"
+        },
+        {
+            "path": "Shipment/OrderLevel/PackLevel/ItemLevel/Address/Country",
+            "field": "country_name"
+        },
+        {
+            "path": "Shipment/Summary/TotalLineItemNumber",
+            "field": "edi_total_line_item_number"
+        }
+    ]
+}

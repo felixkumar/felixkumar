@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+edi_mapping_line_export_multifield_user,edi_mapping_line_export_multifield_user,model_edi_mapping_line_export_multifield,base.group_user,1,0,0,0
+edi_mapping_line_export_multifield_admin,edi_mapping_line_export_multifield_admin,model_edi_mapping_line_export_multifield,base.group_system,1,1,1,1
+access_edi_export_wizard_user,edi_export_wizard_user,model_edi_export_wizard,base.group_user,1,1,1,1

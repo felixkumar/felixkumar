@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="hide_inventory_button" model="res.groups">
+        <field name="name">Administrator</field>
+        <field name="implied_ids" eval="[(4, ref('stock.group_stock_user'))]"/>
+    </record>
+    <!-- Inventory Adjustments + Update Quantity (via product) view -->
+    <record model="ir.ui.view" id="view_stock_counting_tree_inventory_editable">
+        <field name="name">stock.quant.inventory.tree.editable</field>
+        <field name="model">stock.quant</field>
+        <field eval="10" name="priority"/>
+        <field name="arch" type="xml">
+            <tree default_order="location_id, inventory_date, product_id, package_id, lot_id, owner_id"
+                  decoration-warning='is_outdated' editable="bottom" create="0" edit="1" import="0"
+                  js_class="inventory_report_list" class="o_inventory_adjustments" sample="1">
+                <field name="create_date" invisible="1"/>
+                <field name="write_date" invisible="1"/>
+                <field name="id" invisible="1"/>
+                <field name="is_outdated" invisible="1"/>
+                <field name="sn_duplicated" invisible="1"/>
+                <field name="tracking" invisible="1"/>
+                <field name="inventory_quantity_set" invisible="1"/>
+                <field name="company_id" invisible="1"/>
+                <field name="location_id" domain="[('usage', 'in', ['internal', 'transit'])]"
+                       attrs="{'readonly': [('id', '!=', False)]}" invisible="context.get('hide_location', False)"
+                       options="{'no_create': True}"/>
+                <field name="storage_category_id" groups="stock.group_stock_storage_categories"
+                       invisible="context.get('hide_location', False)" options="{'no_create': True}" optional="hidden"/>
+                <field name="cyclic_inventory_frequency" invisible="context.get('hide_location', False)"
+                       options="{'no_create': True}" optional="hidden"/>
+                <field name="priority" widget="priority" nolabel="1" optional="hidden"/>
+                <field name="product_id" attrs="{'readonly': [('id', '!=', False)]}"
+                       readonly="context.get('single_product', False)" force_save="1" options="{'no_create': True}"/>
+                <field name="product_categ_id" optional="hide"/>
+                <button name="action_warning_duplicated_sn" type="object"
+                        attrs="{'invisible': [('sn_duplicated', '=', False)]}"
+                        title="This lot/serial number is already in another location"
+                        class="btn btn-secondary text-warning float-end" icon="fa-warning"/>
+                <field name="lot_id" groups="stock.group_production_lot"
+                       attrs="{'readonly': ['|', ('tracking', 'not in', ['serial', 'lot']), '&amp;', ('id', '!=', False), '|', ('lot_id', '!=', False), ('quantity', '!=', 0)]}"
+                       invisible="context.get('hide_lot', False)"
+                       context="{'default_product_id': product_id, 'default_company_id': company_id}"
+                       decoration-warning="sn_duplicated"
+                       force_save="1"/>
+                <field name="package_id" groups="stock.group_tracking_lot" attrs="{'readonly': [('id', '!=', False)]}"/>
+                <field name="owner_id" groups="stock.group_tracking_owner" attrs="{'readonly': [('id', '!=', False)]}"
+                       options="{'no_create': True}"/>
+                <field name="last_count_date" optional='hidden' readonly='1'/>
+                <field name="available_quantity" string="Available Quantity"
+                       decoration-danger="available_quantity &lt; 0" optional="hidden"/>
+                <field name="quantity" optional="show" decoration-warning="quantity &lt; 0" string="On Hand Quantity"/>
+                <field name="product_uom_id" groups="uom.group_uom" string="UoM"/>
+                <field name="inventory_quantity" widget="counted_quantity_widget"/>
+                <field name="inventory_diff_quantity" string="Difference"
+                       attrs="{'invisible': [('inventory_quantity_set', '=', False)]}"
+                       decoration-muted="inventory_diff_quantity == 0"
+                       decoration-danger="inventory_diff_quantity &lt; 0"
+                       decoration-success="inventory_diff_quantity &gt; 0"
+                       decoration-bf="inventory_diff_quantity != 0"/>
+                <field name="inventory_date" optional="show"/>
+                <field name="user_id" string="User" optional="show"/>
+                <field name='company_id' groups="base.group_multi_company" optional="hide"/>
+            </tree>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="shipstation_stock_picking_form_view_ept" model="ir.ui.view">
+            <field name="name">shipstation.stock.picking.form.view.ept</field>
+            <field name="model">stock.picking</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="stock.view_picking_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='carrier_id']" position="attributes">
+                    <attribute name="attrs">{'readonly':[('is_exported_to_shipstation','=',True)]}</attribute>
+                </xpath>
+                <xpath expr="//button[@name='button_validate']" position="after">
+                    <button name="get_rates" string="Get Rates" class="oe_highlight" type="object"
+                            attrs="{'invisible':['|','|','|',('shipstation_instance_id', '=', False),('is_get_shipping_label','=',True),('shipstation_instance_id','=',False),('picking_type_code', '!=', 'outgoing')]}"/>
+                    <button name="export_order_to_shipstation" string="Export order to ShipStation" class="oe_highlight"
+                            type="object"
+                            attrs="{'invisible':['|','|','|','|','|',('state','!=','assigned'),('is_get_shipping_label','=',True),('export_order','=',False), ('is_exported_to_shipstation','=',True), ('shipstation_instance_id','=', False), ('ept_shipstation_store_id', '=', False)]}"/>
+                    <button name="get_shipstation_label" string="Get Label" class="oe_highlight"
+                            type="object"
+                            attrs="{'invisible':['|','|','|',('shipstation_instance_id', '=', False),('is_get_shipping_label','=',True),('state', '!=', 'done'),('picking_type_code', '!=', 'outgoing')]}"/>
+                </xpath>
+                <xpath expr="//notebook" position="inside">
+                    <page string="ShipStation Info" name="Shipstation Info"
+                          attrs="{'invisible':['|',('shipstation_instance_id','=', False),('picking_type_code', '!=', 'outgoing')], 'readonly':['|',('state','=', 'done'),('is_exported_to_shipstation', '=', True)]}">
+                        <group>
+                            <group>
+                                <field name="is_exported_to_shipstation" invisible="1"/>
+                                <field name="shipstation_instance_id"
+                                       attrs="{'readonly':[('state','=','done')]}"
+                                       options="{'no_create':True}" context="{'form_view_ref': 'shipstation_ept.shipstation_form_view'}"/>
+                                <field name="ept_shipstation_store_id"
+                                       domain="[('shipstation_instance_id', '=', shipstation_instance_id)]"
+                                       attrs="{'required':[('shipstation_instance_id', '!=', False),('picking_type_code', '=', 'outgoing'),('export_order','=',True)],'readonly':[('state','=','done')]}"
+                                       options="{'no_create':True}"/>
+                                <field name="ept_shipstation_carrier_id" readonly="1"/>
+                                <field name="shipstation_service_id"
+                                       domain="[('shipstation_instance_id', '=', shipstation_instance_id),('ept_shipstation_carrier_id','=',ept_shipstation_carrier_id)]"
+                                       options="{'no_create':True}"
+                                       attrs="{'readonly':['|','|',('is_get_shipping_label','=', True),('is_exported_to_shipstation', '=', True),('state','=','done')]}"/>
+                                <field name="shipstation_package_id" options="{'no_create':True}"
+                                       domain="[('shipstation_instance_id', '=', shipstation_instance_id)]"
+                                       attrs="{'readonly':['|',('is_get_shipping_label','=', True),('is_exported_to_shipstation', '=', True)]}"/>
+                                <field name="export_order"
+                                       attrs="{'readonly':['|','|',('is_get_shipping_label','=', True),('is_exported_to_shipstation', '=', True),('state','=','done')]}"/>
+                                <field name="canceled_on_shipstation" readonly="1"
+                                       attrs="{'invisible':[('canceled_on_shipstation','!=', True)]}"/>
+                                <field name="marked_as_shipped_to_shipstation" invisible="1"/>
+                                <field name="is_get_shipping_label" invisible="1"/>
+                            </group>
+                            <group>
+                                <field name="confirmation" attrs="{'readonly':[('state','=','done')]}"/>
+                                <field name="shipping_rates" readonly="1"/>
+                                <field name="ept_shipstation_order_id" readonly="1"/>
+                                <field name="ept_shipstation_shipment_id" readonly="1"/>
+                                <field name="shipstaion_actual_shipping_cost" readonly="1"/>
+                            </group>
+                            <field string="Shipstation Rates" name="delivery_rate_ids" widget="one2many" nolabel="1"
+                                   readonly="True">
+                                <tree string="Rates" create="false" delete="false"
+                                      decoration-warning="selected==True" default_order="total_cost">
+                                    <field name="ept_shipstation_carrier_id"/>
+                                    <field name="service_id"/>
+                                    <field name="service_name"/>
+                                    <field name="total_cost"/>
+                                    <field name="selected" invisible="1"/>
+                                    <!-- Modified by [ES] | Task: 182464 | Dated on 11, Jan 2022 -->
+                                    <button name="set_service" class="oe_highlight" string="Use Service" type="object"/>
+                                </tree>
+                            </field>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="shipstation_stock_picking_tree_view" model="ir.ui.view">
+            <field name="name">stock.picking.tree</field>
+            <field name="model">stock.picking</field>
+            <field name="arch" type="xml">
+                <tree create="0" decoration-info="state == 'draft'" decoration-muted="state == 'cancel'"
+                      decoration-danger="state not in ('cancel', 'done') and scheduled_date &lt; current_date"
+                      string="Picking list">
+                    <field name="name"/>
+                    <field name="location_dest_id" groups="stock.group_stock_multi_locations"/>
+                    <field name="partner_id"/>
+                    <field name="date" invisible="1"/>
+                    <field name="scheduled_date"/>
+                    <field name="origin"/>
+                    <field name="group_id" invisible="1"/>
+                    <field name="backorder_id"/>
+                    <field name="state"/>
+                    <field name="priority" invisible="1"/>
+                    <field name="picking_type_id" invisible="1"/>
+                </tree>
+            </field>
+        </record>
+        <record id="action_shipstation_instance_stock_picking_only" model="ir.actions.act_window">
+            <field name="name">ShipStation Delivery Order</field>
+            <field name="res_model">stock.picking</field>
+            <field name="view_id" ref="shipstation_stock_picking_tree_view"/>
+            <field name="domain">[('shipstation_instance_id', '!=', False)]</field>
+        </record>
+        <menuitem id="shipstation_stock_picking_main_menu" name="Transfers"
+                  parent="shipstation_ept.shipstation_instance_menu_item" sequence="2"/>
+        <menuitem id="shipstation_stock_picking_menu"
+                  name="Delivery Orders" parent="shipstation_ept.shipstation_stock_picking_main_menu" sequence="1"
+                  action="action_shipstation_instance_stock_picking_only"/>
+    </data>
+</odoo>

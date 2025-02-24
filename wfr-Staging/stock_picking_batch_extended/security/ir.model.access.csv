@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_stock_picking_batch_group,stock.picking.batch.group,model_stock_picking_batch_group,,1,1,1,1
+access_batch_stock_line,batch.stock.line,model_batch_stock_line,,1,1,1,1
+access_batch_product_line,batch.product.line,model_batch_product_line,,1,1,1,1

@@ -1,0 +1,76 @@
+<odoo>
+    <data>
+        <record id="shipping_custom_form" model="ir.ui.view">
+            <field name="name">shipping.custom.form</field>
+            <field name="model">shipping.custom</field>
+            <field name="arch" type="xml">
+                <form string="Shipping Custom">
+                    <header>
+                        <button name="action_confirm" string="Confirm" type="object" class="btn-primary"/>
+                        <field name="state" widget="statusbar" options="{'clickable': '1'}"
+                               statusbar_visible="draft,confirm,done"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="freight_id"/>
+                                <field name="date"/>
+                            </group>
+                            <group>
+                                <field name="agent_id"/>
+                                <field name="need_document"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Document">
+                                <group>
+                                    <field name="shipping_document_ids">
+                                        <tree editable="bottom">
+                                            <field name="name"/>
+                                            <field name="type"/>
+                                            <field name="file_content" filename="file_name"/>
+                                            <field name="file_name" invisible="1"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="shipping_custom_tree" model="ir.ui.view">
+            <field name="name">shipping.custom.tree</field>
+            <field name="model">shipping.custom</field>
+            <field name="arch" type="xml">
+                <tree string="Shipping Custom">
+                    <field name="freight_id"/>
+                    <field name="date"/>
+                    <field name="agent_id"/>
+                    <field name="need_document"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="menu_shipping_custom_action" model="ir.actions.act_window">
+            <field name="name">Outbound Logistics</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">shipping.custom</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                </p>
+                <p>
+                </p>
+            </field>
+        </record>
+
+<!--        <menuitem id="menu_shipping_custom_root" name="Custom Activity" parent="menu_freight_root" sequence="100"/>-->
+
+<!--        <menuitem id="menu_shipping_custom"-->
+<!--                  name="Custom Clearance"-->
+<!--                  parent="menu_shipping_custom_root"-->
+<!--                  action="menu_shipping_custom_action"-->
+<!--                  sequence="100"/>-->
+    </data>
+</odoo>

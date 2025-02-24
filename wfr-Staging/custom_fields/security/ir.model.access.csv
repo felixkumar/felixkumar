@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_custom_extra_field_selection,access_custom_extra_field_selection,model_custom_extra_field_selection,base.group_user,1,1,1,1
+custom_fields.access_custom_fields_prepare_selection,access_custom_fields_prepare_selection,custom_fields.model_custom_fields_prepare_selection,base.group_user,1,1,1,1

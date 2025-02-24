@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_edi_uom_form_inherit" model="ir.ui.view">
+            <field name="name">edi.view.uom.form</field>
+            <field name="model">uom.uom</field>
+            <field name="inherit_id" ref="uom.product_uom_form_view"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//field[@name='rounding']" position="after">
+                        <field name="edi_code"/>
+                    </xpath>
+                </data>
+            </field>
+        </record>
+    </data>
+</odoo>

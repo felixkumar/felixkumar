@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="inherit_sale_view_order_form_ext" model="ir.ui.view">
+        <field name="name">inherit.sale.view.order.form.ext</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="shipstation_ept.shipstation_sales_order_form_view_ept"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='ept_shipstation_store_id']" position="after">
+                <field name="carrier_tracking_ref"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

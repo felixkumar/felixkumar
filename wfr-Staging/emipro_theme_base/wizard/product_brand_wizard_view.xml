@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="product_brand_config_form_view" model="ir.ui.view">
+        <field name="name">product_brand_config_from_view</field>
+        <field name="model">product.brand.config</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet string="Products">
+                    <label for="brand_id" string="Brand Name"/>
+                    <field name="brand_id" readonly="1"/>
+                    <group>
+                        <label for="product_ids" string="Products"/>
+                        <field name="product_ids" widget="many2many_tags" domain="[('sale_ok', '=', True),('website_published', '=', True)]" nolabel="1"/>
+                    </group>
+                    <small>If any other brand set on select product list will replace on save.</small>
+                </sheet>
+                <footer>
+                    <button type="object" name="config_brand_product" class="oe_highlight" string="Set Product"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>
+
+

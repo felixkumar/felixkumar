@@ -1,0 +1,14 @@
+<template>
+
+    <t t-inherit="mail.Message" t-inherit-mode="extension">
+        <xpath expr="//small[hasclass('o_Message_headerDate')]" position="replace">
+            <t t-esc="messageView.message.datetime"/>
+        </xpath>
+    </t>
+
+    <t t-inherit="stock.InventoryLines.Buttons" t-inherit-mode="extension">
+        <xpath expr="//button" position="replace">
+        </xpath>
+    </t>
+
+</template>

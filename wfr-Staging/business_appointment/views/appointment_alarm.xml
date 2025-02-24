@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<odoo>
+
+    <record id="appointment_alarm_view_search" model="ir.ui.view">
+        <field name="name">appointment.alarm.search</field>
+        <field name="model">appointment.alarm</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="ttype"/>
+                <field name="recipients"/>
+                <group expand="0" string="Group by...">
+                    <filter string="Type" name="group_type" domain="[]" context="{'group_by': 'ttype'}"/>
+                    <filter string="Recipients" name="group_recipients" domain="[]" context="{'group_by': 'recipients'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+    <record id="appointment_alarm_view_form" model="ir.ui.view">
+        <field name="name">appointment.alarm.form.appointment</field>
+        <field name="model">appointment.alarm</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>   
+                    <group>
+                        <field name="ttype"/>
+                        <label for="duration"/>
+                        <div>
+                            <field name="duration" class="oe_inline"/>
+                            <field name="duration_uom" class="oe_inline"/>
+                        </div>
+                        <field name="recipients"/>
+                        <field name="mail_template_id"
+                               attrs="{'invisible': [('ttype', '!=', 'email')], 'required': [('ttype', '=', 'email')]}"
+                               domain="[('model', '=', 'business.appointment')]" 
+                               options="{'no_create_edit': 1, 'no_quick_create': 1}" 
+                        />
+                        <field name="sms_template_id"
+                               attrs="{'invisible': [('ttype', '!=', 'sms')], 'required': [('ttype', '=', 'sms')]}"
+                               domain="[('model', '=', 'business.appointment')]" 
+                               options="{'no_create_edit': 1, 'no_quick_create': 1}" 
+                        />
+                    </group>     
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="appointment_alarm_view_tree" model="ir.ui.view">
+        <field name="name">appointment.alarm.tree</field>
+        <field name="model">appointment.alarm</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="ttype"/>
+                <field name="duration"/>
+                <field name="duration_uom"/>
+                <field name="recipients"/>
+                <field name="template_name"/>
+            </tree>
+        </field>
+    </record>
+    <record id="appointment_alarm_action" model="ir.actions.act_window">
+        <field name="name">Alarms</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">appointment.alarm</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{"search_default_group_type": 1}</field>
+        <field name="search_view_id" eval="appointment_alarm_view_search"/>      
+    </record>
+
+</odoo>

@@ -1,0 +1,184 @@
+{
+    "config": [
+        {
+            "path": "Shipments/Shipment",
+            "model": "stock.picking"
+        },
+        {
+            "path": "Shipments/Shipment/Header/ShipmentHeader/TradingPartnerId",
+            "field": "partner_id",
+            "search_field": "trading_partnerid"
+        },
+        {
+            "path": "Shipments/Shipment/Header/ShipmentHeader/ShipmentIdentification",
+            "field": "edi_shipment_identifier"
+        },
+        {
+            "path": "Shipments/Shipment/Header/ShipmentHeader/ShipDate",
+            "field": "scheduled_date"
+        },
+        {
+            "path": "Shipments/Shipment/Header/ShipmentHeader/ShipNoticeDate",
+            "field": "edi_create_date",
+            "custom_method": "get_edi_create_date",
+            "custom_method_args": ["../ShipNoticeTime"]
+        },
+        {
+            "path": "Shipments/Shipment/Header/ShipmentHeader/ASNStructureCode",
+            "field": "edi_asn_structure_code"
+        },
+        {
+            "path": "Shipments/Shipment/Header/ShipmentHeader/BillOfLadingNumber",
+            "field": "edi_bill_of_landing_number"
+        },
+        {
+            "path": "Shipments/Shipment/Header/ShipmentHeader/CarrierProNumber",
+            "field": "edi_bill_of_landing_number"
+        },
+        {
+            "path": "Shipments/Shipment/Header/Address",
+            "multifield": {
+                "determining_tag": "AddressTypeCode",
+                "model": "res.partner",
+                "values": [
+                    {
+                        "value": "ST",
+                        "field": "partner_id",
+                        "create": true
+                    }
+                ],
+                "search": true
+            },
+            "trading_partner_field": "store_trading_partner_id",
+            "log_subfields": "edi_addresses"
+        },
+        {
+            "path": "Shipments/Shipment/Header/Address/AddressTypeCode",
+            "log": true,
+            "create_include": true,
+            "field": "type"
+        },
+        {
+            "path": "Shipments/Shipment/Header/Address/LocationCodeQualifier",
+            "log": true,
+            "create_include": true,
+            "field": "edi_location_code_qualifier"
+        },
+        {
+            "path": "Shipments/Shipment/Header/Address/AddressLocationNumber",
+            "log": true,
+            "create_include": true,
+            "search": true,
+            "field": "edi_address_location_number"
+        },
+        {
+            "path": "Shipments/Shipment/Header/Address/AddressName",
+            "log": true,
+            "create_include": true,
+            "field": "name"
+        },
+        {
+            "path": "Shipments/Shipment/Header/Address/Address1",
+            "log": true,
+            "create_include": true,
+            "field": "street"
+        },
+        {
+            "path": "Shipments/Shipment/Header/Address/Address2",
+            "log": true,
+            "create_include": true,
+            "field": "street2"
+        },
+        {
+            "path": "Shipments/Shipment/Header/Address/City",
+            "log": true,
+            "create_include": true,
+            "field": "city"
+        },
+        {
+            "path": "Shipments/Shipment/Header/Address/PostalCode",
+            "log": true,
+            "create_include": true,
+            "field": "zip"
+        },
+        {
+            "path": "Shipments/Shipment/Header/Address/Country",
+            "log": true,
+            "create_include": true,
+            "create_search_model": "res.country",
+            "create_search_field": "code",
+            "field": "country_id"
+        },
+        {
+            "path": "Shipments/Shipment/Header/Address/State",
+            "create_include": true,
+            "create_search_model": "res.country.state",
+            "create_search_field": "code",
+            "create_search_dependencies": [
+                {
+                    "field": "country_id.code",
+                    "value_tag": "../Country"
+                }
+            ],
+            "field": "state_id"
+        },
+        {
+            "path": "Shipments/Shipment/Header/CarrierInformation/CarrierAlphaCode",
+            "field": "edi_carrier_alpha_code"
+        },
+        {
+            "path": "Shipments/Shipment/Header/CarrierInformation/CarrierRouting",
+            "field": "edi_carrier_routing"
+        },
+        {
+            "path": "Shipments/Shipment/Header/QuantityAndWeight/LadingQuantity",
+            "field": "edi_lading_qty"
+        },
+        {
+            "path": "Shipments/Shipment/Header/QuantityAndWeight/Weight",
+            "field": "edi_weight"
+        },
+        {
+            "path": "Shipments/Shipment/Header/QuantityAndWeight/WeightUOM",
+            "field": "edi_weight_uom_name"
+        },
+        {
+            "path": "Shipments/Shipment/Header/QuantityAndWeight/LadingQuantity",
+            "field": "edi_lading_qty"
+        },
+        {
+            "path": "Shipments/Shipment/OrderLevel/OrderHeader/PurchaseOrderNumber",
+            "field": "edi_purchase_order_number"
+        },
+        {
+            "path": "Shipments/Shipment/OrderLevel/PackLevel",
+            "field": "move_line_ids_without_package"
+        },
+        {
+            "path": "Shipments/Shipment/OrderLevel/PackLevel/ItemLevel/ShipmentLine/LineSequenceNumber",
+            "field": "edi_line_sequence_number"
+        },
+        {
+            "path": "Shipments/Shipment/OrderLevel/PackLevel/ItemLevel/ShipmentLine/BuyerPartNumber",
+            "field": "edi_buyer_part_number"
+        },
+        {
+            "path": "Shipments/Shipment/OrderLevel/PackLevel/ItemLevel/ShipmentLine/VendorPartNumber",
+            "field": "edi_vendor_part_number"
+        },
+        {
+            "path": "Shipments/Shipment/OrderLevel/PackLevel/ItemLevel/ShipmentLine/ConsumerPackageCode",
+            "custom_method": "get_product_from_xml",
+            "custom_method_returns_dict": true,
+            "custom_method_args": ["../EAN", "../GTIN"]
+        },
+        {
+            "path": "Shipments/Shipment/OrderLevel/PackLevel/ItemLevel/ShipmentLine/ShipQty",
+            "field": "qty_done"
+        },
+        {
+            "path": "Shipments/Shipment/OrderLevel/PackLevel/ItemLevel/References/ReferenceID",
+            "field": "edi_lot_name"
+        }
+    ]
+}

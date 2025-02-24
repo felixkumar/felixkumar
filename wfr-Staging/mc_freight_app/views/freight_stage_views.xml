@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!--    IBL STage View    -->
+       <record id="menu_freight_form_action" model="ir.ui.view">
+           <field name="name">menu.freight.form.action</field>
+           <field name="model">freight.stage</field>
+           <field name="arch" type="xml">
+               <form string="Transit Stage">
+                   <sheet>
+                       <group>
+                           <group>
+                               <field name="name"/>
+                               <field name="is_fold"/>
+                           </group>
+                           <group>
+                               <field name="sequence"/>
+                           </group>
+                       </group>
+                   </sheet>
+               </form>
+           </field>
+       </record>
+        
+       <record id="menu_freight_stages_tree_view" model="ir.ui.view">
+           <field name="name">menu.freight.stages.tree.view</field>
+           <field name="model">freight.stage</field>
+           <field name="arch" type="xml">
+               <tree string="Transit Stages">
+                   <field name="name"/>
+                   <field name="is_fold"/>
+                   <field name="sequence"/>
+               </tree>
+           </field>
+       </record>
+        
+       <record id="menu_freight_stages_action" model="ir.actions.act_window">
+           <field name="name">Transit Stages</field>
+           <field name="type">ir.actions.act_window</field>
+           <field name="res_model">freight.stage</field>
+           <field name="view_mode">tree,form</field>
+       </record>
+
+
+        <!--    OBL Stage View    -->
+       <record id="menu_freight_obl_form_action" model="ir.ui.view">
+           <field name="name">menu.freight.obl.form.action</field>
+           <field name="model">freight.outbound.stage</field>
+           <field name="arch" type="xml">
+               <form string="Transit Stage">
+                   <sheet>
+                       <group>
+                           <group>
+                               <field name="name"/>
+                               <field name="is_fold"/>
+                           </group>
+                           <group>
+                               <field name="sequence"/>
+                           </group>
+                       </group>
+                   </sheet>
+               </form>
+           </field>
+       </record>
+
+       <record id="menu_freight_obl_stages_tree_view" model="ir.ui.view">
+           <field name="name">menu.freight.obl.stages.tree.view</field>
+           <field name="model">freight.outbound.stage</field>
+           <field name="arch" type="xml">
+               <tree string="Transit Stages">
+                   <field name="name"/>
+                   <field name="is_fold"/>
+                   <field name="sequence"/>
+               </tree>
+           </field>
+       </record>
+
+       <record id="menu_freight_obl_stages_action" model="ir.actions.act_window">
+           <field name="name">Transit Stages</field>
+           <field name="type">ir.actions.act_window</field>
+           <field name="res_model">freight.outbound.stage</field>
+           <field name="view_mode">tree,form</field>
+       </record>
+
+    </data>
+</odoo>

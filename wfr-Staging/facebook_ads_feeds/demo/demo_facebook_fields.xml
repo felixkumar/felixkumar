@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (c) 2016-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>;) -->
+<!-- See LICENSE file for full copyright and licensing details. -->
+<!-- License URL : https://store.webkul.com/license.html/ -->
+<odoo>
+    <data noupdate="1">
+          <record id="facebook_fields_1" model="fb.facebook.fields">
+            <field name="name">id</field>
+            <field name="required">True</field>
+            <field name="g_beg">True</field>
+          </record>
+
+          <record id="facebook_fields_2" model="fb.facebook.fields">
+            <field name="name">item_group_id</field>
+            <field name="required">False</field>
+            <field name="g_beg">False</field>
+          </record>
+
+          <record id="facebook_fields_3" model="fb.facebook.fields">
+            <field name="name">short_description</field>
+            <field name="required">False</field>
+            <field name="g_beg">False</field>
+          </record>
+
+          <record id="facebook_fields_4" model="fb.facebook.fields">
+            <field name="name">rich_text_description</field>
+            <field name="required">False</field>
+            <field name="g_beg">False</field>
+          </record>
+
+          <record id="facebook_fields_5" model="fb.facebook.fields">
+            <field name="name">inventory</field>
+            <field name="required">False</field>
+            <field name="g_beg">False</field>
+          </record>
+
+          <record id="facebook_fields_6" model="fb.facebook.fields">
+            <field name="name">availability</field>
+            <field name="required">True</field>
+            <field name="g_beg">True</field>
+          </record>
+
+          <record id="facebook_fields_7" model="fb.facebook.fields">
+            <field name="name">description</field>
+            <field name="required">True</field>
+            <field name="g_beg">True</field>
+          </record>
+
+          <record id="facebook_fields_8" model="fb.facebook.fields">
+            <field name="name">condition</field>
+            <field name="required">True</field>
+            <field name="g_beg">True</field>
+          </record>
+
+          <record id="facebook_fields_9" model="fb.facebook.fields">
+            <field name="name">image_link</field>
+            <field name="required">True</field>
+            <field name="g_beg">True</field>
+          </record>
+
+          <record id="facebook_fields_10" model="fb.facebook.fields">
+            <field name="name">additional_image_link</field>
+            <field name="required">False</field>
+            <field name="g_beg">False</field>
+          </record>
+
+          <record id="facebook_fields_11" model="fb.facebook.fields">
+            <field name="name">link</field>
+            <field name="required">True</field>
+            <field name="g_beg">True</field>
+          </record>
+
+          <record id="facebook_fields_12" model="fb.facebook.fields">
+            <field name="name">title</field>
+            <field name="required">True</field>
+            <field name="g_beg">True</field>
+          </record>
+
+          <record id="facebook_fields_13" model="fb.facebook.fields">
+            <field name="name">price</field>
+            <field name="required">True</field>
+            <field name="g_beg">True</field>
+          </record>
+
+          <record id="facebook_fields_14" model="fb.facebook.fields">
+            <field name="name">sale_price</field>
+            <field name="required">False</field>
+            <field name="g_beg">False</field>
+          </record>
+
+          <record id="facebook_fields_15" model="fb.facebook.fields">
+            <field name="name">sale_price_effective_date</field>
+            <field name="required">False</field>
+            <field name="g_beg">False</field>
+          </record>
+
+          <!-- <record id="facebook_fields_16" model="fb.facebook.fields">
+            <field name="name">shipping</field>
+            <field name="required">False</field>
+            <field name="g_beg">True</field>
+          </record> -->
+
+          <record id="facebook_fields_17" model="fb.facebook.fields">
+            <field name="name">gtin</field>
+            <field name="required">False</field>
+            <field name="g_beg">False</field>
+          </record>
+
+          <record id="facebook_fields_18" model="fb.facebook.fields">
+            <field name="name">mpn</field>
+            <field name="required">False</field>
+            <field name="g_beg">False</field>
+          </record>
+
+          <record id="facebook_fields_19" model="fb.facebook.fields">
+            <field name="name">brand</field>
+            <field name="required">False</field>
+            <field name="g_beg">True</field>
+          </record>
+
+          <record id="facebook_fields_20" model="fb.facebook.fields">
+            <field name="name">size</field>
+            <field name="required">False</field>
+            <field name="g_beg">False</field>
+          </record>
+
+          <record id="facebook_fields_21" model="fb.facebook.fields">
+            <field name="name">color</field>
+            <field name="required">False</field>
+            <field name="g_beg">False</field>
+          </record>
+
+          <record id="facebook_fields_22" model="fb.facebook.fields">
+            <field name="name">return_policy_info</field>
+            <field name="required">False</field>
+            <field name="g_beg">False</field>
+          </record>
+
+          <record id="facebook_fields_23" model="fb.facebook.fields">
+            <field name="name">availability_date</field>
+            <field name="required">False</field>
+            <field name="g_beg">False</field>
+          </record>
+
+          <record id="facebook_fields_24" model="fb.facebook.fields">
+            <field name="name">expiration_date</field>
+            <field name="required">False</field>
+            <field name="g_beg">False</field>
+          </record>
+
+          <record id="facebook_fields_25" model="fb.facebook.fields">
+            <field name="name">age_group</field>
+            <field name="required">False</field>
+            <field name="g_beg">False</field>
+          </record>
+
+          <record id="facebook_fields_26" model="fb.facebook.fields">
+            <field name="name">gender</field>
+            <field name="required">False</field>
+            <field name="g_beg">False</field>
+          </record>
+
+          <record id="facebook_fields_27" model="fb.facebook.fields">
+            <field name="name">pattern</field>
+            <field name="required">False</field>
+            <field name="g_beg">False</field>
+          </record>
+
+          <record id="facebook_fields_28" model="fb.facebook.fields">
+            <field name="name">google_product_category</field>
+            <field name="required">False</field>
+            <field name="g_beg">True</field>
+          </record>
+
+          <record id="facebook_fields_29" model="fb.facebook.fields">
+            <field name="name">offer_price</field>
+            <field name="required">False</field>
+            <field name="g_beg">False</field>
+          </record>
+
+          <record id="facebook_fields_30" model="fb.facebook.fields">
+            <field name="name">offer_price_effective_date</field>
+            <field name="required">False</field>
+            <field name="g_beg">False</field>
+          </record>
+
+          <record id="facebook_fields_31" model="fb.facebook.fields">
+            <field name="name">identifier_exists</field>
+            <field name="required">True</field>
+            <field name="g_beg">False</field>
+          </record>
+
+          <record id="facebook_fields_32" model="fb.facebook.fields">
+            <field name="name">status</field>
+            <field name="required">True</field>
+            <field name="g_beg">False</field>
+          </record>
+
+    </data>
+</odoo>

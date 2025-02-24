@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="stock_picking_batch_form_carote_inherit" model="ir.ui.view">
+            <field name="name">stock.picking.batch.form.carote.inherit</field>
+            <field name="model">stock.picking.batch</field>
+            <field name="inherit_id" ref="stock_picking_batch.stock_picking_batch_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//header" position="attributes">
+                    <attribute name="groups">!user_warehouse_restriction.user_carote_restriction_group_user</attribute>
+                </xpath>
+                <xpath expr="//sheet" position="inside">
+                    <t groups="!user_warehouse_restriction.user_carote_restriction_group_user">
+                        <field name="state" invisible="1"/>
+                    </t>
+                    <t groups="user_warehouse_restriction.user_carote_restriction_group_user">
+                        <field name="state" invisible="1"/>
+                    </t>
+                </xpath>
+                <xpath expr="//button[@name='action_put_in_pack']" position="replace">
+                    <t groups="!user_warehouse_restriction.user_carote_restriction_group_user">
+                        <button class="oe_highlight" name="action_put_in_pack" type="object" string="Put in Pack" attrs="{'invisible': [('state', 'in', ('draft', 'done', 'cancel'))]}" groups="stock.group_tracking_lot"/>
+                    </t>
+                </xpath>
+            </field>
+        </record>
+
+        <menuitem id="stock.menu_action_inventory_tree"
+                    name="Inventory Adjustments"
+                    parent="stock.menu_stock_warehouse_mgmt"
+                    sequence="10"
+                    action="stock.action_view_inventory_tree"
+                    groups="stock.group_stock_user"
+        />
+
+        <menuitem action="stock_picking_batch.stock_picking_batch_action"
+                  id="stock_picking_batch.stock_picking_batch_menu"
+                  parent="stock.menu_stock_warehouse_mgmt"
+                  sequence="21"
+                  groups="stock.group_stock_user"
+        />
+
+        <menuitem action="stock_picking_batch_extended.stock_picking_batch_group_action"
+                  id="stock_picking_batch_extended.stock_picking_batch_group_menu"
+                  parent="stock.menu_stock_warehouse_mgmt"
+                  sequence="21"
+                  groups="stock.group_stock_user"
+        />
+
+        <menuitem id="stock.menu_package"
+                  name="Packages"
+                  parent="stock.menu_stock_inventory_control"
+                  action="stock.action_package_view"
+                  groups="stock.group_stock_user"
+                  sequence="102"
+        />
+
+        <menuitem id="stock.menu_valuation" name="Locations"
+              parent="stock.menu_warehouse_report" sequence="150"
+              action="stock.action_view_quants" groups="stock.group_stock_user"
+        />
+
+    </data>
+</odoo>

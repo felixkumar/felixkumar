@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_charge_allowance_user,access_charge_allowance_user,model_charge_allowance,,1,1,1,1
+access_reference_line,access_reference_line,model_reference_line,,1,1,1,1
+access_notes_line,access_notes_line,model_notes_line,,1,1,1,1

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!--        Views-->
+        <record id="form_view_pallet_cost_config" model="ir.ui.view">
+            <field name="name">pallet.cost.config.form.view</field>
+            <field name="model">pallet.cost.config</field>
+            <field name="arch" type="xml">
+                <form string="Pallet Costs Configuration">
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="reference"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="cost_for" widget='radio'/>
+                            </group>
+                            <group>
+                                <field name="vendor_ids" attrs="{'invisible': [('cost_for', '=', 'country')]}"
+                                       widget="many2many_tags"/>
+                                <field name="country_ids" attrs="{'invisible': [('cost_for', '=', 'vendor')]}"
+                                       widget="many2many_tags"/>
+                            </group>
+                        </group>
+                        <group>
+                            <group>
+                                <field name="packaging_qty"/>
+                            </group>
+                        </group>
+                        <label for="import_cost_ids"/>
+                        <br/>
+                        <br/>
+                        <field name="import_cost_ids">
+                            <tree string="Import Cost" editable="bottom">
+                                <field name="name" invisible="1"/>
+                                <field name="product_id" required="1" domain="[('type', '=', 'service')]"/>
+                                <field name="actual_cost" sum="Total Actual Cost"/>
+                                <field name="processing_fee_per"/>
+                                <field name="processing_fee_amt" sum="Total Processing Fees"/>
+                                <field name="total_cost" sum="Total Price"/>
+                            </tree>
+                        </field>
+                        <label for="fob_cost_ids"/>
+                        <br/>
+                        <br/>
+                        <field name="fob_cost_ids">
+                            <tree string="Calculated against FOB" editable="bottom">
+                                <field name="product_id" required="1" domain="[('type', '=', 'service')]"/>
+                                <field name="fob_per"/>
+                                <field name="total_cost" sum="Total Price"/>
+                            </tree>
+                        </field>
+                        <br/>
+                        <br/>
+                        <label for="storage_cost_ids"/>
+                        <br/>
+                        <br/>
+                        <field name="storage_cost_ids">
+                            <tree string="Storage Fees" editable="bottom">
+                                <field name="name" invisible="1"/>
+                                <field name="product_id" required="1" domain="[('type', '=', 'service')]"/>
+                                <field name="unit_of_measure"/>
+                                <field name="total_pallet"
+                                       attrs="{'invisible': [('unit_of_measure', 'not in', ['per_pallet', 'per_pallet_per_month'])], 'required': [('unit_of_measure', 'not in', ['per_pallet', 'per_pallet_per_month'])]}"/>
+                                <field name="total_cubic_feet"
+                                       attrs="{'invisible': [('unit_of_measure', '!=', 'per_cubic_feet_per_month')]}"/>
+                                <field name="unit_price_day" readonly="1"
+                                       attrs="{'invisible': [('unit_of_measure', 'not in', ['per_pallet_per_month', 'per_cubic_feet_per_month'])]}"/>
+                                <field name="unit_price"/>
+                                <field name="total_cost" sum="Total Price"/>
+                            </tree>
+                        </field>
+                        <br/>
+                        <br/>
+                        <label for="vas_cost_ids" string="Handling and Materials"/>
+                        <br/>
+                        <br/>
+                        <field name="vas_cost_ids" nolabel="1">
+                            <tree string="Value Added Service" editable="bottom">
+                                <field name="name" invisible="1"/>
+                                <field name="product_id" required="1"/>
+                                <field name="unit_of_measure"/>
+                                <field name="unit_price_day" readonly="1"
+                                       attrs="{'invisible': [('unit_of_measure', 'not in', ['per_month'])]}"/>
+                                <field name="total_cost" sum="Total Price"/>
+                            </tree>
+                        </field>
+
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="tree_view_pallet_cost_config" model="ir.ui.view">
+            <field name="name">pallet.cost.config.tree.view</field>
+            <field name="model">pallet.cost.config</field>
+            <field name="arch" type="xml">
+                <tree string="Pallet Costs Configuration">
+                    <field name="reference"/>
+                    <field name="cost_for"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <!--        Actions-->
+        <record id="view_action_pallet_cost_config" model="ir.actions.act_window">
+            <field name="name">Pallet Costs Configurations</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">pallet.cost.config</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                </p>
+            </field>
+        </record>
+
+
+        <!--        Menu items-->
+<!--        <menuitem id="menu_pallet_cost_config" name="Pallet Costs" action="view_action_pallet_cost_config"-->
+<!--                  parent="warefor_3pl_tus.menu_pallet_mgmt_root" sequence="5"/>-->
+
+    </data>
+</odoo>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="portal_appointments_tu" inherit_id="business_appointment_website.portal_appointments" name="My Appointments">
+       <xpath expr="//thead/tr/th[1]" position="replace">
+            <th>Load ID</th>
+       </xpath>
+        <xpath expr="//td[1]" position="replace">
+            <td>
+                <a t-attf-href="/my/business/appointments/#{appointment.id}?#{keep_query()}">
+                    <t t-esc="appointment.sudo().x_oz_cbaf_3.name and appointment.sudo().x_oz_cbaf_3.name.split('-')[1] or ''"/>
+                </a>
+            </td>
+       </xpath>
+        <xpath expr="//thead/tr/th[3]" position="replace">
+            <th class="d-none">Load ID</th>
+       </xpath>
+        <xpath expr="//td[3]" position="replace">
+            <td class="d-none">
+                <a t-attf-href="/my/business/appointments/#{appointment.id}?#{keep_query()}">
+                    <t t-esc="appointment.sudo().x_oz_cbaf_3.name"/>
+                </a>
+            </td>
+       </xpath>
+    </template>
+
+    <template id="portal_appointment_page_tu" inherit_id="business_appointment_website.portal_appointment_page" name="My Appointments">
+       <xpath expr="//div[hasclass('o_portal_sidebar')]//h2[1]" position="replace">
+            <h2 class="mb-0">
+                <t t-if="not ba_topical">
+                    <span class="text-muted"><t t-esc="ba_appointment_id.sudo().x_oz_cbaf_3.name"/></span>
+                </t>
+                <t t-else="">
+                    <b><t t-esc="ba_appointment_id.sudo().x_oz_cbaf_3.name"/></b>
+                </t>
+            </h2>
+       </xpath>
+
+        <xpath expr="//div[@id='ba_right_column']" position="attributes">
+            <attribute name="class">d-none</attribute>
+        </xpath>
+
+    </template>
+
+</odoo>

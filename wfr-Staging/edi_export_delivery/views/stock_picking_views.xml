@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_stock_picking_form_inherit_edi_shipping" model="ir.ui.view">
+        <field name="name">view.stock.picking.form.inherit.edi.shipping</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="edi_shipment_identification"/>
+            </xpath>
+
+            <xpath expr="//notebook" position="inside">
+                <page name="edi_data" string="EDI">
+                    <group name="group_edi">
+                        <group name="group_left_edi">
+                            <field name="carrier_trans_method_code"/>
+                            <field name="edi_carrier_alpha_code"/>
+                            <field name="edi_carrier_routing"/>
+                            <field name="edi_weight_qualifier"/>
+                            <field name="edi_weight"/>
+                            <field name="edi_packing_medium"/>
+                            <field name="reference_line_ids" widget="one2many" readonly="0">
+                                <tree>
+                                    <field name="ReferenceQual"/>
+                                    <field name="ReferenceID"/>
+                                </tree>
+                            </field>
+                            <field name="notes_line_ids" widget="one2many" readonly="0">
+                                <tree>
+                                    <field name="NoteCode"/>
+                                    <field name="Note"/>
+                                </tree>
+                            </field>
+                        </group>
+                        <group name="group_right_edi">
+                            <field name="all_contacts"/>
+                            <field name="tradingpartner_id" string="Trading Partner Id"/>
+                            <field name="edi_shipment_identifier" string="Shipment Identification"/>
+                            <field name="edi_tset_purpose_code" string="Tset Purpose Code"/>
+                            <field name="edi_create_date" string="Ship Notice Date"/>
+                            <field name="asn_structure_code" string="ASN Structure Code"/>
+                            <field name="edi_bill_of_lading_number" string="Bill Of Lading Number"/>
+                            <field name="edi_bill_of_landing_number" string="Carrier Pro Number"/>
+                            <field name="commitment_date" string="Current Scheduled Delivery Date"/>
+                            <field name="edi_date_time_qualifier" string="DateTime Qualifier"/>
+                            <field name="qualifier_date" string="Qualifier Date"/>
+                            <field name="contact_name"/>
+                            <field name="contact_phone"/>
+                            <field name="edi_source_so_id"/>
+<!--                            <field name="shipping_serial_id"/>-->
+                            <field name="sscc_18_barcode_char" readonly="1"/>
+                            <field name="edi_obl_weight"/>
+                            <field name="edi_obl_uom"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+
+            <xpath expr="//field[@name='origin']" position="after">
+                <field name="edi_backorder_origin" string="EDI Backorder Origin"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

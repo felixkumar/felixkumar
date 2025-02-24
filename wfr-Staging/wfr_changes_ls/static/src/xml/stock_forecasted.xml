@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates xml:space="preserve">
+    <t t-name="wfr_changes_ls.ForecastedDetails_js" owl="1" t-inherit="stock.ForecastedDetails" t-inherit-mode="extension">
+        <xpath expr="//tr[@t-if='onHandCondition']" position="before">
+            <t t-set="can_see_button" t-value="this.canSeeBut"/>
+        </xpath>
+        <xpath expr="//button[@name='unreserve_link']" position="replace">
+            <button t-if="line.move_out and line.move_out.picking_id and can_see_button"
+                    class="btn btn-sm btn-primary o_report_replenish_unreserve"
+                    name="unreserve_link"
+                    t-on-click="() => this._unreserve('stock.picking', line.move_out.picking_id.id)">
+                                Unreserve
+                            </button>
+        </xpath>
+        <xpath expr="//button[@name='reserve_link']" position="replace">
+            <button t-if="displayReserve(line) and can_see_button"
+                    class="btn btn-sm btn-primary o_report_replenish_reserve"
+                    name="reserve_link"
+                    t-on-click="() => this._reserve('stock.picking', line.move_out.picking_id.id)">
+                Reserve
+            </button>
+        </xpath>
+    </t>
+</templates>

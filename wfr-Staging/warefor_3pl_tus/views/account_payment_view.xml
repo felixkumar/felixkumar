@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <record id="account_payment_search_view" model="ir.ui.view">
+            <field name="name">account.payment.search.view.inherit</field>
+            <field name="model">account.payment</field>
+            <field name="inherit_id" ref="account.view_account_payment_search"/>
+            <field name="arch" type="xml">
+                <xpath expr="//filter[@name='transfers_filter']" position="after">
+                    <filter string="Require 1099" name="partner_id" domain="[('partner_id.require_1099', '=', True)]"/>
+                    <separator/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_account_payment_tree_3pl" model="ir.ui.view">
+            <field name="name">account.payment.search.view.inherit</field>
+            <field name="model">account.payment</field>
+            <field name="inherit_id" ref="account.view_account_payment_tree"/>
+            <field name="arch" type="xml">
+                <field name="state" position="before">
+                    <field name="unreconciled_amount"/>
+                </field>
+            </field>
+        </record>
+
+    </data>
+</odoo>

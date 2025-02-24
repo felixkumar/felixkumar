@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="create_transfer_kanban" xml:space="preserve">
+   <t t-extend="KanbanView.buttons" t-name="transfer_button_near_create.button">
+       <t t-jquery="div" t-operation="append">
+               <button t-if="widget.modelName == 'freight.freight' and widget.button_enable_it"
+                   class="btn btn-primary action_picking_form oe_highlight"
+                   type="button">INTERNAL TRANSFER</button>
+       </t>
+   </t>
+</templates>

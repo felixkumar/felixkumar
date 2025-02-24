@@ -1,0 +1,122 @@
+<odoo>
+    <data>
+        <!--     IBL pallet CONFIG VIEW   -->
+        <record id="pallet_ibl_configuration_form_view" model="ir.ui.view">
+            <field name="name">pallet.config.ibl.form</field>
+            <field name="model">pallet.config.ibl</field>
+            <field name="arch" type="xml">
+                <form string="Pallet IBL Configuration">
+                    <sheet>
+                        <group>
+                            <field name="partner_id"/>
+                            <field name="warehouse_id"/>
+                            <field name="product_ids"/>
+                            <field name="service_fee"/>
+                            <field name="service_uom"/>
+                            <field name="cost"/>
+                            <field name="received_date"/>
+                            <field name="is_storage_fee"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="pallet_ibl_config_tree_view" model="ir.ui.view">
+            <field name="name">pallet.config.ibl.tree</field>
+            <field name="model">pallet.config.ibl</field>
+            <field name="arch" type="xml">
+                <tree string="Pallet IBL Configuration">
+                    <field name="partner_id"/>
+                    <field name="warehouse_id"/>
+                    <field name="product_ids"/>
+                    <field name="service_fee"/>
+                    <field name="service_uom"/>
+                    <field name="cost"/>
+                    <field name="received_date"/>
+                    <field name="is_storage_fee"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="pallet_ibl_config_action" model="ir.actions.act_window">
+            <field name="name">IBL Billing Rules</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">pallet.config.ibl</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="menu_freight_ibl_palltet_config"
+                  name="IBL Billing Rules"
+                  parent="menu_freight_configuration"
+                  action="pallet_ibl_config_action"
+                  sequence="3"/>
+
+        <!--     OBL pallet CONFIG VIEW   -->
+        <record id="pallet_obl_configuration_form_view" model="ir.ui.view">
+            <field name="name">pallet.config.obl.form</field>
+            <field name="model">pallet.config.obl</field>
+            <field name="arch" type="xml">
+                <form string="OBL Billing Rules">
+                    <sheet>
+                        <group>
+                            <field name="partner_id"/>
+                            <field name="warehouse_id"/>
+                            <field name="product_ids"/>
+                            <field name="service_fee"/>
+                            <field name="service_uom"/>
+                            <field name="is_cbft"/>
+                            <field name="is_carton"/>
+                            <field name="is_volume"/>
+                            <field name="is_weight"/>
+                            <field name="is_pallet"/>
+                            <field name="is_load"/>
+<!--                            <field name="is_edi_rule"/>-->
+                            <field name="edi_store_id"/>
+                            <field name="cost"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="pallet_obl_config_tree_view" model="ir.ui.view">
+            <field name="name">pallet.config.obl.tree</field>
+            <field name="model">pallet.config.obl</field>
+            <field name="arch" type="xml">
+                <tree string="OBL Billing Rules">
+                    <field name="partner_id"/>
+                    <field name="warehouse_id"/>
+                    <field name="product_ids"/>
+                    <field name="service_fee"/>
+                    <field name="service_uom"/>
+                    <field name="is_cbft"/>
+                    <field name="is_carton"/>
+                    <field name="is_volume"/>
+                    <field name="is_weight"/>
+                    <field name="is_pallet"/>
+                    <field name="is_load"/>
+<!--                    <field name="is_edi_rule"/>-->
+                    <field name="edi_store_id"/>
+                    <field name="cost"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="pallet_obl_config_action" model="ir.actions.act_window">
+            <field name="name">OBL Billing Rules</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">pallet.config.obl</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <menuitem id="menu_config_obl" name="Configuration" groups="base.group_system"
+                  parent="menu_freight_outbound_root" sequence="20"/>
+
+        <menuitem id="menu_freight_obl_palltet_config"
+                  name="OBL Billing Rules"
+                  parent="menu_config_obl"
+                  action="pallet_obl_config_action"
+                  sequence="1"/>
+
+    </data>
+</odoo>

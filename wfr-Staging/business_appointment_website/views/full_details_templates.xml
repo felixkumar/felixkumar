@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Resource types -->
+    <template id="ba_resource_type_full" name="Resource Type">
+        <t t-call="website.layout">
+            <t t-set="additional_title" t-value="main_object.name"/>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12" id="rtype_details"> 
+                        <div class="col-md-12 text-right">
+                            <a role="button"
+                               class="btn btn-sm btn-primary btn mb4"
+                               t-attf-href="/appointments/2?url_ba_type_id=#{main_object.id}&amp;progress_step=2"
+                            >
+                                <strong>Schedule</strong> <i class="fa fa-arrow-circle-right"/>
+                            </a> 
+                        </div>
+                        <h1 id="ba_type_header" class="mb0">
+                            <span t-field="main_object.name"/>
+                        </h1>
+                    </div>
+                </div>
+                <div id="ba_full_description" 
+                     class="oe_structure oe_empty business-appointment-website-row mt8"
+                     contenteditable="false"
+                     itemprop="description"
+                     t-field="main_object.full_website_description"
+                />                    
+            </div>
+        </t>
+    </template>
+    <template id="ba_resource_type_full_image" inherit_id="business_appointment_website.ba_resource_type_full" name="Show Image" active="True" customize_show="True">
+        <xpath expr="//div[@id='rtype_details']" position="before">
+            <div class="col-md-2 ba_website_image mt16">
+                <div class="col-md-12">
+                    <span t-field="main_object.image_256" t-options="{'widget': 'image', }"/>
+                </div>
+            </div>
+        </xpath>
+        <xpath expr="//div[@id='rtype_details']" position="attributes">
+            <attribute name="class">col-md-10 mt16</attribute>
+        </xpath>
+    </template>
+    <template id="ba_resource_type_full_description" inherit_id="business_appointment_website.ba_resource_type_full" name="Show Short Description" active="True" customize_show="True">
+        <xpath expr="//h1[@id='ba_type_header']" position="after">
+            <div class="text-muted" t-field="main_object.description"/>
+        </xpath>
+    </template>
+    <!-- Resources -->
+    <template id="ba_resource_full" name="Resource">
+        <t t-call="website.layout">
+            <t t-set="additional_title" t-value="main_object.name"/>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 mt16" id="rtype_details"> 
+                        <div class="col-md-12 text-right">
+                            <a role="button"
+                               class="btn btn-sm btn-primary btn mb4"
+                               t-attf-href="/appointments/3?url_ba_type_id=#{main_object.resource_type_id.id}&amp;url_resource_ids=[#{main_object.id}]&amp;progress_step=3"
+                            >
+                                <strong>Schedule</strong> <i class="fa fa-arrow-circle-right"/>
+                            </a> 
+                        </div>
+                        <h1 id="ba_type_header" class="mb0">
+                            <span t-field="main_object.name"/>
+                        </h1>
+                    </div>
+                </div>
+                <div id="ba_full_description" 
+                     class="oe_structure oe_empty business-appointment-website-row mt8"
+                     contenteditable="false"
+                     itemprop="description"
+                     t-field="main_object.full_website_description"
+                />                    
+            </div>
+        </t>
+    </template>
+    <template id="ba_resource__full_image" inherit_id="business_appointment_website.ba_resource_full" name="Show Image" active="True" customize_show="True">
+        <xpath expr="//div[@id='rtype_details']" position="before">
+            <div class="col-md-2 ba_website_image mt16">
+                <div class="col-md-12">
+                    <span t-field="main_object.image_256" t-options="{'widget': 'image', }"/>
+                </div>
+            </div>
+        </xpath>
+        <xpath expr="//div[@id='rtype_details']" position="attributes">
+            <attribute name="class">col-md-10 mt16</attribute>
+        </xpath>
+    </template>
+    <template id="ba_resource_full_description" inherit_id="business_appointment_website.ba_resource_full" name="Show Short Description" active="True" customize_show="True">
+        <xpath expr="//h1[@id='ba_type_header']" position="after">
+            <div class="text-muted" t-field="main_object.description"/>
+        </xpath>
+    </template>
+    <!-- Services -->
+    <template id="ba_products_full" name="Service">
+        <t t-call="website.layout">
+            <t t-set="additional_title" t-value="main_object.name"/>
+            <div class="container">
+                <div class="row mb8">
+                    <div class="col-md-12 mt16" id="rtype_details"> 
+                        <h1 id="ba_type_header" class="mb0">
+                            <span t-field="main_object.name"/>
+                        </h1>
+                        <div id="ba_price_full_section"/>
+                    </div>
+                </div>
+                <div id="ba_full_description" 
+                     class="oe_structure oe_empty business-appointment-website-row mt8"
+                     contenteditable="false"
+                     itemprop="description"
+                     t-field="main_object.full_website_description"
+                />                    
+            </div>
+        </t>
+    </template>
+    <template id="ba_service_full_image" inherit_id="business_appointment_website.ba_products_full" name="Show Image" active="True" customize_show="True">
+        <xpath expr="//div[@id='rtype_details']" position="before">
+            <div class="col-md-2 ba_website_image mt8">
+                <div class="col-md-12">
+                    <span t-field="main_object.image_256" t-options="{'widget': 'image', }"/>
+                </div>
+            </div>
+        </xpath>
+        <xpath expr="//div[@id='rtype_details']" position="attributes">
+            <attribute name="class">col-md-10 mt16</attribute>
+        </xpath>
+    </template>
+    <template id="ba_service_full_description" inherit_id="business_appointment_website.ba_products_full" name="Show Short Description" active="True" customize_show="True">
+        <xpath expr="//div[@id='ba_price_full_section']" position="before">
+            <div class="text-muted" t-field="main_object.ba_description"/>
+        </xpath>
+    </template>
+
+</odoo>

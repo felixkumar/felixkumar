@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- Tree view of Shipstation Product -->
+        <record id="shipstation_product_tree_view_ept" model="ir.ui.view">
+            <field name="name">shipstation.product.tree.view</field>
+            <field name="model">shipstation.product.ept</field>
+            <field name="arch" type="xml">
+                <tree string="ShipStation Product Tree View" create="0">
+                    <field name="name"/>
+                    <field name="shipstation_sku" readonly="1"/>
+                    <field name="shipstation_identification" readonly="1"/>
+                    <field name="shipstation_instance_id" readonly="1"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Search View For Shipstation Product -->
+        <record id="shipstation_product_search_view_ept" model="ir.ui.view">
+            <field name="name">view.shipstation.product.filter</field>
+            <field name="model">shipstation.product.ept</field>
+            <field name="type">search</field>
+            <field name="arch" type="xml">
+                <search string="ShipStation Product">
+                    <field name="product_id"/>
+                    <field name="shipstation_instance_id"/>
+                    <group expand="0" string="Group By...">
+                        <filter string="Odoo Product" name="group_by_product_id" icon="terp-personal"
+                                context="{'group_by':'product_id'}"/>
+                        <filter string="ShipStation Instance" name="group_by_shipstation_instance_id" icon="terp-personal"
+                                context="{'group_by':'shipstation_instance_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <!-- Form view for Shipstation Product -->
+        <record id="shipstation_product_form_view_ept" model="ir.ui.view">
+            <field name="name">shipstation.product.form.view.ept</field>
+            <field name="model">shipstation.product.ept</field>
+            <field name="arch" type="xml">
+                <form string="ShipStation Product" create="0">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="shipstation_identification" readonly="1"/>
+                                <field name="shipstation_instance_id" readonly="1" context="{'form_view_ref': 'shipstation_ept.shipstation_form_view'}"/>
+                                <field name="width"/>
+                                <field name="weight"/>
+                            </group>
+                            <group>
+                                <field name="product_id"/>
+                                <field name="shipstation_sku" readonly="1"/>
+                                <field name="height"/>
+                                <field name="length"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Action to call Tree View of Shipstation Product -->
+        <record id="action_shipstation_product_ept" model="ir.actions.act_window">
+            <field name="name">ShipStation Product</field>
+            <field name="res_model">shipstation.product.ept</field>
+            <field name="view_id" ref="shipstation_product_tree_view_ept"/>
+            <field name="context">{"search_default_group_by_shipstation_instance_id":True}</field>
+        </record>
+
+        <menuitem id="menu_item_parent_shipstation_products_ept" name="Products"
+                  parent="shipstation_ept.shipstation_instance_menu_item" sequence="3"/>
+
+        <menuitem id="menu_item_shipstation_products_ept" name="All Variants"
+                  parent="shipstation_ept.menu_item_parent_shipstation_products_ept" sequence="4"
+                  action="action_shipstation_product_ept"/>
+    </data>
+</odoo>

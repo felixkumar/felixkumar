@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="view_create_pallet_invoice_form" model="ir.ui.view">
+            <field name="name">view.create.pallet.invoice.form</field>
+            <field name="model">create.pallet.invoice</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <group>
+                            <field name="partner_id" required="1"/>
+                        </group>
+                    </group>
+                    <footer>
+                        <button name="create_pallet_invoice" string="Select" type="object" class="btn-primary"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</odoo>

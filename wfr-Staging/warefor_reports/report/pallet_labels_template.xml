@@ -1,0 +1,1115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_PalletLabels_doc">
+        <t t-call="web.layout">
+            <t t-set="line_number" t-value="1"/>
+            <t t-foreach="o.freight_order_line_ids" t-as="line" t-esc="index">
+                <t t-set="sscc" t-value="o.generate_sscc_18()"/>
+                <t t-if="((line.required_case == 1 or 0)or(line.required_pallet == 1 or 0))">
+                    <div class="page" style="margin-top: 32px !important;">
+                        <t t-set="from" t-value="o.ship_from_partner_id"/>
+                        <t t-set="sale_order"
+                           t-value="request.env['sale.order'].search([('id', '=', o.sale_id)])or ''"/>
+                        <style>
+                            .font_size{
+                            font-size: 25px;
+                            }
+                            .page {
+                            page-break-before: always !important;
+                            width: 100%;
+                            height: 1060px;
+                            box-sizing: border-box;
+                            margin: 0;
+                            padding: 0;
+                            }
+                        </style>
+                        <div style="border:3px solid black;border-collapse:collapse;width:100%;height:100%;">
+                            <font size="3" face="Courier New">
+                                <table style="width:100% !important;border-collapse:collapse;">
+                                    <tbody class="font_size">
+                                        <tr style="width:20%;">
+                                            <td class="px-3"
+                                                style="border-right:3px solid #000;border-bottom:3px solid #000;padding:10px 15px;">
+                                                <div style="min-height:200px;">
+                                                    <p style="margin-bottom: 2px !important;color: #000;">
+                                                        <b>Ship From:</b>
+                                                    </p>
+                                                    <p style="color: #000;margin-top:0 !important;line-height:2rem;">
+                                                        <t t-if="from">
+                                                            <t t-esc="from.name or ''"/>
+                                                            <br/>
+                                                            <t t-esc="from.street"/>
+                                                            <t t-if="from.street2">
+                                                                <br/>
+                                                                <t t-esc="from.street2"/>
+                                                            </t>
+                                                            <br/>
+                                                            <t t-esc="from.city"/>
+                                                            <t t-if="from.city">,</t>
+                                                            <t t-esc="from.state_id.code"/>
+                                                            <t t-esc="from.zip"/>
+                                                            <br/>
+                                                            <t t-esc="from.country_id.name"/>
+                                                            <br/>
+                                                        </t>
+                                                        <span>Shipping Point # :</span>
+                                                        <span>
+                                                            <t t-esc="o.port_shipping_id.code"/>
+                                                        </span>
+                                                    </p>
+                                                </div>
+                                            </td>
+                                            <td class="px-3"
+                                                style="border-bottom:3px solid #000;padding:10px 15px;width:50%;">
+                                                <div style="min-height:200px;">
+                                                    <p style="margin-bottom: 2px !important;color: #000;">
+                                                        <b>Ship To:</b>
+                                                    </p>
+                                                    <p style="color: #000;margin-top:0 !important;line-height:2rem;">
+                                                        <t t-if="o.outbound_partner_id">
+                                                            <t t-esc="o.outbound_partner_id.name or ''"/>
+                                                            <br/>
+                                                            <t t-esc="o.outbound_partner_id.street"/>
+                                                            <t t-if="o.outbound_partner_id.street2">
+                                                                <br/>
+                                                                <t t-esc="o.outbound_partner_id.street2"/>
+                                                            </t>
+                                                            <br/>
+                                                            <t t-esc="o.outbound_partner_id.city"/>
+                                                            <t t-if="o.outbound_partner_id.city">,</t>
+                                                            <t t-esc="o.outbound_partner_id.state_id.code"/>
+                                                            <t t-esc="o.outbound_partner_id.zip"/>
+                                                            <br/>
+                                                            <t t-esc="o.outbound_partner_id.country_id.name"/>
+                                                            <br/>
+                                                        </t>
+                                                        <span>GLN</span>
+                                                        <span>
+                                                            <t t-esc="o.partner_id.gln"/>
+                                                        </span>
+                                                    </p>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr style="width:20%;">
+                                            <td class="px-3"
+                                                style="border-right:3px solid #000;border-bottom:3px solid #000;padding:5px 15px;vertical-align:top">
+                                                <div style="min-height:200px;">
+                                                    <p style="margin-bottom: 2px !important;color: #000;margin-top:0 !important;">
+                                                        <b>Carrier:</b>
+                                                    </p>
+                                                    <div style="margin-bottom: 0 !important;color: #000;margin-top:0 !important;text-transform: uppercase;">
+                                                        <t t-if="o.carrier_flight">
+                                                            <t t-esc="o.carrier_flight.name"/>
+                                                            <br/>
+                                                        </t>
+                                                        <t t-if="o.port_shipping_id">
+                                                            <t t-esc="o.port_shipping_id.name"/>
+                                                            <br/>
+                                                        </t>
+                                                    </div>
+                                                    <table>
+                                                        <tbody class="font_size">
+                                                            <tr>
+                                                                <td>
+                                                                    <p style="margin-bottom: 0 !important;color: #000;margin-top:0 !important">
+                                                                        PRO:
+                                                                    </p>
+                                                                </td>
+                                                                <td>
+                                                                    <div style="margin-bottom: 0 !important;color: #000;margin-top:0 !important">
+                                                                        <span style="margin-left:40px"></span>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p style="color: #000;margin-top:0 !important">
+                                                                        B/L:
+                                                                    </p>
+                                                                </td>
+                                                                <td>
+                                                                    <p style="color: #000;margin-top:0 !important">
+                                                                        <span style="margin-left:40px">
+                                                                            <t t-esc="o.bol_number"/>
+                                                                        </span>
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </td>
+                                            <td class="px-3"
+                                                style="border-bottom:3px solid #000;padding:5px 15px;width:50%;">
+                                                <div style="min-height:200px;">
+                                                    <table>
+                                                        <tbody class="font_size">
+                                                            <tr>
+                                                                <td>
+                                                                    <p style="margin-bottom: 0 !important;color: #000;">
+                                                                        <b>Load #:
+                                                                        </b>
+                                                                    </p>
+                                                                </td>
+                                                                <td>
+                                                                    <p style="margin-bottom: 0 !important;color: #000;margin-left:20px">
+                                                                        <b>
+                                                                            <span>
+                                                                                <t t-esc="o.load_id_number"/>
+                                                                            </span>
+                                                                        </b>
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p style="margin-bottom: 0 !important;color: #000;margin-top:0 !important">
+                                                                        <b>PO#:
+                                                                        </b>
+                                                                    </p>
+                                                                </td>
+                                                                <td>
+                                                                    <p style="margin-bottom: 0 !important;color: #000;margin-top:0 !important;margin-left:20px">
+                                                                        <b>
+                                                                            <span>
+                                                                                <t t-esc="o.customer_po"/>
+                                                                            </span>
+                                                                        </b>
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p style="margin-bottom: 0 !important;color: #000;margin-top:0 !important">
+                                                                        <b>Type:
+                                                                        </b>
+                                                                    </p>
+                                                                </td>
+                                                                <td>
+                                                                    <p style="margin-bottom: 0 !important;color: #000;margin-top:0 !important;margin-left:20px">
+                                                                        <b>
+                                                                            <span>
+                                                                                <t t-esc="o.type"/>
+                                                                            </span>
+                                                                        </b>
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p style="margin-bottom: 0 !important;color: #000;margin-top:0 !important">
+                                                                        <b>Dept:
+                                                                        </b>
+                                                                    </p>
+                                                                </td>
+                                                                <td>
+                                                                    <p style="margin-bottom: 0 !important;color: #000;margin-top:0 !important;margin-left:20px">
+                                                                        <b>
+                                                                            <span>
+                                                                                <t t-esc="o.department"/>
+                                                                            </span>
+                                                                        </b>
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr></tr>
+                                                            <tr></tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p style="color: #000;margin-top:30px !important;">
+                                                                        <b>GDC#:
+                                                                        </b>
+                                                                    </p>
+                                                                </td>
+                                                                <td>
+                                                                    <p style="color: #000;margin-top:25px !important;margin-left:20px">
+                                                                        <b>
+                                                                            <span style="font-size:30px !important;">
+                                                                                <t t-esc="o.partner_id.gdc"/>
+                                                                            </span>
+                                                                        </b>
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr style="width:20%;">
+                                            <td colspan="2" style="text-align:center;border-bottom:3px solid black">
+                                                <h4 style="color: #000;margin-top:10px;margin-bottom:10px">
+                                                    <b>PALLET CONTENT</b>
+                                                </h4>
+                                                <h4 style="color: #000;margin-top:0 !important;margin-bottom:0 !important">
+                                                    Pallet # :
+                                                    <t t-esc="line_number"/>
+                                                    of
+                                                    <t t-if="o.number_of_cases >= o.number_of_pallets">
+                                                        <t t-esc="o.number_of_cases"/>
+                                                    </t>
+                                                    <t t-else="">
+                                                        <t t-esc="o.number_of_pallets"/>
+                                                    </t>
+                                                </h4>
+                                                <t t-set="line_number" t-value="line_number + 1"/>
+                                            </td>
+                                        </tr>
+                                        <tr style="width:10%;">
+                                            <td class="border-0" colspan="2" style="">
+                                                <table style="width:100%">
+                                                    <tbody class="font_size">
+                                                        <tr>
+                                                            <td style="width:25%;padding-left:5px;">
+                                                                <div style=" margin: 0;text-align:center;">
+                                                                    <p style="margin-bottom: 3px !important;color: #000;">
+                                                                        <b>Nbr of Cases:</b>
+                                                                    </p>
+                                                                    <p style="color: #000;margin-top:0 !important">
+                                                                        <b>
+                                                                            <t t-esc="int(line.qty_carton)"/>
+                                                                        </b>
+                                                                    </p>
+                                                                </div>
+                                                            </td>
+                                                            <td style="width:50%;">
+                                                                <div style=" margin: 0;text-align:center;">
+                                                                    <p style="margin-bottom: 3px !important;color: #000;">
+                                                                        <b>WM Item #:</b>
+                                                                    </p>
+                                                                    <p style="color: #000;margin-top:0 !important">
+                                                                        <b>
+                                                                            <t t-esc="line.goods.item_customer_number"/>
+                                                                        </b>
+                                                                    </p>
+                                                                </div>
+                                                            </td>
+                                                            <td style="padding-right:5px;">
+                                                                <div style=" margin: 0;text-align:center;">
+                                                                    <p style="margin-bottom: 3px !important;color: #000;">
+                                                                        <b>Vendor Item #:</b>
+                                                                    </p>
+                                                                    <p style="color: #000;margin-top:0 !important">
+                                                                        <b>
+                                                                            <t t-esc="line.goods.default_code"/>
+                                                                        </b>
+                                                                    </p>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div style="height: 240px;position: relative;padding-top:70px;padding-left:30px;">
+                                    <t t-if="line.sscc_18_char">
+                                        <img alt="Barcode"
+                                             t-att-src="line.base_url+'/report/barcode/Code128/'+line.sscc_18_char"
+                                             style="width: 650px;height: 120px;"/>
+                                        <div style="padding-top:5px;text-align:center;font-size:22px;padding-right:30px;">
+                                            <t t-esc="line.sscc_18_char"/>
+                                        </div>
+                                    </t>
+                                </div>
+                            </font>
+                        </div>
+                        <style>
+                            span#oe_neutralize_banner {
+                            display:none !important;
+                            }
+                        </style>
+                    </div>
+                </t>
+                <t t-else="">
+                    <t t-set="quantities" t-value="line._get_quantity_values()"/>
+                    <t t-foreach="quantities" t-as="quantity">
+                        <div class="page" style="margin-top: 32px !important;">
+                            <t t-set="from" t-value="o.ship_from_partner_id"/>
+                            <t t-set="sale_order"
+                               t-value="request.env['sale.order'].search([('id', '=', o.sale_id)])or ''"/>
+                            <style>
+                                .font_size{
+                                font-size: 25px;
+                                }
+
+                                .page {
+                                page-break-before: always !important;
+                                width: 100%;
+                                height: 1060px;
+                                box-sizing: border-box;
+                                margin: 0;
+                                padding: 0;
+                                }
+                            </style>
+                            <div style="border:3px solid black;border-collapse:collapse;width:100%;height:100%;">
+                                <font size="3" face="Courier New">
+                                    <table style="width:100% !important;border-collapse:collapse;">
+                                        <tbody class="font_size">
+                                            <tr style="width:20%;">
+                                                <td class="px-3"
+                                                    style="border-right:3px solid #000;border-bottom:3px solid #000;padding:10px 15px;">
+                                                    <div style="min-height:200px;">
+                                                        <p style="margin-bottom: 2px !important;color: #000;">
+                                                            <b>Ship From:</b>
+                                                        </p>
+                                                        <p style="color: #000;margin-top:0 !important;line-height:2rem;">
+                                                            <t t-if="from">
+                                                                <t t-esc="from.name or ''"/>
+                                                                <br/>
+                                                                <t t-esc="from.street"/>
+                                                                <t t-if="from.street2">
+                                                                    <br/>
+                                                                    <t t-esc="from.street2"/>
+                                                                </t>
+                                                                <br/>
+                                                                <t t-esc="from.city"/>
+                                                                <t t-if="from.city">,</t>
+                                                                <t t-esc="from.state_id.code"/>
+                                                                <t t-esc="from.zip"/>
+                                                                <br/>
+                                                                <t t-esc="from.country_id.name"/>
+                                                                <br/>
+                                                            </t>
+                                                            <span>Shipping Point # :</span>
+                                                            <span>
+                                                                <t t-esc="o.port_shipping_id.code"/>
+                                                            </span>
+                                                        </p>
+                                                    </div>
+                                                </td>
+                                                <td class="px-3"
+                                                    style="border-bottom:3px solid #000;padding:10px 15px;width:50%;">
+                                                    <div style="min-height:200px;">
+                                                        <p style="margin-bottom: 2px !important;color: #000;">
+                                                            <b>Ship To:</b>
+                                                        </p>
+                                                        <p style="color: #000;margin-top:0 !important;line-height:2rem;">
+                                                            <t t-if="o.outbound_partner_id">
+                                                                <t t-esc="o.outbound_partner_id.name or ''"/>
+                                                                <br/>
+                                                                <t t-esc="o.outbound_partner_id.street"/>
+                                                                <t t-if="o.outbound_partner_id.street2">
+                                                                    <br/>
+                                                                    <t t-esc="o.outbound_partner_id.street2"/>
+                                                                </t>
+                                                                <br/>
+                                                                <t t-esc="o.outbound_partner_id.city"/>
+                                                                <t t-if="o.outbound_partner_id.city">,</t>
+                                                                <t t-esc="o.outbound_partner_id.state_id.code"/>
+                                                                <t t-esc="o.outbound_partner_id.zip"/>
+                                                                <br/>
+                                                                <t t-esc="o.outbound_partner_id.country_id.name"/>
+                                                                <br/>
+                                                            </t>
+                                                            <span>GLN</span>
+                                                            <span>
+                                                                <t t-esc="o.partner_id.gln"/>
+                                                            </span>
+                                                        </p>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr style="width:20%;">
+                                                <td class="px-3"
+                                                    style="border-right:3px solid #000;border-bottom:3px solid #000;padding:5px 15px;vertical-align:top">
+                                                    <div style="min-height:200px;">
+                                                        <p style="margin-bottom: 2px !important;color: #000;margin-top:0 !important;">
+                                                            <b>Carrier:</b>
+                                                        </p>
+                                                        <div style="margin-bottom: 0 !important;color: #000;margin-top:0 !important;text-transform: uppercase;">
+                                                            <t t-if="o.carrier_flight">
+                                                                <t t-esc="o.carrier_flight.name"/>
+                                                                <br/>
+                                                            </t>
+                                                            <t t-if="o.port_shipping_id">
+                                                                <t t-esc="o.port_shipping_id.name"/>
+                                                                <br/>
+                                                            </t>
+                                                        </div>
+                                                        <table>
+                                                            <tbody class="font_size">
+                                                                <tr>
+                                                                    <td>
+                                                                        <p style="margin-bottom: 0 !important;color: #000;margin-top:0 !important">
+                                                                            PRO:
+                                                                        </p>
+                                                                    </td>
+                                                                    <td>
+                                                                        <div style="margin-bottom: 0 !important;color: #000;margin-top:0 !important">
+                                                                            <span style="margin-left:40px"></span>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        <p style="color: #000;margin-top:0 !important">
+                                                                            B/L:
+                                                                        </p>
+                                                                    </td>
+                                                                    <td>
+                                                                        <p style="color: #000;margin-top:0 !important">
+                                                                            <span style="margin-left:40px">
+                                                                                <t t-esc="o.bol_number"/>
+                                                                            </span>
+                                                                        </p>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </td>
+                                                <td class="px-3"
+                                                    style="border-bottom:3px solid #000;padding:5px 15px;width:50%;">
+                                                    <div style="min-height:200px;">
+                                                        <table>
+                                                            <tbody class="font_size">
+                                                                <tr>
+                                                                    <td>
+                                                                        <p style="margin-bottom: 0 !important;color: #000;">
+                                                                            <b>Load #:
+                                                                            </b>
+                                                                        </p>
+                                                                    </td>
+                                                                    <td>
+                                                                        <p style="margin-bottom: 0 !important;color: #000;margin-left:20px">
+                                                                            <b>
+                                                                                <span>
+                                                                                    <t t-esc="o.load_id_number"/>
+                                                                                </span>
+                                                                            </b>
+                                                                        </p>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        <p style="margin-bottom: 0 !important;color: #000;margin-top:0 !important">
+                                                                            <b>PO#:
+                                                                            </b>
+                                                                        </p>
+                                                                    </td>
+                                                                    <td>
+                                                                        <p style="margin-bottom: 0 !important;color: #000;margin-top:0 !important;margin-left:20px">
+                                                                            <b>
+                                                                                <span>
+                                                                                    <t t-esc="o.customer_po"/>
+                                                                                </span>
+                                                                            </b>
+                                                                        </p>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        <p style="margin-bottom: 0 !important;color: #000;margin-top:0 !important">
+                                                                            <b>Type:
+                                                                            </b>
+                                                                        </p>
+                                                                    </td>
+                                                                    <td>
+                                                                        <p style="margin-bottom: 0 !important;color: #000;margin-top:0 !important;margin-left:20px">
+                                                                            <b>
+                                                                                <span>
+                                                                                    <t t-esc="o.type"/>
+                                                                                </span>
+                                                                            </b>
+                                                                        </p>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        <p style="margin-bottom: 0 !important;color: #000;margin-top:0 !important">
+                                                                            <b>Dept:
+                                                                            </b>
+                                                                        </p>
+                                                                    </td>
+                                                                    <td>
+                                                                        <p style="margin-bottom: 0 !important;color: #000;margin-top:0 !important;margin-left:20px">
+                                                                            <b>
+                                                                                <span>
+                                                                                    <t t-esc="o.department"/>
+                                                                                </span>
+                                                                            </b>
+                                                                        </p>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr></tr>
+                                                                <tr></tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        <p style="color: #000;margin-top:30px !important;">
+                                                                            <b>GDC#:
+                                                                            </b>
+                                                                        </p>
+                                                                    </td>
+                                                                    <td>
+                                                                        <p style="color: #000;margin-top:25px !important;margin-left:20px">
+                                                                            <b>
+                                                                                <span style="font-size:30px !important;">
+                                                                                    <t t-esc="o.partner_id.gdc"/>
+                                                                                </span>
+                                                                            </b>
+                                                                        </p>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr style="width:20%;">
+                                                <td colspan="2" style="text-align:center;border-bottom:3px solid black">
+                                                    <h4 style="color: #000;margin-top:10px;margin-bottom:10px">
+                                                        <b>PALLET CONTENT</b>
+                                                    </h4>
+                                                    <h4 style="color: #000;margin-top:0 !important;margin-bottom:0 !important">
+                                                        Pallet # :
+                                                        <t t-esc="line_number"/>
+                                                        of
+                                                        <t t-if="o.number_of_cases >= o.number_of_pallets">
+                                                            <t t-esc="o.number_of_cases"/>
+                                                        </t>
+                                                        <t t-else="">
+                                                            <t t-esc="o.number_of_pallets"/>
+                                                        </t>
+                                                    </h4>
+                                                    <t t-set="line_number" t-value="line_number + 1"/>
+                                                </td>
+                                            </tr>
+                                            <tr style="width:10%;">
+                                                <td class="border-0" colspan="2" style="">
+                                                    <table style="width:100%">
+                                                        <tbody class="font_size">
+                                                            <tr>
+                                                                <td style="width:25%;padding-left:5px;">
+                                                                    <div style=" margin: 0;text-align:center;">
+                                                                        <p style="margin-bottom: 3px !important;color: #000;">
+                                                                            <b>Nbr of Cases:</b>
+                                                                        </p>
+                                                                        <p style="color: #000;margin-top:0 !important">
+                                                                            <b>
+                                                                                <t t-esc="int(quantity[5])"/>
+                                                                            </b>
+                                                                        </p>
+                                                                    </div>
+                                                                </td>
+                                                                <td style="width:50%;">
+                                                                    <div style=" margin: 0;text-align:center;">
+                                                                        <p style="margin-bottom: 3px !important;color: #000;">
+                                                                            <b>WM Item #:</b>
+                                                                        </p>
+                                                                        <p style="color: #000;margin-top:0 !important">
+                                                                            <b>
+                                                                                <t t-esc="line.goods.item_customer_number"/>
+                                                                            </b>
+                                                                        </p>
+                                                                    </div>
+                                                                </td>
+                                                                <td style="padding-right:5px;">
+                                                                    <div style=" margin: 0;text-align:center;">
+                                                                        <p style="margin-bottom: 3px !important;color: #000;">
+                                                                            <b>Vendor Item #:</b>
+                                                                        </p>
+                                                                        <p style="color: #000;margin-top:0 !important">
+                                                                            <b>
+                                                                                <t t-esc="line.goods.default_code"/>
+                                                                            </b>
+                                                                        </p>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <div style="height: 240px;position: relative;padding-top:70px;padding-left:30px;">
+                                        <t t-if="line.sscc_18_char">
+                                            <img alt="Barcode"
+                                                 t-att-src="line.base_url+'/report/barcode/Code128/'+line.sscc_18_char"
+                                                 style="width: 650px;height: 120px;"/>
+                                            <div style="padding-top:5px;text-align:center;font-size:22px;padding-right:30px;">
+                                                <t t-esc="line.sscc_18_char"/>
+                                            </div>
+                                        </t>
+                                    </div>
+                                </font>
+                            </div>
+                            <style>
+                                span#oe_neutralize_banner {
+                                display:none !important;
+                                }
+                            </style>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </t>
+    </template>
+    <template id="report_PalletLabels_doc_new">
+        <t t-call="web.layout">
+            <t t-set="line_number" t-value="1"/>
+            <t t-set="sscc" t-value="o.generate_sscc_18()"/>
+            <t t-set="mix_data" t-value="o.total_subpallet_type()"/>
+            <t t-foreach="mix_data" t-as="data_value">
+                        <div class="page" style="margin-top: 32px !important;">
+                            <t t-set="from" t-value="o.ship_from_partner_id"/>
+                            <t t-set="sale_order"
+                               t-value="request.env['sale.order'].search([('id', '=', o.sale_id)])or ''"/>
+                            <style>
+                                .font_size{
+                                font-size: 25px;
+                                }
+
+                                .page {
+                                page-break-before: always !important;
+                                width: 100%;
+                                height: 1060px;
+                                box-sizing: border-box;
+                                margin: 0;
+                                padding: 0;
+                                }
+                            </style>
+                            <div style="border:3px solid black;border-collapse:collapse;width:100%;height:100%;">
+                                <font size="3" face="Courier New">
+                                    <table style="width:100% !important;border-collapse:collapse;">
+                                        <tbody class="font_size">
+                                            <tr style="width:20%;">
+                                                <td class="px-3"
+                                                    style="border-right:3px solid #000;border-bottom:3px solid #000;padding:10px 15px;">
+                                                    <div style="min-height:200px;">
+                                                        <p style="margin-bottom: 2px !important;color: #000;">
+                                                            <b>Ship From:</b>
+                                                        </p>
+                                                        <p style="color: #000;margin-top:0 !important;line-height:2rem;">
+                                                            <t t-if="from">
+                                                                <t t-esc="from.name or ''"/>
+                                                                <br/>
+                                                                <t t-esc="from.street"/>
+                                                                <t t-if="from.street2">
+                                                                    <br/>
+                                                                    <t t-esc="from.street2"/>
+                                                                </t>
+                                                                <br/>
+                                                                <t t-esc="from.city"/>
+                                                                <t t-if="from.city">,</t>
+                                                                <t t-esc="from.state_id.code"/>
+                                                                <t t-esc="from.zip"/>
+                                                                <br/>
+                                                                <t t-esc="from.country_id.name"/>
+                                                                <br/>
+                                                            </t>
+                                                            <span>Shipping Point # :</span>
+                                                            <span>
+                                                                <t t-esc="o.port_shipping_id.code"/>
+                                                            </span>
+                                                        </p>
+                                                    </div>
+                                                </td>
+                                                <td class="px-3"
+                                                    style="border-bottom:3px solid #000;padding:10px 15px;width:50%;">
+                                                    <div style="min-height:200px;">
+                                                        <p style="margin-bottom: 2px !important;color: #000;">
+                                                            <b>Ship To:</b>
+                                                        </p>
+                                                        <p style="color: #000;margin-top:0 !important;line-height:2rem;">
+                                                            <t t-if="o.outbound_partner_id">
+                                                                <t t-esc="o.outbound_partner_id.name or ''"/>
+                                                                <br/>
+                                                                <t t-esc="o.outbound_partner_id.street"/>
+                                                                <t t-if="o.outbound_partner_id.street2">
+                                                                    <br/>
+                                                                    <t t-esc="o.outbound_partner_id.street2"/>
+                                                                </t>
+                                                                <br/>
+                                                                <t t-esc="o.outbound_partner_id.city"/>
+                                                                <t t-if="o.outbound_partner_id.city">,</t>
+                                                                <t t-esc="o.outbound_partner_id.state_id.code"/>
+                                                                <t t-esc="o.outbound_partner_id.zip"/>
+                                                                <br/>
+                                                                <t t-esc="o.outbound_partner_id.country_id.name"/>
+                                                                <br/>
+                                                            </t>
+                                                            <span>GLN</span>
+                                                            <span>
+                                                                <t t-esc="o.partner_id.gln"/>
+                                                            </span>
+                                                        </p>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr style="width:20%;">
+                                                <td class="px-3"
+                                                    style="border-right:3px solid #000;border-bottom:3px solid #000;padding:5px 15px;vertical-align:top">
+                                                    <div style="min-height:200px;">
+                                                        <p style="margin-bottom: 2px !important;color: #000;margin-top:0 !important;">
+                                                            <b>Carrier:</b>
+                                                        </p>
+                                                        <div style="margin-bottom: 0 !important;color: #000;margin-top:0 !important;text-transform: uppercase;">
+                                                            <t t-if="o.carrier_flight">
+                                                                <t t-esc="o.carrier_flight.name"/>
+                                                                <br/>
+                                                            </t>
+                                                            <t t-if="o.port_shipping_id">
+                                                                <t t-esc="o.port_shipping_id.name"/>
+                                                                <br/>
+                                                            </t>
+                                                        </div>
+                                                        <table>
+                                                            <tbody class="font_size">
+                                                                <tr>
+                                                                    <td>
+                                                                        <p style="margin-bottom: 0 !important;color: #000;margin-top:0 !important">
+                                                                            PRO:
+                                                                        </p>
+                                                                    </td>
+                                                                    <td>
+                                                                        <div style="margin-bottom: 0 !important;color: #000;margin-top:0 !important">
+                                                                            <span style="margin-left:40px"></span>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        <p style="color: #000;margin-top:0 !important">
+                                                                            B/L:
+                                                                        </p>
+                                                                    </td>
+                                                                    <td>
+                                                                        <p style="color: #000;margin-top:0 !important">
+                                                                            <span style="margin-left:40px">
+                                                                                <t t-esc="o.bol_number"/>
+                                                                            </span>
+                                                                        </p>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </td>
+                                                <td class="px-3"
+                                                    style="border-bottom:3px solid #000;padding:5px 15px;width:50%;">
+                                                    <div style="min-height:200px;">
+                                                        <table>
+                                                            <tbody class="font_size">
+                                                                <tr>
+                                                                    <td>
+                                                                        <p style="margin-bottom: 0 !important;color: #000;">
+                                                                            <b>Load #:
+                                                                            </b>
+                                                                        </p>
+                                                                    </td>
+                                                                    <td>
+                                                                        <p style="margin-bottom: 0 !important;color: #000;margin-left:20px">
+                                                                            <b>
+                                                                                <span>
+                                                                                    <t t-esc="o.bol_number"/>
+                                                                                </span>
+                                                                            </b>
+                                                                        </p>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        <p style="margin-bottom: 0 !important;color: #000;margin-top:0 !important">
+                                                                            <b>PO#:
+                                                                            </b>
+                                                                        </p>
+                                                                    </td>
+                                                                    <td>
+                                                                        <p style="margin-bottom: 0 !important;color: #000;margin-top:0 !important;margin-left:20px">
+                                                                            <b>
+                                                                                <span>
+                                                                                    <t t-esc="data_value.get('po_number')"/>
+                                                                                </span>
+                                                                            </b>
+                                                                        </p>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        <p style="margin-bottom: 0 !important;color: #000;margin-top:0 !important">
+                                                                            <b>Type:
+                                                                            </b>
+                                                                        </p>
+                                                                    </td>
+                                                                    <td>
+                                                                        <p style="margin-bottom: 0 !important;color: #000;margin-top:0 !important;margin-left:20px">
+                                                                            <b>
+                                                                                <span>
+                                                                                    <t t-esc="data_value.get('pallet_type')"/>
+                                                                                </span>
+                                                                            </b>
+                                                                        </p>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        <p style="margin-bottom: 0 !important;color: #000;margin-top:0 !important">
+                                                                            <b>Dept:
+                                                                            </b>
+                                                                        </p>
+                                                                    </td>
+                                                                    <td>
+                                                                        <p style="margin-bottom: 0 !important;color: #000;margin-top:0 !important;margin-left:20px">
+                                                                            <b>
+                                                                                <span>
+                                                                                    <t t-esc="o.department"/>
+                                                                                </span>
+                                                                            </b>
+                                                                        </p>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr></tr>
+                                                                <tr></tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        <p style="color: #000;margin-top:30px !important;">
+                                                                            <b>GDC#:
+                                                                            </b>
+                                                                        </p>
+                                                                    </td>
+                                                                    <td>
+                                                                        <p style="color: #000;margin-top:25px !important;margin-left:20px">
+                                                                            <b>
+                                                                                <span style="font-size:30px !important;">
+                                                                                    <t t-esc="o.partner_id.gdc"/>
+                                                                                </span>
+                                                                            </b>
+                                                                        </p>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr style="width:20%;">
+                                                <td colspan="2" style="text-align:center;border-bottom:3px solid black">
+                                                    <h4 style="color: #000;margin-top:10px;margin-bottom:10px">
+                                                        <b>PALLET CONTENT</b>
+                                                    </h4>
+                                                    <h4 style="color: #000;margin-top:0 !important;margin-bottom:0 !important">
+                                                        Pallet # :
+                                                        <t t-esc="data_value.get('count_no')"/>
+                                                    </h4>
+<!--                                                    <t t-set="line_number" t-value="line_number + 1"/>-->
+                                                </td>
+                                            </tr>
+                                            <tr style="width:10%;">
+                                                <td class="border-0" colspan="2" style="">
+                                                    <table style="width:100%">
+                                                        <tbody class="font_size">
+
+                                                            <t t-if="data_value.get('pallet_type') in ('Mixed','partial') and data_value.get('ssc_code')">
+                                                                <tr>
+                                                                    <td style="width:25%;padding-left:5px;">
+                                                                        <div style=" margin: 0;text-align:center;">
+                                                                            <p style="margin-bottom: 3px !important;color: #000;">
+                                                                                <b>Nbr of Cases:</b>
+                                                                            </p>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td style="width:50%;">
+                                                                        <div style=" margin: 0;text-align:center;">
+                                                                            <p style="margin-bottom: 3px !important;color: #000;">
+                                                                                <b>WM Item #:</b>
+                                                                            </p>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td style="padding-right:5px;">
+                                                                        <div style=" margin: 0;text-align:center;">
+                                                                            <p style="margin-bottom: 3px !important;color: #000;">
+                                                                                <b>Vendor Item #:</b>
+                                                                            </p>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                                <t t-set="items" t-value="request.env['freight.order.line'].search([('sscc_18_char', '=', data_value.get('ssc_code')),('freight_id','=',o.id)])"/>
+                                                                <t t-if="len(items) &lt;= 5">
+                                                                    <t t-foreach="items" t-as="item">
+                                                                    <tr>
+                                                                        <td style="width:25%;padding-left:5px;">
+                                                                            <div style=" margin: 0;text-align:center;">
+                                                                                <p style="color: #000;margin-top:0 !important">
+                                                                                    <b>
+                                                                                        <t t-esc="int(item.qty_carton)"/>
+                                                                                    </b>
+                                                                                </p>
+                                                                            </div>
+                                                                        </td>
+                                                                        <td style="width:50%;">
+                                                                            <div style=" margin: 0;text-align:center;">
+                                                                                <p style="color: #000;margin-top:0 !important">
+                                                                                    <b>
+                                                                                        <t t-esc="item.goods.item_customer_number"/>
+                                                                                    </b>
+                                                                                </p>
+                                                                            </div>
+                                                                        </td>
+                                                                        <td style="padding-right:5px;">
+                                                                            <div style=" margin: 0;text-align:center;">
+                                                                                <p style="color: #000;margin-top:0 !important">
+                                                                                    <b>
+                                                                                        <t t-esc="item.goods.default_code"/>
+                                                                                    </b>
+                                                                                </p>
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                </t>
+                                                                </t>
+                                                                <t t-if="len(items) &gt; 5">
+                                                                    <t t-set="items" t-value="request.env['freight.order.line'].search([('sscc_18_char', '=', data_value.get('ssc_code')),('freight_id','=',o.id)], limit=10)"/>
+                                                                    <t t-foreach="items" t-as="item">
+                                                                    <tr style="font-size: 10px;">
+                                                                        <td style="width:25%;padding-left:5px;">
+                                                                            <div style=" margin: 0;text-align:center;">
+                                                                                <p style="color: #000;margin-top:0 !important">
+                                                                                    <b>
+                                                                                        <t t-esc="int(item.qty_carton)"/>
+                                                                                    </b>
+                                                                                </p>
+                                                                            </div>
+                                                                        </td>
+                                                                        <td style="width:50%;">
+                                                                            <div style=" margin: 0;text-align:center;">
+                                                                                <p style="color: #000;margin-top:0 !important">
+                                                                                    <b>
+                                                                                        <t t-esc="item.goods.item_customer_number"/>
+                                                                                    </b>
+                                                                                </p>
+                                                                            </div>
+                                                                        </td>
+                                                                        <td style="padding-right:5px;">
+                                                                            <div style=" margin: 0;text-align:center;">
+                                                                                <p style="color: #000;margin-top:0 !important">
+                                                                                    <b>
+                                                                                        <t t-esc="item.goods.default_code"/>
+                                                                                    </b>
+                                                                                </p>
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                </t>
+                                                                </t>
+
+                                                            </t>
+                                                            <t t-else="">
+                                                                <tr>
+                                                                    <td style="width:25%;padding-left:5px;">
+                                                                        <div style=" margin: 0;text-align:center;">
+                                                                            <p style="margin-bottom: 3px !important;color: #000;">
+                                                                                <b>Nbr of Cases:</b>
+                                                                            </p>
+                                                                            <p style="color: #000;margin-top:0 !important">
+                                                                                <b>
+                                                                                    <t t-esc="data_value.get('no_cases')"/>
+                                                                                </b>
+                                                                            </p>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td style="width:50%;">
+                                                                        <div style=" margin: 0;text-align:center;">
+                                                                            <p style="margin-bottom: 3px !important;color: #000;">
+                                                                                <b>WM Item #:</b>
+                                                                            </p>
+                                                                            <p style="color: #000;margin-top:0 !important">
+                                                                                <b>
+                                                                                    <t t-esc="data_value.get('wm_item_no')"/>
+                                                                                </b>
+                                                                            </p>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td style="padding-right:5px;">
+                                                                        <div style=" margin: 0;text-align:center;">
+                                                                            <p style="margin-bottom: 3px !important;color: #000;">
+                                                                                <b>Vendor Item #:</b>
+                                                                            </p>
+                                                                            <p style="color: #000;margin-top:0 !important">
+                                                                                <b>
+                                                                                    <t t-esc="data_value.get('vendor_item_no')"/>
+                                                                                </b>
+                                                                            </p>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                            </t>
+
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <div style="height: 240px;position: relative;padding-top:70px;padding-left:30px;">
+                                        <t t-if="data_value.get('ssc_code')">
+                                            <img alt="Barcode"
+                                                 t-att-src="o.freight_order_line_ids[0].base_url+'/report/barcode/Code128/'+data_value.get('ssc_code')"
+                                                 style="width: 650px;height: 120px;"/>
+                                            <div style="padding-top:5px;text-align:center;font-size:22px;padding-right:30px;">
+                                                <t t-esc="data_value.get('ssc_code')"/>
+                                            </div>
+                                        </t>
+                                    </div>
+                                </font>
+                            </div>
+                            <style>
+                                span#oe_neutralize_banner {
+                                display:none !important;
+                                }
+                            </style>
+                        </div>
+                    </t>
+                </t>
+    </template>
+    <template id="report_PalletLabels">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-foreach="range(2)" t-as="copy_number">
+                    <t t-call="warefor_reports.report_PalletLabels_doc"/>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <template id="report_PalletLabels_new">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="warefor_reports.report_PalletLabels_doc_new"/>
+            </t>
+        </t>
+    </template>
+
+    <record id="paperformat_report_pallet_label" model="report.paperformat">
+        <field name="name">Pallet Label</field>
+        <field name="default" eval="False"/>
+        <field name="format">custom</field>
+        <field name="page_height">0</field>
+        <field name="page_width">0</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">10</field>
+        <field name="margin_bottom">5</field>
+        <field name="margin_left">10</field>
+        <field name="margin_right">10</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">0</field>
+        <field name="dpi">80</field>
+    </record>
+
+    <record id="pallet_report_template_new" model="ir.actions.report">
+        <field name="name">Report Pallet Labels</field>
+        <field name="model">freight.freight</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">warefor_reports.report_PalletLabels_new</field>
+        <field name="report_file">warefor_reports.report_PalletLabels_new</field>
+        <field name="print_report_name">'Pallet Labels - %s' % (object.name)</field>
+<!--        <field name="binding_model_id"-->
+<!--               ref="warefor_3pl_tus.model_freight_freight"/>-->
+        <field name="paperformat_id" ref="warefor_reports.paperformat_report_pallet_label"/>
+<!--        <field name="binding_type">report</field>-->
+    </record>
+
+</odoo>

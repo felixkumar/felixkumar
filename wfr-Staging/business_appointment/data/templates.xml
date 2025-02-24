@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Success email -->
+        <record id="email_template_successful_appointment_multi" model="mail.template">
+            <field name="name">Appointments: Success Email Template</field>
+            <field name="model_id" ref="business_appointment.model_business_appointment"/>
+            <field name="subject"> {{ ctx['target_company'].name }}: Appointment {{ ctx["reshedule"] and 'Re-Scheduled' or 'Confirmed' }}</field>
+            <field name="body_html" type="html">
+<table border="0" cellpadding="0" cellspacing="0" style="padding-top: 16px; background-color: #F1F1F1; font-family:Verdana, Arial,sans-serif; color: #454748; width: 100%; border-collapse:separate;"><tbody><tr><td align="center">
+<table border="0" cellpadding="0" cellspacing="0" width="590" style="padding: 16px; background-color: white; color: #454748; border-collapse:separate;">
+<tbody>
+    <tr>
+        <td align="center" style="min-width: 590px;">
+            <table border="0" cellpadding="0" cellspacing="0" width="590" style="min-width: 590px; background-color: white; padding: 0px 8px 0px 8px; border-collapse:separate;">
+                <tbody>
+                    <tr>
+                        <td valign="middle" align="right">
+                            <img t-attf-src="#{ctx['base_url']}/logo.png?company=#{ctx['target_company'].id}" 
+                                 style="padding: 0px; margin: 0px; height: auto; width: 80px;" 
+                                 t-attf-alt="#{ctx['target_company'].name}"
+                            />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align:center;">
+                            <hr width="100%" style="background-color:rgb(204,204,204);border:medium none;clear:both;display:block;font-size:0px;min-height:1px;line-height:0; margin:16px 0px 16px 0px;"/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td align="center" style="min-width: 590px;">
+            <table border="0" cellpadding="0" cellspacing="0" width="590" style="min-width: 590px; background-color: white; padding: 0px 8px 0px 8px; border-collapse:separate;">
+                <tbody>
+                    <tr>
+                        <td valign="top" style="font-size: 13px;">
+                            <div>
+                                <t t-set="appointments" t-value="ctx.get('appointments')"/>
+                                Hello 
+                                <t t-if="object.partner_id">
+                                    <t t-out="object.partner_id.name"/>,
+                                </t>
+                                <t t-else="">
+                                    <t t-out="object.contact_name"/>,
+                                </t>
+                                <br/>
+                                thank you! Your appointment<t t-if="len(appointments) != 1">s</t> for <t t-out="object.resource_id.name or ''"/> 
+                                <t t-if="len(appointments) == 1">is</t><t t-else="">are</t> 
+                                <t t-if="ctx['reshedule']">
+                                    re-scheduled:
+                                </t>
+                                <t t-else="">
+                                    scheduled:
+                                </t>                           
+                                <br/>
+                                <t t-foreach="appointments" t-as="appointment">
+                                    <br/>
+                                    <b><t t-out="appointment.name  or ''"/></b>
+                                    <ul>
+                                        <li>Scheduled Time: <t t-out="appointment.return_scheduled_time_tz(True) or ''"/></li>
+                                        <li>Service: <t t-out="appointment.service_id.name or ''"/></li>
+                                        <li t-if="object.resource_id.location or object.service_id.location">
+                                            <t t-out="object.service_id.location or object.resource_id.location or ''"/>
+                                        </li>
+                                        <li t-if="object.videocall">
+                                            <a t-attf-href="{{object.videocall}}">Live conference link</a>
+                                        </li>
+                                    </ul>
+                                </t>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:center;">
+                            <hr width="100%" style="background-color:rgb(204,204,204);border:medium none;clear:both;display:block;font-size:0px;min-height:1px;line-height:0; margin: 16px 0px 16px 0px;"/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td align="center" style="min-width: 590px;">
+            <table border="0" cellpadding="0" cellspacing="0"  width="590" style="min-width: 590px; background-color: white; font-size: 11px; padding: 0px 8px 0px 8px; border-collapse:separate;">
+                <tbody>
+                    <tr>
+                        <td valign="middle" align="left">
+                            <t t-out="ctx['target_company'].name"/>
+                        </td>
+                    </tr>
+                <tr>
+                    <td valign="middle" align="left" style="opacity: 0.7;">
+                        <t t-out="ctx['target_company'].phone"/>
+                        <t t-if="ctx['target_company'].email">
+                            | 
+                            <a t-attf-href="'mailto:%s' % #{ctx['target_company'].email}" style="color: #454748;">
+                                <t t-out="ctx['target_company'].email"/>
+                            </a>
+                        </t>
+                        | 
+                        <a t-attf-href="#{ctx['website_http_domain']}" style=" color: #454748;">
+                            <t t-out="ctx['website_http_domain']"/>
+                        </a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </td>
+    </tr>
+</tbody>
+</table>
+</td></tr></tbody></table>   
+            </field>
+            <field name="report_template" ref="business_appointment.action_report_business_appointment"/>
+            <field name="report_name">#{(object.name or '').replace('/','_')}</field>
+            <field name="auto_delete" eval="True"/>
+        </record>
+        <!-- Email reminder -->
+        <record id="email_template_default_reminder" model="mail.template">
+            <field name="name">Appointments: Default Email Reminder</field>
+            <field name="model_id" ref="business_appointment.model_business_appointment"/>
+            <field name="subject">{{ ctx['target_company'].name }}: Appointment Reminder</field>
+            <field name="body_html" type="html">
+<div>
+    Hello,
+    <br/>
+    we are writing to remind you about the appointment:                              
+    <br/>
+    <ul>
+        <li>Reference: <t t-out="object.name  or ''"/></li>
+        <li>Scheduled Time: <t t-out="object.return_scheduled_time_tz(True) or ''"/></li>
+        <li>Resource: <t t-out="object.resource_id.name or ''"/></li>
+        <li>Service: <t t-out="object.service_id.name or ''"/></li>
+        <li t-if="object.resource_id.location or object.service_id.location">
+            <t t-out="object.service_id.location or object.resource_id.location or ''"/>
+        </li>
+    </ul>  
+</div>
+            </field>
+            <field name="auto_delete" eval="True"/>
+        </record>
+        <!-- Ratings -->
+        <record id="email_template_rating_appointment" model="mail.template">
+            <field name="name">Appointments: Rating Template</field>
+            <field name="model_id" ref="business_appointment.model_business_appointment"/>
+            <field name="subject">Appointment Satisfaction Survey</field>
+            <field name="partner_to">{{ object._rating_get_partner().id }}</field>
+            <field name="body_html" type="html">
+<div>
+<t t-set="access_token" t-value="object._rating_get_access_token()"/>
+<table border="0" cellpadding="0" cellspacing="0" width="590" style="width:100%; margin:0px auto;">
+<tbody>
+    <tr>
+        <td align="center" style="min-width: 590px;">
+            <table border="0" cellpadding="0" cellspacing="0" width="590" style="min-width: 590px; background-color: white; padding: 0px 8px 0px 8px; border-collapse:separate;">
+                <tbody>
+                    <tr>
+                        <td valign="top" style="font-size: 13px;">
+                            <div>
+                                Hello 
+                                <t t-if="object.partner_id">
+                                    <t t-out="object.partner_id.name"/>,
+                                </t>
+                                <t t-else="">
+                                    <t t-out="object.contact_name"/>,
+                                </t>
+                                <br/>
+                                Please take a moment to rate our services related to the appointment "<strong><t t-out="object.name"/></strong>":                            
+                                <br/>
+                                <ul>
+                                    <li>Resource: <t t-out="object.resource_id.name or ''"/></li>
+                                    <li>Service: <t t-out="object.service_id.name or ''"/></li>
+                                    <li t-if="object.resource_id.location or object.service_id.location">
+                                        <t t-out="object.service_id.location or object.resource_id.location or ''"/>
+                                    </li>
+                                    <li>Scheduled Time: <t t-out="object.return_scheduled_time_tz(True) or ''"/></li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:center;">
+                            <hr width="100%" style="background-color:rgb(204,204,204);border:medium none;clear:both;display:block;font-size:0px;min-height:1px;line-height:0; margin: 16px 0px 16px 0px;"/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td style="text-align: center; min-width: 590px;">
+            <table border="0" cellpadding="0" cellspacing="0" width="590" summary="o_mail_notification" style="width:100%; margin: 32px 0px 32px 0px;">
+                <tr>
+                    <td style="font-size: 13px;">
+                        <strong>Tell us how you feel about our service</strong><br/>
+                        <span style="text-color: #888888">(click on one of these smileys)</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="font-size: 13px;">
+                        <table style="width:100%;text-align:center;">
+                            <tr><td style="font-size: 13px;">
+                                <table style="width:100%;text-align:center;margin-top:2rem;">
+                                    <tr>
+                                        <td>
+                                            <a t-attf-href="/rate/{{ access_token }}/5">
+                                                <img alt="Satisfied" src="/rating/static/src/img/rating_5.png" title="Satisfied"/>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a t-attf-href="/rate/{{ access_token }}/3">
+                                                <img alt="Okay" src="/rating/static/src/img/rating_3.png" title="Okay"/>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a t-attf-href="/rate/{{ access_token }}/1">
+                                                <img alt="Dissatisfied" src="/rating/static/src/img/rating_1.png" title="Dissatisfied"/>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td></tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td valign="top" style="font-size: 13px;">
+            We appreciate your feedback. It helps us to improve continuously.
+        </td>
+    </tr>    
+</tbody>
+</table> 
+</div>
+            </field>
+            <field name="auto_delete" eval="True"/>
+        </record>
+        <!-- SMS -->
+        <record id="sms_template_default_reminder" model="sms.template">
+            <field name="name">Appointments: Default SMS Reminder</field>
+            <field name="model_id" ref="business_appointment.model_business_appointment"/>
+            <field name="body">Hello. This is the reminder about the appointment {{ object.name or '' }} scheduled to {{ object.return_scheduled_time_tz(True) or ''}}</field>
+        </record>
+        
+    </data>
+</odoo>

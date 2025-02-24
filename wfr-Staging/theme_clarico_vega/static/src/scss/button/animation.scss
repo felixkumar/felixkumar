@@ -1,0 +1,181 @@
+// Style 1
+.btn:not(.dropdown-menu):not(.dropdown-toggle):not(.js_add_cart_json):not(.oe_search_button):not(.btn-light):not(.o_add_compare_dyn):not(.o_add_wishlist_dyn):not(.btn-link):not(.js_add):not(.te_pay_now):not(.te_add_address):not(.card_hover_btn):not(.category_animate):not(.btn-danger):not(#close-button):not(.load_more_button):not(.load_more_button_top):not(.o_notification_close){
+@if $btn-gradient-1 and $btn-gradient-2 != transparent{
+        background-image: linear-gradient(75deg, $btn-gradient-1, $btn-gradient-2, $btn-gradient-2, $btn-gradient-1) !important;
+}
+@if o-website-value('button-template') == 'style_1' {
+        transition-property: all;
+        background:transparent;
+        color:o-color('primary');
+        transition-duration: 300ms;
+        @if $animation-text-color != transparent{
+            color: $animation-text-color!important;
+        }
+            &:hover {
+                transition-duration: 0.4s;
+                background:o-color('primary');
+                color:white;
+                @if $animation-hover-color != transparent{
+                    color: $animation-hover-color!important;
+                }
+                @if $btn-gradient-1 and $btn-gradient-2 != transparent{
+                    border-color:black;
+                }
+            }
+    }
+// Style 2
+@if o-website-value('button-template') == 'style_2' {
+        @include position(relative);
+        @include transition(all, 0.3s, ease-out);
+        @if $animation-text-color != transparent{
+            color: $animation-text-color!important;
+        }
+        &:hover {
+            box-shadow: 0 15px 10px -10px rgba(31, 31, 31, 0.5);
+            @if $animation-hover-color != transparent{
+                color: $animation-hover-color!important;
+            }
+            @if $btn-gradient-1 and $btn-gradient-2 != transparent{
+                border-color:black;
+            }
+        }
+}
+// Style 3
+@if o-website-value('button-template') == 'style_3' {
+        display: inline-block;
+        background:transparent;
+        color:o-color('primary');
+        @include position(relative);
+        @include transition(background-color,0.3s,null);
+        overflow: hidden;
+        z-index:1;
+        @if $animation-text-color != transparent{
+            color: $animation-text-color!important;
+        }
+        &:hover {
+            background-color:unset;
+            color:white;
+            &:after {
+                height: 100%;
+            }
+            @if $animation-hover-color != transparent{
+                color: $animation-hover-color!important;
+            }
+        }
+        &:after{
+            content: '';
+            @include position(absolute,0,unset,unset,0)
+            z-index: -1;
+            width: 100%;
+            height: 0;
+            background:o-color('primary');
+            @include transition(all,0.3s,null)
+            @if $btn-gradient-1 and $btn-gradient-2 != transparent{
+                border-color:$btn-gradient-1;
+                background-image: linear-gradient(75deg, $btn-gradient-1, $btn-gradient-2, $btn-gradient-2, $btn-gradient-1) !important;
+            }
+        }
+}
+// Style 5
+@if o-website-value('button-template') == 'style_5' {
+        @include position(relative,null,null,null,null);
+        overflow: hidden;
+        z-index: 1;
+        -webkit-transition: .2s cubic-bezier(0.19, 0.4, 0.9, 0.76) background;
+        transition: .2s cubic-bezier(0.19, 0.4, 0.9, 0.76) background; /* Transition mixin is not compatible with this property structure.*/
+        @if $animation-text-color != transparent{
+            color: $animation-text-color!important;
+        }
+        &:hover {
+            @if $animation-hover-color != transparent{
+                color: $animation-hover-color!important;
+            }
+            &:after {
+                height: 100%;
+                opacity: 1;
+                color:gray;
+            }
+        }
+        &:after {
+            content: '';
+            @include position(absolute,50%,null,null,50%);
+            width: 100%;
+            height: 0;
+            opacity: 0;
+            @include transform(translateX(-50%) translateY(-50%) rotate(45deg))
+            @include transition(all,0.4s,cubic-bezier(0, 0, 0, 0.3))
+            background: rgba(255,255,255,0.15);
+        }
+}
+// Style 6
+@if o-website-value('button-template') == 'style_6' {
+        z-index: 1;
+        background-size: 300% 100%;
+        @include position(relative);
+        overflow: hidden;
+        transition-property: all;
+        transition-duration: 0.4s;
+        @if $animation-text-color != transparent{
+            color: $animation-text-color!important;
+        }
+        background-image:linear-gradient(75deg, #0000FF, #9C00FF, #9C00FF, #0000FF);
+        &:hover {
+            transition-property: all;
+            transition-duration: 0.4s;
+            transition-timing-function: ease-in-out;
+            background-position: 100% 0;
+            @if $animation-hover-color != transparent{
+                color: $animation-hover-color!important;
+            }
+        }
+}
+// Style 7
+@if o-website-value('button-template') == 'style_7' {
+        @include position(relative);
+        transform: translate3d(0px, 0%, 0px);
+        transition-delay: 0.6s;
+        overflow: hidden;
+        @if $animation-text-color != transparent{
+            color: $animation-text-color!important;
+        }
+        &:hover {
+            border-color:black;
+            transition: background 0.2s linear;
+            transition-delay: 0.6s;
+            @if $animation-hover-color != transparent{
+                color: $animation-hover-color!important;
+            }
+            &:before {
+                border-radius: 0;
+                transform: translateY(0) scaleY(1);
+            }
+            &:after {
+                border-radius: 0 0 50% 50%;
+                transform: translateY(-100%) scaleY(0.5);
+            }
+        }
+        &:before, &:after {
+            content: '';
+            @include position(absolute);
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            transition: all 0.6s ease;
+            z-index:-1;
+        }
+        &:before {
+            @if $btn-gradient-1 and $btn-gradient-2 != transparent{
+                background-image: linear-gradient(75deg, $btn-gradient-1, $btn-gradient-2, $btn-gradient-2, $btn-gradient-1) !important;
+            }
+            background:black;
+            border-radius: 50% 50% 0 0;
+            transform: translateY(100%) scaleY(0.5);
+        }
+        &:after {
+            background:transparent;
+            border-radius: 0;
+            transform: translateY(0) scaleY(1);
+        }
+    }
+}

@@ -1,0 +1,557 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Social Media icons -->
+    <template id="te_header_social_icon" name="Header social icon">
+        <div class="oe_structure oe_structure_solo" id="oe_structure_header_boxed_1">
+            <section class="s_text_block" data-snippet="s_text_block" name="Text">
+                <!--                <div class="container">-->
+                <div class="s_social_media text-start no_icon_color">
+                    <h6 class="s_social_media_title d-none" contenteditable="true">Follow us
+                    </h6>
+                    <a href="/website/social/facebook" class="s_social_media_facebook"
+                       target="_blank">
+                        <i class="fa fa-facebook m-1"/>
+                    </a>
+                    <a href="/website/social/twitter" class="s_social_media_twitter"
+                       target="_blank">
+                        <i class="fa fa-twitter m-1"/>
+                    </a>
+                    <a href="/website/social/instagram" class="s_social_media_instagram"
+                       target="_blank">
+                        <i class="fa fa-instagram m-1"/>
+                    </a>
+                </div>
+                <!--                </div>-->
+            </section>
+        </div>
+    </template>
+    <!-- Offer text -->
+    <template id="te_header_offer_string" name="Header top offer text">
+        <section class="te_s_header_offer_text">
+            <span>Free Shipping on above $50</span>
+        </section>
+    </template>
+    <!-- Pre Header -->
+    <template id="pre_header" name="Pre Header">
+        <div class="oe_structure">
+            <section class="container-fluid pre_header">
+                <div t-att-class="'d-flex justify-content-center justify-content-lg-between ' + current_container">
+                    <t t-call="theme_clarico_vega.te_header_social_icon"/>
+                    <t t-call="theme_clarico_vega.te_header_offer_string"/>
+                    <div class="te_header_before_right">
+                        <t t-if="request.website.viewref('theme_clarico_vega.place_in_preheader').active">
+                            <t t-call="theme_clarico_vega.lang_pricelist_block"/>
+                        </t>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </template>
+    <!-- Options for place language and currency switcher based on selection  -->
+    <template id="place_in_preheader" name="Language and Currency Switcher in Pre-Header" active="True"/>
+    <template id="place_in_header" name="Language and Currency Switcher in Header" active="False"/>
+    <!-- Language & Pricelist Block -->
+    <template id="lang_pricelist_block" name="Language and pricelist block">
+        <div class="te_header_lang"
+             t-if="request.website.viewref('website.header_language_selector').active or request.website.viewref('website.header_language_selector_inline').active">
+            <t t-call="website.placeholder_header_language_selector">
+                <t t-set="_div_classes" t-value="'ml-2'"/>
+            </t>
+        </div>
+        <t t-set="website_sale_pricelists"
+           t-value="website.get_pricelist_available(show_visible=True)"/>
+        <t t-set="hasPricelistDropdown"
+           t-value="website_sale_pricelists and len(website_sale_pricelists)&gt;1"/>
+        <div class="te_header_pricelist"
+             t-if="hasPricelistDropdown">
+            <t t-call="theme_clarico_vega.pricelist_list_ept"/>
+        </div>
+    </template>
+
+    <!-- Header Icons -->
+    <template id="header_components" name="Header components">
+        <!-- Header cart link -->
+        <t t-nocache="The number of products is dynamic, this rendering cannot be cached."
+           t-nocache-_icon="_icon"
+           t-nocache-_item_class="_item_class"
+           t-nocache-_link_class="_link_class" t-call="website_sale.header_cart_link"
+           t-if="website._display_add_to_cart()">
+            <t t-set="search_icon_disabled" t-value="1"/>
+            <t t-set="_icon" t-value="True"/>
+            <t t-set="_item_class" t-value="'nav-item'"/>
+            <t t-set="_link_class" t-value="'nav-link'"/>
+        </t>
+        <!-- Header wishlist link -->
+
+        <t t-nocache="The wishlist depends on the user and must not be shared with other users. The product come from the controller."
+           t-call="website_sale_wishlist.header_wishlist_link"
+           t-nocache-_icon="_icon"
+           t-nocache-_item_class="_item_class"
+           t-nocache-_link_class="_link_class">
+            <t t-set="_icon" t-value="True"/>
+            <t t-set="_item_class" t-value="'nav-item'"/>
+            <t t-set="_link_class" t-value="'nav-link'"/>
+        </t>
+        <!-- Header user link -->
+        <div class="te_header_account" t-if="request.website.viewref('portal.user_sign_in').active" t-nocache="true">
+            <div class="te_user_account" t-ignore="true" t-if="not request.env.user.sudo()._is_public()">
+                <a class="btn-link" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
+                   aria-controls="offcanvasRight">
+                    <span class="fa fa-user-o"/>
+                </a>
+            </div>
+            <t t-call="theme_clarico_vega.signin_block_content">
+                <t t-set="align_class" t-valuef="px-2"/>
+                <t t-set="fa_classes" t-valuef="fa-user-o d-block"/>
+            </t>
+        </div>
+    </template>
+    <!-- User dropdown menu -->
+    <template id="te_header_usermenu" name="Header user menu">
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel" t-nocache="true">
+            <div class="offcanvas-header">
+                <a role="menuitem" class=" te_user_name">
+                    <span class="fa fa-user-o">
+                        <span class="te_user_drop_item_message">Hello</span>
+                    </span>
+                    <span class="te_user_drop_item"
+                          t-esc="user_id.name[:15] + '...' if user_id.name and len(user_id.name) &gt; 16 else user_id.name">
+                    </span>
+                </a>
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                        aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <div class="scrollbar">
+                    <a href="/shop/cart" role="menuitem" class="list-group-item">
+                        <span class="fa fa-shopping-basket me-2"/>
+                        <span class="te_user_drop_item">My cart
+                        </span>
+                        <t t-set="website_sale_cart_quantity"
+                           t-value="request.session['website_sale_cart_quantity'] if 'website_sale_cart_quantity' in request.session else website.sale_get_order().cart_quantity or 0"/>
+                        <span class="my_cart_quantity" t-esc="website_sale_cart_quantity"
+                              t-att-data-order-id="request.session.get('sale_order_id', '')"/>
+                    </a>
+                    <a href="/shop/wishlist" role="menuitem" class="list-group-item o_wsale_my_wish">
+                        <span class="fa fa-heart-o me-2"/>
+                        <span class="te_user_drop_item">My Wishlist
+                        </span>
+                        <t t-set="wishcount" t-value="len(request.env['product.wishlist'].current())"/>
+                        <span t-esc="wishcount" t-attf-class="my_wish_quantity o_animate_blink"/>
+                    </a>
+                    <a href="/my/home" role="menuitem" class="list-group-item">
+                        <span class="fa fa-user-o me-2"/>
+                        <span class="te_user_drop_item">My Account
+                        </span>
+                    </a>
+                    <a href="/my/orders" role="menuitem" class="list-group-item">
+                        <span class="fa fa-pie-chart me-2"/>
+                        <span class="te_user_drop_item">My orders
+                        </span>
+                    </a>
+                    <a href="/my/account" role="menuitem" class="list-group-item">
+                        <span class="fa fa-pencil-square-o me-2"/>
+                        <span class="te_user_drop_item">Edit Profile
+                        </span>
+                    </a>
+                    <a href="/my/security" role="menuitem" class="list-group-item">
+                        <span class="fa fa-shield me-2"/>
+                        <span class="te_user_drop_item">Change Password
+                        </span>
+                    </a>
+                </div>
+                <div>
+                    <a id="o_logout" class="list-group-item" t-attf-href="/web/session/logout?redirect=/"
+                       role="menuitem">
+                        <span class="fa fa-sign-out me-2"/>
+                        <span class="te_user_drop_item">Logout</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </template>
+    <!-- Sign in block   -->
+    <template id="signin_block_content" name="User Sign in content">
+        <div groups="base.group_public" t-attf-class="#{align_class} te_signin"
+             t-if="request.website.viewref('portal.user_sign_in').active">
+            <t t-if="request.website.viewref('theme_clarico_vega.login_popup_ept').active">
+                <a href="javascript:void(0);" t-attf-class="#{btn_class} btn-link">
+                    <span t-if="is_sign_in_text" class="te_user_account_name">Sign in</span>
+                    <span t-attf-class="te_user_account_icon #{display_class}"/>
+                </a>
+            </t>
+            <t t-else="">
+                <a t-attf-href="/web/login" t-attf-class="#{btn_class} btn-link">
+                    <span t-if="is_sign_in_text" class="te_user_account_name">Sign in</span>
+                    <span t-attf-class="te_user_account_icon #{display_class}"/>
+                </a>
+            </t>
+        </div>
+    </template>
+    <!-- Search Box Input -->
+    <template id="website_search_box_input_ept" name="Search Box Input">
+        <t t-call="website.website_search_box_input">
+            <t t-set="action" t-value="'/shop'"/>
+            <t t-set="search_type" t-value="'products_only'"/>
+            <t t-set="display_image" t-valuef="true"/>
+            <t t-set="display_description" t-valuef="false"/>
+            <t t-set="display_extra_link" t-valuef="true"/>
+            <t t-if="False if (website and website.b2b_hide_price and website.is_public_user()) else True">
+                <t t-set="display_detail" t-valuef="true"/>
+            </t>
+            <t t-else="">
+                <t t-set="display_detail" t-valuef="false"/>
+            </t>
+            <t t-if="attrib_values">
+                <t t-foreach="attrib_values" t-as="a">
+                    <input type="hidden" name="attrib" t-att-value="'%s-%s' % (a[0], a[1])"/>
+                </t>
+            </t>
+        </t>
+    </template>
+    <!-- Search Close Icon -->
+    <template id="website_search_box_ept" inherit_id="website.website_search_box">
+        <xpath expr="//input[@type='search'][@name='search']" position="after">
+            <div class="te_header_search_close te_srch_close_ept" style="z-index: 100; display: none;">
+                <a href="#">
+                    <span class="search_btn_close_ept"/>
+                </a>
+            </div>
+        </xpath>
+    </template>
+    <!-- Added class in header wishlist link -->
+    <template id="header_wishlist_link_ept" inherit_id="website_sale_wishlist.header_wishlist_link">
+        <xpath expr="//li[contains(@t-attf-class, 'o_wsale_my_wish')]" position="attributes">
+            <attribute name="t-attf-class" add="te_wish_icon_head" separator=" "/>
+        </xpath>
+    </template>
+
+    <!-- Added class in header cart link  -->
+    <template id="header_cart_link_ept" inherit_id="website_sale.header_cart_link">
+        <xpath expr="//t" position="attributes">
+            <attribute name="t-if">website._display_add_to_cart()</attribute>
+        </xpath>
+        <xpath expr="//li[contains(@t-attf-class, 'o_wsale_my_cart')]" position="attributes">
+            <attribute name="t-attf-class" remove="ml-auto" add="te_cart_icon_head" separator=" "/>
+        </xpath>
+    </template>
+    <!-- Pricelist  -->
+    <template id="pricelist_list_ept" inherit_id="website_sale.pricelist_list" name="Pricelists Dropdown">
+        <xpath expr="//a[contains(@t-attf-class, 'dropdown-toggle')]" position="replace">
+            <t t-nocache="pricelist">
+                <t t-set="curr_pl" t-value="website.pricelist_id"/>
+                <a role="button" href="#"
+                   t-attf-class="dropdown-toggle btn btn-{{navClass}} te_currency_name"
+                   data-bs-toggle="dropdown">
+                    <t t-esc="curr_pl and curr_pl.name or ' - '"/>
+                </a>
+                <a role="button" href="#"
+                   t-attf-class="dropdown-toggle btn btn-{{navClass}} te_currency_symbol"
+                   data-bs-toggle="dropdown">
+                    <t t-esc="curr_pl.currency_id.symbol"/>
+                </a>
+            </t>
+        </xpath>
+    </template>
+
+    <!-- ======================= Header style 1 ========================= -->
+    <template id="template_header_style_1" inherit_id="website.layout"
+              name="Vega style 1" active="False">
+        <xpath expr="//header//nav" position="replace">
+            <t t-call="theme_clarico_vega.te_header_usermenu"/>
+            <nav data-name="Navbar"
+                 class="navbar navbar-expand-lg navbar-light o_colored_level o_cc header_style_1">
+                <t t-if="request.website.viewref('theme_clarico_vega.pre_header').active">
+                    <t t-call="theme_clarico_vega.pre_header">
+                        <t t-set="current_container" t-valuef="container"/>
+                    </t>
+                </t>
+                <div class="container justify-content-md-between header_middle">
+                    <div class="middle_first">
+                        <button type="button"
+                                class="navbar-toggler ept_mobi_toggler header_sidebar collapsed ml-3 shadow-none">
+                            <span class="navbar-toggler-icon">
+                                <div class="inner_bar"/>
+                            </span>
+                        </button>
+                        <t t-call="website.placeholder_header_brand"/>
+                    </div>
+                    <div class="col-md-5 te_header_style_right">
+                        <div class="te_header_search">
+                            <div class="te_search_popover" tabindex="-1">
+                                <t t-call="theme_clarico_vega.website_search_box_input_ept"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="te_header_right_icon">
+                        <div class="te_header_search">
+                            <div class="te_srch_icon_header">
+                                <a href="#" class="">
+                                    <i class="fa fa-search te_srch_icon"/>
+                                    <i class="fa fa-times te_srch_close"/>
+                                </a>
+                            </div>
+                        </div>
+                        <t t-call="theme_clarico_vega.header_components"/>
+                        <t t-if="request.website.viewref('theme_clarico_vega.place_in_header').active">
+                            <t t-call="theme_clarico_vega.lang_pricelist_block"/>
+                        </t>
+                    </div>
+                </div>
+                <div class="container-fluid header_bottom">
+                    <div class="container justify-content-start justify-content-lg-between">
+                        <div id="top_menu_collapse" class="collapse navbar-collapse">
+                            <div class="close_top_menu">x</div>
+                            <t t-call="website.navbar_nav">
+                                <t t-if="request.website.viewref('website.template_header_default_align_center').active">
+                                    <t t-set="_nav_class" t-value="'mx-auto'"/>
+                                </t>
+                                <t t-if="request.website.viewref('website.template_header_default_align_right').active">
+                                    <t t-set="_nav_class" t-value="'ms-auto'"/>
+                                </t>
+                                <!-- Menu -->
+                                <t t-foreach="website.menu_id.child_id" t-as="submenu">
+                                    <t t-call="website.submenu">
+                                        <t t-set="item_class" t-value="'nav-item'"/>
+                                        <t t-set="link_class" t-value="'nav-link'"/>
+                                    </t>
+                                </t>
+                                <ul class="px-0 list-unstyled">
+                                    <li class="o_wsale_my_wish o_wsale_my_wish_hide_empty te_wish_icon_head"/>
+                                    <li class="te_header_lang_mobi d-none"
+                                        t-if="request.website.viewref('website.header_language_selector').active or request.website.viewref('website.header_language_selector_inline').active">
+                                        <t t-call="website.placeholder_header_language_selector">
+                                            <t t-set="_div_classes" t-value="'ml-2'"/>
+                                        </t>
+                                    </li>
+                                    <t t-set="website_sale_pricelists"
+                                       t-value="website.get_pricelist_available(show_visible=True)"/>
+                                    <t t-set="hasPricelistDropdown"
+                                       t-value="website_sale_pricelists and len(website_sale_pricelists)&gt;1"/>
+                                    <li class="te_header_pricelist_mobi d-none" t-if="hasPricelistDropdown">
+                                        <t t-call="theme_clarico_vega.pricelist_list_ept"/>
+                                    </li>
+                                </ul>
+                            </t>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </xpath>
+    </template>
+
+    <!-- ======================= Header style 2 ========================= -->
+    <template id="template_header_style_2" inherit_id="website.layout"
+              name="Vega style 2" active="False">
+        <xpath expr="//header//nav" position="replace">
+            <t t-call="theme_clarico_vega.te_header_usermenu"/>
+            <nav data-name="Navbar"
+                 class="navbar navbar-expand-lg navbar-light o_colored_level o_cc header_style_2">
+                <t t-if="request.website.viewref('theme_clarico_vega.pre_header').active">
+                    <t t-call="theme_clarico_vega.pre_header">
+                        <t t-set="current_container" t-valuef="container"/>
+                    </t>
+                </t>
+                <div class="container justify-content-md-between header_middle">
+                    <div class="col-md-3 te_header_style_right">
+                        <div class="te_header_search">
+                            <div class="te_search_popover" tabindex="-1">
+                                <t t-call="theme_clarico_vega.website_search_box_input_ept"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="middle_first">
+                        <button type="button"
+                                class="navbar-toggler ept_mobi_toggler header_sidebar collapsed ml-3 shadow-none">
+                            <span class="navbar-toggler-icon">
+                                <div class="inner_bar"/>
+                            </span>
+                        </button>
+                        <t t-call="website.placeholder_header_brand"/>
+                    </div>
+                    <div class="te_header_right_icon">
+                        <div class="te_header_search">
+                            <div class="te_srch_icon_header">
+                                <a href="#" class="">
+                                    <i class="fa fa-search te_srch_icon"/>
+                                    <i class="fa fa-times te_srch_close"/>
+                                </a>
+                            </div>
+                        </div>
+                        <t t-call="theme_clarico_vega.header_components"/>
+                        <t t-if="request.website.viewref('theme_clarico_vega.place_in_header').active">
+                            <t t-call="theme_clarico_vega.lang_pricelist_block"/>
+                        </t>
+                    </div>
+                </div>
+                <div class="container-fluid header_bottom">
+                    <div class="container justify-content-start justify-content-lg-between">
+                        <div id="top_menu_collapse" class="collapse navbar-collapse">
+                            <div class="close_top_menu">x</div>
+                            <t t-call="website.navbar_nav">
+                                <t t-if="request.website.viewref('website.template_header_default_align_center').active">
+                                    <t t-set="_nav_class" t-value="'mx-auto'"/>
+                                </t>
+                                <t t-if="request.website.viewref('website.template_header_default_align_right').active">
+                                    <t t-set="_nav_class" t-value="'ms-auto'"/>
+                                </t>
+                                <!-- Menu -->
+                                <t t-foreach="website.menu_id.child_id" t-as="submenu">
+                                    <t t-call="website.submenu">
+                                        <t t-set="item_class" t-value="'nav-item'"/>
+                                        <t t-set="link_class" t-value="'nav-link'"/>
+                                    </t>
+                                </t>
+                                <ul class="px-0 list-unstyled">
+                                    <li class="o_wsale_my_wish o_wsale_my_wish_hide_empty te_wish_icon_head"/>
+                                    <li class="te_header_lang_mobi d-none"
+                                        t-if="request.website.viewref('website.header_language_selector').active or request.website.viewref('website.header_language_selector_inline').active">
+                                        <t t-call="website.placeholder_header_language_selector">
+                                            <t t-set="_div_classes" t-value="'ml-2'"/>
+                                        </t>
+                                    </li>
+                                    <t t-set="website_sale_pricelists"
+                                       t-value="website.get_pricelist_available(show_visible=True)"/>
+                                    <t t-set="hasPricelistDropdown"
+                                       t-value="website_sale_pricelists and len(website_sale_pricelists)&gt;1"/>
+                                    <li class="te_header_pricelist_mobi d-none" t-if="hasPricelistDropdown">
+                                        <t t-call="theme_clarico_vega.pricelist_list_ept"/>
+                                    </li>
+                                </ul>
+                            </t>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </xpath>
+    </template>
+
+    <!-- ======================= Header style 3 ========================= -->
+    <template id="template_header_style_3" inherit_id="website.layout"
+              name="Vega style 3" active="False">
+        <xpath expr="//header//nav" position="replace">
+            <t t-call="theme_clarico_vega.te_header_usermenu"/>
+            <nav data-name="Navbar"
+                 class="navbar navbar-expand-lg navbar-light o_colored_level o_cc header_style_3">
+                <t t-if="request.website.viewref('theme_clarico_vega.pre_header').active">
+                    <t t-call="theme_clarico_vega.pre_header">
+                        <t t-set="current_container" t-valuef="container-fluid"/>
+                    </t>
+                </t>
+                <div class="container-fluid justify-content-md-between header_middle">
+                    <div class="middle_first">
+                        <button type="button"
+                                class="navbar-toggler ept_mobi_toggler header_sidebar collapsed ml-3 shadow-none">
+                            <span class="navbar-toggler-icon">
+                                <div class="inner_bar"/>
+                            </span>
+                        </button>
+                        <t t-call="website.placeholder_header_brand"/>
+                    </div>
+                    <div id="top_menu_collapse" class="collapse navbar-collapse">
+                        <div class="close_top_menu">x</div>
+                        <t t-call="website.navbar_nav">
+                            <t t-if="request.website.viewref('website.template_header_default_align_center').active">
+                                <t t-set="_nav_class" t-value="'mx-auto'"/>
+                            </t>
+                            <t t-if="request.website.viewref('website.template_header_default_align_right').active">
+                                <t t-set="_nav_class" t-value="'ms-auto'"/>
+                            </t>
+                            <!-- Menu -->
+                            <t t-foreach="website.menu_id.child_id" t-as="submenu">
+                                <t t-call="website.submenu">
+                                    <t t-set="item_class" t-value="'nav-item'"/>
+                                    <t t-set="link_class" t-value="'nav-link'"/>
+                                </t>
+                            </t>
+                            <ul class="px-0 list-unstyled">
+                                <li class="o_wsale_my_wish o_wsale_my_wish_hide_empty te_wish_icon_head"/>
+                                <li class="te_header_lang_mobi d-none"
+                                    t-if="request.website.viewref('website.header_language_selector').active or request.website.viewref('website.header_language_selector_inline').active">
+                                    <t t-call="website.placeholder_header_language_selector">
+                                        <t t-set="_div_classes" t-value="'ml-2'"/>
+                                    </t>
+                                </li>
+                                <t t-set="website_sale_pricelists"
+                                   t-value="website.get_pricelist_available(show_visible=True)"/>
+                                <t t-set="hasPricelistDropdown"
+                                   t-value="website_sale_pricelists and len(website_sale_pricelists)&gt;1"/>
+                                <li class="te_header_pricelist_mobi d-none"
+                                    t-if="hasPricelistDropdown">
+                                    <t t-call="theme_clarico_vega.pricelist_list_ept"/>
+                                </li>
+                            </ul>
+                        </t>
+                    </div>
+                    <div class="col-lg-3 te_header_style_right">
+                        <div class="te_header_search">
+                            <div class="te_search_popover" tabindex="-1">
+                                <t t-call="theme_clarico_vega.website_search_box_input_ept"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="te_header_right_icon">
+                        <div class="te_header_search">
+                            <div class="te_srch_icon_header">
+                                <a href="#" class="">
+                                    <i class="fa fa-search te_srch_icon"/>
+                                    <i class="fa fa-times te_srch_close"/>
+                                </a>
+                            </div>
+                        </div>
+                        <t t-call="theme_clarico_vega.header_components"/>
+                        <t t-if="request.website.viewref('theme_clarico_vega.place_in_header').active">
+                            <t t-call="theme_clarico_vega.lang_pricelist_block"/>
+                        </t>
+                    </div>
+                </div>
+            </nav>
+        </xpath>
+    </template>
+
+    <template id="option_header_demo" inherit_id="website.navbar_nav" name="header">
+        <xpath expr="//ul[@id='top_menu']" position="inside">
+            <span id="hide_wishlist">
+            <t t-nocache="The wishlist depends on the user and must not be shared with other users. The product come from the controller." t-call="website_sale_wishlist.header_wishlist_link"
+                t-nocache-_icon="_icon"
+                t-nocache-_item_class="_item_class"
+                t-nocache-_link_class="_link_class">
+                <t t-set="_icon" t-value="True"/>
+                <t t-set="_item_class" t-value="'nav-item'"/>
+                <t t-set="_link_class" t-value="'nav-link'"/>
+            </t></span>
+        </xpath>
+    </template>
+
+    <!-- Search for odoo header styles -->
+    <template id="te_search_bar" inherit_id="website_sale.header_cart_link">
+        <xpath expr="//li[contains(@t-attf-class, 'o_wsale_my_cart')]" position="before">
+            <li t-if="not search_icon_disabled" t-attf-class="nav-item #{_item_class} te_srch_icon_header_default">
+                <t t-if="request.website.viewref('website.template_header_default').active">
+                    <t t-set="_item_class" t-value="'mx-lg-3'"/>
+                </t>
+                <t t-if="request.website.viewref('website.template_header_vertical').active or
+                request.website.viewref('website.template_header_contact').active or
+                request.website.viewref('website.template_header_image').active or
+                request.website.viewref('website.template_header_hamburger_full').active">
+                    <t t-set="_item_class" t-value="'ml-lg-3'"/>
+                </t>
+                <t t-if="request.website.viewref('website.template_header_magazine').active">
+                    <t t-set="_item_class" t-value="'ml-auto'"/>
+                </t>
+                <a href="#" class="nav-link">
+                    <i class="fa fa-search te_srch_icon"/>
+                </a>
+                <div class="te_searchform__popup" id="searchForm">
+                    <a href="#" class="te_btn-close">
+                        <i class="fa fa-times te_srch_close"/>
+                    </a>
+                    <div class="te_searchform__body">
+                        <div class="te_text">Start typing and press Enter to search</div>
+                        <t t-call="theme_clarico_vega.website_search_box_input_ept"/>
+                    </div>
+                </div>
+            </li>
+        </xpath>
+    </template>
+</odoo>

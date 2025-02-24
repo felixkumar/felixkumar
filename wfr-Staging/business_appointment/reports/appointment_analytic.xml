@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="appointment_analytic_view_pivot" model="ir.ui.view">
+        <field name="name">appointment.analytic.pivot</field>
+        <field name="model">appointment.analytic</field>
+        <field name="arch" type="xml">
+            <pivot disable_linking="True">
+                <field name="datetime_start" 
+                       interval="month" 
+                       type="col"
+                />
+                <field name="resource_type_id" type="row"/>
+                <field name="resource_id" type="row"/>
+                <field name="duration" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+    <record id="appointment_analytic_view_graph" model="ir.ui.view">
+         <field name="name">appointment.analytic.graph</field>
+         <field name="model">appointment.analytic</field>
+         <field name="arch" type="xml">
+             <graph type="pie">
+                 <field name="resource_type_id" type="row"/>
+                <field name="duration" type="measure"/>
+             </graph>
+         </field>
+    </record>
+    <record id="appointment_analytic_view_search" model="ir.ui.view">
+        <field name="name">appointment.analytic.search</field>
+        <field name="model">appointment.analytic</field>
+        <field name="arch" type="xml">
+            <search>
+                <filter name="done_appointments" 
+                        string="Done Appointments" 
+                        domain="[('state', '=', 'done')]"
+                />
+                <filter name="reserved_appointments" 
+                        string="Reserved Appointments" 
+                        domain="[('state', '=', 'reserved')]"
+                />
+                <separator/>
+                <filter string="My Appointments"
+                        name="my_appointments"
+                        domain="[('user_id', '=', uid)]"
+                />                
+                <separator/>
+                <filter string="Date" 
+                        name="year" 
+                        invisible="1" 
+                        date="datetime_start" 
+                        default_period="this_year"
+                />
+                <separator/>
+                <field name="name"/>
+                <field name="resource_type_id"/>
+                <field name="info_resource_id"/>
+                <field name="resource_id"/>
+                <field name="service_id"/>
+                <field name="partner_id"/>
+                <field name="user_id"/>
+                <field name="company_id" groups="base.group_multi_company"/>                               
+                <group expand="1" string="Group By">
+                    <filter string="State" 
+                            name="group_by_state" 
+                            context="{'group_by': 'state'}"
+                    />
+                    <filter string="Resource Type" 
+                            name="group_by_resource_type_id" 
+                            context="{'group_by': 'resource_type_id'}"
+                    />
+                    <filter string="By Prime Resources" 
+                            name="group_prime_resource_id" 
+                            context="{'group_by': 'info_resource_id'}"
+                    />
+                    <filter string="By All Resources (incl. Aliases)" 
+                            name="group_by_resource_id" 
+                            context="{'group_by': 'resource_id'}"
+                    />
+                    <filter string="Service" 
+                            name="group_by_service_id" 
+                            context="{'group_by': 'service_id'}"
+                    />
+                    <filter string="Responsible" 
+                            name="group_by_user_id" 
+                            context="{'group_by': 'user_id'}"
+                    />
+                    <filter string="Contact" 
+                            name="group_by_partner_id" 
+                            context="{'group_by': 'partner_id'}"
+                    />
+                    <filter string="Reserved Time" 
+                            name="datetime_start" 
+                            context="{'group_by': 'datetime_start:month'}"
+                    />
+                    <filter string="Company" 
+                            name="company" 
+                            groups="base.group_multi_company" 
+                            context="{'group_by':'company_id'}"
+                    />
+                    <separator/>
+                </group>
+            </search>
+        </field>
+    </record>
+    <record id="appointment_analytic_action" model="ir.actions.act_window">
+        <field name="name">Appointments Analysis</field>
+        <field name="res_model">appointment.analytic</field>
+        <field name="view_mode">pivot,graph</field>
+        <field name="search_view_id" ref="appointment_analytic_view_search"/>
+        <field name="context">{"search_default_done_appointments": 1}</field>
+    </record>
+</odoo>

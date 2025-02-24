@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_LoadedWithPride_doc">
+        <style>
+            .sign-img-div img{
+            width:140px;
+            margin-bottom: 22px;
+            }
+            .custom-checkbox {
+            border: 2px solid #000;
+            display: inline-block;
+            margin: 0;
+            height: 24px;
+            width: 24px;
+            cursor: pointer;
+            position: relative;
+            background-color: #fff;
+            }
+
+            .custom-checkbox.checked {
+            background-color: #fff;
+            }
+
+            .custom-checkbox .checkmark {
+            position: absolute;
+            top: 6px;
+            left: 6px;
+            width: 12px;
+            height: 12px;
+            background-color: #fff;
+            display: none;
+            }
+
+            .custom-checkbox.checked .checkmark {
+            display: block;
+            }
+
+        </style>
+        <div class="page" style="page-break-before:always;">
+            <t t-call="web.layout">
+                <div class="w-100"
+                     style="border: 3px solid #0e0d0d; width: 700px; margin: auto;">
+                    <div class="row align-items-center justify-content-center w-100">
+                        <h2 class="text-center"
+                            style="font-size: 55px; text-align: center;margin-bottom:0;">LOADED WITH PRIDE
+                        </h2>
+                    </div>
+                    <div style="display: flex; align-items: center; justify-content: center; width: 100%;">
+                        <h4 style="font-size: 35px;font-weight:500;text-transform: uppercase; text-align: center; margin: 0;">
+                            <t t-esc="o.partner_id.name"/>
+                        </h4>
+                    </div>
+                    <div style="width:100%; text-align:center;">
+                        <span style="font-size: 20px;text-align:center;">Shipping Point #
+                            <t t-esc="o.port_shipping_id.code"/>
+                        </span>
+                        <br/>
+                        <span style="font-size: 30px;text-align: center;">Load ID#:
+                            <b>
+                                <t t-esc="o.bol_number"/>
+                            </b>
+                        </span>
+                    </div>
+                    <table style="border:0;width:100%;margin-top: 30px;margin-bottom: 13px;">
+                        <tr>
+                            <td>
+                                <div style="font-size:14px;width:80%;padding: 0 10 0 25px;">
+                                    <div>
+                                        <table style="border:0;">
+                                            <tr>
+                                                <td>
+                                                    <div t-if="o.is_quantity_check_load"
+                                                         class="custom-checkbox checked">
+                                                        <div class="checkmark">&#10003;</div>
+                                                    </div>
+                                                    <div t-if="not o.is_quantity_check_load" class="custom-checkbox">
+                                                        <div class="checkmark"></div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <label for="checkbox1"
+                                                           style="font-size: 20px; margin-left: 0.9rem; margin-top: 0.25rem; vertical-align: middle;">
+                                                        Quantity Check
+                                                    </label>
+                                                </td>
+                                                <div></div>
+                                            </tr>
+                                        </table>
+                                        <div style="margin-top: 2rem;">
+                                            <span style="font-size: 20px;padding-left:7px;">Order Picked and Loaded
+                                                By:
+                                            </span>
+                                        </div>
+                                        <t t-if="o.order_loaded_sign_load">
+                                        <div style=" position:relative;margin-top: 3.5rem; border-top: 1px solid #000; border-bottom: 1px solid #000; height: 50px;">
+                                            <div style="position:absolute;top:-46px;left:0;">
+                                                <div class="sign-img-div">
+                                                    <t t-esc="o.order_loaded_sign_load"
+                                                       t-options='{"widget": "image"}'/>
+                                                </div>
+                                                <div>
+                                                    <t t-esc="o.order_loaded_name_load"/>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        </t>
+                                    </div>
+                                </div>
+                            </td>
+                            <td style="width:45%;">
+                                <div style="font-size:14px;width:90%;padding: 0 10px 0 35px;">
+
+                                    <div>
+                                        <table style="border:0;">
+                                            <tr>
+                                                <td>
+                                                    <div t-if="o.is_qc_check_load" class="custom-checkbox checked">
+                                                        <div class="checkmark">&#10003;</div>
+                                                    </div>
+                                                    <div t-if="not o.is_qc_check_load" class="custom-checkbox">
+                                                        <div class="checkmark"></div>
+                                                    </div>
+
+                                                </td>
+                                                <td>
+                                                    <label for="checkbox1"
+                                                           style="font-size: 20px; margin-left: 0.5rem; margin-top: 0.25rem; vertical-align: middle;">
+                                                        QC Check
+                                                    </label>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        <div style="margin-top: 2rem;">
+                                            <span style="font-size: 20px;padding-left:7px;">Supervisor on Duty :</span>
+                                        </div>
+                                        <t t-if="o.order_loaded_sign_load">
+                                            <div style="position:relative;width:90%;margin-top: 3.5rem; border-top: 1px solid #000; border-bottom: 1px solid #000; height: 50px;">
+                                                <div style="position:absolute;top:-46px;left:0;">
+                                                    <div class="sign-img-div">
+                                                        <t t-esc="o.duty_supervisor_sign_load"
+                                                           t-options='{"widget": "image"}'/>
+                                                    </div>
+                                                    <div>
+                                                        <t t-esc="o.duty_supervisor_name_load"/>
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+                                        </t>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div style="font-size:14px;padding: 0 10 0 25px;height:20px;">
+                                    <div style="margin-top: 1rem;">
+                                        <span style="font-size: 12px;">Comments,
+                                            Improvement Recommendations, and Feedback to:
+                                        </span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td style="width:45%;">
+                                <div style="font-size:14px;width:90%;padding: 0 10px 0 25px;height:20px;">
+                                    <div style="margin-top: 1rem; font-size: 12px;">
+                                        <span style="color: #437b91;">
+                                            <u>caroteusa@warefor.com</u>
+                                        </span>
+                                        <br/>
+                                        <span>Phone #: (832) 568-4100</span>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                    <style>
+                        span#oe_neutralize_banner {
+                        display:none !important;
+                        }
+                    </style>
+                </div>
+            </t>
+        </div>
+    </template>
+
+    <template id="report_LoadedWithPride">
+        <link rel="stylesheet" href="/warefor/static/src/css/style.css"/>
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="warefor_reports.report_LoadedWithPride_doc" t-lang="o.partner_id.lang"/>
+            </t>
+        </t>
+    </template>
+
+    <record id="report_loaded_with_pride_paperformat" model="report.paperformat">
+        <field name="name">Loaded with Pride Paper Format</field>
+        <field name="default" eval="False"/>
+        <field name="format">custom</field>
+        <field name="page_height">0</field>
+        <field name="page_width">0</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">10</field>
+        <field name="margin_bottom">10</field>
+        <field name="margin_left">10</field>
+        <field name="margin_right">10</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">0</field>
+        <field name="dpi">80</field>
+    </record>
+
+    <record id="pride_report_template_new" model="ir.actions.report">
+        <field name="name">Loaded with Pride</field>
+        <field name="model">freight.freight</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">warefor_reports.report_LoadedWithPride</field>
+        <field name="report_file">warefor_reports.report_LoadedWithPride</field>
+        <field name="print_report_name">'Loaded With Pride - %s' % (object.name)</field>
+<!--        <field name="binding_model_id"-->
+<!--               ref="warefor_3pl_tus.model_freight_freight"/>-->
+        <field name="paperformat_id" ref="warefor_reports.report_loaded_with_pride_paperformat"/>
+<!--        <field name="binding_type">report</field>-->
+    </record>
+</odoo>

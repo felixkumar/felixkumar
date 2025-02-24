@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="walmart_cancel_sale_order_form_view_ept" model="ir.ui.view">
+        <field name="name">walmart.cancel.sale.order.view.form</field>
+        <field name="model">walmart.cancel.order.ept</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Cancel Order In Walmart">
+                <group>
+                    <group>
+                        <field name='sale_order_id' readonly="True"/>
+                    </group>
+                </group>
+                <notebook>
+                    <page string="Cancel Order Line In Walmart">
+                        <group>
+                            <field name="walmart_cancel_order_line_ids" nolabel="1">
+                                <tree editable="top" create="0">
+                                    <field name='product_id' readonly="True"/>
+                                    <field name='quantity' readonly="True"/>
+                                    <field name="walmart_line_number" invisible="1"/>
+                                </tree>
+                            </field>
+                        </group>
+                    </page>
+                </notebook>
+                <footer>
+                    <button string="Cancel Order In Walmart" name="action_cancel_order_in_walmart"
+                            type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-default" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_wizard_walmart_cancel_order" model="ir.actions.act_window">
+        <field name="name">Cancel Order In Walmart</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">walmart.cancel.order.ept</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

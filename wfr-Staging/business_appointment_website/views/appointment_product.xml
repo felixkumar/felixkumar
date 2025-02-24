@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<odoo>
+
+    <record id="appointment_product_view_form" model="ir.ui.view">
+        <field name="name">appointment.product.form.appointment.websie</field>
+        <field name="model">appointment.product</field>
+        <field name="inherit_id" ref="business_appointment.appointment_product_view_form"/>
+        <field name="arch" type="xml">
+            <div name="button_box" position="inside">
+                <button class="oe_stat_button" 
+                        name="action_portal_publish_button"
+                        type="object" 
+                        icon="fa-globe" 
+                >
+                    <field name="is_published" widget="website_publish_button"/>
+                </button>
+            </div>
+            <page name="settings" position="after">
+                <page name="website" string="Website">
+                    <group name="appointments_website">
+                        <field name="website_id" options="{'no_create_edit': 1,'no_quick_create': 1}" groups="website.group_multi_website"/>
+                        <field name="donotshow_full_description"/>
+                        <button name="edit_website"
+                                type="object"
+                                string="edit full website description"
+                                class="oe_link"
+                                icon="fa-arrow-right"
+                        />
+                    </group>
+                </page>
+            </page>
+        </field>
+    </record>
+    <record id="ba_appointment_product_publish" model="ir.actions.server">
+        <field name="name">Website Appointments Publish</field>
+        <field name="type">ir.actions.server</field>
+        <field name="model_id" ref="business_appointment_website.model_appointment_product"/>
+        <field name="binding_model_id" ref="business_appointment_website.model_appointment_product"/>
+        <field name="state">code</field>
+        <field name="code">
+if records:
+    records.write({"website_published": True})
+        </field>
+    </record>
+    <record id="ba_appointment_product_ubpublish" model="ir.actions.server">
+        <field name="name">Website Appointments Unpublish</field>
+        <field name="type">ir.actions.server</field>
+        <field name="model_id" ref="business_appointment_website.model_appointment_product"/>
+        <field name="binding_model_id" ref="business_appointment_website.model_appointment_product"/>
+        <field name="state">code</field>
+        <field name="code">
+if records:
+    records.write({"website_published": False})
+        </field>
+    </record>
+
+</odoo>

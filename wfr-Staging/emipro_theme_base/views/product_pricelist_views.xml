@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="clarico_vega_pricelist_form_view" model="ir.ui.view">
+        <field name="name">clarico.vega.pricelist.form.view</field>
+        <field name="inherit_id" ref="product.product_pricelist_view"/>
+        <field name="model">product.pricelist</field>
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='pricelist_discounts']" position="after">
+                <group name="display_product_price_group" string="Display Product Price on Website">
+                    <field name="display_product_price" colspan="2" widget="radio" nolabel="1"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>

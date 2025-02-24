@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<odoo>
+
+    <record id="resource_calendar_view_form" model="ir.ui.view">
+        <field name="name">resource.calendar.form</field>
+        <field name="model">resource.calendar</field>
+        <field name="inherit_id" ref="resource.resource_calendar_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@icon='fa-plane']" position="attributes">
+                <attribute name="groups">base.group_no_one,business_appointment.group_ba_admin</attribute>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

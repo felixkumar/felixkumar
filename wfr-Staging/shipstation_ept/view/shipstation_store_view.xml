@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Form View of Shipstation Store -->
+        <record id="shipstation_store_form_view_ept" model="ir.ui.view">
+            <field name="name">shipstation.store.form.view.ept</field>
+            <field name="model">shipstation.store.ept</field>
+            <field name="arch" type="xml">
+                <form string="ShipStation Store" create="false">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name" required="1"/>
+                                <field name="shipstation_instance_id" readonly="True" required="1" context="{'form_view_ref': 'shipstation_ept.shipstation_form_view'}"/>
+                                <field name="integration_url"/>
+                                <field name="shipstation_identification" readonly="True"/>
+                                <field name="public_email"/>
+                                <field name="notify_sales_channel"/>
+                            </group>
+                            <group>
+                                <field name="company_name"/>
+                                <field name="marketplace_id" readonly="True" required="1"/>
+                                <field name="website"/>
+                                <field name="phone"/>
+                                <field name="notify_customer"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <!-- Search View For Shipstation Store -->
+        <record id="shipstation_store_search_view_ept" model="ir.ui.view">
+            <field name="name">view.shipstation.store.filter</field>
+            <field name="model">shipstation.store.ept</field>
+            <field name="type">search</field>
+            <field name="arch" type="xml">
+                <search string="ShipStation Store">
+                    <field name="marketplace_id"/>
+                    <field name="active"/>
+                    <field name="shipstation_instance_id"/>
+                    <group expand="0" string="Group By...">
+                        <filter string="ShipStation Marketplace" name="marketplace_id" icon="terp-personal"
+                                context="{'group_by':'marketplace_id'}"/>
+                        <filter string="Active" name="active" icon="terp-personal" context="{'group_by':'active'}"/>
+                        <filter string="ShipStation Instance" name="shipstation_instance_id" icon="terp-personal"
+                                context="{'group_by':'shipstation_instance_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <!-- Tree View of Shipstation Store -->
+        <record id="shipstation_store_tree_view_ept" model="ir.ui.view">
+            <field name="name">shipstation.store.tree.view.ept</field>
+            <field name="model">shipstation.store.ept</field>
+            <field name="arch" type="xml">
+                <tree string="ShipStation Stores" create="false">
+                    <field name="name"/>
+                    <field name="company_name"/>
+                    <field name="website"/>
+                    <field name="shipstation_instance_id"/>
+                    <field name="marketplace_id"/>
+                    <field name="active" widget="boolean_toggle"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Action of tree view of Shipstation sotre Menu  -->
+        <record id="action_shipstation_store_ept" model="ir.actions.act_window">
+            <field name="name">ShipStation Stores</field>
+            <field name="res_model">shipstation.store.ept</field>
+            <field name="view_id" ref="shipstation_store_tree_view_ept"/>
+        </record>
+
+        <!-- Shipstation Store Menu in Configuration Menu -->
+        <menuitem id="shipstation_store_menu" name="Stores"
+                  parent="shipstation_ept.menu_configuration_ept" sequence="4"
+                  action="action_shipstation_store_ept"/>
+    </data>
+</odoo>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--Inherit form view of account move-->
+    <record id="invoice_form_view_ept" model="ir.ui.view">
+        <field name="name">account.move.form</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+            <button name="button_draft" position="after">
+                <field name="is_refund_in_walmart" invisible="1"/>
+                <field name="walmart_instance_id" invisible="1"/>
+                <button name="action_open_refund_wizard" type="object" string="Refund In Walmart"
+                        attrs="{'invisible':['|','|','|','|',('is_refund_in_walmart','!=',False),('walmart_instance_id','=',False),('state','!=','posted'),('move_type','!=','out_refund'),('payment_state','not in',['paid','in_payment'])]}"/>
+            </button>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Template for the instance-->
+    <template id="onboarding_walmart_instance_configuration">
+        <t t-call="base.onboarding_step">
+            <t t-set="title">Create Instance</t>
+            <t t-set="description">You can create the new Walmart instance from here.</t>
+            <t t-set="done_icon" t-value="'fa-magic'"/>
+            <t t-set="done_text">Looks great!</t>
+            <t t-set="btn_text">Create Instance</t>
+            <t t-set="model" t-value="'res.config.settings'"/>
+            <t t-set="method" t-value="'action_open_walmart_instance_wizard'"/>
+            <t t-set="state" t-value="state.get('walmart_instance_onboarding_state')"/>
+        </t>
+    </template>
+
+    <!--Template for General Configuration-->
+    <template id="onboarding_walmart_general_configuration">
+        <t t-call="base.onboarding_step">
+            <t t-set="title">General Configuration</t>
+            <t t-set="description">Manage the general configuration for your Walmart instance.</t>
+            <t t-set="btn_text">Configure</t>
+            <t t-set="done_icon" t-value="'fa-magic'"/>
+            <t t-set="done_text">Nice!</t>
+            <t t-set="model" t-value="'res.config.settings'"/>
+            <t t-set="method" t-value="'action_walmart_open_general_configuration_wizard'"/>
+            <t t-set="state" t-value="state.get('walmart_general_configuration_onboarding_state')"/>
+        </t>
+    </template>
+
+    <!-- Template for the cron-->
+    <template id="onboarding_walmart_cron_configuration">
+        <t t-call="base.onboarding_step">
+            <t t-set="title">Scheduler Configurations</t>
+            <t t-set="description">Configure the schedule actions for automation.</t>
+            <t t-set="btn_text">Configure</t>
+            <t t-set="method" t-value="'action_walmart_open_cron_configuration_wizard'"/>
+            <t t-set="model" t-value="'res.config.settings'"/>
+            <t t-set="state" t-value="state.get('walmart_cron_configuration_onboarding_state')"/>
+        </t>
+    </template>
+
+
+    <!-- ONBOARDING PANEL-->
+    <template id="walmart_instances_onboarding_panel_ept"
+              name="walmart.instances.onboarding.panel.ept">
+        <t t-call="base.onboarding_container">
+            <t t-set="is_walmart_panel" t-value="'is_walmart_panel'"/>
+            <t t-set="classes"
+               t-value="'o_onboarding_violet hide_in_mobile_device walmart_onboarding_ept'"/>
+            <t t-set="bg_image" t-value="'/sale/static/src/img/sale_quotation_onboarding_bg.jpg'"/>
+            <t t-set="close_method" t-value="'action_close_walmart_instances_onboarding_panel'"/>
+            <t t-set="close_model" t-value="'res.company'"/>
+            <!--                <t t-call="base.onboarding_company_step" name="company_step"/>-->
+            <t t-call="walmart_ept.onboarding_walmart_instance_configuration"
+               name="walmart_instance_step"/>
+            <t t-call="walmart_ept.onboarding_walmart_general_configuration"
+               name="walmart_general_configuration_step"/>
+            <t t-call="walmart_ept.onboarding_walmart_cron_configuration"
+               name="walmart_cron_configurations_step"/>
+        </t>
+    </template>
+
+    <!--
+        Inherited main onboarding view in order to add collapse button
+        @param {is_walmart_panel(to add button in specified view )}
+    -->
+    <template id="inherit_onboarding_container" inherit_id="base.onboarding_container">
+
+        <xpath expr="//div[hasclass('o_onboarding_container')]" position="before">
+            <t t-if="is_walmart_panel">
+                <button id="walmart_button_toggle" t-att-data-company-id="toggle_company_id"
+                        type="button"
+                        t-att-class="'d-none btn btn-link' if is_button_active else 'btn btn-link'"
+                        t-att-style="'background-color:#ececec;border:1px solid #ccc' if hide_panel else ''">
+                    <t t-esc="btn_value"/>
+                </button>
+            </t>
+        </xpath>
+
+        <!-- Changes to class to toogle the onBoadring panel-->
+        <xpath expr="//div[hasclass('o_onboarding_container')]" position="attributes">
+            <attribute name="t-att-class">
+                'o_onboarding_container collapse' if hide_panel else 'o_onboarding_container collapse show'
+            </attribute>
+        </xpath>
+
+        <!-- Remove close button from onboarding panel-->
+        <xpath expr="//div[hasclass('o_onboarding_container')]//a" position="attributes">
+            <attribute name="class">float-right o_onboarding_btn_close
+                common_close_button_hide_ept
+            </attribute>
+        </xpath>
+
+    </template>
+</odoo>

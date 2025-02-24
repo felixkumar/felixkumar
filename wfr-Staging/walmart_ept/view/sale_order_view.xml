@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Tree view of Walmart Sale Order -->
+    <record id="walmart_sale_order_tree_view_ept" model="ir.ui.view">
+        <field name="name">Sale Order Tree View</field>
+        <field name="model">sale.order</field>
+        <field name="priority">100</field>
+        <field name="arch" type="xml">
+            <tree string="Walmart Sale Order Tree View" create="0"
+                  decoration-info="state=='done'" decoration-danger="state=='cancel'">
+                <field name="name"/>
+                <field name="date_order"/>
+                <field name="partner_id"/>
+                <field name="partner_shipping_id"/>
+                <field name="walmart_marketplace_id"/>
+                <field name="amount_total" sum="Total Tax Included"/>
+                <field name="state"/>
+
+            </tree>
+        </field>
+    </record>
+
+    <!-- Search View of Walmart Sale Order -->
+    <record id="walmart_sale_order_search_view_ept" model="ir.ui.view">
+        <field name="name">Sale Order Search View</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_sales_order_filter"/>
+        <field name="arch" type="xml">
+            <filter name="my_sale_orders_filter" position="after">
+                <field name="walmart_marketplace_id"/>
+                <field name="date_order"/>
+                <field name="walmart_seller_order_ref"/>
+                <field name="walmart_marketplace_order_ref"/>
+                <field name="state"/>
+                <group expand="0" string="Group By...">
+                    <filter name="walmart_marketplace_id" string="Instance"
+                            icon="terp-personal" context="{'group_by':'walmart_marketplace_id'}"/>
+                    <filter name="state" string="Status" icon="terp-personal"
+                            context="{'group_by':'state'}"/>
+                </group>
+            </filter>
+        </field>
+    </record>
+
+    <!-- Form View of Sale Order -->
+    <record id="walmart_sales_order_form_view_ept" model="ir.ui.view">
+        <field name="name">walmart.sale.order.form</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <data>
+                <xpath expr="//form/header/button[@name='action_cancel']" position="after">
+                    <button name="cancel_order_in_walmart" type="object"
+                            string="Cancel Order in Walmart"
+                            attrs="{'invisible':['|',('walmart_marketplace_id','=',False), ('state','!=','cancel')]}"/>
+                </xpath>
+                <notebook position="inside">
+                    <page string="Walmart Info" name="Walmart Info"
+                          attrs="{'invisible':[('walmart_marketplace_id','=',False)]}">
+                        <group>
+                            <group>
+                                <field name="walmart_marketplace_id" readonly="1" nocreate="1"
+                                       noedit="1"/>
+                                <field name="is_sent_walmart_acknowledgement" readonly="1"/>
+                                <field name="walmart_fulfillment_type" readonly="1"/>
+                            </group>
+                            <group>
+                                <field name="walmart_seller_order_ref" readonly="1"/>
+                                <field name="walmart_marketplace_order_ref" readonly="1"/>
+                            </group>
+                        </group>
+                    </page>
+                </notebook>
+            </data>
+        </field>
+    </record>
+
+
+    <!-- Action For Sale Order -->
+    <record id="action_walmart_sales_order_ept" model="ir.actions.act_window">
+        <field name="name">Sale Orders</field>
+        <field name="res_model">sale.order</field>
+
+        <field name="domain">[('walmart_marketplace_id','!=',False)]</field>
+        <field name="view_id" ref="walmart_sale_order_tree_view_ept"/>
+    </record>
+
+    <!-- Action for Quotation Orders -->
+    <record id="action_walamrt_marketplace_sale_quotation_only"
+            model="ir.actions.act_window">
+        <field name="name">Walmart Quotations</field>
+        <field name="res_model">sale.order</field>
+
+        <field name="view_id" ref="walmart_sale_order_tree_view_ept"/>
+        <field name="domain">
+            [('state','in',('draft','sent','cancel')),('walmart_marketplace_id','=',active_id)]
+        </field>
+    </record>
+
+    <!-- Action for Only Sale Orders -->
+    <record id="action_walmart_marketplace_sales_order_only" model="ir.actions.act_window">
+        <field name="name">Sales Order</field>
+        <field name="res_model">sale.order</field>
+
+        <field name="view_id" ref="walmart_sale_order_tree_view_ept"/>
+        <field name="domain">[('state','=','sale'),('walmart_marketplace_id','=',active_id)]
+        </field>
+    </record>
+
+    <!-- Sales Menu -->
+    <menuitem id="walmart_sales_main_menu" name="Sales"
+              parent="walmart_ept.walmart_main_menu" sequence="2"/>
+
+    <menuitem id="walmart_sales_orders_menu" name="Sale Orders"
+              parent="walmart_ept.walmart_sales_main_menu" sequence="1"
+              action="action_walmart_sales_order_ept"/>
+
+</odoo>   

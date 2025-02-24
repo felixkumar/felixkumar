@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (c) 2016-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>;) -->
+<!-- See LICENSE file for full copyright and licensing details. -->
+<!-- License URL : https://store.webkul.com/license.html/ -->
+<odoo>
+    <data noupdate="1">
+        <record id="field_mapping_1" model="fb.field.mappning">
+              <field name="name">Demo Field Mapping</field>
+              <field name="active">True</field>
+          </record>
+
+
+          <record id="field_mapping_line_1" model="fb.field.mappning.line">
+              <field name="facebook_field_id" ref="facebook_fields_1"/>
+              <field name="fixed">False</field>
+              <field model="ir.model.fields" name="model_field_id" search="[('model', '=', 'product.template'),('name','=','id')]"/>
+              <field name="field_mapping_id" ref="field_mapping_1"/>
+              <field name="fixed_text">none</field>
+
+          </record>
+
+
+          <record id="field_mapping_line_3" model="fb.field.mappning.line">
+              <field name="facebook_field_id" ref="facebook_fields_3"/>
+              <field name="fixed">False</field>
+              <field model="ir.model.fields" name="model_field_id" search="[('model', '=', 'product.template'),('name','ilike','website_meta_description')]"/>
+              <field name="field_mapping_id" ref="field_mapping_1"/>
+              <field name="fixed_text">none</field>
+
+          </record>
+
+
+          <record id="field_mapping_line_6" model="fb.field.mappning.line">
+              <field name="facebook_field_id" ref="facebook_fields_6"/>
+              <field name="fixed">True</field>
+              <field name="field_mapping_id" ref="field_mapping_1"/>
+              <field name="fixed_text">in stock</field>
+
+          </record>
+
+
+          <record id="field_mapping_line_7" model="fb.field.mappning.line">
+              <field name="facebook_field_id" ref="facebook_fields_7"/>
+              <field name="fixed">False</field>
+              <field model="ir.model.fields" name="model_field_id" search="[('model', '=', 'product.template'),('name','=','description_sale')]"/>
+              <field name="field_mapping_id" ref="field_mapping_1"/>
+              <field name="fixed_text">none</field>
+
+          </record>
+
+          <record id="field_mapping_line_8" model="fb.field.mappning.line">
+              <field name="facebook_field_id" ref="facebook_fields_8"/>
+              <field name="fixed">True</field>
+              <field name="field_mapping_id" ref="field_mapping_1"/>
+              <field name="fixed_text">new</field>
+
+          </record>
+
+          <record id="field_mapping_line_9" model="fb.field.mappning.line">
+              <field name="facebook_field_id" ref="facebook_fields_9"/>
+              <field name="fixed">False</field>
+              <field model="ir.model.fields" name="model_field_id" search="[('model', '=', 'product.template'),('name','=','id')]"/>
+              <field name="field_mapping_id" ref="field_mapping_1"/>
+              <field name="fixed_text">none</field>
+
+          </record>
+
+          <record id="field_mapping_line_11" model="fb.field.mappning.line">
+              <field name="facebook_field_id" ref="facebook_fields_11"/>
+              <field name="fixed">False</field>
+              <field model="ir.model.fields" name="model_field_id" search="[('model', '=', 'product.template'),('name','=','website_url')]"/>
+              <field name="field_mapping_id" ref="field_mapping_1"/>
+              <field name="fixed_text">none</field>
+          </record>
+
+          <record id="field_mapping_line_12" model="fb.field.mappning.line">
+              <field name="facebook_field_id" ref="facebook_fields_12"/>
+              <field name="fixed">False</field>
+              <field model="ir.model.fields" name="model_field_id" search="[('model', '=', 'product.template'),('name','=','display_name')]"/>
+              <field name="field_mapping_id" ref="field_mapping_1"/>
+              <field name="fixed_text">none</field>
+
+          </record>
+
+          <record id="field_mapping_line_13" model="fb.field.mappning.line">
+              <field name="facebook_field_id" ref="facebook_fields_13"/>
+              <field name="fixed">False</field>
+              <field model="ir.model.fields" name="model_field_id" search="[('model', '=', 'product.template'),('name','=','list_price')]"/>
+              <field name="field_mapping_id" ref="field_mapping_1"/>
+              <field name="fixed_text">none</field>
+
+          </record>
+
+          <record id="field_mapping_line_14" model="fb.field.mappning.line">
+              <field name="facebook_field_id" ref="facebook_fields_14"/>
+              <field name="fixed">False</field>
+              <field model="ir.model.fields" name="model_field_id" search="[('model', '=', 'product.template'),('name','=','list_price')]"/>
+              <field name="field_mapping_id" ref="field_mapping_1"/>
+              <field name="fixed_text">none</field>
+
+          </record>
+
+          <record id="field_mapping_line_28" model="fb.field.mappning.line">
+              <field name="facebook_field_id" ref="facebook_fields_28"/>
+              <field name="fixed">False</field>
+              <field model="ir.model.fields" name="model_field_id" search="[('model', '=', 'product.template'),('name','=','google_categ_id')]"/>
+              <field name="field_mapping_id" ref="field_mapping_1"/>
+              <field name="fixed_text">none</field>
+
+          </record>
+
+          <record id="field_mapping_line_31" model="fb.field.mappning.line">
+              <field name="facebook_field_id" ref="facebook_fields_31"/>
+              <field name="fixed">True</field>
+              <field name="field_mapping_id" ref="field_mapping_1"/>
+              <field name="fixed_text">False</field>
+
+          </record>
+
+          <record id="field_mapping_line_32" model="fb.field.mappning.line">
+            <field name="facebook_field_id" ref="facebook_fields_32"/>
+            <field model="ir.model.fields" name="model_field_id" search="[('model', '=', 'product.template'),('name','=','active')]"/>
+            <field name="field_mapping_id" ref="field_mapping_1"/>
+            <field name="fixed_text">False</field>
+          </record>
+    </data>
+</odoo>

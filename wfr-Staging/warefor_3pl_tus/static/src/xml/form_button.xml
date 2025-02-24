@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates>
+    <t t-extend="FormView.buttons">
+        <t t-jquery="button.o_form_button_create" t-operation="after">
+            <button t-if="widget.modelName == 'freight.freight' and widget.button_form_enable_it"
+                    type="button" class="btn btn-primary action_picking_form_new" accesskey="i">
+                Internal Transfer
+            </button>
+        </t>
+    </t>
+</templates>

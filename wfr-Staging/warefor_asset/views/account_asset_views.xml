@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record model="ir.actions.act_window" id="om_account_asset.action_account_asset_asset_form">
+        <field name="context">{
+            'search_default_category': 1,
+            }
+        </field>
+    </record>
+
+    <record id="account_view_asset_form_inherit" model="ir.ui.view">
+        <field name="name">account.asset.asset.form.inherit</field>
+        <field name="model">account.asset.asset</field>
+        <field name="inherit_id" ref="om_account_asset.view_account_asset_asset_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='code']" position="before">
+                <field name="active" invisible="1"/>
+                <field name="sell_or_dispose" invisible="1"/>
+                <field name="asset_tag"/>
+                <field name="serial_number"/>
+                <field name="rental_agreement"/>
+            </xpath>
+            <xpath expr="//field[@name='company_id']" position="after">
+                <field name="assigned_to"/>
+                <field name="location_id"/>
+                <field name="warehouse_id"/>
+            </xpath>
+            <xpath expr="//field[@name='account_analytic_id']" position="after">
+                <field name="leased_owned" widget="radio"/>
+            </xpath>
+            <xpath expr="//field[@name='date']" position="attributes">
+                <attribute name="string">Assigned date</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="account_view_asset_tree_inherit" model="ir.ui.view">
+        <field name="name">account.asset.asset.tree.inherit</field>
+        <field name="model">account.asset.asset</field>
+        <field name="inherit_id" ref="om_account_asset.view_account_asset_asset_purchase_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="attributes">
+                <attribute name="string">Item</attribute>
+            </xpath>
+            <xpath expr="//field[@name='category_id']" position="attributes">
+                <attribute name="string">Description</attribute>
+            </xpath>
+            <xpath expr="//field[@name='category_id']" position="before">
+                <field name="asset_tag"/>
+                <field name="serial_number"/>
+            </xpath>
+            <xpath expr="//field[@name='company_id']" position="after">
+                <field name="assigned_to"/>
+                <field name="location_id"/>
+                <field name="leased_owned"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_account_asset_search_inherit" model="ir.ui.view">
+        <field name="name">view.account.asset.search.inherit</field>
+        <field name="model">account.asset.asset</field>
+        <field name="inherit_id" ref="om_account_asset.view_account_asset_search"/>
+        <field name="arch" type="xml">
+            <xpath expr="//search//field[@name='date']" position="after">
+                <field name="assigned_to"/>
+                <field name="asset_tag"/>
+                <field name="serial_number"/>
+                <filter name="archived_assets" domain="[('active','=', False)]" string="Archived Assets" help="Assets in Archived"/>
+                <filter name="sell_or_dispose_assets" domain="[('sell_or_dispose','=', True)]" string="Sell Or Dispose" />
+            </xpath>
+            <xpath expr="//group" position="inside">
+                <filter string="Employee" name="employee" domain="[]" context="{'group_by':'assigned_to'}"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (c) 2016-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>;) -->
+<!-- See LICENSE file for full copyright and licensing details. -->
+<!-- License URL : https://store.webkul.com/license.html/ -->
+<odoo>
+
+    <record model="ir.ui.view" id="facebook_fields_tree">
+        <field name="name">Facebook Fields Tree</field>
+        <field name="model">fb.facebook.fields</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom">
+                <field name="name"/>
+                <field name="required" />
+                <field name="g_beg" />
+                <!-- <field name="sub_field" /> -->
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="facebook_fields_action">
+        <field name="name">Facebook Fields</field>
+        <field name="res_model">fb.facebook.fields</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="facebook_fields_tree" />
+    </record>
+
+
+
+
+    <menuitem name="Facebook Catalog Fields" id= "facebook_fields_menu" parent="facebook_settings" action="facebook_fields_action" sequence="2"/>
+</odoo>

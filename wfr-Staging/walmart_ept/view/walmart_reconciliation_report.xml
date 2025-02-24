@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="walmart_reconciliation_report_date_tree_view_ept" model="ir.ui.view">
+        <field name="name">walmart.reconciliation.report.date.view.tree.ept</field>
+        <field name="model">walmart.reconciliation.report.ept</field>
+        <field name="arch" type="xml">
+            <tree string="Walmart Report Reconciliation" create="false">
+                <field name="name"/>
+                <field name="available_report_date"/>
+                <field name="marketplace_id"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="walmart_reconciliation_report_date_from_view_ept" model="ir.ui.view">
+        <field name="name">walmart.reconciliation.report.date.view.from.ept</field>
+        <field name="model">walmart.reconciliation.report.ept</field>
+        <field name="arch" type="xml">
+            <form string="Walmart Reconciliation Report" create="false">
+                <header>
+                    <button name="get_reconciliation_report_ept" string="Get Report"
+                            attrs="{'invisible':[('attachment_id','!=',False)]}"
+                            class="oe_highlight"
+                            type="object"/>
+                    <button name="view_bank_statement" string="View Statement"
+                            attrs="{'invisible':[('statement_id','=',False)]}" class="oe_highlight"
+                            type="object"/>
+                    <button name="process_settlement_report_file" string="Process Statement"
+                            attrs="{'invisible':['|',('attachment_id','=',False), ('state','!=', 'done')]}"
+                            class="oe_highlight" help="Click Here To Process the Report File"
+                            type="object"/>
+                    <button name="reconcile_statement" string="Reconcile Statement"
+                            attrs="{'invisible':['|',('statement_id','=',False), ('state', 'not in', ['partially_processed','done'])]}"
+                            class="oe_highlight" help="Click Here To Reconcile the Bank Statement"
+                            type="object"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,done"/>
+                </header>
+                <sheet>
+                    <div class="oe_title" style="width:500px;">
+                        <h1>
+                            <field name="name" class="oe_inline" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="available_report_date" readonly="1"/>
+                            <field name="marketplace_id" readonly="1"/>
+                            <field name="currency_id"/>
+                        </group>
+                        <group>
+                            <field name="attachment_id" invisible="1"/>
+                            <field name="statement_id" readonly="1"/>
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"
+                           groups="base.group_user"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_walmart_reconciliation_report_filter" model="ir.ui.view">
+        <field name="name">walmart.reconciliation.report.ept.search</field>
+        <field name="model">walmart.reconciliation.report.ept</field>
+        <field name="arch" type="xml">
+            <search>
+                <group expand="0" string="Group By">
+                    <filter string="State" name="group_by_state"
+                            context="{'group_by': 'state'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="walmart_reconciliation_report_date_action_ept" model="ir.actions.act_window">
+        <field name="name">Reconciliation Report</field>
+        <field name="res_model">walmart.reconciliation.report.ept</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <menuitem id="walmart_reconciliation_report_date_main_menu" name="Reconciliation Report"
+              parent="walmart_ept.walmart_sales_main_menu"
+              sequence="4" action="walmart_reconciliation_report_date_action_ept"
+              groups="account.group_account_user"/>
+
+</odoo>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="partner_available_product_form_view" model="ir.ui.view">
+            <field name="name">partner.available.product.form.view</field>
+            <field name="model">partner.available.quantity</field>
+            <field name="arch" type="xml">
+                <form string="Product Available">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="partner_id"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Product">
+                                <field name="product_line_ids">
+                                    <tree editable="bottom">
+                                        <field name="available_qty_id" invisible="1"/>
+                                        <field name="product_id"/>
+                                        <field name="qty"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="partner_available_product_tree_view" model="ir.ui.view">
+            <field name="name">partner.available.product.tree.view</field>
+            <field name="model">partner.available.quantity</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="partner_id"/>
+                    <field name="total_product"/>
+                    <field name="total_qty"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="partner_available_product_tree_view_action" model="ir.actions.act_window">
+            <field name="name">Partner Available Quantity</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">partner.available.quantity</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- This Menu Item must have a parent and an action -->
+        <menuitem id="partner_available_product_tree_view_action_menu" name="Available Quantity For Customer"
+                  parent="stock.menu_stock_inventory_control" action="partner_available_product_tree_view_action"
+                  sequence="30"/>
+    </data>
+</odoo>

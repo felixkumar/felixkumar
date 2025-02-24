@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <template id="report_pallet_shipping_label">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="pallet">
+                    <t t-set="transit_app_id" t-value="pallet.transit_app_id"/>
+                    <t t-set="vendor_id" t-value="transit_app_id.import_id[0] if transit_app_id.import_id else False"/>
+                    <t t-set="company_id" t-value="pallet.pallet_company_id"/>
+                    <t t-set="partner_id" t-value="company_id.partner_id if company_id.partner_id else False"/>
+                    <t t-set="product_ids"
+                       t-value="pallet.product_ids.mapped('product_id') if pallet.product_ids else False"/>
+                    <t t-set="barcode_product_ids"
+                       t-value="product_ids.filtered(lambda p: p.barcode)"/>
+                    <t t-set="customer_id"
+                       t-value="transit_app_id.partner_id[0] if transit_app_id.partner_id else False"/>
+                    <t t-set="address_id"
+                       t-value="customer_id.child_ids.filtered(lambda x: x.type == 'delivery') if customer_id and customer_id.child_ids else False"/>
+                    <style>
+                        .table{
+                        border: 1px solid #000;
+                        }
+                        .table tr td{
+                        border-bottom:1px solid #000;
+                        border-right:1px solid #000;
+                        border-left:1px solid #000;
+                        border-top:1px solid #000;
+                        }
+                        .font_size{
+                        font-size: 25px;
+                        }
+                    </style>
+                    <div class="page" style="page-break-before:always;">
+                        <div>
+                            <font size="3" face="Courier New">
+                                <table class="table table-bordered" style="align-self: center; width:100%;" cellspacing="0">
+                                    <thead>
+                                    </thead>
+                                    <tbody class="font_size">
+                                        <tr>
+                                            <td style="width: 40%; position:relative; height: 220px;">
+                                                <div style="text-transform: uppercase; position:absolute; top:10; left:4;">
+                                                    <b>From:</b>
+                                                    <br/>
+                                                    <t t-if="partner_id">
+                                                        <t t-esc="partner_id.name"/>
+                                                        <br/>
+                                                        <t t-esc="partner_id.street"/>
+                                                        <t t-if="partner_id.street2">
+                                                            ,
+                                                            <t t-esc="partner_id.street2"/>
+                                                            <br/>
+                                                        </t>
+                                                        <t t-esc="'{},'.format(partner_id.city)"/>
+                                                        <t t-if="partner_id.state_id">
+                                                            <t t-esc="'{}'.format(partner_id.state_id.code)"/>
+                                                        </t>
+                                                        <t t-esc="partner_id.zip"/>
+                                                        <!--<t t-if="partner_id.country_id">-->
+                                                        <!--    ,-->
+                                                        <!--    <t t-esc="partner_id.country_id.name"/>-->
+                                                        <!--</t>-->
+                                                    </t>
+                                                    <t t-else="">
+                                                        Vendor is not set in Transit!
+                                                        <br/>
+                                                    </t>
+                                                </div>
+                                            </td>
+                                            <td style="width: 40%; position:relative;">
+                                                <div style="text-transform: uppercase; position:absolute; top:10; left:4;">
+                                                    <b>To:</b>
+                                                    <br/>
+                                                    <t t-if="address_id">
+                                                        <t t-esc="address_id.name"/>
+                                                        <br/>
+                                                        <t t-if="address_id.street2">
+                                                            <t t-esc="address_id.street2"/>
+                                                            <br/>
+                                                        </t>
+                                                        <t t-esc="'{},'.format(address_id.city)"/>
+                                                        <t t-if="address_id.state_id">
+
+                                                            <t t-esc="address_id.state_id.code"/>
+                                                        </t>
+                                                        <t t-esc="address_id.zip"/>
+                                                        <!--<t t-if="address_id.country_id">-->
+                                                        <!--,-->
+                                                        <!--<t t-esc="address_id.country_id.name"/>-->
+                                                        <!--</t>-->
+                                                    </t>
+                                                    <t t-elif="customer_id">
+                                                        <t t-esc="customer_id.name"/>
+                                                        <br/>
+                                                        <t t-if="customer_id.street2">
+                                                            <t t-esc="customer_id.street2"/>
+                                                            <br/>
+                                                        </t>
+                                                        <t t-esc="customer_id.city"/>
+                                                        <t t-if="customer_id.state_id">
+                                                            ,
+                                                            <t t-esc="customer_id.state_id.code"/>
+                                                        </t>
+                                                        <t t-esc="customer_id.zip"/>
+                                                        <!--    <t t-if="customer_id.country_id">-->
+                                                        <!--    ,-->
+                                                        <!--    <t t-esc="customer_id.country_id.name"/>-->
+                                                        <!--</t>-->
+                                                    </t>
+                                                    <t t-else="">
+                                                        Customer is not set in Transit!
+                                                        <br/>
+                                                    </t>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="height: 220px; position:relative;">
+                                                <div style="position:absolute; top:10;left:4;">
+                                                    <b>CARRIER:</b>
+                                                    <br/>
+                                                    <t t-if="transit_app_id">
+                                                        <t t-if="transit_app_id.carrier_flight">
+                                                            <t t-esc="transit_app_id.carrier_flight"/><br/>
+                                                        </t>
+                                                        <t t-if="transit_app_id.port_shipping_id">
+                                                            <t t-esc="transit_app_id.port_shipping_id.name"/><br/>
+                                                        </t>
+                                                    </t>
+                                                    <!--<t t-if="customer_id">
+                                                        <t t-esc="customer_id.name"/><br/>
+                                                        <t t-esc="customer_id.street"/><br/>
+                                                        <t t-if="customer_id.street2">
+                                                            <t t-esc="customer_id.street2"/><br/>
+                                                        </t>
+                                                        <t t-esc="customer_id.city"/>
+                                                        <t t-if="customer_id.state_id">
+                                                            , <t t-esc="customer_id.state_id.code"/>
+                                                        </t>
+                                                        <t t-esc="customer_id.zip"/>
+                                                    </t>-->
+                                                </div>
+                                            </td>
+                                            <td style="text-align:center; position:relative;">
+                                                <div style="position:absolute; left:70; top:10;">
+                                                    <b>PALLET NUMBER:</b>
+                                                </div>
+                                                <div style="font-size: 30px;">
+                                                    <t t-if="pallet.name">
+                                                        <t t-set="my_name" t-value="pallet.name.split('-')"/>
+                                                        <t t-esc="my_name[1]"/>
+                                                    </t>
+                                                    <t t-else="">
+                                                        None
+                                                    </t>
+                                                    of
+                                                    <t t-esc="transit_app_id.pallet_label_number"/>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="height: 220px;position:relative;">
+                                                <div style="position:absolute; top:10;left:4;">
+                                                    PO Number:
+                                                    <t t-if="transit_app_id.purchase_orders_ids.sale_order_id">
+                                                        <t t-esc="transit_app_id.purchase_orders_ids.sale_order_id.client_order_ref"/>
+                                                    </t>
+                                                    <t t-elif="transit_app_id.customer_po">
+                                                                <t t-esc="transit_app_id.customer_po"/>
+                                                    </t>
+                                                    <t t-elif="pallet.purchase_reference">
+                                                                <t t-esc="pallet.purchase_reference"/>
+                                                    </t>
+                                                    <t t-else="">
+                                                        None
+                                                    </t>
+                                                    <br/>
+                                                    <t t-if="product_ids">
+                                                        Item Number:
+                                                        <t t-if="all(product_ids.mapped('default_code'))">
+                                                            <t t-esc="','.join(product_ids.mapped('default_code'))"/>
+                                                            <br/>
+                                                        </t>
+                                                        <t t-else="">
+                                                            None
+                                                        </t>
+                                                        UPC Number:
+                                                        <t t-if="barcode_product_ids and all(barcode_product_ids.mapped('barcode'))">
+                                                            <t t-esc="','.join(barcode_product_ids.mapped('barcode'))"/>
+                                                            <br/>
+                                                        </t>
+                                                        <t t-else="">
+                                                            None
+                                                        </t>
+                                                    </t>
+                                                    <t t-else="">
+                                                        None
+                                                    </t>
+                                                </div>
+                                            </td>
+                                            <td style="height: 220px; text-align:center;">
+                                                <div>
+                                                    <b>UPC Code:</b>
+                                                </div>
+                                                <t t-foreach="barcode_product_ids" t-as="product">
+                                                    <img alt="Barcode"
+                                                         t-att-src="pallet.base_url+'/report/barcode/Code128/'+product.upc"
+                                                         style="width:80%;height:70%;"/>
+                                                    <br/>
+                                                    <t t-esc="','.join(barcode_product_ids.mapped('barcode'))"/>
+                                                    <br/>
+                                                </t>
+                                            </td>
+                                        </tr>
+                                        <tr style="height: 90px;">
+                                            <td style="padding-left:4;">
+                                                Weight:
+                                                <t t-esc="pallet.total_weight"/>
+                                                <br/>
+                                            </td>
+                                            <td style="padding-left:4;">
+                                                Cube:
+                                                <t t-esc="pallet.total_cube"/>
+                                                <br/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2" style="height: 235px; text-align:center;padding-top:10;">
+                                                Serial Shipping Container Code
+                                                <br/>
+                                                <br/>
+                                                <img alt="Barcode"
+                                                     t-att-src="pallet.base_url+'/report/barcode/Code128/'+pallet.sscc_18_barcode_char"
+                                                     style="width:80%;height:80%;"/>
+                                                <t t-esc="pallet.sscc_18_barcode_char"/>
+                                                <br/>
+                                                <br/>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                    <tfoot>
+                                    </tfoot>
+                                </table>
+                            </font>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </template>
+
+    </data>
+</odoo>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+
+    <t t-name="business_appointment.SuggestedProduct" owl="1">
+        <tr>
+            <td align="center">
+                <t t-if="props.image_small">
+                    <img t-attf-src="data:image/png;base64,#{props.image_small}" class="rounded"/>
+                </t>
+            </td>
+            <td>
+                <strong t-esc="props.name"/>
+            </td>
+            <td t-if="props.pricelist" class="text-center" name="price">
+                <span><t t-esc="state.price"/></span>
+            </td>
+            <td>
+                <div class="business-appointment-suggested-quantity input-group" t-att-state="state.reloadState">
+                    <button class="btn btn-primary d-md-inline-block" aria-label="Remove one" title="Remove one" t-on-click="() => this._onButtonChange(true)">
+                        <i class="fa fa-minus"></i>
+                    </button>
+                    <input type="text"
+                           class="business-appointment-suggested-quantity-input form-control quantity text-center"
+                           style="max-width: 4rem"
+                           data-min="0"
+                           t-att-value="qtyValue"
+                           t-on-change="(event) => this._onChangeQuantity(event)"
+                    />
+                    <button class="btn btn-primary d-md-inline-block" aria-label="Add one" title="Add one" t-on-click="() => this._onButtonChange()">
+                        <i class="fa fa-plus"></i>
+                    </button>
+                </div>
+            </td>
+        </tr>
+    </t>
+
+    <t t-name="business_appointment.SuggestedProductsDialog" owl="1">
+        <Dialog title="title" size="size">
+            <table class="table table-sm">
+                <thead>
+                    <th>Product</th>
+                    <th></th>
+                    <th class="text-center" t-if="props.pricelist">Unit Price</th>
+                    <th class="text-center td-qty">Quantity</th>
+                </thead>
+                <tbody>
+                    <t t-foreach="props.suggestedProducts" t-as="suggestedProduct" t-key="suggestedProduct.id">
+                        <SuggestedProduct
+                            id="suggestedProduct.id"
+                            name="suggestedProduct.name"
+                            qty="suggestedProduct.qty"
+                            price="suggestedProduct.price"
+                            pricelist="props.pricelist"
+                            image_small="suggestedProduct.image_small"
+                            onUpdateState="this.onUpdateState.bind(this)"
+                            manageRpc="props.manageRpc"
+                        />
+                    </t>
+                </tbody>
+            </table>
+            <t t-set-slot="footer">
+                <button class="btn btn-primary o_select_button" data-hotkey="v" t-on-click.stop="() => this.onAddProducts()">Add</button>
+                <button class="btn o_form_button_cancel btn-secondary" data-hotkey="z" t-on-click.stop="props.close">No Complementaries Needed</button>
+            </t>
+        </Dialog>
+    </t>
+
+</templates>

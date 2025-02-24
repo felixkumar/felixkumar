@@ -1,0 +1,80 @@
+<odoo>
+    <record id="action_get_invoice_number" model="ir.actions.server">
+        <field name="name">Get Invoice Number</field>
+        <field name="model_id" ref="account.model_account_move"/>
+        <field name="state">code</field>
+        <field name="code">
+source_so = env['sale.order'].search([('name', '=', record.invoice_origin)], limit=1)
+edi_value = 'INV%s' % source_so.edi_po_number[:12] if source_so and source_so.edi_po_number else invoice.name
+
+        </field>
+    </record>
+
+    <record id="action_get_invoice_date" model="ir.actions.server">
+        <field name="name">Get Invoice Date</field>
+        <field name="model_id" ref="account.model_account_move"/>
+        <field name="state">code</field>
+        <field name="code">
+source_so = env['sale.order'].search([('name', '=', record.invoice_origin)], limit=1)
+edi_value = record.invoice_date and record.invoice_date.strftime('%Y-%m-%d') or ''
+        </field>
+    </record>
+
+    <record id="action_get_invoice_time" model="ir.actions.server">
+        <field name="name">Get Invoice Time</field>
+        <field name="model_id" ref="account.model_account_move"/>
+        <field name="state">code</field>
+        <field name="code">
+edi_value = record.invoice_date and record.invoice_date.strftime('%H:%M:%S') or ''
+        </field>
+    </record>
+
+    <record id="action_get_purchase_order_date" model="ir.actions.server">
+        <field name="name">Get Order Date</field>
+        <field name="model_id" ref="account.model_account_move"/>
+        <field name="state">code</field>
+        <field name="code">
+source_so = env['sale.order'].search([('name', '=', record.invoice_origin)], limit=1)
+edi_value = source_so.date_order and source_so.date_order.strftime('%Y-%m-%d') or ''
+        </field>
+    </record>
+
+    <record id="action_get_ship_date" model="ir.actions.server">
+        <field name="name">Get Order Time</field>
+        <field name="model_id" ref="account.model_account_move"/>
+        <field name="state">code</field>
+        <field name="code">
+source_so = env['sale.order'].search([('name', '=', record.invoice_origin)], limit=1)
+date = source_so.commitment_date or source_so.edi_requested_pickup_date or source_so.edi_additional_date or source_so.expected_date or fields.Date.today()
+edi_value = date.strftime('%Y-%m-%d') or ''
+        </field>
+    </record>
+
+    <record id="action_get_invoice_quantity" model="ir.actions.server">
+        <field name="name">Get Order Qualified Date</field>
+        <field name="model_id" ref="account.model_account_move"/>
+        <field name="state">code</field>
+        <field name="code">
+source_so = env['sale.order'].search([('name', '=', record.invoice_origin)], limit=1)
+date = source_so.commitment_date or source_so.edi_requested_pickup_date or source_so.edi_additional_date or source_so.expected_date or fields.Date.today()
+edi_value = date.strftime('%Y-%m-%d') or ''
+        </field>
+    </record>
+
+    <record id="sync_document_export_invoice" model="sync.document.type">
+        <field name="name">Export Invoice (XML SPS Commerce)</field>
+        <field name="doc_code">export_invoice_xml</field>
+        <field name="op_type">out</field>
+        <field name="active" eval="True"/>
+    </record>
+
+    <record id="action_get_invoice_total_amount" model="ir.actions.server">
+        <field name="name">Get Total In Integer</field>
+        <field name="model_id" ref="account.model_account_move"/>
+        <field name="state">code</field>
+        <field name="code">
+edi_value = record.amount_residual and str(record.amount_residual) or 0
+        </field>
+    </record>
+
+</odoo>

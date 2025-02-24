@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="form_view_pallet_storage_cost" model="ir.ui.view">
+            <field name="name">pallet.storage.cost.form.view</field>
+            <field name="model">pallet.storage.cost</field>
+            <field name="arch" type="xml">
+                <form string="Pallet Storage Cost">
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="name" class="oe_edit_only" string="Name"/>
+                            <h1>
+                                <field name="name"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="unit_of_measure"/>
+                                <field name="total_cost"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="tree_view_pallet_storage_cost" model="ir.ui.view">
+            <field name="name">pallet.storage.cost.tree.view</field>
+            <field name="model">pallet.storage.cost</field>
+            <field name="arch" type="xml">
+                <tree string="Pallet Storage Cost">
+                    <field name="name"/>
+                    <field name="unit_of_measure"/>
+                    <field name="total_pallet"
+                           attrs="{'invisible': [('unit_of_measure', 'not in', ['per_pallet', 'per_pallet_per_month'])]}"/>
+                    <field name="total_cubic_feet"
+                           attrs="{'invisible': [('unit_of_measure', '!=', 'per_cubic_feet_per_month')]}"/>
+                    <field name="unit_price" />
+                    <field name="total_cost" sum="Total Price" />
+                </tree>
+            </field>
+        </record>
+
+    </data>
+</odoo>

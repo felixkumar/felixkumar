@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates id="template" xml:space="preserve">
+<!--    Owl Template Extend-->
+    <t t-name="PivotViewRefresh" t-inherit="web.PivotView.Buttons" t-inherit-mode="extension" owl="1">
+        <xpath expr="//div[last()]" position="after">
+            <button type="button" class="btn btn-primary reload_view o_button_lvm mx-1" title="Refresh Data">
+                <span class="fa fa-lg fa fa-refresh"/>
+            </button>
+        </xpath>
+
+    </t>
+</templates>

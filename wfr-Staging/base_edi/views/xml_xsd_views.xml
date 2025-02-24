@@ -1,0 +1,46 @@
+<odoo>
+    <record id="xml_xsd_view_form" model="ir.ui.view">
+        <field name="name">xml.xsd.form</field>
+        <field name="model">xml.xsd</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <field name="name"/>
+                    <field name="xsd_line_ids">
+                        <tree editable="bottom">
+                            <field name="sequence" invisible="1"/>
+                            <field name="full_path"/>
+                            <field name="required"/>
+                            <field name="min_occur"/>
+                            <field name="max_occur"/>
+                            <field name="type"/>
+                        </tree>
+                    </field>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="xml_xsd_view_tree" model="ir.ui.view">
+        <field name="name">xml.xsd.tree</field>
+        <field name="model">xml.xsd</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_view_xml_xsd" model="ir.actions.act_window">
+        <field name="name">XSD</field>
+        <field name="res_model">xml.xsd</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+    </record>
+
+    <menuitem id="menu_xml_xsd"
+        name="XSDs"
+        parent="menu_edi"
+        action="action_view_xml_xsd"
+        sequence="4"/>
+</odoo>

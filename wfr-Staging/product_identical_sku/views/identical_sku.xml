@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="identical_sku_form_view" model="ir.ui.view">
+            <field name="name">identical.sku.form.view</field>
+            <field name="model">identical.sku</field>
+            <field name="arch" type="xml">
+                <form string="SKU Mapping" create="0">
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="name"/>
+                            <h1>
+                                <field name="name" placeholder="Enter the New SKU"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="product_id"/>
+                                <field name="marketplace_id"/>
+                                <field name="original_sku"/>
+                            </group>
+                            <group>
+                                <field name="is_third_party"/>
+                                <field name="is_prime"/>
+                            </group>
+                        </group>
+                        <group>
+                            <field name="location_ids">
+                                <tree string="SKU Locations">
+                                    <field name="warehouse_id"/>
+                                    <field name="forecasted_qty"/>
+                                    <field name="shipstation_qty"/>
+                                    <field name="sku_id"/>
+                                </tree>
+                            </field>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="identical_sku_tree_view" model="ir.ui.view">
+            <field name="name">identical.sku.tree.view</field>
+            <field name="model">identical.sku</field>
+            <field name="arch" type="xml">
+                <tree string="SKU Mappings" create="0">
+                    <field name="product_id"/>
+                    <field name="name"/>
+                    <field name="original_sku"/>
+                    <field name="marketplace_id"/>
+                    <field name="is_third_party"/>
+                    <field name="is_prime"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="identical_sku_search_view" model="ir.ui.view">
+            <field name="name">identical.sku.search</field>
+            <field name="model">identical.sku</field>
+            <field name="arch" type="xml">
+                <search string="Identical SKU">
+                    <field name="name"/>
+                    <field name="marketplace_id"/>
+                    <field name="product_id"/>
+
+                    <group expand="1" string="Group By">
+                        <filter string="Product" name="group_by_product_id"
+                                context="{'group_by':'product_id'}"/>
+                        <filter string="Marketplace" name="group_by_marketplace"
+                                context="{'group_by':'marketplace_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="identical_sku_act_window" model="ir.actions.act_window">
+            <field name="name">SKU Mappings</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">identical.sku</field>
+            <field name="domain">[]</field> <!-- force empty -->
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="identical_sku_search_view"/>
+<!--            <field name="context">{'default_company_id': allowed_company_ids[0]}</field>-->
+            <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+                No SKU Mappings found. Let's create one!
+              </p><p>
+                SKU Mappings page allows you to view and create
+                new Alternative SKUs for existing products.
+                Click on the 'New' button to add a new record.
+              </p>
+            </field>
+        </record>
+
+        <menuitem name="SKU Mappings"
+                  id="identical_sku_menu"
+                  parent="stock.menu_stock_inventory_control"
+                  action="identical_sku_act_window"
+                  groups="product_identical_sku.group_sku_mapping_manager"
+
+        />
+
+    </data>
+</odoo>

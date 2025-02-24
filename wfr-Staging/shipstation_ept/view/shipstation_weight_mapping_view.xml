@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="shipstation_weight_mapping_tree_view" model="ir.ui.view">
+            <field name="name">shipstation.weight.mapping.tree</field>
+            <field name="model">shipstation.weight.mapping</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Shipstation Weight Mapping">
+                    <field name="shipstation_weight_uom"/>
+                    <field name="shipstation_weight_uom_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="shipstation_weight_mapping_form_view" model="ir.ui.view">
+            <field name="name">shipstation.weight.mapping.form.view</field>
+            <field name="model">shipstation.weight.mapping</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Shipstation Weight Mapping">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="shipstation_weight_uom"/>
+                            </group>
+                            <group>
+                                <field name="shipstation_weight_uom_id"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_shipstation_weight_mapping" model="ir.actions.act_window">
+            <field name="name">Shipstation Weight Mapping</field>
+            <field name="res_model">shipstation.weight.mapping</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    No Mapping found.
+                </p>
+            </field>
+        </record>
+
+        <menuitem id="shipstation_weight_mapping_menu" name="Weight Mapping" action="action_shipstation_weight_mapping"
+                  parent="shipstation_ept.menu_configuration_ept" sequence="6"/>
+    </data>
+</odoo>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="res_user_form_warefor_tus" model="ir.ui.view">
+            <field name="name">user.warefor.form.tus</field>
+            <field name="model">res.users</field>
+            <field name="inherit_id" ref="base.view_users_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook" position="inside">
+                    <page string="OBL Customer Access">
+                        <group>
+                            <field name="allowed_customer_ids" widget="many2many_tags" string="Customer"
+                                   domain="[('name', '!=', '')]"/>
+                            <field name="is_select_all_company" />
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

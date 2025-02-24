@@ -1,0 +1,1476 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="product_development_tree_view" model="ir.ui.view">
+            <field name="name">product.development.tree.view</field>
+            <field name="model">product.development</field>
+            <field name="arch" type="xml">
+                <tree string="Product Development">
+                    <field name="product_id"/>
+                    <field name="prepared_by"/>
+                    <field name="location_id"/>
+                    <field name="made_by"/>
+                    <field name="made_in"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="product_development_form_view" model="ir.ui.view">
+            <field name="name">product.development.form.view</field>
+            <field name="model">product.development</field>
+            <field name="arch" type="xml">
+                <form string="Product Development">
+                    <header>
+                        <field name="stage_id" widget="statusbar" options="{'clickable': '1'}"/>
+                        <button type="object" class="oe_stat_button" string="Print" name="print_product_dev_report"/>
+                        <button type="object" class="oe_stat_button" string="Create Lead" name="create_lead_pro_dev"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="action_view_crm_lead" type="object" class="oe_stat_button"
+                                    icon="fa-pencil-square-o"
+                                    attrs="{'invisible': [('lead_count', '=', 0)]}">
+                                <field name="lead_count" widget="statinfo" string="Lead"/>
+                            </button>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="product_id"/>
+                                <field name="qrcode" widget="image"/>
+                            </group>
+                            <group>
+                                <field name="image" widget="image"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <!--                            <page string="General">-->
+                            <!--                                <group>-->
+                            <!--                                    <group>-->
+                            <!--                                        <field name="date"/>-->
+                            <!--                                        <field name="prepared_by"/>-->
+                            <!--                                        <field name="location_id"/>-->
+                            <!--                                        <field name="retail_price"/>-->
+                            <!--                                        <field name="pc"/>-->
+                            <!--                                        <field name="model"/>-->
+                            <!--                                        <field name="selling_features"/>-->
+                            <!--                                        <field name="invoice_uom_id"/>-->
+                            <!--                                    </group>-->
+                            <!--                                    <group>-->
+                            <!--                                        <field name="material"/>-->
+                            <!--                                        <field name="brand"/>-->
+                            <!--                                        <field name="brand_register_type"/>-->
+                            <!--                                        <field name="made_by"/>-->
+                            <!--                                        <field name="made_in"/>-->
+                            <!--                                        <field name="comments"/>-->
+                            <!--                                        <field name="currency_code_payment"/>-->
+                            <!--                                    </group>-->
+                            <!--                                </group>-->
+                            <!--                                <group string="Item Creation">-->
+                            <!--                                    <group>-->
+                            <!--                                        <field name="description"/>-->
+                            <!--                                        <field name="item_number"/>-->
+                            <!--                                        <field name="item_customer_number"/>-->
+                            <!--                                        <field name="item_customer_name"/>-->
+                            <!--                                        <field name="item_cost"/>-->
+                            <!--                                        <field name="item_product_specifications"/>-->
+                            <!--                                        <field name="item_composition"/>-->
+                            <!--                                        <field name="item_minimum_order_qty"/>-->
+                            <!--                                        <field name="item_etd"/>-->
+                            <!--                                        <field name="item_eta"/>-->
+                            <!--                                    </group>-->
+                            <!--                                    <group>-->
+                            <!--                                        <field name="upc"/>-->
+                            <!--                                        <field name="item_mfr_number"/>-->
+                            <!--                                        <field name="item_mfr_name"/>-->
+                            <!--                                        <field name="item_unit_of_sale"/>-->
+                            <!--                                        <field name="item_review_date"/>-->
+                            <!--                                        <field name="item_approval_date"/>-->
+                            <!--                                        <field name="item_presentation_date"/>-->
+                            <!--                                        <field name="production_starting_date"/>-->
+                            <!--                                        <field name="item_shipping_date"/>-->
+                            <!--                                        <field name="in_store_date"/>-->
+                            <!--                                    </group>-->
+                            <!--                                </group>-->
+                            <!--                            </page>-->
+                            <page string="General">
+                                <group>
+                                    <group>
+                                        <field name="date"/>
+                                        <field name="item_number" string="Item Number"/>
+                                        <field name="upc"/>
+                                        <field name="description" string="Item Description" widget="text" placeholder="Describe your item..."/>
+                                        <field name="customer_m2m_ids" widget="many2many_tags"/>
+                                    </group>
+                                    <group>
+                                        <field name="vendor_no" string="Our Vendor No"/>
+                                        <field name="department_no" string="Department No"/>
+                                        <field name="item_customer_number"/>
+                                        <field name="payment_term_id" widget="selection"/>
+                                    </group>
+                                </group>
+                            </page>
+                            <!--                            <page string="Product Engineering">-->
+                            <!--                                <group>-->
+                            <!--                                    <group string="Product Dimensions(In) &amp; Weights(Lbs)">-->
+                            <!--                                        <field name="packaging_qty"/>-->
+                            <!--                                        &lt;!&ndash;                                        <field name="packaging_w"/>&ndash;&gt;-->
+                            <!--                                        <field name="packaging_width"/>-->
+                            <!--                                        &lt;!&ndash;                                        <field name="packaging_dimension"/>&ndash;&gt;-->
+                            <!--                                        <field name="packaging_height"/>-->
+                            <!--                                        <field name="packaging_depth"/>-->
+                            <!--                                        <field name="packaging_cuft"/>-->
+                            <!--                                        <field name="packaging_weight"/>-->
+                            <!--                                        <field name="packaging_weight_net"/>-->
+                            <!--                                    </group>-->
+                            <!--                                    <group string="Product Dimensions(Cm) &amp; Weights(Kg)">-->
+                            <!--                                        <field name="packaging_width_cm"/>-->
+                            <!--                                        <field name="packaging_height_cm"/>-->
+                            <!--                                        <field name="packaging_length_cm"/>-->
+                            <!--                                        <field name="packaging_cuft_cm"/>-->
+                            <!--                                        <field name="packaging_weight_kg"/>-->
+                            <!--                                        <field name="packaging_weight_kg_net"/>-->
+                            <!--                                    </group>-->
+                            <!--                                </group>-->
+                            <!--                                <group>-->
+                            <!--                                    <group string="Pallet Dimensions &amp; Weights (Excluding Pallet)">-->
+                            <!--                                        <field name="pallet_exclude_qty"/>-->
+                            <!--                                        &lt;!&ndash;                                        <field name="pallet_exclude_w"/>&ndash;&gt;-->
+                            <!--                                        <field name="pallet_exclude_width"/>-->
+                            <!--                                        &lt;!&ndash;                                        <field name="pallet_exclude_dimension"/>&ndash;&gt;-->
+                            <!--                                        <field name="pallet_exclude_height"/>-->
+                            <!--                                        <field name="pallet_exclude_depth"/>-->
+                            <!--                                        <field name="pallet_exclude_cuft"/>-->
+                            <!--                                        <field name="pallet_exclude_weight"/>-->
+                            <!--                                    </group>-->
+                            <!--                                    <group string="Pallet Dimensions &amp; Weights (Including Pallet)">-->
+                            <!--                                        <field name="pallet_include_qty"/>-->
+                            <!--                                        &lt;!&ndash;                                        <field name="pallet_include_w"/>&ndash;&gt;-->
+                            <!--                                        <field name="pallet_include_width"/>-->
+                            <!--                                        <field name="pallet_include_height"/>-->
+                            <!--                                        &lt;!&ndash;                                        <field name="pallet_include_dimension"/>&ndash;&gt;-->
+                            <!--                                        <field name="pallet_include_depth"/>-->
+                            <!--                                        <field name="pallet_include_cuft"/>-->
+                            <!--                                        <field name="pallet_include_weight"/>-->
+                            <!--                                    </group>-->
+                            <!--                                </group>-->
+                            <!--                                <group>-->
+                            <!--                                    <group string="Remailer Packaging">-->
+                            <!--                                        <field name="remailer_qty"/>-->
+                            <!--                                        <field name="remailer_w"/>-->
+                            <!--                                        <field name="remailer_dimension"/>-->
+                            <!--                                        <field name="remailer_height"/>-->
+                            <!--                                        <field name="remailer_cuft"/>-->
+                            <!--                                        <field name="remailer_weight"/>-->
+                            <!--                                    </group>-->
+                            <!--                                    <group string="Master Pack">-->
+                            <!--                                        <field name="master_qty"/>-->
+                            <!--                                        <field name="master_w"/>-->
+                            <!--                                        <field name="master_dimension"/>-->
+                            <!--                                        <field name="master_height"/>-->
+                            <!--                                        <field name="master_cuft"/>-->
+                            <!--                                        <field name="master_weight"/>-->
+                            <!--                                    </group>-->
+                            <!--                                </group>-->
+                            <!--                            </page>-->
+<!--                                Hide Fields *************************************************-->
+                            <page string="Product Dimension">
+                                <group class="o_row">
+                                    <label string="Item Size" for="item_size_in"/>
+                                    <field name="item_size_in" nolabel="1"/> <label string="In" for="item_size_in"/>
+                                    <field name="item_size_cm" nolabel="1"/> <label string="cm" for="item_size_cm"/>
+                                </group>
+                                <group class="o_row">
+                                    <label string="Item Capacity" for="item_capacity_cm"/>
+                                    <field name="item_capacity_cm" nolabel="1"/> <label string="Qt"
+                                                                                        for="item_capacity_cm"/>
+                                    <field name="item_capacity_l" nolabel="1"/> <label string="L"
+                                                                                       for="item_capacity_l"/>
+                                </group>
+                                <newline/>
+<!--                                <label string="Unit of Sale Dimensions" for="usd_length_in"-->
+<!--                                       class="o_horizontal_separator" style="font-size: 1.625rem !important;"/>-->
+                                <group class="o_row"><h2>Unit of Sale Dimensions</h2></group>
+                                <group class="o_row">
+                                    <label string="Length" for="usd_length_in"/>
+                                    <field name="usd_length_in" nolabel="1"/> <label string="In"
+                                                                                     for="usd_length_in"/>
+                                    <field name="usd_length_cm" nolabel="1"/> <label string="cm"
+                                                                                     for="usd_length_cm"/>
+                                </group>
+                                <group class="o_row">
+                                    <label string="Width" for="usd_width_in"/>
+                                    <field name="usd_width_in" nolabel="1"/> <label string="In" for="usd_width_in"/>
+                                    <field name="usd_width_cm" nolabel="1"/> <label string="cm" for="usd_width_in"/>
+                                </group>
+                                <group class="o_row">
+                                    <label string="Height" for="usd_height_in"/>
+                                    <field name="usd_height_in" nolabel="1"/> <label string="In"
+                                                                                     for="usd_height_in"/>
+                                    <field name="usd_height_cm" nolabel="1"/> <label string="cm"
+                                                                                     for="usd_height_cm"/>
+                                </group>
+                                <group class="o_row">
+                                    <label string="Cube" for="usd_cube_lbs"/>
+                                    <field name="usd_cube_lbs" nolabel="1"/> <label string="Culn"
+                                                                                    for="usd_cube_lbs"/>
+                                    <field name="usd_cube_cm" nolabel="1"/> <label string="cm3" for="usd_cube_cm"/>
+                                </group>
+                                <newline/>
+                                <group class="o_row">
+                                    <label string="Unit of Sale Weight" for="usw_lbs"/>
+                                    <field name="usw_lbs" nolabel="1"/> <label string="lbs" for="usw_lbs"/>
+                                    <field name="usw_kg" nolabel="1"/> <label string="Kg" for="usw_kg"/>
+                                </group>
+                            </page>
+<!--                                Hide Fields Done*************************************************-->
+                            <!--                            <page string="Package Engineering">-->
+                            <!--                                <group>-->
+                            <!--                                    <group string="DS - Packaging Dimensions">-->
+                            <!--                                        <group string="In inches &amp; Lbs">-->
+                            <!--                                            <field name="packaging_width_ds"/>-->
+                            <!--                                            <field name="packaging_height_ds"/>-->
+                            <!--                                            <field name="packaging_length_ds"/>-->
+                            <!--                                            <field name="packaging_cuft_ds"/>-->
+                            <!--                                            <field name="packaging_weight_ds"/>-->
+                            <!--                                            <field name="packaging_weight_net_ds"/>-->
+                            <!--                                        </group>-->
+                            <!--                                        <group string="In centimeter &amp; Kg">-->
+                            <!--                                            <field name="packaging_width_ds_cm"/>-->
+                            <!--                                            <field name="packaging_height_ds_cm"/>-->
+                            <!--                                            <field name="packaging_length_ds_cm"/>-->
+                            <!--                                            <field name="packaging_cuft_ds_m3"/>-->
+                            <!--                                            <field name="packaging_weight_ds_kg"/>-->
+                            <!--                                            <field name="packaging_weight_net_ds_kg"/>-->
+                            <!--                                        </group>-->
+                            <!--                                    </group>-->
+                            <!--                                    <group string="RETAIL - Packaging Dimensions">-->
+                            <!--                                        <group string="In inches &amp; Lbs">-->
+                            <!--                                            <field name="packaging_width_re"/>-->
+                            <!--                                            <field name="packaging_height_re"/>-->
+                            <!--                                            <field name="packaging_length_re"/>-->
+                            <!--                                            <field name="packaging_cuft_re"/>-->
+                            <!--                                            <field name="packaging_weight_re"/>-->
+                            <!--                                            <field name="packaging_weight_net_re"/>-->
+                            <!--                                        </group>-->
+                            <!--                                        <group string="In centimeter &amp; Kg">-->
+                            <!--                                            <field name="packaging_width_re_cm"/>-->
+                            <!--                                            <field name="packaging_height_re_cm"/>-->
+                            <!--                                            <field name="packaging_length_re_cm"/>-->
+                            <!--                                            <field name="packaging_cuft_re_m3"/>-->
+                            <!--                                            <field name="packaging_weight_re_kg"/>-->
+                            <!--                                            <field name="packaging_weight_net_re_kg"/>-->
+                            <!--                                        </group>-->
+                            <!--                                    </group>-->
+                            <!--                                </group>-->
+                            <!--                                <group>-->
+                            <!--                                    <group string="RETAIL - Case Pack  Dimensions">-->
+                            <!--                                        <group string="In inches &amp; Lbs">-->
+                            <!--                                            <field name="case_pack_qty"/>-->
+                            <!--                                            <field name="case_pack_width"/>-->
+                            <!--                                            <field name="case_pack_height"/>-->
+                            <!--                                            <field name="case_pack_length"/>-->
+                            <!--                                            <field name="case_pack_cuft"/>-->
+                            <!--                                            <field name="case_pack_weight"/>-->
+                            <!--                                            <field name="case_pack_net_weight"/>-->
+                            <!--                                        </group>-->
+                            <!--                                        <group string="In centimeter &amp; Kg">-->
+                            <!--                                            <field name="case_pack_width_cm"/>-->
+                            <!--                                            <field name="case_pack_height_cm"/>-->
+                            <!--                                            <field name="case_pack_length_cm"/>-->
+                            <!--                                            <field name="case_pack_cuft_m3"/>-->
+                            <!--                                            <field name="case_pack_weight_kg"/>-->
+                            <!--                                            <field name="case_pack_net_weight_kg"/>-->
+                            <!--                                        </group>-->
+                            <!--                                    </group>-->
+                            <!--                                    <group>-->
+                            <!--                                    </group>-->
+                            <!--                                </group>-->
+                            <!--                                <group string="LOGISTICS">-->
+                            <!--                                    <group string="Standard 4-Way Pallet Only">-->
+                            <!--                                        <group string="In inches &amp; Lbs">-->
+                            <!--                                            <field name="pallet_4w_width"/>-->
+                            <!--                                            <field name="pallet_4w_height"/>-->
+                            <!--                                            <field name="pallet_4w_length"/>-->
+                            <!--                                            <field name="pallet_4w_cube"/>-->
+                            <!--                                            <field name="pallet_4w_weight"/>-->
+                            <!--                                        </group>-->
+                            <!--                                        <group string="In centimeter &amp; Kg">-->
+                            <!--                                            <field name="pallet_4w_width_cm"/>-->
+                            <!--                                            <field name="pallet_4w_height_cm"/>-->
+                            <!--                                            <field name="pallet_4w_length_cm"/>-->
+                            <!--                                            <field name="pallet_4w_cube_m3"/>-->
+                            <!--                                            <field name="pallet_4w_weight_kg"/>-->
+                            <!--                                        </group>-->
+                            <!--                                    </group>-->
+                            <!--                                    <group string="CHEP 4-Way Pallet Only">-->
+                            <!--                                        <group string="In inches &amp; Lbs">-->
+                            <!--                                            <field name="c4wp_width"/>-->
+                            <!--                                            <field name="c4wp_height"/>-->
+                            <!--                                            <field name="c4wp_length"/>-->
+                            <!--                                            <field name="c4wp_cube"/>-->
+                            <!--                                            <field name="c4wp_weight"/>-->
+                            <!--                                        </group>-->
+                            <!--                                        <group string="In centimeter &amp; Kg">-->
+                            <!--                                            <field name="c4wp_width_cm"/>-->
+                            <!--                                            <field name="c4wp_height_cm"/>-->
+                            <!--                                            <field name="c4wp_length_cm"/>-->
+                            <!--                                            <field name="c4wp_cube_m3"/>-->
+                            <!--                                            <field name="c4wp_weight_kg"/>-->
+                            <!--                                        </group>-->
+                            <!--                                    </group>-->
+                            <!--                                    <group string="PUT AWAY - Standard Pallet">-->
+                            <!--                                        <group string="Units">-->
+                            <!--                                            <field name="pa_sp_width_unit"/>-->
+                            <!--                                            <field name="pa_sp_height_unit"/>-->
+                            <!--                                            <field name="pa_sp_length_unit"/>-->
+                            <!--                                            <field name="pa_sp_total_unit"/>-->
+                            <!--                                        </group>-->
+                            <!--                                        <group></group>-->
+                            <!--                                        <group string="In inches &amp; Lbs">-->
+                            <!--                                            <field name="pa_sp_width"/>-->
+                            <!--                                            <field name="pa_sp_height"/>-->
+                            <!--                                            <field name="pa_sp_length"/>-->
+                            <!--                                            <field name="pa_sp_cube"/>-->
+                            <!--                                            <field name="pa_sp_weight"/>-->
+                            <!--                                            <field name="pa_sp_total_cube"/>-->
+                            <!--                                            <field name="pa_sp_total_weight"/>-->
+                            <!--                                        </group>-->
+                            <!--                                        <group string="In centimeter &amp; Kg">-->
+                            <!--                                            <field name="pa_sp_width_cm"/>-->
+                            <!--                                            <field name="pa_sp_height_cm"/>-->
+                            <!--                                            <field name="pa_sp_length_cm"/>-->
+                            <!--                                            <field name="pa_sp_cube_m3"/>-->
+                            <!--                                            <field name="pa_sp_weight_kg"/>-->
+                            <!--                                            <field name="pa_sp_total_cube_m3"/>-->
+                            <!--                                            <field name="pa_sp_total_weight_kg"/>-->
+                            <!--                                        </group>-->
+                            <!--                                    </group>-->
+                            <!--                                    <group string="PUT AWAY - CHEP Pallet">-->
+                            <!--                                        <group string="Units">-->
+                            <!--                                            <field name="pa_cp_width_unit"/>-->
+                            <!--                                            <field name="pa_cp_height_unit"/>-->
+                            <!--                                            <field name="pa_cp_length_unit"/>-->
+                            <!--                                            <field name="pa_cp_total_unit"/>-->
+                            <!--                                        </group>-->
+                            <!--                                        <group></group>-->
+                            <!--                                        <group string="In inches &amp; Lbs">-->
+                            <!--                                            <field name="pa_cp_width"/>-->
+                            <!--                                            <field name="pa_cp_height"/>-->
+                            <!--                                            <field name="pa_cp_length"/>-->
+                            <!--                                            <field name="pa_cp_cube"/>-->
+                            <!--                                            <field name="pa_cp_weight"/>-->
+                            <!--                                            <field name="pa_cp_total_cube"/>-->
+                            <!--                                            <field name="pa_cp_total_weight"/>-->
+                            <!--                                        </group>-->
+                            <!--                                        <group string="In centimeter &amp; Kg">-->
+                            <!--                                            <field name="pa_cp_width_cm"/>-->
+                            <!--                                            <field name="pa_cp_height_cm"/>-->
+                            <!--                                            <field name="pa_cp_length_cm"/>-->
+                            <!--                                            <field name="pa_cp_cube_m3"/>-->
+                            <!--                                            <field name="pa_cp_weight_kg"/>-->
+                            <!--                                            <field name="pa_cp_total_cube_m3"/>-->
+                            <!--                                            <field name="pa_cp_total_weight_kg"/>-->
+                            <!--                                        </group>-->
+                            <!--                                    </group>-->
+                            <!--                                    <group string="RETAIL- Standard Pallet">-->
+                            <!--                                        <group string="Units">-->
+                            <!--                                            <field name="r_sp_width_unit"/>-->
+                            <!--                                            <field name="r_sp_height_unit"/>-->
+                            <!--                                            <field name="r_sp_length_unit"/>-->
+                            <!--                                            <field name="r_sp_total_unit"/>-->
+                            <!--                                        </group>-->
+                            <!--                                        <group></group>-->
+                            <!--                                        <group string="In inches &amp; Lbs">-->
+                            <!--                                            <field name="r_sp_width"/>-->
+                            <!--                                            <field name="r_sp_height"/>-->
+                            <!--                                            <field name="r_sp_length"/>-->
+                            <!--                                            <field name="r_sp_cube"/>-->
+                            <!--                                            <field name="r_sp_weight"/>-->
+                            <!--                                            <field name="r_sp_total_cube"/>-->
+                            <!--                                            <field name="r_sp_total_weight"/>-->
+                            <!--                                        </group>-->
+                            <!--                                        <group string="In centimeter &amp; Kg">-->
+                            <!--                                            <field name="r_sp_width_cm"/>-->
+                            <!--                                            <field name="r_sp_height_cm"/>-->
+                            <!--                                            <field name="r_sp_length_cm"/>-->
+                            <!--                                            <field name="r_sp_cube_m3"/>-->
+                            <!--                                            <field name="r_sp_weight_kg"/>-->
+                            <!--                                            <field name="r_sp_total_cube_m3"/>-->
+                            <!--                                            <field name="r_sp_total_weight_kg"/>-->
+                            <!--                                        </group>-->
+                            <!--                                    </group>-->
+                            <!--                                    <group string="RETAIL - CHEP Pallet">-->
+                            <!--                                        <group string="Units">-->
+                            <!--                                            <field name="r_cp_width_unit"/>-->
+                            <!--                                            <field name="r_cp_height_unit"/>-->
+                            <!--                                            <field name="r_cp_length_unit"/>-->
+                            <!--                                            <field name="r_cp_total_unit"/>-->
+                            <!--                                        </group>-->
+                            <!--                                        <group></group>-->
+                            <!--                                        <group string="In inches &amp; Lbs">-->
+                            <!--                                            <field name="r_cp_width"/>-->
+                            <!--                                            <field name="r_cp_height"/>-->
+                            <!--                                            <field name="r_cp_length"/>-->
+                            <!--                                            <field name="r_cp_cube"/>-->
+                            <!--                                            <field name="r_cp_weight"/>-->
+                            <!--                                            <field name="r_cp_total_cube"/>-->
+                            <!--                                            <field name="r_cp_total_weight"/>-->
+                            <!--                                        </group>-->
+                            <!--                                        <group string="In centimeter &amp; Kg">-->
+                            <!--                                            <field name="r_cp_width_cm"/>-->
+                            <!--                                            <field name="r_cp_height_cm"/>-->
+                            <!--                                            <field name="r_cp_length_cm"/>-->
+                            <!--                                            <field name="r_cp_cube_m3"/>-->
+                            <!--                                            <field name="r_cp_weight_kg"/>-->
+                            <!--                                            <field name="r_cp_total_cube_m3"/>-->
+                            <!--                                            <field name="r_cp_total_weight_kg"/>-->
+                            <!--                                        </group>-->
+                            <!--                                    </group>-->
+                            <!--                                </group>-->
+                            <!--                            </page>-->
+                            <page string="Packaging Dimensions" name="packaging_dimensions">
+<!--                                Hide Fields *************************************************-->
+<!--                                <label string="DS Packaging Dimensions" for="packaging_length_ds"-->
+<!--                                       class="o_horizontal_separator" style="font-size: 1.625rem !important;"/>-->
+<!--                                <group col="5">-->
+<!--                                    <label string="Length" for="packaging_length_ds"/>-->
+<!--                                    <field name="packaging_length_ds" nolabel="1"/> <label string="In"-->
+<!--                                                                                           for="packaging_length_ds"/>-->
+<!--                                    <field name="packaging_length_ds_cm" nolabel="1"/> <label string="cm"-->
+<!--                                                                                              for="packaging_length_ds_cm"/>-->
+<!--                                </group>-->
+<!--                                <group col="5">-->
+<!--                                    <label string="Width" for="packaging_width_ds"/>-->
+<!--                                    <field name="packaging_width_ds" nolabel="1"/> <label string="In"-->
+<!--                                                                                          for="packaging_width_ds"/>-->
+<!--                                    <field name="packaging_width_ds_cm" nolabel="1"/> <label string="cm"-->
+<!--                                                                                             for="packaging_width_ds_cm"/>-->
+<!--                                </group>-->
+<!--                                <group col="5">-->
+<!--                                    <label string="Height" for="packaging_height_ds"/>-->
+<!--                                    <field name="packaging_height_ds" nolabel="1"/> <label string="In"-->
+<!--                                                                                           for="packaging_height_ds"/>-->
+<!--                                    <field name="packaging_height_ds_cm" nolabel="1"/> <label string="cm"-->
+<!--                                                                                              for="packaging_height_ds_cm"/>-->
+<!--                                </group>-->
+<!--                                <group col="5">-->
+<!--                                    <label string="Cube" for="packaging_cube_ds"/>-->
+<!--                                    <field name="packaging_cube_ds" nolabel="1"/> <label string="CuFt"-->
+<!--                                                                                         for="packaging_cube_ds"/>-->
+<!--                                    <field name="packaging_cube_ds_m3" nolabel="1"/> <label string="m3"-->
+<!--                                                                                            for="packaging_cube_ds_m3"/>-->
+<!--                                </group>-->
+<!--                                <br/>-->
+<!--                                <group col="5">-->
+<!--                                    <label string="DS Packaging Weight" for="packaging_weight_ds"-->
+<!--                                           class="o_horizontal_separator" style="font-size: 1.2rem !important;"/>-->
+<!--                                    <field name="packaging_weight_ds" nolabel="1"/> <label string="lbs"-->
+<!--                                                                                           for="packaging_weight_ds"/>-->
+<!--                                    <field name="packaging_weight_ds_kg" nolabel="1"/> <label string="kg"-->
+<!--                                                                                              for="packaging_weight_ds_kg"/>-->
+<!--                                </group>-->
+<!--                                <br/>-->
+<!--                                <label string="Retail Packaging Dimensions" for="packaging_length_re"-->
+<!--                                       class="o_horizontal_separator" style="font-size: 1.625rem !important;"/>-->
+<!--                                <group col="5">-->
+<!--                                    <label string="Length" for="packaging_length_re"/>-->
+<!--                                    <field name="packaging_length_re" nolabel="1"/> <label string="In"-->
+<!--                                                                                           for="packaging_length_re"/>-->
+<!--                                    <field name="packaging_length_re_cm" nolabel="1"/> <label string="cm"-->
+<!--                                                                                              for="packaging_length_re_cm"/>-->
+<!--                                </group>-->
+<!--                                <group col="5">-->
+<!--                                    <label string="Width" for="packaging_width_re"/>-->
+<!--                                    <field name="packaging_width_re" nolabel="1"/> <label string="In"-->
+<!--                                                                                          for="packaging_width_re"/>-->
+<!--                                    <field name="packaging_width_re_cm" nolabel="1"/> <label string="cm"-->
+<!--                                                                                             for="packaging_width_re_cm"/>-->
+<!--                                </group>-->
+<!--                                <group col="5">-->
+<!--                                    <label string="Height" for="packaging_height_re"/>-->
+<!--                                    <field name="packaging_height_re" nolabel="1"/> <label string="In"-->
+<!--                                                                                           for="packaging_height_re"/>-->
+<!--                                    <field name="packaging_height_re_cm" nolabel="1"/> <label string="cm"-->
+<!--                                                                                              for="packaging_height_re_cm"/>-->
+<!--                                </group>-->
+<!--                                <group col="5">-->
+<!--                                    <label string="Cube" for="packaging_cube_re"/>-->
+<!--                                    <field name="packaging_cube_re" nolabel="1"/> <label string="CuFt"-->
+<!--                                                                                         for="packaging_cube_re"/>-->
+<!--                                    <field name="packaging_cube_re_m3" nolabel="1"/> <label string="m3"-->
+<!--                                                                                            for="packaging_cube_re_m3"/>-->
+<!--                                </group>-->
+<!--                                <br/>-->
+<!--                                <group col="5">-->
+<!--                                    <label string="Retail Packaging Weight" for="packaging_weight_re"-->
+<!--                                           class="o_horizontal_separator" style="font-size: 1.2rem !important;"/>-->
+<!--                                    <field name="packaging_weight_re" nolabel="1"/> <label string="lbs"-->
+<!--                                                                                           for="packaging_weight_re"/>-->
+<!--                                    <field name="packaging_weight_re_kg" nolabel="1"/> <label string="kg"-->
+<!--                                                                                              for="packaging_weight_re_kg"/>-->
+<!--                                </group>-->
+<!--                                <group>-->
+<!--                                    <group>-->
+<!--                                        <label string="Case Pack Quantity" for="case_pack_qty"-->
+<!--                                               class="o_horizontal_separator" style="font-size: 1.2rem !important;"/>-->
+<!--                                        <field name="case_pack_qty" nolabel="1"/>-->
+<!--                                    </group>-->
+<!--                                </group>-->
+<!--                                <br/>-->
+<!--                                <label string="Case Pack Dimensions" for="case_pack_length"-->
+<!--                                       class="o_horizontal_separator" style="font-size: 1.625rem !important;"/>-->
+<!--                                <group col="5">-->
+<!--                                    <label string="Length" for="case_pack_length"/>-->
+<!--                                    <field name="case_pack_length" nolabel="1"/> <label string="In"-->
+<!--                                                                                        for="case_pack_length"/>-->
+<!--                                    <field name="case_pack_length_cm" nolabel="1"/> <label string="cm"-->
+<!--                                                                                           for="case_pack_length_cm"/>-->
+<!--                                </group>-->
+<!--                                <group col="5">-->
+<!--                                    <label string="Width" for="case_pack_width"/>-->
+<!--                                    <field name="case_pack_width" nolabel="1"/> <label string="In"-->
+<!--                                                                                       for="case_pack_width"/>-->
+<!--                                    <field name="case_pack_width_cm" nolabel="1"/> <label string="cm"-->
+<!--                                                                                          for="case_pack_width_cm"/>-->
+<!--                                </group>-->
+<!--                                <group col="5">-->
+<!--                                    <label string="Height" for="case_pack_height"/>-->
+<!--                                    <field name="case_pack_height" nolabel="1"/> <label string="In"-->
+<!--                                                                                        for="case_pack_height"/>-->
+<!--                                    <field name="case_pack_height_cm" nolabel="1"/> <label string="cm"-->
+<!--                                                                                           for="case_pack_height_cm"/>-->
+<!--                                </group>-->
+<!--                                <group col="5">-->
+<!--                                    <label string="Cube" for="case_pack_cube"/>-->
+<!--                                    <field name="case_pack_cube" nolabel="1"/> <label string="CuFt"-->
+<!--                                                                                      for="case_pack_cube"/>-->
+<!--                                    <field name="case_pack_cube_m3" nolabel="1"/> <label string="m3"-->
+<!--                                                                                         for="case_pack_cube_m3"/>-->
+<!--                                </group>-->
+<!--                                <br/>-->
+<!--                                <group col="5">-->
+<!--                                    <label string="Case Pack Weight" for="case_pack_weight"-->
+<!--                                           class="o_horizontal_separator" style="font-size: 1.2rem !important;"/>-->
+<!--                                    <field name="case_pack_weight" nolabel="1"/> <label string="lbs"-->
+<!--                                                                                        for="case_pack_weight"/>-->
+<!--                                    <field name="packaging_weight_ds_kg" nolabel="1"/> <label string="kg"-->
+<!--                                                                                              for="packaging_weight_ds_kg"/>-->
+<!--                                </group>-->
+<!--                                Hide Fields Done    *************************************************-->
+<!--                                <label string="Retail Pallet Dimensions" for="retail_pallet_length"-->
+<!--                                       class="o_horizontal_separator" style="font-size: 1.625rem !important;"/>-->
+                                <group class="o_row"><h2>Retail Pallet Dimensions</h2></group>
+
+                                <group col="5" class="o_row">
+                                    <label string="Length" for="retail_pallet_length"/>
+                                    <field name="retail_pallet_length" nolabel="1"/> <label string="In"
+                                                                                            for="retail_pallet_length"/>
+                                    <field name="retail_pallet_length_cm" nolabel="1"/> <label string="cm"
+                                                                                               for="retail_pallet_length_cm"/>
+                                </group>
+                                <group col="5" class="o_row">
+                                    <label string="Width" for="retail_pallet_width"/>
+                                    <field name="retail_pallet_width" nolabel="1"/> <label string="In"
+                                                                                           for="retail_pallet_width"/>
+                                    <field name="retail_pallet_width_cm" nolabel="1"/> <label string="cm"
+                                                                                              for="retail_pallet_width_cm"/>
+                                </group>
+                                <group col="5" class="o_row">
+                                    <label string="Height" for="retail_pallet_height"/>
+                                    <field name="retail_pallet_height" nolabel="1"/> <label string="In"
+                                                                                            for="retail_pallet_height"/>
+                                    <field name="retail_pallet_height_cm" nolabel="1"/> <label string="cm"
+                                                                                               for="retail_pallet_height_cm"/>
+                                </group>
+                                <group col="5" class="o_row">
+                                    <label string="Cube" for="retail_pallet_cube"/>
+                                    <field name="retail_pallet_cube" nolabel="1"/> <label string="CuFt"
+                                                                                          for="retail_pallet_cube"/>
+                                    <field name="retail_pallet_cube_m3" nolabel="1"/> <label string="m3"
+                                                                                             for="retail_pallet_cube_m3"/>
+                                </group>
+                                <br/>
+                                <group col="5" class="o_row">
+                                    <label string="Retail Pallet Weight" for="retail_pallet_weight"
+                                           class="o_horizontal_separator" style="font-size: 1.2rem !important;"/>
+                                    <field name="retail_pallet_weight" nolabel="1"/> <label string="lbs"
+                                                                                            for="retail_pallet_weight"/>
+                                    <field name="retail_pallet_weight_kg" nolabel="1"/> <label string="kg"
+                                                                                               for="retail_pallet_weight_kg"/>
+                                </group>
+                            </page>
+                            <!--                            <page string="Logistics">-->
+                            <!--                                <group string="Container Size">-->
+                            <!--                                    <group string="Cu Ft">-->
+                            <!--                                        <field name="cu_ft_20"/>-->
+                            <!--                                        <field name="cu_ft_40"/>-->
+                            <!--                                        <field name="cu_ft_40_hc"/>-->
+                            <!--                                    </group>-->
+                            <!--                                    <group string="Pay Loads(lbs)">-->
+                            <!--                                        <field name="pay_load_lbs_ft_20"/>-->
+                            <!--                                        <field name="pay_load_lbs_ft_40"/>-->
+                            <!--                                        <field name="pay_load_lbs_ft_40_hc"/>-->
+                            <!--                                    </group>-->
+                            <!--                                </group>-->
+                            <!--                                <group>-->
+                            <!--                                    <group string="Cubic Metric">-->
+                            <!--                                        <field name="cubic_ft_20"/>-->
+                            <!--                                        <field name="cubic_ft_40"/>-->
+                            <!--                                        <field name="cubic_ft_40_hc"/>-->
+                            <!--                                    </group>-->
+                            <!--                                    <group string="Pay Loads(kg)">-->
+                            <!--                                        <field name="pay_load_kg_ft_20"/>-->
+                            <!--                                        <field name="pay_load_kg_ft_40"/>-->
+                            <!--                                        <field name="pay_load_kg_ft_40_hc"/>-->
+                            <!--                                    </group>-->
+                            <!--                                </group>-->
+                            <!--                                <group string="Floor Loaded">-->
+                            <!--                                    <group string="20 ft.">-->
+                            <!--                                        <field name="floor_total_case_20"/>-->
+                            <!--                                        <field name="floor_cu_ft_20"/>-->
+                            <!--                                        <field name="floor_weight_20"/>-->
+                            <!--                                    </group>-->
+                            <!--                                    <group string="40 ft.">-->
+                            <!--                                        <field name="floor_total_case_40"/>-->
+                            <!--                                        <field name="floor_cu_ft_40"/>-->
+                            <!--                                        <field name="floor_weight_40"/>-->
+                            <!--                                    </group>-->
+                            <!--                                    <group string="40 ft. HC">-->
+                            <!--                                        <field name="floor_total_case_40_hc"/>-->
+                            <!--                                        <field name="floor_cu_ft_40_hc"/>-->
+                            <!--                                        <field name="floor_weight_40_hc"/>-->
+                            <!--                                    </group>-->
+                            <!--                                </group>-->
+                            <!--                                <group string="Pallet Loaded">-->
+                            <!--                                    <group string="20 ft.">-->
+                            <!--                                        <field name="pallet_total_20"/>-->
+                            <!--                                        <field name="pallet_cu_ft_20"/>-->
+                            <!--                                        <field name="pallet_weight_20"/>-->
+                            <!--                                    </group>-->
+                            <!--                                    <group string="40 ft.">-->
+                            <!--                                        <field name="pallet_total_40"/>-->
+                            <!--                                        <field name="pallet_cu_ft_40"/>-->
+                            <!--                                        <field name="pallet_weight_40"/>-->
+                            <!--                                    </group>-->
+                            <!--                                    <group string="40 ft. HC">-->
+                            <!--                                        <field name="pallet_total_40_hc"/>-->
+                            <!--                                        <field name="pallet_cu_ft_40_hc"/>-->
+                            <!--                                        <field name="pallet_weight_40_hc"/>-->
+                            <!--                                    </group>-->
+                            <!--                                </group>-->
+                            <!--                                <group>-->
+                            <!--                                    <group string="Freight Rates">-->
+                            <!--                                        <field name="freight_rate_ft_20"/>-->
+                            <!--                                        <field name="freight_rate_ft_40"/>-->
+                            <!--                                        <field name="freight_rate_ft_40_hc"/>-->
+                            <!--                                    </group>-->
+                            <!--                                </group>-->
+                            <!--                                <group string="Cost Calculation">-->
+                            <!--                                    <group string="Floor Load">-->
+                            <!--                                        <field name="floor_load_units"/>-->
+                            <!--                                        <field name="floor_load_cuft"/>-->
+                            <!--                                        <field name="floor_load_weight"/>-->
+                            <!--                                    </group>-->
+                            <!--                                    <group string="Palletization for Storage">-->
+                            <!--                                        <field name="storage_load_units"/>-->
+                            <!--                                        <field name="storage_pallet_no"/>-->
+                            <!--                                        <field name="storage_load_cuft"/>-->
+                            <!--                                        <field name="storage_load_weight"/>-->
+                            <!--                                    </group>-->
+                            <!--                                </group>-->
+                            <!--                                <group string="Product Information">-->
+                            <!--                                    <group string="Floor Load">-->
+                            <!--                                        <field name="pro_container_type"/>-->
+                            <!--                                        <field name="pro_floor_load_units"/>-->
+                            <!--                                        <field name="pro_floor_load_cuft"/>-->
+                            <!--                                        <field name="pro_floor_load_weight"/>-->
+                            <!--                                    </group>-->
+                            <!--                                    <group string="Palletization for Storage">-->
+                            <!--                                        <field name="pro_storage_load_units"/>-->
+                            <!--                                        <field name="pro_storage_pallet_no"/>-->
+                            <!--                                        <field name="pro_storage_load_cuft"/>-->
+                            <!--                                        <field name="pro_storage_load_weight"/>-->
+                            <!--                                    </group>-->
+                            <!--                                </group>-->
+                            <!--                            </page>-->
+                            <!--                            <page string="LOGISTICS">-->
+                            <!--                                <group string="20 FT Container">-->
+                            <!--                                    <group string="Details">-->
+                            <!--                                        <field name="ocean_freight_cost"/>-->
+                            <!--                                        <field name="floor_load_qty"/>-->
+                            <!--                                        <field name="cost_per_unit"/>-->
+                            <!--                                    </group>-->
+                            <!--                                    <group></group>-->
+                            <!--                                    <group string="In Feet &amp; Lbs">-->
+                            <!--                                        <field name="cube_ft_20ftc"/>-->
+                            <!--                                        <field name="weight_lbs_20ftc"/>-->
+                            <!--                                        <field name="cube_ap_ft_20ftc"/>-->
+                            <!--                                        <field name="weight_ap_lbs_20ftc"/>-->
+                            <!--                                        <field name="pload_qty_20ftc"/>-->
+                            <!--                                        <field name="cube_acnp_ft_20ftc"/>-->
+                            <!--                                        <field name="weight_acnp_lbs_20ftc"/>-->
+                            <!--                                    </group>-->
+                            <!--                                    <group string="In Centimeter &amp; Kg">-->
+                            <!--                                        <field name="cube_m_20ftc"/>-->
+                            <!--                                        <field name="weight_kg_20ftc"/>-->
+                            <!--                                        <field name="cube_ap_m_20ftc"/>-->
+                            <!--                                        <field name="weight_ap_kg_20ftc"/>-->
+                            <!--                                        <field name="pcload_qty_20ftc"/>-->
+                            <!--                                        <field name="cube_acnp_m_20ftc"/>-->
+                            <!--                                        <field name="weight_acnp_kg_20ftc"/>-->
+                            <!--                                    </group>-->
+                            <!--                                </group>-->
+                            <!--                                <group string="40 FT Container">-->
+                            <!--                                    <group string="Details">-->
+                            <!--                                        <field name="ocean_freight_cost_40ftc"/>-->
+                            <!--                                        <field name="floor_load_qty_40ftc"/>-->
+                            <!--                                        <field name="cost_per_unit_40ftc"/>-->
+                            <!--                                    </group>-->
+                            <!--                                    <group></group>-->
+                            <!--                                    <group string="In Feet &amp; Lbs">-->
+                            <!--                                        <field name="cube_ft_40ftc"/>-->
+                            <!--                                        <field name="weight_lbs_40ftc"/>-->
+                            <!--                                        <field name="cube_ap_ft_40ftc"/>-->
+                            <!--                                        <field name="weight_ap_lbs_40ftc"/>-->
+                            <!--                                        <field name="pload_qty_40ftc"/>-->
+                            <!--                                        <field name="cube_acnp_ft_40ftc"/>-->
+                            <!--                                        <field name="weight_acnp_lbs_40ftc"/>-->
+                            <!--                                    </group>-->
+                            <!--                                    <group string="In Centimeter &amp; Kg">-->
+                            <!--                                        <field name="cube_m_40ftc"/>-->
+                            <!--                                        <field name="weight_kg_40ftc"/>-->
+                            <!--                                        <field name="cube_ap_m_40ftc"/>-->
+                            <!--                                        <field name="weight_ap_kg_40ftc"/>-->
+                            <!--                                        <field name="pcload_qty_40ftc"/>-->
+                            <!--                                        <field name="cube_acnp_m_40ftc"/>-->
+                            <!--                                        <field name="weight_acnp_kg_40ftc"/>-->
+                            <!--                                    </group>-->
+                            <!--                                </group>-->
+                            <!--                                <group string="40 FT HC Container">-->
+                            <!--                                    <group string="Details">-->
+                            <!--                                        <field name="ocean_freight_cost_40fthc"/>-->
+                            <!--                                        <field name="floor_load_qty_40fthc"/>-->
+                            <!--                                        <field name="cost_per_unit_40fthc"/>-->
+                            <!--                                    </group>-->
+                            <!--                                    <group></group>-->
+                            <!--                                    <group string="In Feet &amp; Lbs">-->
+                            <!--                                        <field name="cube_ft_40fthc"/>-->
+                            <!--                                        <field name="weight_lbs_40fthc"/>-->
+                            <!--                                        <field name="cube_ap_ft_40fthc"/>-->
+                            <!--                                        <field name="weight_ap_lbs_40fthc"/>-->
+                            <!--                                        <field name="pload_qty_40fthc"/>-->
+                            <!--                                        <field name="cube_acnp_ft_40fthc"/>-->
+                            <!--                                        <field name="weight_acnp_lbs_40fthc"/>-->
+                            <!--                                    </group>-->
+                            <!--                                    <group string="In Centimeter &amp; Kg">-->
+                            <!--                                        <field name="cube_m_40fthc"/>-->
+                            <!--                                        <field name="weight_kg_40fthc"/>-->
+                            <!--                                        <field name="cube_ap_m_40fthc"/>-->
+                            <!--                                        <field name="weight_ap_kg_40fthc"/>-->
+                            <!--                                        <field name="pcload_qty_40fthc"/>-->
+                            <!--                                        <field name="cube_acnp_m_40fthc"/>-->
+                            <!--                                        <field name="weight_acnp_kg_40fthc"/>-->
+                            <!--                                    </group>-->
+                            <!--                                </group>-->
+                            <!--                                <group string="53 FT Dry Van Trailer">-->
+                            <!--                                    <group string="Details">-->
+                            <!--                                        <field name="ocean_freight_cost_53ftc"/>-->
+                            <!--                                        <field name="floor_load_qty_53ftc"/>-->
+                            <!--                                        <field name="cost_per_unit_53ftc"/>-->
+                            <!--                                    </group>-->
+                            <!--                                    <group></group>-->
+                            <!--                                    <group string="In Feet &amp; Lbs">-->
+                            <!--                                        <field name="cube_ft_53ftc"/>-->
+                            <!--                                        <field name="weight_lbs_53ftc"/>-->
+                            <!--                                        <field name="cube_ap_ft_53ftc"/>-->
+                            <!--                                        <field name="weight_ap_lbs_53ftc"/>-->
+                            <!--                                        <field name="pload_qty_53ftc"/>-->
+                            <!--                                        <field name="cube_acnp_ft_53ftc"/>-->
+                            <!--                                        <field name="weight_acnp_lbs_53ftc"/>-->
+                            <!--                                    </group>-->
+                            <!--                                    <group string="In Centimeter &amp; Kg">-->
+                            <!--                                        <field name="cube_m_53ftc"/>-->
+                            <!--                                        <field name="weight_kg_53ftc"/>-->
+                            <!--                                        <field name="cube_ap_m_53ftc"/>-->
+                            <!--                                        <field name="weight_ap_kg_53ftc"/>-->
+                            <!--                                        <field name="pcload_qty_53ftc"/>-->
+                            <!--                                        <field name="cube_acnp_m_53ftc"/>-->
+                            <!--                                        <field name="weight_acnp_kg_53ftc"/>-->
+                            <!--                                    </group>-->
+                            <!--                                </group>-->
+                            <!--                                <group string="48 FT Dry Van Trailer">-->
+                            <!--                                    <group string="Details">-->
+                            <!--                                        <field name="ocean_freight_cost_48ftc"/>-->
+                            <!--                                        <field name="floor_load_qty_48ftc"/>-->
+                            <!--                                        <field name="cost_per_unit_48ftc"/>-->
+                            <!--                                    </group>-->
+                            <!--                                    <group></group>-->
+                            <!--                                    <group string="In Feet &amp; Lbs">-->
+                            <!--                                        <field name="cube_ft_48ftc"/>-->
+                            <!--                                        <field name="weight_lbs_48ftc"/>-->
+                            <!--                                        <field name="cube_ap_ft_48ftc"/>-->
+                            <!--                                        <field name="weight_ap_lbs_48ftc"/>-->
+                            <!--                                        <field name="pload_qty_48ftc"/>-->
+                            <!--                                        <field name="cube_acnp_ft_48ftc"/>-->
+                            <!--                                        <field name="weight_acnp_lbs_48ftc"/>-->
+                            <!--                                    </group>-->
+                            <!--                                    <group string="In Centimeter &amp; Kg">-->
+                            <!--                                        <field name="cube_m_48ftc"/>-->
+                            <!--                                        <field name="weight_kg_48ftc"/>-->
+                            <!--                                        <field name="cube_ap_m_48ftc"/>-->
+                            <!--                                        <field name="weight_ap_kg_48ftc"/>-->
+                            <!--                                        <field name="pcload_qty_48ftc"/>-->
+                            <!--                                        <field name="cube_acnp_m_48ftc"/>-->
+                            <!--                                        <field name="weight_acnp_kg_48ftc"/>-->
+                            <!--                                    </group>-->
+                            <!--                                </group>-->
+                            <!--                            </page>-->
+                            <page string="Logistics">
+                                <group>
+                                    <group>
+                                        <field name="vendor_number" string="Vendor No"/>
+                                        <field name="vendor_name" string="Vendor Name"/>
+                                        <field name="vendor_item_number" string="Vendor Item No"/>
+                                        <field name="fob_port_export_cost" string="FOB Port of Export Cost"/>
+                                        <field name="country_of_origin" string="Country of Origin"/>
+                                        <field name="hts_code" string="HTS Code"/>
+                                    </group>
+                                    <group>
+                                        <field name="duty_rate" string="Duty Rate %"/>
+                                        <field name="duty_cost_calculation" string="Duty Cost Calculation $"/>
+                                        <field name="import_cost_calculation" string="Import Cost Calculation $"/>
+                                        <field name="logistic_cost_calculation" string="Logistic Cost Calculation $"/>
+                                        <field name="minimum_order_qty" string="Minimum Order Quantity"/>
+                                        <field name="vendor_case_pack_qty" string="Vendor Case Pack Quantity"/>
+                                    </group>
+                                </group>
+<!--                                Hide Fields *************************************************-->
+<!--                                <label string="Vendor Case Pack Dimensions" for="vendor_case_pack_length"-->
+<!--                                       class="o_horizontal_separator" style="font-size: 1.625rem !important;"/>-->
+<!--                                <group col="5">-->
+<!--                                    <label string="Length" for="vendor_case_pack_length"/>-->
+<!--                                    <field name="vendor_case_pack_length" nolabel="1"/> <label string="In"-->
+<!--                                                                                               for="vendor_case_pack_length"/>-->
+<!--                                    <field name="vendor_case_pack_length_cm" nolabel="1"/> <label string="cm"-->
+<!--                                                                                                  for="vendor_case_pack_length_cm"/>-->
+<!--                                </group>-->
+<!--                                <group col="5">-->
+<!--                                    <label string="Width" for="vendor_case_pack_width"/>-->
+<!--                                    <field name="vendor_case_pack_width" nolabel="1"/> <label string="In"-->
+<!--                                                                                              for="vendor_case_pack_width"/>-->
+<!--                                    <field name="vendor_case_pack_width_cm" nolabel="1"/> <label string="cm"-->
+<!--                                                                                                 for="vendor_case_pack_width_cm"/>-->
+<!--                                </group>-->
+<!--                                <group col="5">-->
+<!--                                    <label string="Height" for="vendor_case_pack_height"/>-->
+<!--                                    <field name="vendor_case_pack_height" nolabel="1"/> <label string="In"-->
+<!--                                                                                               for="vendor_case_pack_height"/>-->
+<!--                                    <field name="vendor_case_pack_height_cm" nolabel="1"/> <label string="cm"-->
+<!--                                                                                                  for="vendor_case_pack_height_cm"/>-->
+<!--                                </group>-->
+<!--                                <group col="5">-->
+<!--                                    <label string="Cube" for="vendor_case_pack_cube"/>-->
+<!--                                    <field name="vendor_case_pack_cube" nolabel="1"/> <label string="CuFt"-->
+<!--                                                                                             for="vendor_case_pack_cube"/>-->
+<!--                                    <field name="vendor_case_pack_cube_m3" nolabel="1"/> <label string="m3"-->
+<!--                                                                                                for="vendor_case_pack_cube_m3"/>-->
+<!--                                </group>-->
+<!--                                <br/>-->
+<!--                                <group col="5">-->
+<!--                                    <label string="Vendor Case Pack Weight" for="vendor_case_pack_weight"-->
+<!--                                           class="o_horizontal_separator" style="font-size: 1.2rem !important;"/>-->
+<!--                                    <field name="vendor_case_pack_weight" nolabel="1"/> <label string="lbs"-->
+<!--                                                                                               for="vendor_case_pack_weight"/>-->
+<!--                                    <field name="vendor_case_pack_weight_kg" nolabel="1"/> <label string="kg"-->
+<!--                                                                                                  for="vendor_case_pack_weight_kg"/>-->
+<!--                                </group>-->
+<!--                                <br/>-->
+<!--                                <group>-->
+<!--                                    <group>-->
+<!--                                        <label string="Put Away Pallet Quantity (Units)" for="pap_qty"-->
+<!--                                               class="o_horizontal_separator" style="font-size: 1.2rem !important;"/>-->
+<!--                                        <field name="pap_qty" nolabel="1"/>-->
+<!--                                    </group>-->
+<!--                                </group>-->
+<!--                                <label string="Put Away Pallet Dimensions &amp; Weight" for="pap_length"-->
+<!--                                       class="o_horizontal_separator" style="font-size: 1.625rem !important;"/>-->
+<!--                                <group col="5">-->
+<!--                                    <label string="Length" for="pap_length"/>-->
+<!--                                    <field name="pap_length" nolabel="1"/> <label string="In"-->
+<!--                                                                                  for="pap_length"/>-->
+<!--                                    <field name="pap_length_cm" nolabel="1"/> <label string="cm"-->
+<!--                                                                                     for="pap_length_cm"/>-->
+<!--                                </group>-->
+<!--                                <group col="5">-->
+<!--                                    <label string="Width" for="pap_width"/>-->
+<!--                                    <field name="pap_width" nolabel="1"/> <label string="In"-->
+<!--                                                                                 for="pap_width"/>-->
+<!--                                    <field name="pap_width_cm" nolabel="1"/> <label string="cm"-->
+<!--                                                                                    for="pap_width_cm"/>-->
+<!--                                </group>-->
+<!--                                <group col="5">-->
+<!--                                    <label string="Height" for="pap_height"/>-->
+<!--                                    <field name="pap_height" nolabel="1"/> <label string="In"-->
+<!--                                                                                  for="pap_height"/>-->
+<!--                                    <field name="pap_height_cm" nolabel="1"/> <label string="cm"-->
+<!--                                                                                     for="pap_height_cm"/>-->
+<!--                                </group>-->
+<!--                                <group col="5">-->
+<!--                                    <label string="Cube" for="pap_cube"/>-->
+<!--                                    <field name="pap_cube" nolabel="1"/> <label string="CuFt"-->
+<!--                                                                                for="pap_cube"/>-->
+<!--                                    <field name="pap_cube_m3" nolabel="1"/> <label string="m3"-->
+<!--                                                                                   for="pap_cube_m3"/>-->
+<!--                                </group>-->
+<!--                                <group col="5">-->
+<!--                                    <label string="Weight" for="pap_weight"/>-->
+<!--                                    <field name="pap_weight" nolabel="1"/> <label string="lbs"-->
+<!--                                                                                  for="pap_weight"/>-->
+<!--                                    <field name="pap_weight_kg" nolabel="1"/> <label string="kg"-->
+<!--                                                                                     for="pap_weight_kg"/>-->
+<!--                                </group>-->
+<!--                                <br/>-->
+<!--                                <group>-->
+<!--                                    <group>-->
+<!--                                        <label string="Retail Pallet Quantity (Units)" for="rpl_qty"-->
+<!--                                               class="o_horizontal_separator" style="font-size: 1.2rem !important;"/>-->
+<!--                                        <field name="rpl_qty" nolabel="1"/>-->
+<!--                                    </group>-->
+<!--                                </group>-->
+<!--                                <label string="Retail Pallet Dimensions &amp; Weight" for="rpl_length"-->
+<!--                                       class="o_horizontal_separator" style="font-size: 1.625rem !important;"/>-->
+<!--                                <group col="5">-->
+<!--                                    <label string="Length" for="rpl_length"/>-->
+<!--                                    <field name="rpl_length" nolabel="1"/> <label string="In"-->
+<!--                                                                                  for="rpl_length"/>-->
+<!--                                    <field name="rpl_length_cm" nolabel="1"/> <label string="cm"-->
+<!--                                                                                     for="rpl_length_cm"/>-->
+<!--                                </group>-->
+<!--                                <group col="5">-->
+<!--                                    <label string="Width" for="rpl_width"/>-->
+<!--                                    <field name="rpl_width" nolabel="1"/> <label string="In"-->
+<!--                                                                                 for="rpl_width"/>-->
+<!--                                    <field name="rpl_width_cm" nolabel="1"/> <label string="cm"-->
+<!--                                                                                    for="rpl_width_cm"/>-->
+<!--                                </group>-->
+<!--                                <group col="5">-->
+<!--                                    <label string="Height" for="rpl_height"/>-->
+<!--                                    <field name="rpl_height" nolabel="1"/> <label string="In"-->
+<!--                                                                                  for="rpl_height"/>-->
+<!--                                    <field name="rpl_height_cm" nolabel="1"/> <label string="cm"-->
+<!--                                                                                     for="rpl_height_cm"/>-->
+<!--                                </group>-->
+<!--                                <group col="5">-->
+<!--                                    <label string="Cube" for="rpl_cube"/>-->
+<!--                                    <field name="rpl_cube" nolabel="1"/> <label string="CuFt"-->
+<!--                                                                                for="rpl_cube"/>-->
+<!--                                    <field name="rpl_cube_m3" nolabel="1"/> <label string="m3"-->
+<!--                                                                                   for="rpl_cube_m3"/>-->
+<!--                                </group>-->
+<!--                                <group col="5">-->
+<!--                                    <label string="Weight" for="rpl_weight"/>-->
+<!--                                    <field name="rpl_weight" nolabel="1"/> <label string="lbs"-->
+<!--                                                                                  for="rpl_weight"/>-->
+<!--                                    <field name="rpl_weight_kg" nolabel="1"/> <label string="kg"-->
+<!--                                                                                     for="rpl_weight_kg"/>-->
+<!--                                </group>-->
+<!--                                <br/>-->
+<!--                                <label string="20 FT Container Load Quantity" for="c20ft_cuft"-->
+<!--                                       class="o_horizontal_separator" style="font-size: 1.625rem !important;"/>-->
+<!--                                <group col="5">-->
+<!--                                    <label string="CuFt (1,172 Cu Ft  -  33.2 m3)" for="c20ft_cuft"/>-->
+<!--                                    <field name="c20ft_cuft" nolabel="1"/> <label string="CuFt"-->
+<!--                                                                                  for="c20ft_cuft"/>-->
+<!--                                    <field name="c20ft_cuft_m" nolabel="1"/> <label string="m3"-->
+<!--                                                                                    for="c20ft_cuft_m"/>-->
+<!--                                </group>-->
+<!--                                <group col="5">-->
+<!--                                    <label string="Weight (32,500 Lbs  -  14,742 kg)" for="c20ft_weight_lbs"/>-->
+<!--                                    <field name="c20ft_weight_lbs" nolabel="1"/> <label string="lbs"-->
+<!--                                                                                        for="c20ft_weight_lbs"/>-->
+<!--                                    <field name="c20ft_weight_kg" nolabel="1"/> <label string="kg"-->
+<!--                                                                                       for="c20ft_weight_kg"/>-->
+<!--                                </group>-->
+<!--                                <group>-->
+<!--                                    <group>-->
+<!--                                        <label string="Ocean Freight Cost $" for="c20ft_freight_cost"-->
+<!--                                               class="o_horizontal_separator" style="font-size: 1.05rem !important;"/>-->
+<!--                                        <field name="c20ft_freight_cost" nolabel="1"/>-->
+<!--                                    </group>-->
+<!--                                </group>-->
+<!--                                <group>-->
+<!--                                    <group>-->
+<!--                                        <label string="Ocean Freight Cost %" for="c20ft_freight_cost_per"-->
+<!--                                               class="o_horizontal_separator" style="font-size: 1.05rem !important;"/>-->
+<!--                                        <field name="c20ft_freight_cost_per" nolabel="1"/>-->
+<!--                                    </group>-->
+<!--                                </group>-->
+<!--                                <br/>-->
+<!--                                <label string="40 FT Container Load Quantity" for="c40ft_cuft"-->
+<!--                                       class="o_horizontal_separator" style="font-size: 1.625rem !important;"/>-->
+<!--                                <group col="5">-->
+<!--                                    <label string="CuFt (2,389 Cu Ft  -  67.7 m3)" for="c40ft_cuft"/>-->
+<!--                                    <field name="c40ft_cuft" nolabel="1"/> <label string="CuFt"-->
+<!--                                                                                  for="c40ft_cuft"/>-->
+<!--                                    <field name="c40ft_cuft_m" nolabel="1"/> <label string="m3"-->
+<!--                                                                                    for="c40ft_cuft_m"/>-->
+<!--                                </group>-->
+<!--                                <group col="5">-->
+<!--                                    <label string="Weight (45,500 Lbs  -  20,865 kg)" for="c40ft_weight_lbs"/>-->
+<!--                                    <field name="c40ft_weight_lbs" nolabel="1"/> <label string="lbs"-->
+<!--                                                                                        for="c40ft_weight_lbs"/>-->
+<!--                                    <field name="c40ft_weight_kg" nolabel="1"/> <label string="kg"-->
+<!--                                                                                       for="c40ft_weight_kg"/>-->
+<!--                                </group>-->
+<!--                                <group>-->
+<!--                                    <group>-->
+<!--                                        <label string="Ocean Freight Cost $" for="c40ft_freight_cost"-->
+<!--                                               class="o_horizontal_separator" style="font-size: 1.05rem !important;"/>-->
+<!--                                        <field name="c40ft_freight_cost" nolabel="1"/>-->
+<!--                                    </group>-->
+<!--                                </group>-->
+<!--                                <group>-->
+<!--                                    <group>-->
+<!--                                        <label string="Ocean Freight Cost %" for="c40ft_freight_cost_per"-->
+<!--                                               class="o_horizontal_separator" style="font-size: 1.05rem !important;"/>-->
+<!--                                        <field name="c40ft_freight_cost_per" nolabel="1"/>-->
+<!--                                    </group>-->
+<!--                                </group>-->
+<!--                                <br/>-->
+<!--                                <label string="40 FT HC Container Load Quantity" for="c40hcft_cuft"-->
+<!--                                       class="o_horizontal_separator" style="font-size: 1.625rem !important;"/>-->
+<!--                                <group col="5">-->
+<!--                                    <label string="CuFt (2,696 Cu Ft  -  76.4 m3)" for="c40hcft_cuft"/>-->
+<!--                                    <field name="c40hcft_cuft" nolabel="1"/> <label string="CuFt"-->
+<!--                                                                                    for="c40hcft_cuft"/>-->
+<!--                                    <field name="c40hcft_cuft_m" nolabel="1"/> <label string="m3"-->
+<!--                                                                                      for="c40hcft_cuft_m"/>-->
+<!--                                </group>-->
+<!--                                <group col="5">-->
+<!--                                    <label string="Weight (45,500 Lbs  -  20,865 kg)" for="c40hcft_weight_lbs"/>-->
+<!--                                    <field name="c40hcft_weight_lbs" nolabel="1"/> <label string="lbs"-->
+<!--                                                                                          for="c40hcft_weight_lbs"/>-->
+<!--                                    <field name="c40hcft_weight_kg" nolabel="1"/> <label string="kg"-->
+<!--                                                                                         for="c40hcft_weight_kg"/>-->
+<!--                                </group>-->
+<!--                                <group>-->
+<!--                                    <group>-->
+<!--                                        <label string="Ocean Freight Cost $" for="c40hcft_freight_cost"-->
+<!--                                               class="o_horizontal_separator" style="font-size: 1.05rem !important;"/>-->
+<!--                                        <field name="c40hcft_freight_cost" nolabel="1"/>-->
+<!--                                    </group>-->
+<!--                                </group>-->
+<!--                                <group>-->
+<!--                                    <group>-->
+<!--                                        <label string="Ocean Freight Cost %" for="c40hcft_freight_cost_per"-->
+<!--                                               class="o_horizontal_separator" style="font-size: 1.05rem !important;"/>-->
+<!--                                        <field name="c40hcft_freight_cost_per" nolabel="1"/>-->
+<!--                                    </group>-->
+<!--                                </group>-->
+<!--                                <br/>-->
+<!--                                <label string="45 FT Container Load Quantity" for="c45ft_cuft"-->
+<!--                                       class="o_horizontal_separator" style="font-size: 1.625rem !important;"/>-->
+<!--                                <group col="5">-->
+<!--                                    <label string="CuFt (3,050 Cu Ft  -  86.4 m3)" for="c45ft_cuft"/>-->
+<!--                                    <field name="c45ft_cuft" nolabel="1"/> <label string="CuFt"-->
+<!--                                                                                  for="c45ft_cuft"/>-->
+<!--                                    <field name="c45ft_cuft_m" nolabel="1"/> <label string="m3"-->
+<!--                                                                                    for="c45ft_cuft_m"/>-->
+<!--                                </group>-->
+<!--                                <group col="5">-->
+<!--                                    <label string="Weight (45,500 Lbs  -  20,865 kg)" for="c45ft_weight_lbs"/>-->
+<!--                                    <field name="c45ft_weight_lbs" nolabel="1"/> <label string="lbs"-->
+<!--                                                                                        for="c45ft_weight_lbs"/>-->
+<!--                                    <field name="c45ft_weight_kg" nolabel="1"/> <label string="kg"-->
+<!--                                                                                       for="c45ft_weight_kg"/>-->
+<!--                                </group>-->
+<!--                                <group>-->
+<!--                                    <group>-->
+<!--                                        <label string="Ocean Freight Cost $" for="c45ft_freight_cost"-->
+<!--                                               class="o_horizontal_separator" style="font-size: 1.05rem !important;"/>-->
+<!--                                        <field name="c45ft_freight_cost" nolabel="1"/>-->
+<!--                                    </group>-->
+<!--                                </group>-->
+<!--                                <group>-->
+<!--                                    <group>-->
+<!--                                        <label string="Ocean Freight Cost %" for="c45ft_freight_cost_per"-->
+<!--                                               class="o_horizontal_separator" style="font-size: 1.05rem !important;"/>-->
+<!--                                        <field name="c45ft_freight_cost_per" nolabel="1"/>-->
+<!--                                    </group>-->
+<!--                                </group>-->
+<!--                                <br/>-->
+<!--                                <label string="48 FT Truck (Dry Van ) Load Quantity" for="t48ft_cuft"-->
+<!--                                       class="o_horizontal_separator" style="font-size: 1.625rem !important;"/>-->
+<!--                                <group col="5">-->
+<!--                                    <label string="CuFt (3,000 Cu Ft  -  84.95 m3)" for="t48ft_cuft"/>-->
+<!--                                    <field name="t48ft_cuft" nolabel="1"/> <label string="CuFt"-->
+<!--                                                                                  for="t48ft_cuft"/>-->
+<!--                                    <field name="t48ft_cuft_m" nolabel="1"/> <label string="m3"-->
+<!--                                                                                    for="t48ft_cuft_m"/>-->
+<!--                                </group>-->
+<!--                                <group col="5">-->
+<!--                                    <label string="Weight (43,000 Lbs  -  19,504 kg)" for="t48ft_weight_lbs"/>-->
+<!--                                    <field name="t48ft_weight_lbs" nolabel="1"/> <label string="lbs"-->
+<!--                                                                                        for="t48ft_weight_lbs"/>-->
+<!--                                    <field name="t48ft_weight_kg" nolabel="1"/> <label string="kg"-->
+<!--                                                                                       for="t48ft_weight_kg"/>-->
+<!--                                </group>-->
+<!--                                <group>-->
+<!--                                    <group>-->
+<!--                                        <label string="Ocean Freight Cost $" for="t48ft_freight_cost"-->
+<!--                                               class="o_horizontal_separator" style="font-size: 1.05rem !important;"/>-->
+<!--                                        <field name="t48ft_freight_cost" nolabel="1"/>-->
+<!--                                    </group>-->
+<!--                                </group>-->
+<!--                                <group>-->
+<!--                                    <group>-->
+<!--                                        <label string="Ocean Freight Cost %" for="t48ft_freight_cost_per"-->
+<!--                                               class="o_horizontal_separator" style="font-size: 1.05rem !important;"/>-->
+<!--                                        <field name="t48ft_freight_cost_per" nolabel="1"/>-->
+<!--                                    </group>-->
+<!--                                </group>-->
+<!--                                <br/>-->
+<!--                                <label string="58 FT Truck (Dry Van ) Load Quantity" for="t58ft_cuft"-->
+<!--                                       class="o_horizontal_separator" style="font-size: 1.625rem !important;"/>-->
+<!--                                <group col="5">-->
+<!--                                    <label string="CuFt (3,800 Cu Ft  -  107.60 m3)" for="t58ft_cuft"/>-->
+<!--                                    <field name="t58ft_cuft" nolabel="1"/> <label string="CuFt"-->
+<!--                                                                                  for="t58ft_cuft"/>-->
+<!--                                    <field name="t58ft_cuft_m" nolabel="1"/> <label string="m3"-->
+<!--                                                                                    for="t58ft_cuft_m"/>-->
+<!--                                </group>-->
+<!--                                <group col="5">-->
+<!--                                    <label string="Weight (43,000 Lbs  -  19,504 kg)" for="t58ft_weight_lbs"/>-->
+<!--                                    <field name="t58ft_weight_lbs" nolabel="1"/> <label string="lbs"-->
+<!--                                                                                        for="t58ft_weight_lbs"/>-->
+<!--                                    <field name="t58ft_weight_kg" nolabel="1"/> <label string="kg"-->
+<!--                                                                                       for="t58ft_weight_kg"/>-->
+<!--                                </group>-->
+<!--                                <group>-->
+<!--                                    <group>-->
+<!--                                        <label string="Ocean Freight Cost $" for="t58ft_freight_cost"-->
+<!--                                               class="o_horizontal_separator" style="font-size: 1.05rem !important;"/>-->
+<!--                                        <field name="t58ft_freight_cost" nolabel="1"/>-->
+<!--                                    </group>-->
+<!--                                </group>-->
+<!--                                <group>-->
+<!--                                    <group>-->
+<!--                                        <label string="Ocean Freight Cost %" for="t58ft_freight_cost_per"-->
+<!--                                               class="o_horizontal_separator" style="font-size: 1.05rem !important;"/>-->
+<!--                                        <field name="t58ft_freight_cost_per" nolabel="1"/>-->
+<!--                                    </group>-->
+<!--                                </group>-->
+                            <!--                                Hide Fields Done*************************************************-->
+                            </page>
+                            <page string="Imagery and Art">
+                                <group>
+                                    <field name="imagery_ids" widget="many2many_binary"/>
+                                </group>
+                            </page>
+<!--                                Hide Fields *************************************************-->
+<!--                            <page string="Financials">-->
+<!--                                <group string="Export FOB Price">-->
+<!--                                    <group>-->
+<!--                                        <field name="export_mrf_price"/>-->
+<!--                                        <field name="export_factor"/>-->
+<!--                                        <field name="export_fob_price"/>-->
+<!--                                        <field name="mark_up_per"/>-->
+<!--                                        <field name="mark_up_cost"/>-->
+<!--                                        <field name="mark_up_cost_per"/>-->
+<!--                                    </group>-->
+<!--                                    <group>-->
+<!--                                        <field name="payment_terms_days"/>-->
+<!--                                        <field name="payment_terms_per_year"/>-->
+<!--                                        <field name="payment_terms_cost"/>-->
+<!--                                        <field name="payment_terms_per"/>-->
+<!--                                    </group>-->
+<!--                                </group>-->
+<!--                                <group string="Importation Costs">-->
+<!--                                    <field name="export_price_ids">-->
+<!--                                        <tree editable="bottom">-->
+<!--                                            <field name="fob_amount"/>-->
+<!--                                            <field name="cost"/>-->
+<!--                                            <field name="percentage"/>-->
+<!--                                            <field name="commission"/>-->
+<!--                                        </tree>-->
+<!--                                        <form>-->
+<!--                                            <sheet>-->
+<!--                                                <group>-->
+<!--                                                    <group>-->
+<!--                                                        <field name="fob_amount"/>-->
+<!--                                                        <field name="cost"/>-->
+<!--                                                    </group>-->
+<!--                                                    <group>-->
+<!--                                                        <field name="percentage"/>-->
+<!--                                                        <field name="commission"/>-->
+<!--                                                    </group>-->
+<!--                                                </group>-->
+<!--                                            </sheet>-->
+<!--                                        </form>-->
+<!--                                    </field>-->
+<!--                                </group>-->
+<!--                                <group>-->
+<!--                                    <group string="Importation Cost">-->
+<!--                                        <field name="importation_cost"/>-->
+<!--                                        <field name="importation_percentage"/>-->
+<!--                                    </group>-->
+<!--                                    <group string="Logistics Processing Fee">-->
+<!--                                        <field name="processing_cost"/>-->
+<!--                                        <field name="processing_percentage"/>-->
+<!--                                    </group>-->
+<!--                                </group>-->
+<!--                                <group>-->
+<!--                                    <field name="total_importation_cost"/>-->
+<!--                                    <field name="total_importation_percentage"/>-->
+<!--                                    &lt;!&ndash;                                    <field name="importation_cost_ids">&ndash;&gt;-->
+<!--                                    &lt;!&ndash;                                        <tree editable="bottom">&ndash;&gt;-->
+<!--                                    &lt;!&ndash;                                            <field name="cost"/>&ndash;&gt;-->
+<!--                                    &lt;!&ndash;                                            <field name="percentage"/>&ndash;&gt;-->
+<!--                                    &lt;!&ndash;                                            <field name="us_trading"/>&ndash;&gt;-->
+<!--                                    &lt;!&ndash;                                            <field name="price_per"/>&ndash;&gt;-->
+<!--                                    &lt;!&ndash;                                            <field name="commission"/>&ndash;&gt;-->
+<!--                                    &lt;!&ndash;                                        </tree>&ndash;&gt;-->
+<!--                                    &lt;!&ndash;                                        <form>&ndash;&gt;-->
+<!--                                    &lt;!&ndash;                                            <sheet>&ndash;&gt;-->
+<!--                                    &lt;!&ndash;                                                <group>&ndash;&gt;-->
+<!--                                    &lt;!&ndash;                                                    <group>&ndash;&gt;-->
+<!--                                    &lt;!&ndash;                                                        <field name="cost"/>&ndash;&gt;-->
+<!--                                    &lt;!&ndash;                                                        <field name="percentage"/>&ndash;&gt;-->
+<!--                                    &lt;!&ndash;                                                    </group>&ndash;&gt;-->
+<!--                                    &lt;!&ndash;                                                    <group>&ndash;&gt;-->
+<!--                                    &lt;!&ndash;                                                        <field name="us_trading"/>&ndash;&gt;-->
+<!--                                    &lt;!&ndash;                                                        <field name="price_per"/>&ndash;&gt;-->
+<!--                                    &lt;!&ndash;                                                        <field name="commission"/>&ndash;&gt;-->
+<!--                                    &lt;!&ndash;                                                    </group>&ndash;&gt;-->
+<!--                                    &lt;!&ndash;                                                </group>&ndash;&gt;-->
+<!--                                    &lt;!&ndash;                                            </sheet>&ndash;&gt;-->
+<!--                                    &lt;!&ndash;                                        </form>&ndash;&gt;-->
+<!--                                    &lt;!&ndash;                                    </field>&ndash;&gt;-->
+<!--                                </group>-->
+<!--                                <group string="Storage Cost">-->
+<!--                                    <field name="storage_cost_ids">-->
+<!--                                        <tree editable="bottom">-->
+<!--                                            <field name="amount"/>-->
+<!--                                            <field name="cost"/>-->
+<!--                                            <field name="percentage"/>-->
+<!--                                            <field name="price_per_1"/>-->
+<!--                                            <field name="commission"/>-->
+<!--                                        </tree>-->
+<!--                                        <form>-->
+<!--                                            <sheet>-->
+<!--                                                <group>-->
+<!--                                                    <group>-->
+<!--                                                        <field name="amount"/>-->
+<!--                                                        <field name="cost"/>-->
+<!--                                                        <field name="percentage"/>-->
+<!--                                                    </group>-->
+<!--                                                    <group>-->
+<!--                                                        <field name="price_per_1"/>-->
+<!--                                                        <field name="commission"/>-->
+<!--                                                    </group>-->
+<!--                                                </group>-->
+<!--                                            </sheet>-->
+<!--                                        </form>-->
+<!--                                    </field>-->
+<!--                                    <field name="storage_cost"/>-->
+<!--                                    <field name="storage_percentage"/>-->
+<!--                                </group>-->
+<!--                                <group string="Material Cost">-->
+<!--                                    <field name="material_cost_ids">-->
+<!--                                        <tree editable="bottom">-->
+<!--                                            <field name="material_amount"/>-->
+<!--                                            <field name="cost"/>-->
+<!--                                            <field name="percentage"/>-->
+<!--                                            <field name="price_per"/>-->
+<!--                                            <field name="commission"/>-->
+<!--                                        </tree>-->
+<!--                                        <form>-->
+<!--                                            <sheet>-->
+<!--                                                <group>-->
+<!--                                                    <group>-->
+<!--                                                        <field name="material_amount"/>-->
+<!--                                                        <field name="cost"/>-->
+<!--                                                        <field name="percentage"/>-->
+<!--                                                    </group>-->
+<!--                                                    <group>-->
+<!--                                                        <field name="price_per"/>-->
+<!--                                                        <field name="commission"/>-->
+<!--                                                    </group>-->
+<!--                                                </group>-->
+<!--                                            </sheet>-->
+<!--                                        </form>-->
+<!--                                    </field>-->
+<!--                                    <field name="material_cost"/>-->
+<!--                                    <field name="material_percentage"/>-->
+<!--                                </group>-->
+<!--                                <group string="Total Cost">-->
+<!--                                    <field name="total_cost"/>-->
+<!--                                </group>-->
+<!--                                <group>-->
+<!--                                    <group string="Warefor Solutions Cost">-->
+<!--                                        <field name="warefor_cost"/>-->
+<!--                                        <field name="warefor_margin_cost"/>-->
+<!--                                        <field name="warefor_margin_per"/>-->
+<!--                                        <field name="warefor_mark_up"/>-->
+<!--                                    </group>-->
+<!--                                    <group string="Wholesale Cost">-->
+<!--                                        <field name="wholesale_price"/>-->
+<!--                                        <field name="wholesale_margin_cost"/>-->
+<!--                                        <field name="wholesale_margin_per"/>-->
+<!--                                        <field name="wholesale_mark_up"/>-->
+<!--                                    </group>-->
+<!--                                    &lt;!&ndash;                                    <group>&ndash;&gt;-->
+<!--                                    &lt;!&ndash;                                        <field name="total_cost"/>&ndash;&gt;-->
+<!--                                    &lt;!&ndash;                                    </group>&ndash;&gt;-->
+<!--                                </group>-->
+<!--                            </page>-->
+<!--                                Hide Fields Done*************************************************-->
+                            <page string="Miscellaneous">
+                                <group>
+                                    <group>
+                                        <field name="country_to_pricesmart"/>
+                                        <field name="is_ocountry_print"/>
+                                        <field name="is_licensed"/>
+                                        <field name="licensed_applied_country"/>
+                                        <field name="item_lot_num"/>
+                                        <field name="shipping_config"/>
+                                        <field name="pallet_protected"/>
+                                    </group>
+                                    <group>
+                                        <field name="multi_country_parts"/>
+                                        <field name="packaging_eng_n_spn"/>
+                                        <field name="is_label_printed"/>
+                                        <field name="is_manual_bilingual"/>
+                                        <field name="hazmat_appl"/>
+                                        <field name="hazmat_code"
+                                               attrs="{'invisible': [('hazmat_appl','=',False)], 'required': [('hazmat_appl','=',True)]}"/>
+                                        <field name="double_stackable"/>
+                                    </group>
+                                </group>
+                                <newline/>
+                                <group class="o_row"><h2>UOM Pallet</h2></group>
+                                <group>
+                                    <group>
+                                        <field name="uom_case"/>
+                                        <field name="uom_layer"/>
+                                        <field name="uom_pallet"/>
+                                        <field name="uom_pallet_layer"/>
+                                    </group>
+                                    <group>
+                                        <field name="vendor_min_qty"/>
+                                        <field name="shipping_method"/>
+                                        <field name="equipment_type"/>
+                                        <field name="vendor_lead_time"/>
+                                    </group>
+                                </group>
+                                <newline/>
+
+                                <group class="o_row"><h2>Container</h2></group>
+                                <group>
+                                    <group>
+                                        <field name="dimension_height"/>
+                                        <field name="dimension_length"/>
+                                        <field name="dimension_width"/>
+                                    </group>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="product_development_kanban_view" model="ir.ui.view">
+            <field name="name">product.development.kanban.view</field>
+            <field name="model">product.development</field>
+            <field name="priority" eval="1"/>
+            <field name="arch" type="xml">
+                <kanban default_group_by="stage_id" class="o_kanban_small_column o_opportunity_kanban">
+                    <field name="date"/>
+                    <field name="stage_id"/>
+                    <field name="product_id"/>
+                    <field name="image"/>
+                    <field name="prepared_by"/>
+                    <field name="location_id"/>
+                    <field name="made_by"/>
+                    <field name="id"/>
+                    <field name="made_in"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_global_click">
+                                <div class="o_dropdown_kanban dropdown">
+                                    <a class="dropdown-toggle o-no-caret btn" role="button" data-toggle="dropdown"
+                                       data-display="static" href="#" aria-label="Dropdown menu" title="Dropdown menu">
+                                        <span class="fa fa-ellipsis-v"/>
+                                    </a>
+                                    <div class="dropdown-menu" role="menu">
+                                        <t t-if="widget.editable">
+                                            <a role="menuitem" type="edit" class="dropdown-item">Edit</a>
+                                        </t>
+                                        <t t-if="widget.deletable">
+                                            <a role="menuitem" type="delete" class="dropdown-item">Delete</a>
+                                        </t>
+                                        <ul class="oe_kanban_colorpicker" data-field="color"/>
+                                    </div>
+                                </div>
+                                <div class="o_kanban_image">
+                                    <img t-att-src="kanban_image('product.development', 'image', record.id.raw_value)"
+                                         class="o_image_64_contain"/>
+                                </div>
+                                <div class="oe_kanban_content">
+                                    <div>
+                                        <strong class="o_kanban_record_title">
+                                            <b>
+                                                <field name="product_id"/>
+                                            </b>
+                                        </strong>
+                                    </div>
+                                    <div>Prepared_by:
+                                        <field name="prepared_by"/>
+                                    </div>
+                                    <div>Date:
+                                        <field name="date"/>
+                                    </div>
+                                    <div>Store Location:
+                                        <field name="location_id"/>
+                                    </div>
+                                    <div>Made By:
+                                        <field name="made_by"/>
+                                    </div>
+                                    <div>Made In:
+                                        <field name="made_in"/>
+                                    </div>
+                                    <!--                                    <div class="o_kanban_record_bottom">-->
+                                    <!--                                        <div class="oe_kanban_bottom_right">-->
+                                    <!--                                            <img t-att-src="kanban_image('res.users', 'image_1920', record.user_id.raw_value)"-->
+                                    <!--                                                 t-att-title="record.user_id.value"-->
+                                    <!--                                                 t-att-alt="record.user_id.value"-->
+                                    <!--                                                 class="oe_kanban_avatar"/>-->
+                                    <!--                                        </div>-->
+                                    <!--                                    </div>-->
+                                </div>
+                                <div class="oe_clear"/>
+
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <record id="product_development_action" model="ir.actions.act_window">
+            <field name="name">Product Development</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">product.development</field>
+            <field name="view_mode">kanban,tree,form</field>
+        </record>
+
+        <menuitem name="Product Development" id="product_development_root" sequence="26"
+                  action="product_development_action" web_icon="warefor_crm,static/description/icon.png"/>
+    </data>
+</odoo>

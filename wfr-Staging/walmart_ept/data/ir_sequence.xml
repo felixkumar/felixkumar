@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+
+    <record id="ir_sequence_inventory_inventory_adjustments_ept" model="ir.sequence">
+        <field name="name">Inventory Adjustments</field>
+        <field name="prefix">INV</field>
+        <field name="padding">4</field>
+        <field name="number_increment">1</field>
+        <field name="number_next_actual">1</field>
+        <field name="company_id" ref="base.main_company"></field>
+    </record>
+    <record id="seq_walmart_file_process_job" model="ir.sequence">
+        <field name="name">Walmart File Process Job Sequence</field>
+        <field name="code">walmart.log.book.ept</field>
+        <field name="padding">5</field>
+        <field name="prefix">LOG</field>
+        <field name="company_id" eval="False"/>
+    </record>
+
+    <record id="seq_walmart_product_sync_report_or" model="ir.sequence">
+        <field name="name">Walmart Product Sync Report</field>
+        <field name="code">walmart.product.sync.report.sequence.or.ept</field>
+        <field name="padding">5</field>
+        <field name="prefix">OR</field>
+        <field name="number_increment">1</field>
+        <field name="number_next_actual">1</field>
+        <field name="company_id" eval="False"/>
+    </record>
+
+    <record id="seq_walmart_order_queue_data" model="ir.sequence">
+        <field name="name">Walmart Order Queue Sequence</field>
+        <field name="code">walmart.order.queue.ept</field>
+        <field name="prefix">ODQ</field>
+        <field name="padding">6</field>
+        <field name="company_id" eval="False"/>
+    </record>
+
+</odoo>

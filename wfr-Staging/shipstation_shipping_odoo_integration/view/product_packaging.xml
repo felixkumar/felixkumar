@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="product_packaging_tree_view_extended" model="ir.ui.view">
+            <field name="name">product.packaging.tree.view.extended</field>
+            <field name="model">product.packaging</field>
+            <field name="arch" type="xml">
+                <tree string="Product Packagings">
+                    <field name="sequence" widget="handle"/>
+                    <field name="name" string="Packaging"/>
+                    <field name="package_carrier_type" />
+                    <field name="width" />
+                    <field name="height" />
+                    <field name="packaging_length" />
+                    <field name="volume" />
+                    <field name="max_weight" />
+                    <field name="shipper_package_code" />
+                </tree>
+            </field>
+        </record>
+        <record id="product_packaging_form_view_shipstation_extended" model="ir.ui.view">
+            <field name="name">product.packaging.form.view.shipstation.extended</field>
+            <field name="model">product.packaging</field>
+            <field name="arch" type="xml">
+                <form string="Product Packaging">
+                    <sheet>
+                        <label for="name" string="Packaging"/>
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                        <group>
+                            <group>
+                                <field name="id" invisible='1'/>
+                                <field name="shipper_package_code" />
+                                <field name="width" />
+                                <field name="height" />
+                                <field name="packaging_length" />
+                                <field name="volume" />
+                            </group>
+                            <group>
+                                <field name="package_carrier_type" />
+                                <field name="max_weight" />
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="action_product_packaging_view_extended_shipstation">
+            <field name="name">Product Packagings Extended</field>
+            <field name="res_model">product.packaging</field>
+            <field name="view_ids" eval="[(5, 0, 0),
+                (0, 0, {'view_mode': 'tree', 'view_id': ref('product_packaging_tree_view_extended')}),
+                (0, 0, {'view_mode': 'form', 'view_id': ref('product_packaging_form_view_shipstation_extended')})]"/>
+        </record>
+        <menuitem id="menuitem_product_packagings_extended" name="Product Packagings" parent="shipstation_shipping_odoo_integration.shipstation_odoo_integration_menuitem" action="action_product_packaging_view_extended_shipstation" />
+    </data>
+</odoo>

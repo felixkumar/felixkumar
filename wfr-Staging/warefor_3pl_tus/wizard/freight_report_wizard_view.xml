@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="freight_report_wizard_form" model="ir.ui.view">
+            <field name="name">freight.report.wizard.form</field>
+            <field name="model">freight.report.wizard</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <group>
+                            <field name="date_from"/>
+                            <field name="date_to"/>
+                        </group>
+                        <group>
+                            <field name="customer_id"/>
+                        </group>
+                    </group>
+                    <footer>
+                        <button name="generate_pl_report" string="Generate Report" type="object"
+                                class="btn-primary"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_freight_report_outbound_wizard" model="ir.actions.act_window">
+            <field name="name">Outbound Logistics Report</field>
+            <field name="res_model">freight.report.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="freight_report_wizard_form"/>
+            <field name="context" eval="{'default_is_outbound': True}"/>
+            <field name="target">new</field>
+        </record>
+
+        <record id="action_freight_report_inbound_wizard" model="ir.actions.act_window">
+            <field name="name">Inbound Logistics Report</field>
+            <field name="res_model">freight.report.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="freight_report_wizard_form"/>
+            <field name="context" eval="{'default_is_outbound': False}"/>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem id="menu_freight_freights_outbound_report"
+                  name="Reporting"
+                  parent="menu_freight_outbound_root"
+                  groups="base.group_system"
+                  sequence="10"/>
+
+        <menuitem id="menu_freight_freights_inbound_report"
+                  name="Reporting"
+                  groups="base.group_system"
+                  parent="warefor_3pl_tus.menu_freight_root"
+                  sequence="15"/>
+
+        <menuitem id="sub_menu_freight_freights_outbound_report"
+                  name="Outbound Logistics Report (Excel)"
+                  parent="menu_freight_freights_outbound_report"
+                  action="action_freight_report_outbound_wizard"
+                  sequence="10"/>
+
+        <menuitem id="sunb_menu_freight_freights_inbound_report"
+                  name="Inbound Logistics Report (Excel)"
+                  parent="menu_freight_freights_inbound_report"
+                  action="action_freight_report_inbound_wizard"
+                  sequence="10"/>
+
+    </data>
+</odoo>

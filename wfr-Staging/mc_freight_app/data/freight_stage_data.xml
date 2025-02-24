@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!--Sequqnce for the shipment-->
+        <record id="seq_freight_freight" model="ir.sequence">
+            <field name="name">Shipment</field>
+            <field name="code">freight.freight.sequence</field>
+            <field name="prefix">SHIP</field>
+            <field name="padding">6</field>
+            <field name="company_id" eval="False"></field>
+        </record>
+
+        <!--Default Stages for the tracking the Shipment INBOUND-->
+        <record id="dock_audit_approved" model="freight.stage">
+            <field name="name">New</field>
+            <field name="sequence">0</field>
+            <field name="is_fold" eval="False"/>
+        </record>
+
+        <record id="freight_quote" model="freight.stage">
+            <field name="name">Scheduled</field>
+            <field name="sequence">1</field>
+            <field name="is_fold" eval="False"/>
+        </record>
+
+        <record id="inventory_received_at_brw" model="freight.stage">
+            <field name="name">Checked-In</field>
+            <field name="sequence">2</field>
+            <field name="is_fold" eval="False"/>
+        </record>
+
+        <record id="unloading_truck" model="freight.stage">
+            <field name="name">Unloading</field>
+            <field name="sequence">3</field>
+            <field name="is_fold" eval="False"/>
+        </record>
+
+<!--        <record id="create_shipment" model="freight.stage">-->
+<!--            <field name="name">To Be Invoiced</field>-->
+<!--            <field name="sequence">4</field>-->
+<!--            <field name="is_fold" eval="False"/>-->
+<!--        </record>-->
+
+        <record id="empties_stage" model="freight.stage">
+            <field name="name">Empties</field>
+            <field name="sequence">5</field>
+            <field name="is_fold" eval="False"/>
+        </record>
+
+        <record id="container_checked_out" model="freight.stage">
+            <field name="name">Checked Out</field>
+            <field name="sequence">6</field>
+            <field name="is_fold" eval="False"/>
+        </record>
+
+<!--        <record id="closed" model="freight.stage">-->
+<!--            <field name="name">Closed</field>-->
+<!--            <field name="sequence">7</field>-->
+<!--            <field name="is_fold" eval="True"/>-->
+<!--            <field name="is_shipment_confirmation" eval="True"/>-->
+<!--        </record>-->
+
+<!--Out Bound Stage-->
+        <record id="seq_freight_freight_outbound" model="ir.sequence">
+            <field name="name">Shipment</field>
+            <field name="code">freight.freight.sequence</field>
+            <field name="prefix">SHIP/OUT</field>
+            <field name="padding">6</field>
+            <field name="company_id" eval="False"></field>
+        </record>
+
+        <!-- Default Stages for the tracking the Shipment OUTBOUND-->
+        <record id="dock_audit_approved_outbound" model="freight.outbound.stage">
+            <field name="name">New</field>
+            <field name="sequence">1</field>
+        </record>
+
+        <!--<record id="inventory_received_at_brw_outbound" model="freight.outbound.stage">
+            <field name="name">Received</field>
+            <field name="sequence">2</field>
+        </record>-->
+
+        <record id="scheduled_outbound" model="freight.outbound.stage">
+            <field name="name">Scheduled</field>
+            <field name="sequence">2</field>
+        </record>
+        <record id="shipped_review" model="freight.outbound.stage">
+            <field name="name">Review</field>
+            <field name="sequence">3</field>
+        </record>
+        <record id="staged_outbound" model="freight.outbound.stage">
+            <field name="name">Staged / Picked</field>
+            <field name="sequence">4</field>
+        </record>
+        <record id="loading_outbound" model="freight.outbound.stage">
+            <field name="name">Loading</field>
+            <field name="sequence">5</field>
+        </record>
+        <record id="loaded_outbound" model="freight.outbound.stage">
+            <field name="name">Loaded / Packed</field>
+            <field name="sequence">6</field>
+        </record>
+        <record id="shipped_outbound" model="freight.outbound.stage">
+            <field name="name">Shipped</field>
+            <field name="sequence">7</field>
+        </record>
+        <record id="pre_load_scan" model="freight.outbound.stage">
+            <field name="name">Pre-Load Scan</field>
+            <field name="sequence">8</field>
+        </record>
+        <record id="missing_first_scan" model="freight.outbound.stage">
+            <field name="name">Missing First Scan</field>
+            <field name="sequence">9</field>
+        </record>
+
+        <record id="in_transit" model="freight.outbound.stage">
+            <field name="name">In-Transit</field>
+            <field name="sequence">10</field>
+        </record>
+        <record id="exceptions" model="freight.outbound.stage">
+            <field name="name">Exceptions</field>
+            <field name="sequence">11</field>
+        </record>
+        <record id="delivered" model="freight.outbound.stage">
+            <field name="name">Delivered</field>
+            <field name="sequence">12</field>
+        </record>
+        <record id="returns_outbound" model="freight.outbound.stage">
+            <field name="name">Returned / Cancelled</field>
+            <field name="sequence">13</field>
+        </record>
+        <record id="disregarded" model="freight.outbound.stage">
+            <field name="name">Disregarded</field>
+            <field name="sequence">100</field>
+        </record>
+
+<!--        <record id="invoiced_outbound" model="freight.outbound.stage">-->
+<!--            <field name="name">To Be Invoiced</field>-->
+<!--            <field name="sequence">6</field>-->
+<!--        </record>-->
+
+<!--        <record id="complete_outbound" model="freight.outbound.stage">-->
+<!--            <field name="name">Closed</field>-->
+<!--            <field name="sequence">7</field>-->
+<!--        </record>-->
+    </data>
+</odoo>

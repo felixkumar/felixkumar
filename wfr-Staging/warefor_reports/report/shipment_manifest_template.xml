@@ -1,0 +1,495 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_ShipmentManifest_doc">
+        <div class="page" style="page-break-before:always;font-size:10px;">
+            <t t-call="web.layout">
+                <div class="w-100"
+                     style="background-color: #f2f2f2;width:100%;border: 1px solid #0e0d0d;margin: auto;font-weight: bold;">
+                    <div style="width:100%;position:relative;top:3px;font-weight: bold;text-align:center;padding-bottom:4px;font-size:15px;">
+                        SHIPMENT MANIFEST
+                    </div>
+                </div>
+                <t t-set="line_length" t-value="1"/>
+                <table style="width:100%;padding-top:20px;cellspacing=0 cellpadding=0">
+                    <tr>
+                        <th style="vertical-align: baseline;text-align:left;text-wrap: nowrap;font-size:10px;width:6%;">
+                            SHIP TO
+                        </th>
+                        <td style="vertical-align: baseline;text-align:left;font-size:10px;width:18%;padding-left:1%;">
+                            <div>
+                                <b>
+                                    <t t-esc="o.outbound_partner_id.name"/>
+                                </b>
+                            </div>
+                            <div>
+                                <t t-esc="o.outbound_partner_id.street"/>
+                            </div>
+                            <div>
+                                <t t-esc="o.outbound_partner_id.street2"/>
+                            </div>
+                            <div>
+                                <t t-esc="o.outbound_partner_id.city"/>
+                            </div>
+                        </td>
+                        <td style="vertical-align:baseline;text-align:left;font-size:10px;width:18%;padding-left:3%;">
+                            <div>
+                                <b>BOL/LOAD ID</b>
+                            </div>
+                            <div>
+                                <b>PURCHASE ORDER</b>
+                            </div>
+                            <div>
+                                <b>FINAL DESTINATION</b>
+                            </div>
+                            <div>
+                                <b>DISPATCH DATE</b>
+                            </div>
+                        </td>
+                        <td style="vertical-align:baseline;text-align:left;font-size:10px;width:20%;padding-left:10px;">
+                            <div>
+                                 <t t-if="o.bol_number">
+                                    <t t-esc="o.bol_number"/>
+                                </t>
+                                <t t-else="">
+                                    <span style="visibility:hidden;">gfggjhgj</span>
+                                </t>
+                            </div>
+                            <div>
+                                <t t-esc="po_number"/>
+                            </div>
+                            <div style="vertical-align:baseline;text-align:left;">
+                                <t t-if="o.final_destination_code">
+                                    <t t-esc="o.final_destination_code"/>
+                                </t>
+                                <t t-else="">
+                                    <span style="visibility:hidden;">gfggjhgj</span>
+                                </t>
+                            </div>
+                            <div>
+                                <t t-if="o.delivery_eta">
+                                    <t t-esc="o.delivery_eta and o.delivery_eta.strftime('%m/%d/%y')"/>
+                                </t>
+                                <t t-else="">
+                                    <span style="visibility:hidden;">gfggjhgj</span>
+                                </t>
+<!--                                <t t-esc="o.delivery_eta and o.delivery_eta.strftime('%m/%d/%y')"/>-->
+                            </div>
+                        </td>
+                        <td style="vertical-align:baseline;text-align:left;font-size:10px;width:15%;padding-left:5%;"></td>
+                        <td style="vertical-align:baseline;text-align:right;font-size:10px;width:9%;padding-left:0.5%;">
+                            <div>
+                                <b>CARRIER</b>
+                            </div>
+                            <div>
+                                <br/>
+                                <b>TRAILER</b>
+                            </div>
+                        </td>
+                        <td colspan="3"
+                            style="vertical-align:baseline;text-align:left;font-size:10px;width:24%;padding-left:7px;">
+                            <div>
+                                <t t-esc="o.carrier_flight.name"/>
+                            </div>
+                            <div>
+                                <br/>
+                                <t t-esc="o.trailer"/>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+                <table style="width:100%;padding-top:15px;font-size:10px;cellspacing=0 cellpadding=0">
+                    <tr>
+                        <th style="vertical-align: baseline;text-align:left;text-wrap: nowrap;width:6%;">Pallet #
+                        </th>
+                        <th style="vertical-align: baseline;text-align:left;width:18%;padding-left:1%;">Pallet
+                            <br/>
+                            SSCC-18
+                        </th>
+                        <th style="vertical-align: baseline;text-align:left;width:18%;padding-left:3%;">Pallet Type</th>
+                        <th style="vertical-align: baseline;text-align:left;width:10%;padding-left:10px;">Vendor
+                            <br/>
+                            Item #
+                        </th>
+                        <th style="vertical-align: baseline;text-align:left;width:15%;padding-left:5%;">Item #</th>
+                        <th style="vertical-align: baseline;text-align:end;width:9%;padding-left:0.5%;">QTY<br/>Cases
+                        </th>
+                        <th style="vertical-align: baseline;text-align:end;width:8%;">QTY<br/>Units
+                        </th>
+                        <th style="vertical-align: baseline;text-align:end;width:8%;">Volume<br/>(CuFt)
+                        </th>
+                        <th style="vertical-align: baseline;text-align:end;width:8%;">Weight<br/>(Lbs)
+                        </th>
+                    </tr>
+                    <t t-set="dict_line" t-value="o.grouped_lines_list(lines)"/>
+                    <t t-foreach="dict_line.items()" t-as="line_values">
+                        <t t-foreach="line_values[1]" t-as="line_value">
+                            <t t-if="line_value">
+                                <tr>
+                                    <td style="vertical-align: baseline;text-align:end;text-wrap: nowrap;width:6%;padding-right:5px;">
+                                        <span t-esc="line_values[0]"/>
+                                    </td>
+
+                                    <td style="vertical-align: baseline;text-align:left;width:18%;padding-left:1%;">
+                                        <t t-esc="line_value['sscc_18_char'] or ''"/>
+                                    </td>
+
+                                    <td style="vertical-align: baseline;text-align:left;width:18%;padding-left:3%;">
+                                        <t t-esc="line_value['pallet_type']"/>
+                                    </td>
+
+                                    <td style="vertical-align: baseline;text-align:left;width:10%;padding-left:10px;">
+                                        <t t-esc="line_value.get('default_code')"/>
+                                    </td>
+
+                                    <td style="vertical-align: baseline;text-align:left;width:15%;padding-left:5%;">
+                                        <t t-esc="line_value['item_customer_number']"/>
+                                    </td>
+
+                                    <td style="vertical-align: baseline;text-align:end;width:9%;padding-left:0.5%;">
+                                        <t t-esc="line_value['qty_case']"/>
+                                    </td>
+
+                                    <td style="vertical-align: baseline;text-align:end;width:8%;">
+                                        <t t-esc="line_value['qty_unit']"/>
+                                    </td>
+
+                                    <td style="vertical-align: baseline;text-align:end;width:8%;">
+                                        <t t-esc="'{:,.2f}'.format(line_value['product_volume'])"/>
+                                    </td>
+
+                                    <td style="vertical-align: baseline;text-align:end;width:8%;">
+                                        <t t-esc="'{:,.2f}'.format(line_value['net_weight'])"/>
+                                    </td>
+                                </tr>
+                            </t>
+                        </t>
+                        <t t-set="line_length" t-value="line_length + 1"/>
+                    </t>
+                    <!--<tr style="font-weight:bold;">
+                        <td style="vertical-align: baseline;text-align:left;text-wrap: nowrap;width:6%;"></td>
+                        <td style="vertical-align: baseline;text-align:left;width:18%;padding-left:1%;"></td>
+                        <td style="vertical-align: baseline;text-align:left;width:18%;padding-left:3%;"></td>
+                        <td style="vertical-align: baseline;text-align:left;width:10%;padding-left:10px;"></td>
+                        <td style="vertical-align: baseline;text-align:left;width:15%;padding-left:5%;"></td>
+                        <td style="vertical-align: baseline;text-align:end;width:9%;padding-left:0.5%;">
+                            <t t-set="total_qty_case"
+                               t-value="sum(int(line.get('qty_case', 0) or 0) for line in lines)"/>
+                            <t t-esc="'{:,d}'.format(total_qty_case and int(total_qty_case) or 0)"/>
+                        </td>
+                        <td style="vertical-align: baseline;text-align:end;width:8%;">
+                            <t t-set="total_qty_unit"
+                               t-value="sum(line.get('qty_unit', 0) for line in lines)"/>
+                            <t t-set="total_unit" t-value="round(total_qty_unit)"/>
+                            <t t-esc="'{:,d}'.format(total_unit and int(total_unit) or 0)"/>
+                        </td>
+                        <td style="vertical-align: baseline;text-align:end;width:8%;">
+                            <t t-set="total_volume"
+                               t-value="sum(line.get('product_volume', 0) for line in lines)"/>
+                            <t t-esc="'{:,.2f}'.format(total_volume)"/>
+                        </td>
+                        <td style="vertical-align: baseline;text-align:end;width:8%;">
+                            <t t-set="total_weight"
+                               t-value="sum(line.get('net_weight', 0) for line in lines)"/>
+                            <t t-esc="'{:,.2f}'.format(total_weight)"/>
+                        </td>
+                    </tr>-->
+                    <tr style="font-weight:bold;">
+                        <td style="vertical-align: baseline;text-align:left;text-wrap: nowrap;width:6%;"></td>
+                        <td style="vertical-align: baseline;text-align:left;width:18%;padding-left:1%;"></td>
+                        <td style="vertical-align: baseline;text-align:left;width:18%;padding-left:3%;"></td>
+                        <td style="vertical-align: baseline;text-align:left;width:10%;padding-left:10px;"></td>
+                        <td style="vertical-align: baseline;text-align:left;width:15%;padding-left:5%;"></td>
+                        <td style="vertical-align: baseline;text-align:end;width:9%;padding-left:0.5%;">
+                            <t t-set="total_qty_case"
+                               t-value="sum(int(line.qty_carton or 0) for line in lines)"/>
+                            <t t-esc="'{:,d}'.format(total_qty_case and int(total_qty_case) or 0)"/>
+                        </td>
+                        <td style="vertical-align: baseline;text-align:end;width:8%;">
+                            <t t-set="total_qty_unit"
+                               t-value="sum(line.total_quantity for line in lines)"/>
+                            <t t-set="total_unit" t-value="round(total_qty_unit)"/>
+                            <t t-esc="'{:,d}'.format(total_unit and int(total_unit) or 0)"/>
+                        </td>
+                        <td style="vertical-align: baseline;text-align:end;width:8%;">
+                            <t t-set="total_volume"
+                               t-value="sum(line.product_volume for line in lines)"/>
+                            <t t-esc="'{:,.2f}'.format(total_volume)"/>
+                        </td>
+                        <td style="vertical-align: baseline;text-align:end;width:8%;">
+                            <t t-set="total_weight"
+                               t-value="sum(line.net_weight for line in lines)"/>
+                            <t t-esc="'{:,.2f}'.format(total_weight)"/>
+                        </td>
+                    </tr>
+                </table>
+                <style>
+                    span#oe_neutralize_banner {
+                    display:none !important;
+                    }
+                </style>
+            </t>
+        </div>
+    </template>
+
+<!--    <template id="report_ShipmentManifest_doc">-->
+<!--        <div class="page" style="page-break-before:always;font-size:10px;">-->
+<!--            <t t-call="web.layout">-->
+<!--                <div class="w-100"-->
+<!--                     style="background-color: #f2f2f2;width:100%;border: 1px solid #0e0d0d;margin: auto;font-weight: bold;">-->
+<!--                    <div style="width:100%;position:relative;top:3px;font-weight: bold;text-align:center;padding-bottom:4px;font-size:15px;">-->
+<!--                        SHIPMENT MANIFEST-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <t t-set="line_length" t-value="1"/>-->
+<!--                <table style="width:100%;padding-top:20px;cellspacing=0 cellpadding=0">-->
+<!--                    <tr>-->
+<!--                        <th style="vertical-align: baseline;text-align:left;text-wrap: nowrap;font-size:10px;width:6%;">-->
+<!--                            SHIP TO-->
+<!--                        </th>-->
+<!--                        <td style="vertical-align: baseline;text-align:left;font-size:10px;width:18%;padding-left:1%;">-->
+<!--                            <div>-->
+<!--                                <b>-->
+<!--                                    <t t-esc="o.outbound_partner_id.name"/>-->
+<!--                                </b>-->
+<!--                            </div>-->
+<!--                            <div>-->
+<!--                                <t t-esc="o.outbound_partner_id.street"/>-->
+<!--                            </div>-->
+<!--                            <div>-->
+<!--                                <t t-esc="o.outbound_partner_id.street2"/>-->
+<!--                            </div>-->
+<!--                            <div>-->
+<!--                                <t t-esc="o.outbound_partner_id.city"/>-->
+<!--                            </div>-->
+<!--                        </td>-->
+<!--                        <td style="vertical-align:baseline;text-align:left;font-size:10px;width:18%;padding-left:3%;">-->
+<!--                            <div>-->
+<!--                                <b>BOL/LOAD ID</b>-->
+<!--                            </div>-->
+<!--                            <div>-->
+<!--                                <b>PURCHASE ORDER</b>-->
+<!--                            </div>-->
+<!--                            <div>-->
+<!--                                <b>FINAL DESTINATION</b>-->
+<!--                            </div>-->
+<!--                            <div>-->
+<!--                                <b>DISPATCH DATE</b>-->
+<!--                            </div>-->
+<!--                        </td>-->
+<!--                        <td style="vertical-align:baseline;text-align:left;font-size:10px;width:10%;padding-left:10px;">-->
+<!--                            <div>-->
+<!--                                <t t-esc="o.bol_number"/>-->
+<!--                            </div>-->
+<!--                            <div>-->
+<!--                                <t t-esc="po_number"/>-->
+<!--                            </div>-->
+<!--                            <div style="vertical-align:baseline;text-align:left;">-->
+<!--                                <t t-if="o.final_destination_id">-->
+<!--                                    <t t-esc="o.final_destination_id.name"/>-->
+<!--                                </t>-->
+<!--                                <t t-else="">-->
+<!--                                    <span style="visibility:hidden;">gfggjhgj</span>-->
+<!--                                </t>-->
+<!--                            </div>-->
+<!--                            <div>-->
+<!--                                <t t-esc="o.delivery_eta and o.delivery_eta.strftime('%m/%d/%y')"/>-->
+<!--                            </div>-->
+<!--                        </td>-->
+<!--                        <td style="vertical-align:baseline;text-align:left;font-size:10px;width:15%;padding-left:5%;"></td>-->
+<!--                        <td style="vertical-align:baseline;text-align:right;font-size:10px;width:9%;padding-left:0.5%;">-->
+<!--                            <div>-->
+<!--                                <b>CARRIER</b>-->
+<!--                            </div>-->
+<!--                            <div>-->
+<!--                                <br/>-->
+<!--                                <b>TRAILER</b>-->
+<!--                            </div>-->
+<!--                        </td>-->
+<!--                        <td colspan="3"-->
+<!--                            style="vertical-align:baseline;text-align:left;font-size:10px;width:24%;padding-left:7px;">-->
+<!--                            <div>-->
+<!--                                <t t-esc="o.carrier_flight.name"/>-->
+<!--                            </div>-->
+<!--                            <div>-->
+<!--                                <br/>-->
+<!--                                <t t-esc="o.trailer"/>-->
+<!--                            </div>-->
+<!--                        </td>-->
+<!--                    </tr>-->
+<!--                </table>-->
+<!--                <table style="width:100%;padding-top:15px;font-size:10px;cellspacing=0 cellpadding=0">-->
+<!--                    <tr>-->
+<!--                        <th style="vertical-align: baseline;text-align:left;text-wrap: nowrap;width:6%;">Pallet #-->
+<!--                        </th>-->
+<!--                        <th style="vertical-align: baseline;text-align:left;width:18%;padding-left:1%;">Pallet-->
+<!--                            <br/>-->
+<!--                            SSCC-18-->
+<!--                        </th>-->
+<!--                        <th style="vertical-align: baseline;text-align:left;width:18%;padding-left:3%;">Pallet Type</th>-->
+<!--                        <th style="vertical-align: baseline;text-align:left;width:10%;padding-left:10px;">Vendor<br/>-->
+<!--                            Item #-->
+<!--                        </th>-->
+<!--                        <th style="vertical-align: baseline;text-align:left;width:15%;padding-left:5%;">Item #</th>-->
+<!--                        <th style="vertical-align: baseline;text-align:end;width:9%;padding-left:0.5%;">QTY<br/>Cases-->
+<!--                        </th>-->
+<!--                        <th style="vertical-align: baseline;text-align:end;width:8%;">QTY<br/>Units-->
+<!--                        </th>-->
+<!--                        <th style="vertical-align: baseline;text-align:end;width:8%;">Volume<br/>(CuFt)-->
+<!--                        </th>-->
+<!--                        <th style="vertical-align: baseline;text-align:end;width:8%;">Weight<br/>(Lbs)-->
+<!--                        </th>-->
+<!--                    </tr>-->
+<!--                    <t t-foreach="lines" t-as="line">-->
+<!--                        <t t-if="((line.required_case == 1 or 0)or(line.required_pallet == 1 or 0))">-->
+<!--                            <tr>-->
+<!--                                <td style="vertical-align: baseline;text-align:end;text-wrap: nowrap;width:6%;padding-right:5px;">-->
+<!--                                    <span t-esc="line_length"/>-->
+<!--                                    <t t-set="line_length" t-value="line_length + 1"/>-->
+<!--                                </td>-->
+<!--                                <td style="vertical-align: baseline;text-align:left;width:18%;padding-left:1%;">-->
+<!--                                    <t t-esc="line.sscc_18_char"/>-->
+<!--                                </td>-->
+<!--                                <td style="vertical-align: baseline;text-align:left;width:18%;padding-left:3%;">-->
+<!--                                    <t t-esc="line.pallet_type"/>-->
+<!--                                </td>-->
+<!--                                <td style="vertical-align: baseline;text-align:left;width:10%;padding-left:10px;">-->
+<!--                                    <t t-esc="line.goods.default_code"/>-->
+<!--                                </td>-->
+<!--                                <td style="vertical-align: baseline;text-align:left;width:15%;padding-left:5%;">-->
+<!--                                    <t t-esc="line.goods.item_customer_number"/>-->
+<!--                                </td>-->
+<!--                                <td style="vertical-align: baseline;text-align:end;width:9%;padding-left:0.5%;">-->
+<!--                                    <t t-esc="int(line.qty_carton or 0)"/>-->
+<!--                                </td>-->
+<!--                                <td style="vertical-align: baseline;text-align:end;width:8%;">-->
+<!--                                    <t t-esc="round(line.total_quantity)"/>-->
+<!--                                </td>-->
+<!--                                <td style="vertical-align: baseline;text-align:end;width:8%;">-->
+<!--                                    <t t-esc="'{:,.2f}'.format(line.product_volume)"/>-->
+<!--                                </td>-->
+<!--                                <td style="vertical-align: baseline;text-align:end;width:8%;">-->
+<!--                                    <t t-esc="'{:,.2f}'.format(line.net_weight)"/>-->
+<!--                                </td>-->
+<!--                            </tr>-->
+<!--                        </t>-->
+<!--                        <t t-else="">-->
+<!--                            <t t-set="quantities" t-value="line._get_quantity_values()"/>-->
+<!--                            <t t-set="line_length"-->
+<!--                               t-value="line_length or 0"/>-->
+<!--                            <t t-foreach="quantities" t-as="quantity">-->
+<!--                                <tr>-->
+<!--                                    <td style="vertical-align: baseline;text-align:end;text-wrap: nowrap;width:6%;padding-right:5px;">-->
+<!--                                        <span t-esc="line_length"/>-->
+<!--                                        <t t-set="line_length" t-value="line_length + 1"/>-->
+<!--                                    </td>-->
+<!--                                    <td style="vertical-align: baseline;text-align:left;width:18%;padding-left:1%;">-->
+<!--                                        <t t-esc="line.sscc_18_char"/>-->
+<!--                                    </td>-->
+<!--                                    <td style="vertical-align: baseline;text-align:left;width:18%;padding-left:3%;">-->
+<!--                                        <t t-esc="quantity[2]"/>-->
+<!--                                    </td>-->
+<!--                                    <td style="vertical-align: baseline;text-align:left;width:10%;padding-left:10px;">-->
+<!--                                        <t t-esc="line.goods.default_code"/>-->
+<!--                                    </td>-->
+<!--                                    <td style="vertical-align: baseline;text-align:left;width:15%;padding-left:5%;">-->
+<!--                                        <t t-esc="line.goods.item_customer_number"/>-->
+<!--                                    </td>-->
+<!--                                    <td style="vertical-align: baseline;text-align:end;width:9%;padding-left:0.5%;">-->
+<!--                                        <t t-esc="int(quantity[5])"/>-->
+<!--                                    </td>-->
+<!--                                    <td style="vertical-align: baseline;text-align:end;width:8%;">-->
+<!--                                        <t t-esc="int(quantity[1])"/>-->
+<!--                                    </td>-->
+<!--                                    <td style="vertical-align: baseline;text-align:end;width:8%;">-->
+<!--                                        <t t-esc="'{:,.2f}'.format(quantity[4])"/>-->
+<!--                                    </td>-->
+<!--                                    <td style="vertical-align: baseline;text-align:end;width:8%;">-->
+<!--                                        <t t-esc="'{:,.2f}'.format(quantity[3])"/>-->
+<!--                                    </td>-->
+<!--                                </tr>-->
+<!--                            </t>-->
+<!--                        </t>-->
+
+<!--                    </t>-->
+<!--                    <tr style="font-weight:bold;">-->
+<!--                        <td style="vertical-align: baseline;text-align:left;text-wrap: nowrap;width:6%;"></td>-->
+<!--                        <td style="vertical-align: baseline;text-align:left;width:18%;padding-left:1%;"></td>-->
+<!--                        <td style="vertical-align: baseline;text-align:left;width:18%;padding-left:3%;"></td>-->
+<!--                        <td style="vertical-align: baseline;text-align:left;width:10%;padding-left:10px;"></td>-->
+<!--                        <td style="vertical-align: baseline;text-align:left;width:15%;padding-left:5%;"></td>-->
+<!--                        <td style="vertical-align: baseline;text-align:end;width:9%;padding-left:0.5%;">-->
+<!--                            <t t-set="total_qty_case"-->
+<!--                               t-value="sum(int(line.qty_carton or 0) for line in lines)"/>-->
+<!--                            <t t-esc="'{:,d}'.format(total_qty_case and int(total_qty_case) or 0)"/>-->
+<!--                        </td>-->
+<!--                        <td style="vertical-align: baseline;text-align:end;width:8%;">-->
+<!--                            <t t-set="total_qty_unit"-->
+<!--                               t-value="sum(line.total_quantity for line in lines)"/>-->
+<!--                            <t t-set="total_unit" t-value="round(total_qty_unit)"/>-->
+<!--                            <t t-esc="'{:,d}'.format(total_unit and int(total_unit) or 0)"/>-->
+<!--                        </td>-->
+<!--                        <td style="vertical-align: baseline;text-align:end;width:8%;">-->
+<!--                            <t t-set="total_volume"-->
+<!--                               t-value="sum(line.product_volume for line in lines)"/>-->
+<!--                            <t t-esc="'{:,.2f}'.format(total_volume)"/>-->
+<!--                        </td>-->
+<!--                        <td style="vertical-align: baseline;text-align:end;width:8%;">-->
+<!--                            <t t-set="total_weight"-->
+<!--                               t-value="sum(line.net_weight for line in lines)"/>-->
+<!--                            <t t-esc="'{:,.2f}'.format(total_weight)"/>-->
+<!--                        </td>-->
+<!--                    </tr>-->
+<!--                </table>-->
+<!--                <style>-->
+<!--                    span#oe_neutralize_banner {-->
+<!--                    display:none !important;-->
+<!--                    }-->
+<!--                </style>-->
+<!--            </t>-->
+<!--        </div>-->
+<!--    </template>-->
+
+
+    <template id="report_ShipmentManifest">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-set="line_batch" t-value="o._line_po_batch()"/>
+                <t t-foreach="line_batch" t-as="batch">
+                    <t t-set="po_number" t-value="batch[0]"/>
+                    <t t-set="lines" t-value="batch[1]"/>
+                    <t t-call="warefor_reports.report_ShipmentManifest_doc" t-lang="o.partner_id.lang"/>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <record id="report_shipment_manifest_paperformat" model="report.paperformat">
+        <field name="name">Shipment Manifest Paper Format</field>
+        <field name="default" eval="False"/>
+        <field name="format">custom</field>
+        <field name="page_height">0</field>
+        <field name="page_width">0</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">10</field>
+        <field name="margin_bottom">10</field>
+        <field name="margin_left">10</field>
+        <field name="margin_right">10</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">0</field>
+        <field name="dpi">80</field>
+    </record>
+
+    <record id="shipment_report_template_new" model="ir.actions.report">
+        <field name="name">Shipment Manifest</field>
+        <field name="model">freight.freight</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">warefor_reports.report_ShipmentManifest</field>
+        <field name="report_file">warefor_reports.report_ShipmentManifest</field>
+        <field name="print_report_name">'Shipment Manifest - %s' % (object.name)</field>
+<!--        <field name="binding_model_id"-->
+<!--               ref="warefor_3pl_tus.model_freight_freight"/>-->
+        <field name="paperformat_id" ref="warefor_reports.report_shipment_manifest_paperformat"/>
+<!--        <field name="binding_type">report</field>-->
+    </record>
+
+</odoo>

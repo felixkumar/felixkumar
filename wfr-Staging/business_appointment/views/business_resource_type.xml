@@ -1,0 +1,260 @@
+<?xml version="1.0"?>
+<odoo>
+
+    <record id="business_resource_type_view_search" model="ir.ui.view">
+        <field name="name">business.resource.type.search</field>
+        <field name="model">business.resource.type</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="description"/>
+                <field name="resource_ids"/>
+                <field name="final_service_ids"/>
+                <separator/>
+                <filter string="Automatic Resource Allocation" name="allocation_type_auto" domain="[('allocation_type', '=', 'automatic')]"/>
+                <filter string="Manual Resource Allocation" name="allocation_type_man" domain="[('allocation_type', '=', 'manual')]"/>
+                <separator/>
+                <filter string="Service Method: Single" name="service_method_single" domain="[('service_method', '=', 'single')]"/>
+                <filter string="Service Method: Multiple" name="service_method_multiple" domain="[('service_method', '=', 'multiple')]"/>
+                <separator/>
+                <filter string="Activities Todo" name="activities_my" domain="[('activity_ids.user_id', '=', uid)]"/>
+                <separator/>
+                <filter string="Late Activities"
+                        name="activities_overdue"
+                        domain="[('activity_ids.date_deadline', '&lt;', context_today().strftime('%Y-%m-%d'))]"
+                />
+                <filter string="Today Activities"
+                        name="activities_today"
+                        domain="[('activity_ids.date_deadline', '=', context_today().strftime('%Y-%m-%d'))]"
+                />
+                <filter string="Future Activities"
+                        name="activities_upcoming_all"
+                        domain="[('activity_ids.date_deadline', '&gt;', context_today().strftime('%Y-%m-%d'))]"
+                />
+                <separator/>
+                <filter string="Archived" name="inactive" domain="[('active', '=', False)]"/>
+                <group expand="0" string="Group By">
+                    <filter string="Allocation Type" name="group_allocation_type" context="{'group_by': 'allocation_type'}"/>
+                    <filter string="Service Method" name="group_resource_service_method" context="{'group_by': 'service_method'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+    <record id="business_resource_type_view_form" model="ir.ui.view">
+        <field name="name">business.resource.type.form</field>
+        <field name="model">business.resource.type</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="%(business_appointment.business_appointment_action)d"
+                                type="action"
+                                class="oe_stat_button"
+                                icon="fa-calendar-check-o"
+                                context="{'default_resource_type_id': id}"
+                        >
+                            <field string="Appointments" name="planned_appointment_len" widget="statinfo"/>
+                        </button>
+                        <button name="%(business_appointment.business_resource_action)d"
+                                type="action"
+                                class="oe_stat_button"
+                                icon="fa-user-o"
+                                context="{'default_resource_type_id': id, 'search_default_resource_type_id': id}"
+                        >
+                            <field string="Resources" name="resource_len" widget="statinfo"/>
+                        </button>
+                        <button name="%(business_appointment.rating_rating_action_view_business_resource_type)d" 
+                                type="action" 
+                                attrs="{'invisible': ['|', ('rating_option', '=', False), ('rating_satisfaction', '=', -1)]}" 
+                                class="oe_stat_button oe_percent" 
+                                icon="fa-smile-o" 
+                                groups="business_appointment.group_business_appointment_rating"
+                        >
+                            <div class="o_field_widget o_stat_info">
+                                <span class="o_stat_value">
+                                    <field name="rating_satisfaction" nolabel="1"/>
+                                </span>
+                                <span class="o_stat_text">%</span>
+                            </div>
+                        </button>
+                    </div>
+                    <div class="d-flex row mb8">
+                        <div class="col-10">
+                            <h1>
+                                <field name="name" placeholder="resource type reference" class="w-100" required="1"/>
+                            </h1>
+                        </div>
+                        <div class="col-2">
+                            <field name="image_1920" widget="image" class="oe_avatar" options="{'preview_image': 'image_128'}"/>
+                        </div>
+                    </div>
+                    <group name="brt_main_details">
+                        <group name="resource_and_services" string="Services and Resources">
+                            <field name="service_method"/>
+                            <field name="service_ids"
+                                   widget="many2many_tags"
+                                   options="{'no_create_edit': 1, 'no_quick_create': 1}"
+                                   attrs="{'required': [('service_method', '=', 'multiple')], 'invisible': [('service_method', '!=', 'multiple')]}"
+                            />
+                            <field name="always_service_id"
+                                   options="{'no_create_edit': 1, 'no_quick_create': 1}"
+                                   attrs="{'required': [('service_method', '=', 'single')], 'invisible': [('service_method', '!=', 'single')]}"
+                            />
+                            <field name="allocation_type"/>
+                            <field name="allocation_method"/>
+                            <field name="active" invisible="1"/>
+                        </group>
+                        <group name="rtype_time_requirements" string="Time Requirements">
+                            <label for="allowed_from"/>
+                            <div>
+                                 <field name="allowed_from" class="oe_inline"/>
+                                 <field name="allowed_from_uom" class="oe_inline"/>
+                            </div>
+                            <label for="allowed_to"/>
+                            <div>
+                                 <field name="allowed_to" class="oe_inline"/>
+                                 <field name="allowed_to_uom" class="oe_inline"/>
+                            </div>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Settings" name="brt_settings"  >
+                            <group name="brt_settings_group">
+                                <field name="calendar_event_workload"/>
+                                <field name="rating_option" groups="business_appointment.group_business_appointment_rating"/>
+                                <field name="video_call_option" groups="business_appointment.group_business_appointment_video_calls"/>
+                                <field name="company_id"
+                                       options="{'no_create_edit': 1, 'no_quick_create': 1}"
+                                       groups="base.group_multi_company"
+                                />
+                            </group>
+                        </page>
+                        <page string="Notifications">
+                            <group>
+                                <field name="success_mail_template_id"/>
+                                <field name="no_report_on_success"/>
+                                <field name="rating_mail_template_id" groups="business_appointment.group_business_appointment_rating" />
+                                <field name="default_alarm_ids" options="{'color_field': 'color'}" widget="many2many_tags"/>
+                            </group>
+                        </page>
+                        <page string="Description">
+                            <field name="description" placeholder="short description" />
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+    <record  id="business_resource_type_view_kanban" model="ir.ui.view" >
+        <field name="name">business.resource.type.kanban</field>
+        <field name="model">business.resource.type</field>
+        <field name="arch" type="xml">
+            <kanban class="oe_background_grey o_kanban_dashboard" group_create="0" group_delete="0"
+                    group_edit="0" archivable="0" quick_create="0">
+                <field name="id"/>
+                <field name="name"/>
+                <field name="color"/>
+                <field name="image_128"/>
+                <field name="activity_ids"/>
+                <field name="activity_state"/>
+                <field name="final_service_ids"/>
+                <field name="resource_len"/>
+                <field name="planned_appointment_len"/>
+                <field name="rating_satisfaction"/>
+                <field name="rating_option"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="#{kanban_color(record.color.raw_value)} oe_kanban_global_click business-appointment-kanban-box">
+                            <div>
+                                <div class="o_kanban_card_content business-appointment-kanban-content">
+                                    <div class="o_kanban_image">
+                                        <a type="open">
+                                            <img t-att-src="kanban_image('business.resource.type', 'image_128', record.id.value)" class="o_image_64_contain" alt="Resource Type Image"/>
+                                        </a>
+                                    </div>
+                                    <div class="o_kanban_primary_left ba_kanban_primary_left">
+                                        <div class="o_primary business-appointment-kanban-header">
+                                            <span><t t-out="record.name.value"/></span>
+                                        </div>
+                                    </div>
+                                    <div class="oe_kanban_details business-appointment-kanban-details">
+                                        <ul>
+                                            <li><span><field name="final_service_ids" widget="many2many_tags"/></span></li>
+                                            <li>
+                                                <a type="object" name="action_open_appointments">
+                                                    <span>
+                                                        <field name="planned_appointment_len"/> Appointments
+                                                    </span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a type="object" name="action_open_resources">
+                                                    <span>
+                                                        <field name="resource_len"/> Resources
+                                                    </span>
+                                                </a>
+                                            </li>
+                                            <li attrs="{'invisible': ['|', ('rating_option', '=', False), ('rating_satisfaction', '=', -1)]}" groups="business_appointment.group_business_appointment_rating">
+                                                <a name="%(business_appointment.rating_rating_action_view_business_resource_type)d" type="action">
+                                                    <i class="fa fa-smile-o" 
+                                                       role="img"
+                                                       aria-label="Percentage of satisfaction"
+                                                       title="Percentage of satisfaction"/> 
+                                                    <span class="ml4" t-out="record.rating_satisfaction.value"/> %
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="container o_kanban_card_manage_pane dropdown-menu" role="menu" groups="base.group_user">
+                                    <div class="o_kanban_card_manage_settings row">
+                                        <div role="menuitem" aria-haspopup="true" class="col-6">
+                                            <ul class="oe_kanban_colorpicker" data-field="color" role="popup"/>
+                                        </div>
+                                        <div role="menuitem" class="col-6">
+                                            <a class="dropdown-item" role="menuitem" type="edit">Edit</a>
+                                            <a class="dropdown-item jstr-dropdown-item" role="menuitem" type="delete">Delete</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a class="o_kanban_manage_toggle_button o_dropdown_kanban" href="#" groups="base.group_user">
+                                    <i class="fa fa-ellipsis-v" role="img" aria-label="Manage" title="Manage"/>
+                                </a>
+                                <div class="o_kanban_record_bottom">
+                                    <div class="oe_kanban_bottom_left">
+                                        <div class="o_kanban_inline_block">
+                                            <field name="activity_ids" widget="kanban_activity"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+    <record id="business_resource_type_view_tree" model="ir.ui.view">
+        <field name="name">business.resource.type.tree</field>
+        <field name="model">business.resource.type</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+    <record id="business_resource_type_action" model="ir.actions.act_window">
+        <field name="name">Resource Types</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">business.resource.type</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="search_view_id" eval="business_resource_type_view_search"/>
+    </record>
+
+</odoo>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="stock_picking_batch_group_form_carote_inherit" model="ir.ui.view">
+            <field name="name">stock.picking.batch.group.form.carote_inherit</field>
+            <field name="model">stock.picking.batch.group</field>
+            <field name="inherit_id" ref="stock_picking_batch_extended.form_view_stock_picking_batch_group"/>
+            <field name="arch" type="xml">
+                <xpath expr="//header" position="attributes">
+                    <attribute name="groups">!user_warehouse_restriction.user_carote_restriction_group_user</attribute>
+                </xpath>
+                <xpath expr="//sheet" position="inside">
+                    <t groups="!user_warehouse_restriction.user_carote_restriction_group_user">
+                        <field name="state" invisible="1"/>
+                    </t>
+                    <t groups="user_warehouse_restriction.user_carote_restriction_group_user">
+                        <field name="state" invisible="1"/>
+                    </t>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

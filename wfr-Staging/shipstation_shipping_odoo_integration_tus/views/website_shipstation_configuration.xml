@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_website_shipstation_configuration_form" model="ir.ui.view">
+        <field name="name">website.shipstation.configuration.form</field>
+        <field name="model">website.shipstation.configuration</field>
+        <field name="arch" type="xml">
+            <form string="Website Shipstation Configuration">
+                <header>
+                    <button name="update_configuration" type="object" string="Confirm" class="oe_highlight"
+                            attrs="{'invisible':[('is_export','=',True)]}"/>
+                    <button name="update_configuration" type="object" string="Disable" class="oe_highlight"
+                            attrs="{'invisible':[('is_export','=',False)]}"/>
+                </header>
+                <sheet>
+                    <widget name="web_ribbon" title="Disabled" bg_color="bg-danger" attrs="{'invisible': [('is_export', '=', True)]}"/>
+                    <group>
+                        <field name="website_id"/>
+                        <field name="shipstation_store_id"/>
+                        <field name="is_export" invisible="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_website_shipstation_configuration" model="ir.actions.act_window">
+        <field name="name">Website Shipstation Configuration</field>
+        <field name="res_model">website.shipstation.configuration</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_shipstation_website_shipstation" name="Website Shipstation Configuration"
+              parent="shipstation_shipping_odoo_integration.shipstation_odoo_integration_menuitem" sequence="7"
+              action="action_website_shipstation_configuration"/>
+</odoo>

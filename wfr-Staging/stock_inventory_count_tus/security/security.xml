@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record model="ir.rule" id="stock_inventory_user_rule_tus">
+            <field name="name">stock.inventory Warehouse</field>
+            <field name="model_id" ref="stock_inventory_count_tus.model_stock_inventory"/>
+            <field name="global" eval="False"/>
+            <field name="groups" eval="[(6,0,[ref('warefor_3pl_tus.group_warehouse_location_freight')])]"/>
+            <field name="domain_force">[('warehouse_id', 'in', user.allowed_warehouse_ids.ids)]</field>
+        </record>
+
+    </data>
+</odoo>

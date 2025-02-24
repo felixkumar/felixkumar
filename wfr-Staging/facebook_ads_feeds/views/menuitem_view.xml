@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (c) 2016-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>;) -->
+<!-- See LICENSE file for full copyright and licensing details. -->
+<!-- License URL : https://store.webkul.com/license.html/ -->
+<odoo>
+    <menuitem name="Facebook Marketing" id="facebook_market_menu" web_icon="facebook_ads_feeds,static/description/icon.png" />
+    <menuitem name="Facebook Catalog" id="facebook_shops_menu" parent="facebook_market_menu" sequence="1"/>
+    <menuitem name = "Mapping" id= "mappings_fields" parent="facebook_market_menu" sequence="70" />
+    <menuitem name="Setting" id="facebook_settings" parent="facebook_market_menu" sequence="90"/>
+</odoo>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="truck_driver_name_form_view" model="ir.ui.view">
+            <field name="name">truck.driver.name.form</field>
+            <field name="model">truck.driver.name</field>
+            <field name="arch" type="xml">
+                <form string="Truck Drivers">
+                    <header>
+                        <widget name="signature" string="Sign" highlight="1" full_name="driver_name"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="driver_name"/>
+                                <field name="signature" widget="image"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="truck_driver_name_tree_view" model="ir.ui.view">
+            <field name="name">truck.driver.name.tree</field>
+            <field name="model">truck.driver.name</field>
+            <field name="arch" type="xml">
+                <tree string="Truck Drivers">
+                    <field name="name"/>
+                    <field name="signature"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="truck_driver_name_action" model="ir.actions.act_window">
+            <field name="name">Truck Drivers</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">truck.driver.name</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_ids"
+                   eval="[(5, 0, 0),
+                          (0, 0, {'view_mode': 'tree', 'view_id': ref('warefor_3pl_tus.truck_driver_name_tree_view')}),
+                          (0, 0, {'view_mode': 'form', 'view_id': ref('warefor_3pl_tus.truck_driver_name_form_view')}),]"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                </p>
+                <p>
+                </p>
+            </field>
+        </record>
+
+        <menuitem action="truck_driver_name_action" id="truck_driver_name_main_menu"
+                  parent="stock.menu_stock_warehouse_mgmt"/>
+
+    </data>
+</odoo>
+ 

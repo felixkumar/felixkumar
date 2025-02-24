@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="purchase_order_form_warefor" model="ir.ui.view">
+        <field name="name">purchase.order.form.inherit.warefor</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='fiscal_position_id']" position="after">
+                <field name="signature" widget="signature"/>
+            </xpath>
+            <xpath expr="//notebook//page[@name='products']//field[@name='order_line']//tree//field[@name='name']"
+                   position="attributes">
+                <attribute name="optional">show</attribute>
+            </xpath>
+            <xpath expr="//notebook//page[@name='products']//field[@name='order_line']//tree//field[@name='product_id']"
+                   position="attributes">
+                <attribute name="string">Item</attribute>
+            </xpath>
+            <xpath expr="//field[@name='user_id']" position="after">
+                <field name="sale_order_id"/>
+            </xpath>
+            <xpath expr="//header" position="inside">
+                <field name="freight_record" invisible="1"/>
+                <button name="action_create_freight_record"
+                        string="Create Logistic Record"
+                        attrs="{'invisible': [('state', 'not in', ['draft', 'sent', 'to approve'])]}"
+                        type="object"/>
+                <button name="open_wizard_for_invoice_from_purchase" string="Generate Logistic Invoice" type="object"
+                        class="btn-primary"/>
+            </xpath>
+            <xpath expr="//field[@name='date_order']" position="after">
+                <field name="freight_record_len" invisible="1"/>
+                <field name="freight_record" readonly="1" attrs="{'invisible': [('freight_record_len', '=', 0)]}" widget="many2many_tags"/>
+                <field name="logistic_record_id" attrs="{'invisible': [('freight_record_len', '>=', 1)]}"/>
+<!--                <field name="picking_type_id"/>-->
+<!--                <field name="pallet_configuration_id" />-->
+            </xpath>
+            <xpath expr="//field[@name='date_approve']" position="attributes">
+                  <attribute name="attrs">{'readonly': False}</attribute>
+            </xpath>
+            <xpath expr="//field[@name='currency_id']" position="after">
+                  <field name="is_create_ibl"/>
+            </xpath>
+            <xpath expr="//field[@name='invoice_status']" position="after">
+                  <field name="ship_via"/>
+            </xpath>
+            <xpath expr="//field[@name='notes']" position="attributes">
+                <attribute name="placeholder">Notes</attribute>
+            </xpath>
+<!--            <xpath expr="//field[@name='order_line']/tree//field[@name='product_qty']" position="after">-->
+<!--                <field name="total_pallet"/>-->
+<!--            </xpath>-->
+            <xpath expr="//field[@name='incoterm_id']" position="attributes">
+                <attribute name="string">Freight</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="inherit_sale_view_order_form" model="ir.ui.view">
+        <field name="name">inherit.sale.view.order.form</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='user_id']" position="after">
+                <field name="purchase_order_id"/>
+                <field name="freight_id"/>
+            </xpath>
+            <xpath expr="//field[@name='team_id']" position="after">
+                <field name="edi_store_id"/>
+            </xpath>
+        </field>
+    </record>
+
+<!--    To make Confirmation Date field visible in Quotation List View-->
+    <record id="purchase_order_inherits_tree_quo" model="ir.ui.view">
+        <field name="name">purchase.order.kpis.tree.inherit</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_kpis_tree"/>
+        <field name="arch" type="xml">
+            <field name="date_approve" position="attributes">
+                <attribute name="invisible">0</attribute>
+            </field>
+        </field>
+    </record>
+</odoo>

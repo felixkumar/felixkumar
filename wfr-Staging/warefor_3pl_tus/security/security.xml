@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="group_ibl_obl_delete_access" model="res.groups">
+            <field name="name">IBL/OBL Delete Access</field>
+        </record>
+        <record id="group_ibl_obl_multi_record_delete_access" model="res.groups">
+            <field name="name">IBL/OBL Multi Record Delete Access</field>
+        </record>
+
+        <record model="res.groups" id="group_warehouse_location_freight">
+            <field name="name">Warehouse Location Users</field>
+        </record>
+
+        <record model="res.groups" id="group_warehouse_specific_customer_access">
+            <field name="name">Warehouse Location Users With Specified Customer's</field>
+        </record>
+
+        <record model="res.groups" id="group_carote_warehouse_products">
+            <field name="name">Show Only Carote Products</field>
+        </record>
+
+        <record model="res.groups" id="group_oxford_warehouse_products">
+            <field name="name">Show Only Oxford Products</field>
+        </record>
+
+        <record model="ir.rule" id="obl_warehouse_user_rule">
+            <field name="name">OBL</field>
+            <field name="model_id" ref="mc_freight_app.model_freight_freight"/>
+            <field name="global" eval="False"/>
+            <field name="groups" eval="[(6,0,[ref('group_warehouse_location_freight')])]"/>
+            <field name="domain_force">[('warehouse_id', 'in', user.allowed_warehouse_ids.ids)]</field>
+        </record>
+
+        <record model="ir.rule" id="warehouse_specific_customer_access_rule">
+            <field name="name">Specific Customer's OBL Access</field>
+            <field name="model_id" ref="mc_freight_app.model_freight_freight"/>
+            <field name="global" eval="False"/>
+            <field name="groups" eval="[(6,0,[ref('group_warehouse_specific_customer_access')])]"/>
+            <field name="domain_force">[('partner_id', 'in', user.allowed_customer_ids.ids),('warehouse_id', 'in',
+                user.allowed_warehouse_ids.ids)]
+            </field>
+        </record>
+
+        <record model="ir.rule" id="groups_carote_products_warehouse_user">
+            <field name="name">Carote Products For Warehouse User</field>
+            <field name="model_id" ref="stock.model_product_template"/>
+            <field name="global" eval="False"/>
+            <field name="groups" eval="[(6,0,[ref('group_carote_warehouse_products')])]"/>
+            <field name="domain_force">[('company_ids.name', '=', 'Warefor Logistics, LLC'), ('company_ids.name', '=', 'Carote USA, LLC')]
+            </field>
+        </record>
+
+        <record model="ir.rule" id="groups_oxford_products_warehouse_user">
+            <field name="name">Oxford Products For Warehouse User</field>
+            <field name="model_id" ref="stock.model_product_template"/>
+            <field name="global" eval="False"/>
+            <field name="groups" eval="[(6,0,[ref('group_oxford_warehouse_products')])]"/>
+            <field name="domain_force">[('company_ids.name', '=', 'Warefor Logistics, LLC'), ('company_ids.name', '=', 'Oxford USA Corporation')]
+            </field>
+        </record>
+
+        <record model="ir.rule" id="ibl_billing_user_rule">
+            <field name="name">pallet.config.ibl Warehouse</field>
+            <field name="model_id" ref="warefor_3pl_tus.model_pallet_config_ibl"/>
+            <field name="global" eval="False"/>
+            <field name="groups" eval="[(4, ref('group_warehouse_location_freight')), (4, ref('group_warehouse_specific_customer_access'))]"/>
+            <field name="domain_force">[('warehouse_id', 'in', user.allowed_warehouse_ids.ids)]</field>
+        </record>
+
+        <record model="ir.rule" id="obl_billing_user_rule">
+            <field name="name">pallet.config.obl Warehouse</field>
+            <field name="model_id" ref="warefor_3pl_tus.model_pallet_config_obl"/>
+            <field name="global" eval="False"/>
+            <field name="groups" eval="[(4, ref('group_warehouse_location_freight')), (4, ref('group_warehouse_specific_customer_access'))]"/>
+            <field name="domain_force">[('warehouse_id', 'in', user.allowed_warehouse_ids.ids)]</field>
+        </record>
+
+        <record model="ir.rule" id="warefor_internal_transfer_user_rule">
+            <field name="name">warefor.internal.transfer Warehouse</field>
+            <field name="model_id" ref="warefor_3pl_tus.model_warefor_internal_transfer"/>
+            <field name="global" eval="False"/>
+            <field name="groups" eval="[(4, ref('group_warehouse_location_freight')), (4, ref('group_warehouse_specific_customer_access'))]"/>
+            <field name="domain_force">[('warehouse_id', 'in', user.allowed_warehouse_ids.ids)]</field>
+        </record>
+
+        <record model="res.groups" id="group_warehouse_user_training_admin">
+            <field name="name">Warehouse User Training - Admin</field>
+        </record>
+
+        <record model="res.groups" id="group_warehouse_user_training_user">
+            <field name="name">Warehouse User Training - User</field>
+        </record>
+
+        <record id="admin_warehouse_user_training_rule" model="ir.rule">
+            <field name="name">admin.warehouse.user.training.rule</field>
+            <field name="model_id" ref="model_warehouse_user_training"/>
+            <field name="domain_force">[(1, '=', 1)]</field>
+            <field name="groups" eval="[(6,0,[ref('group_warehouse_user_training_admin')])]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+
+        <record id="user_warehouse_user_training_rule" model="ir.rule">
+            <field name="name">user.warehouse.user.training.rule</field>
+            <field name="model_id" ref="model_warehouse_user_training"/>
+            <field name="domain_force">[(1, '=', 1)]</field>
+            <field name="groups" eval="[(6,0,[ref('group_warehouse_user_training_user')])]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+    </data>
+</odoo>

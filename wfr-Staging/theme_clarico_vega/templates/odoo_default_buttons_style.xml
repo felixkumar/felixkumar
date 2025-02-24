@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="contact_form_button" inherit_id="website.contactus">
+        <xpath expr="//section[hasclass('s_website_form')]//div[hasclass('s_website_form_submit')]//a[hasclass('s_website_form_send')]" position="attributes">
+            <attribute name="class" add="te_theme_button" separator=" "></attribute>
+        </xpath>
+    </template>
+</odoo>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="product_add_to_cart_popover">
+            <t t-set="combination"
+               t-value="product._get_first_possible_combination()"/>
+            <t t-set="combination_info"
+               t-value="product._get_combination_info(combination, add_qty=add_qty or 1, pricelist=pricelist)"/>
+            <t t-set="product_variant"
+               t-value="product.env['product.product'].browse(combination_info['product_id'])"/>
+            <div class='d-inline-block custom_width'>
+                <div class="row">
+                    <div class="col-3">
+                        <img class='o_image_64_contain' t-attf-src='/web/image/product.template/#{product.id}/image_256'
+                             t-att-alt='product.display_name'/>
+                    </div>
+                    <div class="col-9">
+                        <div class='oe_website_sale te_pop_desc_width'>
+                            <t t-if="product.public_categ_ids">
+                                <t t-if="len(product.public_categ_ids.ids) > 0">
+                                    <t t-set="categ_rec" t-value="product.public_categ_ids[0]"/>
+                                    <a class="text-muted" target="_blank"
+                                       t-att-href="'/shop/category/%s' %slug(categ_rec)">
+                                        <span t-esc="categ_rec.name"/>
+                                    </a>
+                                </t>
+                            </t>
+                            <a t-att-href="product.website_url"
+                               class="text-decoration-none">
+                                <h6 class='product-name mb-0' itemprop='name' t-field='product.name'/>
+                            </a>
+                            <div class="d-block w-100 mt4">
+                                <div class="align-items-center mx-0">
+                                    <div class="col-12 product_price text-left px-0 my-1"  t-if="combination_info['price']" itemprop="offers"
+                                         itemscope="itemscope"
+                                         itemtype="http://schema.org/Offer">
+
+                                        <span t-if="combination_info['price']" t-esc="combination_info['price']"
+                                              class="te_p_sm"
+                                              t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+                                        <del t-attf-class="text-danger mr-1 te_p_disc {{'' if combination_info['has_discounted_price'] else 'd-none'}}"
+                                             style="white-space: nowrap;" t-esc="combination_info['list_price']"
+                                             t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+                                        <span itemprop="price" style="display:none;" t-esc="combination_info['price']"/>
+                                        <span itemprop="priceCurrency" style="display:none;"
+                                              t-esc="website.currency_id.name"/>
+                                        <div t-attf-class="te_discount {{'' if combination_info['has_discounted_price'] else 'd-none'}}">
+                                            <t t-set="difference"
+                                               t-value="round(combination_info['list_price'] - combination_info['price'],2)"/>
+                                            <t t-set="discount"
+                                               t-value="round(difference*100/combination_info['list_price'], 2) if combination_info['list_price'] &gt; 0 else 0"/>
+                                            <div class="te_percentage" t-if="discount">
+                                                <span t-esc="'(%s'%(discount)+'%'"/>
+                                                Off)
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 w-100 border_custom px-0">
+                                        <form action="/shop/cart/update" method="POST">
+                                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                            <input type="hidden" class="product_id" name="product_id" t-att-value="product_variant.id"/>
+                                            <input type="hidden" class="product_template_id" name="product_template_id" t-att-value="product.id" />
+                                            <a role="button" id="add_to_cart"
+                                               class="btn-primary a-submit hotspot_add_to_cart_btn"
+                                               href="#" t-att-product-id="product.id">
+                                                <span class="fa fa-shopping-cart"/>
+                                                <span style="vertical-align: middle;">Add to Cart</span>
+                                            </a>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </template>
+</odoo>

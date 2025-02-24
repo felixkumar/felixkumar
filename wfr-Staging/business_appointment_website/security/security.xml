@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="business_resource_public" model="ir.rule">
+        <field name="name">Public users - Business.Resource - Read published</field>
+        <field name="model_id" ref="business_appointment.model_business_resource"/>
+        <field name="domain_force">[
+            ("active", "=", True),
+            ("website_published", "=", True),
+            "|",
+                ("company_id","=", False),
+                ("company_id", "in", company_ids),
+        ]</field>
+        <field name="groups" eval="[(4, ref('base.group_public')), (4, ref('base.group_portal'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+    <record id="business_resource_type_public" model="ir.rule">
+        <field name="name">Public users - Business.Resource.Type - Read published</field>
+        <field name="model_id" ref="business_appointment.model_business_resource_type"/>
+        <field name="domain_force">[
+            ("active", "=", True),
+            ("website_published", "=", True),
+            "|",
+                ("company_id", "=", False),
+                ("company_id", "in", company_ids),
+        ]</field>
+        <field name="groups" eval="[(4, ref('base.group_public')), (4, ref('base.group_portal'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+    <record id="appointment_product_public" model="ir.rule">
+        <field name="name">Public users - Appointment Services - Read published</field>
+        <field name="model_id" ref="business_appointment.model_appointment_product"/>
+        <field name="domain_force">[
+            ("active", "=", True),
+            ("website_published", "=", True),
+            "|",
+                ("company_id", "=", False),
+                ("company_id", "in", company_ids),
+        ]</field>
+        <field name="groups" eval="[(4, ref('base.group_public')), (4, ref('base.group_portal'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+    <record id="business_appointment_core_portal" model="ir.rule">
+        <field name="name">Portal Users - Reservations - Own</field>
+        <field name="model_id" ref="business_appointment.model_business_appointment_core"/>
+        <field name="domain_force">[("partner_id", "child_of", [user.partner_id.commercial_partner_id.id])]</field>
+        <field name="groups" eval="[(4, ref('base.group_portal'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    <record id="business_appointment_portal" model="ir.rule">
+        <field name="name">Portal Users - Appointments - Own</field>
+        <field name="model_id" ref="business_appointment.model_business_appointment"/>
+        <field name="domain_force">[("partner_id", "child_of", [user.partner_id.commercial_partner_id.id])]</field>
+        <field name="groups" eval="[(4, ref('base.group_portal'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    <record id="website_business_appointment_portal" model="ir.rule">
+        <field name="name">Portal - Website Appointments - Own</field>
+        <field name="model_id" ref="business_appointment_website.model_website_business_appointment"/>
+        <field name="domain_force">[
+            "|",
+                ("partner_id", "child_of", [user.partner_id.commercial_partner_id.id]),
+                ("partner_id", "=", False),
+        ]</field>
+        <field name="groups" eval="[(4, ref('base.group_portal'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    <record id="website_business_appointment_public" model="ir.rule">
+        <field name="name">Public - Website Appointments - Without Partner</field>
+        <field name="model_id" ref="business_appointment_website.model_website_business_appointment"/>
+        <field name="domain_force">[("partner_id", "=", False)]</field>
+        <field name="groups" eval="[(4, ref('base.group_public'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    <record id="associated_product_line_portal" model="ir.rule">
+        <field name="name">Portal - Extra Product - Own</field>
+        <field name="model_id" ref="business_appointment.model_associated_product_line"/>
+        <field name="domain_force">[
+            "|", 
+                ("appointment_id.partner_id", "child_of", [user.partner_id.commercial_partner_id.id]),
+                ("appointment_core_id.partner_id", "child_of", [user.partner_id.commercial_partner_id.id]),
+        ]</field>
+        <field name="groups" eval="[(4, ref('base.group_portal'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+
+</odoo>

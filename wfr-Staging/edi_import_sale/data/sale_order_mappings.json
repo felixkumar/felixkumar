@@ -1,0 +1,450 @@
+{
+    "config": [
+        {
+            "path": "Orders/Order",
+            "model": "sale.order"
+        },
+        {
+            "path": "Orders/Order/Header/OrderHeader/TradingPartnerId",
+            "field": "partner_id",
+            "search_field": "trading_partnerid",
+            "is_custom_method": true,
+            "use_for_creation": true,
+            "is_search_field": true,
+            "can_be_used_in_creation": true,
+            "custom_method_name": "create_partner_so",
+            "default": "0"
+        },
+        {
+            "path": "Orders/Order/Header/OrderHeader/PurchaseOrderNumber",
+            "custom_method": "process_po_number",
+            "custom_method_returns_dict": true,
+            "skip": true,
+            "skip_overrides": [
+                {
+                    "path": "../TsetPurposeCode",
+                    "comparison": "!=",
+                    "value": "00"
+                },
+                {
+                    "path": "../PrimaryPOTypeCode",
+                    "comparison": "!=",
+                    "value": "SA"
+                },
+                {
+                    "path": "../PrimaryPOTypeCode",
+                    "comparison": "!=",
+                    "value": "NE"
+                }
+            ]
+        },
+        {
+            "path": "Orders/Order/Header/OrderHeader/TsetPurposeCode",
+            "field": "edi_tset_purpose_code"
+        },
+        {
+            "path": "Orders/Order/Header/OrderHeader/PrimaryPOTypeCode",
+            "field": "edi_primary_PO_type_code",
+            "allowed_values": ["SA", "NE", "PR", "RO", "CF"],
+            "default": "NA"
+        },
+        {
+            "path": "Orders/Order/Header/OrderHeader/PrimaryPOTypeDescription",
+            "field": "edi_primary_PO_type_description"
+        },
+        {
+            "path": "Orders/Order/Header/OrderHeader/Vendor",
+            "field": "edi_vendor"
+        },
+        {
+            "path": "Orders/Order/Header/OrderHeader/Department",
+            "field": "edi_department"
+        },
+        {
+            "path": "Orders/Order/Header/OrderHeader/PurchaseOrderDate",
+            "field": "date_order"
+        },
+        {
+            "path": "Orders/Order/Header/Contacts",
+            "log_subfields": "edi_all_contacts"
+        },
+        {
+            "path": "Orders/Order/Header/Contacts/ContactTypeCode",
+            "log": true,
+            "label": "Type",
+            "log_map": [
+                ["BD", "Buyer Contact"],
+                ["", "Receiving Contact"]
+            ]
+        },
+        {
+            "path": "Orders/Order/Header/Contacts/ContactName",
+            "log": true,
+            "label": "Name"
+        },
+        {
+            "path": "Orders/Order/Header/Contacts/PrimaryPhone",
+            "log": true,
+            "label": "Phone"
+        },
+        {
+            "path": "Orders/Order/Header/Address",
+            "can_create_values": true,
+            "multifield": {
+                "determining_tag": "AddressTypeCode",
+                "model": "res.partner",
+                "values": [
+                    {
+                        "value": "ST",
+                        "field": "partner_shipping_id",
+                        "create": true
+                    },
+                    {
+                        "value": "BT",
+                        "field": "partner_invoice_id",
+                        "create": true
+                    }
+                ],
+                "search": true
+            },
+            "trading_partner_field": "store_trading_partner_id",
+            "log_subfields": "edi_addresses"
+        },
+        {
+            "path": "Orders/Order/Header/Address/AddressName",
+            "log": true,
+            "create_include": true,
+            "field": "name"
+        },
+        {
+            "path": "Orders/Order/Header/Address/AddressTypeCode",
+            "log": true,
+            "create_include": true,
+            "field": "type",
+            "map": [
+                ["ST", "delivery"],
+                ["BT", "invoice"],
+                ["", "contact"]
+            ]
+        },
+        {
+            "path": "Orders/Order/Header/Address/LocationCodeQualifier",
+            "log": true,
+            "create_include": true,
+            "field": "edi_location_code_qualifier"
+        },
+        {
+            "path": "Orders/Order/Header/Address/AddressLocationNumber",
+            "log": true,
+            "search": true,
+            "create_include": true,
+            "field": "edi_address_location_number"
+        },
+        {
+            "path": "Orders/Order/Header/Address/Address1",
+            "log": true,
+            "label": "Street1",
+            "create_include": true,
+            "field": "street"
+        },
+        {
+            "path": "Orders/Order/Header/Address/Address2",
+            "log": true,
+            "label": "Street2",
+            "create_include": true,
+            "field": "street2"
+        },
+        {
+            "path": "Orders/Order/Header/Address/City",
+            "log": true,
+            "create_include": true,
+            "field": "city"
+        },
+        {
+            "path": "Orders/Order/Header/Address/PostalCode",
+            "log": true,
+            "create_include": true,
+            "field": "zip"
+        },
+        {
+            "path": "Orders/Order/Header/Address/Country",
+            "log": true,
+            "create_include": true,
+            "create_search_model": "res.country",
+            "create_search_field": "code",
+            "field": "country_id"
+        },
+        {
+            "path": "Orders/Order/Header/Address/State",
+            "create_include": true,
+            "create_search_model": "res.country.state",
+            "create_search_field": "code",
+            "create_search_dependencies": [
+                {
+                    "field": "country_code",
+                    "value_tag": "../Country"
+                }
+            ],
+            "field": "state_id"
+        },
+        {
+            "path": "Orders/Order/Header/PaymentTerms",
+            "field": "payment_term_id",
+            "custom_method": "get_payment_terms",
+            "log_subfields": "edi_customer_payment_terms"
+        },
+        {
+            "path": "Orders/Order/Header/PaymentTerms/TermsType",
+            "log": true,
+            "label": "Terms Type"
+        },
+        {
+            "path": "Orders/Order/Header/PaymentTerms/TermsBasisDateCode",
+            "log": true,
+            "label": "Basis Date Code"
+        },
+        {
+            "path": "Orders/Order/Header/PaymentTerms/TermsDiscountPercentage",
+            "log": true,
+            "label": "Discount Percentage"
+        },
+        {
+            "path": "Orders/Order/Header/PaymentTerms/TermsDiscountDate",
+            "log": true,
+            "label": "Discount Date"
+        },
+        {
+            "path": "Orders/Order/Header/PaymentTerms/TermsDiscountDueDays",
+            "log": true,
+            "label": "Discount Due Days"
+        },
+        {
+            "path": "Orders/Order/Header/PaymentTerms/TermsNetDueDate",
+            "log": true,
+            "label": "Net Due Date"
+        },
+        {
+            "path": "Orders/Order/Header/PaymentTerms/TermsNetDueDays",
+            "log": true,
+            "label": "Net Due Days"
+        },
+        {
+            "path": "Orders/Order/Header/PaymentTerms/TermsDescription",
+            "log": true,
+            "label": "Terms Description"
+        },
+        {
+            "path": "Orders/Order/Header/FOBRelatedInstruction",
+            "log_subfields": "edi_customer_payment_terms"
+        },
+        {
+            "path": "Orders/Order/Header/FOBRelatedInstruction/FOBPayCode",
+            "log": true,
+            "label": "FOB Pay Code"
+        },
+        {
+            "path": "Orders/Order/Header/FOBRelatedInstruction/FOBLocationQualifier",
+            "log": true,
+            "label": "FOB Location Qualifier"
+        },
+        {
+            "path": "Orders/Order/Header/FOBRelatedInstruction/FOBLocationDescription",
+            "log": true,
+            "label": "FOB Location Description"
+        },
+        {
+            "path": "Orders/Order/Header/Dates",
+            "model": "sale.order",
+            "multifield": {
+                "determining_tag": "DateTimeQualifier",
+                "values": [
+                    {
+                        "value": "002",
+                        "field": "commitment_date"
+                    },
+                      {
+                        "value": "037",
+                        "field": "delivery_requested_date"
+                    },
+                     {
+                        "value": "038",
+                        "field": "ship_not_before_date"
+                    },
+                     {
+                        "value": "063",
+                        "field": "evaluation_date"
+                    },
+                    {
+                        "value": "118",
+                        "field": "edi_requested_pickup_date"
+                    }
+                ]
+            },
+            "custom_method": "parse_dates_tag"
+        },
+        {
+            "path": "Orders/Order/Header/Dates/DateTimeQualifier",
+            "model": "sale.order",
+            "field": "edi_date_time_qualifier"
+        },
+        {
+            "path": "Orders/Order/Header/CarrierInformation/CarrierTransMethodCode",
+            "field": "edi_carrier_trans_method_code"
+        },
+        {
+            "path": "Orders/Order/Header/CarrierInformation/CarrierRouting",
+            "field": "edi_carrier_routing"
+        },
+        {
+            "path": "Orders/Order/Header/CarrierInformation/CarrierTransMethodCode",
+            "field": "edi_carrier_trans_method_code"
+        },
+        {
+            "path": "Orders/Order/Header/References",
+            "model": "sale.order",
+            "field": "reference_line_ids"
+        },
+        {
+            "path": "Orders/Order/Header/References/ReferenceQual",
+            "field": "ReferenceQual"
+        },
+        {
+            "path": "Orders/Order/Header/References/ReferenceID",
+            "field": "ReferenceID"
+        },
+        {
+            "path": "Orders/Order/Header/Notes",
+            "model": "sale.order",
+            "field": "notes_line_ids"
+        },
+        {
+            "path": "Orders/Order/Header/Notes/NoteCode",
+            "field": "NoteCode"
+        },
+        {
+            "path": "Orders/Order/Header/Notes/Note",
+            "field": "Note"
+        },
+        {
+            "path": "Orders/Order/Header/ChargesAllowances",
+            "field": "edi_charge_allowance_ids",
+            "search": true
+        },
+        {
+            "path": "Orders/Order/Header/ChargesAllowances/AllowChrgIndicator",
+            "field": "indicator",
+            "search": true
+        },
+        {
+            "path": "Orders/Order/Header/ChargesAllowances/AllowChrgCode",
+            "field": "code",
+            "search": true
+        },
+        {
+            "path": "Orders/Order/Header/ChargesAllowances/AllowChrgAmt",
+            "field": "amount",
+            "search": true
+        },
+        {
+            "path": "Orders/Order/Header/ChargesAllowances/AllowChrgPercentQual",
+            "field": "percent_qualifier",
+            "search": true
+        },
+        {
+            "path": "Orders/Order/Header/ChargesAllowances/AllowChrgPercent",
+            "field": "percent",
+            "search": true
+        },
+        {
+            "path": "Orders/Order/Header/ChargesAllowances/AllowChrgHandlingCode",
+            "field": "handling_code",
+            "search": true
+        },
+        {
+            "path": "Orders/Order/LineItem",
+            "field": "order_line",
+            "create": true
+        },
+        {
+            "path": "Orders/Order/LineItem/ProductOrItemDescription/ProductDescription",
+            "field": "name"
+        },
+        {
+            "path": "Orders/Order/LineItem/OrderLine/ConsumerPackageCode",
+            "custom_method": "get_product_from_xml",
+            "custom_method_returns_dict": true,
+            "custom_method_args": ["../EAN", "../GTIN"]
+        },
+        {
+            "path": "Orders/Order/LineItem/OrderLine/OrderQty",
+            "field": "product_uom_qty"
+        },
+        {
+            "path": "Orders/Order/LineItem/OrderLine/OrderQtyUOM",
+            "custom_method": "get_uom_from_xml",
+            "custom_method_returns_dict": true
+        },
+        {
+            "path": "Orders/Order/LineItem/OrderLine/PurchasePrice",
+            "field": "edi_price"
+        },
+        {
+            "path": "Orders/Order/LineItem/PhysicalDetails/PackValue",
+            "field": "edi_pack_size"
+        },
+        {
+            "path": "Orders/Order/LineItem/OrderLine/LineSequenceNumber",
+            "field": "edi_line_sequence_number"
+        },
+        {
+            "path": "Orders/Order/LineItem/OrderLine/ProductID/PartNumber",
+            "field": "edi_part_number"
+        },
+        {
+            "path": "Orders/Order/LineItem/OrderLine/VendorPartNumber",
+            "custom_method": "get_product_from_xml_sku",
+            "custom_method_returns_dict": true,
+            "custom_method_args": ["../EAN", "../GTIN", "../ConsumerPackageCode"]
+        },
+        {
+            "path": "Orders/Order/LineItem/OrderLine/BuyerPartNumber",
+            "field": "edi_buyer_part_number"
+        },
+        {
+            "path": "Orders/Order/LineItem/ChargesAllowances",
+            "log_subfield": "edi_charge_allowances"
+        },
+        {
+            "path": "Orders/Order/LineItem/ChargesAllowances/AllowChrgIndicator",
+            "log": true
+        },
+        {
+            "path": "Orders/Order/LineItem/ChargesAllowances/AllowChrgCode",
+            "log": true
+        },
+        {
+            "path": "Orders/Order/LineItem/ChargesAllowances/ReferenceIdentification",
+            "log": true
+        },
+        {
+            "path": "Orders/Order/LineItem/PaymentTerms",
+            "field": "edi_payment_terms",
+            "custom_method": "get_payment_terms"
+        },
+        {
+            "path": "Orders/Order/LineItem/Taxes/TaxTypeCode",
+            "field": "edi_tax_code",
+            "default": "TX"
+        },
+        {
+            "path": "Orders/Order/LineItem/Taxes/TaxPercent",
+            "field": "edi_tax_percent",
+            "default": "0"
+        },
+        {
+            "path": "Orders/Order/LineItem/Taxes/TaxID",
+            "field": "edi_tax_id",
+            "default": "0"
+        }
+    ]
+}

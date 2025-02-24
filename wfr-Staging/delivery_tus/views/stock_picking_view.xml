@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_picking_form_delivery_inherited" model="ir.ui.view">
+        <field name="name">stock_picking_delivery.picking.form</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <field name="arch" type="xml">
+            <data>
+                <xpath expr="//header/button[@name='action_toggle_is_locked']" position="after">
+                    <button
+                            string="Add shipping"
+                            name="action_open_delivery_wizard"
+                            type="object"/>
+                    <button
+                            string="Send To Shipper"
+                            name="send_to_shipper"
+                            type="object"/>
+                </xpath>
+            </data>
+        </field>
+    </record>
+
+</odoo>

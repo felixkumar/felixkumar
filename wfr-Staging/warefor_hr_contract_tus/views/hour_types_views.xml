@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="hour_types_form_view_tus" model="ir.ui.view">
+            <field name="name">hour.types.form.view.tus</field>
+            <field name="model">hour.types</field>
+            <field name="arch" type="xml">
+                 <form string="Hour Types">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="description"/>
+                            <field name="multiplier"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="hour_types_tree_view_tus" model="ir.ui.view">
+            <field name="name">hour.types.tree.view.tus</field>
+            <field name="model">hour.types</field>
+            <field name="arch" type="xml">
+                <tree string="Hour Types">
+                    <field name="name"/>
+                    <field name="description"/>
+                    <field name="multiplier"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_hour_types_view_tus" model="ir.actions.act_window">
+            <field name="name">Hours Types</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hour.types</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                <!-- Add Text Here -->
+              </p><p>
+                <!-- More details about what a user can do with this object will be OK -->
+              </p>
+            </field>
+        </record>
+
+        <menuitem id="menu_hour_types"
+            name="Hour Types"
+            parent="hr_timesheet.timesheet_menu_root"
+            action="action_hour_types_view_tus"
+            sequence="999"/>
+
+    </data>
+</odoo>
+

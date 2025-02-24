@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="s_icon_images" name="Icon Images">
+        <section class="s_icon_images pt16 pb16 border-0">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-12 col-sm-6 col-xl-2 bg-transparent"
+                         style="overflow:hidden;width:120px;height:120px;">
+                        <img class="img img-fluid d-block" src="/tus_theme_prime/static/src/snippets/icon_1.png"
+                             data-name="Image" data-index="0" loading="lazy" style="object-fit:contain;"/>
+                    </div>
+                    <div class="col-12 col-sm-6 col-xl-2 bg-transparent"
+                         style="overflow:hidden;width:120px;height:120px;">
+                        <img class="img img-fluid d-block" src="/tus_theme_prime/static/src/snippets/icon_2.png"
+                             data-name="Image" data-index="0" loading="lazy" style="object-fit:contain;"/>
+                    </div>
+
+                    <div class="col-12 col-sm-6 col-xl-2 bg-transparent"
+                         style="overflow:hidden;width:120px;height:120px;">
+                        <img class="img img-fluid d-block" src="/tus_theme_prime/static/src/snippets/icon_3.png"
+                             data-name="Image" data-index="0" loading="lazy" style="object-fit:contain;"/>
+                    </div>
+                    <div class="col-12 col-sm-6 col-xl-2 bg-transparent"
+                         style="overflow:hidden;width:120px;height:120px;">
+                        <img class="img img-fluid d-block" src="/tus_theme_prime/static/src/snippets/icon_4.png"
+                             data-name="Image" data-index="0" loading="lazy" style="object-fit:contain;"/>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </template>
+
+    <template id="template_preheader_custom" inherit_id="website.layout" name="Preheader Custom" active="False">
+        <xpath expr="//header/*" position="before">
+            <div class="o_colored_level o_cc" data-name="Preheader" style="background-color:#E6E3DE;">
+                <div class="container">
+                    <div class="d-flex align-items-center justify-content-center py-2 text-center">
+                        <div class="oe_structure oe_structure_solo">
+                            <section class="s_text_block text-center" data-snippet="s_text_block" data-name="Text">
+                                <div class="container">
+                                    <div style="font-size:16px;">Summer Special Get 50% Off Code #GET50</div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </xpath>
+    </template>
+</odoo>

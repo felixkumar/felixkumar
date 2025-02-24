@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_edi" name="EDI" parent="base.menu_custom"/>
+    <!-- EDI Syncronization Document Type -->
+    <record id="view_sync_document_type_tree" model="ir.ui.view">
+        <field name="name">view.sync.document.type.tree</field>
+        <field name="model">sync.document.type</field>
+        <field name="arch" type="xml">
+            <tree string="Document Types">
+                <field name="name"/>
+                <field name="doc_code"/>
+                <field name="op_type"/>
+                <field name="active"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_sync_document_type_search" model="ir.ui.view">
+        <field name="name">view.sync.document.type.search</field>
+        <field name="model">sync.document.type</field>
+        <field name="arch" type="xml">
+            <search string="Document Types">
+                <field name="name" string="Document" />
+                <filter string="Archived" name="inactive" domain="[('active','=',False)]"/>
+                <group expand="1" string="Group By">
+                    <filter string="Document Code" name="grp_doc_code" domain="[]" context="{'group_by':'doc_code'}"/>
+                    <filter string="Operation Type" name="grp_op_type" domain="[]" context="{'group_by':'op_type'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="view_sync_document_type_form" model="ir.ui.view">
+        <field name="name">view.sync.document.type.form</field>
+        <field name="model">sync.document.type</field>
+        <field name="arch" type="xml">
+            <form string="Document Type">
+                <sheet>
+                    <field name="active" invisible="1"/>
+                    <div class="oe_button_box" name="button_box">
+                    </div>
+                    <widget name="web_ribbon" title="Archived" bg_color="bg-danger" attrs="{'invisible': [('active', '=', True)]}"/>
+                    <div class="oe_title" name="title">
+                        <label for="name" string="Title" class="oe_edit_only"/>
+                        <h1>
+                            <field name="name" placeholder="e.g. Import Sales Order (850/In)"/>
+                        </h1>
+                    </div>
+
+                    <group name="grp_main">
+                        <group name="grp_sub_1">
+                            <field name="doc_code"/>
+                            <field name="op_type"/>
+                        </group>
+
+                        <group>
+                            <field name="xsd_id"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_sync_document_type_views" model="ir.actions.act_window">
+        <field name="name">Document Types</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">sync.document.type</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+    </record>
+
+    <menuitem id="menu_edi_document_type"
+              name="Document Types"
+              parent="menu_edi"
+              action="action_sync_document_type_views"
+              sequence="1"/>
+
+
+    <!-- EDI Syncronization Configurations -->
+    <record id="view_edi_config_tree" model="ir.ui.view">
+        <field name="name">view.edi.config.tree</field>
+        <field name="model">edi.config</field>
+        <field name="arch" type="xml">
+            <tree string="Carrier">
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="ftp_host"/>
+                <field name="ftp_login"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_edi_config_search" model="ir.ui.view">
+        <field name="name">view.edi.config.search</field>
+        <field name="model">edi.config</field>
+        <field name="arch" type="xml">
+            <search string="EDI Syncronization">
+                <field name="name" string="Carrier" />
+                <filter string="Archived" name="inactive" domain="[('active','=',False)]"/>
+                <group expand="1" string="Group By">
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="view_edi_config_form" model="ir.ui.view">
+        <field name="name">view.edi.config.form</field>
+        <field name="model">edi.config</field>
+        <field name="arch" type="xml">
+            <form string="Carrier">
+                <header>
+                    <button type="object" name="test_provider_connection" string="Test Connection"/>
+                    <button type="object" name="do_document_sync" string="Run Manually" />
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <field name="message_count" invisible="1"/>
+                        <button name="action_view_messages"
+                            type="object"
+                            class="oe_stat_button"
+                            icon="fa-pencil-square-o"
+                            attrs="{'invisible': [('message_count', '=', 0)]}">
+                        </button>
+                    </div>
+                    <field name="active" invisible="1"/>
+                    <div class="oe_button_box" name="button_box">
+                    </div>
+                    <widget name="web_ribbon" title="Archived" bg_color="bg-danger" attrs="{'invisible': [('active', '=', True)]}"/>
+                    <div class="oe_title" name="title">
+                        <label for="name" string="Title" class="oe_edit_only"/>
+                        <h1>
+                            <field name="name" placeholder="e.g. Acme commerce edi docuemtns"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="ftp_protocol"/>
+                            <field name="ftp_host"/>
+                            <field name="ftp_port"/>
+                            <field name="ftp_login"/>
+                            <field name="ftp_password"/>
+                        </group>
+                        <group>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                            <field name="sequence"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Syncronization Actions">
+                            <field name="sync_action_ids">
+                                <tree string="Syncronization Actions">
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="doc_type_id"  options="{'no_open':True,'no_create':True}"/>
+                                    <field name="op_type" invisible="1"/>
+                                    <field name="dir_path"/>
+                                    <field name="active"/>
+                                    <field name="last_sync_date" readonly="1"/>
+                                </tree>
+                                <form string="Syncronization Action">
+                                    <sheet>
+                                        <field name="op_type" invisible="1"/>
+                                        <div class="oe_title" name="title">
+                                            <label for="doc_type_id" string="Document" class="oe_edit_only"/>
+                                            <h1>
+                                                <field name="doc_type_id"  options="{'no_open':True,'no_create':True}"/>
+                                            </h1>
+                                        </div>
+                                        <group>
+                                            <group>
+                                                <field name="dir_path"/>
+                                                <field name="dir_mv_path" attrs="{'invisible': [('op_type', '!=', 'in-mv')], 'required': [('op_type', '=', 'in-mv')]}"/>
+                                                <field name="action_defaults"/>
+                                            </group>
+                                            <group>
+                                                <field name="sequence"/>
+                                                <field name="active"/>
+                                                <field name="last_sync_date" readonly="1"/>
+                                            </group>
+                                        </group>
+                                    </sheet>
+                                </form>
+                            </field>
+                        </page>
+                        <page string="Notes">
+
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_edi_config_form" model="ir.actions.act_window">
+        <field name="name">EDI Syncronizations</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">edi.config</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+          <p class="o_view_nocontent_smiling_face">
+            Define a new EDI synchronization configurations
+          </p><p>
+            Each document synchronization can have several document configurations such as
+          </p><p>Purchase Order (sale order) Import/Export (850)
+          </p><p>Purchase Order Acknowledgement (855)
+          </p><p>Shipment Notification (856)
+          </p><p>etc...
+      </p><p>(available options are based on installed apps and implementation)
+          </p>
+        </field>
+    </record>
+
+    <menuitem id="menu_edi_config"
+              name="Syncronizations"
+              parent="menu_edi"
+              action="action_edi_config_form"
+              sequence="1"/>
+
+    <record id="edi_sync_action_list_view" model="ir.ui.view">
+        <field name="name">edi.sync.action.tree</field>
+        <field name="model">edi.sync.action</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="doc_type_id"  options="{'no_open':True,'no_create':True}"/>
+                <field name="dir_path"/>
+                <field name="active"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="edi_sync_action_search_view" model="ir.ui.view">
+        <field name="name">edi.sync.action.tree</field>
+        <field name="model">edi.sync.action</field>
+        <field name="arch" type="xml">
+            <search>
+                <filter string="Active" name="active" domain="[('active', '=',True)]"/>
+                <filter string="Inactive" name="inactive" domain="[('active', '=',False)]"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_edi_sync_action_view_list" model="ir.actions.act_window">
+         <field name="name">EDI Syncronization Actions</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">edi.sync.action</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+    </record>
+
+    <menuitem id="menu_edi_sync_action"
+              name="Synchronization Actions"
+              parent="menu_edi"
+              action="action_edi_sync_action_view_list"
+              sequence="1"/>
+</odoo>

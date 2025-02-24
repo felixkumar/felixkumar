@@ -1,0 +1,107 @@
+$o-ba-prime-color: #188fce;
+$o-ba-secondary-color: #875A7B;
+$o-ba-danger-color: #dc3545;
+$o-ba-white-color: #ffffff;
+$o-ba-hover-color: #212529;
+
+.business-appointment-pull-right { float: right }
+.business-appointment-hidden { display: none !important }
+.business-appointment-row {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100% !important;
+    margin-bottom: 4px;
+}
+.business-appointment-p-16 { padding: 0 16px }
+/* Header */
+.business-appointment-slots-header { 
+    margin-bottom: 5px;
+
+    input, select {
+        border: 1px solid #cfcfcf;
+        border-top-style: none;
+        border-right-style: none;
+        border-left-style: none;
+        cursor: pointer;
+        background-color: transparent;
+    }
+    .business-appointment-label { font-weight: 500 }
+    .business-appointmemt-dates-container {
+        display: flex;
+        padding-right: 16px;
+
+        .business-appointment-datepicker { max-width: 120px }
+    }
+    .business-appointmemt-duration-container {
+        display: flex;
+    }
+    .business-appointmemt-tz-container {
+        display: flex;
+        align-self: flex-end;
+        flex-grow: 0;
+        min-width: 100px;
+        padding-right: 16px;
+    }
+    .business-appointment-year-container {
+        align-self: flex-end;
+        flex-grow: 0;
+        padding-right: 12px;
+        min-width: 50px;
+        margin-top: 5px;
+        padding-right: 16px;
+    }
+    .business-appointment-month-container {
+        display: flex;
+        flex-wrap: wrap;
+        flex-grow: 1;
+
+        .business-appointment-month-switcher {
+            flex-grow: 0;
+            text-align: center;
+            border-radius: 2px;
+            box-shadow: 0 0 2px $o-ba-hover-color;
+            margin-top: 5px;
+            padding: 2px;
+            margin-right: 8px;
+            min-width: 45px;
+            white-space: nowrap;
+        }
+        .business-appointment-month-switcher:not(.business-appointment-active-month):hover {
+            opacity: 0.8;
+            cursor: pointer;
+        }
+        .business-appointment-active-month {
+            box-shadow: 0 0 6px $o-ba-prime-color;;
+        }
+    }
+}
+/* Slots */
+.business-appointment-slots {
+    .business-appointment-slot-container-odd { background-color: #f5f8fa }
+    .business-appointment-slot-container-even { background-color: #f2f4f5 }
+    .business-appointment-slot-container {
+        flex-grow: 1;
+        text-align: center;
+        padding: 12px;
+        
+        h5 {
+            color: $o-ba-prime-color;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+        .business-appointment-slot {
+            border-radius: 0px;
+            padding: 8px;
+            margin: 5px;
+            background-color: $o-ba-prime-color;
+            color: $o-ba-white-color;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+        .business-appointment-slot:hover {
+            color: $o-ba-hover-color;
+            opacity: 0.8;
+            cursor: pointer;
+        }
+    }
+}

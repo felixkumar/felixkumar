@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="vpicktree_ept" model="ir.ui.view">
+        <field name="name">stock.picking.tree</field>
+        <field name="model">stock.picking</field>
+        <field name="priority">100</field>
+        <field name="arch" type="xml">
+            <tree string="Picking list" create="0">
+                <field name="name"/>
+                <field name="location_dest_id"/>
+                <field name="partner_id"/>
+                <field name="date"/>
+                <field name="scheduled_date" invisible="1"/>
+                <field name="origin"/>
+                <field name="group_id" invisible="1"/>
+                <field name="backorder_id"/>
+                <field name="state"/>
+                <field name="priority" invisible="1"/>
+                <field name="picking_type_id" invisible="1"/>
+                <field name="picking_type_code" invisible="1"/>
+                <field name="updated_in_walmart"   attrs="{'invisible':[('picking_type_code','!=','outgoing')]}"/>
+            </tree>
+        </field>
+    </record>
+</odoo>
+	

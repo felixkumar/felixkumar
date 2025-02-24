@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.business.appointment</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('settings')]" position="inside">
+                <div class="app_settings_block" data-string="Business Appointments" string="Business Appointments" data-key="business_appointment" name="business_appointment">
+                    <h2>Extra Features</h2>
+                    <div class="row mt16 o_settings_container">                       
+                        <div name="ba_website_option" class="col-xs-12 col-md-6 o_setting_box">
+                            <div name="extra_1_website" class="o_setting_left_pane">
+                                <field name="module_business_appointment_website"/>
+                            </div>
+                            <div name="extra_2_website" class="o_setting_right_pane">
+                                <label for="module_business_appointment_website"/>
+                                <div name="extra_2_website_hint" class="text-muted">
+                                    Turn on to let portal or/and website visitors schedule appointments. The tool <a href="https://apps.odoo.com/apps/modules/16.0/business_appointment_website/">Universal Appointments: Portal and Website</a> (99 Euro extra) is required
+                                </div>
+                            </div>
+                        </div>
+                        <div name="ba_hr_option" class="col-xs-12 col-md-6 o_setting_box">
+                            <div name="extra_1_hr" class="o_setting_left_pane">
+                                <field name="module_business_appointment_hr"/>
+                            </div>
+                            <div name="extra_2_hr" class="o_setting_right_pane">
+                                <label for="module_business_appointment_hr"/>
+                                <div name="extra_2_hr_hint" class="text-muted">
+                                    Turn on to link HR employees with resources and use their work time and leaves. The tool <a href="https://apps.odoo.com/apps/modules/16.0/business_appointment_hr/">Universal Appointments: HR Bridge</a> (distributed free) is required. The app 'HR' will be automatically installed in your database
+                                </div>
+                            </div>
+                        </div>
+                        <div name="ba_sale_option" class="col-xs-12 col-md-6 o_setting_box">
+                            <div name="ba_sale_option_1" class="o_setting_left_pane">
+                                <field name="module_business_appointment_sale"/>
+                            </div>
+                            <div name="ba_sale_option_2" class="o_setting_right_pane">
+                                <label for="module_business_appointment_sale"/>
+                                <div name="ba_sale_option_hint" class="text-muted">
+                                    Turn on to create sale orders for appointments. The tool <a href="https://apps.odoo.com/apps/modules/16.0/business_appointment_sale/">Universal Appointments: Sales</a> is required (distributed free). The Odoo app 'Sales' will be automatically installed in your database
+                                </div>
+                            </div>
+                        </div>
+                        <div name="ba_website_sale_option" class="col-xs-12 col-md-6 o_setting_box" attrs="{'invisible': ['|', ('module_business_appointment_website', '=', False), ('module_business_appointment_sale', '=', False)]}">
+                            <div name="ba_website_sale_option_1" class="o_setting_left_pane">
+                                <field name="module_business_appointment_website_sale"/>
+                            </div>
+                            <div name="ba_website_sale_option_2" class="o_setting_right_pane">
+                                <label for="module_business_appointment_website_sale"/>
+                                <div name="ba_website_sale_option_hint" class="text-muted">
+                                    Turn on to link portal sale orders with appointments and to have the possibility to show service prices and pricelists on appointment pages. The tool <a href="https://apps.odoo.com/apps/modules/16.0/business_appointment_website_sale/">Universal Appointments: Website Sales</a> is required (free if Universal Appointments: Portal and Website and Universal Appointments are installed). The app 'eCommerce' will be automatically installed in your database
+                                </div>
+                            </div>
+                        </div>
+                        <div name="ba_custom_fields_option" class="col-xs-12 col-md-6 o_setting_box">
+                            <div name="extra_1_custom" class="o_setting_left_pane">
+                                <field name="module_business_appointment_custom_fields"/>
+                            </div>
+                            <div name="extra_2_custom" class="o_setting_right_pane">
+                                <label for="module_business_appointment_custom_fields"/>
+                                <div name="extra_2_custom_hint" class="text-muted">
+                                    Turn on to introduce custom fields for appointments, resource types, resources, and services. The tool <a href="https://apps.odoo.com/apps/modules/16.0/business_appointment_custom_fields/">Universal Appointments: Custom Fields</a> (48 Euros extra) is required
+                                </div>
+                            </div>
+                        </div>
+                        <div name="ba_custom_fields_website_option" class="col-xs-12 col-md-6 o_setting_box" attrs="{'invisible': ['|', ('module_business_appointment_custom_fields', '=', False), ('module_business_appointment_website', '=', False)]}">
+                            <div name="extra_1_custom_website" class="o_setting_left_pane">
+                                <field name="module_business_appointment_custom_fields_website"/>
+                            </div>
+                            <div name="extra_2_custom_website" class="o_setting_right_pane">
+                                <label for="module_business_appointment_custom_fields_website"/>
+                                <div name="extra_2_custom_website_hint" class="text-muted">
+                                    Turn on to show custom fields for portal and website visitors. The tool <a href="https://apps.odoo.com/apps/modules/16.0/business_appointment_custom_fields_website/">Universal Appointments: Custom Fields for Website and Portal</a> is required (free if Universal Appointments: Portal and Universal Appointments: Custom Fields are installed)
+                                </div>
+                            </div>
+                        </div>
+                        <div name="ba_time_tracking_option" class="col-xs-12 col-md-6 o_setting_box">
+                            <div name="extra_1_time" class="o_setting_left_pane">
+                                <field name="module_business_appointment_time_tracking"/>
+                            </div>
+                            <div name="extra_2_time" class="o_setting_right_pane">
+                                <label for="module_business_appointment_time_tracking"/>
+                                <div name="extra_2_time_hint" class="text-muted">
+                                    Turn on to log actual time spent on appointments <a href="https://apps.odoo.com/apps/modules/16.0/business_appointment_time_tracking/">Universal Appointments: Time Tracking</a> (10 Euro extra) is required
+                                </div>
+                            </div>
+                        </div>
+                        <div name="module_business_appointment_gantt_option" class="col-xs-12 col-md-6 o_setting_box">
+                            <div name="module_business_appointment_gantt_1" class="o_setting_left_pane">
+                                <field name="module_business_appointment_gantt" widget="upgrade_boolean"/>
+                            </div>
+                            <div name="module_business_appointment_gantt_2" class="o_setting_right_pane">
+                                <label for="module_business_appointment_gantt"/>
+                                <div name="module_business_appointment_gantt_hint" class="text-muted">
+                                    Turn on to introduce the Odoo Enterprise Gantt view for appointments. The tool <a href="https://apps.odoo.com/apps/modules/16.0/business_appointment_gantt/">Business Appointments: Gantt</a> (distributed free) is required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h2>General Options</h2>
+                    <div class="row mt16 o_settings_container">
+                        <div class="col-12 col-lg-6 o_setting_box">
+                            <div class="o_setting_right_pane" id="business_appointment_unreservation_policies">
+                                <label for="ba_max_preresevation_time"/>
+                                <div class="text-muted">
+                                    Define how much time is available to finish a reservation. When a user selects a time slot it becomes unavailable for other appointments. However, if scheduling is not complete, Odoo should unblock this time slot at a certain moment. Define when unblocking should take place
+                                </div>
+                                <div class="content-group">
+                                    <div class="mt16">
+                                        <field name="ba_max_preresevation_time" class="o_light_label" widget="float_time"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div name="ba_multi_scheduling_option" class="col-12 col-lg-6 o_setting_box">
+                            <div name="ba_multi_scheduling_option_1" class="o_setting_left_pane">
+                                <field name="ba_multi_scheduling"/>
+                            </div>
+                            <div name="ba_multi_scheduling_option_2" class="o_setting_right_pane">
+                                <label for="ba_multi_scheduling"/>
+                                <div name="mutlischeduling_option_hint" class="text-muted">
+                                    Turn on to allow managers to schedule a few time slots during a single reservation
+                                </div>
+                                <div class="content-group" attrs="{'invisible': [('ba_multi_scheduling', '=', False)]}">
+                                    <div class="mt16">
+                                        <label for="ba_max_multi_scheduling"/>
+                                        <field name="ba_max_multi_scheduling"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div name="ba_extra_products_backend_option" class="col-12 col-lg-6 o_setting_box">
+                            <div name="ba_extra_products_backend_1" class="o_setting_left_pane">
+                                <field name="ba_extra_products_backend"/>
+                            </div>
+                            <div name="ba_extra_products_backend_option_2" class="o_setting_right_pane">
+                                <label for="ba_extra_products_backend"/>
+                                <div name="ba_extra_products_backend_hint" class="text-muted">
+                                    Turn on to offer managers complementary products while scheduling a time slot. Such products will be shown if there are any associated with a reserved service
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6 o_setting_box" attrs="{'invisible': [('module_business_appointment_sale', '=', False)]}">
+                            <div class="o_setting_right_pane" id="business_appointment_sale_policies">
+                                <label for="ba_auto_sale_order" string="Sale Policies"/>
+                                <div class="text-muted">
+                                    Define the way how Odoo quotations/sale orders should be generated for appointments
+                                </div>
+                                <div class="content-group mt16">
+                                    <label for="ba_auto_sale_order"/>
+                                    <field name="ba_auto_sale_order" class="w-100"/>
+                                    <group>
+                                        <field name="ba_sale_appointment_description"/>
+                                    </group>
+                                    <field name="group_uom" invisible="1"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div name="ba_pricelists_option" class="col-12 col-lg-6 o_setting_box">
+                            <div name="ba_pricelists_option_option_1" class="o_setting_left_pane">
+                                <field name="group_product_pricelist"/>
+                            </div>
+                            <div name="ba_pricelists_option_option_2" class="o_setting_right_pane">
+                                <label for="group_product_pricelist" string="Multiple Service Prices"/>
+                                <div name="ba_sales_price_hint" class="text-muted">
+                                    Turn on to introduce multiple pricelists and assign different prices for services and complementary products
+                                </div>
+                                <div class="content-group" attrs="{'invisible': [('group_product_pricelist', '=', False)]}">
+                                    <div class="mt16">
+                                        <field name="group_sale_pricelist" invisible="1"/>
+                                        <field name="product_pricelist_setting" widget="radio"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6 o_setting_box" attrs="{'invisible': [('module_business_appointment_website', '=', False)]}">
+                            <div class="o_setting_right_pane" id="business_appointment_website_confirmation">
+                                <label for="ba_approval_type"/>
+                                <div class="text-muted">
+                                    Define whether website/portal visitors should confirm their email/phone numbers to finish a reservation
+                                </div>
+                                <div class="content-group">
+                                    <div class="mt8">
+                                        <field name="ba_approval_type" class="o_light_label w-100" widget="selection"/>
+                                    </div>
+                                    <div class="mt8" attrs="{'invisible': [('ba_approval_type', 'in', ['no', False])]}">
+                                        <label for="ba_max_approval_time"/>
+                                        <field name="ba_max_approval_time" widget="float_time"/>
+                                        <label for="ba_max_approval_trials"/>
+                                        <field name="ba_max_approval_trials"/>
+                                        <label for="ba_confirmation_retry_period"/>
+                                        <field name="ba_confirmation_retry_period"/>
+                                        <label for="ba_confirmation_retry_trials"/>
+                                        <field name="ba_confirmation_retry_trials"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div name="ba_rating_option" class="col-12 col-lg-6 o_setting_box">
+                            <div name="ba_rating_option_1" class="o_setting_left_pane">
+                                <field name="group_business_appointment_rating"/>
+                            </div>
+                            <div name="ba_rating_option_2" class="o_setting_right_pane">
+                                <label for="group_business_appointment_rating"/>
+                                <div name="ba_rating_option_hint" class="text-muted">
+                                    Turn on sending rating requests when appointments are done. This option might be also specified per each resource type
+                                </div>
+                            </div>
+                        </div>
+                        <div name="ba_phone_option" class="col-12 col-lg-6 o_setting_box">
+                            <div name="ba_phone_option_1" class="o_setting_left_pane">
+                                <field name="ba_required_phone_validation"/>
+                            </div>
+                            <div name="ba_phone_option_2" class="o_setting_right_pane">
+                                <label for="ba_required_phone_validation"/>
+                                <div name="ba_phone_option_hint" class="text-muted">
+                                    Turn on to validate mobile/phone numbers before submitting a reservation. If checked, it will be impossible to register an appointment if the library <a href="https://pypi.org/project/phonenumbers/">phonenumbers</a> cannot parse the entered number
+                                </div>
+                            </div>
+                        </div>
+                        <!-- To-do: invisible until https://github.com/odoo/odoo/issues/100464 is fixed -->
+                        <div name="ba_videocall_option" class="col-12 col-lg-6 o_setting_box" invisible="1">
+                            <div name="ba__videocall_option_1" class="o_setting_left_pane">
+                                <field name="group_business_appointment_video_calls"/>
+                            </div>
+                            <div name="ba_r_videocall_option_2" class="o_setting_right_pane">
+                                <label for="group_business_appointment_video_calls"/>
+                                <div name="ba_videocall_option_hint" class="text-muted">
+                                    Turn on to integrate Odoo video calls features to organize appointments' online conferences
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h2>Company-Specific Options</h2>
+                    <div class="row app_settings_header my-0 ms-0 mw-100 bg-warning bg-opacity-25">
+                        <div class="col-xs-12 col-md-6 ms-0 o_setting_box">
+                            <div class="o_setting_right_pane border-start-0 ms-0 ps-0">
+                                <div class="content-group">
+                                    <div class="row flex-row flex-nowrap mt8 align-items-center">
+                                        <label class="col ps-0 text-nowrap" string="You are changing the settings of the company:" for="ba_company_id"/>
+                                        <field name="ba_company_id" options="{'no_open': True, 'no_create': True}" title="Select company"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt16 o_settings_container">
+                        <div name="timezomes_option" class="col-12 col-lg-6 o_setting_box">
+                            <div name="timezomes_option_1" class="o_setting_left_pane">
+                                <field name="ba_timezone_option"/>
+                            </div>
+                            <div name="timezomes_option_2" class="o_setting_right_pane">
+                                <label for="ba_timezone_option"/>
+                                <div name="timezomes_option_hint" class="text-muted">
+                                    Make time zone available for selection while scheduling an appointment. Otherwise, all time slots will be shown always at the same timezone taken from a current company
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6 o_setting_box" attrs="{'invisible': [('ba_timezone_option', '=', True)]}">
+                            <div class="o_setting_right_pane" id="business_appointment_comp_tz">
+                                <label for="appoin_comp_tz"/>
+                                <div class="text-muted">
+                                    Define a company timezone for the time slots wizard
+                                </div>
+                                <div class="content-group">
+                                    <field name="appoin_comp_tz" class="o_light_label w-100" widget="selection"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6 o_setting_box">
+                            <div class="o_setting_right_pane" id="business_appointment_comp_tz">
+                                <label for="ba_pricelist_id"/>
+                                <div class="text-muted">
+                                    Define the default pricelist for appointments
+                                </div>
+                                <div class="content-group">
+                                    <field name="ba_pricelist_id" class="w-100" required="1"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h2 attrs="{'invisible': [('module_business_appointment_website', '=', False)]}">Website-Specific Options</h2>
+                    <div class="row mt16 o_settings_container" attrs="{'invisible': [('module_business_appointment_website', '=', False)]}" id="ba_website_options"/>
+                </div>
+            </xpath>
+        </field>
+    </record>
+    <record id="res_config_settings_business_appointment_action" model="ir.actions.act_window">
+        <field name="name">Settings</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.config.settings</field>
+        <field name="view_mode">form</field>
+        <field name="target">inline</field>
+        <field name="context">{'module' : 'business_appointment'}</field>
+    </record>
+
+</odoo>

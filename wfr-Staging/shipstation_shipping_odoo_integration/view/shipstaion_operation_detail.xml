@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_shipstation_operation_detail" model="ir.ui.view">
+        <field name="name">Shipstation Operation Detail</field>
+        <field name="model">shipstation.operation.detail</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="Shipstation Operation Detail" create='false'>
+                <field name="name"/>
+                <field name="shipstation_operation"/>
+                <field name="shipstation_operation_type"/>
+                <field name="create_date"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_form_shipstation_operation_detail" model="ir.ui.view">
+        <field name="name">Shipstation Operation Detail</field>
+        <field name="model">shipstation.operation.detail</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Shipstation Operation Detail" create='false'>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name" readonly="1"></field>
+                            <field name="shipstation_operation" readonly="1"/>
+                            <field name="shipstation_operation_type" readonly="1"/>
+                            <field name="total_orders"/>
+                        </group>
+                        <group>
+                            <field name="create_date" readonly="1"/>
+                            <field name="company_id" readonly="1"/>
+                            <field name="shipstation_store_id"/>
+                            <field name="import_order_from_date" readonly="1"/>
+                            <field name="import_order_to_date" readonly="1"/>
+                            <field name="message" readonly="1"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Shipstation Operation Details" name="shipstation_operation_detail">
+                            <field name="operation_ids" colspan="4" readonly="1">
+                                <tree decoration-danger="fault_operaion==True">
+                                    <field name="shipstation_operation_type" invisible="1"/>
+                                    <field name="shipstation_operation" invisible="1"/>
+                                    <field name="company_id" readonly="1"/>
+                                    <field name="fault_operaion"/>
+                                    <field name="shipstation_request_message"/>
+                                    <field name="shipstation_response_message"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!--<record id="search_form_shipstation_operation_detail" model="ir.ui.view">-->
+    <!--<field name="name">Shipstation Operation Detail</field>-->
+    <!--<field name="model">shipstation.operation.detail</field>-->
+    <!--<field name="type">search</field>-->
+    <!--<field name="arch" type="xml">-->
+    <!--<search string="Shipstation Operation Detail">-->
+    <!--<field name="name" filter_domain="[('name','ilike',self)]"/>-->
+    <!--<field name="shipstation_operation"/>-->
+    <!--<field name="shipstation_operation_type"/>-->
+    <!--<field name="warehouse_id" filter_domain="[('warehouse_id','ilike',self)]"/>-->
+    <!--<field name="shipstation_message" filter_domain="[('shipstation_message','ilike',self)]"/>-->
+    <!--&lt;!&ndash;  <filter name="filter_app_product" string="Product" domain="[('application','=','product')]"/>-->
+
+    <!--<filter name="filter_app_sales" string="Sales" domain="[('application','=','sales')]"/>-->
+    <!--<filter name="filter_app_warehouse" string="Warehouse" domain="[('application','=','warehouse')]"/>-->
+    <!--<filter name="filter_app_stock" string="Stock" domain="[('application','=','stock')]"/>&ndash;&gt;-->
+
+    <!--<newline/>-->
+    <!--<filter name="filter_operation_export" string="Export"-->
+    <!--domain="[('shipstation_operation_type','=','export')]"/>-->
+    <!--<filter name="filter_operation_import" string="Import"-->
+    <!--domain="[('shipstation_operation_type','=','import')]"/>-->
+    <!--<filter name="filter_operation_update" string="Update"-->
+    <!--domain="[('shipstation_operation_type','=','update')]"/>-->
+    <!--<group expand="0" string="Group By...">-->
+    <!--<filter string="Create Date" icon="terp-personal" context="{'group_by':'create_date'}"/>-->
+    <!--<filter string="Operation" icon="terp-personal" context="{'group_by':'shipstation_operation'}"/>-->
+    <!--<filter string="Operation Type" icon="terp-personal"-->
+    <!--context="{'group_by':'shipstation_operation_type'}"/>-->
+    <!--<filter string="Warehouse" icon="terp-personal" context="{'group_by':'warehouse_id'}"/>-->
+    <!--</group>-->
+    <!--</search>-->
+    <!--</field>-->
+    <!--</record>-->
+
+    <record id="view_shipstation_operation_details" model="ir.ui.view">
+        <field name="name">Shipstation Operation Details</field>
+        <field name="model">shipstation.operation.details</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="Shipstation Operation Details" create='false'>
+                <field name="shipstation_operation"/>
+                <field name="operation_id"/>
+                <field name="shipstation_operation_type"/>
+
+                <field name="shipstation_request_message"/>
+                <field name="shipstation_response_message"/>
+                <field name="create_date"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_form_shipstation_operation_details" model="ir.ui.view">
+        <field name="name">Shipstation Operation Details</field>
+        <field name="model">shipstation.operation.details</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Shipstation Operation Details" create='false'>
+                <sheet>
+                    <group readonly="1">
+                        <group>
+
+                            <field name="shipstation_request_message"/>
+                            <field name="shipstation_response_message"/>
+
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_tree_shipstation_order_details_data" model="ir.ui.view">
+        <field name="name">Order Details</field>
+        <field name="model">shipstation.api.data</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="Order Details" create='false'>
+                <field name="name"/>
+                <field name="shipstation_configuration_id"/>
+                <field name="operation_id"/>
+                <field name="store_id"/>
+                <field name="count"/>
+                <field name="create_date"/>
+                <field name="stage_id"/>
+                <field name="total_orders"/>
+                <field name="processed_orders"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_form_shipstation_order_details_data" model="ir.ui.view">
+        <field name="name">Order Details</field>
+        <field name="model">shipstation.api.data</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Order Details" create='false'>
+                <header>
+                    <field name="stage_id" widget="statusbar" readonly="1"/>
+                </header>
+                <sheet>
+                    <group readonly="1">
+                        <group>
+                            <field name="name"/>
+                            <field name="shipstation_configuration_id"/>
+                            <field name="store_id"/>
+                            <field name="count"/>
+                            <field name="operation_id"/>
+                            <field name="total_orders" readonly="1"/>
+                            <field name="processed_orders" readonly="1"/>
+                            <field name="data"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <!--<record id="search_form_shipstation_operation_details" model="ir.ui.view">-->
+    <!--<field name="name">Shipstation Operation Details</field>-->
+    <!--<field name="model">shipstation.operation.details</field>-->
+    <!--<field name="type">search</field>-->
+    <!--<field name="arch" type="xml">-->
+    <!--<search string="Process Job">-->
+    <!--<field name="operation_id" filter_domain="[('operation_id','ilike',self)]"/>-->
+    <!--<field name="warehouse_id" filter_domain="[('warehouse_id','ilike',self)]"/>-->
+    <!--<field name="shipstation_request_message"-->
+    <!--filter_domain="[('shipstation_request_message','ilike',self)]"/>-->
+    <!--<field name="shipstation_response_message"-->
+    <!--filter_domain="[('shipstation_response_message','ilike',self)]"/>-->
+
+    <!--<newline/>-->
+    <!--<filter name="filter_operation_export" string="Export"-->
+    <!--domain="[('shipstation_operation_type','=','export')]"/>-->
+    <!--<filter name="filter_operation_import" string="Import"-->
+    <!--domain="[('shipstation_operation_type','=','import')]"/>-->
+    <!--<filter name="filter_operation_update" string="Update"-->
+    <!--domain="[('shipstation_operation_type','=','update')]"/>-->
+    <!--<group expand="0" string="Group By...">-->
+    <!--<filter string="Create Date" icon="terp-personal" context="{'group_by':'create_date'}"/>-->
+    <!--<filter string="Operation" icon="terp-personal" context="{'group_by':'application'}"/>-->
+    <!--<filter string="Operation Type" icon="terp-personal"-->
+    <!--context="{'group_by':'shipstation_operation_type'}"/>-->
+    <!--<filter string="Warehouse" icon="terp-personal" context="{'group_by':'warehouse_id'}"/>-->
+    <!--</group>-->
+    <!--</search>-->
+    <!--</field>-->
+    <!--</record>-->
+
+    <record id="action_shipstation_operation_detail" model="ir.actions.act_window">
+        <field name="name">Shipstation Operation Detail</field>
+        <field name="res_model">shipstation.operation.detail</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_shipstation_operation_detail"/>
+        <!--<field name="search_view_id" ref="search_form_shipstation_operation_detail"/>-->
+    </record>
+
+    <record id="action_shipstation_operation_details" model="ir.actions.act_window">
+        <field name="name">Fault Data</field>
+        <field name="res_model">shipstation.operation.details</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('fault_operaion','=',True)]</field>
+        <!--<field name="search_view_id" ref="search_form_shipstation_operation_details"/>-->
+    </record>
+
+    <record id="action_shipstation_order_details_data" model="ir.actions.act_window">
+        <field name="name">Order Details</field>
+        <field name="res_model">shipstation.api.data</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="action_shipstation_exclude_skus_configuration" model="ir.actions.act_window">
+        <field name="name">Exclude Skus</field>
+        <field name="res_model">shipstation.exclude.skus</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_shipstation_operation_detail" name="Shipstation Operation Detail"
+              parent="shipstation_odoo_integration_menuitem" sequence="4"
+              action="action_shipstation_operation_detail"/>
+
+
+    <menuitem id="menu_shipstation_operation_details" name="Fault Details"
+              parent="shipstation_odoo_integration_menuitem" sequence="5"
+              action="action_shipstation_operation_details"/>
+
+    <menuitem id="menu_shipstation_order_details_data" name="Order Details"
+              parent="shipstation_odoo_integration_menuitem" sequence="6"
+              action="action_shipstation_order_details_data"/>
+
+    <menuitem id="menu_shipstation_exclude_skus_configuration" name="Exclude SKUs"
+              parent="shipstation_odoo_integration_menuitem" sequence="6"
+              action="action_shipstation_exclude_skus_configuration"/>
+
+    <record id="seq_shipstation_operation_detail" model="ir.sequence">
+        <field name="name">ShipstationOperationDetail</field>
+        <field name="code">shipstation.operation.detail</field>
+        <field name="padding">5</field>
+        <field name="prefix">SHIP-</field>
+        <field name="company_id" eval="False"/>
+    </record>
+    <!---->
+</odoo>

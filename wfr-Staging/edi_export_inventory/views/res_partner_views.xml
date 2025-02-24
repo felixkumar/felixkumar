@@ -1,0 +1,18 @@
+<odoo>
+    <record id="view_edi_inventory_res_partner_form_inherit" model="ir.ui.view">
+            <field name="name">edi.inventory.view.res.partner.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                    <xpath expr="//group[@name='edi_docs']" position="inside">
+                        <field name="outbound_edi_inventory"/>
+                    </xpath>
+
+                    <xpath expr="//group[@name='edi_docs']/.." position="after">
+                        <group name="inventory_inquirty" string="Inquiry Products" attrs="{'invisible': [('outbound_edi_inventory', '!=', True)]}">
+                            <field name="edi_inventory_inquiry_product_line_ids"/>
+                        </group>
+                    </xpath>
+            </field>
+        </record>
+</odoo>

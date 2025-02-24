@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <template id="inherit_report_custom_invoice_main" inherit_id="invoice_template_tus.report_custom_invoice_main">
+            <xpath expr="//div[hasclass('page_border')]/t" position="replace">
+                    <t t-foreach="o.get_chunked_line_items()" t-as="page">
+                        <table class="display-table table table-sm o_main_table table-borderless mt-4"
+                               style="display:block;border-top: none !important;border-bottom: none !important;margin-top:15px !important;">
+                            <thead style="background-color:#b8b8b8 !important;color:#212529 !important;margin-bottom: 15px !important;border-top: 1px solid black !important;border-bottom: 1px solid black !important;">
+                                <td class="text_data">Line #</td>
+                                <td class="text_data">Item #</td>
+                                <td class="text_data" style="text-align: left; padding-left:25px;">Description</td>
+                                <td class="text_data" style="text-align: right;padding-right:15px;">Quantity</td>
+                                <td class="text_data">UOM</td>
+                                <td class="text_data" style="text-align: right;">Unit Price</td>
+                                <td class="text_data">Taxes</td>
+                                <td class="text_data">Total Price</td>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="page['lines']" t-as="line"
+                                   style="border-bottom:hidden !important;font-size:8px !important;">
+                                    <tr>
+                                        <td class="text_data">
+                                            <t t-esc="line['line']"/>
+                                        </td>
+                                        <td class="text_data">
+                                            <t t-esc="line['item']"/>
+                                        </td>
+                                        <td class="text_data">
+                                            <t t-esc="line['description']"/>
+                                        </td>
+                                        <td class="text_data">
+                                            <t t-esc="'{:,.2f}'.format(line['quantity'])"/>
+                                        </td>
+                                        <td class="text_data">
+                                            <t t-esc="line['uom']"/>
+                                        </td>
+                                        <td class="text_data">
+                                            <t t-esc="'{:,.2f}'.format(line['unit_price'])"/>
+                                        </td>
+                                        <td class="text_data">
+                                            <t t-foreach="line['line_taxes']" t-as="tax">
+                                                <t t-esc="tax"/>
+                                                <br/>
+                                            </t>
+                                        </td>
+                                        <td class="text_data">
+                                            <t t-esc="'{:,.2f}'.format(line['total_price'])"/>
+                                        </td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                        <t t-if="page != o.get_chunked_line_items()[-1]">
+                            <div class="pagebreak" style="page-break-before: always;"/>
+                        </t>
+                    </t>
+            </xpath>
+
+            <xpath expr="//div[hasclass('footer')]/table/tr" position="replace">
+                <tr class="border-sub-row-note border-heading-right-main border-heading-left-main"
+                            style="line-height: normal;border: 1px solid black;">
+                            <td width="50%" colspan="6"
+                                style="padding: 10px 0px 0px 10px !important;vertical-align: top;word-wrap: break-word;">
+                                <div style="word-wrap: break-word;">
+                                    <span>
+                                        <b>NOTES:</b>
+                                    </span>
+                                    <br/>
+                                    <span>
+                                        <t t-esc="o.narration"/>
+                                    </span>
+                                </div>
+                            </td>
+
+                            <td style="width:250px; padding-left: 10px !important;padding-left: 0px !important;padding-right: 0px !important;border-bottom:1px solid #000;">
+                                <div class="last-page">
+                                    <div style="width:200px; float:left;white-space: nowrap; padding: 4px 18px 3px 8px;margin-top:5px;margin-bottom:30px">
+                                        <div style="float:left;">Sub Total</div>
+                                        <div type="text" style="text-align:right;width:95px;float:right;">
+                                            <span t-field="o.amount_untaxed"
+                                                  t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
+                                        </div>
+                                    </div>
+                                    <div style="width:200px; float:left;padding: 2px 18px 3px 8px;margin-top:-15px;margin-bottom:45px;">
+                                        <div style="float:left;">Taxes</div>
+                                        <div type="text" style="text-align:right;width:95px;float:right;">
+                                            <span t-field="o.amount_tax"
+                                                  t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
+                                        </div>
+                                    </div>
+
+                                    <div class="total-section" style="width:200px;border-bottom:1px solid #000;">
+                                        <div class="total-section-inner">
+                                            <b>Total</b>
+                                            <div type="text" style="text-align:right;width:60%;float:right;padding-right: 16px;">
+                                                <b class="w-100" t-field="o.amount_total"
+                                                   t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+            </xpath>
+        </template>
+
+    </data>
+</odoo>

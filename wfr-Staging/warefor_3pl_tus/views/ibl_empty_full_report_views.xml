@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_inbound_empty_full_report_tree" model="ir.ui.view">
+        <field name="name">inbound.empty.full.report.tree</field>
+        <field name="model">inbound.empty.full.report</field>
+        <field name="arch" type="xml">
+            <tree create="0" edit="0" delete="0">
+                <field name="reference"/>
+                <field name="received_date"/>
+                <field name="unload_end_date"/>
+                <field name="status"/>
+            </tree>
+        </field>
+    </record>
+    <record id="action_inbound_full_empty_report" model="ir.actions.act_window">
+        <field name="name">Inbound Full Empty Report</field>
+        <field name="res_model">inbound.empty.full.report</field>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="view_inbound_empty_full_report_tree"/>
+        <field name="target">current</field>
+    </record>
+    <record id="report_ibl_full_empty_container" model="ir.actions.report">
+        <field name="name">Inbound Full Empty Container Report</field>
+        <field name="model">inbound.empty.full.report</field>
+        <field name="report_type">xlsx</field>
+        <field name="report_name">warefor_3pl_tus.report_ibl_full_empty_xlsx_report</field>
+        <field name="report_file"></field>
+    </record>
+
+    <menuitem id="menu_ibl_empty_full_report_view" name="IBL Empty Full Container Report(View)" action="action_inbound_full_empty_report"
+                  parent="warefor_3pl_tus.menu_freight_freights_inbound_report" sequence="2"/>
+
+</odoo>

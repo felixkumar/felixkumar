@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="report_logistic_pallet_label">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <style>
+                        .table{
+                        border-bottom: 1px solid #000;
+                        }
+                        .heading-font-size{
+                        font-size: 15px;
+                        }
+                        .data-font-size{
+                        font-size: 30px;
+                        }
+                    </style>
+                    <t t-set="order_line" t-value="o.freight_order_line_ids and o.freight_order_line_ids[0]"/>
+                    <t t-set="uom_name" t-value="order_line and order_line.goods.uom_id.name and order_line.goods.uom_id.name[0:2]"/>
+                    <t t-set="partner_id" t-value="o.import_id and o.import_id[0]"/>
+                    <t t-set="barcode" t-value="order_line.goods.barcode or '0'"/>
+                    <t t-set="base_url" t-value="o.env['ir.config_parameter'].sudo().get_param('web.base.url')"/>
+                    <div class="page" style="page-break-before:always;">
+                        <div>
+                            <font size="3" face="Courier New">
+                                <table class="table table-bordered" style="align-self: center; width:100%;"
+                                       cellspacing="0">
+                                    <thead>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="main_tr">
+                                            <td style="width:50% !important">
+                                                <div class="heading-font-size">
+                                                    SKU:
+                                                </div>
+                                                <div class="data-font-size" style="text-align-last:center; !important">
+                                                    <t t-esc="order_line and order_line.goods.default_code"/>
+                                                </div>
+                                            </td>
+                                            <td style="width:30% !important">
+                                                <div class="heading-font-size">
+                                                    Date:
+                                                </div>
+                                                <div class="data-font-size" style="text-align-last:center; !important">
+                                                    <t t-esc="o.date_landing"/>
+                                                </div>
+                                            </td>
+                                            <td style="text-align-last:center;">
+                                                <span class="text-right">
+                                                    <img alt="Barcode"
+                                                         t-att-src="base_url+'/report/barcode/Code128/'+barcode"
+                                                         style="width:80%;height:70%;"/>
+                                                </span>
+                                                <br/>
+                                                <span class="text-right">
+                                                    <t t-esc="barcode"/>
+                                                </span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <table class="table table-bordered" style="align-self: center; width:100%;"
+                                       cellspacing="0">
+                                    <tr class="main_tr">
+                                        <td>
+                                            <div class="heading-font-size">
+                                                Product:
+                                            </div>
+
+                                            <div class="data-font-size" style="text-align-last:center;">
+                                                <t t-esc="order_line and order_line.goods.name"/>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <table class="table table-bordered" style="align-self: center; width:100%;"
+                                       cellspacing="0">
+                                    <tr class="main_tr">
+                                        <td>
+                                            <div class="heading-font-size">
+                                                Eucatex Code:
+                                            </div>
+
+                                            <div class="data-font-size" style="text-align-last:center;">
+                                                <t t-esc="o.reference"/>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="heading-font-size">
+                                                P.O. Factory:
+                                            </div>
+
+                                            <div class="data-font-size" style="text-align-last:center;">
+                                                <t t-esc="order_line and order_line.goods.name"/>
+                                            </div>
+
+                                        </td>
+                                        <td>
+                                            <div class="heading-font-size">
+                                                Quantity:
+                                            </div>
+
+                                            <div class="data-font-size" style="text-align-last:center;">
+                                                <t t-esc="order_line and order_line.total_quantity"/>[<t t-esc="uom_name"/>]
+                                            </div>
+
+                                        </td>
+                                        <td>
+<!--                                             <div class="heading-font-size">
+                                                Request:
+                                            </div>
+
+                                            <div class="data-font-size" style="text-align-last:center;">
+                                                REQUEST
+                                            </div> -->
+
+                                        </td>
+                                    </tr>
+                                </table>
+                                <table class="table table-bordered" style="align-self: center; width:100%;"
+                                       cellspacing="0">
+                                    <tr class="main_tr">
+<!--                                        <td>-->
+<!--                                            <div class="heading-font-size">-->
+<!--                                                Consumer:-->
+<!--                                            </div>-->
+
+<!--                                            <div class="data-font-size" style="text-align-last:center;">-->
+<!--                                                <t t-esc="partner_id.street"/>-->
+<!--                                            </div>-->
+<!--                                        </td>-->
+                                        <td>
+                                            <div class="heading-font-size">
+                                                Country:
+                                            </div>
+
+                                            <div class="data-font-size" style="text-align-last:center;">
+                                                <t t-esc="partner_id.country_id.name"/>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <table class="table table-bordered" style="align-self: center; width:100%;"
+                                       cellspacing="0">
+                                    <tr class="main_tr">
+                                        <td>
+                                            <div class="heading-font-size">
+                                                Reference:
+                                            </div>
+
+                                            <div class="data-font-size" style="text-align-last:center;">
+                                                <t t-esc="o.reference"/>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="heading-font-size">
+                                                Lot:
+                                            </div>
+                                            <div class="data-font-size" style="text-align-last:center;">
+                                                <t t-esc="len(o.freight_order_line_ids.ids) and (o.freight_order_line_ids[0].lot_id.name or '') or ''"/>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <table class="table table-bordered" style="align-self: center; width:100%;"
+                                       cellspacing="0">
+                                    <tr class="main_tr">
+                                        <td>
+                                            <div class="heading-font-size">
+                                                Barcode:
+                                            </div>
+
+                                            <div class="data-font-size" style="text-align-last:center;">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="heading-font-size">
+                                                Pallet Number:
+                                            </div>
+
+                                            <div class="data-font-size" style="text-align-last:center;">
+
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="heading-font-size">
+                                                Receipt Date:
+                                            </div>
+
+                                            <div class="data-font-size" style="text-align-last:center;">
+                                                <t t-esc="o.arrival_at_warefor" />
+                                            </div>
+                                        </td>
+<!--                                        <td>-->
+<!--                                            <div class="heading-font-size">-->
+<!--                                                Destination:-->
+<!--                                            </div>-->
+
+<!--                                            <div class="data-font-size" style="text-align-last:center;">-->
+<!--                                                <t t-esc="o.final_destination_id.name" />-->
+<!--                                            </div>-->
+<!--                                        </td>-->
+                                    </tr>
+                                </table>
+                                <table class="table table-bordered" style="align-self: center; width:100%;"
+                                       cellspacing="0">
+                                    <tr>
+                                        <td>
+<!--                                             <div class="data-font-size" style="text-align-last:center;">
+                                                REQUEST
+                                            </div> -->
+                                        </td>
+                                        <td>
+                                            <div class="data-font-size" style="text-align-last:center;">
+                                                Pallet Number Barcode
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </font>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </template>
+
+    </data>
+</odoo>

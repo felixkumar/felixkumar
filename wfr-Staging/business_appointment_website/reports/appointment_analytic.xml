@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="appointment_analytic_view_search" model="ir.ui.view">
+        <field name="name">appointment.analytic.search.website</field>
+        <field name="model">appointment.analytic</field>
+        <field name="inherit_id" ref="business_appointment.appointment_analytic_view_search"/>
+        <field name="arch" type="xml">
+            <field name="company_id" position="before">
+                <field name="website_id"
+                       groups="website.group_multi_website"
+                />
+            </field>
+            <filter name="company" position="before">
+                <filter string="Website" 
+                        name="website" 
+                        groups="website.group_multi_website"
+                        context="{'group_by':'website_id'}"
+                />
+            </filter>
+        </field>
+    </record>
+
+
+</odoo>

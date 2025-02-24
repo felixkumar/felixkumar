@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="loaded_with_pride_wizard_view_form" model="ir.ui.view">
+        <field name="name">loaded.with.pride.wizard.view.form</field>
+        <field name="model">loaded.pride.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <field name="skip_signature"/>
+                    <group>
+                        <field name="freight_record" attrs="{'invisible':[('skip_signature','=',True)]}"/>
+                        <group id="check" attrs="{'invisible':[('skip_signature','=',True)]}">
+                            <field name="is_quantity_check"/>
+                            <field name="is_qc_check"/>
+                            <field name="order_loaded_name"/>
+                            <field name="duty_supervisor_name"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="order_loaded_sign" widget="signature" attrs="{'invisible':[('skip_signature','=',True)],'required':[('skip_signature','=',False)]}"/>
+                    </group>
+                    <group>
+                        <field name="duty_supervisor_sign" widget="signature" attrs="{'invisible':[('skip_signature','=',True)],'required':[('skip_signature','=',False)]}"/>
+                    </group>
+                </sheet>
+                <footer>
+                    <button name="print_report" type="object" string="Print" class="oe_highlight"/>
+                    <button name="cancel_btn" string="Cancel" special="cancel" data-hotkey="z" class="btn-secondary"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>

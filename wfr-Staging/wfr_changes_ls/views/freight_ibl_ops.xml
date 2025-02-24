@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="freight_ibl_ops_form_inherit" model="ir.ui.view">
+            <field name="name">freight.ibl.ops.form.inherit</field>
+            <field name="model">freight.freight</field>
+            <field name="inherit_id" ref="warefor_3pl_tus.freight_freights_osd_main_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//header" position="inside">
+                    <field name="hide_transfers_btn" invisible="1"/>
+                </xpath>
+                <xpath expr="//div[hasclass('oe_button_box')]//button[@name='button_freight_transfers']" position="attributes">
+                    <attribute name="attrs">{'invisible': ['|', ('transfers_count', '=', 0), ('hide_transfers_btn', '=', True)]}</attribute>
+                </xpath>
+                <xpath expr="//div[hasclass('oe_button_box')]//button[@name='button_internal_transfers']" position="attributes">
+                    <attribute name="attrs">{'invisible': ['|', ('internal_transfers_count', '=', 0), ('hide_transfers_btn', '=', True)]}</attribute>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="freight_freight_ibl_form_inherited" model="ir.ui.view">
+            <field name="name">freight.freight.ibl.form.inherited</field>
+            <field name="model">freight.freight</field>
+            <field name="inherit_id" ref="warefor_3pl_tus.freight_freights_ibl_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook//field[@name='freight_order_line_ids']/tree" position="replace">
+                    <tree editable="bottom">
+                        <field name="goods" string="Product"/>
+                        <field name="lot_id" optional="hide"/>
+                        <field name="qty_carton" string="Total Case QTY" help="Total Number of Cases (Total Quantity ÷ Items Per Case)"/>
+                        <field name="product_items_per_case" string="Items Per Case" help="Number of Items in a Case" optional="hide"/>
+                        <field name="total_quantity" help="Total Number of Items"/>
+                        <field name="product_length" string="Case Length(in)" optional="hide"/>
+                        <field name="product_width" string="Case Width(in)" optional="hide"/>
+                        <field name="product_height" string="Case Height(in)" optional="hide"/>
+                        <field name="product_volume" string="Total Volume(ft³)" help="Total Quantity × Volume Per Item" sum="Total Volume"/>
+                        <field name="product_volume_per_case" string="Volume per Case(ft³)" help="Volume of a Case of the Product converted to CuFt ((Length × Width × Height) ÷ 1728)" optional="show"/>
+                        <field name="net_weight"/>
+                        <field name="total_pallet"/>
+                        <field name="required_pallet"/>
+                        <field name="total_kg" invisible="1"/>
+                        <field name="box_quantity" invisible="1"/>
+                        <field name="num_box" invisible="1"/>
+                    </tree>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

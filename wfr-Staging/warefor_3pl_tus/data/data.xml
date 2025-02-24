@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Scheduler for Pallet Rate Calculations -->
+        <record id="ir_cron_pallet_rate_calculation" model="ir.cron">
+            <field name="name">Pallet Rate Calculation</field>
+            <field name="model_id" ref="model_pallet_batch_tus"/>
+            <field name="state">code</field>
+            <field name="code">model._process_rate_calculation()</field>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="numbercall">-1</field>
+            <field name="doall" eval="False"/>
+        </record>
+
+        <record id="ir_cron_freight_do_3_step_process" model="ir.cron">
+            <field name="name">Generate Transfers in OBL</field>
+            <field name="model_id" ref="model_freight_freight"/>
+            <field name="state">code</field>
+            <field name="code">model.freight_do_3_step_process()</field>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="interval_number">4</field>
+            <field name="interval_type">minutes</field>
+            <field name="numbercall">-1</field>
+            <field name="doall" eval="False"/>
+        </record>
+
+        <!--        Storing daily Product price per day for pallet-->
+        <record id="ir_cron_pallet_potd_data_storing" model="ir.cron">
+            <field name="name">Pallet POTD Storing In Pallet</field>
+            <field name="model_id" ref="model_pallet_batch_tus"/>
+            <field name="state">code</field>
+            <field name="code">model._calculte_product_potd()</field>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="numbercall">-1</field>
+            <field name="doall" eval="False"/>
+        </record>
+
+        <!-- Scheduler for Logistic invoice -->
+        <record id="ir_cron_logistic_pallet_storage_invoice" model="ir.cron">
+            <field name="name">Logistic Pallet Storage Invoice</field>
+            <field name="model_id" ref="model_freight_freight"/>
+            <field name="state">code</field>
+            <field name="code">model._generate_logistic_storage_invoice()</field>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="numbercall">-1</field>
+            <field name="doall" eval="False"/>
+        </record>
+
+        <!-- Sequences for pallet.batch.tus -->
+        <record id="seq_pallet_batch" model="ir.sequence">
+            <field name="name">Pallet Batch</field>
+            <field name="code">pallet.batch.tus</field>
+            <field name="prefix">PL/%(year)s/%(month)s/</field>
+            <field name="padding">1</field>
+            <field name="number_next">1</field>
+            <field name="number_increment">1</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <record model='res.partner' id='warefor_3pl_customer'>
+            <field name='name'>Pallet</field>
+        </record>
+
+        <record id="product_product_import_cost" model="product.product">
+            <field name="name">Import Cost</field>
+            <field name="type">service</field>
+            <field name="taxes_id" eval="False"/>
+            <field name="supplier_taxes_id" eval="False"/>
+            <field name="sale_ok" eval="False"/>
+            <field name="purchase_ok" eval="False"/>
+            <field name="default_code">IMP00100</field>
+            <field name="categ_id" ref="product.product_category_all"/>
+        </record>
+
+        <record id="product_product_vas_cost" model="product.product">
+            <field name="name">Handling and Materials</field>
+            <field name="type">service</field>
+            <field name="taxes_id" eval="False"/>
+            <field name="supplier_taxes_id" eval="False"/>
+            <field name="sale_ok" eval="False"/>
+            <field name="purchase_ok" eval="False"/>
+            <field name="default_code">HDM00100</field>
+            <field name="categ_id" ref="product.product_category_all"/>
+        </record>
+
+        <record id="product_product_monthly_pallet_storage_cost" model="product.product">
+            <field name="name">Monthly Storage Per Pallet</field>
+            <field name="type">service</field>
+            <field name="taxes_id" eval="False"/>
+            <field name="supplier_taxes_id" eval="False"/>
+            <field name="sale_ok" eval="False"/>
+            <field name="purchase_ok" eval="False"/>
+            <field name="default_code">STG00102</field>
+            <field name="categ_id" ref="product.product_category_all"/>
+        </record>
+        <!-- OSD Line Create -->
+        <record id="ir_cron_osd_line" model="ir.cron">
+            <field name="name">OSD Line Create</field>
+            <field name="model_id" ref="model_freight_freight"/>
+            <field name="state">code</field>
+            <field name="code">model._generate_osd_line()</field>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="numbercall">-1</field>
+            <field name="doall" eval="False"/>
+            <field eval="False" name="active"/>
+        </record>
+
+        <record id="freight_osd_new" model="freight.osd.stage">
+            <field name="name">NEW</field>
+            <field name="sequence">1</field>
+            <field name="is_fold" eval="False"/>
+        </record>
+
+        <record id="osd_scheduled" model="freight.osd.stage">
+            <field name="name">SCHEDULED</field>
+            <field name="sequence">2</field>
+            <field name="is_fold" eval="False"/>
+        </record>
+
+        <record id="osd_checkin" model="freight.osd.stage">
+            <field name="name">Checked In (IB Full) / Staged (OB)</field>
+            <field name="sequence">3</field>
+            <field name="is_fold" eval="False"/>
+        </record>
+
+        <record id="osd_inprocess" model="freight.osd.stage">
+            <field name="name">In Process (Unloading/Loading)</field>
+            <field name="sequence">4</field>
+            <field name="is_fold" eval="False"/>
+        </record>
+
+        <record id="osd_processed" model="freight.osd.stage">
+            <field name="name">Processed (IB Empty/OB Loaded)</field>
+            <field name="sequence">5</field>
+            <field name="is_fold" eval="False"/>
+        </record>
+
+        <record id="osd_checkout" model="freight.osd.stage">
+            <field name="name">Checked Out</field>
+            <field name="sequence">6</field>
+            <field name="is_fold" eval="False"/>
+        </record>
+
+        <!-- Tax Classification Data Start -->
+
+        <record id="proprietor_single_member_tax" model="tax.classification">
+            <field name="name">Individual/Sole Proprietor or Single-member LLS</field>
+        </record>
+        <record id="c_corporation_tax" model="tax.classification">
+            <field name="name">C Corporation</field>
+        </record>
+        <record id="s_corporation_tax" model="tax.classification">
+            <field name="name">S Corporation</field>
+        </record>
+        <record id="partnership_tax" model="tax.classification">
+            <field name="name">Partnership</field>
+        </record>
+        <record id="trust_estate_tax" model="tax.classification">
+            <field name="name">Trust/Estate</field>
+        </record>
+        <record id="liability_c_corp_tax" model="tax.classification">
+            <field name="name">Limited Liability Company – C Corp</field>
+        </record>
+        <record id="liability_s_corp_tax" model="tax.classification">
+            <field name="name">Limited Liability Company – S Corp</field>
+        </record>
+        <record id="liability_partnership_tax" model="tax.classification">
+            <field name="name">Limited Liability Company – Partnership</field>
+        </record>
+
+        <record id="billing_shipping_product" model="product.product">
+            <field name="default_code">Shipping Rate</field>
+            <field name="list_price">0.0</field>
+            <field name="standard_price">0.0</field>
+            <field name="type">service</field>
+            <field name="name">Shipping Rate</field>
+        </record>
+
+        <!-- Tax Classification Data End-->
+
+        <record id="partner_available_product_cron" model="ir.cron">
+            <field name="name">Partner Available Product Create</field>
+            <field name="model_id" ref="model_partner_available_quantity"/>
+            <field name="state">code</field>
+            <field name="code">model.partner_available_product()</field>
+            <field name='interval_number'>1</field>
+            <field name='interval_type'>days</field>
+            <field name="numbercall">-1</field>
+            <field eval="False" name="active"/>
+        </record>
+
+        <record id="update_obl_for_missing_first_scan_cron" model="ir.cron">
+            <field name="name">Update OBL For Missing First Scan</field>
+            <field name="model_id" ref="model_freight_freight"/>
+            <field name="state">code</field>
+            <field name="code">model.update_obl_for_missing_first_scan()</field>
+            <field name='interval_number'>5</field>
+            <field name='interval_type'>minutes</field>
+            <field name="numbercall">-1</field>
+            <field eval="True" name="active"/>
+        </record>
+
+        <record id="validate_lined_transfers_cron" model="ir.cron">
+            <field name="name">Validated Linked Transfer</field>
+            <field name="model_id" ref="model_stock_picking"/>
+            <field name="state">code</field>
+            <field name="code">model.validated_linked_transfers()</field>
+            <field name='interval_number'>15</field>
+            <field name='interval_type'>minutes</field>
+            <field name="numbercall">-1</field>
+            <field eval="True" name="active"/>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="paperformat_pallet_label" model="report.paperformat">
+            <field name="name">Pallet Label A4 low margin</field>
+            <field name="default" eval="True"/>
+            <field name="format">A4</field>
+            <field name="page_height">0</field>
+            <field name="page_width">0</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">5</field>
+            <field name="margin_bottom">5</field>
+            <field name="margin_left">10</field>
+            <field name="margin_right">10</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">0</field>
+            <field name="dpi">80</field>
+        </record>
+
+        <record id="action_report_pallet_label" model="ir.actions.report">
+            <field name="name">Pallet Label</field>
+            <field name="model">pallet.batch.tus</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">warefor_3pl_tus.report_pallet_label</field>
+            <field name="report_file">warefor_3pl_tus.pallet_label_template_view</field>
+            <field name="print_report_name">'Pallet Label - %s' % (object.name)</field>
+            <field name="binding_model_id" ref="model_pallet_batch_tus"/>
+            <field name="binding_type">report</field>
+            <field name="paperformat_id" ref="warefor_3pl_tus.paperformat_pallet_label"/>
+        </record>
+
+<!--        <record id="freight_bill_of_lading_report" model="ir.actions.report">-->
+<!--            <field name="name">Bill Of Lading</field>-->
+<!--            <field name="model">freight.freight</field>-->
+<!--            <field name="report_type">qweb-pdf</field>-->
+<!--            <field name="report_name">warefor_3pl_tus.report_freight_bill_of_lading</field>-->
+<!--            <field name="report_file">warefor_3pl_tus.report_freight_bill_of_lading</field>-->
+<!--            <field name="print_report_name">'Bill Of Lading-%s' % object.name</field>-->
+<!--            <field name="binding_model_id" ref="model_freight_freight"/>-->
+<!--            <field name="paperformat_id" ref="warefor_3pl_tus.account_custom_customer_invoice_paperformat"/>-->
+<!--            <field name="binding_type">report</field>-->
+<!--        </record>-->
+
+    </data>
+</odoo>

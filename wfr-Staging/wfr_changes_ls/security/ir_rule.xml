@@ -1,0 +1,74 @@
+<odoo>
+    <data>
+        <record id="warehouse_specific_inventory_transfer_access_rule" model="ir.rule" >
+            <field name="name">Specific Customer's Inventory Transfer Access</field>
+            <field name="model_id" ref="stock.model_stock_picking"/>
+            <field name="global" eval="False"/>
+            <field name="groups" eval="[(6,0,[ref('user_warehouse_restriction.user_carote_restriction_group_user')])]"/>
+            <field name="domain_force">[('freight_record_id.partner_id', 'in', user.allowed_customer_ids.ids)]
+            </field>
+        </record>
+
+        <record id="product_stock_lot_carote_user" model="ir.rule">
+            <field name="name">Carote Product Lots For Carote Users</field>
+            <field name="model_id" ref="stock.model_stock_lot"/>
+            <field name="global" eval="False"/>
+            <field name="groups" eval="[(6,0,[ref('user_warehouse_restriction.user_carote_restriction_group_user')])]"/>
+            <field name="domain_force">[('product_id.company_ids.name', '=', 'Warefor Logistics, LLC'), ('product_id.company_ids.name', '=', 'Carote USA, LLC')]</field>
+        </record>
+
+        <record id="carote_user_product_categories" model="ir.rule">
+            <field name="name">Product Categories For Carote Users</field>
+            <field name="model_id" ref="product.model_product_template"/>
+            <field name="global" eval="False"/>
+            <field name="groups" eval="[(6,0,[ref('user_warehouse_restriction.user_carote_restriction_group_user')])]"/>
+            <field name="domain_force">['|', ('categ_id', 'in', user.allowed_product_category_ids.ids), ('categ_id', 'child_of', user.allowed_product_category_ids.ids)]</field>
+        </record>
+
+        <record model="ir.actions.server" id="stock.action_view_quants"> <!-- Menu + python -->
+            <field name="name">Inventory</field>
+            <field name="model_id" ref="stock.model_stock_quant"/>
+            <field name="state">code</field>
+            <field name="groups_id" eval="[(6, 0, [ref('stock.group_stock_user'), ref('user_warehouse_restriction.user_carote_restriction_group_user')])]"/>
+            <field name="code">
+                action = model.with_context(
+                    search_default_internal_loc=1,
+                    always_show_loc=1,
+                ).action_view_quants()
+            </field>
+        </record>
+
+        <record id="warehouse_stock_inventory_line_carote_product_categories" model="ir.rule">
+            <field name="name">Product Category in Warehouse Daily Report</field>
+            <field name="model_id" ref="warehouse_inventory_report.model_warehouse_stock_inventory_line"/>
+            <field name="global" eval="False"/>
+            <field name="groups" eval="[(6,0,[ref('user_warehouse_restriction.user_carote_restriction_group_user')])]"/>
+            <field name="domain_force">['|', ('category_id', 'in', user.allowed_product_category_ids.ids), ('category_id', 'child_of', user.allowed_product_category_ids.ids)]</field>
+        </record>
+
+        <record id="inventory_report_wizard_carote_product_categories" model="ir.rule">
+            <field name="name">Product Category in Inventory Report Wizard</field>
+            <field name="model_id" ref="warefor_3pl_tus.model_inventory_report_wizard"/>
+            <field name="global" eval="False"/>
+            <field name="groups" eval="[(6,0,[ref('user_warehouse_restriction.user_carote_restriction_group_user')])]"/>
+            <field name="domain_force">['|', ('category_id', 'in', user.allowed_product_category_ids.ids), ('category_id', 'child_of', user.allowed_product_category_ids.ids)]</field>
+        </record>
+
+        <record id="generate_aging_report_carote_product_categories" model="ir.rule">
+            <field name="name">Product Category in Generate Aging Report Wizard</field>
+            <field name="model_id" ref="warehouse_aging_report.model_generate_aging_report"/>
+            <field name="global" eval="False"/>
+            <field name="groups" eval="[(6,0,[ref('user_warehouse_restriction.user_carote_restriction_group_user')])]"/>
+            <field name="domain_force">['|', ('categ_ids', 'in', user.allowed_product_category_ids.ids), ('categ_ids', 'child_of', user.allowed_product_category_ids.ids)]</field>
+        </record>
+
+        <record id="stock_quant_carote_product_categories" model="ir.rule">
+            <field name="name">Product Category in Stock Quant</field>
+            <field name="model_id" ref="stock.model_stock_quant"/>
+            <field name="global" eval="False"/>
+            <field name="groups" eval="[(6,0,[ref('user_warehouse_restriction.user_carote_restriction_group_user')])]"/>
+            <field name="domain_force">['|', ('product_id.categ_id', 'in', user.allowed_product_category_ids.ids), ('product_id.categ_id', 'child_of', user.allowed_product_category_ids.ids)]</field>
+        </record>
+
+    </data>
+</odoo>

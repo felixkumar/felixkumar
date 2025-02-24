@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="shipstation_warehouse_id_stock_warehouse_form" model="ir.ui.view">
+            <field name="name">shipstation Warehouse Details</field>
+            <field name="model">stock.warehouse</field>
+            <field name="inherit_id" ref="stock.view_warehouse"/>
+            <field name="arch" type="xml">
+            	<field name="partner_id" position="after">
+          			<field name="shipstation_warehouse_id" />
+                 </field>
+            </field>
+        </record>
+    </data>
+</odoo>

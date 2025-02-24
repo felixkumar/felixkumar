@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="freight_2step_delete_view_form" model="ir.ui.view">
+            <field name="name">freight.2step.delete.form</field>
+            <field name="model">freight.2step.delete</field>
+            <field name="arch" type="xml">
+                <form>
+                    <div invisible="context.get('deletion_approved',False)">
+                        Are you sure you want to delete this record?
+                    </div>
+                    <div invisible="not context.get('deletion_approved',False)">
+                        Do you also want to delete the WHO record?
+                    </div>
+                    <footer>
+                        <button name="delete_record" string="Ok" type="object" class="btn-primary" invisible="context.get('deletion_approved',False)"/>
+                        <button name="delete_record" string="YES" type="object" class="btn-primary" invisible="not context.get('deletion_approved',False)"/>
+                        <button name="not_delete_record" string="NO" type="object" class="btn-primary" invisible="not context.get('deletion_approved',False)"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="freight_2step_delete_action" model="ir.actions.act_window">
+            <field name="name">freight.2step.delete</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">freight.2step.delete</field>
+            <field name="view_mode">form</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                <!-- Add Text Here -->
+              </p><p>
+                <!-- More details about what a user can do with this object will be OK -->
+              </p>
+            </field>
+        </record>
+
+        <record model="ir.actions.server" id="action_unlink_records">
+            <field name="name">Delete</field>
+            <field name="model_id" ref="warefor_3pl_tus.model_freight_freight"/>
+            <field name="binding_model_id" ref="warefor_3pl_tus.model_freight_freight"/>
+            <field name="state">code</field>
+            <field name="code">
+data = records.delete_two_step_verification()
+if data not in [True, False]:
+    action = data
+            </field>
+        </record>
+    </data>
+</odoo>

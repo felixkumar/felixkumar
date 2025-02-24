@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="freight_port_tree_view" model="ir.ui.view">
+            <field name="name">freight.port.tree.view</field>
+            <field name="model">freight.port</field>
+            <field name="arch" type="xml">
+                <tree string="Port">
+                    <field name="name"/>
+                    <field name="country_id"/>
+                    <field name="land"/>
+                    <field name="ocean"/>
+                    <field name="air"/>
+                    <field name="code"/>
+                    <field name="state_id"/>
+                    <field name="active"/>
+                </tree>
+            </field>
+        </record>
+        <record id="freight_port_form_view" model="ir.ui.view">
+            <field name="name">freight.port.form.view</field>
+            <field name="model">freight.port</field>
+            <field name="arch" type="xml">
+                <form string="Transit Port">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="country_id"/>
+                                <field name="land"/>
+                                <field name="ocean"/>
+                                <field name="air"/>
+                            </group>
+                            <group>
+                                <field name="code"/>
+                                <field name="state_id"/>
+                                <field name="active"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="freight_transport_form_view" model="ir.ui.view">
+            <field name="name">freight.transport.form.view</field>
+            <field name="model">freight.transport</field>
+            <field name="arch" type="xml">
+                <form string="Transit Transport">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name" required="1"/>
+                            </group>
+                            <group></group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="freight_import_form_view" model="ir.ui.view">
+            <field name="name">freight.import.form.view</field>
+            <field name="model">freight.import</field>
+            <field name="arch" type="xml">
+                <form string="Transit Import">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name" required="1"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="freight_import_tree" model="ir.ui.view">
+            <field name="name">freight.import.tree</field>
+            <field name="model">freight.import</field>
+            <field name="arch" type="xml">
+                <tree string="Import">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="freight_port_action_id" model="ir.actions.act_window">
+            <field name="name">Port</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">freight.port</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                <!-- Add Text Here -->
+              </p><p>
+                <!-- More details about what a user can do with this object will be OK -->
+              </p>
+            </field>
+        </record>
+
+        <record id="freight_import_action" model="ir.actions.act_window">
+            <field name="name">Import</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">freight.import</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                <!-- Add Text Here -->
+              </p><p>
+                <!-- More details about what a user can do with this object will be OK -->
+              </p>
+            </field>
+        </record>
+
+<!--        <menuitem id="menu_freight_configuration" name="Configuration" parent="menu_freight_root" sequence="11000"/>-->
+
+<!--        <menuitem id="menu_freight_import"-->
+<!--                  name="Import"-->
+<!--                  parent="menu_freight_configuration"-->
+<!--                  action="freight_import_action"-->
+<!--                  sequence="1"/>-->
+<!--        <menuitem id="menu_freight_port"-->
+<!--                  name="Port"-->
+<!--                  parent="menu_freight_configuration"-->
+<!--                  action="freight_port_action_id"-->
+<!--                  sequence="2"/>-->
+    </data>
+</odoo>

@@ -1,0 +1,179 @@
+.te_prod_label{
+    font-size: 0.8125rem;
+    padding: 2px 8px;
+    &:before {
+        content: "\f02b";
+        font-family: FontAwesome;
+        font-size: nth($f_sizes,9);
+    }
+    &:after {
+        content: "";
+        @include position(absolute,0px, auto, 0px, -9px);
+        width: 22px;
+        background-color: nth($f_color,5);
+        filter: blur(6px) opacity(0.5);
+        @include transform(skewX(-25deg));
+        @include animation(0.2s, 1s, shine_label, linear, infinite);
+        opacity: 0;
+    }
+}
+
+#products_grid, .te_product_ind{
+    .o_product_label_style_1_right{
+        display: inline-block;
+        width: auto;
+        font-size: nth($f_sizes,3);
+        padding: 2px 8px !important;
+        @include position(absolute,8px,8px,unset,unset);
+        z-index: 1;
+        overflow: hidden;
+        font-weight: 500;
+        &:before {
+            content: "\f02b";
+            font-family: FontAwesome;
+            margin-right: 5px;
+            font-size: nth($f_sizes,9);
+        }
+        &:after {
+            content: "";
+            @include position(absolute,0px, auto, 0px, -9px);
+            width: 22px;
+            background-color: nth($f_color,5);
+            filter: blur(6px) opacity(0.5);
+            @include transform(skewX(-25deg));
+            @include animation(0.2s, 1s, shine_label, linear, infinite);
+            opacity: 0;
+        }
+    }
+    .o_product_label_style_1_left {
+        @include position(absolute,8px,unset,unset,8px);
+        @extend .o_product_label_style_1_right;
+    }
+
+    .o_product_label_style_2_right{
+        @include position(absolute,8px, 6px, auto, unset);
+        font-size: nth($f_sizes,3);
+        line-height: 1;
+        @include box-shadow(4px 4px 0px rgba(nth($f_color,3),0.1));
+        text-align: center;
+        z-index: 1;
+        padding: 3px 8px !important;
+        font-weight: 500;
+    }
+
+    .o_product_label_style_2_left{
+        @include position(absolute,8px, auto, auto, 6px);
+        @extend .o_product_label_style_2_right;
+    }
+
+    .o_product_label_style_3_right{
+        @include position(absolute,10px, 0px, null, null);
+        z-index: 1;
+        padding: 1px 8px 0.5px 8px;
+        font-size: 0.8rem;
+        font-weight: 500;
+        &:before {
+            content: "";
+            @include position(absolute,0px, null, 0px, 0px);
+            width: 10px;
+            z-index: -1;
+            background: inherit;
+            transform: skew(-33deg, 0deg);
+        }
+        &:after {
+            content: "";
+            @include position(absolute,0px, null, 0px, 0px);
+            width: 10px;
+            z-index: -1;
+            background: inherit;
+            transform: skew(33deg, 0deg);
+        }
+    }
+
+    .o_product_label_style_3_left {
+        @include position(absolute,10px, unset, null, 0px);
+        @extend .o_product_label_style_3_right;
+        &:before {
+            @include position(absolute,0px, 0px, 0px, unset);
+        }
+        &:after {
+            @include position(absolute,0px, 0px, 0px, unset);
+        }
+    }
+
+    .o_product_label_style_4_left{
+        @include position(absolute,20px, null, null, -8px);
+        z-index: 1;
+        padding: 3px 4px 3px 8px;
+        font-size: 0.75rem;
+        font-weight: 500;
+        &:before {
+            content: "";
+            @include position(absolute,-6px, null, null, 0px);
+            height: 0;
+            width: 0;
+            border-left: 9px solid transparent;
+            border-bottom-width: 6px;
+            border-bottom-style: solid;
+            border-bottom-color: inherit;
+        }
+        &:after {
+            content: "";
+            @include position(absolute,1px, -10px, null, null);
+            height: 0;
+            width: 0;
+            border-top: 11px solid transparent;
+            border-bottom: 12px solid transparent;
+            border-left-width: 10px;
+            border-left-style: solid;
+            border-left-color: inherit;
+        }
+    }
+
+    .o_product_label_style_4_right{
+        @include position(absolute,20px, -10px, null, unset);
+        @extend .o_product_label_style_4_left;
+        padding: 3px 8px 3px 4px;
+        &:before{
+            transform: scaleX(-1);
+            @include position(absolute,-6px, 1px, null, unset);
+        }
+        &:after{
+            transform: scaleX(-1);
+            @include position(absolute,1px, null, null, -10px);
+        }
+    }
+
+    .o_product_label_style_5_left{
+        @include position(absolute,12px, auto, auto, 12px);
+        font-weight: 500;
+        font-size: 12px;
+        @include display(flex);
+        @include justify-content(center);
+        @include align-items(center);
+        text-align: center;
+        height: 46px;
+        width: 46px;
+        border-radius: 23px;
+        z-index: 1;
+        white-space: normal;
+        word-break: break-word;
+    }
+
+    .o_product_label_style_5_right{
+        @extend .o_product_label_style_5_left;
+        @include position(absolute,12px, 12px, auto, auto);
+    }
+
+    .o_ribbon_left, .o_ribbon_right, .o_tag_left, .o_tag_right{
+        font-weight: 500;
+        z-index: 1;
+    }
+}
+
+#product_details {
+    .o_ribbon_left, .o_ribbon_right{
+        transform: unset;
+        font-weight: 500;
+    }
+}

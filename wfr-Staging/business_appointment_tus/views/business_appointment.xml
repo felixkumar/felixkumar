@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<odoo>
+    <!-- Inherit Form View to Modify it usefull NNN-->
+<!--    <record id="email_template_form_inherit" model="ir.ui.view">-->
+<!--        <field name="name">email.template.form</field>-->
+<!--        <field name="model">mail.template</field>-->
+<!--        <field name="inherit_id" ref="mail.email_template_form"/>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <xpath expr="//page[@name='advanced_settings']" position="inside">-->
+<!--                <field name="is_send_attachment"/>-->
+<!--            </xpath>-->
+<!--        </field>-->
+<!--    </record>-->
+
+    <record id="business_appointment_view_pivot_tus" model="ir.ui.view">
+        <field name="name">business.appointment.pivot</field>
+        <field name="model">business.appointment</field>
+        <field name="arch" type="xml">
+            <pivot>
+                <field name="datetime_start" interval="month" type="col"/>
+                <field name="state" type="col"/>
+<!--                <field name="x_oz_cbaf_3" type="row"/>-->
+            </pivot>
+        </field>
+    </record>
+
+<!--    usefull NNN-->
+<!--    <record id="business_appointment.business_appointment_action" model="ir.actions.act_window">-->
+<!--        <field name="view_mode">appointment_calendar,tree,form,pivot</field>-->
+<!--    </record>-->
+
+     <menuitem name="IBL/OBL Dropout Report"
+              id="menu_ibl_obl_droupout_report"
+              parent="business_appointment.menu_business_appointments_reports"
+              sequence="10"
+              action="business_appointment_tus.ibl_obl_dropout_report"/>
+
+</odoo>

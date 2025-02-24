@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="stock_warehouse_batch_form_extended" model="ir.ui.view">
+        <field name="name">stock.warehouse.batch.extended</field>
+        <field name="model">stock.warehouse</field>
+        <field name="inherit_id" ref="stock.view_warehouse" />
+        <field name="arch" type="xml">
+            <data>
+                <xpath expr="//field[@name='partner_id']" position="after">
+                    <field name="user_id" />
+                    <field name="number_of_batch_group" />
+                </xpath>
+            </data>
+        </field>
+    </record>
+</odoo>

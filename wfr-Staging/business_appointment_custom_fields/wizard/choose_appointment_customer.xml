@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<odoo>
+
+    <record id="choose_appointment_customert_form_view" model="ir.ui.view">
+        <field name="name">choose.appointment.customer.custom</field>
+        <field name="model">choose.appointment.customer</field>
+        <field name="inherit_id" ref="business_appointment.choose_appointment_customert_form_view"/>
+        <field name="arch" type="xml">
+            <group name="description_group" position="before">
+                <group name="custom_details"> 
+                    <group name="left_panel_group" invisible="1"/>
+                    <group name="right_panel_group" invisible="1"/>
+                </group>
+            </group> 
+            <group name="description_group" position="after">
+                <group name="after_description_group" invisible="1"/>
+                <group name="group_custom_fields" invisible="1"/>
+            </group>     	
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="fields" inherit_id="auth_signup.fields"
+              name="Password policy data for auth_signup">
+        <xpath expr="//div[hasclass('field-login')]" position="replace">
+            <div class="form-group field-login-tu">
+                <label for="login">Email <span class="text-danger">*</span></label>
+                <input type="email" name="login" t-att-value="login" id="login" class="form-control form-control-sm" autofocus="autofocus"
+                    autocapitalize="off" required="required" t-att-readonly="'readonly' if only_passwords else None"/>
+            </div>
+        </xpath>
+        <xpath expr="//label[@for='name']" position="replace">
+                <label for="name">First Name <span class="text-danger">*</span></label>
+        </xpath>
+        <xpath expr="//label[@for='password']" position="inside">
+            <span class="text-danger">*</span>
+        </xpath>
+        <xpath expr="//label[@for='confirm_password']" position="inside">
+            <span class="text-danger">*</span>
+        </xpath>
+
+        <xpath expr="//div[hasclass('field-name')]" position="after">
+            <div class="form-group field-phone">
+                <label for="phone">Phone <span class="text-danger">*</span></label>
+                <input type="tel"
+                       name="phone"
+                       t-attf-class="form-control"
+                       t-att-value="phone" required="required"/>
+            </div>
+            <div class="form-group field-company">
+                <label for="partner_name">
+                    Company Name <span class="text-danger">*</span>
+                </label>
+                <select class="form-group form-control" name="partner_name" id="partners" required="required">
+                    <option value=""></option>
+                    <t t-foreach="request.env['res.partner'].search([('is_company','=',True), ('is_3pl_customer','=',True)])" t-as="partner">
+                        <option t-attf-value="#{partner.id}">
+                            <t t-esc="partner.name"/>
+                        </option>
+                    </t>
+                </select>
+            </div>
+        </xpath>
+    </template>
+</odoo>

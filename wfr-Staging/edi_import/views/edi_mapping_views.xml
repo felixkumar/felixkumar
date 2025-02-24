@@ -1,0 +1,102 @@
+<odoo>
+    <record id="edi_mapping_line_view_form_inherit_import" model="ir.ui.view">
+        <field name="name">edi.mapping.line.form.inherit.import</field>
+        <field name="model">edi.mapping.line</field>
+        <field name="inherit_id" ref="base_edi.edi_mapping_line_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='common']" position="after">
+                <group string="Import" attrs="{'invisible': [('sync_action_doc_type', '!=', 'in')]}">
+                    <group string="Skip Record Conditions">
+                        <field name="skip_if_matches_existing_record"/>
+                        <div colspan="2" attrs="{'invisible': [('skip_if_matches_existing_record', '=', False)]}">
+                            <label for="skip_if_matches_skip_override_line_ids"/>
+                            <field name="skip_if_matches_skip_override_line_ids" nolabel="1">
+                                <tree>
+                                    <field name="child_id"/>
+                                    <field name="comparison_type"/>
+                                    <field name="skip_if_value"/>
+                                </tree>
+                            </field>
+                        </div>
+                    </group>
+
+                    <group string="Import Search">
+                        <field name="is_search_field"/>
+                        <field name="odoo_search_model_id" attrs="{'invisible': [('is_search_field', '=', False)]}"/>
+                        <field name="odoo_search_field_id" domain="[('model_id', '=', odoo_search_model_id)]" attrs="{'invisible': ['|', ('is_search_field', '=', False), ('odoo_search_model_id', '=', False)]}"/>
+                    </group>
+
+                    <group string="Import to Multiple Fields" attrs="{'invisible': [('child_ids', '=', False)]}">
+                        <field name="is_map_to_multiple_fields"/>
+                        <field name="sentinel_child_id" domain="[('id', 'in', child_ids)]" attrs="{'invisible': [('is_map_to_multiple_fields', '=', False)]}"/>
+                        <field name="import_log_sub_fields_field_id" domain="[('model_id', '=', odoo_model_id)]" attrs="{'invisible': [('is_map_to_multiple_fields', '=', False)]}"/>
+                        <field name="odoo_sentinel_model_id" attrs="{'invisible': [('is_map_to_multiple_fields', '=', False)]}"/>
+                        <field name="sentinel_search_all"/>
+                        <field name="sentinel_can_create_all"/>
+                        <div colspan="2" attrs="{'invisible': [('is_map_to_multiple_fields', '=', False)]}">
+                            <label for="sentinel_value_ids"/>
+                            <field name="sentinel_value_ids" nolabel="1">
+                                <tree editable="bottom">
+                                    <field name="expected_value"/>
+                                    <field name="odoo_field_id" domain="[('model_id', '=', parent.odoo_model_id)]"/>
+                                    <field name="search_record" attrs="{'column_invisible': [('parent.sentinel_search_all', '=', True)]}"/>
+                                    <field name="can_create_record" attrs="{'column_invisible': [('parent.sentinel_can_create_all', '=', True)]}"/>
+                                </tree>
+                            </field>
+                        </div>
+                    </group>
+
+                    <group string="Create on Import">
+                        <field name="can_create_values"/>
+                        <field name="can_be_used_in_creation"/>
+                    </group>
+
+                    <group string="Creation Configuration" attrs="{'invisible': [('can_be_used_in_creation', '=', False)]}">
+                        <field name="use_for_creation"/>
+                        <field name="creation_is_search" attrs="{'invisible': [('use_for_creation', '=', False)]}"/>
+                        <field name="creation_search_model_id" attrs="{'invisible': [('creation_is_search', '=', False)]}"/>
+                        <field name="creation_search_field_id" domain="[('model_id', '=', creation_search_model_id)]" attrs="{'invisible': [('creation_is_search', '=', False)]}"/>
+                        <field name="creation_field_has_search_dependency"/>
+                        <label for="creation_search_dependency_ids"/>
+                        <div colspan="2" attrs="{'invisible': [('creation_field_has_search_dependency', '=', False)]}">
+                            <label for="creation_search_dependency_ids"/>
+                            <field name="creation_search_dependency_ids" nolabel="1">
+                                <tree editable="bottom">
+                                    <field name="odoo_field_id"/>
+                                    <field name="child_id"/>
+                                </tree>
+                            </field>
+                        </div>
+                    </group>
+
+                    <group string="Field Logging">
+                        <field name="log_subfields" attrs="{'invisible': [('can_log_field', '=', True)]}"/>
+                        <field name="import_log_sub_fields_field_id" attrs="{'invisible': [('can_log_field', '=', True)]}"/>
+                        <field name="can_log_field" invisible="1"/>
+                        <field name="is_import_logged_field" attrs="{'invisible': [('can_log_field', '=', False)]}"/>
+                        <field name="import_logged_field_label" attrs="{'invisible': [('is_import_logged_field', '=', False)]}"/>
+                        <div colspan="2" attrs="{'invisible': [('is_import_logged_field', '=', False)]}">
+                            <label for="import_logged_field_mappings"/>
+                            <field name="import_logged_field_mappings" nolabel="1">
+                                <tree editable="bottom">
+                                    <field name="xml_value"/>
+                                    <field name="output_value"/>
+                                </tree>
+                            </field>
+                        </div>
+                    </group>
+
+                    <group string="Custom Search">
+                        <field name="is_custom_method"/>
+                        <field name="custom_method_returns_dict"/>
+                        <field name="custom_method_name" attrs="{'invisible': [('is_custom_method', '=', False)]}"/>
+                    </group>
+
+                    <group string="Post Process">
+                        <field name="post_process_method_name"/>
+                    </group>
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>

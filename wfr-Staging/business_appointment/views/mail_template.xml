@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<odoo>
+
+    <record id="action_mail_template_ba" model="ir.actions.act_window" >
+        <field name="name">Templates</field>
+        <field name="res_model">mail.template</field>
+        <field name="view_mode">form,tree</field>
+        <field name="view_id" ref="mail.email_template_tree" />
+        <field name="domain">[
+            ("model", "in", ["website.business.appointment", "business.appointment", "business.appointment.core",
+            "appointment.product", "business.resource", "business.resource.type"])
+        ]</field>
+        <field name="context">{'default_model': 'business.appointment'}</field>
+        <field name="search_view_id" ref="mail.view_email_template_search"/>
+    </record>
+
+</odoo>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="view_company_form_edi_3pl_tus" model="ir.ui.view">
+            <field name="name">view.company.form.edi.3pl.tus</field>
+            <field name="model">res.company</field>
+            <field name="inherit_id" ref="base.view_company_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='general_info']" position="after">
+                    <page string="SSCC Barcode">
+                        <group>
+                            <group>
+                                <field name="application_identification"/>
+                                <field name="extension_digit"/>
+                                <field name="gs1_company_prefix"/>
+                                <field name="gs1_prefix"/>
+<!--                                <field name="check_digit"/>-->
+                            </group>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

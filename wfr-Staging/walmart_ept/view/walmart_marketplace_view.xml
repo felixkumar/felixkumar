@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Tree view of Walmart Marketplace -->
+    <record id="walmart_marketplace_tree_view_ept" model="ir.ui.view">
+        <field name="name">Marketpalces</field>
+        <field name="model">walmart.marketplace.ept</field>
+        <field name="arch" type="xml">
+            <tree string="Walmart Marketplace" create="0">
+                <field name="active" invisible="1"/>
+                <field name="name"/>
+                <field name="warehouse_id"/>
+                <field name="country_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Tree view action of Walmart Marketplace -->
+    <record id="action_walmart_marketplace_tree_ept" model="ir.actions.act_window">
+        <field name="name">Marketplaces</field>
+        <field name="res_model">walmart.marketplace.ept</field>
+
+        <field name="view_id" ref="walmart_marketplace_tree_view_ept"/>
+    </record>
+
+    <!-- Walmart Credentials Form View -->
+    <record id="walmart_marketplace_credential_form" model="ir.ui.view">
+        <field name="name">Marketplace Credential</field>
+        <field name="model">walmart.marketplace.ept</field>
+        <field name="priority" eval="20"/>
+        <field name="arch" type="xml">
+            <form string="Walmart Credential">
+                <separator string='Walmart Information'/>
+                <group>
+                    <group>
+                        <field name="consumer_id" required="1" string="Client Id"/>
+                        <!--                            <field name="walmart_channel_type" required="1"/>-->
+                        <field name="environment" required="1"/>
+                    </group>
+                    <group>
+                        <field name="walmart_secret_key" required="1" string="Client Secret"/>
+                    </group>
+                </group>
+                <footer>
+                    <button name="update_changes" string="Update" class="oe_highlight"
+                            type="object"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel" data-hotkey="z"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+
+    <!-- Form view of Walmart Marketplace -->
+    <record id="walmart_marketplace_form_view_ept" model="ir.ui.view">
+        <field name="name">Marketplace</field>
+        <field name="model">walmart.marketplace.ept</field>
+        <field name="arch" type="xml">
+            <form string="Walmart Marketplace" create="false">
+                <sheet>
+                    <div class="oe_button_box" position="inside" name="button_box">
+                        <button type="object"
+                                name="cron_configuration_action"
+                                class="oe_stat_button"
+                                attrs="{'invisible': [('active','=',False)]}"
+                                icon="fa-clock-o" style="width:16% !important"
+                                groups="base.group_system">
+                            <div class="o_field_widget o_stat_info">
+                                <span class="o_stat_text">Schedulers</span>
+                            </div>
+                        </button>
+                        <button type="object" name="action_redirect_to_ir_cron"
+                                class="oe_stat_button" icon="fa-play-circle"
+                                groups="base.group_system"
+                                attrs="{'invisible': [('active','=',False)]}">
+                            <span class="o_stat_text">Active Schedulers</span>
+                        </button>
+
+                        <button type="object" style="width:16% !important"
+                                name="show_walmart_credential" class="oe_stat_button"
+                                groups="base.group_system" icon="fa-undo"
+                                attrs="{'invisible': [('active','=',False)]}">
+                            <span class="o_stat_text">Reset Credentials</span>
+                        </button>
+                        <button class="oe_stat_button"
+                                name="action_walmart_active_archive_instance" icon="fa-lock"
+                                type="object" attrs="{'invisible': [('active','=',True)]}">
+                            <span class="o_stat_text" style="color:#2dab2d">Active</span>
+                        </button>
+                        <button class="oe_stat_button"
+                                name="action_walmart_active_archive_instance" icon="fa-unlock"
+                                type="object" attrs="{'invisible': [('active','=',True)]}">
+                            <span class="o_stat_text" style="color:#da3434">Archive</span>
+                        </button>
+                    </div>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" class="oe_inline"
+                                   attrs="{'readonly':[('active','=', True)]}"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="active" invisible="1"/>
+                            <field name="company_id" readonly="1"/>
+                            <field name="warehouse_id" readonly="1"/>
+                            <field name="pricelist_id" readonly="1" invisible="1"/>
+                            <field name="country_id" readonly="1" invisible="1"/>
+                            <field name="auto_create_refund" invisible="1"/>
+                        </group>
+                        <group>
+                            <field name="lang_id" readonly="1" invisible="1"/>
+                            <field name="stock_field_id" readonly="1" invisible="1"/>
+                            <field name="settlement_report_journal_id" readonly="1" invisible="1"/>
+                            <field name="environment" readonly="1"/>
+                            <field name="auto_apply_adjustments"/>
+                        </group>
+                        <group>
+                            <field name="auto_create_product_not_found_in_odoo"
+                                   readonly="1" invisible="1"/>
+                        </group>
+                    </group>
+                    <notebook name="walmart_marketplace">
+                        <page string="Other Information">
+                            <group>
+                                <group>
+                                    <field name="walmart_auto_workflow_id"
+                                           options="{'no_create':True,'no_create_edit':True}"
+                                           readonly="1"
+                                           invisible="1"/>
+                                    <field name="payment_term_id" readonly="1" invisible="1"/>
+                                    <field name="is_default_odoo_sequence_in_sales_order"
+                                           readonly="1"/>
+                                    <field name="order_prefix" readonly="1"
+                                           attrs="{'invisible':[('is_default_odoo_sequence_in_sales_order','=',True)]}"/>
+                                </group>
+                                <group invisible="1">
+                                    <field name="ship_order_start_date" readonly="1"/>
+                                    <field name="is_import_shipped_orders" readonly="1"/>
+                                </group>
+                                <group>
+                                    <field name="auto_send_refund_invoice" invisible="1"/>
+                                </group>
+                            </group>
+
+                        </page>
+                        <page string="Last Operation Details">
+                            <group string="Sync Time">
+                                <group>
+                                    <field name="last_sync_released_order_date"/>
+                                </group>
+                                <group>
+                                    <field name="last_inventory_export_date"/>
+                                </group>
+                                <group>
+                                    <field name="last_wfs_inventory_import_date"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Default Product">
+                            <group>
+                                <group>
+                                    <field name="shipping_product_id"/>
+                                </group>
+                                <group>
+                                    <field name="discount_product_id"/>
+                                </group>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <!-- Search View For Walmart Marketplace -->
+    <record id="walmart_marketplace_search_view_ept" model="ir.ui.view">
+        <field name="name">view.walmart.marketplace.filter</field>
+        <field name="model">walmart.marketplace.ept</field>
+        <field name="type">search</field>
+        <field name="arch" type="xml">
+            <search string="Search Walmart Marketplace">
+                <field name="country_id"/>
+                <filter name="archive" string="Archived"
+                        domain="[('active','=',False)]"/>
+                <group expand="0" string="Group By">
+                    <filter string="Country" name="country_id" icon="terp-personal"
+                            context="{'group_by':'country_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Walmart Marketplace as Sub Menu of Configuration -->
+    <menuitem id="menu_item_walmart_marketplace_tree_view" name="Marketplace"
+              parent="walmart_ept.menu_configuration_ept" sequence="2"
+              action="action_walmart_marketplace_tree_ept"
+              groups="walmart_ept.group_walmart_user"/>
+
+</odoo>

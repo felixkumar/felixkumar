@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="shipstation_service_product" model="product.product">
+            <field name="name">Shipstation Service Product</field>
+            <field name="list_price">0.0</field>
+            <field name="standard_price">0.0</field>
+            <field name="type">service</field>
+            <field name="categ_id" ref="product.product_category_all"/>
+            <field name="default_code">shipstation_service_code</field>
+            <field name="uom_id" ref="uom.product_uom_day"/>
+            <field name="uom_po_id" ref="uom.product_uom_day"/>
+        </record>
+        <record id="shipstation_vat" model="product.product">
+            <field name="name">VAT</field>
+            <field name="list_price">0.0</field>
+            <field name="standard_price">0.0</field>
+            <field name="categ_id" ref="product.product_category_all"/>
+            <field name="type">service</field>
+        </record>
+
+        <record id="shipstation_discount" model="product.product">
+            <field name="name">Discount</field>
+            <field name="default_code">shipstation_discount</field>
+            <field name="list_price">0.0</field>
+            <field name="standard_price">0.0</field>
+            <field name="categ_id" ref="product.product_category_all"/>
+            <field name="type">service</field>
+        </record>
+    </data>
+</odoo>

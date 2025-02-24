@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="res_config_shipstation_form_view" model="ir.ui.view">
+            <field name="name">Res Config Shipstation Form View</field>
+            <field name="model">shipstation.instance.ept</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form create="false">
+                    <sheet>
+                        <group>
+                            <field name="name" placeholder="e.g. Fedex, DHL..."/>
+                            <field name="shipstation_url"
+                                   attrs="{'required':[('provider','=','shipstation_ept')]}" readonly="1"/>
+                            <field name="shipstation_api_key"
+                                   attrs="{'required':[('provider','=','shipstation_ept')]}"/>
+                            <field name="shipstation_api_secret_key" password="True"
+                                   attrs="{'required':[('provider','=','shipstation_ept')]}"/>
+                            <field name="provider" invisible="1"/>
+                            <field name="company_id" options="{'no_create': True, 'no_create_edit' : True}"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="res_config_action_shipstation_instance"
+                model="ir.actions.act_window">
+            <field name="name">Shipstation Instance</field>
+            <field name="res_model">shipstation.instance.ept</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="view_id" ref="shipstation_ept.res_config_shipstation_form_view"/>
+        </record>
+        <record id="view_shipstation_config_settings" model="ir.ui.view">
+            <field name="name">Shipstation Settings</field>
+            <field name="model">res.config.settings</field>
+            <field name="priority" eval="100"/>
+            <field name="inherit_id"
+                   ref="base.res_config_settings_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[hasclass('settings')]" position="inside">
+                    <div class="app_settings_block" data-string="Shipstation" string="Shipstation"
+                         data-key="shipstation_ept">
+                        <h2>Shipstation Instances</h2>
+                        <div class="row mt16 o_settings_container">
+                            <div class="col-12 col-lg-6 o_setting_box">
+                                <div class="o_setting_right_pane">
+                                    <label for="shipstation_instance_id" string="Select Instance"/>
+                                    <field name="shipstation_instance_id"
+                                           attrs="{'required':[('shipstation_instance_id','!=',False)]}"
+                                           options="{'no_create': True, 'no_create_edit' : True}"/>
+                                    <div class="text-muted">To choose Shipstation instance and configure more
+                                        settings.
+                                    </div>
+                                    <button name="%(res_config_action_shipstation_instance)d" icon="fa-arrow-right"
+                                            type="action" string="Create More Instance" class="oe_link"/>
+                                </div>
+                            </div>
+                        </div>
+                        <h2 attrs="{'invisible': [('shipstation_instance_id', '=', True)]}">General Configuration
+                        </h2>
+                        <div class="row mt16 o_settings_container"
+                             attrs="{'invisible': [('shipstation_instance_id', '=', False)]}">
+                            <div class="col-xs-12 col-md-6 o_setting_box">
+                                <div class="o_setting_right_pane">
+                                    <label for="tracking_link"/>
+                                    <field name="tracking_link"></field>
+                                    <div class="text-muted">Tracking link(URL) useful to track the shipment from this
+                                        URL.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-xs-12 col-md-6 o_setting_box">
+                                <div class="o_setting_right_pane">
+                                    <label for="shipstation_weight_uom"/>
+                                    <field name="shipstation_weight_uom"
+                                           attrs="{'required': [('shipstation_instance_id', '!=', False)]}"></field>
+                                    <div class="text-muted">Supported weight UoM by ShipStation &amp; it will use in
+                                        weight conversion.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-lg-6 o_setting_box" groups="base.group_no_one">
+                                <div class="o_setting_left_pane">
+                                    <field name="active_debug_mode"/>
+                                </div>
+                                <div class="o_setting_right_pane">
+                                    <label for="active_debug_mode"/>
+                                    <div class="text-muted">Print shipstation API request and response data in
+                                        log.
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </xpath>
+            </field>
+        </record>
+
+        <menuitem id="shipstation_instance_menu_item" name="ShipStation"
+                  groups="shipstation_ept.group_shipstation_user" sequence="20"/>
+
+        <!-- Menu for Displaying shipstation icon in front -->
+        <menuitem id="shipstation_instance_menu_item" name="ShipStation"
+                  web_icon="shipstation_ept,static/description/icon.png"
+                  groups="shipstation_ept.group_shipstation_user" sequence="21"/>
+
+        <!-- Configuration menu of shipstation -->
+        <menuitem id="menu_configuration_ept" parent="shipstation_instance_menu_item"
+                  sequence="20" name="Configuration" groups="shipstation_ept.group_shipstation_manager"/>
+
+        <record id="action_shipstation_configuration" model="ir.actions.act_window">
+            <field name="name">Settings</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.config.settings</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="shipstation_ept.view_shipstation_config_settings"/>
+            <field name="target">inline</field>
+            <field name="context">{'module' : 'shipstation_ept'}</field>
+        </record>
+
+        <!-- Sub menu of Configuration main menu [Shipstation Settings] -->
+        <menuitem
+                id="menu_config_shipstation_setting"
+                sequence="1"
+                name="Settings"
+                parent="shipstation_ept.menu_configuration_ept"
+                action="action_shipstation_configuration"
+                groups="base.group_system"/>
+
+
+        <menuitem name="Shipstation Instance" id="menu_shipstation_instance"
+                  parent="shipstation_ept.menu_configuration_ept"
+                  action="shipstation_ept.action_shipstation_instance_id"
+                  sequence="2"/>
+    </data>
+</odoo>

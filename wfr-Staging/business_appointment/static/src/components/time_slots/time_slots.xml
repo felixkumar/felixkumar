@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="business_appointment.TimeSlots" owl="1">
+        <div class="business-appointment-row business-appointment-slots-header">
+            <ChosenAppointments t-props="this.getChosenAppointmentsProps()"/>
+            <div class="business-appointment-row">
+                <div class="business-appointmemt-dates-container col-lg-6 col-md-6 col-sm-12">
+                    <div class="business-appointment-label">
+                        Preferred dates:
+                    </div>
+                    <div class="ml8 business-appointment-datepicker">
+                        <DatePicker locale="thisLocale" date="dateStartLocal" onDateTimeChanged="(date) => this._onDateStartChange(date)" />
+                    </div>
+                    <div class="ml4 mr4 business-appointment-label">
+                        -
+                    </div>
+                    <div class="ml8 business-appointment-datepicker">
+                        <DatePicker locale="thisLocale" date="dateEndLocal" onDateTimeChanged="(date) => this._onDateEndChange(date)"/>
+                    </div>
+                </div>
+                <div class="business-appointmemt-duration-container col-lg-6 col-md-6 col-sm-12" t-if="state.duration_choices">
+                    <div class="business-appointment-label">
+                        Duration:
+                    </div>
+                    <div class="ml8">
+                        <select t-on-change="(event) => this._onChangeDuration(event)">
+                            <t t-foreach="state.duration_choices" t-as="chosenDuration" t-key="chosenDuration">
+                                <option t-att-value="chosenDuration" t-attf-selected="#{chosenDuration == state.duration and 'selected' or false}">
+                                    <t t-esc="formatDuration(chosenDuration)"/>
+                                </option>
+                            </t>
+                        </select>
+                    </div>
+                    <div class="ml4">
+                        <span t-esc="state.duration_uom"/>
+                    </div>
+                </div>
+            </div>
+            <div class="business-appointment-row">
+                <div class="business-appointmemt-tz-container d-none">
+                    <div t-if="state.tzOptions and state.tzOptions.length != 0">
+                        <select t-on-change="(event) => this._onChangeTz(event)">
+                            <t t-foreach="state.tzOptions" t-as="tzOption" t-key="tzOption[0]">
+                                <option t-attf-selected="#{state.defaultTz == tzOption[0] and 'selected' or false}" t-att-value="tzOption[0]">
+                                    <t t-esc="tzOption[1]"/>
+                                </option>
+                            </t>
+                        </select>
+                    </div>
+                    <div t-else="">
+                        <small><i><span t-esc="state.defaultTz"/></i></small>
+                    </div>
+                </div>
+                <div class="business-appointment-year-container" t-if="state.uniqueYears">
+                    <select t-on-change="(event) => this._onChangeYear(event)">
+                        <t t-foreach="state.uniqueYears" t-as="uniqueYear" t-key="uniqueYear">
+                            <option t-attf-selected="#{state.activeYear == uniqueYear and 'selected' or false}">
+                                <t t-esc="uniqueYear"/>
+                            </option>
+                        </t>
+                    </select>
+                </div>
+                <div class="business-appointment-month-container" t-if="state.uniqueMonths">
+                    <t t-foreach="state.uniqueMonths" t-as="uniqueMonth" t-key="uniqueMonth">
+                        <div t-if="!this.state.activeYear or constructDate(uniqueMonth, 'year') == this.state.activeYear" t-attf-class="business-appointment-month-switcher #{state.activeMonth == uniqueMonth and 'business-appointment-active-month' or ''}" t-on-click="(event) => this._onChangeMonth(uniqueMonth)">
+                            <span t-esc="constructDate(uniqueMonth, 'month')"/>
+                        </div>
+                    </t>
+                </div>
+            </div>
+        </div>
+        <div class="business-appointment-row business-appointment-slots">
+            <t t-if="state.dateSlots and state.dateSlots.length">
+                <t t-foreach="state.dateSlots" t-as="daySlot" t-key="daySlot.day">
+                    <div t-attf-class="business-appointment-slot-container business-appointment-slot-container-#{daySlot_index % 2 and 'even' or 'odd'}">
+                        <h5>
+                            <span t-esc="daySlot.day"/>
+                            <span class="ml4" t-esc="constructDate(daySlot.slots[0].day_to_sort,'weekday')"/>
+                        </h5>
+                        <t t-foreach="daySlot.slots" t-as="slot" t-key="slot.real_start_utc">
+                            <div class="business-appointment-slot" t-attf-title="#{slot.resource_names}: #{slot.title}" t-on-click="() => this._onAddSlot(slot.title, slot.real_start_utc, slot.resource_ids, slot.extra_ids)">
+                                <span t-esc="slot.start"/> - <span t-esc="slot.end"/>
+                            </div>
+                        </t>
+                    </div>
+                </t>
+            </t>
+            <t t-else="">
+                <div class="mt8">
+                    <i>Sorry, but no appointments are found by your parameters</i>
+                </div>
+            </t>
+        </div>
+    </t>
+
+</templates>

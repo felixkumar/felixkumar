@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="action_obl_create_credit_memo" model="ir.actions.server">
+            <field name="name">Create CM</field>
+            <field name="model_id" ref="mc_freight_app.model_freight_freight"/>
+            <field name="binding_model_id" ref="mc_freight_app.model_freight_freight"/>
+            <field name="binding_view_types">list</field>
+            <field name="state">code</field>
+            <field name="code">
+if not len(set(rec.partner_id.id for rec in records)) > 1:
+    action = records.action_create_credit_memo()
+else:
+    raise UserError("Selected records contain more than one Customer. Please select "\
+                    "records with the same customer")
+            </field>
+        </record>
+
+    </data>
+</odoo>

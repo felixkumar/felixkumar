@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<template>
+
+    <t t-name="ks_view_manager.MoveLineListcontroller"
+        t-inherit="account_accountant.MoveLineListView"
+        t-inherit-mode="extension"
+        owl="1">
+
+        <xpath expr="//t[@t-component='props.Renderer']" position="attributes">
+            <attribute name="ks_update_field_data.bind">ks_update_field_data</attribute>
+            <attribute name="ks_initialize_lvm_data.bind">ks_initialize_lvm_data</attribute>
+            <attribute name="list_data">list_data</attribute>
+        </xpath>
+    </t>
+</template>

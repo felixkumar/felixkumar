@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="warehouse_stock_inventory_form_view" model="ir.ui.view">
+        <field name="name">warehouse.stock.inventory.form.view</field>
+        <field name="model">warehouse.stock.inventory</field>
+        <field name="arch" type="xml">
+            <form string="Warehouse Daily Report">
+                <sheet>
+                    <div class="oe_title">
+                        <div>
+                            <label for="report_date"/>
+                        </div>
+                        <h1 class="mb32">
+                            <field name="report_date" placeholder="Report Date" class="mb16"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <field name="report_line_ids">
+                            <tree>
+                                <field name="warehouse_id"/>
+                                <field name="category_id"/>
+                                <button name="download_daily_report" string="Download Report" type="object"
+                                        class="btn btn-secondary"/>
+                            </tree>
+                            <form>
+                                <group>
+                                    <field name="warehouse_id" readonly="1"/>
+                                    <field name="report_filename" invisible="1"/>
+                                    <field name="attached_report" widget="binary" filename="report_filename"
+                                           readonly="1"/>
+                                    <button name="download_daily_report" string="Download Report" type="object"
+                                            class="btn btn-secondary"/>
+                                </group>
+                                <field name="line_report_ids" nolabel="1">
+                                    <tree editable="bottom">
+                                        <field name="name"/>
+                                        <field name="internal_reference"/>
+                                        <field name="product_category"/>
+                                        <field name="pallet_count"/>
+                                        <field name="uom_id"/>
+                                        <field name="qty_on_hand" sum="QTY On Hand"/>
+                                        <field name="incoming_qty" sum="Incoming Qty"/>
+                                        <field name="outgoing_qty" sum="Outgoing Qty"/>
+                                        <field name="free_to_use_qty" sum="Free To Use Qty"/>
+                                        <field name="forecasted_qty" sum="Forecasted Qty"/>
+                                        <field name="units_per_case" sum="Unit Per Case"/>
+                                        <field name="volume" sum="Volume"/>
+                                        <field name="cases_per_carton"/>
+                                        <field name="cartons_per_pallet"/>
+                                        <field name="pallet_stacking"/>
+                                        <field name="product_per_pallet"/>
+                                        <field name="total_volume_cuft" sum="Volume CUFT"/>
+                                        <field name="daily_fee" sum="Daily Fee"/>
+                                    </tree>
+                                </field>
+                            </form>
+                        </field>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="stock_fee_billing_form_view" model="ir.ui.view">
+        <field name="name">stock.fee.billing.form.view</field>
+        <field name="model">stock.fee.billing</field>
+        <field name="arch" type="xml">
+            <form string="Warehouse Monthly Report" create="0" edit="1" delete="1">
+                <sheet>
+                    <div class="oe_title">
+                        <div>
+                            <label for="name"/>
+                        </div>
+                        <h1 class="mb32">
+                            <field name="name" placeholder="Date" class="mb16"/>
+                        </h1>
+                    </div>
+                    <!--                    <group>-->
+                    <!--                        <field name="warehouse_ids" widget="many2many_tags"/>-->
+                    <!--                        <field name="category_ids" widget="many2many_tags"/>-->
+                    <!--                    </group>-->
+                    <group>
+                        <!--                        <field name="billing_line_ids" domain="[('warehouse_id','in',warehouse_id), ('category_id','in',category_id)]">-->
+                        <field name="billing_line_ids">
+                            <tree create="false" edit="true" delete="true">
+                                <field name="day"/>
+                                <field name="warehouse_id"/>
+                                <field name="category_id"/>
+                                <field name="date"/>
+                                <field name="stock_qty_free_to_use"/>
+                                <field name="volume_cuft"/>
+                                <field name="storage_fee"/>
+                                <field name="storage_fee_daily_amount"/>
+                            </tree>
+                        </field>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="warehouse_stock_inventory_line_form_view" model="ir.ui.view">
+        <field name="name">warehouse.stock.inventory.line.form.view</field>
+        <field name="model">warehouse.stock.inventory.line</field>
+        <field name="arch" type="xml">
+            <form string="Warehouse Daily Report" create="0" edit="1" delete="1">
+                <sheet>
+                    <group>
+                        <field name="warehouse_id" readonly="1"/>
+                        <button name="download_daily_report" string="Download Report" type="object"
+                                class="btn btn-secondary"/>
+                    </group>
+                    <field name="line_report_ids" nolabel="1">
+                        <tree editable="bottom">
+                            <field name="name"/>
+                            <field name="internal_reference"/>
+                            <field name="product_category"/>
+                            <field name="pallet_count"/>
+                            <field name="uom_id"/>
+                            <field name="qty_on_hand"/>
+                            <field name="incoming_qty"/>
+                            <field name="outgoing_qty"/>
+                            <field name="free_to_use_qty"/>
+                            <field name="forecasted_qty"/>
+                            <field name="units_per_case"/>
+                            <field name="volume"/>
+                            <field name="cases_per_carton"/>
+                            <field name="cartons_per_pallet"/>
+                            <field name="pallet_stacking"/>
+                            <field name="product_per_pallet"/>
+                            <field name="total_volume_cuft" sum="Volume CUFT"/>
+                            <field name="daily_fee" sum="Daily Fee"/>
+                        </tree>
+                    </field>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_warehouse_stock_inventory_line_view">
+        <field name="name">Warehouse Daily Report</field>
+        <field name="res_model">warehouse.stock.inventory.line</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="view_id" ref="warehouse_inventory_report.warehouse_stock_inventory_line_form_view"/>
+        <field name="help" type="html">
+            <p>
+                Daily Stock Report!
+            </p>
+        </field>
+    </record>
+
+    <record id="warehouse_stock_inventory_tree_view" model="ir.ui.view">
+        <field name="name">warehouse.stock.inventory.tree.view</field>
+        <field name="model">warehouse.stock.inventory</field>
+        <field name="arch" type="xml">
+            <tree string="Warehouse Daily Report">
+                <field name="report_date"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="stock_fee_billing_line_tree_view" model="ir.ui.view">
+        <field name="name">stock.fee.billing.line.tree.view</field>
+        <field name="model">stock.fee.billing.line</field>
+        <field name="arch" type="xml">
+            <tree string="Warehouse Monthly Report" create="0" edit="0" delete="0">
+                <field name="day"/>
+                <field name="warehouse_id"/>
+                <field name="category_id"/>
+                <field name="date"/>
+                <field name="stock_qty_free_to_use"/>
+                <field name="volume_cuft"/>
+                <field name="storage_fee"/>
+                <field name="storage_fee_daily_amount"/>
+                <button name="open_stock_report_list_view" string="Open Stock Report" type="object"
+                        class="btn btn-secondary"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="stock_fee_billing_line_search" model="ir.ui.view">
+        <field name="name">stock.fee.billing.line.search</field>
+        <field name="model">stock.fee.billing.line</field>
+        <field name="arch" type="xml">
+            <search string="Warehouse Monthly Report">
+                <field name="warehouse_id" string="Warehouse"/>
+                <field name="category_id" string="Category"/>
+                <group expand="1" string="Group By">
+                    <filter string="Warehouse" name="grp_warehouse_id" domain="[]"
+                            context="{'group_by':'warehouse_id'}"/>
+                    <filter string="Category" name="grp_category_id" domain="[]" context="{'group_by':'category_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="stock_fee_billing_line_action" model="ir.actions.act_window">
+        <field name="name">Warehouse Monthly Report</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">stock.fee.billing.line</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="warehouse_inventory_report.stock_fee_billing_line_tree_view"/>
+        <field name="search_view_id" eval="stock_fee_billing_line_search"/>
+        <field name="help" type="html">
+            <p>
+                Warehouse Monthly Report Lines!
+            </p>
+        </field>
+    </record>
+
+    <record id="stock_fee_billing_tree_view" model="ir.ui.view">
+        <field name="name">stock.fee.billing.tree.view</field>
+        <field name="model">stock.fee.billing</field>
+        <field name="arch" type="xml">
+            <tree string="Warehouse Monthly Report" create="0" edit="0" delete="1">
+                <field name="name"/>
+                <field name="stock_fee_date"/>
+                <button name="open_m_report_list_view" string="Open Report" type="object" class="btn btn-secondary"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="warehouse_stock_inventory_action" model="ir.actions.act_window">
+        <field name="name">Warehouse Daily Report</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">warehouse.stock.inventory</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="warehouse_inventory_report.warehouse_stock_inventory_tree_view"/>
+        <field name="help" type="html">
+            <p>
+                Warehouse Daily Report!
+            </p>
+        </field>
+    </record>
+
+    <record id="stock_fee_billing_action" model="ir.actions.act_window">
+        <field name="name">Warehouse Monthly Report</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">stock.fee.billing</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="warehouse_inventory_report.stock_fee_billing_tree_view"/>
+        <field name="help" type="html">
+            <p>
+                Warehouse Monthly Report!
+            </p>
+        </field>
+    </record>
+
+    <record id="action_stock_fee_billing_excel_file" model="ir.actions.server">
+        <field name="name">Generate Excel Report</field>
+        <field name="model_id" ref="warehouse_inventory_report.model_stock_fee_billing"/>
+        <field name="binding_model_id" ref="warehouse_inventory_report.model_stock_fee_billing"/>
+        <field name="binding_view_types">list,form</field>
+        <field name="state">code</field>
+        <field name="code">
+            action = records.generate_excel_file()
+        </field>
+    </record>
+
+    <record id="action_open_daily_stock_report" model="ir.actions.server">
+        <field name="name">Open Daily Stock</field>
+        <field name="model_id" ref="stock.model_product_product"/>
+        <field name="binding_model_id" ref="stock.model_product_product"/>
+        <field name="binding_view_types">list,form</field>
+        <field name="state">code</field>
+        <field name="code">
+            action = model.open_daily_report_action()
+        </field>
+    </record>
+
+
+    <!--    <record id="product_search_form_view_stock_report_extended" model="ir.ui.view">-->
+    <!--        <field name="name">product.product.search.stock.form.stock.report.extend</field>-->
+    <!--        <field name="model">product.product</field>-->
+    <!--        <field name="mode">primary</field>-->
+    <!--        <field name="inherit_id" ref="stock.product_search_form_view_stock_report"/>-->
+    <!--        <field name="arch" type="xml">-->
+    <!--            <filter name="real_stock_negative" position="after">-->
+    <!--                <searchpanel>-->
+    <!--                    <field name="warehouse_id" icon="fa-filter" string="Warehouse" select="multi"/>-->
+    <!--                </searchpanel>-->
+    <!--            </filter>-->
+    <!--        </field>-->
+    <!--    </record>-->
+
+    <menuitem id="menu_warehouse_stock_report" name="Warehouse Daily Report"
+              parent="stock.menu_warehouse_report" sequence="10"
+              action="warehouse_inventory_report.warehouse_stock_inventory_action"/>
+
+    <menuitem id="menu_warehouse_stock_fee_billing_report" name="Warehouse Monthly Report"
+              parent="stock.menu_warehouse_report" sequence="11"
+              action="warehouse_inventory_report.stock_fee_billing_action"/>
+
+</odoo>

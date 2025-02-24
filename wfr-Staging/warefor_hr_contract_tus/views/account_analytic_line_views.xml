@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="hr_timesheet_line_tree_tus" model="ir.ui.view">
+        <field name="name">account.analytic.line.tree.tus</field>
+        <field name="model">account.analytic.line</field>
+        <field name="inherit_id" ref="hr_timesheet.hr_timesheet_line_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='employee_id']" position="after">
+                 <field name="hour_type_id"/>
+                 <field name="hourly_cost"/>
+                 <field name="hourly_wage"/>
+                 <field name="nominal_wage"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="hr_timesheet_line_tree_user_tus" model="ir.ui.view">
+        <field name="name">account.analytic.line.tree.user.tus</field>
+        <field name="model">account.analytic.line</field>
+        <field name="inherit_id" ref="hr_timesheet.timesheet_view_tree_user"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='employee_id']" position="after">
+                <field name="alias_name"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="common_log_line_view_tree_inherited" model="ir.ui.view">
+        <field name="name">common_log_line_view_tree_inherited</field>
+        <field name="model">common.log.lines.ept</field>
+        <field name="inherit_id" ref="common_connector_library.common_log_line_view_tree"/>
+        <field name="arch" type="xml">
+            <field name="order_ref" position="replace"></field>
+            <field name="default_code" position="replace"></field>
+            <field name="model_id" position="after">
+                <field name="res_id"/>
+                <field name="operation_type"/>
+                <field name="log_line_type"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="common_log_line_view_form_inherited" model="ir.ui.view">
+        <field name="name">common_log_line_view_form_inherited</field>
+        <field name="model">common.log.lines.ept</field>
+        <field name="inherit_id" ref="common_connector_library.common_log_line_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="replace">
+                <form create="false" edit="false">
+                    <sheet>
+                        <group>
+                            <field name="message" readonly="1"/>
+                            <field name="model_id" readonly="1"/>
+                            <field name="res_id"/>
+                            <field name="operation_type"/>
+                            <field name="log_line_type"/>
+                            <field name="write_date"/>
+                        </group>
+                    </sheet>
+                </form>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="common_log_line_view_search_inherited" model="ir.ui.view">
+        <field name="name">common_log_line_view_search_inherited</field>
+        <field name="model">common.log.lines.ept</field>
+        <field name="inherit_id" ref="common_connector_library.common_log_line_view_search"/>
+        <field name="arch" type="xml">
+            <field name="model_id" position="after">
+                <field name="operation_type"/>
+                <field name="log_line_type"/>
+            </field>
+            <field name="order_ref" position="replace"></field>
+            <field name="default_code" position="replace"></field>
+            <filter name="groupby_model" position="after">
+                <filter name="groupby_log_line_type" string="Result" context="{'group_by': 'log_line_type'}"/>
+            </filter>
+        </field>
+    </record>
+</odoo>

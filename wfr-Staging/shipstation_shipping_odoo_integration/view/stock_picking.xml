@@ -1,0 +1,59 @@
+<odoo>
+    <data>
+        <record id="view_stock_picking_form_view" model="ir.ui.view">
+            <field name="name">stock.picking.view</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock.view_picking_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="/form/header/button[last()]" position="after">
+                    <button type="object" name="update_order_in_shipstation" invisible="0"
+                            string="Update Shipstation Order"
+                            attrs="{'invisible':[('shipstation_order_id','=',False)]}"/>
+                    <button type="object" name="generate_label_from_shipstation" string="Generate Shipstation Label"
+                            attrs="{'invisible':['|',('delivery_type','=',False),('state','not in',('done'))]}"/>
+                </xpath>
+                <xpath expr="//page[last()]" position="after">
+                    <page string="Shipstation Packages"
+                          attrs="{'invisible': [('delivery_type', '=', False)]}">
+                        <field name="package_ids" readonly="1">
+                            <tree>
+                                <field name="name"/>
+                                <field name="shipstation_shipment_id"/>
+                                <field name="shipping_weight"/>
+                                <field name="custom_tracking_number"/>
+                                <field name="is_generate_label_in_shipstation"/>
+                                <field name="carrier_id"/>
+                                <field name="response_message"/>
+                                <button type='object' class="fa fa-arrow-right oe_link"
+                                        name="shipstation_cancel_shipment"
+                                        string="Cancel Shipment In Shipstation"/>
+                            </tree>
+                        </field>
+                        <group>
+                            <field name="weight_bulk" attrs="{'invisible':[('weight_bulk','&lt;',0.1)]}"/>
+                        </group>
+                    </page>
+                    <page name="shipstation_detail" string="Shipment Info">
+                        <group>
+                            <group string="Shipstation Info">
+                                <field name="shipstation_order_id" readonly="1"/>
+                                <field name="shipstation_sale_order_number" readonly="1"/>
+                                <field name="shipstation_shipment_id" readonly="1"/>
+                                <field name="shipstation_carrier_code" readonly="1"/>
+                                <field name="shipstation_service_code" readonly="1"/>
+                                <field name="shipstation_configuration_id" readonly="1"/>
+                            </group>
+                            <group>
+                                <field name="carrier_price"/>
+                                <field name="shipstation_batch_number"/>
+                                <field name="shipstation_weight" readonly="1"/>
+                                <field name="shipstation_unit_of_measure"/>
+                                <field name="is_order_imported_in_shipstation" readonly="1"/>
+                            </group>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

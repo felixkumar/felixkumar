@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="paperformat_us_latter_landscape" model="report.paperformat">
+            <field name="name">PO paperformat</field>
+            <field name="default" eval="False"/>
+            <field name="format">A4</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">60</field>
+            <field name="margin_bottom">10</field>
+            <field name="margin_left">7</field>
+            <field name="margin_right">7</field>
+            <field name="header_line" eval="False" />
+            <field name="header_spacing">55</field>
+        </record>
+
+        <record id="action_purchase_order_report_warefor" model="ir.actions.report">
+            <field name="name">Purchase Order Report</field>
+            <field name="model">purchase.order</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">warefor_3pl_tus.report_purchase_order_warefor</field>
+            <field name="report_file">warefor_3pl_tus.report_purchase_order_warefor</field>
+            <field name="binding_model_id" ref="model_purchase_order"/>
+            <field name="binding_type">report</field>
+            <field name="paperformat_id" ref="paperformat_us_latter_landscape"/>
+        </record>
+
+    </data>
+</odoo>

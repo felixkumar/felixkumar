@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="view_form_pallet_box_items" model="ir.ui.view">
+            <field name="name">Pallet Box Items</field>
+            <field name="model">pallet.box.items</field>
+            <field name="arch" type="xml">
+                <form string="Pallet Box Items">
+                    <sheet>
+                        <group>
+                            <field name="picking_id" required="1" domain="[('box_id', '!=', False)]"/>
+                            <field name="product_box_id" readonly="1"/>
+                        </group>
+                        <notebook>
+                            <page name="box_product_lines" string="Product Lines">
+                                <field name="move_lines" readonly="True" widget="many2many"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_tree_pallet_box_items" model="ir.ui.view">
+            <field name="name">Pallet Box Items</field>
+            <field name="model">pallet.box.items</field>
+            <field name="arch" type="xml">
+                <tree string="Pallet Box Items">
+                    <field name="picking_id"/>
+                    <field name="product_box_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_action_pallet_box_items" model="ir.actions.act_window">
+            <field name="name">Pallet Box Items</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">pallet.box.items</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                </p>
+                <p>
+                </p>
+            </field>
+        </record>
+
+    </data>
+</odoo>

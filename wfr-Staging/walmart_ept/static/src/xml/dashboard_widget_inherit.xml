@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template xml:space="preserve">
+
+<t t-extend="graph_dashboard_ept">
+    <t t-jquery="#sort_order_data" t-operation="before">
+        <t t-if="widget.match_key == 'amazon_order_data'">
+            <select class="border-0 h7 position-absolute" id="sort_order_data_amazone">
+                <option value="FBA"
+                        t-att-selected="widget.graph_data.fulfillment_by == 'FBA' ? 'selected' : undefined">
+                    Fulfillment By FBA
+                </option>
+                <option value="FBM"
+                        t-att-selected="widget.graph_data.fulfillment_by == 'FBM' ? 'selected' : undefined">
+                        Fulfillment By FBM
+                </option>
+                <option value="Both"
+                        t-att-selected="widget.graph_data.fulfillment_by == 'Both' ? 'selected' : undefined">
+                        Fulfillment By Both
+                </option>
+            </select>
+        </t>
+    </t>
+    <t t-jquery="#instance_order_shipped" t-operation="replace">
+        <t t-if="widget.match_key != 'walmart_order_data'">
+            <a id="instance_order_shipped" class="ep-bg-5">
+                    <t t-if="widget.graph_data.order_shipped">
+                        <p class="text-center mb0 font-weight-bold">
+                            <t t-esc="widget.graph_data.order_shipped.order_count"/>
+                        </p>
+                    </t>
+                <p class="text-center mb0">Order Shipped</p>
+                </a>
+        </t>
+    </t>
+</t>
+</template>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (c) 2016-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>;) -->
+<!-- See LICENSE file for full copyright and licensing details. -->
+<!-- License URL : https://store.webkul.com/license.html/ -->
+<odoo>
+    <record model="ir.ui.view" id="field_mappning_form">
+        <field name="name">Field Mappning Form</field>
+        <field name="model">fb.field.mappning</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Field Mapping">
+                <sheet>
+                    <div class="oe_button_box" name="button_box"/>
+                    <widget name="web_ribbon" title="Archived" bg_color="bg-danger" attrs="{'invisible': [('active', '=', True)]}"/>
+                    <group col="4">
+                        <field name="active" invisible="1"/>
+                        <field name="name" />
+                    </group>
+                    <field name="field_mapping_line_ids">
+                        <tree editable="bottom">
+                            <field name="facebook_field_id" attrs="{'required': True}" options="{'no_open': True, 'no_create': True}"/>
+                            <field name="model_field_id" attrs="{'required': [('fixed', '!=', True)],'invisible': [('fixed', '!=', False)]}" options="{'no_open': True, 'no_create': True}"/>
+                            <field name="default" attrs="{'invisible': [('fixed', '!=', False)]}"/>
+                            <field name="fixed" />
+                            <field name="fixed_text" attrs="{'required': [('fixed', '!=', False)],'invisible': [('fixed', '!=', True)]}"/>
+                        </tree>
+                    </field>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="field_mappning_tree">
+        <field name="name">Field Mappning Tree</field>
+        <field name="model">fb.field.mappning</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="Field Mapping">
+                <field name="name" />
+                <field name="field_mapping_line_ids" />
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="field_mappning_action">
+        <field name="name">Field Mappning</field>
+        <field name="res_model">fb.field.mappning</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="field_mappning_tree" />
+    </record>
+
+    <menuitem name="Field Mapping" id= "field_mappning_menu" parent="mappings_fields" action="field_mappning_action" sequence="2"/>
+
+</odoo>

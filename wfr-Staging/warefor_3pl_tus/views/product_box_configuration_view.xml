@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="form_view_product_box_configuration_tus" model="ir.ui.view">
+            <field name="name">product.box.configuration.form.view</field>
+            <field name="model">product.box.configuration</field>
+            <field name="arch" type="xml">
+                <form string="Product Box Configuration">
+                    <sheet>
+                        <group>
+                            <field name="box_id"/>
+                            <field name="product_qty_string" readonly="1"/>
+                        </group>
+                        <group>
+                            <notebook>
+                                <page name="product_lines" string="Product Lines">
+                                    <field name="product_lines" nolabel="1">
+                                        <tree>
+                                            <field name="product_id" required="1"/>
+                                            <field name="product_qty" type="char"/>
+                                        </tree>
+                                    </field>
+                                </page>
+                            </notebook>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="tree_view_product_box_configuration" model="ir.ui.view">
+            <field name="name">product.box.configuration.tree.view</field>
+            <field name="model">product.box.configuration</field>
+            <field name="arch" type="xml">
+                <tree string="Product Box Configuration">
+                    <field name="box_id"/>
+                    <field name="product_qty_string"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_action_product_box_configuration" model="ir.actions.act_window">
+            <field name="name">Product Box Configuration</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">product.box.configuration</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                </p>
+                <p>
+                </p>
+            </field>
+        </record>
+
+<!--        <menuitem id="menu_product_box_configuration" name="Product Box Configuration"-->
+<!--                  action="view_action_product_box_configuration"-->
+<!--                  parent="warefor_3pl_tus.menu_pallet_mgmt_root" sequence="3"/>-->
+
+    </data>
+</odoo>

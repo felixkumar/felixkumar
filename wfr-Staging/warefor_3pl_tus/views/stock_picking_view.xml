@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_picking_form_warefor_inherited" model="ir.ui.view">
+        <field name="name">stock_picking_warefor_3pl.picking.form</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <field name="arch" type="xml">
+            <data>
+                <xpath expr="//sheet//div[hasclass('oe_button_box')]" position="inside">
+                    <field name="custom_internal_transfer_id" invisible="1"/>
+                    <button name="button_who_record" type="object" class="oe_stat_button" string="WHO Internal Transfer" attrs="{'invisible': [('custom_internal_transfer_id','=', False)]}"
+                            icon="fa-truck" >
+                    </button>
+                </xpath>
+                <xpath expr="//header" position="inside">
+<!--                    <button string="Create Pallet" states="confirmed,assigned,done" class="oe_highlight"-->
+<!--                            name="create_shipment_pallet" type="object"/>-->
+                    <button string="Move Pallet In Next Location" class="oe_highlight"
+                            name="move_pallet_in_next_location" type="object"
+                            attrs="{'invisible': ['|', '|', '|', ('state', '!=', 'done'), ('moved_picking_id', 'not in', ['', False]), ('next_location_id', '=', False), ('picking_type_code', '!=', 'incoming')]}"/>
+<!--                    <button string="Warehouse Manager Signature" class="oe_highlight" name="update_warehouse_manager_signature" type="object"/>-->
+                    <button string="Truck Driver Signature" class="oe_highlight" name="update_truck_driver_signature" type="object" invisible="1"/>
+                </xpath>
+                <xpath expr="//header" position="before">
+                    <field name="state" invisible="1"/>
+                </xpath>
+                <xpath expr="//header" position="attributes">
+                    <attribute name="groups">!user_warehouse_restriction.user_carote_restriction_group_user</attribute>
+                </xpath>
+                <xpath expr="//group//group[2]" position="inside">
+                    <field name="qrcode" widget="image"/>
+                </xpath>
+                <xpath expr="//group" position="after">
+                    <group>
+                        <group>
+                            <field name="receipt_picking_id"
+                                   attrs="{'readonly': [('state', '!=', 'draft')], 'invisible': [('picking_type_code', '!=', 'internal')]}"/>
+                            <field name="moved_picking_id"
+                                   attrs="{'invisible': [('picking_type_code', '!=', 'incoming')]}" readonly="1"/>
+                            <field name="receipt_pallet_name"
+                                   attrs="{'invisible': [('receipt_pallet_name', 'in', ['', False])]}" readonly="1"/>
+                            <field name="pallet_batch_ids" widget="many2many_tags"/>
+                        </group>
+                    </group>
+                </xpath>
+                <xpath expr="//notebook/page[@name='note']" position="before">
+                    <page string="Pallet Info" attrs="{'invisible': [('picking_type_code', '!=', 'outgoing')]}">
+                        <group>
+                            <field name="box_id"/>
+                            <field name="pallet_id" readonly="1"/>
+                        </group>
+                    </page>
+                </xpath>
+                <xpath expr="//field[@name='location_dest_id']" position="after">
+                    <field name="truck_driver_name" invisible="1"/>
+                    <field name="next_location_id" attrs="{'invisible': [('picking_type_code', '!=', 'incoming')]}"/>
+                    <field name="move_pallet_in_rack_location"/>
+                </xpath>
+                <xpath expr="//field[@name='origin']" position="after">
+                    <field name="is_use_pallet_stock" string="Is Use Pallet Stock?"
+                           attrs="{'invisible': [('picking_type_code', '!=', 'internal')]}"/>
+                </xpath>
+                <xpath expr="//field[@name='move_ids_without_package']/tree/field[@name='product_id']" position="after">
+                    <field name="pallet_id"/>
+                </xpath>
+                <xpath expr="//field[@name='move_ids_without_package']/tree/field[@name='quantity_done']" position="after">
+                    <field name="no_of_pallets"/>
+                </xpath>
+                <xpath expr="//field[@name='move_ids_without_package']/tree/field[@name='product_id']"
+                       position="attributes">
+                    <attribute name="string">Item</attribute>
+                </xpath>
+                <xpath expr="//field[@name='scheduled_date']" position="attributes">
+                    <attribute name="attrs">{'readonly': False}</attribute>
+                </xpath>
+                <xpath expr="//field[@name='date_done']" position="attributes">
+                    <attribute name="attrs">{'readonly': False}</attribute>
+                </xpath>
+                <xpath expr="//field[@name='user_id']" position="after">
+                    <field name="freight_record_id"/>
+                    <field name="freight_picking_id" widget="selection" readonly="1"/>
+                    <field name="purchase_order_id"/>
+                    <field name="signature_name"/>
+                </xpath>
+                <xpath expr="//field[@name='origin']" position="after">
+                    <field name="freight_record_id"/>
+                </xpath>
+                <xpath expr="//field[@name='date_done']" position="after">
+                    <field name="arrive_time" invisible="1"/>
+                    <field name="seal_number" invisible="1"/>
+                    <field name="trailer" invisible="1"/>
+                </xpath>
+                <xpath expr="//widget[@name='signature']" position="replace">
+                    <widget name="signature" string="Sign" highlight="1"
+                            full_name="signature_name" invisible="1"/>
+                </xpath>
+
+                <xpath expr="//field[@name='location_dest_id']" position="attributes">
+                    <attribute name="attrs">{'invisible': [('picking_type_code', '=', '')]}</attribute>
+                </xpath>
+
+                <xpath expr="//field[@name='location_id']" position="attributes">
+                    <attribute name="domain">[('is_omit_on_source_location', '=', False), ('company_id', 'in', [company_id, False])]</attribute>
+                </xpath>
+
+                <!--    HIDE THE PUT IN PACK BUTTON FROM RECEIPT -->
+
+                <xpath expr="//page[@name='operations']/button[@name='action_put_in_pack']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//page[@name='detailed_operations']/button[@name='action_put_in_pack']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+            </data>
+        </field>
+    </record>
+
+    <record id="view_stock_move_line_detailed_operation_3pl_tree" model="ir.ui.view">
+        <field name="name">stock.move.line.operations.inherit.3pl.tree</field>
+        <field name="model">stock.move.line</field>
+        <field name="inherit_id" ref="stock.view_stock_move_line_detailed_operation_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='qty_done']" position="after">
+                <field name="no_of_pallets"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="vpicktree_warefor_inherited" model="ir.ui.view">
+        <field name="name">stock_picking_warefor_3pl.picking.tree</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.vpicktree"/>
+        <field name="arch" type="xml">
+            <data>
+                <xpath expr="//field[@name='company_id']" position="before">
+                    <field name="freight_record_id"/>
+                    <field name="detail_location_id"/>
+                </xpath>
+            </data>
+        </field>
+    </record>
+
+    <record id="operation_type_warefor_inherited" model="ir.ui.view">
+        <field name="name">stock.picking.type.warefor</field>
+        <field name="model">stock.picking.type</field>
+        <field name="inherit_id" ref="stock.view_picking_type_form"/>
+        <field name="arch" type="xml">
+            <data>
+                <xpath expr="//field[@name='show_operations']" position="after">
+                    <field name="is_default_mark_todo"/>
+                    <field name="is_inventory_adjustment"/>
+                </xpath>
+            </data>
+        </field>
+    </record>
+
+</odoo>

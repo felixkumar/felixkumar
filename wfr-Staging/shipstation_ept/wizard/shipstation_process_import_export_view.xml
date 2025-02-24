@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Wizard For ShipStation Import Export Operation -->
+        <record id="view_shipstation_process_import_export_ept" model="ir.ui.view">
+            <field name="name">Process Import/Export</field>
+            <field name="model">shipstation.process.import.export</field>
+            <field name="arch" type="xml">
+                <form string="Import/Export">
+                    <group>
+                        <group>
+                            <field name='shipstation_instance_id' required="1"
+                                   options="{'no_create':True,'no_create_edit': True}"/>
+                        </group>
+                        <group>
+                            <field name="process"/>
+<!--                            <field name="process" groups="shipstation_ept.group_shipstation_user"/>-->
+                            <field name="store_ids"
+                                   domain="[('shipstation_instance_id','=',shipstation_instance_id)]"
+                                   widget="many2many_tags"
+                                   attrs="{'invisible':[('process', '!=','export_orders' )]}"
+                                   options="{'no_create':True,'no_create_edit': True}"/>
+                            <label for="product_start_date" string="Start Date"
+                                   attrs="{'invisible':[('process', 'not in', ['import_product','export_orders'])]}"/>
+                            <div attrs="{'invisible':[('process', 'not in', ['import_product','export_orders'])]}">
+                                <field name="product_start_date" class="oe_inline"
+                                       attrs="{'required':[('process', 'in', ['import_product','export_orders'])]}"/>
+                            </div>
+                            <label for="product_end_date" string="End Date"
+                                   attrs="{'invisible':[('process', 'not in', ['import_product','export_orders'])]}"/>
+                            <div attrs="{'invisible':[('process', 'not in', ['import_product','export_orders'])]}">
+                                <field name="product_end_date" class="oe_inline"
+                                       attrs="{'required':[('process', 'in', ['import_product','export_orders'])]}"/>
+                            </div>
+                            <field name="auto_create_product"
+                                   groups="shipstation_ept.group_shipstation_user"
+                                   attrs="{'invisible':[('process', '!=', 'import_product')]}"/>
+                            <field name="choose_file" widget="binary" string="File Upload"
+                                   filename="file_name"
+                                   placeholder="File Upload" attrs="{'invisible':[('process', '!=','map_product' )]}"/>
+                            <field name="file_name" string="File Name" invisible="1"/>
+                            <field name="delimiter"
+                                   attrs="{'required':[('process','=','map_product')], 'invisible':[('process', '!=','map_product' )]}"/>
+                        </group>
+                    </group>
+                    <footer>
+                        <button string="Download Xlsx"
+                                name="download_product_map_xlsx" type="object"
+                                class="oe_highlight"
+                                attrs="{'invisible':[('process', '!=','map_product' )]}"/>
+                        <button name="import_export_processes" string="Execute" type="object" class="oe_highlight"
+                                accesskey="v"/>
+                        <button string="Cancel" class="oe_highlight" special="cancel" accesskey="c"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+
+        <!-- Action For Shipstation Import Export Operations -->
+        <record id="action_wizard_shipstation_import_export_operations" model="ir.actions.act_window">
+            <field name="name">Shipstation Operations</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">shipstation.process.import.export</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <!-- Action For Particular Shipstation Import Export Operations -->
+        <record id="action_wizard_shipstation_instance_import_export_operations" model="ir.actions.act_window">
+            <field name="name">Shipstation Operations</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">shipstation.process.import.export</field>
+            <field name="view_mode">form</field>
+            <field name="context">{'default_instance_id': active_id}</field>
+            <field name="target">new</field>
+        </record>
+
+        <!-- Main Menu of Shipstation Import Export Operations -->
+        <menuitem id="menu_shipstation_import_export_process_ept" name="Operations"
+                  parent="shipstation_ept.shipstation_instance_menu_item"
+                  groups="shipstation_ept.group_shipstation_user"
+                  sequence="4"/>
+
+        <!-- Sub Menu For Shipstation Import Export Operations -->
+        <menuitem id="menu_main_shipstation_import_process_ept" name="Shipstation Operations"
+                  action="action_wizard_shipstation_import_export_operations"
+                  parent="menu_shipstation_import_export_process_ept" sequence="1"/>
+    </data>
+</odoo>    

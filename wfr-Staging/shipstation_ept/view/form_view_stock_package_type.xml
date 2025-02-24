@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="form_view_stock_package_type" model="ir.ui.view">
+        <field name="name">form_view_stock_package_type</field>
+        <field name="model">stock.package.type</field>
+        <field name="arch" type="xml">
+            <form string="Product Packaging Type">
+                <sheet>
+                    <label for="name" string="Packaging"/>
+                    <h1>
+                        <field name="name"/>
+                    </h1>
+                    <group>
+                        <field name="id" invisible="1"/>
+                        <field name="package_carrier_type"/>
+                        <field name="ept_shipstation_carrier_id"/>
+                        <field name="shipper_package_code"
+                               attrs="{'invisible':[('package_carrier_type','!=','shipstation_ept')]}"/>
+                        <field name="height"/>
+                        <field name="width"/>
+                        <field name="packaging_length"/>
+                        <field name="max_weight"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

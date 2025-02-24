@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="custom_business_resource_type_field_view_form" model="ir.ui.view">
+        <field name="name">custom.business.resource.type.field.form.custom.website</field>
+        <field name="model">custom.business.resource.type.field</field>
+        <field name="inherit_id" ref="business_appointment_custom_fields.custom_business_resource_type_field_view_form"/>
+        <field name="arch" type="xml">
+            <field name="placement" position="after">
+                <field name="portal_placement"/>
+            </field>
+        </field>
+    </record>
+
+</odoo>

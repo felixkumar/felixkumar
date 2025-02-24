@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="maintenance_equipment_view_form_inherit_warefor" model="ir.ui.view">
+        <field name="name">maintenance.equipment.view.form.inherit.warefor</field>
+        <field name="model">maintenance.equipment</field>
+        <field name="inherit_id" ref="maintenance.hr_equipment_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='serial_no']" position="after">
+                <field name="asset_tag"/>
+            </xpath>
+            <xpath expr="//field[@name='next_action_date']" position="attributes">
+                <attribute name="readonly">0</attribute>
+            </xpath>
+            <xpath expr="//widget[@name='web_ribbon']" position="after">
+                <field name="maintenance_image" widget="image" class="oe_avatar"/>
+            </xpath>
+            <xpath expr="//field[@name='technician_user_id']" position="after">
+                <xpath expr="//field[@name='partner_ref']" position="move"/>
+            </xpath>
+            <xpath expr="//field[@name='partner_ref']" position="attributes">
+                <attribute name="string">Internal Equipment #</attribute>
+            </xpath>
+            <xpath expr="//field[@name='location']" position="after">
+                <field name="maintenance_employee_ids" widget="many2many_tags"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="maintenance_request_view_form_extended" model="ir.ui.view">
+        <field name="name">maintenance.request.view.form.extended</field>
+        <field name="model">maintenance.request</field>
+        <field name="inherit_id" ref="maintenance.hr_equipment_request_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='maintenance_type']" position="after">
+                <field name="vendor_work_order"/>
+            </xpath>
+        </field>
+    </record>
+     <record id="maintenance.hr_equipment_action" model="ir.actions.act_window">
+         <field name="name">Equipment</field>
+     </record>
+        <record id="maintenance.hr_equipment_action_from_category_form" model="ir.actions.act_window">
+            <field name="name">Equipment</field>
+        </record>
+
+    <menuitem
+        id="maintenance.menu_equipment_form"
+        name="Equipments"
+        parent="maintenance.menu_maintenance_title"
+        groups="maintenance.group_equipment_manager,base.group_user"
+        sequence="2"/>
+</odoo>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="account_payment_term_form_inherit" model="ir.ui.view">
+        <field name="name">account.payment.term.form.inherit</field>
+        <field name="model">account.payment.term</field>
+        <field name="inherit_id" ref="account.view_payment_term_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='line_ids']" position="after">
+                <separator string="EDI"/>
+                <group>
+                    <group>
+                        <field name="edi_description"/>
+                        <field name="edi_type"/>
+                        <field name="edi_basis_date_code"/>
+                        <field name="edi_discount_percentage"/>
+                        <field name="edi_discount_date"/>
+                        <field name="edi_discount_due_days"/>
+                        <field name="edi_net_due_date"/>
+                        <field name="edi_net_due_days"/>
+                    </group>
+                    <group>
+                    </group>
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>

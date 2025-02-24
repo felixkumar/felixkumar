@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.business.appointment.website</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="business_appointment.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@id='ba_website_options']" position="before">
+                <div class="row app_settings_header my-0 ms-0 mw-100 bg-warning bg-opacity-25">
+                    <div class="col-xs-12 col-md-6 ms-0 o_setting_box">
+                        <div class="o_setting_right_pane border-start-0 ms-0 ps-0">
+                            <div class="content-group">
+                                <div class="row flex-row flex-nowrap mt8 align-items-center">
+                                    <label class="col ps-0 text-nowrap" string="You are changing the settings of the website:" for="appointment_website_id"/>
+                                    <field name="appointment_website_id" options="{'no_open': True, 'no_create': True}" title="Select website"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+            <xpath expr="//div[@id='ba_website_options']" position="inside">
+                <div class="col-12 col-lg-6 o_setting_box">
+                    <div name="ba_website_appointmnets" class="o_setting_left_pane">
+                        <field name="ba_turn_on_appointments"/>
+                    </div>
+                    <div name="ba_website_appointmnets_2" class="o_setting_right_pane">
+                        <label for="ba_turn_on_appointments"/>
+                        <div name="ba_website_appointmnets_hint" class="text-muted">
+                            Turn on to show appointments for portal users of the current website
+                        </div>
+                    </div>
+                    <div name="ba_website_appointmnets_public" class="o_setting_left_pane" attrs="{'invisible': [('ba_turn_on_appointments', '=', False)]}">
+                        <field name="ba_turn_on_appointments_public"/>
+                    </div>
+                    <div name="ba_website_appointmnets_publi_2" class="o_setting_right_pane" attrs="{'invisible': [('ba_turn_on_appointments', '=', False)]}">
+                        <label for="ba_turn_on_appointments_public"/>
+                        <div name="ba_website_appointmnets_hint" class="text-muted">
+                            Turn on to show appointments for all visitors to the current website
+                        </div>
+                    </div>
+                </div>
+                <div name="ba_multi_scheduling_option_portal" class="col-12 col-lg-6 o_setting_box" attrs="{'invisible': ['|', ('ba_turn_on_appointments', '=', False), ('ba_multi_scheduling', '=', False)]}">
+                    <div name="ba_multi_scheduling_option_portal_2" class="o_setting_right_pane">
+                        <div class="content-group">
+                            <div class="mt16">
+                                <label for="ba_max_multi_scheduling_portal" class="w-100"/>
+                                <field name="ba_max_multi_scheduling_portal"/>
+                            </div>
+                        </div>
+                        <div name="mutlischeduling_option_hint" class="text-muted">
+                            Define how many time slots might be selected during scheduling on the website
+                        </div>
+                    </div>
+                </div>
+                <div name="ba_sign_in_option_portal" class="col-12 col-lg-6 o_setting_box" attrs="{'invisible': [('ba_turn_on_appointments_public', '=', False)]}">
+                    <div name="ba_sign_in_option_portal_2" class="o_setting_right_pane">
+                        <div class="content-group">
+                            <div class="mt4 w-100">
+                                <label for="ba_sign_in_type"/>
+                                <field name="ba_sign_in_type" class="w-100"/>
+                            </div>
+                            <div name="terms_option_5" class="mt4 w-100" attrs="{'invisible': [('ba_sign_in_type', '!=', 'optional'), ('ba_sign_in_type', '!=', False)]}">
+                                <label for="ba_sign_in_type_text"/>
+                                <field name="ba_sign_in_type_text" class="w-100"/>
+                            </div>
+                        </div>
+                        <div name="mba_sign_in_option_hint" class="text-muted">
+                            Define the sign-in policy for public users. 'Sign in required' means that before entering account details, unregistered website visitors must log in to the portal. 'Sign in offered' means that such users will be offered to log in if they had an account, but the step might be missed. 'Auto sign in' means that public users might finish their reservations without signing in, while the portal users will be auto-created for them
+                        </div>
+                    </div>
+                </div>
+                <div name="public_ba_session_order_len_option" class="col-xs-12 col-md-6 o_setting_box" attrs="{'invisible': [('ba_turn_on_appointments', '=', False)]}">
+                    <div name="ba_session_order_len_2" class="o_setting_right_pane">
+                        <label for="ba_session_order_len"/>
+                        <div class="text-muted">
+                            Define how long a website booking session should be kept. Sessions allow users to start from the step they finished previously and not to choose again resource type, resources, and service. Odoo will check expired sessions regularly and clear those
+                        </div>
+                        <div class="content-group">
+                            <div class="mt16">
+                                <field name="ba_session_order_len" widget="float_time"/>
+                            </div>
+                        </div>
+                        <div class="mt16">
+                            <button name="action_clear_ba_sessions" string="Clear website sessions" type="object" class="oe_link" icon="fa-arrow-right"/>
+                            <button name="action_open_ba_sessions_cron" string="Configure update frequency" type="object" class="oe_link" icon="fa-arrow-right"/>
+                        </div>
+                    </div>
+                </div>
+                <div name="public_extra_products_option" class="col-xs-12 col-md-6 o_setting_box" attrs="{'invisible': [('ba_turn_on_appointments', '=', False)]}">
+                    <div name="public_extra_products_option_1" class="o_setting_left_pane">
+                        <field name="ba_extra_products_frontend"/>
+                    </div>
+                    <div name="public_extra_products_option_2" class="o_setting_right_pane">
+                        <label for="ba_extra_products_frontend"/>
+                        <div class="text-muted">
+                           Turn on to show suggested products for website customers after selecting a time slot
+                        </div>                             
+                    </div>
+                </div>
+                <div name="ba_steps_options" class="col-12 col-lg-12 o_setting_box" attrs="{'invisible': [('ba_turn_on_appointments', '=', False)]}">
+                    <div class="o_setting_right_pane" id="ba_steps_names">
+                        <label for="ba_step1" class="mt8" string="Website reservation steps"/>
+                        <div class="text-muted">Define titles for the reservation steps</div>
+                        <label for="ba_step1" class="mt8"/>
+                        <div class="content-group">
+                            <field name="ba_step1" class="o_light_label w-100"/>
+                        </div>
+                        <label for="ba_step2" class="mt8"/>
+                        <div class="content-group">
+                            <field name="ba_step2" class="o_light_label w-100"/>
+                        </div>
+                        <label for="ba_step3" class="mt8"/>
+                        <div class="content-group">
+                            <field name="ba_step3" class="o_light_label w-100"/>
+                        </div>
+                        <label for="ba_step4" class="mt8"/>
+                        <div class="content-group">
+                            <field name="ba_step4" class="o_light_label w-100"/>
+                        </div>
+                        <label for="ba_step5" class="mt8"/>
+                        <div class="content-group">
+                            <field name="ba_step5" class="o_light_label w-100"/>
+                        </div>
+                        <label for="ba_step6" class="mt8"/>
+                        <div class="content-group">
+                            <field name="ba_step6" class="o_light_label w-100"/>
+                        </div>
+                    </div>
+                </div>
+                <div name="public_contact_details_fields_option" class="col-xs-12 col-md-6 o_setting_box" attrs="{'invisible': [('ba_turn_on_appointments', '=', False)]}">
+                    <div name="public_fields_option_2" class="o_setting_right_pane">
+                        <label for="ba_contact_info_mandatory_ids" class="mt16"/>
+                        <div name="public_fields_hint">
+                            <field name="ba_contact_info_mandatory_ids"
+                                   widget="many2many_tags"
+                                   options="{'no_create_edit': 1, 'no_quick_create': 1}"
+                                   class="w-100"
+                            />
+                        </div>
+                        <label for="ba_contact_info_optional_ids" class="mt16"/>
+                        <div name="public_fields_hint_2">
+                            <field name="ba_contact_info_optional_ids"
+                                   widget="many2many_tags"
+                                   options="{'no_create_edit': 1, 'no_quick_create': 1}"
+                                   class="w-100"
+                            />
+                        </div>
+                        <div class="text-muted">
+                            Define which contact details should be mandatory or optionally filled in to schedule an appointment (name and email are always required)
+                        </div>
+                    </div>
+                </div>
+                <div name="public_terms_and_conditions_option" class="col-xs-12 col-md-6 o_setting_box" attrs="{'invisible': [('ba_turn_on_appointments', '=', False)]}">
+                    <div name="terms_option_1" class="o_setting_left_pane mt16">
+                        <field name="ba_agree_to_terms_and_conditions"/>
+                    </div>
+                    <div name="terms_option_2" class="o_setting_right_pane mt16">
+                        <label for="ba_agree_to_terms_and_conditions" />
+                        <div class="text-muted">
+                            Turn on to obligatory include the agreement to terms and conditions on the contact details page
+                        </div>  
+                    </div>
+                    <div name="terms_option_3" class="o_setting_left_pane mt16" attrs="{'invisible': [('ba_agree_to_terms_and_conditions', '=', False)]}">
+                        <field name="ba_agree_to_terms_public_only"/>
+                    </div>    
+                    <div name="terms_option_4" class="o_setting_right_pane mt16" attrs="{'invisible': [('ba_agree_to_terms_and_conditions', '=', False)]}">
+                        <label for="ba_agree_to_terms_public_only" />
+                        <div class="text-muted">
+                            Turn on if terms should be agreed upon only by public visitors (not by portal users).
+                        </div>  
+                    </div> 
+                    <div name="terms_option_5" class="o_setting_right_pane mt16" attrs="{'invisible': [('ba_agree_to_terms_and_conditions', '=', False)]}"   >                
+                        <div>
+                            <label for="ba_agree_to_terms_text"/>
+                        </div>
+                        <div>
+                            <field name="ba_agree_to_terms_text" attrs="{'required': [('ba_agree_to_terms_and_conditions', '=', True)]}" class="w-100"/>
+                        </div>
+                    </div>
+                </div>
+                <div name="public_rt_filters_option" class="col-xs-12 col-md-6 o_setting_box" attrs="{'invisible': [('ba_turn_on_appointments', '=', False)]}">
+                    <div name="public_rt_filters_option_1" class="o_setting_left_pane">
+                        <field name="show_ba_rtypes_full_details"/>
+                    </div>
+                    <div name="public_rt_filters_option_2" class="o_setting_right_pane">
+                        <label for="show_ba_rtypes_full_details"/>
+                        <div class="text-muted">
+                            If turned on, each found resource type will have a link for full details which you may update on the website. The full description might be turned off for a specific type
+                        </div>
+                        <label for="ba_rtypes_portal_filters_ids" class="mt16"/>
+                        <div name="public_rt_filters_hint">
+                            <field name="ba_rtypes_portal_filters_ids" context="{'default_model_id': 'business.resource.type'}" domain="[('model_id', '=', 'business.resource.type')]" class="w-100">
+                                <tree>
+                                    <field name="name"/>
+                                </tree>
+                            </field>
+                        </div>
+                        <label for="ba_rtypes_portal_search_ids" class="mt16"/>
+                        <div name="public_rt_search_hint">
+                            <field name="ba_rtypes_portal_search_ids" context="{'default_model': 'business.resource.type'}" domain="[('model', '=', 'business.resource.type')]" class="w-100">
+                                <tree>
+                                    <field name="name"/>
+                                </tree>
+                            </field>
+                        </div>                                
+                    </div>
+                </div>
+                <div name="public_r_filters_option" class="col-xs-12 col-md-6 o_setting_box" attrs="{'invisible': [('ba_turn_on_appointments', '=', False)]}">
+                    <div name="public_r_filters_option_1" class="o_setting_left_pane">
+                        <field name="show_ba_resource_full_details"/>
+                    </div>
+                    <div name="public_r_filters_option_2" class="o_setting_right_pane">
+                        <label for="show_ba_resource_full_details"/>
+                        <div class="text-muted">
+                            If turned on, each found resource will have a link for full details which you may update on the website. The full description might be turned off for a specific resource
+                        </div>
+                        <label for="ba_resources_portal_filters_ids" class="mt16"/>
+                        <div name="public_r_filters_hint">
+                            <field name="ba_resources_portal_filters_ids" context="{'default_model_id': 'business.resource'}" domain="[('model_id', '=', 'business.resource')]" class="w-100">
+                                <tree>
+                                    <field name="name"/>
+                                </tree>
+                            </field>
+                        </div>
+                        <label for="ba_resources_portal_search_ids" class="mt16"/>
+                        <div name="public_r_search_hint">
+                            <field name="ba_resources_portal_search_ids" context="{'default_model': 'business.resource'}" domain="[('model', '=', 'business.resource')]" class="w-100">
+                                <tree>
+                                    <field name="name"/>
+                                </tree>
+                            </field>
+                        </div>                                
+                    </div>
+                </div>
+                <div name="public_s_filters_option" class="col-xs-12 col-md-6 o_setting_box" attrs="{'invisible': [('ba_turn_on_appointments', '=', False)]}">
+                    <div name="public_s_filters_option_1" class="o_setting_left_pane">
+                        <field name="show_ba_services_full_details"/>
+                    </div>
+                    <div name="public_s_filters_option_2" class="o_setting_right_pane">
+                        <label for="show_ba_services_full_details"/>
+                        <div class="text-muted">
+                            If turned on, each found service will have a link for full details which you may update on the website. The full description might be turned off for a specific service
+                        </div>
+                        <label for="ba_services_portal_filters_ids" class="mt16"/>
+                        <div name="public_s_filters_hint">
+                            <field name="ba_services_portal_filters_ids" context="{'default_model_id': 'appointment.product'}" domain="[('model_id', '=', 'appointment.product')]" class="w-100">
+                                <tree>
+                                    <field name="name"/>
+                                </tree>
+                            </field>
+                        </div>
+                        <label for="ba_service_portal_search_ids" class="mt16"/>
+                        <div name="public_s_search_hint">
+                            <field name="ba_service_portal_search_ids" context="{'default_model': 'appointment.product'}" domain="[('model', '=', 'appointment.product')]" class="w-100">
+                                <tree>
+                                    <field name="name"/>
+                                </tree>
+                            </field>
+                        </div>                                
+                    </div>
+                </div>
+                <div name="portal_appointment_filters_option" class="col-xs-12 col-md-6 o_setting_box" attrs="{'invisible': [('ba_turn_on_appointments', '=', False)]}">
+                    <div name="portal_appointment_filters_option_2" class="o_setting_right_pane">
+                        <label for="ba_portal_appointments_filters_ids" string="Portal Appointments"/>
+                        <div class="text-muted">
+                            Define custom filters and search parameters for the portal appointments list
+                        </div>
+                        <label for="ba_portal_appointments_filters_ids" class="mt16"/>
+                        <div name="portal_appointments_filters_hint">
+                            <field name="ba_portal_appointments_filters_ids" context="{'default_model_id': 'business.appointment'}" domain="[('model_id', '=', 'business.appointment')]" class="w-100">
+                                <tree>
+                                    <field name="name"/>
+                                </tree>
+                            </field>
+                        </div>
+                        <label for="ba_portal_appointments_search_ids" class="mt16"/>
+                        <div name="portal_appointments_search_hint">
+                            <field name="ba_portal_appointments_search_ids" context="{'default_model': 'business.appointment'}" domain="[('model', '=', 'business.appointment')]" class="w-100">
+                                <tree>
+                                    <field name="name"/>
+                                </tree>
+                            </field>
+                        </div>                                
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

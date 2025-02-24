@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+       <t t-name="header_layout.s_dynamic_snippet.owl_carousel">
+           <div class="owl_carousel_container product_slide_container" t-attf-id="owl_#{uniqueId}">
+               <div class="d-flex flex-lg-row flex-column justify-content-lg-between col-12">
+                    <div class="s_text_block oe_structure_solo col-lg-10 col-12"
+                         t-attf-id="oe_structure_text_#{uniqueId}">
+                       <h2 t-esc="heading_name"/>
+                        <p t-esc="sub_name"/>
+                    </div>
+                   <div class="d-flex justify-content-lg-end col-lg-2 col-12">
+                        <a class="btn mb-3 mr-1 p-0 shadow-none owl-prev" t-attf-href="##{uniqueId}"
+                           role="button"
+                           data-bs-slide="prev">
+                            <img src="/header_layout/static/src/svg/fill_vector_1.svg"
+                                 alt="Vector" class="shadow-none"/>
+                        </a>
+                       <a class="btn mb-3 p-0 shadow-none owl-next" t-attf-href="##{uniqueId}"
+                          role="button"
+                          data-bs-slide="next">
+                            <img src="/header_layout/static/src/svg/fill_vector_2.svg"
+                                 alt="Vector" class="shadow-none"/>
+                        </a>
+                    </div>
+               </div>
+               <div class="owl_carousel_slide_container slider-product-container">
+               <!-- Content -->
+                   <div class="owl-carousel" t-att-id="uniqueId">
+                        <t t-if="data.length">
+                            <t t-foreach="data.length" t-as="item">
+                                <div class="item">
+                                    <t t-out="data[item]"/>
+                                </div>
+                            </t>
+                        </t>
+                   </div>
+               </div>
+           </div>
+        </t>
+</templates>

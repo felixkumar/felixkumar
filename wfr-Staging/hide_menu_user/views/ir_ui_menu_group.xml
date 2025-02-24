@@ -1,0 +1,38 @@
+<odoo>
+    <data>
+        <record id="view_menu_group_form" model="ir.ui.view">
+            <field name="name">menu.group.form</field>
+            <field name="model">ir.ui.menu.group</field>
+            <field name="arch" type="xml">
+                <form string="Menu Group">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                        <tree>
+                            <field name="hide_menu_ids"/>
+                        </tree>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_menu_group_tree" model="ir.ui.view">
+            <field name="name">menu.group.tree</field>
+            <field name="model">ir.ui.menu.group</field>
+            <field name="arch" type="xml">
+                <tree string="Menu Groups">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_menu_group" model="ir.actions.act_window">
+            <field name="name">Menu Groups</field>
+            <field name="res_model">ir.ui.menu.group</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="menu_menu_group_root" name="Menu Groups" sequence="10" parent="base.menu_users" action="action_menu_group"/>
+    </data>
+</odoo>

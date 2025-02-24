@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_edi_base_res_partner_form_inherit" model="ir.ui.view">
+            <field name="name">edi.base.view.res.partner.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='vat']" position="after">
+                    <field name="trading_partnerid"/>
+                </xpath>
+
+                <xpath expr="//notebook" position="inside">
+                    <page name="edi_fields" string="EDI">
+                        <group name="edi_top_group">
+                            <group name="edi_config"/>
+                            <group name="edi_docs"/>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

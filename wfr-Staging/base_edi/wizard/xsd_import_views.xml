@@ -1,0 +1,31 @@
+<odoo>
+    <record id="xml_xsd_import_view_form" model="ir.ui.view">
+        <field name="name">xml.xsd.import.form</field>
+        <field name="model">xml.xsd.import</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="name"/>
+                    <field name="file"/>
+                </group>
+                <footer>
+                    <button string="import" name="action_create_xsd" type="object"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_view_xml_xsd_import" model="ir.actions.act_window">
+        <field name="name">Import XSD</field>
+        <field name="res_model">xml.xsd.import</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="context">{}</field>
+    </record>
+
+    <menuitem id="menu_xml_xsd_import"
+        name="Import XSD"
+        parent="menu_edi"
+        action="action_view_xml_xsd_import"
+        sequence="5"/>
+</odoo>

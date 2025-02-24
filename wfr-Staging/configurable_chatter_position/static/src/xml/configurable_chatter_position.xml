@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Create button on forms on click of which chatter position gets changed -->
+<templates>
+    <t t-inherit="web.FormView" t-inherit-mode="extension">
+        <xpath expr="//Layout/t[@t-set-slot='control-panel-create-button']" position="inside">
+            <button type="button" 
+                    class="btn btn-secondary fa fa-arrows-h o_chatter_position_bottom_right"
+                    t-on-click="ClickChatterPositionButton">
+            </button>
+        </xpath>
+    </t>
+</templates>

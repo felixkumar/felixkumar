@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="form_view_product_3pl_box_tus" model="ir.ui.view">
+            <field name="name">product.3pl.box.tus.form.view</field>
+            <field name="model">product.3pl.box.tus</field>
+            <field name="arch" type="xml">
+                <form string="Product Box">
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="name" class="oe_edit_only" string="Name"/>
+                            <h1>
+                                <field name="name"/>
+                            </h1>
+                        </div>
+
+                        <group>
+                            <group>
+                                <field name="height"/>
+                                <field name="width"/>
+                                <field name="packaging_length"/>
+                            </group>
+                            <group>
+                                <field name="qty"/>
+                                <field name="barcode"/>
+                            </group>
+                            <group>
+                                <field name="max_weight"/>
+                                <field name="sequence"/>
+                            </group>
+                            <group>
+                                <field name="warehouse_ids" widget="many2many_tags"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="tree_view_product_3pl_box_tus" model="ir.ui.view">
+            <field name="name">product.3pl.box.tus.tree.view</field>
+            <field name="model">product.3pl.box.tus</field>
+            <field name="arch" type="xml">
+                <tree string="Product Box">
+                    <field name="name"/>
+                    <field name="qty"/>
+                    <field name="max_weight"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_action_product_3pl_box_tus" model="ir.actions.act_window">
+            <field name="name">3PL Box</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">product.3pl.box.tus</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                </p>
+                <p>
+                </p>
+            </field>
+        </record>
+
+<!--        <menuitem id="menu_3pl_product_box" name="3PL Box" action="view_action_product_3pl_box_tus"-->
+<!--                  parent="warefor_3pl_tus.menu_pallet_mgmt_root" sequence="2"/>-->
+
+    </data>
+</odoo>

@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<odoo>
+
+     <record id="custom_fields_prepare_selection_form_view" model="ir.ui.view">
+        <field name="name">custom.fields.prepare.selection.form.view</field>
+        <field name="model">custom.fields.prepare.selection</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="res_model" invisible="1"/>
+                    <field name="res_id" invisible="1"/>
+                    <field name="selection_values"/>
+                </group>
+                <footer>
+                    <button name="action_prepare_selection_values"
+                            string="Prepare selection values"
+                            type="object"
+                            class="oe_highlight"
+                    />
+                    <button string="Cancel" class="oe_link" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record id="custom_fields_prepare_selection_action" model="ir.actions.act_window">
+        <field name="name">Add comma-separated selection values</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">custom.fields.prepare.selection</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+</odoo>

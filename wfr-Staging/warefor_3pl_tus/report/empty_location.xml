@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="report_empty_location">
+            <t t-call="web.basic_layout">
+                <div class="page">
+                    <div class="main">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <td colspan="3">
+                                    <center>Location Name</center>
+                                    </td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr t-foreach="location" t-as="o">
+                                    <td>
+                                        <t t-esc="o[0].name"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="o[1].name"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="o[2].name"/>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </t>
+        </template>
+    </data>
+</odoo>

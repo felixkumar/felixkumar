@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+        <menuitem id="izi_tiktok.menu_separator_mp_data_tiktok" name="Tiktok" parent="izi_marketplace.menu_separator_mp_data" sequence="10"/>
+
+        <!-- Marketplace / Marketplace Data / Tiktok / Shop -->
+
+        <menuitem id="izi_tiktok.menu_item_tts_shop" name="Shop" parent="izi_tiktok.menu_separator_mp_data_tiktok" action="izi_tiktok.action_window_tts_shop" sequence="10"/>
+
+        <!-- Marketplace / Marketplace Data / TIktok / Logistic -->
+        <menuitem id="izi_tiktok.menu_item_tts_logistic" name="Logistic" parent="izi_tiktok.menu_separator_mp_data_tiktok" action="izi_tiktok.action_window_tts_logistic" sequence="20"/>
+
+    </data>
+</odoo>

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="brand_listing_template" inherit_id="emipro_theme_base.brand_listing_template" name="Brand Listing">
+        <xpath expr="//div[@id='wrap']" position="inside">
+            <div class="featured-all-brands">
+                <t t-set="brands"
+                   t-value="request.env['product.brand'].sudo().search([('website_published','=', True),('website_id', 'in', (False,website.id))]).filtered(lambda r:r.products_count > 0)"/>
+                <t t-if="brands"><!--Featured Brand-->
+                    <div class="ept_brands_header container">
+                        <div class="row justify-content-between align-items-center">
+                            <div class="col-auto">
+                                <h3 class="brand-title-main my-3">Our Brands</h3>
+                            </div>
+                            <div class="col-auto te_search">
+                                <input type="text" id="search_box" class="input-group" placeholder="Search Brand">
+                                    <div class="input-group-append">
+                                        <button type="button" id="close-button" class="btn">
+                                            <i class="fa fa-search"/>
+                                        </button>
+                                    </div>
+                                </input>
+                            </div>
+                        </div>
+                        <div class="clearfix my-3">
+                            <button type="button" id="all-brands" class="has-brands ">All</button>
+                            <t t-foreach="range(97, 123)" t-as="i">
+                                <a t-att-data-href="'#brand_%s'%(chr(i))"
+                                   t-att-class="'has-brands active' if  brands.filtered(lambda r:r.name.startswith((chr(i) , chr(i).upper()))) else 'has-brands disabled'">
+                                    <div class="brand-alpha">
+                                        <t t-esc="chr(i)"/>
+                                    </div>
+                                </a>
+                            </t>
+                            <a t-att-data-href="'#brand_0'"
+                               t-att-class="'has-brands active' if  brands.filtered(lambda r:r.name.startswith(('0','1','2','3','4','5','6','7','8','9'))) else 'has-brands disabled'">
+                                <div class="brand-alpha">0-9</div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="ept_brands_sticky_header container d-none">
+                        <div class="align-items-center d-flex justify-content-center">
+                            <div class="clearfix my-3">
+                                <button type="button" id="all-brands" class="has-brands ">All</button>
+                                <t t-foreach="range(97, 123)" t-as="i">
+                                    <a t-att-data-href="'#brand_%s'%(chr(i))"
+                                       t-att-class="'has-brands active' if  brands.filtered(lambda r:r.name.startswith((chr(i) , chr(i).upper()))) else 'has-brands disabled'">
+                                        <div class="brand-alpha">
+                                            <t t-esc="chr(i)"/>
+                                        </div>
+                                    </a>
+                                </t>
+                                <a t-att-data-href="'#brand_0'"
+                                   t-att-class="'has-brands active' if  brands.filtered(lambda r:r.name.startswith(('0','1','2','3','4','5','6','7','8','9'))) else 'has-brands disabled'">
+                                    <div class="brand-alpha">0-9</div>
+                                </a>
+                            </div>
+                            <div class="col-auto te_search">
+                                <input type="text" id="search_box" class="input-group" placeholder="Search Brand">
+                                    <div class="input-group-append">
+                                        <button type="button" id="close-button" class="btn">
+                                            <i class="fa fa-search"/>
+                                        </button>
+                                    </div>
+                                </input>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="my-3 brand-main container">
+                        <t t-foreach="range(97, 123)" t-as="i">
+                            <t t-set="alpha_brands" t-value="brands.filtered(lambda r:r.name.startswith((chr(i) , chr(i).upper())))"/>
+                            <div class="brand-alpha-main" t-if="alpha_brands" t-att-id="'brand_%s'%(chr(i))">
+                                <div class="box-content">
+                                    <t t-foreach="alpha_brands" t-as="brand">
+                                        <div class="item brand-item">
+                                            <t t-set="brand_name" t-value="brand.name.replace(' ','-')"/>
+                                            <t t-set="page_url" t-value="'/shop/brands/%s-%s' %(brand_name, brand.id)"/>
+                                            <a t-att-href="page_url">
+                                                <div class="brand-logo">
+                                                    <img t-attf-src="/web/image/product.brand/#{brand.id}/logo/90x90" alt="Brand Logo"/>
+                                                </div>
+                                                <div class="py-2">
+                                                    <span class="mr-1 brand-name" t-esc="brand.name"/>
+                                                    (<span class="" t-esc="brand.products_count"/>)
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </t>
+                                </div>
+                            </div>
+                        </t>
+                        <t t-set="numeric_brands" t-value="brands.filtered(lambda r:r.name.startswith(('0','1','2','3','4','5','6','7','8','9')))"/>
+                        <div class="brand-alpha-main" t-if="numeric_brands" t-att-id="'brand_0'">
+                            <div class="box-content">
+                                <t t-foreach="numeric_brands" t-as="brand">
+                                    <div class="item brand-item">
+                                        <t t-set="brand_name" t-value="brand.name.replace(' ','-')"/>
+                                        <t t-set="page_url" t-value="'/shop/brands/%s-%s' %(brand_name, brand.id)"/>
+                                        <a t-att-href="page_url">
+                                            <div class="brand-logo">
+                                                <img t-attf-src="/web/image/product.brand/#{brand.id}/logo/90x90" alt="Brand Logo"/>
+                                            </div>
+                                            <div class="py-2">
+                                                <span class="mr-1 brand-name" t-esc="brand.name"/>
+                                                (<span class="" t-esc="brand.products_count"/>)
+                                            </div>
+                                        </a>
+                                    </div>
+                                </t>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+                <t t-else="">
+                    <h1>No Brand Found</h1>
+                </t>
+            </div>
+        </xpath>
+    </template>
+
+    <template id="ept_view_brands_button" inherit_id="website.s_dynamic_snippet_template">
+        <xpath expr="//div[hasclass('dynamic_snippet_template')]" position="before">
+            <t t-if="snippet_name == 's_dynamic_snippet_brand'">
+                <t t-call="theme_clarico_vega.ept_view_all_btn_template">
+                    <t t-set="page_url" t-value="'/brands'"/>
+                </t>
+            </t>
+            <t t-elif="snippet_name == 's_dynamic_snippet_category'">
+                <t t-call="theme_clarico_vega.ept_view_all_btn_template">
+                    <t t-set="page_url" t-value="'/shop'"/>
+                </t>
+            </t>
+        </xpath>
+    </template>
+
+    <template id="ept_view_all_btn_template">
+        <div class="d-flex ept_view_btn_div justify-content-end mb-3">
+            <a role="button" class="btn btn-primary te_theme_button text-decoration-none cursor-pointer" t-att-href="page_url">
+                <span>View All</span>
+            </a>
+        </div>
+    </template>
+</odoo>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <record id="view_emipro_theme_base_website_form" model="ir.ui.view">
+        <field name="name">emipro_theme_base.website.form</field>
+        <field name="model">website</field>
+        <field name="inherit_id" ref="website.view_website_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="Theme Clarico Vega">
+                    <group>
+                        <group string="Out of Stock">
+                            <field name="display_out_of_stock"/>
+                            <field name="show_stock_filter" attrs="{'invisible': [('display_out_of_stock', '=', False)]}"/>
+                            <field name="option_out_of_stock" attrs="{'invisible': [('display_out_of_stock', '=', False)]}"/>
+                            <field name="text_out_of_stock" attrs="{'required': [('option_out_of_stock', '=', True), ('display_out_of_stock', '=', True)], 'invisible': [('display_out_of_stock', '=', False)]}"/>
+                        </group>
+                        <group string="B2B Features">
+                            <field name="b2b_hide_add_to_cart"/>
+                            <field name="b2b_hide_price" attrs="{'invisible': [('b2b_hide_add_to_cart', '=', False)]}"/>
+                            <field name="is_b2b_message" attrs="{'invisible': [('b2b_hide_add_to_cart', '=', False)]}"/>
+                            <field name="text_b2b_hide_details" attrs="{'invisible': [('is_b2b_message', '=', False)]}"/>
+                        </group>
+                        <group string="Advanced Search" name="smart_search">
+                            <field name="enable_smart_search"/>
+                            <field name="search_in_brands" attrs="{'invisible': [('enable_smart_search', '=', False)]}"/>
+                            <field name="search_in_attributes_and_values" attrs="{'invisible': [('enable_smart_search', '=', False)]}"/>
+                        </group>
+                        <group string="Country for Customer Billing &amp; Shipping Address" name="country_configuration">
+                            <field name="default_country_id" required="1"/>
+                            <field name="allow_countries" required="1" />
+                            <field name="country_group_id" options="{'no_create': True}" attrs="{'invisible': [('allow_countries', '=', 'all')]}" />
+                        </group>
+                        <group string="Load More">
+                            <field name="is_load_more"/>
+                            <field name="load_more_image" options="{'size': [50, 50]}" widget="image" attrs="{'invisible': [('is_load_more', '=', False)]}"/>
+                            <field name="button_or_scroll" attrs="{'invisible': [('is_load_more', '=', False)]}"/>
+                        </group>
+                        <group string="Lazy Load">
+                            <field name="is_lazy_load"/>
+                            <field name="lazy_load_image" options="{'size': [90, 90]}" widget="image" attrs="{'invisible': [('is_lazy_load', '=', False)]}"/>
+                        </group>
+                        <group string="Shop Page Filter Collapse">
+                            <field name="collapse_filter"/>
+                        </group>
+                        <group string="Progressive Web App(PWA)" name="pwa">
+                            <field name="is_pwa"/>
+                            <field name="pwa_name" attrs="{'required': [('is_pwa', '=', True)], 'invisible': [('is_pwa', '=', False)]}"/>
+                            <field name="pwa_short_name" attrs="{'required': [('is_pwa', '=', True)], 'invisible': [('is_pwa', '=', False)]}"/>
+                            <field name="pwa_theme_color" widget="color" attrs="{'required': [('is_pwa', '=', True)], 'invisible': [('is_pwa', '=', False)]}"/>
+                            <field name="pwa_bg_color" widget="color" attrs="{'required': [('is_pwa', '=', True)], 'invisible': [('is_pwa', '=', False)]}"/>
+                            <field name="pwa_start_url" attrs="{'required': [('is_pwa', '=', True)], 'invisible': [('is_pwa', '=', False)]}"/>
+                            <field name="app_image_512" options="{'size': [50, 50]}" class="w-25 mt-2" widget="image" attrs="{'required': [('is_pwa', '=', True)], 'invisible': [('is_pwa', '=', False)]}"/>
+                        </group>
+                        <group string="Cart Confirmation" name="Cart Confimation">
+                            <field name="cart_confirmation" widget="radio"/>
+                        </group>
+                        <group string="See More option" name="show_attr_value">
+                            <field name="show_attr_value" required="1"/>
+                        </group>
+<!--                        <group string="Price Range Filter">-->
+<!--                            <field name="price_filter_on" nolabel="1" colspan="2" />-->
+<!--                        </group>-->
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="form_view_pallet_batch_tus" model="ir.ui.view">
+            <field name="name">pallet.batch.tus.form.view</field>
+            <field name="model">pallet.batch.tus</field>
+            <field name="arch" type="xml">
+                <form string="Pallet">
+                    <header>
+                        <button type="object" name="create_pallet_invoice" string="Create Invoice"
+                                attrs="{'invisible': [('state', '!=', 'done')]}"/>
+                        <button type="object" name="transfer_inventory" string="Transfer Inventory"
+                                attrs="{'invisible': [('is_enabled', '!=', True)]}"/>
+                        <button type="object" name="action_state_done" string="Mark as done"
+                                attrs="{'invisible': [('state', 'in', ['draft', 'done', 'cancel'])]}"/>
+                        <button type="object" name="action_state_cancel" string="Cancel"
+                                attrs="{'invisible': [('state', 'in', ['draft', 'done', 'cancel'])]}"/>
+                        <button type="object" name="action_reset_draft" string="Reset To Draft"
+                                attrs="{'invisible': [('state', '!=', 'cancel')]}"/>
+                        <button type="object" name="generate_edi_document" string="Generate EDI Document"
+                                attrs="{'invisible': [('transit_app_id', '=', False)]}"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,done"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button class="oe_stat_button" type="button" name="button"
+                                    icon="fa-calendar-times-o" style="margin-right: 15px; width: auto !important;">
+                                <div class="o_stat_info">
+                                    <field name="storage_duration"/>
+                                    <span class="o_stat_text">Storage Duration</span>
+                                </div>
+                            </button>
+                            <button name="button_pallet_transfers" class="oe_stat_button" type="object"
+                                    icon="fa-truck">
+                                <div class="o_stat_info">
+                                    <field name="picking_count"/>
+                                    <span class="o_stat_text">Transfers</span>
+                                </div>
+                            </button>
+                        </div>
+                        <group>
+                        <div class="oe_title">
+                            <label for="name" class="oe_edit_only" string="Pallet Name"/>
+                            <h1>
+                                <field name="name" readonly="1"/>
+                            </h1>
+                        </div>
+                        <field class="offset-1 oe_right oe_avatar" name="qrcode" readonly="True" widget="image"
+                               options="{'size': [160, 160]}" nolabel="1"/>
+
+                            <group>
+                                <field name="fob_cost" readonly="1"/>
+                                <field name="import_cost" readonly="1"/>
+                                <field name="service_cost" readonly="1"/>
+                                <field name="total_storage_cost" readonly="1"/>
+                                <field name="total_price" readonly="1"/>
+                                <field name="potd_price" readonly="1"/>
+<!--                                <field name="sale_order_id" options="{'no_create': True, 'no_create_edit':True}"/>-->
+                            </group>
+                            <group>
+                                <field name="picking_id" attrs="{'invisible': [('picking_id', '=', False)]}"/>
+                                <field name="is_enabled"/>
+                                <field name="billing_from" readonly="1"/>
+                                <field name="start_date" />
+                                <field name="end_date" />
+                                <field name="storage_cost" readonly="1"/>
+                                <field name="company_id"/>
+                                <field name="edi_data_file" filename="edi_data_file_name"/>
+                                <field name="edi_data_file_name" invisible="1"/>
+                                <field name="pallet_company_id" invisible="1"/>
+                            </group>
+                        </group>
+                        <group>
+                            <group>
+                                <field name="max_weight"/>
+                                <field name="min_weight"/>
+                                <field name="max_qty"/>
+                                <field name="min_qty"/>
+                            </group>
+                            <group>
+                                <field name="total_weight" readonly="1"/>
+                                <field name="total_qty" readonly="1"/>
+                                <field name="warehouse_id"/>
+                                <field name="store_type" invisible="1"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Box" name="box" attrs="{'invisible': [('store_type', '!=', 'box')]}">
+                                <field name="box_ids" nolabel="1" attrs="{'invisible': [('id', '=', False)]}">
+                                    <tree>
+                                        <field name="box_id"/>
+                                        <field name="box_qty"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Product" name="product">
+                                <field name="product_ids" nolabel="1" attrs="{'invisible': [('id', '=', False)]}">
+                                    <tree>
+                                        <field name="product_id"/>
+                                        <field name="product_qty"/>
+                                        <field name="sold_qty"/>
+                                        <field name="remaining_qty"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Delivery Order" name="delivery_order"
+                                  attrs="{'invisible': [('store_type', '!=', 'order')]}">
+                                <field name="product_box_ids" attrs="{'invisible': [('id', '=', False)]}">
+                                    <tree>
+                                        <field name="picking_id" required="1"
+                                               domain="[('picking_type_code', '=', 'outgoing')]"/>
+                                        <field name="product_box_id" readonly="1"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page name="pallet_cost" string="Fees &amp; Costs">
+
+                                <label for="import_cost_ids"/>
+                                <br/><br/>
+                                <field name="import_cost_ids"
+                                       attrs="{'readonly': [('state', 'in', ['done', 'cancel'])]}">
+                                    <tree string="Import Cost" editable="bottom">
+                                        <field name="name" invisible="1"/>
+                                        <field name="product_id" required="1" domain="[('type', '=', 'service')]"/>
+                                        <field name="actual_cost" sum="Total Actual Cost"/>
+                                        <field name="processing_fee_per"/>
+                                        <field name="processing_fee_amt" sum="Total Processing Fees"/>
+                                        <field name="total_cost" sum="Total Price"/>
+                                    </tree>
+                                </field>
+
+                                <label for="fob_cost_ids"/>
+                                <br/><br/>
+                                <field name="fob_cost_ids"
+                                       attrs="{'readonly': [('state', 'in', ['done', 'cancel'])]}">
+                                    <tree string="Calculated against FOB" editable="bottom">
+                                        <field name="product_id" required="1" domain="[('type', '=', 'service')]"/>
+                                        <field name="fob_per"/>
+                                        <field name="total_cost" sum="Total"/>
+                                    </tree>
+                                </field>
+                                <div>
+                                    <label for="import_cost" string="Total Inbound Cost" class="oe oe_right"/>
+                                    <br/>
+                                    <field name="import_cost" class="oe oe_right"/>
+                                </div>
+
+                                <br/><br/>
+                                <label for="storage_cost"/>
+                                <br/><br/>
+                                <field name="storage_cost_ids"
+                                       attrs="{'readonly': [('state', 'in', ['done', 'cancel'])]}">
+                                    <tree string="Storage Fees" editable="bottom">
+                                        <field name="name" invisible="1"/>
+                                        <field name="product_id" required="1" domain="[('type', '=', 'service')]"/>
+                                        <field name="unit_of_measure"/>
+                                        <field name="total_pallet"
+                                               attrs="{'invisible': [('unit_of_measure', 'not in', ['per_pallet', 'per_pallet_per_month'])], 'required': [('unit_of_measure', 'not in', ['per_pallet', 'per_pallet_per_month'])]}"/>
+                                        <field name="total_cubic_feet"
+                                               attrs="{'invisible': [('unit_of_measure', '!=', 'per_cubic_feet_per_month')]}"/>
+                                        <field name="unit_price_day" readonly="1"
+                                               attrs="{'invisible': [('unit_of_measure', 'not in', ['per_pallet_per_month', 'per_cubic_feet_per_month'])]}"/>
+                                        <field name="unit_price"/>
+                                        <field name="total_cost" sum="Total Price"/>
+                                    </tree>
+                                </field>
+
+                                <br/><br/>
+                                <label for="vas_cost_ids" string="Handling and Materials"/>
+                                <br/><br/>
+                                <field name="vas_cost_ids" nolabel="1"
+                                       attrs="{'readonly': [('state', 'in', ['done', 'cancel'])]}">
+                                    <tree string="Value Added Service" editable="bottom">
+                                        <field name="name" invisible="1"/>
+                                        <field name="product_id" required="1"/>
+                                        <field name="unit_of_measure"/>
+                                        <field name="unit_price_day" readonly="1"
+                                               attrs="{'invisible': [('unit_of_measure', 'not in', ['per_month'])]}"/>
+                                        <field name="total_cost" sum="Total Price"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page name="invoices" string="Invoices">
+                                <field name="invoice_ids" nolabel="1">
+                                    <tree string="Invoices" widget="many2many">
+                                        <field name="name"/>
+                                        <field name="company_id" invisible="1"/>
+                                        <field name="partner_id" invisible="1"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page name="payments" string="Payments">
+                                <field name="payment_ids" nolabel="1">
+                                    <tree string="Payments" widget="many2many">
+                                        <field name="name"/>
+                                        <field name="company_id" invisible="1"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Inventory" name="inventory">
+                                <group>
+                                    <group>
+                                        <field name="location_id" domain="[('usage', 'in', ['internal', 'transit'])]"/>
+                                        <field name="location_dest_id"/>
+                                        <field name="is_transferred" readonly="1"/>
+                                        <field name="moved_inventory_picking_ids" readonly="1"/>
+                                        <field name="current_location_id" readonly="1"/>
+                                        <field name="transit_app_id" readonly="1"/>
+                                        <field name="pallet_product_batch" readonly="0"/>
+                                        <field name="purchase_reference"/>
+                                        <field name="sscc_18_barcode_char"/>
+                                    </group>
+                                </group>
+                            </page>
+                            <page name="stock_location_place" string="Pallet Stock Location" invisible="1">
+                                <group>
+                                    <field name="stock_location_place_ids" nolabel="1">
+                                        <tree string="Pallet Stock Location" editable="bottom">
+                                            <field name="type"/>
+                                            <field name="code"/>
+                                            <field name="stock_location_id"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                            </page>
+<!--                            <page string="Current Unit Cost" name="potd">-->
+<!--                                <field name="potd_ids" nolabel="1">-->
+<!--                                    <tree create="false" edit="false">-->
+<!--                                        <field name="pallet_id"/>-->
+<!--                                        <field name="product_id"/>-->
+<!--                                        <field name="date"/>-->
+<!--                                        <field name="cost" type="char"/>-->
+<!--                                    </tree>-->
+<!--                                </field>-->
+<!--                            </page>-->
+                            <page string="Description" name="description">
+                                <field name="description" nolabel="1"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="tree_view_pallet_batch_tus" model="ir.ui.view">
+            <field name="name">pallet.batch.tus.tree.view</field>
+            <field name="model">pallet.batch.tus</field>
+            <field name="arch" type="xml">
+                <tree string="Pallet">
+                    <field name="name"/>
+                    <field name="storage_cost" sum="Storage Cost"/>
+                    <field name="total_storage_cost" sum="Total Storage Cost"/>
+                    <field name="fob_cost" sum="FOB"/>
+                    <field name="import_cost" sum="Import Cost"/>
+                    <field name="service_cost" sum="Handling &amp; Materials"/>
+                    <field name="is_enabled"/>
+                    <field name="total_weight" optional="show"/>
+                    <field name="total_qty" optional="show"/>
+                    <field name="start_date"/>
+                    <field name="billing_from"/>
+                    <field name="end_date"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_action_pallet_batch" model="ir.actions.act_window">
+            <field name="name">Pallet Batch</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">pallet.batch.tus</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="tree_view_pallet_batch_tus" />
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                </p>
+                <p>
+                </p>
+            </field>
+        </record>
+
+        <!-- This Menu Item must have a parent and an action -->
+        <menuitem id="menu_pallet_mgmt_root" name="Pallets" parent="stock.menu_stock_root" sequence="3"/>
+
+        <menuitem id="menu_pallet_mgmt" name="Pallets" action="view_action_pallet_batch"
+                  parent="warefor_3pl_tus.menu_pallet_mgmt_root" sequence="5"/>
+
+    </data>
+</odoo>

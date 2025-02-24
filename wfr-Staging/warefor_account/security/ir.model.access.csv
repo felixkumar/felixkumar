@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_account_quickbooks_type,account_quickbooks_type,model_account_quickbooks_type,warefor_3pl_tus.group_pallet_user,1,1,1,1

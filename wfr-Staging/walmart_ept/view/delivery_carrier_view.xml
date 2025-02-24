@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Inherited View to Display Walmart Shipping method and Code -->
+    <record id="inherited_delivery_carrier_walmart_form_view_ept" model="ir.ui.view">
+        <field name="name">Delivery Carrier</field>
+        <field name="model">delivery.carrier</field>
+        <field name="type">form</field>
+        <field name="inherit_id" ref="delivery.view_delivery_carrier_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group/group[1]" position="inside">
+                <field name="walmart_shipping_method_code"/>
+                <field name="walmart_carrier_code"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

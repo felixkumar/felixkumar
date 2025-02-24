@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="shipstation_sale_team_view_ept" model="ir.ui.view">
+            <field name="name">crm.team.form.inherit</field>
+            <field name="model">crm.team</field>
+            <field name="inherit_id" ref="sales_team.crm_team_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='members_users']" position="after">
+                    <page string="Shipstation" name="shipstation">
+                        <group>
+                            <field name="export_order"/>
+                            <field name="store_id" attrs="{'required':[('export_order','=',True)]}"/>
+                            <field name="delivery_carrier_id"/>
+                            <field name="shipstation_update_carrier"/>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

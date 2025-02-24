@@ -1,0 +1,191 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data noupdate="0">
+        <record id="mail_template_pallet_batch" model="mail.template">
+            <field name="name">Pallet Batch: Send by Email</field>
+            <field name="model_id" ref="warefor_3pl_tus.model_pallet_batch_tus"/>
+            <field name="subject">Pallet Batch (Ref ${object.name or 'n/a' })</field>
+            <field name="partner_to">${object.company_id.pallet_batch_user_id.partner_id.id}</field>
+            <field name="body_html" type="html">
+                <div style="margin: 0px; padding: 0px;">
+                    <p style="margin: 0px; padding: 0px; font-size: 13px;">
+                        Hello ${object.company_id.pallet_batch_user_id.partner_id.name},
+                        <br/>
+                        <br/>
+                        We are glad to inform you that your pallet batch has been done. Which is start from
+                        ${object.start_date} to ${object.start_date} with respective costs below:
+                        <br/>
+                        Import Cost: ${object.import_cost}
+                        <br/>
+                        Storage Cost: ${object.storage_cost}
+                        <br/>
+                        Service Cost: ${object.service_cost}
+                        <br/>
+
+                        <br/>
+                        % if object.invoice_ids:
+                        Please find your pallet batch invoice attached for more details.
+                        <br/>
+                        <br/>
+                        % endif
+                        Thank you,
+                        % if user.signature:
+                        <br/>
+                        ${user.signature | safe}
+                        % endif
+                    </p>
+                </div>
+            </field>
+            <!--        <field name="report_template" ref=""/>-->
+            <!--        <field name="report_name">${(object.name or '').replace('/','_')}</field>-->
+            <field name="lang">${object.company_id.pallet_batch_user_id.partner_id.lang}</field>
+            <field name="auto_delete" eval="False"/>
+        </record>
+
+        <record id="sending_logistics_invoices_out_email_template" model="mail.template">
+            <field name="name">Invoice: Sending Logistics Invoices</field>
+            <field name="model_id" ref="account.model_account_move"/>
+            <field name="email_from">${(object.invoice_user_id.email_formatted or user.email_formatted) |safe}</field>
+            <field name="partner_to">${object.partner_id.id}</field>
+            <field name="subject"> Warefor Invoice ${object.name or 'n/a'} for T.O. ${object.freight_id.name}</field>
+            <field name="body_html" type="html">
+<!--                <table border="0" cellpadding="0" cellspacing="0"-->
+<!--                       style="padding-top: 16px; background-color: #F1F1F1; font-family:Verdana, Arial,sans-serif; color: #454748; width: 100%; border-collapse:separate;">-->
+<!--                    <t t-set="obj" t-value="account.move"/>-->
+
+<!--                    <tr>-->
+<!--                        <td align="center">-->
+<!--                            <table border="0" cellpadding="0" cellspacing="0" width="590"-->
+<!--                                   style="padding: 24px; background-color: white; color: #454748; border-collapse:separate;">-->
+<!--                                <tbody>-->
+<!--                                    &lt;!&ndash; HEADER &ndash;&gt;-->
+<!--                                    <tr>-->
+<!--                                        <td align="center" style="min-width: 590px;">-->
+<!--                                            <table border="0" cellpadding="0" cellspacing="0" width="100%"-->
+<!--                                                   style="background-color: white; padding: 0; border-collapse:separate;">-->
+<!--                                                <tr>-->
+<!--                                                    <td valign="middle">-->
+<!--                                                        <span style="font-size: 10px;">Your Invoice</span><br/>-->
+<!--                                                        <span style="font-size: 20px;">-->
+<!--                                                            <b>-->
+<!--                                                                ${object.name}-->
+<!--                                                            </b>-->
+<!--                                                        </span>-->
+<!--                                                        <br/>-->
+<!--                                                    </td>-->
+<!--                                                    <td valign="middle" align="right">-->
+<!--                                                        <img src="/logo.png?company=${object.company_id.id}"-->
+<!--                                                             style="padding: 0px; margin: 0px; height: 48px;"-->
+<!--                                                             alt="${object.company_id.name}"/>-->
+<!--                                                    </td>-->
+<!--                                                </tr>-->
+
+<!--                                                <tr>-->
+<!--                                                    <td colspan="2" style="text-align:center;">-->
+<!--                                                        <hr width="100%"-->
+<!--                                                            style="background-color:rgb(204,204,204);border:medium none;clear:both;display:block;font-size:0px;min-height:1px;line-height:0; margin:4px 0px 32px 0px;"/>-->
+<!--                                                    </td>-->
+<!--                                                </tr>-->
+<!--                                            </table>-->
+<!--                                        </td>-->
+<!--                                    </tr>-->
+<!--&lt;!&ndash;                                     CONTENT&ndash;&gt;-->
+<!--                                    <tr>-->
+<!--                                        <td>-->
+<!--                                            Dear Sir or Madam,-->
+<!--                                            ${object.partner_id.name},-->
+<!--                                            <br/>-->
+<!--                                            <br/>-->
+<!--                                            Attached is invoice-->
+<!--                                            <strong>${object.name}</strong>-->
+<!--                                            in the amount of-->
+<!--                                            <strong>${format_amount(object.amount_total, object.currency_id)}</strong>-->
+<!--                                            for your processing and payment by the due date.-->
+<!--                                            <br/>-->
+<!--                                            <br/>-->
+<!--                                            Please use reference-->
+<!--                                            <strong>${object.payment_reference}</strong>-->
+<!--                                            in all communications regarding this transaction.-->
+<!--                                            <br/>-->
+<!--                                            <br/>-->
+<!--                                            <br/>-->
+<!--                                            <br/>-->
+<!--                                            Thanks,-->
+<!--                                            <br/>-->
+<!--                                            <br/>-->
+<!--                                            Warefor Logistics, LLC <br/>-->
+<!--                                            Accounts Receivable-->
+<!--                                        </td>-->
+<!--                                    </tr>-->
+<!--                                    <hr/>-->
+<!--                                    &lt;!&ndash; FOOTER &ndash;&gt;-->
+<!--                                    <tr>-->
+<!--                                        <td align="left" style="min-width: 590px; padding: 0 8px 0 8px; font-size:11px;">-->
+<!--                                            <hr width="100%" style="background-color:rgb(204,204,204);border:medium none;clear:both;display:block;font-size:0px;min-height:1px;line-height:0; margin: 16px 0px 4px 0px;"/>-->
+<!--                                            <b>${object.company_id.name}</b><br/>-->
+<!--                                            <div style="color: #999999;">-->
+<!--                                                ${object.company_id.phone}-->
+<!--                                                % if object.company_id.email-->
+<!--                                                    | <a href="'mailto:%s' % ${object.company_id.email}" style="text-decoration:none; color: #999999;">${object.company_id.email}</a>-->
+<!--                                                % endif-->
+<!--                                                % if object.company_id.website-->
+<!--                                                    | <a href="'%s' % ${object.company_id.website}" style="text-decoration:none; color: #999999;">${object.company_id.website}</a>-->
+<!--                                                % endif-->
+<!--                                            </div>-->
+<!--                                        </td>-->
+<!--                                    </tr>-->
+<!--                                </tbody>-->
+<!--                            </table>-->
+<!--                        </td>-->
+<!--                    </tr>-->
+<!--                    &lt;!&ndash; POWERED BY &ndash;&gt;-->
+<!--                    <tr>-->
+<!--                        <td align="center" style="min-width: 590px; padding: 8px; font-size:11px;">-->
+<!--                            Powered by-->
+<!--                            <a target="_blank" href="https://www.odoo.com?utm_source=db&amp;utm_medium=email"-->
+<!--                               style="color: #875A7B;">Odoo-->
+<!--                            </a>-->
+<!--                        </td>-->
+<!--                    </tr>-->
+<!--                </table>-->
+
+
+                <p>
+                    Dear Sir or Madam,
+                    <br/>
+                    <br/>
+                    Attached is invoice
+                    <strong>${object.name}</strong>
+                    in the amount of
+                    <strong>${format_amount(object.amount_total, object.currency_id)}</strong>
+                    for your processing and payment by the due date.
+                    <br/>
+                    <br/>
+                    Please use reference
+                    <strong>${object.payment_reference}</strong>
+                    in all communications regarding this transaction.
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    Thanks,
+                    <br/>
+                    <br/>
+                    Warefor Logistics, LLC <br/>
+                    Accounts Receivable
+                </p>
+            </field>
+            <field name="report_template" ref="invoice_template_tus.account_custom_customer_invoice"/>
+            <field name="report_name">
+                Invoice_${(object.name or '').replace('/','_')}${object.state == 'draft' and '_draft' or ''}
+            </field>
+            <field name="lang">${object.partner_id.lang}</field>
+            <field name="auto_delete" eval="True"/>
+        </record>
+
+        <template id="mail_notification_paynow" name="Mail: Pay Now mail notification template">
+            <t t-raw="message.body"/>
+        </template>
+
+    </data>
+</odoo>

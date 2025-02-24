@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="form_view_stock_picking_batch_group" model="ir.ui.view">
+            <field name="name">stock.picking.batch.group.form.view</field>
+            <field name="model">stock.picking.batch.group</field>
+            <field name="arch" type="xml">
+                <form string="Group Of Batch">
+                    <header>
+                        <field name="state" widget="statusbar"/>
+                        <field name="is_validated_pick" invisible="1"/>
+                        <field name="is_validated_pack" invisible="1"/>
+                        <field name="is_validated_ship" invisible="1"/>
+                        <button type="object" name="validate_pick_batch" string="Validate Pick Batch"
+                                attrs="{'invisible': [('is_validated_pick', '=', True)]}"/>
+                        <button type="object" name="validate_pack_batch" string="Validate Pack Batch"
+                                attrs="{'invisible': [('is_validated_pack', '=', True)]}"/>
+                        <button type="object" name="validate_ship_batch" string="Validate Ship Batch"
+                                attrs="{'invisible': [('is_validated_ship', '=', True)]}"/>
+                        <button type="object" name="validate_all_batch" string="Validate All Batch"
+                                attrs="{'invisible': [('state', '=', 'done')]}"/>
+                        <button type="object" name="action_mark_as_done" string="Mark As Done"
+                                attrs="{'invisible': [('state', 'in', ['done', 'cancel'])]}"/>
+                        <button type="object" name="cancel_batch_action" string="Cancel"
+                                attrs="{'invisible': [('state', '!=', 'draft')]}"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="name"/>
+                            <h1>
+                                <field name="name"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="user_id"/>
+                                <field name="warehouse_id"/>
+                            </group>
+                        </group>
+                        <field name="batch_ids" nolabel="1">
+                            <tree create="0" edit="0" delete="0" default_order="id">
+                                <field name="name"/>
+                                <field name="processed_time"/>
+                                <field name="state" widget="badge" decoration-success="state == 'done'"
+                                       decoration-info="state == 'in_progress'" decoration-danger="state == 'cancel'"/>
+                                <field name="total_transfer"/>
+                                <field name="total_done_transfer"/>
+                            </tree>
+                            <form string="Stock Batch Transfer">
+                                <field name="company_id" invisible="1"/>
+                                <field name="show_check_availability" invisible="1"/>
+                                <field name="show_validate" invisible="1"/>
+                                <field name="show_allocation" invisible="1"/>
+                                <field name="picking_type_code" invisible="1"/>
+                                <field name="is_wave" invisible="1"/>
+                                <field name="show_set_qty_button" invisible="1"/>
+                                <field name="show_clear_qty_button" invisible="1"/>
+                                <field name="show_lots_text" invisible="1"/>
+                                <header>
+                                    <button name="action_clear_quantities_to_zero" string="Clear quantities"
+                                            type="object"
+                                            attrs="{'invisible': [('show_clear_qty_button', '=', False)]}"/>
+                                    <button string="Print Labels" type="object" name="action_open_label_layout"/>
+                                    <button name="action_cancel" string="Cancel" type="object"
+                                            states="in_progress"/>
+                                    <field name="state" widget="statusbar"
+                                           statusbar_visible="draft,in_progress,done"/>
+                                </header>
+                                <sheet>
+                                    <div class="oe_title">
+                                        <h1>
+                                            <field name="name" class="oe_inline"/>
+                                        </h1>
+                                    </div>
+                                    <group>
+                                        <group>
+                                            <field name="user_id"/>
+                                            <field name="picking_type_id"/>
+                                            <field name="company_id" groups="base.group_multi_company"
+                                                   attrs="{'readonly': [('picking_ids', '!=', [])]}"
+                                                   force_save="1"/>
+                                        </group>
+                                        <group>
+                                            <field name="scheduled_date"/>
+                                            <field name="parent_batch_id"/>
+                                            <field name="process_from_cron"/>
+                                            <field name="batch_group_id"/>
+                                        </group>
+                                    </group>
+                                    <notebook>
+                                        <page string="Transfers">
+                                            <field name="allowed_picking_ids" invisible="1"/>
+                                            <field name="picking_ids" widget="many2many" mode="tree,kanban"
+                                                   context="{'form_view_ref': 'stock_picking_batch.view_picking_form_inherited', 'tree_view_ref': 'stock_picking_batch.view_picking_tree_batch'}"/>
+                                        </page>
+                                    </notebook>
+                                </sheet>
+                            </form>
+                        </field>
+
+                        <field name="batch_product_line_ids" nolabel="1">
+                            <tree create="0" edit="0" delete="0" default_order="id">
+                                <field name="product_id"/>
+                                <field name="quantity" sum="Total Quantity"/>
+                            </tree>
+                        </field>
+
+                        <field name="batch_stock_line_ids" nolabel="1">
+                            <tree create="0" edit="0" delete="0" default_order="id">
+                                <field name="location_id"/>
+                                <field name="product_id"/>
+                                <field name="quantity" sum="Total Quantity"/>
+                            </tree>
+                        </field>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="stock_picking_batch_group_tree" model="ir.ui.view">
+            <field name="name">stock.picking.batch.group.tree</field>
+            <field name="model">stock.picking.batch.group</field>
+            <field name="arch" type="xml">
+                <tree string="Group Stock Batch">
+                    <field name="name" decoration-bf="1"/>
+                    <field name="processed_time"/>
+                    <field name="state" widget="badge" decoration-success="state == 'done'"
+                           decoration-info="state == 'in_progress'" decoration-danger="state == 'cancel'"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="batch_transfer_group_action_search_view" model="ir.ui.view">
+            <field name="name">stock.picking.batch.group.tree.search.view</field>
+            <field name="model">stock.picking.batch.group</field>
+            <field name="arch" type="xml">
+                <search>
+                    <filter string="Today's Batches" name="today_batches"
+                            domain="[('create_date', '>=', context_today().strftime('%Y-%m-%d'))]"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="stock_picking_batch_group_action" model="ir.actions.act_window">
+            <field name="name">Batch Transfers Group</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">stock.picking.batch.group</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" eval="batch_transfer_group_action_search_view"/>
+            <field name="context">{"search_default_today_batches":1}</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create a new batch group
+                </p>
+            </field>
+        </record>
+        <menuitem action="stock_picking_batch_group_action" id="stock_picking_batch_group_menu"
+                  parent="stock.menu_stock_warehouse_mgmt" sequence="21"/>
+    </data>
+</odoo>

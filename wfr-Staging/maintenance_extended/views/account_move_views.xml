@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="account_view_move_form_inherit_maintenance" model="ir.ui.view">
+            <field name="name">account.view.move.form.inherit.maintenance</field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="account.view_move_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='to_check']" position="after">
+                    <field name="maintenance_ids" widget="many2many_tags" invisible="1"/>
+                    <field name="maintenance_request_ids" widget="many2many_tags"/>
+                    <field name="maintenance_request" widget="many2many_tags" invisible="1"/>
+                    <field name="maintenance_id"/>
+<!--                    <field name="maintenance_request_ids" widget="many2many_tags" domain="[('stage_id.name','in',['New Request', 'In Progress', 'Pending Maintenance', 'Repaired'])]"/>-->
+<!--                    <field name="pl_purchase_id" readonly="0" attrs="{'invisible': [('move_type', '!=', 'in_invoice')]}"/>-->
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

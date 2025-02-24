@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+
+    <record id="ir_attachment_import_walmart_offers_ept" model="ir.attachment">
+        <field name="name">import_offers_sample.csv</field>
+        <field name="datas" type="base64" file="walmart_ept/data/import_offers_sample.csv"></field>
+        <field name="res_model">walmart.offer.file.selection.wizard</field>
+        <field name="public">True</field>
+    </record>
+
+</odoo>

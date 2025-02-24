@@ -1,0 +1,790 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="ba_layout" name="Appointment Layout">
+        <div class="row business-appointment-website-row alert alert-success mt8 business-appointment-website-cancel-container" t-if="resechedule_id" >
+            <span>
+                You are rescheduling the appointment
+                <a t-attf-href="/my/business/appointments/#{resechedule_id.id}">
+                    <t t-esc="resechedule_id.name"/> 
+                    <t t-esc="resechedule_id.return_scheduled_time_tz()"/>.
+                </a>
+                If you want to just schedule a new appointment: click 
+                <a href="#" class="business-appointment-website-cancel">this button</a>.
+            </span>
+        </div>
+        <div id="progress_bar_widget"/>
+    </template>
+    <!-- Progress bar -->
+    <template id="ba_progress_bar" inherit_id="business_appointment_website.ba_layout" name="Progress Bar" active="True" customize_show="True"              >
+        <xpath expr="//div[@id='progress_bar_widget']" position="replace">
+            <div t-attf-class="row business-appointment-website-row mt32 mb4 #{hidden_steps == [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] and 'business-appointment-hidden' or ''}" id="progress_bar_widget">
+                <div class="col-12 business-appointment-website-progress-container" id="business-appointment-website-progress-container-div">
+                    <a href="/appointments/1"
+                       t-attf-class="business-appointment-website-progress-container-step #{1 in hidden_steps and 'business-appointment-hidden' 
+                                                        or progress_step &lt; 1 and 'business-appointment-website-progress-container-disabled'
+                                                        or progress_step == 1 and 'business-appointment-website-progress-container-active'
+                                                        or progress_step &gt; 1 and active_step == 1 and 'business-appointment-website-progress-container-return'
+                                                        or 'business-appointment-website-progress-container-complete'}"  
+                       t-attf-title="{{website.ba_step1}}"   
+                    >
+                        <div class="business-appointment-website-progress-container-dot">
+                            <span t-attf-class="fa business-appointment-website-progress-container-white #{progress_step &lt; 1 and 'fa-circle'
+                                                or progress_step == 1 and progress_step == active_step and 'fa-circle'
+                                                or progress_step == 1 and progress_step &gt; active_step and 'fa-pause-circle'
+                                                or 'fa-check-circle'}"
+                            ></span>
+                        </div>
+                        <div class="business-appointment-website-progress-container-header business-appointment-website-mobile-hidden business-appointment-website-tablet-hidden">
+                            <span t-field="website.ba_step1"/>
+                        </div>
+                    </a>
+                    <a href="/appointments/2"
+                       t-attf-class="business-appointment-website-progress-container-step #{2 in hidden_steps and 'business-appointment-hidden' 
+                                                        or progress_step &lt; 2 and 'business-appointment-website-progress-container-disabled'
+                                                        or progress_step == 2 and 'business-appointment-website-progress-container-active'
+                                                        or progress_step &gt; 2 and active_step == 2 and 'business-appointment-website-progress-container-return'
+                                                        or 'business-appointment-website-progress-container-complete'}"     
+                       t-attf-title="{{website.ba_step2}}"
+                    >
+                        <div class="business-appointment-website-progress-container-dot">
+                            <span t-attf-class="fa business-appointment-website-progress-container-white #{progress_step &lt; 2 and 'fa-circle'
+                                                     or progress_step == 2 and progress_step == active_step and 'fa-circle'
+                                                     or progress_step == 2 and progress_step &gt; active_step and 'fa-pause-circle'
+                                                     or 'fa-check-circle'}"
+                            ></span>
+                        </div>
+                        <div class="business-appointment-website-progress-container-header business-appointment-website-mobile-hidden business-appointment-website-tablet-hidden">
+                            <span t-field="website.ba_step2"/>
+                        </div>
+                    </a>
+                    <a href="/appointments/3"
+                       t-attf-class="business-appointment-website-progress-container-step #{3 in hidden_steps and 'business-appointment-hidden' 
+                                                        or progress_step &lt; 3 and 'business-appointment-website-progress-container-disabled'
+                                                        or progress_step == 3 and 'business-appointment-website-progress-container-active'
+                                                        or progress_step &gt; 3 and active_step == 3 and 'business-appointment-website-progress-container-return'
+                                                        or 'business-appointment-website-progress-container-complete'}"   
+                       t-attf-title="{{website.ba_step3}}"
+                    >
+                        <div class="business-appointment-website-progress-container-dot">
+                            <span t-attf-class="fa business-appointment-website-progress-container-white #{progress_step &lt; 3 and 'fa-circle'
+                                                     or progress_step == 3 and progress_step == active_step and 'fa-circle'
+                                                     or progress_step == 3 and progress_step &gt; active_step and 'fa-pause-circle'
+                                                     or 'fa-check-circle'}"
+                            ></span>
+                        </div>
+                        <div class="business-appointment-website-progress-container-header business-appointment-website-mobile-hidden business-appointment-website-tablet-hidden">
+                            <span t-field="website.ba_step3"/>
+                        </div>
+                    </a>
+                    <a href="/appointments/4"
+                       t-attf-class="business-appointment-website-progress-container-step #{4 in hidden_steps and 'business-appointment-hidden' 
+                                                        or progress_step &lt; 4 and 'business-appointment-website-progress-container-disabled'
+                                                        or progress_step == 4 and 'business-appointment-website-progress-container-active'
+                                                        or progress_step &gt; 4 and active_step == 4 and 'business-appointment-website-progress-container-return'
+                                                        or 'business-appointment-website-progress-container-complete'}"
+                       t-attf-title="{{website.ba_step4}}"    
+                    >
+                        <div class="business-appointment-website-progress-container-dot">
+                            <span t-attf-class="fa business-appointment-website-progress-container-white #{progress_step &lt; 4 and 'fa-circle'
+                                                     or progress_step == 4 and progress_step == active_step and 'fa-circle'
+                                                     or progress_step == 4 and progress_step &gt; active_step and 'fa-pause-circle'
+                                                     or 'fa-check-circle'}"
+                            ></span>
+                        </div>
+                        <div class="business-appointment-website-progress-container-header business-appointment-website-mobile-hidden business-appointment-website-tablet-hidden">
+                            <span t-field="website.ba_step4"/>
+                        </div>
+                    </a>
+                    <a href="/appointments/5"
+                       t-attf-class="business-appointment-website-progress-container-step #{5 in hidden_steps and 'business-appointment-hidden' 
+                                                        or progress_step &lt; 5 and 'business-appointment-website-progress-container-disabled'
+                                                        or progress_step == 5 and 'business-appointment-website-progress-container-active'
+                                                        or progress_step &gt; 5 and active_step == 5 and 'business-appointment-website-progress-container-return'
+                                                        or 'business-appointment-website-progress-container-complete'}"
+                       t-attf-title="{{website.ba_step5}}"
+                    >
+                        <div class="business-appointment-website-progress-container-dot">
+                            <span t-attf-class="fa business-appointment-website-progress-container-white #{progress_step &lt; 5 and 'fa-circle'
+                                                     or progress_step == 5 and progress_step == active_step and 'fa-circle'
+                                                     or progress_step == 5 and progress_step &gt; active_step and 'fa-pause-circle'
+                                                     or 'fa-check-circle'}"
+                            ></span>
+                        </div>
+                        <div class="business-appointment-website-progress-container-header business-appointment-website-mobile-hidden business-appointment-website-tablet-hidden">
+                            <span t-field="website.ba_step5"/>
+                        </div>
+                    </a>
+                    <a href="/appointments/6"
+                       t-attf-class="business-appointment-website-progress-container-step #{6 in hidden_steps and 'business-appointment-hidden' 
+                                                        or progress_step &lt; 6 and 'business-appointment-website-progress-container-disabled'
+                                                        or progress_step == 6 and 'business-appointment-website-progress-container-active'
+                                                        or progress_step &gt; 6 and active_step == 6 and 'business-appointment-website-progress-container-return'
+                                                        or 'business-appointment-website-progress-container-complete'}"
+                       t-attf-title="{{website.ba_step6}}" 
+                    >
+                        <div class="business-appointment-website-progress-container-dot">
+                            <span t-attf-class="fa business-appointment-website-progress-container-white #{progress_step &lt; 6 and 'fa-circle'
+                                                     or progress_step == 6 and progress_step == active_step and 'fa-circle'
+                                                     or progress_step == 6 and progress_step &gt; active_step and 'fa-pause-circle'
+                                                     or 'fa-check-circle'}"
+                            ></span>
+                        </div>
+                        <div class="business-appointment-website-progress-container-header business-appointment-website-mobile-hidden business-appointment-website-tablet-hidden">
+                            <span t-field="website.ba_step6"/>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </xpath>
+    </template>
+    <!-- Pre-reservations Expiration -->
+    <template id="ba_progress_timer" inherit_id="business_appointment_website.ba_layout" name="Show Expiration Timers" active="True" customize_show="True">
+        <xpath expr="//div[@id='progress_bar_widget']" position="before">
+            <div class="alert alert-info business-appointment-prereservation-timer-container smb16 mt8 row business-appointment-website-row business-appointment-hidden" id="business-appointment-prereservation-timer">
+                <span class="business-appointment-prereservation-timer-normal">
+                    You have
+                    <span class="business-appointment-prereservation-clock" t-att-id="prereservation_timer">
+                        <t t-if="prereservation_timer">
+                            <t t-set="ba_days" t-value="int(prereservation_timer / (3600*24))"/>
+                            <t t-set="ba_hours" t-value="int(prereservation_timer % (3600*24) / 3600)"/>
+                            <t t-set="ba_mins" t-value="int(prereservation_timer % 3600 / 60)"/>
+                            <t t-set="ba_secs" t-value="int(prereservation_timer % 60)"/>
+                            <t t-if="ba_days">
+                                <t t-esc="ba_days"/>d 
+                            </t>
+                            <t t-if="ba_hours">
+                                <t t-esc="ba_hours"/>h 
+                            </t> 
+                            <t t-if="ba_mins">
+                                <t t-esc="ba_mins"/>m 
+                            </t>                                               
+                            <t t-esc="ba_secs"/>s
+                        </t>
+                        <t t-else="">
+                            <i class="fa fa-refresh"/>
+                        </t>
+                    </span>                    
+                    <t t-if="progress_step &gt;= 6">
+                        to confirm appointments.
+                    </t>
+                    <t t-else="">
+                        to finish scheduling.
+                    </t>
+                    After this period pre-reservations will be canceled.
+                </span>
+                <span class="business-appointment-prereservation-timer-expired business-appointment-hidden">
+                    Pre-reservations are expired.
+                </span>
+            </div>
+        </xpath>
+    </template>
+    <!-- Step 1: Choose resource type -->
+    <template id="ba_appointments" name="Appointments">
+        <t t-call="portal.portal_layout">
+            <t t-set="no_breadcrumbs" t-value="True"/>
+            <t t-set="additional_title"><t t-esc="website.ba_step1"/></t>
+            <t t-call="business_appointment_website.ba_layout"/>
+            <div id="intro"/>
+            <div class="container" id="ba_types_main_container">
+                <div t-if="done_search or done_filters" class="col-12 mt4 mb0 alert alert-info">
+                    <t t-if="done_search">
+                        Last search: "<t t-esc="done_search"/>".
+                    </t>
+                    <t t-if="done_filters">
+                        Last filters: "<t t-esc="done_filters"/>".
+                    </t>
+                    <a t-attf-href="#{default_url}">Clear search</a>
+                </div>
+                <div t-if="not resource_types" class="col-12 col-sm-8 mt32">
+                    <p>
+                        There are no records found by your criteria. Push <a t-attf-href="#{default_url}"> clean search</a> to clear search filters
+                    </p>
+                </div>
+                <div class="row business-appointment-website-grid" id="ba_resource_type_selection" t-if="resource_types">                   
+                    <t t-foreach="resource_types" t-as="rtype">
+                        <div t-attf-id="/appointments/2?url_ba_type_id=#{rtype.id}&amp;progress_step=#{2 not in hidden_steps and 2 or 3 not in hidden_steps and 3 or 4}" t-attf-class="col-lg-6 col-md-6 col-sm-12 business-appointment-website-grid-box #{url_ba_type_id and url_ba_type_id.id == rtype.id and 'business-appointment-website-grid-box-active' or ''}"
+                        >
+                            <div class="col-12 mt8 mr8 mb8 ml8" id="rtype_details">
+                                <h5 class="business-appointment-website-grid-header">
+                                    <span t-field="rtype.name"/>  
+                                </h5>
+                            </div>
+                            <div class="business-appointment-website-grid-footer col-12">
+                                <span class="business-appointment-website-grid-full-details" t-attf-id="/appointments/types/#{rtype.id}" t-if="show_full_details and not rtype.donotshow_full_description">
+                                    <i class="fa fa-long-arrow-right"> more details</i>
+                                </span>
+                            </div>
+                        </div> 
+                    </t>
+                </div>
+                <div class="col-12 business-appointment-website-mobile-hidden business-appointment-website-tablet-hidden">
+                    <t t-call="portal.pager"/>
+                </div>
+            </div>       
+        </t>
+    </template>
+    <!-- Step 1: Introduction on resource types -->
+    <template id="resource_types_hints" inherit_id="business_appointment_website.ba_appointments" name="Introduction" active="True" customize_show="True">
+        <xpath expr="//div[@id='intro']" position="replace">
+            <div id="intro" class="oe_structure oe_empty business-appointment-website-row" contenteditable="false" itemprop="description" />
+        </xpath>
+    </template>
+    <!-- Step 1: Searchbar on resource types -->
+    <template id="resource_types_searchbar" inherit_id="business_appointment_website.ba_appointments" name="Searchbar" active="True" customize_show="True">
+        <xpath expr="//div[@id='ba_types_main_container']" position="before">
+            <div class="business-appointment-website-searchbar mt8">
+                <t t-call="portal.portal_searchbar">
+                    <div>
+                        <t t-set="title"><t t-esc="website.ba_step1"/></t>
+                    </div>
+                </t>
+            </div>
+        </xpath>
+    </template>
+    <!-- Step 1: Resource type image -->
+    <template id="resource_type_image" inherit_id="business_appointment_website.ba_appointments" name="Show Images" active="True" customize_show="True">
+        <xpath expr="//div[@id='rtype_details']" position="before">
+            <div class="col-4 business-appointment-website-grid-image">
+                <div class="col-12">
+                    <span t-field="rtype.image_128" t-options="{'widget': 'image',}"/>
+                </div>
+            </div>
+        </xpath>
+        <xpath expr="//div[@id='rtype_details']" position="attributes">
+            <attribute name="class">col-8 mt8 mb8</attribute>
+        </xpath>
+        <xpath expr="//div[contains(@t-attf-class,'business-appointment-website-grid-box')]" position="attributes">
+            <attribute name="style">min-height: 200px !important;</attribute>
+        </xpath>
+    </template>
+    <!-- Step 1: Resource type description -->
+    <template id="resource_type_description" inherit_id="business_appointment_website.ba_appointments" name="Show Descriptions" active="True" customize_show="True">
+        <xpath expr="//div[@id='rtype_details']" position="inside">
+            <div class="text-muted business-appointment-website-grid-description" t-field="rtype.description"/>
+        </xpath>
+    </template>
+    <!-- Step 2: Resource active selection -->
+    <template id="ba_resource_selection" name="Selected Resources">
+        <div class="col-12 bg-white business-appointment-website-selected-resources" id="ba_resource_selection">
+            <div class="col-9 business-appointment-website-selected-resources-left mb8">
+                <div id="ba_selected_records" t-if="url_resource_ids">
+                    <t t-foreach="url_resource_ids" t-as="chosen_resource">
+                        <span class="badge text-bg-primary business-appointment-website-selected-resources-record mt4">
+                            <t t-esc="chosen_resource.name"/>
+                            <a t-attf-href="/appointments/2?url_resource_ids=#{return_resources_subset(url_resource_ids.ids, chosen_resource.id)}" class="text-white">
+                                <i class="fa fa-times"> </i>
+                            </a>
+                        </span>
+                    </t>
+                    <a t-attf-href="/appointments/2?url_resource_ids=[]" class="ml8">
+                        <i class="fa fa-ban mt4"> </i>
+                    </a>
+                </div>
+            </div>
+            <div class="col-3 business-appointment-website-selected-resources-right">
+                <a role="button" class="btn btn-primary btn mb4 mr4" t-attf-href="/appointments/3?url_resource_ids=#{all_resources}&amp;progress_step=#{3 not in hidden_steps and 3 or 4}">
+                    <strong>Any</strong> <i class="fa fa-fast-forward"/>
+                </a> 
+                <t t-if="url_resource_ids">
+                    <a role="button" class="btn btn-secondary btn mb4 mr16" t-attf-href="/appointments/3?url_resource_ids=#{url_resource_ids.ids}&amp;progress_step=#{3 not in hidden_steps and 3 or 4}">
+                        <i class="fa fa-forward"/> <strong>Select</strong> <i class="fa fa-forward"/>
+                    </a>    
+                </t>            
+            </div>
+        </div>
+    </template>
+    <!-- Step 2: Choose resource -->
+    <template id="ba_resources" name="Resource">
+        <t t-call="portal.portal_layout">
+            <t t-set="no_breadcrumbs" t-value="True"/>
+            <t t-set="additional_title"><t t-esc="website.ba_step2"/></t>
+            <t t-call="business_appointment_website.ba_layout"/>
+            <div id="intro"/>
+            <t t-call="business_appointment_website.ba_resource_selection"/>
+            <div class="container" id="ba_types_main_container">               
+                <div t-if="done_search or done_filters" class="col-12 mt4 mb0 alert alert-info">
+                    <t t-if="done_search">
+                        Last search: "<t t-esc="done_search"/>".
+                    </t>
+                    <t t-if="done_filters">
+                        Last filters: "<t t-esc="done_filters"/>".
+                    </t>
+                    <a t-attf-href="#{default_url}">Clear search</a>
+                </div>
+                <div t-if="not resources" class="col-12 mt32">
+                    <p>
+                        There are no records found by your criteria. Push <a t-attf-href="#{default_url}">
+                        clean search</a> to clear search filters
+                    </p>
+                </div>
+                <div class="row business-appointment-website-grid" id="ba_resource_type_selection" t-if="resources">                   
+                    <t t-foreach="resources" t-as="resource">
+                        <div t-attf-id="/appointments/2?url_resource_ids=#{return_resources_set(url_resource_ids and url_resource_ids.ids or [], resource.id)}&amp;progress_step=2" t-attf-class="col-lg-6 col-md-6 col-sm-12 business-appointment-website-grid-box #{url_resource_ids and resource.id in url_resource_ids.ids and 'business-appointment-website-grid-box-active' or ''}">
+                            <div class="col-12 mt8 mr8 mb8 ml8" id="rtype_details">
+                                <h5 class="business-appointment-website-grid-header">
+                                    <span t-field="resource.name"/>
+                                </h5>
+                            </div>
+                            <div class="business-appointment-website-grid-footer col-12">
+                                <span class="business-appointment-website-grid-full-details" t-attf-id="/appointments/resources/#{resource.id}" t-if="show_full_details and not resource.donotshow_full_description">
+                                    <i class="fa fa-long-arrow-right"> more details</i>
+                                </span>
+                            </div>
+                        </div>   
+                    </t>
+                </div>
+                <div class="col-12 business-appointment-website-mobile-hidden business-appointment-website-tablet-hidden">
+                    <t t-call="portal.pager"/>
+                </div>
+            </div>       
+        </t>
+    </template>
+    <!-- Step 2: Introduction on resource -->
+    <template id="resource_hints" inherit_id="business_appointment_website.ba_resources" name="Introduction" active="True" customize_show="True">
+        <xpath expr="//div[@id='intro']" position="replace">
+            <div id="intro" class="oe_structure oe_empty business-appointment-website-row" contenteditable="false" itemprop="description"/>
+        </xpath>
+    </template>
+    <!-- Step 2: Searchbar on resource -->
+    <template id="resource_searchbar" inherit_id="business_appointment_website.ba_resources" name="Searchbar" active="True" customize_show="True">
+        <xpath expr="//div[@id='ba_types_main_container']" position="before">
+            <div class="business-appointment-website-searchbar mt8">
+                <t t-call="portal.portal_searchbar">
+                    <div>
+                        <t t-set="title"><t t-esc="website.ba_step2"/></t>
+                    </div>
+                </t>
+            </div>
+        </xpath>
+    </template>
+    <!-- Step 2: Resource image -->
+    <template id="resource_image" inherit_id="business_appointment_website.ba_resources" name="Show Images" active="True" customize_show="True">
+        <xpath expr="//div[@id='rtype_details']" position="before">
+            <div class="col-4 business-appointment-website-grid-image">
+                <div class="col-12">
+                    <span t-field="resource.image_128" t-options="{'widget': 'image', }"/>
+                </div>
+            </div>
+        </xpath>
+        <xpath expr="//div[@id='rtype_details']" position="attributes">
+            <attribute name="class">col-8 mt8 mb8</attribute>
+        </xpath>
+        <xpath expr="//div[contains(@t-attf-class,'business-appointment-website-grid-box')]" position="attributes">
+            <attribute name="style">min-height: 200px !important;</attribute>
+        </xpath>
+    </template>
+    <!-- Step 2: Resource description -->
+    <template id="resource_description" inherit_id="business_appointment_website.ba_resources" name="Show Descriptions" active="True" customize_show="True">
+        <xpath expr="//div[@id='rtype_details']" position="inside">
+            <div class="text-muted business-appointment-website-grid-description" t-field="resource.description"/>
+        </xpath>
+    </template>
+    <!-- Step 3: Choose service -->
+    <template id="ba_services" name="Service">
+        <t t-call="portal.portal_layout">
+            <t t-set="no_breadcrumbs" t-value="True"/>
+            <t t-set="additional_title"><t t-esc="website.ba_step3"/></t>
+            <t t-call="business_appointment_website.ba_layout"/>
+            <div id="intro"/>
+            <div class="container" id="ba_types_main_container">
+                <div t-if="done_search or done_filters" class="col-12 mt4 mb0 alert alert-info">
+                    <t t-if="done_search">
+                        Last search: "<t t-esc="done_search"/>".
+                    </t>
+                    <t t-if="done_filters">
+                        Last filters: "<t t-esc="done_filters"/>".
+                    </t>
+                    <a t-attf-href="#{default_url}">Clear search</a>
+                </div>
+                <div t-if="not services" class="col-12 col-sm-8 mt32">
+                    <p>
+                        There are no records found by your criteria. Push <a t-attf-href="#{default_url}"> clean search</a> to clear search filters
+                    </p>
+                </div>
+                <div class="row business-appointment-website-grid" id="ba_resource_type_selection" t-if="services">                   
+                    <t t-foreach="services" t-as="service">
+                        <div t-attf-id="/appointments/4?url_service_id=#{service.id}&amp;progress_step=4" t-attf-class="col-lg-6 col-md-6 sol-sm-12 business-appointment-website-grid-box #{url_service_id and url_service_id.id == service.id and 'business-appointment-website-grid-box-active' or ''}">
+                            <div class="col-12 mt8 mr8 mb8 ml8" id="rtype_details">
+                                <h5 class="business-appointment-website-grid-header mb4" id="item_header_span">
+                                    <span t-field="service.name"/>
+                                </h5>
+                            </div>
+                            <div class="business-appointment-website-grid-footer col-12">
+                                <span class="business-appointment-website-grid-full-details" t-attf-id="/appointments/services/#{service.id}" t-if="show_full_details and not service.donotshow_full_description">
+                                    <i class="fa fa-long-arrow-right"> more details</i>
+                                </span>
+                            </div>
+                        </div>   
+                    </t>
+                </div>
+                <div class="col-12 business-appointment-website-mobile-hidden business-appointment-website-tablet-hidden">
+                    <t t-call="portal.pager"/>
+                </div>
+            </div>       
+        </t>
+    </template>
+    <!-- Step 3: Introduction on service -->
+    <template id="services_hints" inherit_id="business_appointment_website.ba_services" name="Introduction" active="True" customize_show="True">
+        <xpath expr="//div[@id='intro']" position="replace">
+            <div id="intro" class="oe_structure oe_empty business-appointment-website-row" contenteditable="false" itemprop="description"/>
+        </xpath>
+    </template>
+    <!-- Step 3: Searchbar on service -->
+    <template id="service_searchbar" inherit_id="business_appointment_website.ba_services" name="Searchbar" active="True" customize_show="True">
+        <xpath expr="//div[@id='ba_types_main_container']" position="before">
+            <div class="business-appointment-website-searchbar mt8">
+                <t t-call="portal.portal_searchbar">
+                    <div id="business-appointment-website-service-searchbar">
+                        <t t-set="title"><t t-esc="website.ba_step3"/></t>
+                    </div>
+                </t>
+            </div>
+        </xpath>
+    </template>
+    <!-- Step 3: Service image -->
+    <template id="service_image" inherit_id="business_appointment_website.ba_services" name="Show Images" active="True" customize_show="True">
+        <xpath expr="//div[@id='rtype_details']" position="before">
+            <div class="col-4 business-appointment-website-grid-image">
+                <div class="col-12">
+                    <span t-field="service.image_128" t-options="{'widget': 'image', }"/>
+                </div>
+            </div>
+        </xpath>
+        <xpath expr="//div[@id='rtype_details']" position="attributes">
+            <attribute name="class">col-8 mt8 mb8</attribute>
+        </xpath>
+        <xpath expr="//div[contains(@t-attf-class,'business-appointment-website-grid-box')]" position="attributes">
+            <attribute name="style">min-height: 200px !important;</attribute>
+        </xpath>
+    </template>
+    <!-- Step 3: Service description -->
+    <template id="service_description" inherit_id="business_appointment_website.ba_services" name="Show Descriptions" active="True" customize_show="True">
+        <xpath expr="//div[@id='rtype_details']" position="inside">
+            <div class="text-muted business-appointment-website-grid-description" t-field="service.ba_description"/>
+        </xpath>
+    </template>
+    <!-- Step 4: Choose time slot -->
+    <template id="ba_time_slots" name="Time Slots">
+        <t t-call="portal.portal_layout">
+            <t t-set="no_breadcrumbs" t-value="True"/>
+            <t t-set="additional_title"><t t-esc="website.ba_step4"/></t>
+            <t t-call="business_appointment_website.ba_layout"/>
+            <div id="intro"/>
+            <div class="container business-appointment-website-slots">
+                <div class="col-12 mt16" id="business-appointment-time-slots-widget"/>
+            </div>       
+        </t>
+    </template>
+    <!-- Step 4: Introduction on time slots -->
+    <template id="time_slots_hints" inherit_id="business_appointment_website.ba_time_slots" name="Introduction" active="True" customize_show="True">
+        <xpath expr="//div[@id='intro']" position="replace">
+            <div id="intro" class="oe_structure oe_empty business-appointment-website-row" contenteditable="false" itemprop="description"/>
+        </xpath>
+    </template>
+    <!-- Step 5: Introduce contact info -->
+    <template id="ba_contact_info" name="Contact Info">
+        <t t-call="portal.portal_layout">
+            <t t-set="no_breadcrumbs" t-value="True"/>
+            <t t-set="additional_title"><t t-esc="website.ba_step5"/></t>
+            <t t-call="business_appointment_website.ba_layout"/>
+            <div id="intro"/>
+            <form action="/appointments/account" enctype="multipart/form-data" method="post">
+                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                <!-- Always hidden: introduced to show custom fields depending on chosen resource type -->
+                <select name="resource_special" class="select_type_input business-appointment-hidden">
+                    <option t-att-value="resource_type_id" t-att-selected="1">
+                        <t t-esc="resource_type_id" />
+                    </option>
+                </select>                
+                <div class="o_portal_details">
+                    <div class="col-lg-12 mt16 mb16" t-if="ba_sign_in_type == 'optional'">
+                        <t t-out="ba_sign_in_type_text"/>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="row ba_custom_fields_portal">
+                            <div class="col-lg-12" t-if="error_message" >
+                                <div  class="alert alert-danger" role="alert">
+                                    <t t-foreach="error_message" t-as="err">
+                                        <t t-esc="err"/><br />
+                                    </t>
+                                </div>
+                            </div>
+                            <div t-attf-class="form-group #{error.get('contact_name') and 'o_has_error' or ''} col-xl-6">
+                                <label class="col-form-label" for="contact_name">
+                                    Your Name
+                                </label>
+                                <input type="text" 
+                                       name="contact_name" 
+                                       t-attf-class="form-control #{error.get('contact_name') and 'is-invalid' or ''}" 
+                                       t-att-value="contact_name"
+                                />
+                            </div>
+                            <div t-attf-class="form-group #{error.get('email') and 'o_has_error' or ''} col-xl-6">
+                                <label class="col-form-label" for="email">
+                                    Email
+                                </label>
+                                <input type="email" 
+                                       name="email" 
+                                       t-attf-class="form-control #{error.get('email') and 'is-invalid' or ''}" 
+                                       t-att-value="email"
+                                />
+                            </div>
+                            <div t-attf-class="form-group #{error.get('phone') and 'o_has_error' or ''} col-xl-6" t-if="'phone' in all_fields">
+                                <label t-attf-class="col-form-label #{'phone' not in mandatory_fields and 'label-optional' or ''}"  for="phone">
+                                    Phone
+                                </label>
+                                <input type="tel" 
+                                       name="phone" 
+                                       t-attf-class="form-control #{error.get('phone') and 'is-invalid' or ''}" 
+                                       t-att-value="phone" 
+                                />
+                            </div>
+                            <div t-attf-class="form-group #{error.get('mobile') and 'o_has_error' or ''} col-xl-6" t-if="'mobile' in all_fields">
+                                <label t-attf-class="col-form-label #{'mobile' not in mandatory_fields and 'label-optional' or ''}" for="mobile">
+                                    Mobile
+                                </label>
+                                <input type="tel" 
+                                       name="mobile" 
+                                       t-attf-class="form-control #{error.get('mobile') and 'is-invalid' or ''}" 
+                                       t-att-value="mobile" 
+                                />
+                            </div>
+                            <div t-attf-class="form-group #{error.get('title') and 'o_has_error' or ''} col-xl-6" t-if="'title' in all_fields">
+                                <label t-attf-class="col-form-label #{'title' not in mandatory_fields and 'label-optional' or ''}" for="title">
+                                    Title
+                                </label>
+                                <select name="title" t-attf-class="form-control #{error.get('title') and 'is-invalid' or ''}">
+                                    <option value="">Title...</option>
+                                    <t t-foreach="titles or []" t-as="s_title">
+                                        <option t-att-value="s_title.id" t-att-selected="s_title.id == int(title) if title else 0">
+                                            <t t-esc="s_title.name" />
+                                        </option>
+                                    </t>
+                                </select>
+                            </div>
+                            <div class="clearfix" />
+                            <div t-attf-class="form-group #{error.get('partner_name') and 'o_has_error' or ''} col-xl-6" t-if="not existing_partner">
+                                <label class="col-form-label label-optional" for="partner_name">
+                                    Company Name
+                                </label>                           
+                                <input type="text" 
+                                       name="partner_name" 
+                                       t-attf-class="form-control #{error.get('partner_name') and 'is-invalid' or ''}"
+                                       t-att-value="partner_name"
+                                />
+                            </div>
+                            <div t-attf-class="form-group #{error.get('function') and 'o_has_error' or ''} col-xl-6" t-if="'function' in all_fields">
+                                <label t-attf-class="col-form-label #{'function' not in mandatory_fields and 'label-optional' or ''}" for="function">
+                                    Function
+                                </label>
+                                <input type="tel" 
+                                       name="function" 
+                                       t-attf-class="form-control #{error.get('function') and 'is-invalid' or ''}" 
+                                       t-att-value="function" 
+                                />
+                            </div>
+                            <div class="clearfix col-xl-12"/>
+                            <div t-attf-class="form-group #{error.get('street') and 'o_has_error' or ''} col-xl-6" t-if="'street' in all_fields">
+                                <label t-attf-class="col-form-label #{'street' not in mandatory_fields and 'label-optional' or ''}" for="street">
+                                    Street
+                                </label>
+                                <input type="text" 
+                                       name="street" 
+                                       t-attf-class="form-control #{error.get('street') and 'is-invalid' or ''}" 
+                                       t-att-value="street"
+                                />
+                            </div>
+                            <div t-attf-class="form-group #{error.get('street') and 'o_has_error' or ''} col-xl-6" t-if="'street2' in all_fields">
+                                <label t-attf-class="col-form-label #{'street2' not in mandatory_fields and 'label-optional' or ''}" for="street2">
+                                    Street 2
+                                </label>
+                                <input type="text" 
+                                       name="street2" 
+                                       t-attf-class="form-control #{error.get('street2') and 'is-invalid' or ''}" 
+                                       t-att-value="street2"
+                                />
+                            </div>
+                            <div t-attf-class="form-group #{error.get('city') and 'o_has_error' or ''} col-xl-6" t-if="'city' in all_fields">
+                                <label t-attf-class="col-form-label #{'city' not in mandatory_fields and 'label-optional' or ''}" for="city">
+                                    City
+                                </label>
+                                <input type="text" 
+                                       name="city" 
+                                       t-attf-class="form-control #{error.get('city') and 'is-invalid' or ''}"
+                                       t-att-value="city"
+                                />
+                            </div>
+                            <div t-attf-class="form-group #{error.get('zipcode') and 'o_has_error' or ''} col-xl-6" t-if="'zipcode' in all_fields">
+                                <label t-attf-class="col-form-label #{'zipcode' not in mandatory_fields and 'label-optional' or ''}" for="zipcode">
+                                    Zip / Postal Code
+                                </label>
+                                <input type="text" 
+                                       name="zipcode" 
+                                       t-attf-class="form-control #{error.get('zipcode') and 'is-invalid' or ''}" 
+                                       t-att-value="zipcode"
+                                />
+                            </div>
+                            <div t-attf-class="form-group #{error.get('country_id') and 'o_has_error' or ''} col-xl-6" t-if="'country_id' in all_fields">
+                                <label t-attf-class="col-form-label #{'country_id' not in mandatory_fields and 'label-optional' or ''}" for="country_id">
+                                    Country
+                                </label>
+                                <select name="country_id" t-attf-class="form-control #{error.get('country_id') and 'is-invalid' or ''}">
+                                    <option value="">Country...</option>
+                                    <t t-foreach="countries or []" t-as="country">
+                                        <option t-att-value="country.id" 
+                                                t-att-selected="country.id == int(country_id) if country_id else 0"
+                                        >
+                                            <t t-esc="country.name" />
+                                        </option>
+                                    </t>
+                                </select>
+                            </div>
+                            <div t-attf-class="form-group #{error.get('state_id') and 'o_has_error' or ''} col-xl-6"
+                                 t-if="'state_id' in all_fields"    
+                            >
+                                <label t-attf-class="col-form-label #{'state_id' not in mandatory_fields and 'label-optional' or ''}" for="state_id">
+                                    State / Province
+                                </label>
+                                <select name="state_id" t-attf-class="form-control #{error.get('state_id') and 'is-invalid' or ''}">
+                                    <option value="">select...</option>
+                                    <t t-foreach="states or []" t-as="state">
+                                        <option t-att-value="state.id" style="display:none;" 
+                                                t-att-data-country_id="state.country_id.id" 
+                                                t-att-selected="state.id == int(state_id) if state_id else 0"
+                                        >
+                                            <t t-esc="state.name" />
+                                        </option>
+                                    </t>
+                                </select>
+                            </div>
+                            <div class="clearfix col-xl-12"/>
+                            <div name="extra_notes_div"
+                                 t-attf-class="form-group #{error.get('description') and 'o_has_error' or ''} col-xl-12"
+                            >
+                                <label class="col-form-label label-optional" for="description">
+                                    Extra comments
+                                </label>
+                                <textarea type="text" 
+                                          name="description" 
+                                          t-attf-class="form-control #{error.get('description') and 'is-invalid' or ''}" 
+                                ><t t-esc="description"/></textarea>
+                            </div>
+                            <div class="clearfix col-xl-12"/>
+                            <div name="terms_and_conditions"
+                                 t-if="agree_terms_text"
+                                 t-attf-class="form-group #{error.get('agree_terms') and 'business-appointment-website-terms-agree-required' or ''} col-xl-12 mt16"
+                            >
+                                <input type="checkbox" 
+                                       name="agree_terms"
+                                       t-attf-class="#{error.get('agree_terms') and 'is-invalid' or ''}" 
+                                       t-att-checked="agree_terms"
+                                />
+                                <label class="col-form-label label-optional" for="agree_terms">
+                                    <t t-out="agree_terms_text"/>                                    
+                                </label>
+                            </div>
+                        </div>
+                        <div class="clearfix">
+                            <button type="submit" class="btn btn-primary float-right mb32 mt16">
+                                Confirm
+                                <span class="fa fa-long-arrow-right"/>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+        </t>
+    </template>
+    <!-- Step 5: Introduction to contact info -->
+    <template id="ba_contact_info_hints" inherit_id="business_appointment_website.ba_contact_info" name="Introduction" active="True" customize_show="True">
+        <xpath expr="//div[@id='intro']" position="replace">
+            <div id="intro" class="oe_structure oe_empty business-appointment-website-row" contenteditable="false" itemprop="description"/>
+        </xpath>
+    </template>
+    <!-- Step 6: Introduce contact info -->
+    <template id="ba_confirmation_page" name="Confirmation">
+        <t t-call="portal.portal_layout">
+            <t t-set="no_breadcrumbs" t-value="True"/>
+            <t t-set="additional_title"><t t-esc="website.ba_step6"/></t>
+            <t t-call="business_appointment_website.ba_layout"/>
+            <div id="intro"/>
+            <form action="/appointments/confirm" method="post">
+                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                <div class="o_portal_details">
+                    <div class="col-lg-12">
+                        <div class="row">
+                            <div class="col-lg-12" t-if="error_message">
+                                <div class="alert alert-danger" role="alert">
+                                    <t t-foreach="error_message" t-as="err">
+                                        <t t-esc="err"/><br />
+                                    </t>
+                                </div>
+                            </div>
+                            <div t-attf-class="form-group #{error.get('confirmation_code') and 'o_has_error' or ''} col-xl-6">
+                                <label class="col-form-label" for="confirmation_code">
+                                    Confirmation Code
+                                </label>
+                                <input type="text" name="confirmation_code" t-attf-class="form-control #{error.get('confirmation_code') and 'is-invalid' or ''}"/>
+                                <div class="clearfix mt16">
+                                    <t t-if="confirmation_refresh_attempts &gt;= 0">
+                                        <a href="/appointments/resend" class="business-appointment-confirmation-resend business-appointment-hidden">
+                                            <span class="fa fa-refresh"/>
+                                            Resend Code
+                                        </a>
+                                        <span class="business-appointment-confirmation-timer">
+                                            You will be able to resend the code in 
+                                            <span class="business-appointment-confirmation-resend" t-att-id="resend_timer">
+                                                <t t-esc="resend_timer"/> seconds
+                                            </span>
+                                        </span>
+                                    </t>
+                                    <button type="submit" class="btn btn-primary business-appointment-pull-right mb32">
+                                        Confirm
+                                        <span class="fa fa-long-arrow-right" />
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </t>
+    </template>
+    <!-- Step 6: Introduction confirmation -->
+    <template id="ba_confirmation_page_hints" inherit_id="business_appointment_website.ba_confirmation_page" name="Introduction" active="True" customize_show="True">
+        <xpath expr="//div[@id='intro']" position="replace">
+            <div id="intro" class="oe_structure oe_empty business-appointment-website-row" contenteditable="false" itemprop="description" />
+        </xpath>
+    </template>
+    <!-- Success page -->
+    <template id="ba_public_thankyou" name="Thank you">
+        <t t-call="website.layout">
+            <div id="wrap">
+                <div class="container">
+                    <h1 class="mb16 mt16">Thanks!</h1>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="alert alert-success" role="status">
+                                <t t-if="single_appointment">
+                                    The appointment <strong t-esc="appointment_confirmation"/> has been successfully 
+                                    scheduled.
+                                </t>
+                                <t t-else="">
+                                    The appointments <strong t-esc="appointment_confirmation"/> have been successfully 
+                                    scheduled.
+                                </t>
+                            </div>
+                            <p t-if="public_token_url">
+                                <a t-att-href="public_token_url">Click</a> to set up the password for the portal 
+                                where you will be able to control your appointments.
+                            </p>
+                        </div>
+                    </div>
+                </div>                   
+            </div>
+        </t>
+    </template>
+
+</odoo>

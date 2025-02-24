@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Snippets menu -->
+    <template id="snippets_ept" inherit_id="web_editor.snippets">
+        <xpath expr="//div[@id='snippets_menu']" position="inside">
+            <button type="button" tabindex="4" class="o_we_customize_theme_btn_ept text-uppercase"
+                    title="Emipro Theme Settings" accesskey="4">
+                <span>Clarico Vega</span>
+            </button>
+        </xpath>
+        <xpath expr="//div[@id='snippet_options']" position="after">
+            <div id="theme_settings" class="d-none">
+                <t t-call="theme_clarico_vega.vega_theme_options"/>
+            </div>
+        </xpath>
+    </template>
+
+    <template id="vega_theme_options" name="Manage Theme Features">
+        <!-- General Settings -->
+        <div data-js="ThemeOptionsEpt" data-selector="general-settings-ept" data-no-check="true">
+            <we-checkbox string="Login Popup" name="login_popup" data-customize-website-views="theme_clarico_vega.login_popup_ept" data-reload="/"/>
+            <we-checkbox string="Advance Mini Cart" name="Advance_Mini_Cart" data-customize-website-views="theme_clarico_vega.cart_popover_ept" data-reload="/"/>
+            <we-checkbox string="Quick View" name="quick_view"
+                         data-customize-website-views="theme_clarico_vega.render_quick_view"
+                         data-reload="/"/>
+            <we-checkbox string="Menu Label"
+                         data-customize-website-views="theme_clarico_vega.website_submenu_label_ept"
+                         data-reload="/"/>
+        </div>
+
+        <!-- Shop Page -->
+        <div data-js="ThemeOptionsEpt" data-selector="shop-page-ept" data-no-check="true">
+            <we-checkbox string="show product count"
+                         data-customize-website-views="theme_clarico_vega.website_attribute_values_count_ept"
+                         data-reload="/"/>
+            <we-checkbox string="Color Variant" name="color_variant" data-customize-website-views="theme_clarico_vega.shop_color_variant" data-reload="/"/>
+            <we-checkbox string="Brand Filter"
+                         data-name="product_brand"
+                         data-customize-website-views="theme_clarico_vega.product_brand_custom"
+                         data-reload="/"/>
+            <we-checkbox string="Simple/With Brand Logo"
+                         data-dependencies="product_brand"
+                         data-customize-website-views="theme_clarico_vega.product_show_brand_logo"
+                         data-reload="/"/>
+
+        </div>
+
+        <!-- Product Page -->
+        <div data-js="ThemeOptionsEpt" data-selector="product-page-ept" data-no-check="true">
+            <we-checkbox string="Product Sticky Details" name="Product_Sticky_details" data-customize-website-views="theme_clarico_vega.product_sticky_details_container" data-reload="/"/>
+        </div>
+
+        <!-- Cart Page -->
+        <div data-js="ThemeOptionsEpt" data-selector="cart-page-ept" data-no-check="true">
+            <we-checkbox string="Hide Product Description and Attribute Values"
+                         data-customize-website-views="theme_clarico_vega.hide_variant_info_in_cart_ept, theme_clarico_vega.hide_variant_details_cart_summary_ept_ext, theme_clarico_vega.suggested_products_list_summary_ept_ext"
+                         data-reload="/"/>
+        </div>
+
+    </template>
+
+</odoo>

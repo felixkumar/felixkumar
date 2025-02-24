@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--  CONTAINER SEARCH PAGE TEMPLATE -->
+    <template id="main_page_appointment" name="Appointment">
+        <t t-call="portal.portal_layout">
+            <t t-set="no_breadcrumbs" t-value="True"/>
+            <div id="intro"/>
+            <div class="container">
+                <div class="search-load-id" style="margin-top:50px;color: rgba(0, 0, 0, 0.5) !important;font-weight: 700;">
+                  <p class="text-black" style="font-size: x-large;color: rgba(0, 0, 0, 0.5) !important;">
+                      Please enter the Load Id# provided by your customer. If you receive an error or your Load ID is not found please check back and try again.</p><br/>
+                    <p style="font-size: x-large;">Occasionally a Load ID will not be available for scheduling immediately. Please allow us 24 hours to insure all Load ID's are available for scheduling.</p><br />
+                  <p style="font-size: x-large;margin-left:40%;"><u>Examples of a Load ID:</u><br />
+                  83371<br />
+                  Combined Loads <br/>
+                  83373/83374</p><br /><br/>
+                    <form action="/appointments/result" method="POST" class="form-inline ml-auto">
+                        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                        <div class="d-flex flex-row" style="margin-left:30%;">
+                                <label for="load_id" style="margin-right: 20px;font-size: x-large;">Load ID :</label>
+                                <input type="text" name="load_number" id="load_id" minlength="5" maxlength="11"/>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </form>
+                    </div>
+            </div>
+        </t>
+    </template>
+
+    <!--  CONTAINER NOT FOUND TEMPLATE -->
+    <template id="load_id_not_found" name="Reach out to US">
+        <t t-call="portal.portal_layout">
+            <t t-set="no_breadcrumbs" t-value="True"/>
+            <div id="intro"/>
+            <div class="container" style="margin-top:50px;background-color:#E6E6E6;border:1px solid black;width:60%;margin-left:20%;text-align:center;">
+                <div class="d-flex flex-row" style="margin-top:30px;">
+                    <p>Load ID <span style="color:#7a5b4b;"><t t-esc="load_number"/></span> is not found. Please try again. <br/>Please reach out to <a href="mailto:logistics@warefor.com">logistics@warefor.com</a> or call <a href="tel:(832) 568-4108">(832) 568-4108</a> to clarify your order number.  </p>
+                </div>
+                <div class="d-flex flex-row" style="margin: 50px 0px;">
+                    <p><a style="padding: 15px 30px;background-color: #51B1E7;color: #fff;font-weight: 300;" href="/appointments">Try Again</a></p>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <!--  VALIDATE EMAIL TEMPLATE -->
+    <template id="validate_email_tu" name="Validate email">
+        <t t-call="portal.portal_layout">
+            <t t-set="no_breadcrumbs" t-value="True"/>
+            <div id="intro"/>
+            <div class="container" style="width:50%;margin-top:50px;text-align:center;">
+                <div class="d-flex flex-row" style="background-color:red;color:#fff;">
+                    <p><b> Please login to validate your email addresss </b></p>
+                </div>
+            </div>
+            <div class="container" style="width:50%;text-align:center;border:1px solid red;">
+                <div class="d-flex flex-row" style="margin: 50px 0px;">
+                    <p><a style="padding: 5px 25px;border-radius: 10px;background-color: #a5806d;color: #fff;font-weight: 300;" href="/web/login">Log In</a></p>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <!--  SCHEDULE MY APPOINTMENT BUTTONS -->
+    <template id="website_menuitem" inherit_id="website.navbar_nav" name="header menu">
+       <xpath expr="//ul[@id='top_menu']" position="before">
+           <t t-if="uid and 2 in allowed_company_ids">
+               <ul class="nav navbar-nav">
+                   <li>
+                       <a role="menuitem" href="/appointments" class="nav-link ">
+                           <span>Schedule <br/> Pickup/Dropoff</span>
+                       </a>
+                   </li>
+                   <li>
+                       <a role="menuitem" href="/my/business/appointments" class="nav-link ">
+                           <span>My <br/> Appointments</span>
+                       </a>
+                   </li>
+               </ul>
+           </t>
+       </xpath>
+    </template>
+
+    <!--  SCHEDULE MY APPOINTMENT CONTACT INFO USEFULl NNN -->
+<!--    <template id="ba_contact_info_tus" inherit_id="business_appointment_website.ba_contact_info" name="header menu">-->
+<!--        <xpath expr="//div[hasclass('clearfix')]/button[hasclass('btn_forward_checkout')]" position="replace">-->
+<!--            <button style="background-color: #51B1E7 !important;" type="submit" class="btn btn-primary float-right mb32 btn_forward_checkout">-->
+<!--                Confirm-->
+<!--                <span class="fa fa-long-arrow-right" />-->
+<!--            </button>-->
+<!--        </xpath>-->
+<!--    </template>-->
+
+    <!--  RE-SCHEDULE USEFULL NNN-->
+<!--    <template id="ba_layout_tus" inherit_id="business_appointment_website.ba_layout" name="Appointment Layout">-->
+<!--        <xpath expr="//div[hasclass('reschedule_div')]" position="replace">-->
+<!--            <div class="row ba_portal_row alert alert-success mt8 reschedule_div" t-if="resechedule_id" >-->
+<!--                <span>-->
+<!--                You are re-scheduling the appointment-->
+<!--                <a t-attf-href="/my/business/appointments/#{resechedule_id.id}">-->
+<!--                    <t t-esc="resechedule_id.sudo().x_oz_cbaf_3.name"/>.-->
+<!--                </a>-->
+<!--                If you want to just schedule a new appointment: click-->
+<!--                <a href="#" class="remove_reschedule">this button</a>.-->
+<!--            </span>-->
+<!--            </div>-->
+<!--        </xpath>-->
+<!--    </template>-->
+
+    <template id="portal_appointment_page_tus" inherit_id="business_appointment_website.portal_appointment_page" name="My Appointment">
+        <xpath expr="//div[@id='business-appointments-portal-buttons']/a[hasclass('business-appoinment-portal-repeat')]" position="replace">
+            <a role="button"
+               t-att-id="ba_appointment_id.id"
+               class="btn btn-primary w-100 mb8 business-appoinment-portal-repeat d-none"
+               href="#"
+               name="reschedule_ba"
+            >
+                <i class="fa fa-copy"/> Repeat
+            </a>
+        </xpath>
+    </template>
+
+</odoo>

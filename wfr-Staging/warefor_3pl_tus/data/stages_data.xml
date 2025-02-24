@@ -1,0 +1,438 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="status_tag_at_fedex_origin_facility" model="obl.status.tag">
+            <field name="name">At FedEx origin facility</field>
+        </record>
+
+        <record id="status_tag_arrived_at_fedex_location" model="obl.status.tag">
+            <field name="name">Arrived at FedEx location</field>
+        </record>
+
+        <record id="status_tag_at_local_fedex_facility" model="obl.status.tag">
+            <field name="name">At local FedEx facility</field>
+        </record>
+
+        <record id="status_tag_at_local_facility" model="obl.status.tag">
+            <field name="name">At local facility</field>
+        </record>
+
+        <record id="status_tag_arrived_at_origin_airport" model="obl.status.tag">
+            <field name="name">Arrived at origin airport</field>
+        </record>
+
+        <record id="status_tag_in_transit" model="obl.status.tag">
+            <field name="name">In transit</field>
+        </record>
+
+        <record id="status_tag_shipment_information_sent_to_usps" model="obl.status.tag">
+            <field name="name">Shipment information sent to U.S. Postal Service</field>
+        </record>
+
+        <record id="status_tag_plane_in_flight" model="obl.status.tag">
+            <field name="name">Plane in flight</field>
+        </record>
+
+        <record id="status_tag_departed_fedex_location" model="obl.status.tag">
+            <field name="name">Departed FedEx location</field>
+        </record>
+
+        <record id="status_tag_at_canada_post_facility" model="obl.status.tag">
+            <field name="name">At Canada Post facility</field>
+        </record>
+
+        <record id="status_tag_arrived_at_customs_broker" model="obl.status.tag">
+            <field name="name">Arrived at customs broker</field>
+        </record>
+
+        <record id="status_tag_enroute_to_airport" model="obl.status.tag">
+            <field name="name">Enroute to airport</field>
+        </record>
+
+        <record id="status_tag_enroute_to_origin_airport" model="obl.status.tag">
+            <field name="name">Enroute to origin airport</field>
+        </record>
+
+        <record id="status_tag_in_progress" model="obl.status.tag">
+            <field name="name">In Progress</field>
+        </record>
+
+        <record id="status_tag_arrived_at_dest_airport" model="obl.status.tag">
+            <field name="name">Arrived at dest airport</field>
+        </record>
+
+        <record id="status_tag_at_delivery" model="obl.status.tag">
+            <field name="name">At Delivery</field>
+        </record>
+
+        <record id="status_tag_address_corrected" model="obl.status.tag">
+            <field name="name">Address corrected</field>
+        </record>
+
+        <record id="status_tag_at_usps_facility" model="obl.status.tag">
+            <field name="name">At U.S. Postal Service facility</field>
+        </record>
+
+        <record id="status_tag_location_changed" model="obl.status.tag">
+            <field name="name">Location changed</field>
+        </record>
+
+        <record id="status_tag_international_shipment_release" model="obl.status.tag">
+            <field name="name">International shipment release</field>
+        </record>
+
+        <record id="status_tag_departed_border_stop" model="obl.status.tag">
+            <field name="name">Departed border stop</field>
+        </record>
+
+        <record id="status_tag_at_fedex_destination_facility" model="obl.status.tag">
+            <field name="name">At FedEx destination facility</field>
+        </record>
+
+        <record id="status_tag_ready_for_pickup_hal" model="obl.status.tag">
+            <field name="name">Ready for pickup (HAL)</field>
+        </record>
+
+        <record id="status_tag_ready_for_pickup" model="obl.status.tag">
+            <field name="name">Ready for pickup</field>
+        </record>
+
+        <record id="status_tag_item_held_at_delivery_office" model="obl.status.tag">
+            <field name="name">Item held at delivery office</field>
+        </record>
+
+        <record id="status_tag_hold_at_location_request_accepted" model="obl.status.tag">
+            <field name="name">Hold at location request accepted</field>
+        </record>
+
+        <record id="status_tag_delivery_option_request_cancelled" model="obl.status.tag">
+            <field name="name">Delivery option request cancelled</field>
+        </record>
+
+        <record id="status_tag_multiple_statuses" model="obl.status.tag">
+            <field name="name">Multiple statuses</field>
+        </record>
+
+        <record id="status_tag_delivered_to_interline_carrier" model="obl.status.tag">
+            <field name="name">Delivered to interline carrier</field>
+        </record>
+
+        <record id="status_tag_transfer" model="obl.status.tag">
+            <field name="name">Transfer</field>
+        </record>
+
+        <record id="status_tag_shipment_cancelled" model="obl.status.tag">
+            <field name="name">Shipment cancelled</field>
+        </record>
+
+        <record id="status_tag_shipment_cancelled_by_sender" model="obl.status.tag">
+            <field name="name">Shipment cancelled by sender</field>
+        </record>
+
+        <record id="status_tag_order_cancelled" model="obl.status.tag">
+            <field name="name">Order Cancelled</field>
+        </record>
+
+        <record id="status_tag_clearance_in_progress" model="obl.status.tag">
+            <field name="name">Clearance in progress</field>
+        </record>
+
+        <record id="status_tag_pre_clearance_delay" model="obl.status.tag">
+            <field name="name">Pre-clearance delay</field>
+        </record>
+
+        <record id="status_tag_us_export_approved" model="obl.status.tag">
+            <field name="name">US export approved</field>
+        </record>
+
+        <record id="status_tag_at_destination_sort_facility" model="obl.status.tag">
+            <field name="name">At destination sort facility</field>
+        </record>
+
+        <record id="status_tag_on_fedex_vehicle_for_delivery" model="obl.status.tag">
+            <field name="name">On FedEx vehicle for Delivery</field>
+        </record>
+
+        <record id="status_tag_out_for_delivery" model="obl.status.tag">
+            <field name="name">Out for delivery</field>
+        </record>
+
+        <record id="status_tag_delivery_information_change" model="obl.status.tag">
+            <field name="name">Delivery Information Change</field>
+        </record>
+
+        <record id="status_tag_in_transit_in_alt" model="obl.status.tag">
+            <field name="name">In-Transit</field>
+        </record>
+
+        <record id="status_tag_new" model="obl.status.tag">
+            <field name="name">New</field>
+        </record>
+
+        <record id="dynamic_stage_new" model="freight.stages.data">
+            <field name="name">New</field>
+            <field name="sequence">1</field>
+            <field name="freight_stage_id" ref="mc_freight_app.dock_audit_approved_outbound"/>
+            <field name="status_ids" eval="[(6, 0, [ref('status_tag_new')])]"/>
+        </record>
+
+        <record id="status_tag_scheduled" model="obl.status.tag">
+            <field name="name">Scheduled</field>
+        </record>
+
+        <record id="dynamic_stage_scheduled" model="freight.stages.data">
+            <field name="name">Scheduled</field>
+            <field name="sequence">2</field>
+            <field name="freight_stage_id" ref="mc_freight_app.scheduled_outbound"/>
+            <field name="status_ids" eval="[(6, 0, [ref('status_tag_scheduled')])]"/>
+        </record>
+
+        <record id="status_tag_review" model="obl.status.tag">
+            <field name="name">Review</field>
+        </record>
+
+        <record id="dynamic_stage_review" model="freight.stages.data">
+            <field name="name">Review</field>
+            <field name="sequence">3</field>
+            <field name="freight_stage_id" ref="mc_freight_app.shipped_review"/>
+            <field name="status_ids" eval="[(6, 0, [ref('status_tag_review')])]"/>
+        </record>
+
+        <record id="status_tag_staged_picked" model="obl.status.tag">
+            <field name="name">Staged / Picked</field>
+        </record>
+
+        <record id="dynamic_stage_staged_picked" model="freight.stages.data">
+            <field name="name">Staged / Picked</field>
+            <field name="sequence">4</field>
+            <field name="freight_stage_id" ref="mc_freight_app.staged_outbound"/>
+            <field name="status_ids" eval="[(6, 0, [ref('status_tag_staged_picked')])]"/>
+        </record>
+
+        <record id="status_tag_loading_outbound" model="obl.status.tag">
+            <field name="name">Loading</field>
+        </record>
+
+        <record id="dynamic_stage_loading_outbound" model="freight.stages.data">
+            <field name="name">Loading</field>
+            <field name="sequence">5</field>
+            <field name="freight_stage_id" ref="mc_freight_app.loading_outbound"/>
+            <field name="status_ids" eval="[(6, 0, [ref('status_tag_loading_outbound')])]"/>
+        </record>
+
+        <record id="status_tag_loaded_outbound" model="obl.status.tag">
+            <field name="name">Loaded / Packed</field>
+        </record>
+
+        <record id="dynamic_stage_loaded_outbound" model="freight.stages.data">
+            <field name="name">Loaded / Packed</field>
+            <field name="sequence">6</field>
+            <field name="freight_stage_id" ref="mc_freight_app.loaded_outbound"/>
+            <field name="status_ids" eval="[(6, 0, [ref('status_tag_loaded_outbound')])]"/>
+        </record>
+
+        <record id="status_tag_shipped_outbound" model="obl.status.tag">
+            <field name="name">Shipped</field>
+        </record>
+
+        <record id="dynamic_stage_shipped_outbound" model="freight.stages.data">
+            <field name="name">Shipped</field>
+            <field name="sequence">7</field>
+            <field name="freight_stage_id" ref="mc_freight_app.shipped_outbound"/>
+            <field name="status_ids" eval="[(6, 0, [ref('status_tag_shipped_outbound')])]"/>
+        </record>
+
+        <record id="status_tag_pre_load_scan" model="obl.status.tag">
+            <field name="name">Pre-Load Scan</field>
+        </record>
+
+        <record id="dynamic_stage_pre_load_scan" model="freight.stages.data">
+            <field name="name">Pre-Load Scan</field>
+            <field name="sequence">8</field>
+            <field name="freight_stage_id" ref="mc_freight_app.pre_load_scan"/>
+            <field name="status_ids" eval="[(6, 0, [ref('status_tag_pre_load_scan')])]"/>
+        </record>
+
+        <record id="status_tag_missing_first_scan" model="obl.status.tag">
+            <field name="name">Missing First Scan</field>
+        </record>
+
+        <record id="dynamic_stage_missing_first_scan" model="freight.stages.data">
+            <field name="name">Missing First Scan</field>
+            <field name="sequence">9</field>
+            <field name="freight_stage_id" ref="mc_freight_app.missing_first_scan"/>
+            <field name="status_ids" eval="[(6, 0, [ref('status_tag_missing_first_scan')])]"/>
+        </record>
+
+        <record id="status_tag_missing_first_scan" model="obl.status.tag">
+            <field name="name">Missing First Scan</field>
+        </record>
+
+        <record id="dynamic_stage_in_transit" model="freight.stages.data">
+            <field name="name">In-Transit</field>
+            <field name="sequence">10</field>
+            <field name="freight_stage_id" ref="mc_freight_app.in_transit"/>
+            <field name="status_ids" eval="[(6, 0, [
+    ref('status_tag_at_fedex_origin_facility'),
+    ref('status_tag_arrived_at_fedex_location'),
+    ref('status_tag_at_local_fedex_facility'),
+    ref('status_tag_at_local_facility'),
+    ref('status_tag_arrived_at_origin_airport'),
+    ref('status_tag_in_transit'),
+    ref('status_tag_shipment_information_sent_to_usps'),
+    ref('status_tag_plane_in_flight'),
+    ref('status_tag_departed_fedex_location'),
+    ref('status_tag_at_canada_post_facility'),
+    ref('status_tag_arrived_at_customs_broker'),
+    ref('status_tag_enroute_to_airport'),
+    ref('status_tag_enroute_to_origin_airport'),
+    ref('status_tag_in_progress'),
+    ref('status_tag_arrived_at_dest_airport'),
+    ref('status_tag_at_delivery'),
+    ref('status_tag_address_corrected'),
+    ref('status_tag_at_usps_facility'),
+    ref('status_tag_location_changed'),
+    ref('status_tag_international_shipment_release'),
+    ref('status_tag_departed_border_stop'),
+    ref('status_tag_at_fedex_destination_facility'),
+    ref('status_tag_ready_for_pickup_hal'),
+    ref('status_tag_ready_for_pickup'),
+    ref('status_tag_item_held_at_delivery_office'),
+    ref('status_tag_hold_at_location_request_accepted'),
+    ref('status_tag_delivery_option_request_cancelled'),
+    ref('status_tag_multiple_statuses'),
+    ref('status_tag_delivered_to_interline_carrier'),
+    ref('status_tag_transfer'),
+    ref('status_tag_shipment_cancelled'),
+    ref('status_tag_shipment_cancelled_by_sender'),
+    ref('status_tag_order_cancelled'),
+    ref('status_tag_clearance_in_progress'),
+    ref('status_tag_pre_clearance_delay'),
+    ref('status_tag_us_export_approved'),
+    ref('status_tag_at_destination_sort_facility'),
+    ref('status_tag_on_fedex_vehicle_for_delivery'),
+    ref('status_tag_out_for_delivery'),
+    ref('status_tag_delivery_information_change'),
+    ref('status_tag_in_transit_in_alt')
+])]"/>
+        </record>
+
+        <record id="status_tag_enroute_to_delivery_delayed" model="obl.status.tag">
+            <field name="name">Enroute to delivery/delayed</field>
+        </record>
+
+        <record id="status_tag_delivery_exception" model="obl.status.tag">
+            <field name="name">Delivery Exception</field>
+        </record>
+
+        <record id="status_tag_shipment_exception" model="obl.status.tag">
+            <field name="name">Shipment exception</field>
+        </record>
+
+        <record id="status_tag_available_for_pickup" model="obl.status.tag">
+            <field name="name">Available for Pickup</field>
+        </record>
+
+        <record id="status_tag_international_shipment_release" model="obl.status.tag">
+            <field name="name">International shipment release</field>
+        </record>
+
+        <record id="status_tag_clearance_delay" model="obl.status.tag">
+            <field name="name">Clearance delay</field>
+        </record>
+
+        <record id="status_tag_exceptions" model="obl.status.tag">
+            <field name="name">Exceptions</field>
+        </record>
+
+        <record id="status_tag_manual_exception" model="obl.status.tag">
+            <field name="name">Manual Exception</field>
+        </record>
+
+        <record id="dynamic_stage_exceptions" model="freight.stages.data">
+            <field name="name">Exceptions</field>
+            <field name="sequence">11</field>
+            <field name="freight_stage_id" ref="mc_freight_app.exceptions"/>
+            <field name="status_ids" eval="[(6, 0, [
+    ref('status_tag_enroute_to_delivery_delayed'),
+    ref('status_tag_delivery_exception'),
+    ref('status_tag_shipment_exception'),
+    ref('status_tag_available_for_pickup'),
+    ref('status_tag_international_shipment_release'),
+    ref('status_tag_clearance_delay'),
+    ref('status_tag_exceptions'),
+    ref('status_tag_manual_exception')
+])]"
+            />
+        </record>
+
+        <record id="status_tag_delivered_cap" model="obl.status.tag">
+            <field name="name">Delivered</field>
+        </record>
+
+        <record id="dynamic_stage_delivered" model="freight.stages.data">
+            <field name="name">Delivered</field>
+            <field name="sequence">12</field>
+            <field name="freight_stage_id" ref="mc_freight_app.delivered"/>
+            <field name="status_ids" eval="[(6, 0, [ref('status_tag_delivered_cap')])]"/>
+        </record>
+
+        <record id="status_tag_returned_cancelled" model="obl.status.tag">
+            <field name="name">Returned / Cancelled</field>
+        </record>
+
+        <record id="dynamic_stage_returns_outbound" model="freight.stages.data">
+            <field name="name">Returned / Cancelled</field>
+            <field name="sequence">13</field>
+            <field name="freight_stage_id" ref="mc_freight_app.returns_outbound"/>
+            <field name="status_ids" eval="[(6, 0, [ref('status_tag_returned_cancelled')])]"/>
+        </record>
+
+        <record id="status_tag_disregarded" model="obl.status.tag">
+            <field name="name">Disregarded</field>
+        </record>
+
+        <record id="dynamic_stage_disregarded" model="freight.stages.data">
+            <field name="name">Disregarded</field>
+            <field name="sequence">14</field>
+            <field name="freight_stage_id" ref="mc_freight_app.disregarded"/>
+            <field name="status_ids" eval="[(6, 0, [ref('status_tag_disregarded')])]"/>
+        </record>
+
+        <record id="status_tag_extra_delivery_attempt" model="obl.status.tag">
+            <field name="name">Delivery Attempt</field>
+        </record>
+
+        <record id="status_tag_extra_moving_through_network" model="obl.status.tag">
+            <field name="name">Moving Through Network</field>
+        </record>
+
+        <record id="status_tag_extra_on_the_way" model="obl.status.tag">
+            <field name="name">On the way</field>
+        </record>
+
+        <record id="status_tag_extra_preparing_for_delivery" model="obl.status.tag">
+            <field name="name">Preparing for Delivery</field>
+        </record>
+
+        <record id="status_tag_extra_processing_at_destination" model="obl.status.tag">
+            <field name="name">Processing at Destination</field>
+        </record>
+
+        <record id="status_tag_extra_on_the_way" model="obl.status.tag">
+            <field name="name">Preparing for Delivery</field>
+        </record>
+
+        <record id="dynamic_stage_extra" model="freight.stages.data">
+            <field name="name">Extra</field>
+            <field name="sequence">15</field>
+            <field name="freight_stage_id" ref="mc_freight_app.exceptions"/>
+            <field name="status_ids" eval="[(6, 0, [ref('status_tag_extra_delivery_attempt'),
+            ref('status_tag_extra_moving_through_network'),
+            ref('status_tag_extra_preparing_for_delivery'),
+            ref('status_tag_extra_processing_at_destination'),
+            ref('status_tag_extra_on_the_way')])]"/>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="ir_cron_management_form_view" model="ir.ui.view">
+            <field name="name">ir.cron.management.form.view</field>
+            <field name="model">ir.cron.management</field>
+            <field name="arch" type="xml">
+                <form string="Schedule Action Management">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="code"/>
+                            <field name="ir_cron_ids">
+                                <tree editable="bottom">
+                                    <field name="ir_cron_id" />
+                                    <field name="priority" />
+                                    <field name="is_processed" />
+                                </tree>
+                            </field>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="ir_cron_management_tree_view" model="ir.ui.view">
+            <field name="name">ir.cron.management.tree</field>
+            <field name="model">ir.cron.management</field>
+            <field name="arch" type="xml">
+                <tree string="Schedule Action Management">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="ir_cron_management_action">
+            <field name="name">Schedule Action Management</field>
+            <field name="res_model">ir.cron.management</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="menu_ir_cron_management"
+                  action="ir_cron_management_action"
+                  name="Manage Schedule Action Sequentially"
+                  parent="base.menu_automation"
+                  sequence="3"/>
+
+    </data>
+</odoo>

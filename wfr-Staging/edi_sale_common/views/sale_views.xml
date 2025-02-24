@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_order_form_inherit_edi_sale" model="ir.ui.view">
+        <field name="name">sale.order.form.inherit.edi.sale</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <data>
+                <field name="payment_term_id" position="after">
+                    <field name="edi_status"/>
+                    <field name="edi_date"/>
+                    <field name="edi_all_contacts"/>
+                </field>
+            </data>
+
+            <xpath expr="//field[@name='partner_id']" position="before">
+                <field name="edi_po_number"/>
+                <field name="edi_backorder_origin_id"/>
+            </xpath>
+
+            <xpath expr="//notebook" position="inside">
+                <page name="edi_fields" string="EDI">
+                    <group name="first_group">
+                        <group name="first_group_left">
+                            <field name="edi_vendor"/>
+                            <field name="edi_department"/>
+                            <field name="edi_tset_purpose_code"/>
+                            <field name="edi_primary_PO_type_code"/>
+                            <field name="edi_date_time_qualifier"/>
+                            <field name="commitment_date"/>
+                            <field name="edi_requested_pickup_date"/>
+                            <field name="ship_not_before_date"/>
+                            <field name="delivery_requested_date"/>
+                            <field name="evaluation_date"/>
+                            <field name="edi_additional_date"/>
+                            <field name="edi_carrier_trans_method_code"/>
+                            <field name="edi_carrier_routing"/>
+                            <field name="edi_reference_qual"/>
+                            <field name="edi_reference_id"/>
+                            <field name="edi_description"/>
+                            <field name="edi_charges_allowance_ids" widget="many2many_tags"/>
+                            <field name="edi_total_line_item_number"/>
+                            <field name="edi_acknowledgement_type"/>
+                            <field name="reference_line_ids" widget="one2many" readonly="0">
+                                <tree>
+                                    <field name="ReferenceQual"/>
+                                    <field name="ReferenceID"/>
+                                </tree>
+                            </field>
+                            <field name="notes_line_ids" widget="one2many" readonly="0">
+                                <tree>
+                                    <field name="NoteCode"/>
+                                    <field name="Note"/>
+                                </tree>
+                            </field>
+                        </group>
+                        <group name="first_group_right">
+                            <field name="edi_addresses"/>
+                            <field name="edi_customer_payment_terms"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+
+            <xpath expr="//field[@name='note']" position="before">
+              <field name="edi_note_code"/>
+            </xpath>
+
+            <xpath expr="//field[@name='order_line']/tree/field[@name='product_uom_qty']" position="attributes">
+                <attribute name="optional">hide</attribute>
+            </xpath>
+            <xpath expr="///page[@name='order_lines']/field[@name='order_line']/tree/field[@name='product_uom_qty']" position="after">
+                <field name="edi_qty_cases" optional="hide"/>
+            </xpath>
+            <xpath expr="//page[@name='order_lines']/field[@name='order_line']/tree/field[@name='product_uom']" position="after">
+                <field name="edi_line_sequence_number" optional="hide"/>
+                <field name="edi_part_number" optional="hide"/>
+                <field name="edi_vendor_part_number" optional="hide"/>
+                <field name="edi_buyer_part_number" optional="hide"/>
+                <field name="edi_pack_size" optional="hide"/>
+                <field name="edi_payment_terms" optional="hide"/>
+                <field name="edi_charges_allowance_ids" optional="hide"/>
+                <field name="edi_item_status_code" optional="hide"/>
+            </xpath>
+            <xpath expr="//page[@name='order_lines']/field[@name='order_line']/tree/field[@name='price_unit']" position="after">
+                <field name="edi_unit_price" optional="hide"/>
+                <field name="edi_case_price" optional="hide"/>
+                <field name="edi_price" optional="hide"/>
+            </xpath>
+        </field>
+    </record>
+
+<!--    <menuitem id="sale_order_edi"-->
+<!--        parent="sale.sale_order_menu"-->
+<!--        sequence="10"-->
+<!--        action="action_sale_order_edi"/>-->
+</odoo>

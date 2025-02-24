@@ -1,0 +1,10 @@
+<odoo>
+    <template id="assets_chatter_position" name="Chatter Position" inherit_id="web.assets_backend">
+        <xpath expr="." position="inside">
+            <link rel="stylesheet" type="text/scss" href="warefor_3pl_tus/static/src/css/style.css"/>
+<!--            <script src="warefor_3pl_tus/static/src/js/transfer_button.js" type="text/javascript"/>-->
+            <script src="warefor_3pl_tus/static/src/js/transfer_button_form.js" type="text/javascript"/>
+            <script src="warefor_3pl_tus/static/src/js/qty_at_date_widget.js" type="text/javascript"/>
+        </xpath>
+    </template>
+</odoo>
